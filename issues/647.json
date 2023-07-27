@@ -1,0 +1,123 @@
+{
+  "type": "issue",
+  "issue": {
+    "id": 1331514976,
+    "node_id": "I_kwDOEEET9c5PXU5g",
+    "url": "https://api.github.com/repos/bitcoin-core/gui/issues/647",
+    "repository_url": "https://api.github.com/repos/bitcoin-core/gui",
+    "labels_url": "https://api.github.com/repos/bitcoin-core/gui/issues/647/labels%7B/name%7D",
+    "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/647/comments",
+    "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/647/events",
+    "html_url": "https://github.com/bitcoin-core/gui/issues/647",
+    "number": 647,
+    "state": "open",
+    "state_reason": null,
+    "title": "Allow custom fee increase / bump for RBF",
+    "body": "Currently the UI doesn't give you a choice when increasing the fee of an RBF transaction:\r\n<img width=\"352\" alt=\"custom please\" src=\"https://user-images.githubusercontent.com/10217/32980386-df931d5e-cc65-11e7-888a-3812eb159bac.png\">\r\n\r\nThe [bumpfee](https://github.com/bitcoin/bitcoin/blob/v0.15.1/src/wallet/rpcwallet.cpp#L2960) RPC command has an option `totalFee`, so the UI could add support for this.\r\n\r\nI think the best approach would be to reuse parts of the send screen.\r\n\r\n<img width=\"624\" alt=\"schermafbeelding 2017-11-18 om 13 44 42\" src=\"https://user-images.githubusercontent.com/10217/32980467-180e6b92-cc67-11e7-81f5-b41b60172159.png\">\r\n\r\n* \"Pay only the required fee\" would be replaced by \"Bump fee by minimum permitted amount\". \r\n* The custom per kilobyte field would show an error if the fee is too low.\r\n* \"Request RBF\" would be replaced with \"Disable RBF\" \r\n\r\n I don't know if the required information for that UI can be obtained with the current RPC methods though. It boils down to reusing the existing transaction screen, but hiding UI elements that aren't properly supported for RBF yet (e.g. changing the recipient).\r\n\r\nMoved from https://github.com/bitcoin/bitcoin/issues/11717.",
+    "user": {
+      "login": "fanquake",
+      "id": 863730,
+      "node_id": "MDQ6VXNlcjg2MzczMA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/863730?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/fanquake",
+      "html_url": "https://github.com/fanquake",
+      "followers_url": "https://api.github.com/users/fanquake/followers",
+      "following_url": "https://api.github.com/users/fanquake/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/fanquake/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/fanquake/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/fanquake/subscriptions",
+      "organizations_url": "https://api.github.com/users/fanquake/orgs",
+      "repos_url": "https://api.github.com/users/fanquake/repos",
+      "events_url": "https://api.github.com/users/fanquake/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/fanquake/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 2147693884,
+        "node_id": "MDU6TGFiZWwyMTQ3NjkzODg0",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Feature",
+        "name": "Feature",
+        "description": "",
+        "color": "8fe567",
+        "default": false
+      }
+    ],
+    "assignees": [],
+    "author_association": "MEMBER",
+    "locked": false,
+    "comments": 0,
+    "created_at": "2022-08-08T08:26:00Z",
+    "updated_at": "2023-02-02T12:21:52Z"
+  },
+  "events": [
+    {
+      "event": "labeled",
+      "id": 7144927253,
+      "node_id": "LE_lADOEEET9c5PXU5gzwAAAAGp3vAV",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/7144927253",
+      "actor": {
+        "login": "fanquake",
+        "id": 863730,
+        "node_id": "MDQ6VXNlcjg2MzczMA==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/863730?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/fanquake",
+        "html_url": "https://github.com/fanquake",
+        "followers_url": "https://api.github.com/users/fanquake/followers",
+        "following_url": "https://api.github.com/users/fanquake/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/fanquake/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/fanquake/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/fanquake/subscriptions",
+        "organizations_url": "https://api.github.com/users/fanquake/orgs",
+        "repos_url": "https://api.github.com/users/fanquake/repos",
+        "events_url": "https://api.github.com/users/fanquake/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/fanquake/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2022-08-08T08:26:00Z",
+      "label": {
+        "name": "Feature",
+        "color": "8fe567"
+      }
+    },
+    {
+      "event": "renamed",
+      "id": 8420560824,
+      "node_id": "RTE_lADOEEET9c5PXU5gzwAAAAH154-4",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/8420560824",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-02-02T12:21:52Z",
+      "rename": {
+        "from": "QT: allow custom fee increase / bump for RBF",
+        "to": "Allow custom fee increase / bump for RBF"
+      }
+    }
+  ]
+}

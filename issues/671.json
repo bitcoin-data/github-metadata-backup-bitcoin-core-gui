@@ -1,0 +1,90 @@
+{
+  "type": "issue",
+  "issue": {
+    "id": 1381618715,
+    "node_id": "I_kwDOEEET9c5SWdQb",
+    "url": "https://api.github.com/repos/bitcoin-core/gui/issues/671",
+    "repository_url": "https://api.github.com/repos/bitcoin-core/gui",
+    "labels_url": "https://api.github.com/repos/bitcoin-core/gui/issues/671/labels%7B/name%7D",
+    "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/671/comments",
+    "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/671/events",
+    "html_url": "https://github.com/bitcoin-core/gui/issues/671",
+    "number": 671,
+    "state": "open",
+    "state_reason": null,
+    "title": "Block checksum mismatch and Access Violation Errors",
+    "body": "**Describe the issue**\r\n\r\nBlock checksum mismatch. Yes my hardware is fine.\r\n\r\n**What behavior did you expect?**\r\n\r\nI expected for the software to simply continue from the latest valid block checksum and restart from there. I instead just got additional block checksum mismatch errors at the same file when trying to restart the app. I pruned the blockchain to be 10GB big. I tried -reindex-chainstate, but this is just deleting the content of the chainstate folder and makes the app crash with an Access Violation error (0xc00000005) during splash which is not logged in the debug.log, but rather in the eventlog of windows.\r\nTrying -reindex instead makes the app to verify the whole blockchain from start again, at which it is just a matter of time until the problem reappears again.\r\n\r\n**How reliably can you reproduce the issue, what are the steps to do so?**\r\n\r\nTry to make a 10GB pruned blockchain. Wait for the error to appear.\r\n\r\n**What version of Bitcoin Core are you using, where did you get it (website, self-compiled, etc)?**\r\n\r\nV22, official website.\r\n\r\n**What type of machine are you observing the error on (OS/CPU and disk type)?**\r\n\r\nWindows 10, CPU shouldn't matter.\r\n\r\nCan't provide debug.log info, as all the interesting parts were already deleted somehow. Probably because they got rotated away by my current attempt.",
+    "user": {
+      "login": "TheMalgot",
+      "id": 29927039,
+      "node_id": "MDQ6VXNlcjI5OTI3MDM5",
+      "avatar_url": "https://avatars.githubusercontent.com/u/29927039?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/TheMalgot",
+      "html_url": "https://github.com/TheMalgot",
+      "followers_url": "https://api.github.com/users/TheMalgot/followers",
+      "following_url": "https://api.github.com/users/TheMalgot/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/TheMalgot/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/TheMalgot/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/TheMalgot/subscriptions",
+      "organizations_url": "https://api.github.com/users/TheMalgot/orgs",
+      "repos_url": "https://api.github.com/users/TheMalgot/repos",
+      "events_url": "https://api.github.com/users/TheMalgot/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/TheMalgot/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 2140649117,
+        "node_id": "MDU6TGFiZWwyMTQwNjQ5MTE3",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Bug",
+        "name": "Bug",
+        "description": "Something isn't working",
+        "color": "d73a4a",
+        "default": false
+      }
+    ],
+    "assignees": [],
+    "author_association": "NONE",
+    "locked": false,
+    "comments": 0,
+    "created_at": "2022-09-21T23:13:05Z",
+    "updated_at": "2022-09-21T23:14:41Z"
+  },
+  "events": [
+    {
+      "event": "labeled",
+      "id": 7434888649,
+      "node_id": "LE_lADOEEET9c5SWdQbzwAAAAG7J2XJ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/7434888649",
+      "actor": {
+        "login": "TheMalgot",
+        "id": 29927039,
+        "node_id": "MDQ6VXNlcjI5OTI3MDM5",
+        "avatar_url": "https://avatars.githubusercontent.com/u/29927039?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/TheMalgot",
+        "html_url": "https://github.com/TheMalgot",
+        "followers_url": "https://api.github.com/users/TheMalgot/followers",
+        "following_url": "https://api.github.com/users/TheMalgot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/TheMalgot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/TheMalgot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/TheMalgot/subscriptions",
+        "organizations_url": "https://api.github.com/users/TheMalgot/orgs",
+        "repos_url": "https://api.github.com/users/TheMalgot/repos",
+        "events_url": "https://api.github.com/users/TheMalgot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/TheMalgot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2022-09-21T23:13:05Z",
+      "label": {
+        "name": "Bug",
+        "color": "d73a4a"
+      }
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "type": "issue",
+  "issue": {
+    "id": 859137395,
+    "node_id": "MDU6SXNzdWU4NTkxMzczOTU=",
+    "url": "https://api.github.com/repos/bitcoin-core/gui/issues/282",
+    "repository_url": "https://api.github.com/repos/bitcoin-core/gui",
+    "labels_url": "https://api.github.com/repos/bitcoin-core/gui/issues/282/labels%7B/name%7D",
+    "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/282/comments",
+    "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/282/events",
+    "html_url": "https://github.com/bitcoin-core/gui/issues/282",
+    "number": 282,
+    "state": "open",
+    "state_reason": null,
+    "title": "Improve UX for abandoning transactions and recovering/resending BTC",
+    "body": "**Transaction wasn't confirmed due to fee being too low, so transaction expired from mempool, and funds are now inaccessible.**\r\n\r\nIssue 1: \"Abandon transaction\" is greyed out without an explanation of how to enable it\r\n- [All about \"stuck\" transactions and what you can do to fix them](https://bitcointalk.org/index.php?topic=1802212.0) doesn't appear in organic search results for \"Bitcoin core Abandon transaction is greyed out\", it can only be found as a reference cited by https://coinapp.zendesk.com/hc/en-us/articles/115004030308-Stuck-Transactions;\r\n- Additionally, [bitcointalk post 1802212](https://bitcointalk.org/index.php?topic=1802212.0) doesn't emphasise the subsection \"How to make a Full RBF transaction > Bitcoin Core\" as being the method for simply aborting/cancelling an expired transaction;\r\n- Further, [bitcointalk post 1802212](https://bitcointalk.org/index.php?topic=1802212.0) doesn't detail whether the wallet should be restarted _without_ `-walletbroadcast=0` after \"Abandon transaction\" is completed but before a new transaction is performed.\r\n\r\nIssue 2: Once the transaction is abandoned, attempts to create a new transaction for the bitcoin fail to be broadcast\r\n- even after the client was restarted _without_ `-walletbroadcast=0` (but without running `-zapwallettxes` - because [bitcointalk post 1802212](https://bitcointalk.org/index.php?topic=1802212.0) states \"If [Abandon transaction] fails for some reason, then you can start Bitcoin Core with the `-zapwallettxes` option to clear all unconfirmed transactions from your wallet.\", attempting to send the bitcoin in a new transaction appear under the Transactions tab as \"Unconfirmed\" (Status: 0/unconfirmed, in memory pool) and running `listtransactions` in `console` returns _'walletconflicts'_ between abandoned and new transactions:\r\n>     \"address\": \"1KYaANCnNjtiTA3MJ4E73n7a1iTbzKGf2x\",\r\n>     \"category\": \"send\",\r\n>     \"amount\": -0.00497450,\r\n>     \"vout\": 1,\r\n>     \"fee\": -0.00002550,\r\n>     \"confirmations\": 0,\r\n>     \"trusted\": false,\r\n>     \"txid\": \"e203a8ca50c286621b50e8b6f24b6746eb083a12dec0751b45251d3325d6ab3f\",\r\n>     \"walletconflicts\": [\r\n>       \"c890c8cd4b5cf9ac010a81c3a23060595679c869625016396739b4908fe304c1\"\r\n>     ],\r\n>     \"time\": 1609969857,\r\n>     \"timereceived\": 1609969857,\r\n>     \"bip125-replaceable\": \"yes\",\r\n>     \"abandoned\": true\r\n>     },\r\n>     {\r\n>     \"address\": \"1dT9h5zGxx43TNZddWvHXPCQLBZuRZZTb\",\r\n>     \"category\": \"send\",\r\n>     \"amount\": -0.00600000,\r\n>     \"label\": \"\",\r\n>     \"vout\": 0,\r\n>     \"fee\": -0.00002550,\r\n>     \"confirmations\": 0,\r\n>     \"trusted\": false,\r\n>     \"txid\": \"e203a8ca50c286621b50e8b6f24b6746eb083a12dec0751b45251d3325d6ab3f\",\r\n>     \"walletconflicts\": [\r\n>       \"c890c8cd4b5cf9ac010a81c3a23060595679c869625016396739b4908fe304c1\"\r\n>     ],\r\n>     \"time\": 1609969857,\r\n>     \"timereceived\": 1609969857,\r\n>     \"bip125-replaceable\": \"yes\",\r\n>     \"abandoned\": true\r\n>     },\r\n>     {\r\n>     \"address\": \"bc1qaqpv05s9dnmns50epvy5726svcllrh2ua4jx4t\",\r\n>     \"category\": \"send\",\r\n>     \"amount\": -0.00200000,\r\n>     \"vout\": 1,\r\n>     \"fee\": -0.00000334,\r\n>     \"confirmations\": 0,\r\n>     \"trusted\": true,\r\n>     \"txid\": \"c890c8cd4b5cf9ac010a81c3a23060595679c869625016396739b4908fe304c1\",\r\n>     \"walletconflicts\": [\r\n>       \"e203a8ca50c286621b50e8b6f24b6746eb083a12dec0751b45251d3325d6ab3f\"\r\n>     ],\r\n>     \"time\": 1618495768,\r\n>     \"timereceived\": 1618495768,\r\n>     \"bip125-replaceable\": \"yes\",\r\n>     \"abandoned\": false\r\n>     },\r\n>     {\r\n>     \"address\": \"17FjUKyydoQ1u44vq2Df47XtcD2rFmdbsd\",\r\n>     \"category\": \"send\",\r\n>     \"amount\": -0.00899666,\r\n>     \"label\": \"\",\r\n>     \"vout\": 0,\r\n>     \"fee\": -0.00000334,\r\n>     \"confirmations\": 0,\r\n>     \"trusted\": true,\r\n>     \"txid\": \"c890c8cd4b5cf9ac010a81c3a23060595679c869625016396739b4908fe304c1\",\r\n>     \"walletconflicts\": [\r\n>       \"e203a8ca50c286621b50e8b6f24b6746eb083a12dec0751b45251d3325d6ab3f\"\r\n>     ],\r\n>     \"time\": 1618495768,\r\n>     \"timereceived\": 1618495768,\r\n>     \"bip125-replaceable\": \"yes\",\r\n>     \"abandoned\": false\r\n>     }\r\n\r\n\r\n<!--- What was the actual behavior (provide screenshots if the issue is GUI-related)? -->\r\n![image](https://user-images.githubusercontent.com/6415621/114905526-f3b01280-9e10-11eb-91fa-ec096087033d.png)\r\n\r\n1. Abandoning a transaction is unintuitive,\r\n- due to having to restart with `-walletbroadcast=0` which isn't detailed anywhere in the client and requires usage of the commandline\r\n   - UX enhancement 1: perhaps introduce a tooltip over the greyed out \"Abandon transaction\" context-menu entry\r\n   - UX enhancement 2: Introduce GUI/console methods for disabling `walletbroadcast`: new option under `Options > Wallet > Expert`, and `setwalletbroadcast`.\r\n\r\n2. After successfully abandoning the transaction it isn't clear how abandoned transactions can be deleted, or whether the client needs to be restarted without `-walletbroadcast=0` before proceeding to create a replacement transaction\r\n\r\n3. Resending bitcoin from an abandoned transaction creates a transaction which is \"Unconfirmed\", even when the client is restarted _without_ `-walletbroadcast=0`\r\n- there is no explanation for why a replacement transaction for an abandoned one is considered to be in conflict, or how to resolve the conflict, either by deleting the Abandoned transaction or using `-zapwallettxes`, or otherwise.\r\n\r\nIn addition to the UX issue being addressed programmatically in the client, please would someone also provide instructions on how to proceed in my case?\r\n\r\nMany thanks\r\n\r\n-----\r\nBitcoin core: v0.20.1 (official)\r\nOperating system: Windows 10 (x64)\r\nBlockchain pruned: No",
+    "user": {
+      "login": "mattmill30",
+      "id": 6415621,
+      "node_id": "MDQ6VXNlcjY0MTU2MjE=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6415621?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mattmill30",
+      "html_url": "https://github.com/mattmill30",
+      "followers_url": "https://api.github.com/users/mattmill30/followers",
+      "following_url": "https://api.github.com/users/mattmill30/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/mattmill30/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/mattmill30/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/mattmill30/subscriptions",
+      "organizations_url": "https://api.github.com/users/mattmill30/orgs",
+      "repos_url": "https://api.github.com/users/mattmill30/repos",
+      "events_url": "https://api.github.com/users/mattmill30/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/mattmill30/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 2964264316,
+        "node_id": "MDU6TGFiZWwyOTY0MjY0MzE2",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/UX",
+        "name": "UX",
+        "description": "All about \"how to get things done\"",
+        "color": "0052cc",
+        "default": false
+      }
+    ],
+    "assignees": [],
+    "author_association": "NONE",
+    "locked": false,
+    "comments": 0,
+    "created_at": "2021-04-15T18:17:43Z",
+    "updated_at": "2021-12-21T01:22:44Z"
+  },
+  "events": [
+    {
+      "event": "labeled",
+      "id": 4673832105,
+      "node_id": "MDEyOkxhYmVsZWRFdmVudDQ2NzM4MzIxMDU=",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/4673832105",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2021-05-01T17:18:54Z",
+      "label": {
+        "name": "UX",
+        "color": "0052cc"
+      }
+    },
+    {
+      "event": "comment_deleted",
+      "id": 5796056825,
+      "node_id": "CDE_lADOEEET9c4zNWVzzwAAAAFZeM75",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/5796056825",
+      "actor": {
+        "login": "bitcoin-core",
+        "id": 13464320,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjEzNDY0MzIw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/13464320?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/bitcoin-core",
+        "html_url": "https://github.com/bitcoin-core",
+        "followers_url": "https://api.github.com/users/bitcoin-core/followers",
+        "following_url": "https://api.github.com/users/bitcoin-core/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/bitcoin-core/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/bitcoin-core/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/bitcoin-core/subscriptions",
+        "organizations_url": "https://api.github.com/users/bitcoin-core/orgs",
+        "repos_url": "https://api.github.com/users/bitcoin-core/repos",
+        "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
+        "type": "Organization",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2021-12-21T01:22:44Z"
+    }
+  ]
+}

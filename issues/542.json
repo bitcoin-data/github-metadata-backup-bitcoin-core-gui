@@ -1,0 +1,90 @@
+{
+  "type": "issue",
+  "issue": {
+    "id": 1122384432,
+    "node_id": "I_kwDOEEET9c5C5jow",
+    "url": "https://api.github.com/repos/bitcoin-core/gui/issues/542",
+    "repository_url": "https://api.github.com/repos/bitcoin-core/gui",
+    "labels_url": "https://api.github.com/repos/bitcoin-core/gui/issues/542/labels%7B/name%7D",
+    "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/542/comments",
+    "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/542/events",
+    "html_url": "https://github.com/bitcoin-core/gui/issues/542",
+    "number": 542,
+    "state": "open",
+    "state_reason": null,
+    "title": "Error \"Cannot set -listen=0 together with -listenonion=1\" if incoming connections are disabled",
+    "body": "Bitcoin-Qt doesn't start properly if incoming connections are disabled. It seems that this is caused by a conflicting Tor-related default setting. \r\n\r\n\r\n**Expected behavior**\r\n\r\nBitcoin-Qt should start normally.\r\n\r\n**Actual behavior**\r\n\r\nBitcoin-Qt complains: \"Cannot set -listen=0 together with -listenonion=1\" and refuses to start.\r\n\r\n**To reproduce**\r\n\r\nWhat I did:\r\n- Compiled bitcoin-qt from source on Linux\r\n- Started bitcoin-qt\r\n- Opened settings and disabled incoming connections\r\n- Restarted bitcoin-qt\r\n- Restarted bitcoin-qt again (had to reboot the computer)\r\n- bug occurred\r\n- Restarted bitcoin-qt with -listen=1 or -listenonion=0\r\n\r\n**System information**\r\n\r\nCompiled from source, latest Git revision as of 2nd of Feb.\r\n\r\n**Other**\r\n\r\n👍👍 for the error message, it was clear and explained the problem as well as how to work around it.\r\n\r\nWhen starting Bitcoin-Qt for the first time after disabling incoming connections, it started properly. This was strange, but is it because of the \"restart required\" flag in the configuration?\r\n\r\nIt seems that DEFAULT_LISTEN_ONION is \"true\" and there's no GUI switch to change this, and I didn't find an option in the configuration file either but -listenonion=0 works. I think the problem occurs in init.cpp, line 890.\r\n\r\n",
+    "user": {
+      "login": "kord1e",
+      "id": 79941375,
+      "node_id": "MDQ6VXNlcjc5OTQxMzc1",
+      "avatar_url": "https://avatars.githubusercontent.com/u/79941375?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/kord1e",
+      "html_url": "https://github.com/kord1e",
+      "followers_url": "https://api.github.com/users/kord1e/followers",
+      "following_url": "https://api.github.com/users/kord1e/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/kord1e/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/kord1e/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/kord1e/subscriptions",
+      "organizations_url": "https://api.github.com/users/kord1e/orgs",
+      "repos_url": "https://api.github.com/users/kord1e/repos",
+      "events_url": "https://api.github.com/users/kord1e/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/kord1e/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 2140649117,
+        "node_id": "MDU6TGFiZWwyMTQwNjQ5MTE3",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Bug",
+        "name": "Bug",
+        "description": "Something isn't working",
+        "color": "d73a4a",
+        "default": false
+      }
+    ],
+    "assignees": [],
+    "author_association": "NONE",
+    "locked": false,
+    "comments": 0,
+    "created_at": "2022-02-02T21:03:02Z",
+    "updated_at": "2022-02-02T21:03:02Z"
+  },
+  "events": [
+    {
+      "event": "labeled",
+      "id": 5998628021,
+      "node_id": "LE_lADOEEET9c5C5jowzwAAAAFli8y1",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/5998628021",
+      "actor": {
+        "login": "kord1e",
+        "id": 79941375,
+        "node_id": "MDQ6VXNlcjc5OTQxMzc1",
+        "avatar_url": "https://avatars.githubusercontent.com/u/79941375?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/kord1e",
+        "html_url": "https://github.com/kord1e",
+        "followers_url": "https://api.github.com/users/kord1e/followers",
+        "following_url": "https://api.github.com/users/kord1e/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/kord1e/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/kord1e/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/kord1e/subscriptions",
+        "organizations_url": "https://api.github.com/users/kord1e/orgs",
+        "repos_url": "https://api.github.com/users/kord1e/repos",
+        "events_url": "https://api.github.com/users/kord1e/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/kord1e/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2022-02-02T21:03:02Z",
+      "label": {
+        "name": "Bug",
+        "color": "d73a4a"
+      }
+    }
+  ]
+}

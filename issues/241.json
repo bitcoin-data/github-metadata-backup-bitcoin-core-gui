@@ -1,0 +1,90 @@
+{
+  "type": "issue",
+  "issue": {
+    "id": 823977640,
+    "node_id": "MDU6SXNzdWU4MjM5Nzc2NDA=",
+    "url": "https://api.github.com/repos/bitcoin-core/gui/issues/241",
+    "repository_url": "https://api.github.com/repos/bitcoin-core/gui",
+    "labels_url": "https://api.github.com/repos/bitcoin-core/gui/issues/241/labels%7B/name%7D",
+    "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/241/comments",
+    "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/241/events",
+    "html_url": "https://github.com/bitcoin-core/gui/issues/241",
+    "number": 241,
+    "state": "open",
+    "state_reason": null,
+    "title": "Independent Geometry for Node and Main Windows",
+    "body": "While reviewing #194, I noticed that when resizing the `Node Window` while in `-disablewallet=1` mode, the `Main Window`, when in `disablewallet=0` mode, inherits the geometry of the recently resized `Node Window`.\r\n\r\nThere is/can be a reason for a user to resize the `Node Window` and to do so while in `-disablewallet=1` mode. For example, the following use-cases may require a certain wide geometry:\r\n- resize to fit more network information on the network graph\r\n- resize to fit all of the peer details on the screen\r\n- resize to better accommodate the, still a work in progress, mempool graph\r\n\r\nWhen the user then runs `bitcoin-qt -disablewallet=0`, they want to do something with the wallet. It can be a surprise/unexpected behavior that the `main window` starts as wide as his `node window` was resized to. As such, because the `Node Window` required a wide geometry, the `Main Window` should not by default adopt this wide geometry when switching between `-disablewallet=0` and `-disablewallet=1`\r\n\r\n**Steps to Reproduce**\r\n1. Run `bitcoin-qt -disablewallet=0`, go to `Menu` -> `Window` -> `Information`, note the size of the `Node window` then quit\r\n2. Run `bitcoin-qt -disablewallet=1`, resize the `Node Window` then quit\r\n3. Run `bitcoin-qt -disablewallet=0`, The `Main Window` inherited the size of the resized `Node Window`\r\n\r\n**System**\r\nmacOS 11.2, Qt 5.15.2\r\n\r\n\r\n",
+    "user": {
+      "login": "jarolrod",
+      "id": 23396902,
+      "node_id": "MDQ6VXNlcjIzMzk2OTAy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/23396902?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/jarolrod",
+      "html_url": "https://github.com/jarolrod",
+      "followers_url": "https://api.github.com/users/jarolrod/followers",
+      "following_url": "https://api.github.com/users/jarolrod/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/jarolrod/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/jarolrod/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/jarolrod/subscriptions",
+      "organizations_url": "https://api.github.com/users/jarolrod/orgs",
+      "repos_url": "https://api.github.com/users/jarolrod/repos",
+      "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/jarolrod/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 2140649117,
+        "node_id": "MDU6TGFiZWwyMTQwNjQ5MTE3",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Bug",
+        "name": "Bug",
+        "description": "Something isn't working",
+        "color": "d73a4a",
+        "default": false
+      }
+    ],
+    "assignees": [],
+    "author_association": "MEMBER",
+    "locked": false,
+    "comments": 0,
+    "created_at": "2021-03-07T17:56:39Z",
+    "updated_at": "2021-03-07T17:56:39Z"
+  },
+  "events": [
+    {
+      "event": "labeled",
+      "id": 4418296304,
+      "node_id": "MDEyOkxhYmVsZWRFdmVudDQ0MTgyOTYzMDQ=",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/4418296304",
+      "actor": {
+        "login": "jarolrod",
+        "id": 23396902,
+        "node_id": "MDQ6VXNlcjIzMzk2OTAy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/23396902?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/jarolrod",
+        "html_url": "https://github.com/jarolrod",
+        "followers_url": "https://api.github.com/users/jarolrod/followers",
+        "following_url": "https://api.github.com/users/jarolrod/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/jarolrod/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/jarolrod/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/jarolrod/subscriptions",
+        "organizations_url": "https://api.github.com/users/jarolrod/orgs",
+        "repos_url": "https://api.github.com/users/jarolrod/repos",
+        "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/jarolrod/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2021-03-07T17:56:39Z",
+      "label": {
+        "name": "Bug",
+        "color": "d73a4a"
+      }
+    }
+  ]
+}

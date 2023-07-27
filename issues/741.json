@@ -1,0 +1,80 @@
+{
+  "type": "issue",
+  "issue": {
+    "id": 1781174901,
+    "node_id": "I_kwDOEEET9c5qKpJ1",
+    "url": "https://api.github.com/repos/bitcoin-core/gui/issues/741",
+    "repository_url": "https://api.github.com/repos/bitcoin-core/gui",
+    "labels_url": "https://api.github.com/repos/bitcoin-core/gui/issues/741/labels%7B/name%7D",
+    "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/741/comments",
+    "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/741/events",
+    "html_url": "https://github.com/bitcoin-core/gui/issues/741",
+    "number": 741,
+    "state": "open",
+    "state_reason": null,
+    "title": "Command line options after any non-hyphen arguments are silently ignored",
+    "body": "### Is there an existing issue for this?\r\n\r\n- [X] I have searched the existing issues\r\n\r\n### Current behaviour\r\n\r\nFor example, invoking `bitcoin-qt -server=1 foo -regtest` on a fresh install will run `mainnet` instead of the expected `regtest`.\r\n\r\n\r\n\r\n### Expected behaviour\r\n\r\nI would expect it to do one of the following:\r\n\r\n1. Run `regtest`\r\n2. Warn me that my arguments contained a \"command\" and any subsequent options were ignored\r\n3. Exit with an error message\r\n\r\nThe problem is that `ArgsManager::ParseParameters` interprets any non-hypen ('-' or '--') arguments as \"commands\", with later arguments being assigned to that command.\r\n\r\nThis is not an issue with `bitcoind` since it has additional logic to detect \"loose\" commands and refuses to start:\r\n\r\nhttps://github.com/bitcoin/bitcoin/blob/c6287faae4c0e705a9258a340dfcf548906f12af/src/bitcoind.cpp#L127-L132\r\n\r\n\r\n\r\n### Steps to reproduce\r\n\r\nInvoke `bitcoin-qt foo -regtest` on a fresh install\r\n\r\n### Relevant log output\r\n\r\n_No response_\r\n\r\n### How did you obtain Bitcoin Core\r\n\r\nCompiled from source\r\n\r\n### What version of Bitcoin Core are you using?\r\n\r\nmaster@d6ee03507f39\r\n\r\n### Operating system and version\r\n\r\nMacOS Ventura 13.5\r\n\r\n### Machine specifications\r\n\r\n_No response_",
+    "user": {
+      "login": "john-moffett",
+      "id": 116917595,
+      "node_id": "U_kgDOBvgFWw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/116917595?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/john-moffett",
+      "html_url": "https://github.com/john-moffett",
+      "followers_url": "https://api.github.com/users/john-moffett/followers",
+      "following_url": "https://api.github.com/users/john-moffett/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/john-moffett/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/john-moffett/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/john-moffett/subscriptions",
+      "organizations_url": "https://api.github.com/users/john-moffett/orgs",
+      "repos_url": "https://api.github.com/users/john-moffett/repos",
+      "events_url": "https://api.github.com/users/john-moffett/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/john-moffett/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [],
+    "assignees": [],
+    "author_association": "CONTRIBUTOR",
+    "locked": false,
+    "comments": 0,
+    "created_at": "2023-06-29T16:37:16Z",
+    "updated_at": "2023-06-29T16:47:57Z"
+  },
+  "events": [
+    {
+      "event": "renamed",
+      "id": 9679442128,
+      "node_id": "RTE_lADOEEET9c5qKpJ1zwAAAAJA8JDQ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/9679442128",
+      "actor": {
+        "login": "john-moffett",
+        "id": 116917595,
+        "node_id": "U_kgDOBvgFWw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/116917595?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/john-moffett",
+        "html_url": "https://github.com/john-moffett",
+        "followers_url": "https://api.github.com/users/john-moffett/followers",
+        "following_url": "https://api.github.com/users/john-moffett/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/john-moffett/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/john-moffett/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/john-moffett/subscriptions",
+        "organizations_url": "https://api.github.com/users/john-moffett/orgs",
+        "repos_url": "https://api.github.com/users/john-moffett/repos",
+        "events_url": "https://api.github.com/users/john-moffett/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/john-moffett/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-06-29T16:47:29Z",
+      "rename": {
+        "from": "Command line options after any non-dash arguments are silently ignored",
+        "to": "Command line options after any non-hyphen arguments are silently ignored"
+      }
+    }
+  ]
+}

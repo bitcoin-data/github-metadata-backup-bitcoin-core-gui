@@ -1,0 +1,1540 @@
+{
+  "type": "pull",
+  "pull": {
+    "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/634",
+    "id": 1004839029,
+    "node_id": "PR_kwDOEEET9c475KB1",
+    "html_url": "https://github.com/bitcoin-core/gui/pull/634",
+    "diff_url": "https://github.com/bitcoin-core/gui/pull/634.diff",
+    "patch_url": "https://github.com/bitcoin-core/gui/pull/634.patch",
+    "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/634",
+    "commits_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/634/commits",
+    "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/634/comments",
+    "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
+    "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/634/comments",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/91717d3d0181ef3b211c38dde72d313acd25b5ea",
+    "number": 634,
+    "state": "closed",
+    "locked": false,
+    "maintainer_can_modify": false,
+    "title": "[WIP/Draft] Add Address tab",
+    "user": {
+      "login": "w0xlt",
+      "id": 94266259,
+      "node_id": "U_kgDOBZ5jkw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/94266259?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/w0xlt",
+      "html_url": "https://github.com/w0xlt",
+      "followers_url": "https://api.github.com/users/w0xlt/followers",
+      "following_url": "https://api.github.com/users/w0xlt/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/w0xlt/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/w0xlt/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/w0xlt/subscriptions",
+      "organizations_url": "https://api.github.com/users/w0xlt/orgs",
+      "repos_url": "https://api.github.com/users/w0xlt/repos",
+      "events_url": "https://api.github.com/users/w0xlt/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/w0xlt/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "body": "This PR proposes a new tab called \"Addresses\" which shows some wallet addresses and also adds the `listaddress` RPC.\r\nThis is a common feature that many wallets have, but not Bitcoin Core clients (GUI and bitcoin-cli).\r\nMost of commits were picked from https://github.com/bitcoin/bitcoin/pull/23019, but they were considerably modified.\r\n\r\nAs stated in the title, it is still a draft. I would like to check if reviewers find this feature interesting before proceeding (since Bitcoin Core has a different security model and architecture than most wallets).\r\n\r\nSome caveats:\r\n\r\n. This PR, at moment (91717d3d0181ef3b211c38dde72d313acd25b5ea), seems to work fine for descriptor wallets as `m_map_script_pub_keys` keeps all the keys, even after they have been generated (for receiving or change).\r\n\r\n. But for legacy wallet, it has been showing inconsistent behavior. `setInternalKeyPool` and `setExternalKeyPool` remove the generated keys. I retrieved them from `m_address_book` but apparently this only works for the receiving keys.\r\n\r\n. To extract the index of a key in the HD path, this PR uses a regex. Although it seems reliable, may have performance impact. Ideally, regex should not be used. If this feature is implemented for descriptor wallets only, this is not necessary as `ScriptPubKey Map` stores the index.\r\n\r\n. The Address table shows `m_hd_chain.m_next_{external,internal}_index + 5` addresses for legacy wallets and `m_wallet_descriptor.next_index + 5` for descriptor. It means it shows up to the last generated address + 5.\r\n\r\n. Just out of curiosity, I tested loading all addresses available in keypool (by default, 1000 keys for each keypool / descriptor) and this has a significant negative impact on wallet loading. I wonder if it would be possible to do this with good performance.\r\n\r\n. pre-HD wallets have not been tested.\r\n\r\nFeedback and suggestions on how to handle the issues mentioned above are welcome.\r\n\r\n![image](https://user-images.githubusercontent.com/94266259/180335426-2a2805d5-983c-4756-a306-8b4b681992f9.png)\r\n",
+    "labels": [
+      {
+        "id": 2145506980,
+        "node_id": "MDU6TGFiZWwyMTQ1NTA2OTgw",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Needs%20rebase",
+        "name": "Needs rebase",
+        "description": "",
+        "color": "cccccc",
+        "default": false
+      },
+      {
+        "id": 2147693884,
+        "node_id": "MDU6TGFiZWwyMTQ3NjkzODg0",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Feature",
+        "name": "Feature",
+        "description": "",
+        "color": "8fe567",
+        "default": false
+      },
+      {
+        "id": 2964264316,
+        "node_id": "MDU6TGFiZWwyOTY0MjY0MzE2",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/UX",
+        "name": "UX",
+        "description": "All about \"how to get things done\"",
+        "color": "0052cc",
+        "default": false
+      }
+    ],
+    "created_at": "2022-07-22T00:26:54Z",
+    "updated_at": "2023-03-27T14:06:25Z",
+    "closed_at": "2023-03-27T14:06:25Z",
+    "mergeable": false,
+    "mergeable_state": "dirty",
+    "merge_commit_sha": "05b4a7ce9fdf3e729019a251ffa2914cc4a28e6d",
+    "assignees": [],
+    "requested_reviewers": [],
+    "requested_teams": [],
+    "rebaseable": false,
+    "head": {
+      "label": "w0xlt:address_tab",
+      "ref": "address_tab",
+      "sha": "91717d3d0181ef3b211c38dde72d313acd25b5ea",
+      "user": {
+        "login": "w0xlt",
+        "id": 94266259,
+        "node_id": "U_kgDOBZ5jkw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/94266259?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/w0xlt",
+        "html_url": "https://github.com/w0xlt",
+        "followers_url": "https://api.github.com/users/w0xlt/followers",
+        "following_url": "https://api.github.com/users/w0xlt/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/w0xlt/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/w0xlt/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/w0xlt/subscriptions",
+        "organizations_url": "https://api.github.com/users/w0xlt/orgs",
+        "repos_url": "https://api.github.com/users/w0xlt/repos",
+        "events_url": "https://api.github.com/users/w0xlt/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/w0xlt/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "repo": {
+        "id": 427842534,
+        "node_id": "R_kgDOGYBb5g",
+        "name": "gui",
+        "full_name": "w0xlt/gui",
+        "owner": {
+          "login": "w0xlt",
+          "id": 94266259,
+          "node_id": "U_kgDOBZ5jkw",
+          "avatar_url": "https://avatars.githubusercontent.com/u/94266259?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/w0xlt",
+          "html_url": "https://github.com/w0xlt",
+          "followers_url": "https://api.github.com/users/w0xlt/followers",
+          "following_url": "https://api.github.com/users/w0xlt/following%7B/other_user%7D",
+          "gists_url": "https://api.github.com/users/w0xlt/gists%7B/gist_id%7D",
+          "starred_url": "https://api.github.com/users/w0xlt/starred%7B/owner%7D%7B/repo%7D",
+          "subscriptions_url": "https://api.github.com/users/w0xlt/subscriptions",
+          "organizations_url": "https://api.github.com/users/w0xlt/orgs",
+          "repos_url": "https://api.github.com/users/w0xlt/repos",
+          "events_url": "https://api.github.com/users/w0xlt/events%7B/privacy%7D",
+          "received_events_url": "https://api.github.com/users/w0xlt/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/w0xlt/gui",
+        "description": "Bitcoin Core GUI staging repository",
+        "fork": true,
+        "url": "https://api.github.com/repos/w0xlt/gui",
+        "archive_url": "https://api.github.com/repos/w0xlt/gui/%7Barchive_format%7D%7B/ref%7D",
+        "assignees_url": "https://api.github.com/repos/w0xlt/gui/assignees%7B/user%7D",
+        "blobs_url": "https://api.github.com/repos/w0xlt/gui/git/blobs%7B/sha%7D",
+        "branches_url": "https://api.github.com/repos/w0xlt/gui/branches%7B/branch%7D",
+        "collaborators_url": "https://api.github.com/repos/w0xlt/gui/collaborators%7B/collaborator%7D",
+        "comments_url": "https://api.github.com/repos/w0xlt/gui/comments%7B/number%7D",
+        "commits_url": "https://api.github.com/repos/w0xlt/gui/commits%7B/sha%7D",
+        "compare_url": "https://api.github.com/repos/w0xlt/gui/compare/%7Bbase%7D...%7Bhead%7D",
+        "contents_url": "https://api.github.com/repos/w0xlt/gui/contents/%7B+path%7D",
+        "contributors_url": "https://api.github.com/repos/w0xlt/gui/contributors",
+        "deployments_url": "https://api.github.com/repos/w0xlt/gui/deployments",
+        "downloads_url": "https://api.github.com/repos/w0xlt/gui/downloads",
+        "events_url": "https://api.github.com/repos/w0xlt/gui/events",
+        "forks_url": "https://api.github.com/repos/w0xlt/gui/forks",
+        "git_commits_url": "https://api.github.com/repos/w0xlt/gui/git/commits%7B/sha%7D",
+        "git_refs_url": "https://api.github.com/repos/w0xlt/gui/git/refs%7B/sha%7D",
+        "git_tags_url": "https://api.github.com/repos/w0xlt/gui/git/tags%7B/sha%7D",
+        "git_url": "git://github.com/w0xlt/gui.git",
+        "issue_comment_url": "https://api.github.com/repos/w0xlt/gui/issues/comments%7B/number%7D",
+        "issue_events_url": "https://api.github.com/repos/w0xlt/gui/issues/events%7B/number%7D",
+        "issues_url": "https://api.github.com/repos/w0xlt/gui/issues%7B/number%7D",
+        "keys_url": "https://api.github.com/repos/w0xlt/gui/keys%7B/key_id%7D",
+        "labels_url": "https://api.github.com/repos/w0xlt/gui/labels%7B/name%7D",
+        "languages_url": "https://api.github.com/repos/w0xlt/gui/languages",
+        "merges_url": "https://api.github.com/repos/w0xlt/gui/merges",
+        "milestones_url": "https://api.github.com/repos/w0xlt/gui/milestones%7B/number%7D",
+        "notifications_url": "https://api.github.com/repos/w0xlt/gui/notifications%7B?since,all,participating}",
+        "pulls_url": "https://api.github.com/repos/w0xlt/gui/pulls%7B/number%7D",
+        "releases_url": "https://api.github.com/repos/w0xlt/gui/releases%7B/id%7D",
+        "ssh_url": "git@github.com:w0xlt/gui.git",
+        "stargazers_url": "https://api.github.com/repos/w0xlt/gui/stargazers",
+        "statuses_url": "https://api.github.com/repos/w0xlt/gui/statuses/%7Bsha%7D",
+        "subscribers_url": "https://api.github.com/repos/w0xlt/gui/subscribers",
+        "subscription_url": "https://api.github.com/repos/w0xlt/gui/subscription",
+        "tags_url": "https://api.github.com/repos/w0xlt/gui/tags",
+        "teams_url": "https://api.github.com/repos/w0xlt/gui/teams",
+        "trees_url": "https://api.github.com/repos/w0xlt/gui/git/trees%7B/sha%7D",
+        "clone_url": "https://github.com/w0xlt/gui.git",
+        "hooks_url": "https://api.github.com/repos/w0xlt/gui/hooks",
+        "svn_url": "https://github.com/w0xlt/gui",
+        "homepage": "https://github.com/bitcoin/bitcoin",
+        "language": "C++",
+        "forks_count": 0,
+        "stargazers_count": 5,
+        "watchers_count": 5,
+        "size": 135303,
+        "default_branch": "master",
+        "open_issues_count": 0,
+        "is_template": false,
+        "topics": [],
+        "has_issues": false,
+        "has_projects": true,
+        "has_wiki": false,
+        "has_pages": false,
+        "has_downloads": true,
+        "archived": false,
+        "disabled": false,
+        "visibility": "public",
+        "pushed_at": "2022-09-08T02:26:49Z",
+        "created_at": "2021-11-14T05:07:07Z",
+        "updated_at": "2022-08-26T18:24:46Z",
+        "license": {
+          "key": "mit",
+          "name": "MIT License",
+          "node_id": "MDc6TGljZW5zZTEz",
+          "spdx_id": "MIT",
+          "url": "https://api.github.com/licenses/mit",
+          "html_url": null,
+          "description": null,
+          "implementation": null,
+          "permissions": null,
+          "conditions": null,
+          "limitations": null,
+          "body": null,
+          "featured": null
+        }
+      }
+    },
+    "base": {
+      "label": "bitcoin-core:master",
+      "ref": "master",
+      "sha": "b8067cd435059eedb580975afc62c4e7a6f27321",
+      "user": {
+        "login": "bitcoin-core",
+        "id": 13464320,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjEzNDY0MzIw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/13464320?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/bitcoin-core",
+        "html_url": "https://github.com/bitcoin-core",
+        "followers_url": "https://api.github.com/users/bitcoin-core/followers",
+        "following_url": "https://api.github.com/users/bitcoin-core/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/bitcoin-core/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/bitcoin-core/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/bitcoin-core/subscriptions",
+        "organizations_url": "https://api.github.com/users/bitcoin-core/orgs",
+        "repos_url": "https://api.github.com/users/bitcoin-core/repos",
+        "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
+        "type": "Organization",
+        "site_admin": false
+      },
+      "repo": {
+        "id": 272700405,
+        "node_id": "MDEwOlJlcG9zaXRvcnkyNzI3MDA0MDU=",
+        "name": "gui",
+        "full_name": "bitcoin-core/gui",
+        "owner": {
+          "login": "bitcoin-core",
+          "id": 13464320,
+          "node_id": "MDEyOk9yZ2FuaXphdGlvbjEzNDY0MzIw",
+          "avatar_url": "https://avatars.githubusercontent.com/u/13464320?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/bitcoin-core",
+          "html_url": "https://github.com/bitcoin-core",
+          "followers_url": "https://api.github.com/users/bitcoin-core/followers",
+          "following_url": "https://api.github.com/users/bitcoin-core/following%7B/other_user%7D",
+          "gists_url": "https://api.github.com/users/bitcoin-core/gists%7B/gist_id%7D",
+          "starred_url": "https://api.github.com/users/bitcoin-core/starred%7B/owner%7D%7B/repo%7D",
+          "subscriptions_url": "https://api.github.com/users/bitcoin-core/subscriptions",
+          "organizations_url": "https://api.github.com/users/bitcoin-core/orgs",
+          "repos_url": "https://api.github.com/users/bitcoin-core/repos",
+          "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
+          "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
+          "type": "Organization",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/bitcoin-core/gui",
+        "description": "Bitcoin Core GUI staging repository",
+        "fork": false,
+        "url": "https://api.github.com/repos/bitcoin-core/gui",
+        "archive_url": "https://api.github.com/repos/bitcoin-core/gui/%7Barchive_format%7D%7B/ref%7D",
+        "assignees_url": "https://api.github.com/repos/bitcoin-core/gui/assignees%7B/user%7D",
+        "blobs_url": "https://api.github.com/repos/bitcoin-core/gui/git/blobs%7B/sha%7D",
+        "branches_url": "https://api.github.com/repos/bitcoin-core/gui/branches%7B/branch%7D",
+        "collaborators_url": "https://api.github.com/repos/bitcoin-core/gui/collaborators%7B/collaborator%7D",
+        "comments_url": "https://api.github.com/repos/bitcoin-core/gui/comments%7B/number%7D",
+        "commits_url": "https://api.github.com/repos/bitcoin-core/gui/commits%7B/sha%7D",
+        "compare_url": "https://api.github.com/repos/bitcoin-core/gui/compare/%7Bbase%7D...%7Bhead%7D",
+        "contents_url": "https://api.github.com/repos/bitcoin-core/gui/contents/%7B+path%7D",
+        "contributors_url": "https://api.github.com/repos/bitcoin-core/gui/contributors",
+        "deployments_url": "https://api.github.com/repos/bitcoin-core/gui/deployments",
+        "downloads_url": "https://api.github.com/repos/bitcoin-core/gui/downloads",
+        "events_url": "https://api.github.com/repos/bitcoin-core/gui/events",
+        "forks_url": "https://api.github.com/repos/bitcoin-core/gui/forks",
+        "git_commits_url": "https://api.github.com/repos/bitcoin-core/gui/git/commits%7B/sha%7D",
+        "git_refs_url": "https://api.github.com/repos/bitcoin-core/gui/git/refs%7B/sha%7D",
+        "git_tags_url": "https://api.github.com/repos/bitcoin-core/gui/git/tags%7B/sha%7D",
+        "git_url": "git://github.com/bitcoin-core/gui.git",
+        "issue_comment_url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments%7B/number%7D",
+        "issue_events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/events%7B/number%7D",
+        "issues_url": "https://api.github.com/repos/bitcoin-core/gui/issues%7B/number%7D",
+        "keys_url": "https://api.github.com/repos/bitcoin-core/gui/keys%7B/key_id%7D",
+        "labels_url": "https://api.github.com/repos/bitcoin-core/gui/labels%7B/name%7D",
+        "languages_url": "https://api.github.com/repos/bitcoin-core/gui/languages",
+        "merges_url": "https://api.github.com/repos/bitcoin-core/gui/merges",
+        "milestones_url": "https://api.github.com/repos/bitcoin-core/gui/milestones%7B/number%7D",
+        "notifications_url": "https://api.github.com/repos/bitcoin-core/gui/notifications%7B?since,all,participating}",
+        "pulls_url": "https://api.github.com/repos/bitcoin-core/gui/pulls%7B/number%7D",
+        "releases_url": "https://api.github.com/repos/bitcoin-core/gui/releases%7B/id%7D",
+        "ssh_url": "git@github.com:bitcoin-core/gui.git",
+        "stargazers_url": "https://api.github.com/repos/bitcoin-core/gui/stargazers",
+        "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/%7Bsha%7D",
+        "subscribers_url": "https://api.github.com/repos/bitcoin-core/gui/subscribers",
+        "subscription_url": "https://api.github.com/repos/bitcoin-core/gui/subscription",
+        "tags_url": "https://api.github.com/repos/bitcoin-core/gui/tags",
+        "teams_url": "https://api.github.com/repos/bitcoin-core/gui/teams",
+        "trees_url": "https://api.github.com/repos/bitcoin-core/gui/git/trees%7B/sha%7D",
+        "clone_url": "https://github.com/bitcoin-core/gui.git",
+        "hooks_url": "https://api.github.com/repos/bitcoin-core/gui/hooks",
+        "svn_url": "https://github.com/bitcoin-core/gui",
+        "homepage": "https://github.com/bitcoin/bitcoin",
+        "language": "C++",
+        "forks_count": 267,
+        "stargazers_count": 486,
+        "watchers_count": 486,
+        "size": 148557,
+        "default_branch": "master",
+        "open_issues_count": 154,
+        "is_template": false,
+        "topics": [],
+        "has_issues": true,
+        "has_projects": true,
+        "has_wiki": false,
+        "has_pages": false,
+        "has_downloads": true,
+        "archived": false,
+        "disabled": false,
+        "visibility": "public",
+        "pushed_at": "2023-07-17T14:04:54Z",
+        "created_at": "2020-06-16T12:20:07Z",
+        "updated_at": "2023-07-14T13:21:28Z",
+        "license": {
+          "key": "mit",
+          "name": "MIT License",
+          "node_id": "MDc6TGljZW5zZTEz",
+          "spdx_id": "MIT",
+          "url": "https://api.github.com/licenses/mit",
+          "html_url": null,
+          "description": null,
+          "implementation": null,
+          "permissions": null,
+          "conditions": null,
+          "limitations": null,
+          "body": null,
+          "featured": null
+        }
+      }
+    },
+    "_links": {
+      "self": {
+        "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/634"
+      }
+    },
+    "author_association": "CONTRIBUTOR",
+    "draft": false,
+    "additions": 831,
+    "deletions": 0,
+    "changed_files": 26,
+    "commits": 13,
+    "review_comments": 0,
+    "comments": 7
+  },
+  "events": [
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGNlYmU2OWI5MDllMTBjNGNlMGE2ZDUyMjQxZDEzMjgxYWRiMTEzNmM",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/cebe69b909e10c4ce0a6d52241d13281adb1136c",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/cebe69b909e10c4ce0a6d52241d13281adb1136c",
+      "tree": {
+        "sha": "3e0cb1dc95bca613e99795c09214b4cfb6ec843e",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/3e0cb1dc95bca613e99795c09214b4cfb6ec843e"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/b8067cd435059eedb580975afc62c4e7a6f27321",
+          "sha": "b8067cd435059eedb580975afc62c4e7a6f27321",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/b8067cd435059eedb580975afc62c4e7a6f27321"
+        }
+      ],
+      "message": "add struct `AddressInfo`",
+      "committer": {
+        "name": "w0xlt",
+        "email": "94266259+w0xlt@users.noreply.github.com",
+        "date": "2022-07-21T22:25:56Z"
+      },
+      "author": {
+        "name": "w0xlt",
+        "email": "94266259+w0xlt@users.noreply.github.com",
+        "date": "2022-07-21T22:25:56Z"
+      },
+      "sha": "cebe69b909e10c4ce0a6d52241d13281adb1136c"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGZjODViZDZlOGViMzAwYjU0NzkyNDMyZGRlMjE5NjkyYTRmZGU5NDE",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/fc85bd6e8eb300b54792432dde219692a4fde941",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/fc85bd6e8eb300b54792432dde219692a4fde941",
+      "tree": {
+        "sha": "85471d2d2011c5fc8d791ee64958ea64dfddea50",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/85471d2d2011c5fc8d791ee64958ea64dfddea50"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/cebe69b909e10c4ce0a6d52241d13281adb1136c",
+          "sha": "cebe69b909e10c4ce0a6d52241d13281adb1136c",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/cebe69b909e10c4ce0a6d52241d13281adb1136c"
+        }
+      ],
+      "message": "add `ScriptPubKeyMan::ListAddresses()`",
+      "committer": {
+        "name": "w0xlt",
+        "email": "94266259+w0xlt@users.noreply.github.com",
+        "date": "2022-07-21T22:28:22Z"
+      },
+      "author": {
+        "name": "w0xlt",
+        "email": "94266259+w0xlt@users.noreply.github.com",
+        "date": "2022-07-21T22:28:22Z"
+      },
+      "sha": "fc85bd6e8eb300b54792432dde219692a4fde941"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDQ3MWM4ZDQxYzAyOTc5MzNjYWQxOTBlOWQzZjM0YzkyZjAzYTIzZTg",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/471c8d41c0297933cad190e9d3f34c92f03a23e8",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/471c8d41c0297933cad190e9d3f34c92f03a23e8",
+      "tree": {
+        "sha": "70541e255e2aed6c4889a76034409702eefab4ac",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/70541e255e2aed6c4889a76034409702eefab4ac"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/fc85bd6e8eb300b54792432dde219692a4fde941",
+          "sha": "fc85bd6e8eb300b54792432dde219692a4fde941",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/fc85bd6e8eb300b54792432dde219692a4fde941"
+        }
+      ],
+      "message": "add `CWallet::ListAddresses`",
+      "committer": {
+        "name": "w0xlt",
+        "email": "94266259+w0xlt@users.noreply.github.com",
+        "date": "2022-07-21T22:31:50Z"
+      },
+      "author": {
+        "name": "w0xlt",
+        "email": "94266259+w0xlt@users.noreply.github.com",
+        "date": "2022-07-21T22:31:50Z"
+      },
+      "sha": "471c8d41c0297933cad190e9d3f34c92f03a23e8"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGQ2MTc4Yzc5Mjc2ODQyNTBjYjFlMjE5Y2U2OGJhYjFjYTUzZTI0MWY",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/d6178c7927684250cb1e219ce68bab1ca53e241f",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/d6178c7927684250cb1e219ce68bab1ca53e241f",
+      "tree": {
+        "sha": "a79c2fdfc9d710f9d5cf99045d99db58e2f6e384",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/a79c2fdfc9d710f9d5cf99045d99db58e2f6e384"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/471c8d41c0297933cad190e9d3f34c92f03a23e8",
+          "sha": "471c8d41c0297933cad190e9d3f34c92f03a23e8",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/471c8d41c0297933cad190e9d3f34c92f03a23e8"
+        }
+      ],
+      "message": "add `listaddresses` RPC",
+      "committer": {
+        "name": "w0xlt",
+        "email": "94266259+w0xlt@users.noreply.github.com",
+        "date": "2022-07-21T22:39:02Z"
+      },
+      "author": {
+        "name": "w0xlt",
+        "email": "94266259+w0xlt@users.noreply.github.com",
+        "date": "2022-07-21T22:39:02Z"
+      },
+      "sha": "d6178c7927684250cb1e219ce68bab1ca53e241f"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 7042231376,
+      "node_id": "HRFPE_lADOEEET9c5OUZ_MzwAAAAGjv-xQ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/7042231376",
+      "actor": {
+        "login": "w0xlt",
+        "id": 94266259,
+        "node_id": "U_kgDOBZ5jkw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/94266259?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/w0xlt",
+        "html_url": "https://github.com/w0xlt",
+        "followers_url": "https://api.github.com/users/w0xlt/followers",
+        "following_url": "https://api.github.com/users/w0xlt/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/w0xlt/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/w0xlt/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/w0xlt/subscriptions",
+        "organizations_url": "https://api.github.com/users/w0xlt/orgs",
+        "repos_url": "https://api.github.com/users/w0xlt/repos",
+        "events_url": "https://api.github.com/users/w0xlt/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/w0xlt/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2022-07-22T00:28:55Z"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 7042274214,
+      "node_id": "HRFPE_lADOEEET9c5OUZ_MzwAAAAGjwJOm",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/7042274214",
+      "actor": {
+        "login": "w0xlt",
+        "id": 94266259,
+        "node_id": "U_kgDOBZ5jkw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/94266259?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/w0xlt",
+        "html_url": "https://github.com/w0xlt",
+        "followers_url": "https://api.github.com/users/w0xlt/followers",
+        "following_url": "https://api.github.com/users/w0xlt/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/w0xlt/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/w0xlt/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/w0xlt/subscriptions",
+        "organizations_url": "https://api.github.com/users/w0xlt/orgs",
+        "repos_url": "https://api.github.com/users/w0xlt/repos",
+        "events_url": "https://api.github.com/users/w0xlt/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/w0xlt/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2022-07-22T00:45:07Z"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGFiZWZmODQyYmYwYWM1MTYzN2ZkZTU3MWRjODNkM2Q0ODUxZWIyNzA",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/abeff842bf0ac51637fde571dc83d3d4851eb270",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/abeff842bf0ac51637fde571dc83d3d4851eb270",
+      "tree": {
+        "sha": "038609cf0386da53f38875c9af9de05c1f378348",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/038609cf0386da53f38875c9af9de05c1f378348"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/d6178c7927684250cb1e219ce68bab1ca53e241f",
+          "sha": "d6178c7927684250cb1e219ce68bab1ca53e241f",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/d6178c7927684250cb1e219ce68bab1ca53e241f"
+        }
+      ],
+      "message": "add `listaddresses` tests",
+      "committer": {
+        "name": "w0xlt",
+        "email": "94266259+w0xlt@users.noreply.github.com",
+        "date": "2022-07-22T01:10:00Z"
+      },
+      "author": {
+        "name": "w0xlt",
+        "email": "94266259+w0xlt@users.noreply.github.com",
+        "date": "2022-07-21T22:43:55Z"
+      },
+      "sha": "abeff842bf0ac51637fde571dc83d3d4851eb270"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDdkN2YzNWJkNDAzMjhiNDBjMjdmNTA2ODAzMGFhMmE1NzZiYWM4OTc",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/7d7f35bd40328b40c27f5068030aa2a576bac897",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/7d7f35bd40328b40c27f5068030aa2a576bac897",
+      "tree": {
+        "sha": "471d869d170537c95ae6defd012ff98915035de0",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/471d869d170537c95ae6defd012ff98915035de0"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/abeff842bf0ac51637fde571dc83d3d4851eb270",
+          "sha": "abeff842bf0ac51637fde571dc83d3d4851eb270",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/abeff842bf0ac51637fde571dc83d3d4851eb270"
+        }
+      ],
+      "message": "add `interfaces::Wallet::listAddresses`",
+      "committer": {
+        "name": "w0xlt",
+        "email": "94266259+w0xlt@users.noreply.github.com",
+        "date": "2022-07-22T01:10:00Z"
+      },
+      "author": {
+        "name": "w0xlt",
+        "email": "94266259+w0xlt@users.noreply.github.com",
+        "date": "2022-07-21T22:47:54Z"
+      },
+      "sha": "7d7f35bd40328b40c27f5068030aa2a576bac897"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDI4NDUzYzQzZjRiMGU0ZDg3MWZkZGZkOGM0MDliYWEzYzQ0N2M0OGQ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/28453c43f4b0e4d871fddfd8c409baa3c447c48d",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/28453c43f4b0e4d871fddfd8c409baa3c447c48d",
+      "tree": {
+        "sha": "bead5c5cee4b72cf0bfb5fe44387989fd76e3a0a",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/bead5c5cee4b72cf0bfb5fe44387989fd76e3a0a"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/7d7f35bd40328b40c27f5068030aa2a576bac897",
+          "sha": "7d7f35bd40328b40c27f5068030aa2a576bac897",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/7d7f35bd40328b40c27f5068030aa2a576bac897"
+        }
+      ],
+      "message": "add `AddressInfoTableModel`",
+      "committer": {
+        "name": "w0xlt",
+        "email": "94266259+w0xlt@users.noreply.github.com",
+        "date": "2022-07-22T01:10:00Z"
+      },
+      "author": {
+        "name": "w0xlt",
+        "email": "94266259+w0xlt@users.noreply.github.com",
+        "date": "2022-07-21T23:07:28Z"
+      },
+      "sha": "28453c43f4b0e4d871fddfd8c409baa3c447c48d"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGVmZmE4YWFiOGU3ZjFlMGVjNWQ0ZTg5ZjcwOGVjNGU0OTFmZGM2OTM",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/effa8aab8e7f1e0ec5d4e89f708ec4e491fdc693",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/effa8aab8e7f1e0ec5d4e89f708ec4e491fdc693",
+      "tree": {
+        "sha": "cf573e6da75bb2c168d2948938534d86b97d5ded",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/cf573e6da75bb2c168d2948938534d86b97d5ded"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/28453c43f4b0e4d871fddfd8c409baa3c447c48d",
+          "sha": "28453c43f4b0e4d871fddfd8c409baa3c447c48d",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/28453c43f4b0e4d871fddfd8c409baa3c447c48d"
+        }
+      ],
+      "message": "add `m_address_info_table_model` to `class WalletModel`",
+      "committer": {
+        "name": "w0xlt",
+        "email": "94266259+w0xlt@users.noreply.github.com",
+        "date": "2022-07-22T01:10:00Z"
+      },
+      "author": {
+        "name": "w0xlt",
+        "email": "94266259+w0xlt@users.noreply.github.com",
+        "date": "2022-07-21T23:16:44Z"
+      },
+      "sha": "effa8aab8e7f1e0ec5d4e89f708ec4e491fdc693"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGJlYmE1NDczYzcxZTk0YTg5OGY1MjkyNDA4OGJlODVlNDA0NTBkMDE",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/beba5473c71e94a898f52924088be85e40450d01",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/beba5473c71e94a898f52924088be85e40450d01",
+      "tree": {
+        "sha": "29a681e0ef8d995bf6470516272e893995f04e4c",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/29a681e0ef8d995bf6470516272e893995f04e4c"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/effa8aab8e7f1e0ec5d4e89f708ec4e491fdc693",
+          "sha": "effa8aab8e7f1e0ec5d4e89f708ec4e491fdc693",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/effa8aab8e7f1e0ec5d4e89f708ec4e491fdc693"
+        }
+      ],
+      "message": "update Address table when new address is generated",
+      "committer": {
+        "name": "w0xlt",
+        "email": "94266259+w0xlt@users.noreply.github.com",
+        "date": "2022-07-22T01:10:00Z"
+      },
+      "author": {
+        "name": "w0xlt",
+        "email": "94266259+w0xlt@users.noreply.github.com",
+        "date": "2022-07-21T23:40:17Z"
+      },
+      "sha": "beba5473c71e94a898f52924088be85e40450d01"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 7042360109,
+      "node_id": "HRFPE_lADOEEET9c5OUZ_MzwAAAAGjweMt",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/7042360109",
+      "actor": {
+        "login": "w0xlt",
+        "id": 94266259,
+        "node_id": "U_kgDOBZ5jkw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/94266259?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/w0xlt",
+        "html_url": "https://github.com/w0xlt",
+        "followers_url": "https://api.github.com/users/w0xlt/followers",
+        "following_url": "https://api.github.com/users/w0xlt/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/w0xlt/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/w0xlt/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/w0xlt/subscriptions",
+        "organizations_url": "https://api.github.com/users/w0xlt/orgs",
+        "repos_url": "https://api.github.com/users/w0xlt/repos",
+        "events_url": "https://api.github.com/users/w0xlt/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/w0xlt/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2022-07-22T01:10:15Z"
+    },
+    {
+      "event": "labeled",
+      "id": 7042632424,
+      "node_id": "LE_lADOEEET9c5OUZ_MzwAAAAGjxgro",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/7042632424",
+      "actor": {
+        "login": "jarolrod",
+        "id": 23396902,
+        "node_id": "MDQ6VXNlcjIzMzk2OTAy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/23396902?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/jarolrod",
+        "html_url": "https://github.com/jarolrod",
+        "followers_url": "https://api.github.com/users/jarolrod/followers",
+        "following_url": "https://api.github.com/users/jarolrod/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/jarolrod/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/jarolrod/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/jarolrod/subscriptions",
+        "organizations_url": "https://api.github.com/users/jarolrod/orgs",
+        "repos_url": "https://api.github.com/users/jarolrod/repos",
+        "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/jarolrod/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2022-07-22T02:38:25Z",
+      "label": {
+        "name": "Feature",
+        "color": "8fe567"
+      }
+    },
+    {
+      "event": "labeled",
+      "id": 7042632426,
+      "node_id": "LE_lADOEEET9c5OUZ_MzwAAAAGjxgrq",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/7042632426",
+      "actor": {
+        "login": "jarolrod",
+        "id": 23396902,
+        "node_id": "MDQ6VXNlcjIzMzk2OTAy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/23396902?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/jarolrod",
+        "html_url": "https://github.com/jarolrod",
+        "followers_url": "https://api.github.com/users/jarolrod/followers",
+        "following_url": "https://api.github.com/users/jarolrod/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/jarolrod/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/jarolrod/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/jarolrod/subscriptions",
+        "organizations_url": "https://api.github.com/users/jarolrod/orgs",
+        "repos_url": "https://api.github.com/users/jarolrod/repos",
+        "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/jarolrod/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2022-07-22T02:38:25Z",
+      "label": {
+        "name": "UX",
+        "color": "0052cc"
+      }
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGY3Yjg0YWMzMTAwZDgxMDExYTUzYjNjYjQ4NmY2MTI3YWU0ODIzYmM",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/f7b84ac3100d81011a53b3cb486f6127ae4823bc",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/f7b84ac3100d81011a53b3cb486f6127ae4823bc",
+      "tree": {
+        "sha": "426ddd5d0634e525491a69717e115e65fa14f279",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/426ddd5d0634e525491a69717e115e65fa14f279"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/beba5473c71e94a898f52924088be85e40450d01",
+          "sha": "beba5473c71e94a898f52924088be85e40450d01",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/beba5473c71e94a898f52924088be85e40450d01"
+        }
+      ],
+      "message": "add `class AddressInfoView`",
+      "committer": {
+        "name": "w0xlt",
+        "email": "94266259+w0xlt@users.noreply.github.com",
+        "date": "2022-07-22T02:47:33Z"
+      },
+      "author": {
+        "name": "w0xlt",
+        "email": "94266259+w0xlt@users.noreply.github.com",
+        "date": "2022-07-21T23:21:18Z"
+      },
+      "sha": "f7b84ac3100d81011a53b3cb486f6127ae4823bc"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDhjODlhOTMxMGYzODZmYzdjODNjMDE0NmQ5ODdmYzUwYmEyZDg0NTA",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/8c89a9310f386fc7c83c0146d987fc50ba2d8450",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/8c89a9310f386fc7c83c0146d987fc50ba2d8450",
+      "tree": {
+        "sha": "efb74756bc08311e374a90499ebf9973119adcb9",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/efb74756bc08311e374a90499ebf9973119adcb9"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/f7b84ac3100d81011a53b3cb486f6127ae4823bc",
+          "sha": "f7b84ac3100d81011a53b3cb486f6127ae4823bc",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/f7b84ac3100d81011a53b3cb486f6127ae4823bc"
+        }
+      ],
+      "message": "add `AddressInfoView` to `WalletView`",
+      "committer": {
+        "name": "w0xlt",
+        "email": "94266259+w0xlt@users.noreply.github.com",
+        "date": "2022-07-22T02:47:33Z"
+      },
+      "author": {
+        "name": "w0xlt",
+        "email": "94266259+w0xlt@users.noreply.github.com",
+        "date": "2022-07-21T23:26:22Z"
+      },
+      "sha": "8c89a9310f386fc7c83c0146d987fc50ba2d8450"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGMwNzk3MGQ1ZTIxMDNhNmQ4MjhjMjA0ZjZjYWZmN2RlNGYzOGU0ZGE",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/c07970d5e2103a6d828c204f6caff7de4f38e4da",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/c07970d5e2103a6d828c204f6caff7de4f38e4da",
+      "tree": {
+        "sha": "e7435fff160531fa4633ba25a7d0d4f37638d747",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/e7435fff160531fa4633ba25a7d0d4f37638d747"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/8c89a9310f386fc7c83c0146d987fc50ba2d8450",
+          "sha": "8c89a9310f386fc7c83c0146d987fc50ba2d8450",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/8c89a9310f386fc7c83c0146d987fc50ba2d8450"
+        }
+      ],
+      "message": "add `gotoAddressInfoPage` in `class WalletFrame`",
+      "committer": {
+        "name": "w0xlt",
+        "email": "94266259+w0xlt@users.noreply.github.com",
+        "date": "2022-07-22T02:47:33Z"
+      },
+      "author": {
+        "name": "w0xlt",
+        "email": "94266259+w0xlt@users.noreply.github.com",
+        "date": "2022-07-21T23:32:32Z"
+      },
+      "sha": "c07970d5e2103a6d828c204f6caff7de4f38e4da"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDkxNzE3ZDNkMDE4MWVmM2IyMTFjMzhkZGU3MmQzMTNhY2QyNWI1ZWE",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/91717d3d0181ef3b211c38dde72d313acd25b5ea",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/91717d3d0181ef3b211c38dde72d313acd25b5ea",
+      "tree": {
+        "sha": "c52f9264e49323185ed0a23d469301d54defa640",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/c52f9264e49323185ed0a23d469301d54defa640"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/c07970d5e2103a6d828c204f6caff7de4f38e4da",
+          "sha": "c07970d5e2103a6d828c204f6caff7de4f38e4da",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/c07970d5e2103a6d828c204f6caff7de4f38e4da"
+        }
+      ],
+      "message": "add `Addresses` tab",
+      "committer": {
+        "name": "w0xlt",
+        "email": "94266259+w0xlt@users.noreply.github.com",
+        "date": "2022-07-22T02:47:33Z"
+      },
+      "author": {
+        "name": "w0xlt",
+        "email": "94266259+w0xlt@users.noreply.github.com",
+        "date": "2022-07-21T23:36:54Z"
+      },
+      "sha": "91717d3d0181ef3b211c38dde72d313acd25b5ea"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 7042664121,
+      "node_id": "HRFPE_lADOEEET9c5OUZ_MzwAAAAGjxoa5",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/7042664121",
+      "actor": {
+        "login": "w0xlt",
+        "id": 94266259,
+        "node_id": "U_kgDOBZ5jkw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/94266259?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/w0xlt",
+        "html_url": "https://github.com/w0xlt",
+        "followers_url": "https://api.github.com/users/w0xlt/followers",
+        "following_url": "https://api.github.com/users/w0xlt/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/w0xlt/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/w0xlt/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/w0xlt/subscriptions",
+        "organizations_url": "https://api.github.com/users/w0xlt/orgs",
+        "repos_url": "https://api.github.com/users/w0xlt/repos",
+        "events_url": "https://api.github.com/users/w0xlt/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/w0xlt/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2022-07-22T02:47:44Z"
+    },
+    {
+      "event": "commented",
+      "id": 1192516340,
+      "node_id": "IC_kwDOEEET9c5HFFr0",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/1192516340",
+      "actor": {
+        "login": "sipa",
+        "id": 548488,
+        "node_id": "MDQ6VXNlcjU0ODQ4OA==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/548488?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/sipa",
+        "html_url": "https://github.com/sipa",
+        "followers_url": "https://api.github.com/users/sipa/followers",
+        "following_url": "https://api.github.com/users/sipa/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/sipa/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/sipa/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/sipa/subscriptions",
+        "organizations_url": "https://api.github.com/users/sipa/orgs",
+        "repos_url": "https://api.github.com/users/sipa/repos",
+        "events_url": "https://api.github.com/users/sipa/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/sipa/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2022-07-22T12:21:15Z",
+      "updated_at": "2022-07-22T12:21:15Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "I thought this was deliberate, because addresses are intended to be single-use.",
+      "user": {
+        "login": "sipa",
+        "id": 548488,
+        "node_id": "MDQ6VXNlcjU0ODQ4OA==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/548488?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/sipa",
+        "html_url": "https://github.com/sipa",
+        "followers_url": "https://api.github.com/users/sipa/followers",
+        "following_url": "https://api.github.com/users/sipa/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/sipa/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/sipa/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/sipa/subscriptions",
+        "organizations_url": "https://api.github.com/users/sipa/orgs",
+        "repos_url": "https://api.github.com/users/sipa/repos",
+        "events_url": "https://api.github.com/users/sipa/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/sipa/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/634#issuecomment-1192516340",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/634"
+    },
+    {
+      "event": "reviewed",
+      "id": 1048970934,
+      "node_id": "PRR_kwDOEEET9c4-hga2",
+      "url": null,
+      "actor": null,
+      "commit_id": "91717d3d0181ef3b211c38dde72d313acd25b5ea",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "MEMBER",
+      "body": "Before getting to the performance improvements, this may have to undergo some soul searching.\r\n\r\nThis should not be added as a primary tab in the GUI; it's just not a core utility or function. Having this as one of the five main actions would confuse many users. Additionally, presuming a more \"advanced\" user is interested in this, you shouldn't be so interested in your addresses that a case is made to have this as a main function. \r\n\r\nIf someone is interested in all the addresses like this, it would be better to keep it associated with how user's currently look into their address book. \r\n\r\nThere should be a way to integrate this into the address book window. That should create more of a reason for introducing this change within the GUI. ",
+      "user": {
+        "login": "jarolrod",
+        "id": 23396902,
+        "node_id": "MDQ6VXNlcjIzMzk2OTAy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/23396902?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/jarolrod",
+        "html_url": "https://github.com/jarolrod",
+        "followers_url": "https://api.github.com/users/jarolrod/followers",
+        "following_url": "https://api.github.com/users/jarolrod/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/jarolrod/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/jarolrod/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/jarolrod/subscriptions",
+        "organizations_url": "https://api.github.com/users/jarolrod/orgs",
+        "repos_url": "https://api.github.com/users/jarolrod/repos",
+        "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/jarolrod/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/634#pullrequestreview-1048970934",
+      "submitted_at": "2022-07-25T07:19:26Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/634"
+    },
+    {
+      "event": "commented",
+      "id": 1196186795,
+      "node_id": "IC_kwDOEEET9c5HTFyr",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/1196186795",
+      "actor": {
+        "login": "luke-jr",
+        "id": 1095675,
+        "node_id": "MDQ6VXNlcjEwOTU2NzU=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1095675?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/luke-jr",
+        "html_url": "https://github.com/luke-jr",
+        "followers_url": "https://api.github.com/users/luke-jr/followers",
+        "following_url": "https://api.github.com/users/luke-jr/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/luke-jr/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/luke-jr/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/luke-jr/subscriptions",
+        "organizations_url": "https://api.github.com/users/luke-jr/orgs",
+        "repos_url": "https://api.github.com/users/luke-jr/repos",
+        "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/luke-jr/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2022-07-27T02:10:33Z",
+      "updated_at": "2022-07-27T02:10:33Z",
+      "author_association": "MEMBER",
+      "body": "Concept NACK. This is just a more complicated/confusing address book.\r\n\r\nAlso, addresses do not have balances. They only receive, never send.",
+      "user": {
+        "login": "luke-jr",
+        "id": 1095675,
+        "node_id": "MDQ6VXNlcjEwOTU2NzU=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1095675?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/luke-jr",
+        "html_url": "https://github.com/luke-jr",
+        "followers_url": "https://api.github.com/users/luke-jr/followers",
+        "following_url": "https://api.github.com/users/luke-jr/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/luke-jr/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/luke-jr/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/luke-jr/subscriptions",
+        "organizations_url": "https://api.github.com/users/luke-jr/orgs",
+        "repos_url": "https://api.github.com/users/luke-jr/repos",
+        "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/luke-jr/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/634#issuecomment-1196186795",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/634"
+    },
+    {
+      "event": "labeled",
+      "id": 7136050453,
+      "node_id": "LE_lADOEEET9c5OUZ_MzwAAAAGpV30V",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/7136050453",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2022-08-05T13:44:13Z",
+      "label": {
+        "name": "Needs rebase",
+        "color": "cccccc"
+      }
+    },
+    {
+      "event": "commented",
+      "id": 1206475303,
+      "node_id": "IC_kwDOEEET9c5H6Von",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/1206475303",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2022-08-05T13:44:14Z",
+      "updated_at": "2022-08-05T13:44:14Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "<!--cf906140f33d8803c4a75a2196329ecb-->\n🐙 This pull request conflicts with the target branch and [needs rebase](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#rebasing-changes).\n\n<sub>Want to unsubscribe from rebase notifications on this pull request? Just convert this pull request to a \"draft\".</sub>",
+      "user": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/634#issuecomment-1206475303",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/634"
+    },
+    {
+      "event": "commented",
+      "id": 1304365967,
+      "node_id": "IC_kwDOEEET9c5NvwuP",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/1304365967",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2022-11-05T01:12:04Z",
+      "updated_at": "2022-11-05T01:12:04Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "<!--13523179cfe9479db18ec6c5d236f789-->\nThere hasn't been much activity lately and the patch still needs rebase. What is the status here?\n\n* Is it still relevant? ➡️ Please solve the conflicts to make it ready for review and to ensure the CI passes.\n* Is it no longer relevant? ➡️ Please close.\n* Did the author lose interest or time to work on this? ➡️ Please close it and mark it 'Up for grabs' with the label, so that it can be picked up in the future.\n",
+      "user": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/634#issuecomment-1304365967",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/634"
+    },
+    {
+      "event": "commented",
+      "id": 1414613466,
+      "node_id": "IC_kwDOEEET9c5UUUna",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/1414613466",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-02-03T01:51:07Z",
+      "updated_at": "2023-02-03T01:51:07Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "<!--13523179cfe9479db18ec6c5d236f789-->\nThere hasn't been much activity lately and the patch still needs rebase. What is the status here?\n\n* Is it still relevant? ➡️ Please solve the conflicts to make it ready for review and to ensure the CI passes.\n* Is it no longer relevant? ➡️ Please close.\n* Did the author lose interest or time to work on this? ➡️ Please close it and mark it 'Up for grabs' with the label, so that it can be picked up in the future.\n",
+      "user": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/634#issuecomment-1414613466",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/634"
+    },
+    {
+      "event": "commented",
+      "id": 1485169429,
+      "node_id": "IC_kwDOEEET9c5YheMV",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/1485169429",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-03-27T14:06:21Z",
+      "updated_at": "2023-03-27T14:06:21Z",
+      "author_association": "MEMBER",
+      "body": "Closing this due to lack of activity. Feel free to reopen.",
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/634#issuecomment-1485169429",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/634"
+    },
+    {
+      "event": "commented",
+      "id": 1485169517,
+      "node_id": "IC_kwDOEEET9c5YheNt",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/1485169517",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-03-27T14:06:24Z",
+      "updated_at": "2023-03-27T14:06:24Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept NACK | [luke-jr](https://github.com/bitcoin-core/gui/pull/634#issuecomment-1196186795) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n",
+      "user": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/634#issuecomment-1485169517",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/634"
+    },
+    {
+      "event": "closed",
+      "id": 8854349608,
+      "node_id": "CE_lADOEEET9c5OUZ_MzwAAAAIPwqco",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/8854349608",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-03-27T14:06:26Z"
+    }
+  ],
+  "comments": []
+}

@@ -1,0 +1,132 @@
+{
+  "type": "issue",
+  "issue": {
+    "id": 731487129,
+    "node_id": "MDU6SXNzdWU3MzE0ODcxMjk=",
+    "url": "https://api.github.com/repos/bitcoin-core/gui/issues/122",
+    "repository_url": "https://api.github.com/repos/bitcoin-core/gui",
+    "labels_url": "https://api.github.com/repos/bitcoin-core/gui/issues/122/labels%7B/name%7D",
+    "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/122/comments",
+    "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/122/events",
+    "html_url": "https://github.com/bitcoin-core/gui/issues/122",
+    "number": 122,
+    "state": "open",
+    "state_reason": null,
+    "title": "generateto{address|descriptor} RPCs freeze the GUI",
+    "body": "During execution of the `generateto{address|descriptor}` RPCs the `NotifyBlockTip` and `NotifyTransactionChanged` signals are emitted, which in turn interact with the GUI via `ClientModel`, `WalletModel`, and `TransactionTableModel` classes.\r\n\r\nOn regtest it is possible to run the mentioned RPCs with a large enough `num_block` argument. That causes the GUI to freeze, as [noted](https://github.com/bitcoin-core/gui/pull/59#issuecomment-715275185) by **jonasschnelli**.\r\n\r\nPlease note that the GUI hangs regardless of whether the RPC is called via `bitcoin-cli` or in the GUI console.",
+    "user": {
+      "login": "hebasto",
+      "id": 32963518,
+      "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hebasto",
+      "html_url": "https://github.com/hebasto",
+      "followers_url": "https://api.github.com/users/hebasto/followers",
+      "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+      "organizations_url": "https://api.github.com/users/hebasto/orgs",
+      "repos_url": "https://api.github.com/users/hebasto/repos",
+      "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/hebasto/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 2140649117,
+        "node_id": "MDU6TGFiZWwyMTQwNjQ5MTE3",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Bug",
+        "name": "Bug",
+        "description": "Something isn't working",
+        "color": "d73a4a",
+        "default": false
+      },
+      {
+        "id": 2964264316,
+        "node_id": "MDU6TGFiZWwyOTY0MjY0MzE2",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/UX",
+        "name": "UX",
+        "description": "All about \"how to get things done\"",
+        "color": "0052cc",
+        "default": false
+      }
+    ],
+    "assignees": [],
+    "author_association": "MEMBER",
+    "locked": false,
+    "comments": 0,
+    "created_at": "2020-10-28T14:19:19Z",
+    "updated_at": "2021-05-01T18:25:46Z"
+  },
+  "events": [
+    {
+      "event": "labeled",
+      "id": 3931517205,
+      "node_id": "MDEyOkxhYmVsZWRFdmVudDM5MzE1MTcyMDU=",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/3931517205",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2020-10-28T14:19:19Z",
+      "label": {
+        "name": "Bug",
+        "color": "d73a4a"
+      }
+    },
+    {
+      "event": "labeled",
+      "id": 4673893179,
+      "node_id": "MDEyOkxhYmVsZWRFdmVudDQ2NzM4OTMxNzk=",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/4673893179",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2021-05-01T18:25:46Z",
+      "label": {
+        "name": "UX",
+        "color": "0052cc"
+      }
+    }
+  ]
+}
