@@ -57,13 +57,21 @@
         "description": "All about \"how to get things done\"",
         "color": "0052cc",
         "default": false
+      },
+      {
+        "id": 5353934559,
+        "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
+        "name": "CI failed",
+        "color": "ededed",
+        "default": false
       }
     ],
     "created_at": "2023-01-23T21:13:11Z",
-    "updated_at": "2023-08-02T19:38:44Z",
+    "updated_at": "2023-08-17T21:28:49Z",
     "mergeable": true,
-    "mergeable_state": "clean",
-    "merge_commit_sha": "49c4f04d17999c1794754a909f9a6029c81c5c9c",
+    "mergeable_state": "unstable",
+    "merge_commit_sha": "97c511a5bd72a678bfdf063cdb18cdbf9f47f31d",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -296,11 +304,11 @@
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
         "forks_count": 271,
-        "stargazers_count": 492,
-        "watchers_count": 492,
-        "size": 149614,
+        "stargazers_count": 498,
+        "watchers_count": 498,
+        "size": 150915,
         "default_branch": "master",
-        "open_issues_count": 155,
+        "open_issues_count": 157,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -311,9 +319,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-08-02T11:57:37Z",
+        "pushed_at": "2023-08-17T13:17:46Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2023-08-02T10:03:48Z",
+        "updated_at": "2023-08-17T17:34:37Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -477,7 +485,7 @@
           },
           "closed_at": "2023-07-20T08:55:23Z",
           "created_at": "2022-11-07T23:38:09Z",
-          "updated_at": "2023-07-28T11:11:33Z"
+          "updated_at": "2023-08-09T21:12:48Z"
         },
         "type": "issue"
       }
@@ -975,7 +983,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/25273.patch"
           },
           "created_at": "2022-06-03T18:58:15Z",
-          "updated_at": "2023-08-01T12:18:05Z"
+          "updated_at": "2023-08-11T11:09:53Z"
         },
         "type": "issue"
       }
@@ -1606,7 +1614,7 @@
           "state": "open",
           "state_reason": null,
           "title": "Silent Payments: send and receive",
-          "body": "UPDATE: In an attempt to make reviewing a bit more sane, I'm breaking this up into a few smaller PRs, but will keep this one open as the parent PR and keep it rebased on the child PRs.\r\n\r\nMarking as a draft for now. The main purpose of having this PR is to track progress on child PRs and also have an easy way to compile `bitcoind` with both send and receive support for testing. Additionally, I'll be adding more functional tests to this PR since its much easier to test when `bitcoind` can both send and receive.\r\n\r\n## Milestones\r\n\r\n- [ ] https://github.com/bitcoin/bitcoin/pull/28122 implements the BIP logic and unit tests, ready for review\r\n- [ ] https://github.com/bitcoin/bitcoin/pull/28201 implements sending in the Bitcoin Core wallet\r\n  - depends on #28122\r\n  - Ready for review, but marked as a draft until dependencies are merged\r\n- [ ] https://github.com/bitcoin/bitcoin/pull/28202 implements receiving in the Bitcoin Core wallet\r\n  - depends on #28122\r\n  - Ready for review but marked as a draft until dependencies are merged\r\n\r\n## This PR\r\n\r\nThis PR implements the basic silent payments scheme. In particular:\r\n\r\n* Adds support for existing wallets to send to silent payment addresses\r\n* Adds support to the Bitcoin Core wallet for receiving silent payments\r\n\r\nThe following items are not covered in this PR and are intended for follow-up PRs:\r\n\r\n* Adding labels for the receiver wallet\r\n* Creating multiple outputs for the same silent payment address when sending\r\n* Full RPC coverage (only `send` is covered in this PR)\r\n* Light client support (vending the tweak data per block, either in an index or to serve to an indexer, such as electrum server)\r\n* Add benchmarks to validate that there are no DoS concerns for doing silent payment verification for transactions in the mempool\r\n* More unit / functional test coverage\r\n\r\nThis PR is a continuation of the work done in https://github.com/bitcoin/bitcoin/pull/24897, where most of the follow-ups I mention above have already been fully or partially implemented.\r\n\r\nFor the silent payments specification, see https://github.com/bitcoin/bips/pull/1458\r\n\r\n## Notes for the reviewers\r\n\r\nThere are a few parts of this PR that need re-working but are implementation details and not specific to how silent payments work. I decided to open the PR as-is so that folks reviewing the BIP have an implementation to look at and to get some suggestions on how to better implement this in the wallet. Specifically, I'm looking for feedback on how to improve the following:\r\n\r\n* The `sp()` descriptor should be updated to implement the BIP and independently derive the scan key (currently it's just a hash of the spend key)\r\n* Both the spend and scan key are kept in their own object, it would be nice to have them only accessed through the descriptor. Another idea would be allow scanning even if the wallet is encrypted, so that the spend key is not accessible unless spending\r\n* Each silent payment output found is added to the wallet as a `rawtr` descriptor. Ideally, we have a new descriptor that takes the spend key and then stores the auxiliary data needed to construct the private key (e.g `sp(spend_key, <one of hash(ecdh_shared_secret>)`\r\n* Some of the methods could probably be better organized (e.g implemented on the SPKMan, when it could be a wallet method)",
+          "body": "## For reviewers\r\n\r\nIn an attempt to make reviewing a bit more sane, I'm breaking this up into a few smaller PRs, but will keep this one open as the parent PR and keep it rebased on the child PRs. The main purpose of having this PR is to track progress on child PRs and also have an easy way to compile `bitcoind` with both send and receive support for testing. Additionally, I'll be adding more functional tests to this PR since it's much easier to test when `bitcoind` can both send and receive.\r\n\r\n## PRs\r\n\r\n- [ ] https://github.com/bitcoin/bitcoin/pull/28122\r\n  - Implements the logic from BIP352 without any wallet code. This PR adds the necessary cryptographic functions and implements the logic needed for sending and scanning. This PR also includes the test vectors from the BIP as unit tests. Both the send and receive PRs have this as a dependency. In terms of priority, this PR should be reviewed first\r\n- [ ] https://github.com/bitcoin/bitcoin/pull/28201\r\n  - Implements sending in the Bitcoin Core wallet. This PR allows a wallet to send to a silent payment address, regardless of whether or not the wallet can receive silent payments\r\n  - Ready for review, but marked as a draft until dependencies are merged\r\n- [ ] https://github.com/bitcoin/bitcoin/pull/28202\r\n  - Implements receiving in the Bitcoin Core wallet. This PR allows a wallet to generate silent payment addresses and scan for silent payments, regardless of whether or not the wallet can send to a silent payment address\r\n  - Ready for review but marked as a draft until dependencies are merged\r\n\r\nFor the silent payments specification, see https://github.com/bitcoin/bips/pull/1458\r\n\r\n## Overall\r\n\r\nThis PR implements the full silent payments scheme: sending and receiving. The following items are not covered in this PR and are intended for follow-up PRs:\r\n\r\n* Adding labels for the receiver wallet\r\n* Full RPC coverage (only `sendtoaddress` and `sendmany` are covered in this PR)\r\n* Light client support (vending the tweak data per block, either in an index or to serve to indexer, such as electrum server)\r\n* Add benchmarks to validate that there are no DoS concerns for doing silent payment verification for transactions in the mempool\r\n* External signer support (dependent on hardware wallets supporting silent payments)\r\n* More unit / functional test coverage\r\n\r\n## Major changes\r\n\r\nThis PR is a continuation of the work done in https://github.com/bitcoin/bitcoin/pull/24897. Below is a summary of the major changes:\r\n\r\n* Remove labels\r\n  * The original draft included labels, but this has been deferred for a later PR. Labels are not necessary for sending and receiving and there are still some open questions on how best to implement them in Bitcoin Core. Labels can also be added at any point by the receiver without requiring any changes from the sender\r\n* Remove indexes\r\n  * In the original draft, indexes were used when scanning for silent payments and when doing wallet rescans. This has been removed in favor of using `rev*.dat` files for rescanning. It may make sense to add an index in the future, but for the purpose of vending tweak data to light clients, which is still an open question\r\n* Update to implement the most current version of BIP352\r\n  * Since the original draft, there have been a few changes in the BIP which are reflected in the current PR. Most notably, using 33-byte compressed keys for the silent payment address (as opposed to X-only keys in the original draft) \r\n\r\nIt may be helpful for context to read through the discussions on #24897 , but ongoing review should happen in the relevant child PRs listed above.",
           "user": {
             "login": "josibake",
             "id": 7444140,
@@ -1627,21 +1635,11 @@
             "type": "User",
             "site_admin": false
           },
-          "labels": [
-            {
-              "id": 5334691551,
-              "node_id": "LA_kwDOABII588AAAABPfju3w",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/CI%20failed",
-              "name": "CI failed",
-              "description": "",
-              "color": "cccccc",
-              "default": false
-            }
-          ],
+          "labels": [],
           "assignees": [],
           "author_association": "CONTRIBUTOR",
           "locked": false,
-          "comments": 4,
+          "comments": 5,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/27827",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/27827",
@@ -1649,7 +1647,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/27827.patch"
           },
           "created_at": "2023-06-05T12:12:23Z",
-          "updated_at": "2023-08-02T16:48:04Z"
+          "updated_at": "2023-08-11T05:03:42Z"
         },
         "type": "issue"
       }
@@ -2050,6 +2048,138 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2023-07-20T17:59:02Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
+      }
+    },
+    {
+      "event": "cross-referenced",
+      "id": null,
+      "node_id": null,
+      "url": null,
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-08-02T20:53:50Z",
+      "updated_at": "2023-08-02T20:53:50Z",
+      "source": {
+        "issue": {
+          "id": 1833304785,
+          "node_id": "PR_kwDOABII585XBDwg",
+          "url": "https://api.github.com/repos/bitcoin/bitcoin/issues/28200",
+          "repository_url": "https://api.github.com/repos/bitcoin/bitcoin",
+          "labels_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/28200/labels%7B/name%7D",
+          "comments_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/28200/comments",
+          "events_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/28200/events",
+          "html_url": "https://github.com/bitcoin/bitcoin/pull/28200",
+          "number": 28200,
+          "state": "open",
+          "state_reason": null,
+          "title": "refactor: Remove unused includes from wallet.cpp",
+          "body": "This makes compilation of wallet.cpp use a few % less memory and time, locally.\r\n\r\nCreated in the context of https://github.com/bitcoin/bitcoin/issues/28109, but I don't think it is enough to actually fix this problem.",
+          "user": {
+            "login": "MarcoFalke",
+            "id": 6399679,
+            "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/MarcoFalke",
+            "html_url": "https://github.com/MarcoFalke",
+            "followers_url": "https://api.github.com/users/MarcoFalke/followers",
+            "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
+            "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
+            "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
+            "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
+            "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
+            "repos_url": "https://api.github.com/users/MarcoFalke/repos",
+            "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
+            "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "labels": [
+            {
+              "id": 135961,
+              "node_id": "MDU6TGFiZWwxMzU5NjE=",
+              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Refactoring",
+              "name": "Refactoring",
+              "color": "E6F6D6",
+              "default": false
+            },
+            {
+              "id": 5334691551,
+              "node_id": "LA_kwDOABII588AAAABPfju3w",
+              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/CI%20failed",
+              "name": "CI failed",
+              "description": "",
+              "color": "cccccc",
+              "default": false
+            }
+          ],
+          "assignees": [],
+          "author_association": "MEMBER",
+          "locked": false,
+          "comments": 17,
+          "pull_request": {
+            "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/28200",
+            "html_url": "https://github.com/bitcoin/bitcoin/pull/28200",
+            "diff_url": "https://github.com/bitcoin/bitcoin/pull/28200.diff",
+            "patch_url": "https://github.com/bitcoin/bitcoin/pull/28200.patch"
+          },
+          "created_at": "2023-08-02T14:29:39Z",
+          "updated_at": "2023-08-17T16:33:16Z"
+        },
+        "type": "issue"
+      }
+    },
+    {
+      "event": "labeled",
+      "id": 10124093564,
+      "node_id": "LE_lADOEEET9c5cnZx9zwAAAAJbcWh8",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/10124093564",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-08-17T21:28:49Z",
       "label": {
         "name": "CI failed",
         "color": "ededed"
