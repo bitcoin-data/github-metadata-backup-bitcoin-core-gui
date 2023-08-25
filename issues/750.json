@@ -1,0 +1,90 @@
+{
+  "type": "issue",
+  "issue": {
+    "id": 1866186861,
+    "node_id": "I_kwDOEEET9c5vO8Bt",
+    "url": "https://api.github.com/repos/bitcoin-core/gui/issues/750",
+    "repository_url": "https://api.github.com/repos/bitcoin-core/gui",
+    "labels_url": "https://api.github.com/repos/bitcoin-core/gui/issues/750/labels%7B/name%7D",
+    "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/750/comments",
+    "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/750/events",
+    "html_url": "https://github.com/bitcoin-core/gui/issues/750",
+    "number": 750,
+    "state": "open",
+    "state_reason": null,
+    "title": "Transaction details \"virtual size\" does not account for sigops",
+    "body": "```c++\r\n    strHTML += \"<b>\" + tr(\"Transaction virtual size\") + \":</b> \" + QString::number(GetVirtualTransactionSize(*wtx.tx)) + \" bytes<br>\";\r\n```\r\n\r\n`GetVirtualTransactionSize` fails to account for sigops if passed the transaction alone.\r\n\r\nThis could confuse a user into thinking the transaction they were sent, still unconfirmed, has a reasonable fee rate, when it might very well not due to a bunch of sigops in another output or input.\r\n\r\nAnnoyingly, `GetTransactionSigOpCost` looks liable to assert if used on a confirmed transaction. It wouldn't make sense to stop reporting the correct virtual size after a transaction confirms, so this looks like a pain to fix.",
+    "user": {
+      "login": "luke-jr",
+      "id": 1095675,
+      "node_id": "MDQ6VXNlcjEwOTU2NzU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1095675?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/luke-jr",
+      "html_url": "https://github.com/luke-jr",
+      "followers_url": "https://api.github.com/users/luke-jr/followers",
+      "following_url": "https://api.github.com/users/luke-jr/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/luke-jr/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/luke-jr/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/luke-jr/subscriptions",
+      "organizations_url": "https://api.github.com/users/luke-jr/orgs",
+      "repos_url": "https://api.github.com/users/luke-jr/repos",
+      "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/luke-jr/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 2140649117,
+        "node_id": "MDU6TGFiZWwyMTQwNjQ5MTE3",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Bug",
+        "name": "Bug",
+        "description": "Something isn't working",
+        "color": "d73a4a",
+        "default": false
+      }
+    ],
+    "assignees": [],
+    "author_association": "MEMBER",
+    "locked": false,
+    "comments": 0,
+    "created_at": "2023-08-25T02:58:08Z",
+    "updated_at": "2023-08-25T02:58:08Z"
+  },
+  "events": [
+    {
+      "event": "labeled",
+      "id": 10187892389,
+      "node_id": "LE_lADOEEET9c5vO8BtzwAAAAJfPual",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/10187892389",
+      "actor": {
+        "login": "luke-jr",
+        "id": 1095675,
+        "node_id": "MDQ6VXNlcjEwOTU2NzU=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1095675?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/luke-jr",
+        "html_url": "https://github.com/luke-jr",
+        "followers_url": "https://api.github.com/users/luke-jr/followers",
+        "following_url": "https://api.github.com/users/luke-jr/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/luke-jr/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/luke-jr/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/luke-jr/subscriptions",
+        "organizations_url": "https://api.github.com/users/luke-jr/orgs",
+        "repos_url": "https://api.github.com/users/luke-jr/repos",
+        "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/luke-jr/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-08-25T02:58:08Z",
+      "label": {
+        "name": "Bug",
+        "color": "d73a4a"
+      }
+    }
+  ]
+}
