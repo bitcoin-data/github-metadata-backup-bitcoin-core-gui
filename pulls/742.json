@@ -39,12 +39,21 @@
       "site_admin": false
     },
     "body": "Fixes #741 \r\n\r\nStarting bitcoin-qt with non-hyphen (\"-\") arguments causes it to silently ignore any later valid options. For instance, invoking `bitcoin-qt -server=1 foo -regtest` on a fresh install will run `mainnet` instead of `regtest`.\r\n\r\nThis change makes the client exit with an error message if any such \"loose\" arguments are encountered. This mirrors how `bitcoind` handles it:\r\n\r\nhttps://github.com/bitcoin/bitcoin/blob/c6287faae4c0e705a9258a340dfcf548906f12af/src/bitcoind.cpp#L127-L132\r\n\r\nHowever, BIP-21 `bitcoin:` payment URIs are still allowed, but only if they're not followed by any additional options.\r\n\r\n",
-    "labels": [],
+    "labels": [
+      {
+        "id": 5353934559,
+        "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
+        "name": "CI failed",
+        "color": "ededed",
+        "default": false
+      }
+    ],
     "created_at": "2023-06-29T16:37:50Z",
-    "updated_at": "2023-09-02T12:41:56Z",
+    "updated_at": "2023-09-02T19:11:01Z",
     "mergeable": true,
-    "mergeable_state": "clean",
-    "merge_commit_sha": "b5fa6db8a1149db55be3d67e805f6c44ff756f32",
+    "mergeable_state": "unstable",
+    "merge_commit_sha": "6f20d87dd5a4f4b4b0669183f7f18e806ef96588",
     "assignees": [],
     "requested_reviewers": [
       {
@@ -301,7 +310,7 @@
         "forks_count": 273,
         "stargazers_count": 500,
         "watchers_count": 500,
-        "size": 149099,
+        "size": 150274,
         "default_branch": "master",
         "open_issues_count": 156,
         "is_template": false,
@@ -314,7 +323,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-09-01T17:25:08Z",
+        "pushed_at": "2023-09-02T17:46:42Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2023-09-02T09:04:02Z",
         "license": {
@@ -1191,6 +1200,39 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2023-09-02T12:41:56Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
+      }
+    },
+    {
+      "event": "labeled",
+      "id": 10264655672,
+      "node_id": "LE_lADOEEET9c5qKpa2zwAAAAJj0jc4",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/10264655672",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-09-02T19:11:01Z",
       "label": {
         "name": "CI failed",
         "color": "ededed"
