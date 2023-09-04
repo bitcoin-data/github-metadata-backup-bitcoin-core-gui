@@ -60,10 +60,10 @@
       }
     ],
     "created_at": "2022-12-28T16:47:21Z",
-    "updated_at": "2023-08-29T01:09:41Z",
+    "updated_at": "2023-09-04T21:28:44Z",
     "mergeable": true,
     "mergeable_state": "clean",
-    "merge_commit_sha": "c965fba8a1101237fab427aed05e3ae04cd96a97",
+    "merge_commit_sha": "a297f1a6f553ef9c04975d8d88bfb9602aba2fd3",
     "assignees": [],
     "requested_reviewers": [
       {
@@ -320,9 +320,9 @@
         "forks_count": 273,
         "stargazers_count": 501,
         "watchers_count": 501,
-        "size": 149154,
+        "size": 150274,
         "default_branch": "master",
-        "open_issues_count": 158,
+        "open_issues_count": 156,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -333,9 +333,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-08-28T15:20:57Z",
+        "pushed_at": "2023-09-02T22:17:41Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2023-08-28T12:42:48Z",
+        "updated_at": "2023-09-04T12:17:01Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -364,7 +364,7 @@
     "deletions": 28,
     "changed_files": 1,
     "commits": 2,
-    "review_comments": 52,
+    "review_comments": 53,
     "comments": 23
   },
   "events": [
@@ -7184,6 +7184,58 @@
       "start_side": "RIGHT",
       "line": 500,
       "original_line": 500,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1315205812",
+      "pull_request_review_id": 1609964069,
+      "id": 1315205812,
+      "node_id": "PRRC_kwDOEEET9c5OZHK0",
+      "diff_hunk": "@@ -96,8 +96,49 @@ public Q_SLOTS:\n \n private:\n     interfaces::Node& m_node;\n+    bool executeConsoleHelpConsole(const std::vector<std::string>& parsed_command, const WalletModel* wallet_model);\n+    bool executeConsoleOnlyCommand(const std::string& command, const WalletModel* wallet_model);\n+    // std::map mapping strings to methods member of RPCExecutor class\n+    // Keys must be strings with commands and (optionally) parameters in \"canonical\" form (separated by single space)\n+    // Keys should match the beggining of user input commands (user commands can have more parameters than the key)\n+    std::map<std::string, bool (RPCExecutor::*)(const std::vector<std::string>&, const WalletModel*)> m_method_map{\n+        {\"help-console\", &RPCExecutor::executeConsoleHelpConsole}};\n };\n \n+/**\n+ * Small and fast parser supporting console command syntax, with limited functionality.\n+ * Splits a command line string into a vector with command at position 0, and parameters after\n+ *\n+ * @param[in]    strCommand  Command line to parse\n+ *\n+ * @return a vector of strings with command and parameters\n+ */\n+std::vector<std::string> parseHelper(const std::string& strCommand)\n+{\n+    // Split while recognizing the several characters that can be used as separators in the GUI console\n+    std::vector<std::string> vec{SplitString(strCommand, \" (),\")};",
+      "path": "src/qt/rpcconsole.cpp",
+      "position": 28,
+      "original_position": 24,
+      "commit_id": "1db3da2f8b30221f0a94b5881577e2704c1e6da7",
+      "original_commit_id": "aa898d6a72643542c08f061086ec7eaeb9e16e78",
+      "in_reply_to_id": 1248842906,
+      "user": {
+        "login": "hernanmarino",
+        "id": 87907936,
+        "node_id": "MDQ6VXNlcjg3OTA3OTM2",
+        "avatar_url": "https://avatars.githubusercontent.com/u/87907936?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hernanmarino",
+        "html_url": "https://github.com/hernanmarino",
+        "followers_url": "https://api.github.com/users/hernanmarino/followers",
+        "following_url": "https://api.github.com/users/hernanmarino/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hernanmarino/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hernanmarino/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hernanmarino/subscriptions",
+        "organizations_url": "https://api.github.com/users/hernanmarino/orgs",
+        "repos_url": "https://api.github.com/users/hernanmarino/repos",
+        "events_url": "https://api.github.com/users/hernanmarino/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hernanmarino/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "Yes, agree. This will have to be refactored if such thing is ever needed.",
+      "created_at": "2023-09-04T21:28:43Z",
+      "updated_at": "2023-09-04T21:28:44Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/692#discussion_r1315205812",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1315205812"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/692"
+        }
+      },
+      "start_line": 120,
+      "original_start_line": 116,
+      "start_side": "RIGHT",
+      "line": 123,
+      "original_line": 119,
       "side": "RIGHT"
     }
   ]
