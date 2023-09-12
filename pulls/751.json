@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/751/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/751/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/e14cc8fc69cb3e3a98076fbb23a94eba7873368a",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/c08fe9992b56be5e60b613f656bc945322452987",
     "number": 751,
     "state": "open",
     "locked": false,
@@ -41,10 +41,10 @@
     "body": "As the 'QMenuBar' is created without a parent window in MacOS, the app crashes when the user presses the shutdown button and, right after it, triggers any action in the menu bar.\r\n\r\nThis happens because the QMenuBar is manually deleted in the BitcoinGUI destructor but the events attached to it children actions are not disconnected, so QActions events such us the 'QMenu::aboutToShow' could try to access null pointers.\r\n\r\nInstead of guarding every single QAction pointer inside the QMenu::aboutToShow slot, or manually disconnecting all registered events in the destructor, we can check if a shutdown was requested and discard the event.\r\n\r\nThe 'node' field is a ref whose memory is held by the main application class, so it is safe to use here. Events are disconnected prior destructing the main application object.\r\n\r\nFurthermore, the 'MacDockIconHandler::dockIconClicked' signal can make the app crash during shutdown for the very same reason. The 'show()' call triggers the 'QApplication::focusWindowChanged' event, which is connected to the 'minimize_action' QAction, which is also part of the app menu bar, which could no longer exist.\r\n\r\nImportant Note:\r\nThis happened to me few times. The worst consequence was an inconsistent chain state during IBD. Which triggered a full \"replay blocks\" process on the next startup. Which was painfully slow.",
     "labels": [],
     "created_at": "2023-09-08T14:34:56Z",
-    "updated_at": "2023-09-08T20:30:05Z",
+    "updated_at": "2023-09-12T14:26:23Z",
     "mergeable": true,
     "mergeable_state": "unstable",
-    "merge_commit_sha": "fcc4b54b06c84988ec1b06e150d07a73c1f50f13",
+    "merge_commit_sha": "d01874cbfd96355baa35ca20f4387e9f00cb4406",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -52,7 +52,7 @@
     "head": {
       "label": "furszy:2023_gui_fix_appbar_crash",
       "ref": "2023_gui_fix_appbar_crash",
-      "sha": "e14cc8fc69cb3e3a98076fbb23a94eba7873368a",
+      "sha": "c08fe9992b56be5e60b613f656bc945322452987",
       "user": {
         "login": "furszy",
         "id": 5377650,
@@ -161,7 +161,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-09-08T14:33:56Z",
+        "pushed_at": "2023-09-12T14:26:20Z",
         "created_at": "2022-05-09T14:34:00Z",
         "updated_at": "2023-09-08T14:09:02Z",
         "license": {
@@ -184,7 +184,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "4e1a38c6df91f96ca8a2ef07413ffdb1d59c30cc",
+      "sha": "7649431637441d0e236f33d67eb196bfc33a13a7",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -277,12 +277,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 275,
-        "stargazers_count": 501,
-        "watchers_count": 501,
-        "size": 151177,
+        "forks_count": 277,
+        "stargazers_count": 508,
+        "watchers_count": 508,
+        "size": 151870,
         "default_branch": "master",
-        "open_issues_count": 157,
+        "open_issues_count": 161,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -293,9 +293,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-09-08T14:34:56Z",
+        "pushed_at": "2023-09-12T14:26:23Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2023-09-04T12:17:01Z",
+        "updated_at": "2023-09-12T12:06:40Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -321,9 +321,9 @@
     "author_association": "CONTRIBUTOR",
     "draft": false,
     "additions": 3,
-    "deletions": 0,
+    "deletions": 6,
     "changed_files": 1,
-    "commits": 1,
+    "commits": 2,
     "review_comments": 0,
     "comments": 1
   },
@@ -490,6 +490,75 @@
       "submitted_at": "2023-09-08T20:30:03Z",
       "state": "APPROVED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/751"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGMwOGZlOTk5MmI1NmJlNWU2MGI2MTNmNjU2YmM5NDUzMjI0NTI5ODc",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/c08fe9992b56be5e60b613f656bc945322452987",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/c08fe9992b56be5e60b613f656bc945322452987",
+      "tree": {
+        "sha": "40cf593cefa9f345f6886116cb9548a6eb41aac8",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/40cf593cefa9f345f6886116cb9548a6eb41aac8"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree 40cf593cefa9f345f6886116cb9548a6eb41aac8\nparent e14cc8fc69cb3e3a98076fbb23a94eba7873368a\nauthor furszy <matiasfurszyfer@protonmail.com> 1694528141 -0300\ncommitter furszy <matiasfurszyfer@protonmail.com> 1694528763 -0300\n\ngui: macOS, make appMenuBar part of the main app window\n\nBy moving the appMenuBar destruction responsibility to the QT\nframework, we ensure the disconnection of the submenus signals\nprior to the destruction of the main app window.\n\nThe standalone menu bar may have served a purpose in earlier\nversions when it didn't contain actions that directly open\nspecific screens within the main application window. However,\nat present, all the actions within the appMenuBar lead to the\nopening of screens within the main app window. So, the absence\nof a main app window makes these actions essentially pointless.\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEEA++0fqwRHQpmlZfQXdI8zGhqpiMFAmUAdPsACgkQXdI8zGhq\npiOI8Q/9H1uDUkZ7vQyRn53kSC0+3DIhlO/l9EAIRGINDVqLZ6agbpYMatkYjylR\nMVNbj8+J4wT4Ec7GVT99GL0tV/srsRZ8v2at11V6aaFCqkem3YGDUp3evP3MC9fF\n0Ugc4mbavxKtdAN9Z2B0zA1d1MwE8JISu3X1NduH/fFKTrznMSTGnHIspTQ1rk8M\n9FnN9r/3tisqxIKwJBOh9cEt64m2cK+lAtfcAHUMv+CRjmPwefCumr99n//CLSE9\nGsdk50E6xHyhU7a0fOWNmgSP1SykbYX5jnOQFxxPkPujM4fvQnciVL2VyvhGjzcd\nFUfRY2sU9It0PajupkY4OialxZ057XF4ek0QVCm6BhDjgBhkD6c35SEBWTC+OJbm\noUctXFjgEAZLbGxPQLRraAbHneWLxssRAeLpg9shFBm2muHhs2OyelIwBZMbgskd\nPI0Mvbq0/40OglRqqLK08TrxMCplLO0OyUIJwjegkUOdELxaU3XNpzGCK5aR12+3\nPf5Z7d9DZPnZP28I7RVas15JMUqsh5b1sBu7kitasx2HmgEixsRI5DmwHoFVrslz\nYmwccvZ2/UUKCa8ieDEKt+XPEMsrHxqU8aur+CLqz6+4FCKHcBgdaOk/CS93J3Yl\nJfnKZsRggIT59nK5yMfx7uSkpFuVip9UeE9lo4yQMlQMb1Xo60I=\n=XVKD\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/e14cc8fc69cb3e3a98076fbb23a94eba7873368a",
+          "sha": "e14cc8fc69cb3e3a98076fbb23a94eba7873368a",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/e14cc8fc69cb3e3a98076fbb23a94eba7873368a"
+        }
+      ],
+      "message": "gui: macOS, make appMenuBar part of the main app window\n\nBy moving the appMenuBar destruction responsibility to the QT\nframework, we ensure the disconnection of the submenus signals\nprior to the destruction of the main app window.\n\nThe standalone menu bar may have served a purpose in earlier\nversions when it didn't contain actions that directly open\nspecific screens within the main application window. However,\nat present, all the actions within the appMenuBar lead to the\nopening of screens within the main app window. So, the absence\nof a main app window makes these actions essentially pointless.",
+      "committer": {
+        "name": "furszy",
+        "email": "matiasfurszyfer@protonmail.com",
+        "date": "2023-09-12T14:26:03Z"
+      },
+      "author": {
+        "name": "furszy",
+        "email": "matiasfurszyfer@protonmail.com",
+        "date": "2023-09-12T14:15:41Z"
+      },
+      "sha": "c08fe9992b56be5e60b613f656bc945322452987"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 10347685490,
+      "node_id": "HRFPE_lADOEEET9c5wha2_zwAAAAJoxSZy",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/10347685490",
+      "actor": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-09-12T14:26:23Z"
     }
   ],
   "comments": []
