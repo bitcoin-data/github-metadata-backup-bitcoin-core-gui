@@ -41,7 +41,7 @@
     "body": "This PR adds a transport version (BIP324) to the peer details widget:\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/32963518/0e0b4c92-dde0-4b2e-b285-a2c69ef09efc)\r\n\r\n\r\nBased on https://github.com/bitcoin/bitcoin/pull/28331, so drafted for now.",
     "labels": [],
     "created_at": "2023-09-11T11:16:49Z",
-    "updated_at": "2023-09-12T16:53:49Z",
+    "updated_at": "2023-09-12T19:25:58Z",
     "mergeable": true,
     "mergeable_state": "clean",
     "merge_commit_sha": "20aa42cf32bba6cf0da8dff7741d1f86d6034d2d",
@@ -280,7 +280,7 @@
         "forks_count": 277,
         "stargazers_count": 508,
         "watchers_count": 508,
-        "size": 151870,
+        "size": 151897,
         "default_branch": "master",
         "open_issues_count": 161,
         "is_template": false,
@@ -293,7 +293,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-09-12T16:41:40Z",
+        "pushed_at": "2023-09-12T17:37:37Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2023-09-12T12:06:40Z",
         "license": {
@@ -325,7 +325,7 @@
     "changed_files": 22,
     "commits": 10,
     "review_comments": 0,
-    "comments": 3
+    "comments": 4
   },
   "events": [
     {
@@ -467,7 +467,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/28331.patch"
           },
           "created_at": "2023-08-24T00:25:16Z",
-          "updated_at": "2023-09-12T08:02:43Z"
+          "updated_at": "2023-09-12T17:35:13Z"
         },
         "type": "issue"
       }
@@ -1160,7 +1160,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/28423.patch"
           },
           "created_at": "2023-09-06T19:58:47Z",
-          "updated_at": "2023-09-12T16:43:55Z"
+          "updated_at": "2023-09-12T17:19:05Z"
         },
         "type": "issue"
       }
@@ -2500,7 +2500,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/28453.patch"
           },
           "created_at": "2023-09-11T20:39:25Z",
-          "updated_at": "2023-09-11T21:51:19Z"
+          "updated_at": "2023-09-12T17:50:45Z"
         },
         "type": "issue"
       }
@@ -2591,7 +2591,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/28451.patch"
           },
           "created_at": "2023-09-11T16:07:31Z",
-          "updated_at": "2023-09-12T14:22:18Z"
+          "updated_at": "2023-09-12T17:16:06Z"
         },
         "type": "issue"
       }
@@ -2631,6 +2631,141 @@
       "submitted_at": "2023-09-12T05:05:31Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/754"
+    },
+    {
+      "event": "cross-referenced",
+      "id": null,
+      "node_id": null,
+      "url": null,
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-09-12T17:15:31Z",
+      "updated_at": "2023-09-12T17:15:31Z",
+      "source": {
+        "issue": {
+          "id": 1891020951,
+          "node_id": "PR_kwDOABII585aDN8k",
+          "url": "https://api.github.com/repos/bitcoin/bitcoin/issues/28452",
+          "repository_url": "https://api.github.com/repos/bitcoin/bitcoin",
+          "labels_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/28452/labels%7B/name%7D",
+          "comments_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/28452/comments",
+          "events_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/28452/events",
+          "html_url": "https://github.com/bitcoin/bitcoin/pull/28452",
+          "number": 28452,
+          "state": "open",
+          "state_reason": null,
+          "title": "Do not use std::vector = {} to release memory",
+          "body": "It appears that invoking `v = {};` for an `std::vector<...> v` is equivalent to `v.clear()`, which does not release its allocated memory. There are a number of places in the codebase where it appears to be used for that purpose however (mostly written by me). Replace those with `v.clear(); v.shrink_to_fit();`.\r\n\r\nTo explain what is going on: `v = {...};` is equivalent in general to `v.operator=({...});`. For many types, the `{}` is converted to the type of `v`, and then assigned to `v` - which for `std::vector` would ordinarily have the effect of clearing its memory (constructing a new empty vector, and then move-assigning it to `v`). However, since `std::vector<T>` has an `operator=(std::initializer_list<T>)` defined, it has precedence (since no implicit conversion is needed), and with an empty list, that is equivalent to `clear()`.\r\n\r\nI did consider using `v = std::vector<T>{};` as replacement for `v = {};` instances where memory releasing is desired, but it appears that it does not actually work universally either. `v.clear(); v.shrink_to_fit();` does.",
+          "user": {
+            "login": "sipa",
+            "id": 548488,
+            "node_id": "MDQ6VXNlcjU0ODQ4OA==",
+            "avatar_url": "https://avatars.githubusercontent.com/u/548488?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/sipa",
+            "html_url": "https://github.com/sipa",
+            "followers_url": "https://api.github.com/users/sipa/followers",
+            "following_url": "https://api.github.com/users/sipa/following%7B/other_user%7D",
+            "gists_url": "https://api.github.com/users/sipa/gists%7B/gist_id%7D",
+            "starred_url": "https://api.github.com/users/sipa/starred%7B/owner%7D%7B/repo%7D",
+            "subscriptions_url": "https://api.github.com/users/sipa/subscriptions",
+            "organizations_url": "https://api.github.com/users/sipa/orgs",
+            "repos_url": "https://api.github.com/users/sipa/repos",
+            "events_url": "https://api.github.com/users/sipa/events%7B/privacy%7D",
+            "received_events_url": "https://api.github.com/users/sipa/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "labels": [],
+          "assignees": [],
+          "author_association": "MEMBER",
+          "locked": false,
+          "comments": 8,
+          "pull_request": {
+            "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/28452",
+            "html_url": "https://github.com/bitcoin/bitcoin/pull/28452",
+            "diff_url": "https://github.com/bitcoin/bitcoin/pull/28452.diff",
+            "patch_url": "https://github.com/bitcoin/bitcoin/pull/28452.patch"
+          },
+          "created_at": "2023-09-11T18:16:53Z",
+          "updated_at": "2023-09-12T17:15:31Z"
+        },
+        "type": "issue"
+      }
+    },
+    {
+      "event": "commented",
+      "id": 1716295362,
+      "node_id": "IC_kwDOEEET9c5mTJbC",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/1716295362",
+      "actor": {
+        "login": "Sjors",
+        "id": 10217,
+        "node_id": "MDQ6VXNlcjEwMjE3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/10217?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Sjors",
+        "html_url": "https://github.com/Sjors",
+        "followers_url": "https://api.github.com/users/Sjors/followers",
+        "following_url": "https://api.github.com/users/Sjors/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/Sjors/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/Sjors/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/Sjors/subscriptions",
+        "organizations_url": "https://api.github.com/users/Sjors/orgs",
+        "repos_url": "https://api.github.com/users/Sjors/repos",
+        "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/Sjors/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-09-12T19:25:58Z",
+      "updated_at": "2023-09-12T19:25:58Z",
+      "author_association": "MEMBER",
+      "body": "No strong feelings about the lock :-) But can you add the session id?",
+      "user": {
+        "login": "Sjors",
+        "id": 10217,
+        "node_id": "MDQ6VXNlcjEwMjE3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/10217?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Sjors",
+        "html_url": "https://github.com/Sjors",
+        "followers_url": "https://api.github.com/users/Sjors/followers",
+        "following_url": "https://api.github.com/users/Sjors/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/Sjors/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/Sjors/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/Sjors/subscriptions",
+        "organizations_url": "https://api.github.com/users/Sjors/orgs",
+        "repos_url": "https://api.github.com/users/Sjors/repos",
+        "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/Sjors/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/754#issuecomment-1716295362",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/754"
     }
   ],
   "comments": []
