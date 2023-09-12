@@ -41,10 +41,10 @@
     "body": "As the 'QMenuBar' is created without a parent window in MacOS, the app crashes when the user presses the shutdown button and, right after it, triggers any action in the menu bar.\r\n\r\nThis happens because the QMenuBar is manually deleted in the BitcoinGUI destructor but the events attached to it children actions are not disconnected, so QActions events such us the 'QMenu::aboutToShow' could try to access null pointers.\r\n\r\nInstead of guarding every single QAction pointer inside the QMenu::aboutToShow slot, or manually disconnecting all registered events in the destructor, we can check if a shutdown was requested and discard the event.\r\n\r\nThe 'node' field is a ref whose memory is held by the main application class, so it is safe to use here. Events are disconnected prior destructing the main application object.\r\n\r\nFurthermore, the 'MacDockIconHandler::dockIconClicked' signal can make the app crash during shutdown for the very same reason. The 'show()' call triggers the 'QApplication::focusWindowChanged' event, which is connected to the 'minimize_action' QAction, which is also part of the app menu bar, which could no longer exist.\r\n\r\nImportant Note:\r\nThis happened to me few times. The worst consequence was an inconsistent chain state during IBD. Which triggered a full \"replay blocks\" process on the next startup. Which was painfully slow.",
     "labels": [],
     "created_at": "2023-09-08T14:34:56Z",
-    "updated_at": "2023-09-12T14:26:23Z",
+    "updated_at": "2023-09-12T16:03:35Z",
     "mergeable": true,
     "mergeable_state": "unstable",
-    "merge_commit_sha": "d01874cbfd96355baa35ca20f4387e9f00cb4406",
+    "merge_commit_sha": "5ad56e2c3b3fc0f6ca786818d29b8ffebc17b59b",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -148,7 +148,7 @@
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 151129,
+        "size": 151690,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -293,7 +293,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-09-12T14:26:23Z",
+        "pushed_at": "2023-09-12T16:41:40Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2023-09-12T12:06:40Z",
         "license": {
@@ -324,7 +324,7 @@
     "deletions": 6,
     "changed_files": 1,
     "commits": 2,
-    "review_comments": 0,
+    "review_comments": 1,
     "comments": 1
   },
   "events": [
@@ -559,7 +559,95 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2023-09-12T14:26:23Z"
+    },
+    {
+      "event": "reviewed",
+      "id": 1622613321,
+      "node_id": "PRR_kwDOEEET9c5gtx1J",
+      "url": null,
+      "actor": null,
+      "commit_id": "c08fe9992b56be5e60b613f656bc945322452987",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "MEMBER",
+      "user": {
+        "login": "luke-jr",
+        "id": 1095675,
+        "node_id": "MDQ6VXNlcjEwOTU2NzU=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1095675?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/luke-jr",
+        "html_url": "https://github.com/luke-jr",
+        "followers_url": "https://api.github.com/users/luke-jr/followers",
+        "following_url": "https://api.github.com/users/luke-jr/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/luke-jr/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/luke-jr/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/luke-jr/subscriptions",
+        "organizations_url": "https://api.github.com/users/luke-jr/orgs",
+        "repos_url": "https://api.github.com/users/luke-jr/repos",
+        "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/luke-jr/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/751#pullrequestreview-1622613321",
+      "submitted_at": "2023-09-12T16:03:35Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/751"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1323265155",
+      "pull_request_review_id": 1622613321,
+      "id": 1323265155,
+      "node_id": "PRRC_kwDOEEET9c5O32yD",
+      "diff_hunk": "@@ -470,13 +469,8 @@ void BitcoinGUI::createActions()\n \n void BitcoinGUI::createMenuBar()\n {\n-#ifdef Q_OS_MACOS\n-    // Create a decoupled menu bar on Mac which stays even if the window is closed\n-    appMenuBar = new QMenuBar();\n-#else\n     // Get the main window's menu bar on other platforms",
+      "path": "src/qt/bitcoingui.cpp",
+      "position": 16,
+      "original_position": 16,
+      "commit_id": "c08fe9992b56be5e60b613f656bc945322452987",
+      "original_commit_id": "c08fe9992b56be5e60b613f656bc945322452987",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "luke-jr",
+        "id": 1095675,
+        "node_id": "MDQ6VXNlcjEwOTU2NzU=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1095675?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/luke-jr",
+        "html_url": "https://github.com/luke-jr",
+        "followers_url": "https://api.github.com/users/luke-jr/followers",
+        "following_url": "https://api.github.com/users/luke-jr/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/luke-jr/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/luke-jr/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/luke-jr/subscriptions",
+        "organizations_url": "https://api.github.com/users/luke-jr/orgs",
+        "repos_url": "https://api.github.com/users/luke-jr/repos",
+        "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/luke-jr/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "This comment no longer makes sense",
+      "created_at": "2023-09-12T16:03:35Z",
+      "updated_at": "2023-09-12T16:03:35Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/751#discussion_r1323265155",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1323265155"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/751"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 472,
+      "original_line": 472,
+      "side": "RIGHT"
+    }
+  ]
 }
