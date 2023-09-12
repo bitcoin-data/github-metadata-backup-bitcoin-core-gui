@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/753/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/753/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/a2047060c1a465bfb8e7c4083548714594ed126d",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/4b00cdc6fd9109a6b1094b936e175e9909155857",
     "number": 753,
     "state": "open",
     "locked": false,
@@ -41,10 +41,10 @@
     "body": "This PR fixes #646 and introduces some enhancements to the Address Book functionality.\r\n\r\nA new \"Address Type\" column has been added to the address book table page, only visible for the \"Receiving address\" tab. Users can employ an also new added combo box at the bottom of the page to filter address by their type, this filtering can be combined with the current search line text box.\r\nWhen the export feature is used, this new field will be included.\r\n\r\n![Peek 2023-09-10 19-25](https://github.com/bitcoin-core/gui/assets/110166421/24c674a2-417e-4309-8fb3-8c099a562cc1)\r\n\r\nAs highlighted with the performed manual testing shown in the image above:\r\n- address type combo box has been reused from receive coins dialog, but each widget container can specify different tool-tips for their items;\r\n- \"Sending address\" tab doesn't display the new column, combo box or its label, and the search text specify only the fields to be filtered out;\r\n-  \"Receiving address\" tab display the new added widgets, filter works fine in combination of either text, combo item selection or combination of both, tool-tip texts differs from the ones on the receive coins dialog where the address can be created specifying their types.\r\n\r\nTested in `mainnet` and all test networks.\r\n\r\nFor code reviewers, please check the commit messages for a detailed breakdown.\r\n",
     "labels": [],
     "created_at": "2023-09-10T05:32:46Z",
-    "updated_at": "2023-09-12T19:36:43Z",
+    "updated_at": "2023-09-12T22:48:23Z",
     "mergeable": true,
-    "mergeable_state": "clean",
-    "merge_commit_sha": "20ec58b099afb3e9526b5e189c25afcb7c7ca240",
+    "mergeable_state": "unstable",
+    "merge_commit_sha": "8a4d278815c0f135019dbf00019aadfd050ee80f",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -52,7 +52,7 @@
     "head": {
       "label": "pablomartin4btc:gui-address-types-on-receiving-tab",
       "ref": "gui-address-types-on-receiving-tab",
-      "sha": "a2047060c1a465bfb8e7c4083548714594ed126d",
+      "sha": "4b00cdc6fd9109a6b1094b936e175e9909155857",
       "user": {
         "login": "pablomartin4btc",
         "id": 110166421,
@@ -161,7 +161,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-09-11T23:25:30Z",
+        "pushed_at": "2023-09-12T22:48:20Z",
         "created_at": "2022-09-10T13:37:44Z",
         "updated_at": "2022-12-30T18:34:57Z",
         "license": {
@@ -184,7 +184,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "8f7b9eb8711fdb32e8bdb59d2a7462a46c7a8086",
+      "sha": "adc0921ea19f3b06878df6b22393fec519ed8f91",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -293,7 +293,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-09-12T17:37:37Z",
+        "pushed_at": "2023-09-12T22:48:23Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2023-09-12T12:06:40Z",
         "license": {
@@ -320,8 +320,8 @@
     },
     "author_association": "CONTRIBUTOR",
     "draft": false,
-    "additions": 198,
-    "deletions": 36,
+    "additions": 203,
+    "deletions": 37,
     "changed_files": 11,
     "commits": 5,
     "review_comments": 0,
@@ -554,126 +554,6 @@
       "sha": "e0e22a1033ed7687f0ea98d11382563d0feb9744"
     },
     {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDFmY2ZmMTkxYzI3YWYxMjVlMTg4ZDgxY2JjNmE0YzQ0YzU3ZmEzMWM",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/1fcff191c27af125e188d81cbc6a4c44c57fa31c",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/1fcff191c27af125e188d81cbc6a4c44c57fa31c",
-      "tree": {
-        "sha": "89b008ca3082f41e78d01bbb8f35f85b27ec8eaa",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/89b008ca3082f41e78d01bbb8f35f85b27ec8eaa"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/e0e22a1033ed7687f0ea98d11382563d0feb9744",
-          "sha": "e0e22a1033ed7687f0ea98d11382563d0feb9744",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/e0e22a1033ed7687f0ea98d11382563d0feb9744"
-        }
-      ],
-      "message": "gui: Add Address Type Column to AddressBookPage\n\nAdd new address type column to the addresstablemodel, use the getOutputType\nfunction from the wallet interface to display the correct address type in the\nnew column content. Update the address book page to set the new column resize mode\nand to display the new column only when the receiving tab is enabled\nso it must be hidden on the sending tab.\n\nUpdate AddressBookFilterProxyModel::filterAcceptsRow so the filter works also\non the new addressType column content. Also the searLineEdit greyed text\nreflects that the new field/ column addressType will be included in the search/\nfilter by but only when the receiving tab is enabled.\n\nAdd the new column to the export feature.",
-      "committer": {
-        "name": "pablomartin4btc",
-        "email": "pablomartin4btc@gmail.com",
-        "date": "2023-09-11T23:21:52Z"
-      },
-      "author": {
-        "name": "pablomartin4btc",
-        "email": "pablomartin4btc@gmail.com",
-        "date": "2023-09-09T19:44:06Z"
-      },
-      "sha": "1fcff191c27af125e188d81cbc6a4c44c57fa31c"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDc4NTU4ZGU0MTFjNDNmMWRiYmE0YzBiZThlZWQ0MDQ4NmQ3ZTUyZWI",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/78558de411c43f1dbba4c0be8eed40486d7e52eb",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/78558de411c43f1dbba4c0be8eed40486d7e52eb",
-      "tree": {
-        "sha": "291220cd05734899cb56a1685003c497d1e75257",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/291220cd05734899cb56a1685003c497d1e75257"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/1fcff191c27af125e188d81cbc6a4c44c57fa31c",
-          "sha": "1fcff191c27af125e188d81cbc6a4c44c57fa31c",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/1fcff191c27af125e188d81cbc6a4c44c57fa31c"
-        }
-      ],
-      "message": "gui: Extend address book filter for nested filtering\n\nExtend AddressBookFilterProxyModel to allow using nested filters to be applied\non top of it. If future needs arise for similar filters outside the address book page,\nthe code could be easily refactored and moved in a new subclass of QSortFilterProxyModel,\nperhaps with limits on nested levels.\n\nFor safety and performance reasons, the code of the filter proxy model class declaration\n(in addressbookpage.h) and its instance creation were updated by aligning it with\nTransactionFilterProxy in overviewpage.h as this addresses situations of unexpected crashes,\nsuch as segfault on closing the app, double free or corruption, or stack smashing detection.",
-      "committer": {
-        "name": "pablomartin4btc",
-        "email": "pablomartin4btc@gmail.com",
-        "date": "2023-09-11T23:21:52Z"
-      },
-      "author": {
-        "name": "pablomartin4btc",
-        "email": "pablomartin4btc@gmail.com",
-        "date": "2023-09-10T02:18:03Z"
-      },
-      "sha": "78558de411c43f1dbba4c0be8eed40486d7e52eb"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGEyMDQ3MDYwYzFhNDY1YmZiOGU3YzQwODM1NDg3MTQ1OTRlZDEyNmQ",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/a2047060c1a465bfb8e7c4083548714594ed126d",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/a2047060c1a465bfb8e7c4083548714594ed126d",
-      "tree": {
-        "sha": "c3781eb5fbdc814f7ae0000ac10d3d4e2bee61cf",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/c3781eb5fbdc814f7ae0000ac10d3d4e2bee61cf"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/78558de411c43f1dbba4c0be8eed40486d7e52eb",
-          "sha": "78558de411c43f1dbba4c0be8eed40486d7e52eb",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/78558de411c43f1dbba4c0be8eed40486d7e52eb"
-        }
-      ],
-      "message": "gui: Add a combo widget to filter by address type\n\nIntroduce a label and a combobox UI widgets for address type filtering on the address book page.\nThese 2 widgets are been displayed only on the Receiving tab.\nTo ensure that the combo box selection updates the filter model correctly, an intermediary signal\n(addressTypeChanged) and a slot (handleAddressTypeChanged) were necessary due to the incompatibility\nbetween QComboBox::currentIndexChanged and QSortFilterProxyModel::setFilterFixedString.\n\nUpdate filter model to use nested filtering so when selected item changes on address type combo\nit will update the filter pattern on top of what the parent filter has already, which is lead by the\nsearchLineEdit widget and all references of the current proxyModel (eg mapToSource, mapFromSource)\nto the nested and final filter model.\n\nUse GUIUtil::AddItemsToAddressTypeCombo to populate the combo with the default output types descriptions\npassing a defined local map for the output types tooltips that will be displayed for each item,\nsimilarly to the address types combobox in receivecoinsdialog.",
-      "committer": {
-        "name": "pablomartin4btc",
-        "email": "pablomartin4btc@gmail.com",
-        "date": "2023-09-11T23:21:52Z"
-      },
-      "author": {
-        "name": "pablomartin4btc",
-        "email": "pablomartin4btc@gmail.com",
-        "date": "2023-09-10T03:18:35Z"
-      },
-      "sha": "a2047060c1a465bfb8e7c4083548714594ed126d"
-    },
-    {
       "event": "head_ref_force_pushed",
       "id": 10339828109,
       "node_id": "HRFPE_lADOEEET9c5wl74TzwAAAAJoTUGN",
@@ -824,6 +704,155 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/753#issuecomment-1716307880",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/753"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDk1ZDViM2M2NWNjNmJlNjdlYjI3MGU1ZGRkNWU4YWJmMDY4ZmQwZjM",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/95d5b3c65cc6be67eb270e5ddd5e8abf068fd0f3",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/95d5b3c65cc6be67eb270e5ddd5e8abf068fd0f3",
+      "tree": {
+        "sha": "e087d1eb0c051e0811bac2cb39257b2a39fb5294",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/e087d1eb0c051e0811bac2cb39257b2a39fb5294"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/e0e22a1033ed7687f0ea98d11382563d0feb9744",
+          "sha": "e0e22a1033ed7687f0ea98d11382563d0feb9744",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/e0e22a1033ed7687f0ea98d11382563d0feb9744"
+        }
+      ],
+      "message": "gui: Add Address Type Column to AddressBookPage\n\nAdd new address type column to the addresstablemodel, use the getOutputType\nfunction from the wallet interface to display the correct address type in the\nnew column content. Update the address book page to set the new column resize mode\nand to display the new column only when the receiving tab is enabled\nso it must be hidden on the sending tab.\n\nUpdate AddressBookFilterProxyModel::filterAcceptsRow so the filter works also\non the new addressType column content. Also the searLineEdit greyed text\nreflects that the new field/ column addressType will be included in the search/\nfilter by but only when the receiving tab is enabled.\n\nAdd the new column to the export feature.",
+      "committer": {
+        "name": "pablomartin4btc",
+        "email": "pablomartin4btc@gmail.com",
+        "date": "2023-09-12T22:46:07Z"
+      },
+      "author": {
+        "name": "pablomartin4btc",
+        "email": "pablomartin4btc@gmail.com",
+        "date": "2023-09-09T19:44:06Z"
+      },
+      "sha": "95d5b3c65cc6be67eb270e5ddd5e8abf068fd0f3"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDk4NjNmZTJhNDk1ODc2Y2QzNmE2MjU0NTQ2OGJlM2I4NzY4MGRmMTI",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/9863fe2a495876cd36a62545468be3b87680df12",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/9863fe2a495876cd36a62545468be3b87680df12",
+      "tree": {
+        "sha": "b2b26a02093dab1173b98f838706230154f7abb1",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/b2b26a02093dab1173b98f838706230154f7abb1"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/95d5b3c65cc6be67eb270e5ddd5e8abf068fd0f3",
+          "sha": "95d5b3c65cc6be67eb270e5ddd5e8abf068fd0f3",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/95d5b3c65cc6be67eb270e5ddd5e8abf068fd0f3"
+        }
+      ],
+      "message": "gui: Extend address book filter for nested filtering\n\nExtend AddressBookFilterProxyModel to allow using nested filters to be applied\non top of it. If future needs arise for similar filters outside the address book page,\nthe code could be easily refactored and moved in a new subclass of QSortFilterProxyModel,\nperhaps with limits on nested levels.\n\nFor safety and performance reasons, the code of the filter proxy model class declaration\n(in addressbookpage.h) and its instance creation were updated by aligning it with\nTransactionFilterProxy in overviewpage.h as this addresses situations of unexpected crashes,\nsuch as segfault on closing the app, double free or corruption, or stack smashing detection.",
+      "committer": {
+        "name": "pablomartin4btc",
+        "email": "pablomartin4btc@gmail.com",
+        "date": "2023-09-12T22:46:25Z"
+      },
+      "author": {
+        "name": "pablomartin4btc",
+        "email": "pablomartin4btc@gmail.com",
+        "date": "2023-09-10T02:18:03Z"
+      },
+      "sha": "9863fe2a495876cd36a62545468be3b87680df12"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDRiMDBjZGM2ZmQ5MTA5YTZiMTA5NGI5MzZlMTc1ZTk5MDkxNTU4NTc",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/4b00cdc6fd9109a6b1094b936e175e9909155857",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/4b00cdc6fd9109a6b1094b936e175e9909155857",
+      "tree": {
+        "sha": "ceccfb937d94623c268a0ed9ed882b07a6503ecc",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/ceccfb937d94623c268a0ed9ed882b07a6503ecc"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/9863fe2a495876cd36a62545468be3b87680df12",
+          "sha": "9863fe2a495876cd36a62545468be3b87680df12",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/9863fe2a495876cd36a62545468be3b87680df12"
+        }
+      ],
+      "message": "gui: Add a combo widget to filter by address type\n\nIntroduce a label and a combobox UI widgets for address type filtering on the address book page.\nThese 2 widgets are been displayed only on the Receiving tab.\nTo ensure that the combo box selection updates the filter model correctly, an intermediary signal\n(addressTypeChanged) and a slot (handleAddressTypeChanged) were necessary due to the incompatibility\nbetween QComboBox::currentIndexChanged and QSortFilterProxyModel::setFilterFixedString.\n\nUpdate filter model to use nested filtering so when selected item changes on address type combo\nit will update the filter pattern on top of what the parent filter has already, which is lead by the\nsearchLineEdit widget and all references of the current proxyModel (eg mapToSource, mapFromSource)\nto the nested and final filter model.\n\nUse GUIUtil::AddItemsToAddressTypeCombo to populate the combo with the default output types descriptions\npassing a defined local map for the output types tooltips that will be displayed for each item,\nsimilarly to the address types combobox in receivecoinsdialog.",
+      "committer": {
+        "name": "pablomartin4btc",
+        "email": "pablomartin4btc@gmail.com",
+        "date": "2023-09-12T22:47:49Z"
+      },
+      "author": {
+        "name": "pablomartin4btc",
+        "email": "pablomartin4btc@gmail.com",
+        "date": "2023-09-10T03:18:35Z"
+      },
+      "sha": "4b00cdc6fd9109a6b1094b936e175e9909155857"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 10352627781,
+      "node_id": "HRFPE_lADOEEET9c5wl74TzwAAAAJpEJBF",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/10352627781",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-09-12T22:48:23Z"
     }
   ],
   "comments": []
