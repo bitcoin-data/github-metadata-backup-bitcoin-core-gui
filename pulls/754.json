@@ -41,7 +41,7 @@
     "body": "This PR adds a transport version (BIP324) to the peer details widget:\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/32963518/0e0b4c92-dde0-4b2e-b285-a2c69ef09efc)\r\n\r\n\r\nBased on https://github.com/bitcoin/bitcoin/pull/28331, so drafted for now.",
     "labels": [],
     "created_at": "2023-09-11T11:16:49Z",
-    "updated_at": "2023-09-13T18:23:43Z",
+    "updated_at": "2023-09-13T22:30:12Z",
     "mergeable": true,
     "mergeable_state": "clean",
     "merge_commit_sha": "9b89c0455b553f7d07d61b4742d3cf44bd80fddb",
@@ -282,7 +282,7 @@
         "watchers_count": 508,
         "size": 151930,
         "default_branch": "master",
-        "open_issues_count": 161,
+        "open_issues_count": 162,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -325,7 +325,7 @@
     "changed_files": 22,
     "commits": 10,
     "review_comments": 0,
-    "comments": 4
+    "comments": 5
   },
   "events": [
     {
@@ -356,9 +356,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2023-09-11T11:16:52Z",
-      "updated_at": "2023-09-13T18:23:43Z",
+      "updated_at": "2023-09-13T22:30:12Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [jarolrod](https://github.com/bitcoin-core/gui/pull/754#pullrequestreview-1621253578) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#bitcoin/bitcoin/28463](https://github.com/bitcoin/bitcoin/pull/28463) (p2p: Increase inbound capacity for block-relay only connections by mzumsande)\n* [#bitcoin/bitcoin/28452](https://github.com/bitcoin/bitcoin/pull/28452) (Do not use std::vector = {} to release memory by sipa)\n* [#bitcoin/bitcoin/28451](https://github.com/bitcoin/bitcoin/pull/28451) (Remove unused SER_DISK, SER_NETWORK, SER_GETHASH by MarcoFalke)\n* [#bitcoin/bitcoin/28423](https://github.com/bitcoin/bitcoin/pull/28423) (kernel: Remove protocol.h/netaddress.h/compat.h from kernel headers by TheCharlatan)\n* [#bitcoin/bitcoin/28248](https://github.com/bitcoin/bitcoin/pull/28248) (p2p: peer connection bug fixes, logic and logging improvements by jonatack)\n* [#bitcoin/bitcoin/28155](https://github.com/bitcoin/bitcoin/pull/28155) (Improves addnode / m_added_nodes logic by sr-gi)\n* [#bitcoin/bitcoin/27114](https://github.com/bitcoin/bitcoin/pull/27114) (p2p: Allow whitelisting outgoing connections by brunoerg)\n* [#bitcoin/bitcoin/27052](https://github.com/bitcoin/bitcoin/pull/27052) (test: rpc: add last block announcement time to getpeerinfo result by LarryRuane)\n* [#bitcoin/bitcoin/26863](https://github.com/bitcoin/bitcoin/pull/26863) (test: merge banning test from p2p_disconnect_ban to rpc_setban by brunoerg)\n* [#bitcoin/bitcoin/26728](https://github.com/bitcoin/bitcoin/pull/26728) (wallet: Have the wallet store the key for automatically generated descriptors by achow101)\n* [#bitcoin/bitcoin/26621](https://github.com/bitcoin/bitcoin/pull/26621) (refactor: Continue moving application data from CNode to Peer by dergoegge)\n* [#bitcoin/bitcoin/26366](https://github.com/bitcoin/bitcoin/pull/26366) (rpc, test: `addnode` improv + add test coverage for invalid command by brunoerg)\n* [#bitcoin/bitcoin/26114](https://github.com/bitcoin/bitcoin/pull/26114) (net: Make AddrFetch connections to fixed seeds by mzumsande)\n* [#bitcoin/bitcoin/25907](https://github.com/bitcoin/bitcoin/pull/25907) (wallet: rpc to add automatically generated descriptors by achow101)\n* [#bitcoin/bitcoin/22341](https://github.com/bitcoin/bitcoin/pull/22341) (rpc: add getxpub by Sjors)\n* [#bitcoin/bitcoin/20892](https://github.com/bitcoin/bitcoin/pull/20892) (tests: Run both descriptor and legacy tests within a single test invocation by achow101)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [jarolrod](https://github.com/bitcoin-core/gui/pull/754#pullrequestreview-1621253578), [jonatack](https://github.com/bitcoin-core/gui/pull/754#issuecomment-1718397320) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#bitcoin/bitcoin/28463](https://github.com/bitcoin/bitcoin/pull/28463) (p2p: Increase inbound capacity for block-relay only connections by mzumsande)\n* [#bitcoin/bitcoin/28452](https://github.com/bitcoin/bitcoin/pull/28452) (Do not use std::vector = {} to release memory by sipa)\n* [#bitcoin/bitcoin/28451](https://github.com/bitcoin/bitcoin/pull/28451) (Remove unused SER_DISK, SER_NETWORK, SER_GETHASH by MarcoFalke)\n* [#bitcoin/bitcoin/28423](https://github.com/bitcoin/bitcoin/pull/28423) (kernel: Remove protocol.h/netaddress.h/compat.h from kernel headers by TheCharlatan)\n* [#bitcoin/bitcoin/28248](https://github.com/bitcoin/bitcoin/pull/28248) (p2p: peer connection bug fixes, logic and logging improvements by jonatack)\n* [#bitcoin/bitcoin/28155](https://github.com/bitcoin/bitcoin/pull/28155) (Improves addnode / m_added_nodes logic by sr-gi)\n* [#bitcoin/bitcoin/27114](https://github.com/bitcoin/bitcoin/pull/27114) (p2p: Allow whitelisting outgoing connections by brunoerg)\n* [#bitcoin/bitcoin/27052](https://github.com/bitcoin/bitcoin/pull/27052) (test: rpc: add last block announcement time to getpeerinfo result by LarryRuane)\n* [#bitcoin/bitcoin/26863](https://github.com/bitcoin/bitcoin/pull/26863) (test: merge banning test from p2p_disconnect_ban to rpc_setban by brunoerg)\n* [#bitcoin/bitcoin/26728](https://github.com/bitcoin/bitcoin/pull/26728) (wallet: Have the wallet store the key for automatically generated descriptors by achow101)\n* [#bitcoin/bitcoin/26621](https://github.com/bitcoin/bitcoin/pull/26621) (refactor: Continue moving application data from CNode to Peer by dergoegge)\n* [#bitcoin/bitcoin/26366](https://github.com/bitcoin/bitcoin/pull/26366) (rpc, test: `addnode` improv + add test coverage for invalid command by brunoerg)\n* [#bitcoin/bitcoin/26114](https://github.com/bitcoin/bitcoin/pull/26114) (net: Make AddrFetch connections to fixed seeds by mzumsande)\n* [#bitcoin/bitcoin/25907](https://github.com/bitcoin/bitcoin/pull/25907) (wallet: rpc to add automatically generated descriptors by achow101)\n* [#bitcoin/bitcoin/22341](https://github.com/bitcoin/bitcoin/pull/22341) (rpc: add getxpub by Sjors)\n* [#bitcoin/bitcoin/20892](https://github.com/bitcoin/bitcoin/pull/20892) (tests: Run both descriptor and legacy tests within a single test invocation by achow101)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -459,7 +459,7 @@
           "assignees": [],
           "author_association": "MEMBER",
           "locked": false,
-          "comments": 9,
+          "comments": 13,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/28331",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/28331",
@@ -467,7 +467,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/28331.patch"
           },
           "created_at": "2023-08-24T00:25:16Z",
-          "updated_at": "2023-09-13T18:41:50Z"
+          "updated_at": "2023-09-13T22:43:39Z"
         },
         "type": "issue"
       }
@@ -1160,7 +1160,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/28423.patch"
           },
           "created_at": "2023-09-06T19:58:47Z",
-          "updated_at": "2023-09-13T14:36:47Z"
+          "updated_at": "2023-09-13T22:44:55Z"
         },
         "type": "issue"
       }
@@ -1682,7 +1682,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/27052.patch"
           },
           "created_at": "2023-02-06T18:32:56Z",
-          "updated_at": "2023-09-13T15:20:46Z"
+          "updated_at": "2023-09-13T20:28:04Z"
         },
         "type": "issue"
       }
@@ -1862,7 +1862,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/26728.patch"
           },
           "created_at": "2022-12-19T22:31:05Z",
-          "updated_at": "2023-09-12T13:04:24Z"
+          "updated_at": "2023-09-13T20:39:19Z"
         },
         "type": "issue"
       }
@@ -2213,7 +2213,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/25907.patch"
           },
           "created_at": "2022-08-22T23:17:45Z",
-          "updated_at": "2023-09-11T23:32:09Z"
+          "updated_at": "2023-09-13T21:02:08Z"
         },
         "type": "issue"
       }
@@ -2311,7 +2311,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/22341.patch"
           },
           "created_at": "2021-06-25T15:12:03Z",
-          "updated_at": "2023-09-12T22:27:39Z"
+          "updated_at": "2023-09-13T21:19:32Z"
         },
         "type": "issue"
       }
@@ -2401,7 +2401,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/20892.patch"
           },
           "created_at": "2021-01-09T03:50:55Z",
-          "updated_at": "2023-09-11T23:53:32Z"
+          "updated_at": "2023-09-13T21:24:59Z"
         },
         "type": "issue"
       }
@@ -2480,15 +2480,6 @@
               "default": false
             },
             {
-              "id": 955867938,
-              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
-              "name": "Needs rebase",
-              "description": "",
-              "color": "cccccc",
-              "default": false
-            },
-            {
               "id": 5334691551,
               "node_id": "LA_kwDOABII588AAAABPfju3w",
               "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/CI%20failed",
@@ -2501,7 +2492,7 @@
           "assignees": [],
           "author_association": "MEMBER",
           "locked": false,
-          "comments": 4,
+          "comments": 3,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/28453",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/28453",
@@ -2509,7 +2500,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/28453.patch"
           },
           "created_at": "2023-09-11T20:39:25Z",
-          "updated_at": "2023-09-13T18:53:24Z"
+          "updated_at": "2023-09-13T20:03:04Z"
         },
         "type": "issue"
       }
@@ -2875,6 +2866,60 @@
         },
         "type": "issue"
       }
+    },
+    {
+      "event": "commented",
+      "id": 1718397320,
+      "node_id": "IC_kwDOEEET9c5mbKmI",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/1718397320",
+      "actor": {
+        "login": "jonatack",
+        "id": 2415484,
+        "node_id": "MDQ6VXNlcjI0MTU0ODQ=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/2415484?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/jonatack",
+        "html_url": "https://github.com/jonatack",
+        "followers_url": "https://api.github.com/users/jonatack/followers",
+        "following_url": "https://api.github.com/users/jonatack/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/jonatack/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/jonatack/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/jonatack/subscriptions",
+        "organizations_url": "https://api.github.com/users/jonatack/orgs",
+        "repos_url": "https://api.github.com/users/jonatack/repos",
+        "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/jonatack/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-09-13T22:30:09Z",
+      "updated_at": "2023-09-13T22:30:09Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "Concept ACK.\r\n\r\nAm updating `-netinfo` as well (adding columns to the peer details, and adding `P2P_V2` to the upcoming peer services column).",
+      "user": {
+        "login": "jonatack",
+        "id": 2415484,
+        "node_id": "MDQ6VXNlcjI0MTU0ODQ=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/2415484?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/jonatack",
+        "html_url": "https://github.com/jonatack",
+        "followers_url": "https://api.github.com/users/jonatack/followers",
+        "following_url": "https://api.github.com/users/jonatack/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/jonatack/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/jonatack/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/jonatack/subscriptions",
+        "organizations_url": "https://api.github.com/users/jonatack/orgs",
+        "repos_url": "https://api.github.com/users/jonatack/repos",
+        "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/jonatack/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/754#issuecomment-1718397320",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/754"
     }
   ],
   "comments": []
