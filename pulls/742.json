@@ -41,10 +41,10 @@
     "body": "Fixes #741 \r\n\r\nStarting bitcoin-qt with non-hyphen (\"-\") arguments causes it to silently ignore any later valid options. For instance, invoking `bitcoin-qt -server=1 foo -regtest` on a fresh install will run `mainnet` instead of `regtest`.\r\n\r\nThis change makes the client exit with an error message if any such \"loose\" arguments are encountered. This mirrors how `bitcoind` handles it:\r\n\r\nhttps://github.com/bitcoin/bitcoin/blob/c6287faae4c0e705a9258a340dfcf548906f12af/src/bitcoind.cpp#L127-L132\r\n\r\nHowever, BIP-21 `bitcoin:` payment URIs are still allowed, but only if they're not followed by any additional options.\r\n\r\n",
     "labels": [],
     "created_at": "2023-06-29T16:37:50Z",
-    "updated_at": "2023-09-15T03:52:21Z",
+    "updated_at": "2023-09-15T18:39:58Z",
     "mergeable": true,
     "mergeable_state": "clean",
-    "merge_commit_sha": "63cdc42936e11ea2411805a46b9bfc26a0cfe6d7",
+    "merge_commit_sha": "c732528661fd03efe8b94b70f9420a31459fd775",
     "assignees": [],
     "requested_reviewers": [
       {
@@ -301,7 +301,7 @@
         "forks_count": 277,
         "stargazers_count": 508,
         "watchers_count": 508,
-        "size": 151990,
+        "size": 151819,
         "default_branch": "master",
         "open_issues_count": 163,
         "is_template": false,
@@ -314,7 +314,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-09-14T20:08:44Z",
+        "pushed_at": "2023-09-15T13:27:26Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2023-09-12T12:06:40Z",
         "license": {
@@ -345,7 +345,7 @@
     "deletions": 0,
     "changed_files": 2,
     "commits": 1,
-    "review_comments": 0,
+    "review_comments": 2,
     "comments": 8
   },
   "events": [
@@ -1414,7 +1414,182 @@
       "submitted_at": "2023-09-15T03:51:44Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/742"
+    },
+    {
+      "event": "reviewed",
+      "id": 1629524133,
+      "node_id": "PRR_kwDOEEET9c5hIJCl",
+      "url": null,
+      "actor": null,
+      "commit_id": "51e4dc49f5335b5bae6c14606d1cc653a08a96b1",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "MEMBER",
+      "user": {
+        "login": "luke-jr",
+        "id": 1095675,
+        "node_id": "MDQ6VXNlcjEwOTU2NzU=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1095675?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/luke-jr",
+        "html_url": "https://github.com/luke-jr",
+        "followers_url": "https://api.github.com/users/luke-jr/followers",
+        "following_url": "https://api.github.com/users/luke-jr/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/luke-jr/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/luke-jr/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/luke-jr/subscriptions",
+        "organizations_url": "https://api.github.com/users/luke-jr/orgs",
+        "repos_url": "https://api.github.com/users/luke-jr/repos",
+        "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/luke-jr/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/742#pullrequestreview-1629524133",
+      "submitted_at": "2023-09-15T18:37:39Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/742"
+    },
+    {
+      "event": "reviewed",
+      "id": 1629527053,
+      "node_id": "PRR_kwDOEEET9c5hIJwN",
+      "url": null,
+      "actor": null,
+      "commit_id": "51e4dc49f5335b5bae6c14606d1cc653a08a96b1",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "MEMBER",
+      "user": {
+        "login": "luke-jr",
+        "id": 1095675,
+        "node_id": "MDQ6VXNlcjEwOTU2NzU=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1095675?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/luke-jr",
+        "html_url": "https://github.com/luke-jr",
+        "followers_url": "https://api.github.com/users/luke-jr/followers",
+        "following_url": "https://api.github.com/users/luke-jr/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/luke-jr/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/luke-jr/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/luke-jr/subscriptions",
+        "organizations_url": "https://api.github.com/users/luke-jr/orgs",
+        "repos_url": "https://api.github.com/users/luke-jr/repos",
+        "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/luke-jr/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/742#pullrequestreview-1629527053",
+      "submitted_at": "2023-09-15T18:39:58Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/742"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1327656056",
+      "pull_request_review_id": 1629524133,
+      "id": 1327656056,
+      "node_id": "PRRC_kwDOEEET9c5PImx4",
+      "diff_hunk": "@@ -543,6 +543,34 @@ int GuiMain(int argc, char* argv[])\n         return EXIT_FAILURE;\n     }\n \n+    // Error out when loose non-argument tokens are encountered on command line\n+    // However, allow BIP-21 URIs only if no options follow\n+    bool payment_server_token_seen = false;\n+    for (int i = 1; i < argc; i++) {\n+        QString arg(argv[i]);\n+        bool invalid_token = !arg.startsWith(\"-\");\n+#ifdef ENABLE_WALLET\n+        if (arg.startsWith(BITCOIN_IPC_PREFIX, Qt::CaseInsensitive)) {\n+            invalid_token &= false;\n+            payment_server_token_seen = true;\n+        }\n+#endif\n+        if (payment_server_token_seen && arg.startsWith(\"-\")) {\n+            InitError(Untranslated(strprintf(\"Options ('%s') cannot follow a BIP-21 payment URI\", argv[i])));\n+            QMessageBox::critical(nullptr, PACKAGE_NAME,\n+                                  // message cannot be translated because translations have not been initialized",
+      "path": "src/qt/bitcoin.cpp",
+      "position": 19,
+      "original_position": 19,
+      "commit_id": "51e4dc49f5335b5bae6c14606d1cc653a08a96b1",
+      "original_commit_id": "51e4dc49f5335b5bae6c14606d1cc653a08a96b1",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "luke-jr",
+        "id": 1095675,
+        "node_id": "MDQ6VXNlcjEwOTU2NzU=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1095675?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/luke-jr",
+        "html_url": "https://github.com/luke-jr",
+        "followers_url": "https://api.github.com/users/luke-jr/followers",
+        "following_url": "https://api.github.com/users/luke-jr/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/luke-jr/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/luke-jr/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/luke-jr/subscriptions",
+        "organizations_url": "https://api.github.com/users/luke-jr/orgs",
+        "repos_url": "https://api.github.com/users/luke-jr/repos",
+        "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/luke-jr/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "Should we just initialize them in this codepath?",
+      "created_at": "2023-09-15T18:37:39Z",
+      "updated_at": "2023-09-15T18:37:39Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/742#discussion_r1327656056",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1327656056"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/742"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 561,
+      "original_line": 561,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1327658043",
+      "pull_request_review_id": 1629527053,
+      "id": 1327658043,
+      "node_id": "PRRC_kwDOEEET9c5PInQ7",
+      "diff_hunk": "@@ -543,6 +543,34 @@ int GuiMain(int argc, char* argv[])\n         return EXIT_FAILURE;\n     }\n \n+    // Error out when loose non-argument tokens are encountered on command line\n+    // However, allow BIP-21 URIs only if no options follow\n+    bool payment_server_token_seen = false;\n+    for (int i = 1; i < argc; i++) {\n+        QString arg(argv[i]);\n+        bool invalid_token = !arg.startsWith(\"-\");\n+#ifdef ENABLE_WALLET\n+        if (arg.startsWith(BITCOIN_IPC_PREFIX, Qt::CaseInsensitive)) {\n+            invalid_token &= false;\n+            payment_server_token_seen = true;\n+        }\n+#endif\n+        if (payment_server_token_seen && arg.startsWith(\"-\")) {\n+            InitError(Untranslated(strprintf(\"Options ('%s') cannot follow a BIP-21 payment URI\", argv[i])));",
+      "path": "src/qt/bitcoin.cpp",
+      "position": 17,
+      "original_position": 17,
+      "commit_id": "51e4dc49f5335b5bae6c14606d1cc653a08a96b1",
+      "original_commit_id": "51e4dc49f5335b5bae6c14606d1cc653a08a96b1",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "luke-jr",
+        "id": 1095675,
+        "node_id": "MDQ6VXNlcjEwOTU2NzU=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1095675?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/luke-jr",
+        "html_url": "https://github.com/luke-jr",
+        "followers_url": "https://api.github.com/users/luke-jr/followers",
+        "following_url": "https://api.github.com/users/luke-jr/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/luke-jr/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/luke-jr/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/luke-jr/subscriptions",
+        "organizations_url": "https://api.github.com/users/luke-jr/orgs",
+        "repos_url": "https://api.github.com/users/luke-jr/repos",
+        "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/luke-jr/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "```suggestion\r\n            InitError(Untranslated(strprintf(\"Options (eg, '%s') cannot follow a URI\", argv[i])));\r\n```",
+      "created_at": "2023-09-15T18:39:58Z",
+      "updated_at": "2023-09-15T18:39:58Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/742#discussion_r1327658043",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1327658043"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/742"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 559,
+      "original_line": 559,
+      "side": "RIGHT"
+    }
+  ]
 }
