@@ -59,7 +59,7 @@
       }
     ],
     "created_at": "2022-09-06T17:51:22Z",
-    "updated_at": "2023-09-16T19:28:48Z",
+    "updated_at": "2023-09-16T22:58:00Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merge_commit_sha": "46ffbe401b9e8adaff723a826e316b9fabd767eb",
@@ -341,7 +341,7 @@
     "deletions": 32,
     "changed_files": 6,
     "commits": 4,
-    "review_comments": 1,
+    "review_comments": 2,
     "comments": 9
   },
   "events": [
@@ -1650,7 +1650,7 @@
       "commit_url": null,
       "created_at": null,
       "author_association": "CONTRIBUTOR",
-      "body": "Tested 8e428cc1188568aaeeaeb8f1f4498ae5b738a5e2 on Ubuntu 22.04.\r\n\r\nDeleted `TransactionViewHeaderState` row manually from `qt` config file as requested in the description by the author (`.config/Bitcoin/Bitcoin-Qt-regtest.conf`), instead of using `-resetguisettings` as I didn't want to lose the rest.\r\n\r\nAs @hebasto posted above, \"Amount\" column goes out of scope when I resize to the right and then to the left (and the same happens with the \"Requested payments history\" in the receivecoinsdialog).\r\n![Peek 2023-09-16 14-39](https://github.com/bitcoin-core/gui/assets/110166421/739f08a8-2946-467d-a1a2-8bb9e6b9dd95)\r\n\r\nSomething I noticed when I resize the Label column enough to fit the most of the address (when are not labeled) is that with this PR changes, when the  \"Amount\" column is correctly resized and gets fit in the table view, it's changing the Label column size that I set manually, so that's a bit  contradictory, we let the user change something and then we correct the user:\r\n![Peek 2023-09-16 15-31](https://github.com/bitcoin-core/gui/assets/110166421/873a7f9c-4d65-44b1-aaca-97bbe79d9514)\r\n\r\nSo, in terms of the 2 issues detected and explained above I prefer the current state of the table view, in `master` we also have the horizontal scrollbar at the bottom which has disappear with the changes of this PR.\r\n\r\nGoing thru all the PRs and behind, is the actual issue that the \"last column itself cannot be resized\" (in the case of the transaction view/ table would be the \"Amount\" column)? In this case I see the issue is still in `master` (user can make it wider but not shrinking it) and this PR doesn't fix it, the PR deals more with the resizing of the table but user can't make the last column shorter or larger (last column is set as \"interactive\" but it's fixed for the user perspective). I see where this is achieved is on the Peers table, user can set the last column \"User Agent\" width freely.\r\n\r\nPerhaps the description of the PR could be clearer in terms of what the proper issue is and just mention the history of tries as a reference. This is original issue in the bitcoin repo [#2862](https://github.com/bitcoin/bitcoin/issues/2862)).\r\n",
+      "body": "Tested 8e428cc1188568aaeeaeb8f1f4498ae5b738a5e2 on Ubuntu 22.04.\r\n\r\nDeleted `TransactionViewHeaderState` row manually from `qt` config file as requested in the description by the author (`.config/Bitcoin/Bitcoin-Qt-regtest.conf`), instead of using `-resetguisettings` as I didn't want to lose the rest.\r\n\r\nAs @hebasto posted above, \"Amount\" column goes out of scope when I resize to the right and then to the left (and the same happens with the \"Requested payments history\" in the receivecoinsdialog).\r\n![Peek 2023-09-16 14-39](https://github.com/bitcoin-core/gui/assets/110166421/739f08a8-2946-467d-a1a2-8bb9e6b9dd95)\r\n\r\nSomething I noticed when I resize the Label column enough to fit the most of the address (when are not labeled) is that with this PR changes, when the  \"Amount\" column is correctly resized and gets fit in the table view, it's changing the Label column size that I set manually, so that's a bit  contradictory, we let the user change something and then we correct the user:\r\n![Peek 2023-09-16 15-31](https://github.com/bitcoin-core/gui/assets/110166421/873a7f9c-4d65-44b1-aaca-97bbe79d9514)\r\n\r\nSo, in terms of the 2 issues detected and explained above I prefer the current state of the table view, in `master` we also have the horizontal scrollbar at the bottom which has disappear with the changes of this PR.\r\n\r\nGoing thru all the PRs and beyond, is the actual issue that the \"last column itself cannot be resized\" (in the case of the transaction view/ table would be the \"Amount\" column)? In this case I see the issue is still in `master` (user can make it wider but not shrink it - this is because of `setStretchLastSection(true)`) and this PR doesn't fix it, the PR deals more with the resizing of the table but user can't make the last column shorter or larger (last column is set as \"interactive\" but it's fixed for the user perspective). I see where this is achieved is on the Peers table (`setStretchLastSection` is not called so it's `false` by default), user can set the last column \"User Agent\" width freely.\r\n\r\nI can verify that there's another issue in `master`, and this PR solves, which is the fact that the default widths are not set properly the first time `qt` runs on a machine (or settings of the transaction view are missing from the qt config file) and user can see the 2nd. screenshot from the top description. As it's mentioned in the description as well \"`setModel` resets column widths\", can't we not move the settings state restore/ set column widths defaults at the very end of it?.\r\n\r\nPerhaps the description of the PR could be clearer in terms of what the proper issue is and just mention the history of tries as a reference. This is original issue in the bitcoin repo: [#2862](https://github.com/bitcoin/bitcoin/issues/2862).",
       "user": {
         "login": "pablomartin4btc",
         "id": 110166421,
@@ -1673,6 +1673,41 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/662#pullrequestreview-1630002233",
       "submitted_at": "2023-09-16T19:28:48Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/662"
+    },
+    {
+      "event": "reviewed",
+      "id": 1630017561,
+      "node_id": "PRR_kwDOEEET9c5hKBgZ",
+      "url": null,
+      "actor": null,
+      "commit_id": "8e428cc1188568aaeeaeb8f1f4498ae5b738a5e2",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "CONTRIBUTOR",
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/662#pullrequestreview-1630017561",
+      "submitted_at": "2023-09-16T22:12:43Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/662"
     }
@@ -1728,6 +1763,58 @@
       "start_side": null,
       "line": 586,
       "original_line": 586,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1328014905",
+      "pull_request_review_id": 1630017561,
+      "id": 1328014905,
+      "node_id": "PRRC_kwDOEEET9c5PJ-Y5",
+      "diff_hunk": "@@ -499,6 +499,120 @@ bool LabelOutOfFocusEventFilter::eventFilter(QObject* watched, QEvent* event)\n     return QObject::eventFilter(watched, event);\n }\n \n+void TableViewLastColumnResizingFixer::connectViewHeadersSignals()\n+{\n+    connect(tableView->horizontalHeader(), &QHeaderView::sectionResized, this, &TableViewLastColumnResizingFixer::on_sectionResized);\n+    connect(tableView->horizontalHeader(), &QHeaderView::geometriesChanged, this, &TableViewLastColumnResizingFixer::on_geometriesChanged);\n+}\n+\n+// We need to disconnect these while handling the resize events, otherwise we can enter infinite loops.\n+void TableViewLastColumnResizingFixer::disconnectViewHeadersSignals()\n+{\n+    disconnect(tableView->horizontalHeader(), &QHeaderView::sectionResized, this, &TableViewLastColumnResizingFixer::on_sectionResized);\n+    disconnect(tableView->horizontalHeader(), &QHeaderView::geometriesChanged, this, &TableViewLastColumnResizingFixer::on_geometriesChanged);\n+}\n+\n+// Setup the resize mode, handles compatibility for Qt5 and below as the method signatures changed.\n+// Refactored here for readability.\n+void TableViewLastColumnResizingFixer::setViewHeaderResizeMode(int logicalIndex, QHeaderView::ResizeMode resizeMode)\n+{\n+    tableView->horizontalHeader()->setSectionResizeMode(logicalIndex, resizeMode);\n+}\n+\n+void TableViewLastColumnResizingFixer::resizeColumn(int nColumnIndex, int width)\n+{\n+    tableView->setColumnWidth(nColumnIndex, width);\n+    tableView->horizontalHeader()->resizeSection(nColumnIndex, width);\n+}\n+\n+int TableViewLastColumnResizingFixer::getColumnsWidth()\n+{\n+    int nColumnsWidthSum = 0;\n+    for (int i = 0; i < columnCount; i++)\n+    {\n+        nColumnsWidthSum += tableView->horizontalHeader()->sectionSize(i);\n+    }\n+    return nColumnsWidthSum;\n+}\n+\n+int TableViewLastColumnResizingFixer::getAvailableWidthForColumn(int column)\n+{\n+    int nResult = lastColumnMinimumWidth;\n+    int nTableWidth = tableView->horizontalHeader()->width();\n+\n+    if (nTableWidth > 0)\n+    {\n+        int nOtherColsWidth = getColumnsWidth() - tableView->horizontalHeader()->sectionSize(column);\n+        nResult = std::max(nResult, nTableWidth - nOtherColsWidth);\n+    }\n+\n+    return nResult;\n+}\n+\n+// Make sure we don't make the columns wider than the table's viewport width.\n+void TableViewLastColumnResizingFixer::adjustTableColumnsWidth()\n+{\n+    disconnectViewHeadersSignals();\n+    resizeColumn(lastColumnIndex, getAvailableWidthForColumn(lastColumnIndex));\n+    connectViewHeadersSignals();\n+\n+    int nTableWidth = tableView->horizontalHeader()->width();\n+    int nColsWidth = getColumnsWidth();\n+    if (nColsWidth > nTableWidth)\n+    {\n+        resizeColumn(secondToLastColumnIndex,getAvailableWidthForColumn(secondToLastColumnIndex));\n+    }\n+}\n+\n+// Make column use all the space available, useful during window resizing.\n+void TableViewLastColumnResizingFixer::stretchColumnWidth(int column)\n+{\n+    disconnectViewHeadersSignals();\n+    resizeColumn(column, getAvailableWidthForColumn(column));\n+    connectViewHeadersSignals();\n+}\n+\n+// When a section is resized this is a slot-proxy for ajustAmountColumnWidth().\n+void TableViewLastColumnResizingFixer::on_sectionResized(int logicalIndex, int oldSize, int newSize)\n+{\n+    adjustTableColumnsWidth();\n+    int remainingWidth = getAvailableWidthForColumn(logicalIndex);\n+    if (newSize > remainingWidth)\n+    {\n+       resizeColumn(logicalIndex, remainingWidth);\n+    }\n+}\n+\n+// When the table's geometry is ready, we manually perform the stretch of the \"Message\" column,\n+// as the \"Stretch\" resize mode does not allow for interactive resizing.\n+void TableViewLastColumnResizingFixer::on_geometriesChanged()\n+{\n+    if ((getColumnsWidth() - this->tableView->horizontalHeader()->width()) != 0)\n+    {\n+        disconnectViewHeadersSignals();\n+        resizeColumn(secondToLastColumnIndex, getAvailableWidthForColumn(secondToLastColumnIndex));\n+        connectViewHeadersSignals();\n+    }\n+}\n+\n+/**\n+ * Initializes all internal variables and prepares the\n+ * the resize modes of the last 2 columns of the table and\n+ */\n+TableViewLastColumnResizingFixer::TableViewLastColumnResizingFixer(QTableView* table, int lastColMinimumWidth, int allColsMinimumWidth, QObject *parent) :\n+    QObject(parent),\n+    tableView(table),\n+    lastColumnMinimumWidth(lastColMinimumWidth),\n+    allColumnsMinimumWidth(allColsMinimumWidth)\n+{\n+    columnCount = tableView->horizontalHeader()->count();\n+    lastColumnIndex = columnCount - 1;\n+    secondToLastColumnIndex = columnCount - 2;\n+    tableView->horizontalHeader()->setMinimumSectionSize(allColumnsMinimumWidth);\n+    setViewHeaderResizeMode(secondToLastColumnIndex, QHeaderView::Interactive);\n+    setViewHeaderResizeMode(lastColumnIndex, QHeaderView::Interactive);",
+      "path": "src/qt/guiutil.cpp",
+      "position": 115,
+      "original_position": 115,
+      "commit_id": "8e428cc1188568aaeeaeb8f1f4498ae5b738a5e2",
+      "original_commit_id": "8e428cc1188568aaeeaeb8f1f4498ae5b738a5e2",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "This line doesn't make any difference, user still can't change the last column size manually.\r\n```suggestion\r\n```",
+      "created_at": "2023-09-16T22:12:43Z",
+      "updated_at": "2023-09-16T22:12:43Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/662#discussion_r1328014905",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1328014905"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/662"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 613,
+      "original_line": 613,
       "side": "RIGHT"
     }
   ]
