@@ -51,10 +51,10 @@
       }
     ],
     "created_at": "2022-12-05T14:30:50Z",
-    "updated_at": "2023-09-15T02:25:07Z",
+    "updated_at": "2023-09-20T03:13:18Z",
     "mergeable": true,
     "mergeable_state": "clean",
-    "merge_commit_sha": "f63c00355e44166244dd2e34f69f11a7ead904e0",
+    "merge_commit_sha": "e9a2caafcf9033526226944eb84692ed142a9fe7",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -290,9 +290,9 @@
         "forks_count": 277,
         "stargazers_count": 508,
         "watchers_count": 508,
-        "size": 151990,
+        "size": 152005,
         "default_branch": "master",
-        "open_issues_count": 163,
+        "open_issues_count": 164,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -303,7 +303,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-09-14T20:08:44Z",
+        "pushed_at": "2023-09-19T17:11:18Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2023-09-12T12:06:40Z",
         "license": {
@@ -366,9 +366,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2022-12-05T14:30:53Z",
-      "updated_at": "2023-06-30T08:28:43Z",
+      "updated_at": "2023-09-20T03:13:18Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [hebasto](https://github.com/bitcoin-core/gui/pull/684#issuecomment-1339738773) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#662](https://github.com/bitcoin-core/gui/pull/662) (Fix transaction view/table by luke-jr)\n* [#368](https://github.com/bitcoin-core/gui/pull/368) (Bugfix: When restoring table columns, still set their minimum column width and stretch on last section by luke-jr)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [hebasto](https://github.com/bitcoin-core/gui/pull/684#issuecomment-1339738773), [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/684#pullrequestreview-1634509218) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#662](https://github.com/bitcoin-core/gui/pull/662) (Fix transaction view/table by luke-jr)\n* [#368](https://github.com/bitcoin-core/gui/pull/368) (Bugfix: When restoring table columns, still set their minimum column width and stretch on last section by luke-jr)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -515,7 +515,7 @@
             "patch_url": "https://github.com/bitcoin-core/gui/pull/662.patch"
           },
           "created_at": "2022-09-06T17:51:22Z",
-          "updated_at": "2023-09-06T08:08:35Z"
+          "updated_at": "2023-09-16T22:58:00Z"
         },
         "type": "issue"
       }
@@ -1492,6 +1492,42 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/684#issuecomment-1720396926",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/684"
+    },
+    {
+      "event": "reviewed",
+      "id": 1634509218,
+      "node_id": "PRR_kwDOEEET9c5hbKGi",
+      "url": null,
+      "actor": null,
+      "commit_id": "a6f567590b73986fde83d8face6827e0801a2e8c",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "CONTRIBUTOR",
+      "body": "Concept ACK and tACK\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/8d4dced8-3ddd-47f3-81d9-fca1fca7985f)\r\n\r\nI agree with the improvement/ fix of non-contiguous multi-select behavior, it's something that a user have in most apps. \r\n\r\nThe grayed-out of the context menu items behavior is something that's already in `master` and it's not part of this PR, just to avoid any confusions.\r\n> The individual context actions are enabled only if all selected items have data for that category. For example, if only two of the three selected items have a \"label\", then the \"Copy labels\" context menu action is disabled.\r\n\r\nFor this specific case, I'd add another improvement/ fix which would be a tool-tip indicating why the action is disabled:\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/79f7a48d-5cc9-49d0-b08d-ddab22097276)\r\n\r\n\r\nSame for the following statement, it's currently in `master`, since those fields are not optional when a user creates a payment/ new address.\r\n> The \"Copy URIs\" and \"Copy addresses\" actions will always be active.\r\n\r\n\r\nI agree with @luke-jr in the split of the code into x commits, I took a quick look at his proposal. I like more the fact that the text of the action changes to its plural form when multi-select is performed as the author of the PR propose here.\r\n\r\nI'd also add another feature, if possible, or maybe on a follow-up. that would be to add another context menu action to \"Select All\", and maybe just \"Copy\" with a tool-tip indicating that \"All fields of the selected row will be copied\". But as @hebasto mentioned above, perhaps there's no real use case for what I'm proposing here.",
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/684#pullrequestreview-1634509218",
+      "submitted_at": "2023-09-20T03:13:15Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/684"
     }
   ],
   "comments": []
