@@ -17,7 +17,7 @@
     "state": "open",
     "locked": false,
     "maintainer_can_modify": true,
-    "title": "gui: macOS, do not process actions during shutdown",
+    "title": "macOS, do not process actions during shutdown",
     "user": {
       "login": "furszy",
       "id": 5377650,
@@ -41,10 +41,10 @@
     "body": "As the 'QMenuBar' is created without a parent window in MacOS, the app crashes when the user presses the shutdown button and, right after it, triggers any action in the menu bar.\r\n\r\nThis happens because the QMenuBar is manually deleted in the BitcoinGUI destructor but the events attached to it children actions are not disconnected, so QActions events such us the 'QMenu::aboutToShow' could try to access null pointers.\r\n\r\nInstead of guarding every single QAction pointer inside the QMenu::aboutToShow slot, or manually disconnecting all registered events in the destructor, we can check if a shutdown was requested and discard the event.\r\n\r\nThe 'node' field is a ref whose memory is held by the main application class, so it is safe to use here. Events are disconnected prior destructing the main application object.\r\n\r\nFurthermore, the 'MacDockIconHandler::dockIconClicked' signal can make the app crash during shutdown for the very same reason. The 'show()' call triggers the 'QApplication::focusWindowChanged' event, which is connected to the 'minimize_action' QAction, which is also part of the app menu bar, which could no longer exist.\r\n\r\nImportant Note:\r\nThis happened to me few times. The worst consequence was an inconsistent chain state during IBD. Which triggered a full \"replay blocks\" process on the next startup. Which was painfully slow.",
     "labels": [],
     "created_at": "2023-09-08T14:34:56Z",
-    "updated_at": "2023-09-12T20:18:38Z",
+    "updated_at": "2023-09-20T21:03:34Z",
     "mergeable": true,
-    "mergeable_state": "unstable",
-    "merge_commit_sha": "f97189921477f5ca39f0ea73dd73225362cd8f71",
+    "mergeable_state": "clean",
+    "merge_commit_sha": "97e48512b87c016c79e5c13518fd9473ec9cdc52",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -280,9 +280,9 @@
         "forks_count": 277,
         "stargazers_count": 508,
         "watchers_count": 508,
-        "size": 151897,
+        "size": 152777,
         "default_branch": "master",
-        "open_issues_count": 161,
+        "open_issues_count": 163,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -293,7 +293,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-09-12T17:37:37Z",
+        "pushed_at": "2023-09-20T21:33:01Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2023-09-12T12:06:40Z",
         "license": {
@@ -659,6 +659,39 @@
       "submitted_at": "2023-09-12T20:18:38Z",
       "state": "APPROVED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/751"
+    },
+    {
+      "event": "renamed",
+      "id": 10427735622,
+      "node_id": "RTE_lADOEEET9c5wha2_zwAAAAJtip5G",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/10427735622",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-09-20T21:03:34Z",
+      "rename": {
+        "from": "gui: macOS, do not process actions during shutdown",
+        "to": "macOS, do not process actions during shutdown"
+      }
     }
   ],
   "comments": [
