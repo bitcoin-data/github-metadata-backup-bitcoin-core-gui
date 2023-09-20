@@ -51,10 +51,10 @@
       }
     ],
     "created_at": "2023-06-13T19:06:43Z",
-    "updated_at": "2023-09-19T18:32:40Z",
+    "updated_at": "2023-09-20T18:18:23Z",
     "mergeable": true,
     "mergeable_state": "clean",
-    "merge_commit_sha": "76e764f07c50d4cf8c76888fa2466ffd2ddab611",
+    "merge_commit_sha": "e6c3d934b2880c5ae0594781deab652deb9e0948",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -289,7 +289,7 @@
         "forks_count": 277,
         "stargazers_count": 508,
         "watchers_count": 508,
-        "size": 152005,
+        "size": 152777,
         "default_branch": "master",
         "open_issues_count": 164,
         "is_template": false,
@@ -302,7 +302,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-09-19T17:11:18Z",
+        "pushed_at": "2023-09-20T17:50:55Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2023-09-12T12:06:40Z",
         "license": {
@@ -333,7 +333,7 @@
     "deletions": 1,
     "changed_files": 9,
     "commits": 3,
-    "review_comments": 17,
+    "review_comments": 19,
     "comments": 8
   },
   "events": [
@@ -365,9 +365,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2023-06-13T19:06:46Z",
-      "updated_at": "2023-09-19T18:32:40Z",
+      "updated_at": "2023-09-20T18:18:23Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| ACK | [jarolrod](https://github.com/bitcoin-core/gui/pull/738#pullrequestreview-1513684449) |\n| Concept ACK | [hebasto](https://github.com/bitcoin-core/gui/pull/738#issuecomment-1590853884), [S3RK](https://github.com/bitcoin-core/gui/pull/738#issuecomment-1596659133), [kristapsk](https://github.com/bitcoin-core/gui/pull/738#issuecomment-1597594231), [johnny9](https://github.com/bitcoin-core/gui/pull/738#pullrequestreview-1494284334), [D33r-Gee](https://github.com/bitcoin-core/gui/pull/738#pullrequestreview-1499005933) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nNo conflicts as of last run.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| ACK | [jarolrod](https://github.com/bitcoin-core/gui/pull/738#pullrequestreview-1513684449), [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/738#pullrequestreview-1635820411) |\n| Concept ACK | [hebasto](https://github.com/bitcoin-core/gui/pull/738#issuecomment-1590853884), [S3RK](https://github.com/bitcoin-core/gui/pull/738#issuecomment-1596659133), [kristapsk](https://github.com/bitcoin-core/gui/pull/738#issuecomment-1597594231), [johnny9](https://github.com/bitcoin-core/gui/pull/738#pullrequestreview-1494284334), [D33r-Gee](https://github.com/bitcoin-core/gui/pull/738#pullrequestreview-1499005933) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nNo conflicts as of last run.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -1945,6 +1945,42 @@
         "name": "CI failed",
         "color": "ededed"
       }
+    },
+    {
+      "event": "reviewed",
+      "id": 1635820411,
+      "node_id": "PRR_kwDOEEET9c5hgKN7",
+      "url": null,
+      "actor": null,
+      "commit_id": "48aae2cffeb91add75a70ac4d5075c38054452fa",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "CONTRIBUTOR",
+      "body": "tACK 48aae2cffeb91add75a70ac4d5075c38054452fa\r\n\r\nVery nice feature. \r\n\r\nThe menu option is disabled correctly if the selected wallet is not a Legacy one:\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/d9205e67-c8bc-40a4-9b5b-fe314eb0628d)\r\n\r\nI had to `./configure --with-dbd` in order to create a Legacy wallet first:\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/f9732bd4-522b-4c33-9c26-464ab5ccc0dc)\r\nNot related with this PR: Do I need to use an older version to make it \"portable\"? It's referring to the backup of a legacy wallet or the copy of the files?\r\n\r\nAnd ofc this is something we already saw in previous versions of `bitcoin-qt` before the \"Descriptor Wallet\" became checked by default and disabled so user is forced to use descriptor instead of legacy wallets:\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/2148d33b-0f45-4414-8c3b-e9671da9b81c)\r\n\r\nOnce a Legacy wallet is selected we can see the new menu option \"Migrate Wallet\":\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/751a508f-0b55-4582-be2d-00c3dcaf42c8)\r\n\r\nRegarding the long message, perhaps can be restructured a bit with some bullets points?\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/c65dfd29-57f1-420e-8229-3d01cbb3d38a)\r\n\r\nPerhaps as a follow-up we can show a proper progress being updated (we have already these open issues related with that: #651, #679):\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/380c6555-b6b8-4544-9043-4973d550fbea)\r\n\r\nIt works as expected and I was able to restore the migrated wallet successfully.\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/141abed8-9c5d-4ada-95e8-c51b1ac46b6b)\r\n\r\nOne more detail I noticed is that the migration process ends up saving a `.bak` extension file, when I wanted to try the restore of it, I had to change that extension to `.dat`, otherwise it won't be seen by the open/ restore file dialog as there's only one type of file possible in the bottom right combo-box:\r\n \r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/7ff4b22b-2989-486a-86a3-ab1ccc061a24)\r\n\r\nShould we add another type there or perhaps set the migrated file extension as `.dat` too? The filename itself is automatically defined, should we give the user the option to name it instead?\r\n",
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/738#pullrequestreview-1635820411",
+      "submitted_at": "2023-09-20T18:18:20Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/738"
     }
   ],
   "comments": [
@@ -2830,6 +2866,110 @@
       "start_side": null,
       "line": 442,
       "original_line": 442,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1331743168",
+      "pull_request_review_id": 1635820411,
+      "id": 1331743168,
+      "node_id": "PRRC_kwDOEEET9c5PYMnA",
+      "diff_hunk": "@@ -167,6 +167,9 @@ void AskPassphraseDialog::accept()\n                                              \"passphrase to avoid this issue in the future.\"));\n                 }\n             } else {\n+                if (m_passphrase_out) {\n+                    m_passphrase_out->assign(oldpass);\n+                }",
+      "path": "src/qt/askpassphrasedialog.cpp",
+      "position": 6,
+      "original_position": 6,
+      "commit_id": "48aae2cffeb91add75a70ac4d5075c38054452fa",
+      "original_commit_id": "48aae2cffeb91add75a70ac4d5075c38054452fa",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "nit:\r\n```suggestion\r\n                if (m_passphrase_out) m_passphrase_out->assign(oldpass);\r\n```",
+      "created_at": "2023-09-20T14:40:55Z",
+      "updated_at": "2023-09-20T18:18:20Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/738#discussion_r1331743168",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1331743168"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/738"
+        }
+      },
+      "start_line": 170,
+      "original_start_line": 170,
+      "start_side": "RIGHT",
+      "line": 172,
+      "original_line": 172,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1332018090",
+      "pull_request_review_id": 1635820411,
+      "id": 1332018090,
+      "node_id": "PRRC_kwDOEEET9c5PZPuq",
+      "diff_hunk": "@@ -432,3 +432,67 @@ void RestoreWalletActivity::finish()\n \n     Q_EMIT finished();\n }\n+\n+void MigrateWalletActivity::migrate(WalletModel* wallet_model)\n+{\n+    // Warn the user about migration\n+    QMessageBox box(m_parent_widget);\n+    box.setWindowTitle(tr(\"Migrate wallet\"));\n+    box.setText(tr(\"Are you sure you wish to migrate the wallet <i>%1</i>?\").arg(GUIUtil::HtmlEscape(wallet_model->getDisplayName())));\n+    box.setInformativeText(tr(\"Migrating the wallet will convert this wallet to one or more descriptor wallets. A new wallet backup will need to be made.\\n\"\n+                \"If this wallet contains any watchonly scripts, a new wallet will be created which contains those watchonly scripts.\\n\"\n+                \"If this wallet contains any solvable but not watched scripts, a different and new wallet will be created which contains those scripts.\\n\\n\"\n+                \"The migration process will create a backup of the wallet before migrating. This backup file will be named \"\n+                \"<wallet name>-<timestamp>.legacy.bak and can be found in the directory for this wallet. In the event of \"\n+                \"an incorrect migration, the backup can be restored with the \\\"Restore Wallet\\\" functionality.\"));\n+    box.setStandardButtons(QMessageBox::Yes|QMessageBox::Cancel);\n+    box.setDefaultButton(QMessageBox::Yes);\n+    if (box.exec() != QMessageBox::Yes) return;\n+\n+    // Get the passphrase if it is encrypted regardless of it is locked or unlocked. We need the passphrase itself.\n+    SecureString passphrase;\n+    WalletModel::EncryptionStatus enc_status = wallet_model->getEncryptionStatus();\n+    if (enc_status == WalletModel::EncryptionStatus::Locked || enc_status == WalletModel::EncryptionStatus::Unlocked) {\n+        AskPassphraseDialog dlg(AskPassphraseDialog::Unlock, m_parent_widget, &passphrase);\n+        dlg.setModel(wallet_model);\n+        dlg.exec();\n+    }\n+\n+    // GUI needs to remove the wallet so that it can actually be unloaded by migration\n+    const std::string name = wallet_model->wallet().getWalletName();\n+    m_wallet_controller->removeAndDeleteWallet(wallet_model);\n+\n+    showProgressDialog(tr(\"Migrate Wallet\"), tr(\"Migrating Wallet <b>%1</b>…\").arg(GUIUtil::HtmlEscape(name)));\n+\n+    QTimer::singleShot(0, worker(), [this, name, passphrase] {\n+        auto res{node().walletLoader().migrateWallet(name, passphrase)};\n+\n+        if (res) {\n+            m_success_message = tr(\"The wallet '%1' was migrated successfully.\").arg(GUIUtil::HtmlEscape(res->wallet->getWalletName()));\n+            if (res->watchonly_wallet_name) {\n+                m_success_message += tr(\" Watchonly scripts have been migrated to a new wallet named '%1'.\").arg(GUIUtil::HtmlEscape(res->watchonly_wallet_name.value()));\n+            }\n+            if (res->solvables_wallet_name) {\n+                m_success_message += tr(\" Solvable but not watched scripts have been migrated to a new wallet named '%1'.\").arg(GUIUtil::HtmlEscape(res->solvables_wallet_name.value()));\n+            }",
+      "path": "src/qt/walletcontroller.cpp",
+      "position": 46,
+      "original_position": 46,
+      "commit_id": "48aae2cffeb91add75a70ac4d5075c38054452fa",
+      "original_commit_id": "48aae2cffeb91add75a70ac4d5075c38054452fa",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "Perhaps we can refactor this piece a bit, maybe extracting the message building to other functions?",
+      "created_at": "2023-09-20T18:17:13Z",
+      "updated_at": "2023-09-20T18:18:20Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/738#discussion_r1332018090",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1332018090"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/738"
+        }
+      },
+      "start_line": 471,
+      "original_start_line": 471,
+      "start_side": "RIGHT",
+      "line": 477,
+      "original_line": 477,
       "side": "RIGHT"
     }
   ]
