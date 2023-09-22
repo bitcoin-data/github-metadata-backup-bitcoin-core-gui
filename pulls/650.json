@@ -38,7 +38,7 @@
       "type": "User",
       "site_admin": false
     },
-    "body": "This PR does a few things\r\n- Refactors importmulti and importdescripters RPC code\r\n- Adds functions to interfaces\r\n- Adds GUI's for importpubkey, importprivkey, importaddress, importmulti, and importdescriptors RPCs\r\n- Adds QT Tests for all 5 import GUI's\r\n\r\n#### Things to get this merged\r\n- [ ] get the refactor merge on https://github.com/bitcoin/bitcoin/pull/26840\r\n- [ ] after that is done I will split the GUI PR into (importpubkey, importprivkey, importaddress), importmulti, importdescriptors each PR will have its respective tests. I will rebase to remove the commit for the refactor in those PR's it is in this PR so people can test. This is for easier code review\r\n\r\nThe dialogs are located under File -> Import to Wallet...\r\nThe options vary based on what is supported with your specific wallet type.\r\n\r\n| Dialogs are Located  |  Import Public Key Dialog  |\r\n|---|---|\r\n| ![image](https://user-images.githubusercontent.com/31669092/183477017-0423b0db-f84c-4729-9a73-b47544d88aaf.png)  | ![image](https://user-images.githubusercontent.com/31669092/183477129-0c212955-bbf3-4bc9-8089-cf2c1da7644d.png)  |\r\n\r\n| Import Private Key Dialog  | Import Address Dialog  |\r\n|---|---|\r\n|![image](https://user-images.githubusercontent.com/31669092/183477391-84ea6224-e7f5-4fba-a830-2e7fe3effcec.png)   |  ![image](https://user-images.githubusercontent.com/31669092/183477525-c3ba8cdc-ae0f-4113-8e0b-86db548f1e33.png) |\r\n\r\n| Import Multi Dialog scriptPubKey Tab  | Import Multi Dialog Descriptor Tab  |\r\n|---|---|\r\n| ![image](https://user-images.githubusercontent.com/31669092/183477928-232be9c4-fd64-4a20-91ba-00ebe41d66a6.png)  | ![image](https://user-images.githubusercontent.com/31669092/183478127-0b3c8aed-54d9-4fb4-a583-0a6bb5a46d28.png)  |\r\n\r\n|  Import Descriptors Dialog  |\r\n|---|\r\n|  ![image](https://user-images.githubusercontent.com/31669092/183478374-7f9c174d-0067-4812-9556-9e34e813b362.png) |\r\n\r\nFor Range before I had a lineedit with placeholders begin and end, @achow101 suggested I used QSpinBox, but it doesn't have placeholder text. So Currently if both are default value it counts as no input. It would look very nice if I implemented a custom QAbstractSpinBox with placeholder text, but I am not sure if it is overkill for this PR.",
+    "body": "resolves #19 \r\n\r\nThis PR does a few things\r\n- Refactors importmulti and importdescripters RPC code\r\n- Adds functions to interfaces\r\n- Adds GUI's for importpubkey, importprivkey, importaddress, importmulti, and importdescriptors RPCs\r\n- Adds QT Tests for all 5 import GUI's\r\n\r\n#### Things to get this merged\r\n- [ ] get the refactor merge on https://github.com/bitcoin/bitcoin/pull/26840\r\n- [ ] after that is done I will split the GUI PR into (importpubkey, importprivkey, importaddress), importmulti, importdescriptors each PR will have its respective tests. I will rebase to remove the commit for the refactor in those PR's it is in this PR so people can test. This is for easier code review\r\n\r\nThe dialogs are located under File -> Import to Wallet...\r\nThe options vary based on what is supported with your specific wallet type.\r\n\r\n| Dialogs are Located  |  Import Public Key Dialog  |\r\n|---|---|\r\n| ![image](https://user-images.githubusercontent.com/31669092/183477017-0423b0db-f84c-4729-9a73-b47544d88aaf.png)  | ![image](https://user-images.githubusercontent.com/31669092/183477129-0c212955-bbf3-4bc9-8089-cf2c1da7644d.png)  |\r\n\r\n| Import Private Key Dialog  | Import Address Dialog  |\r\n|---|---|\r\n|![image](https://user-images.githubusercontent.com/31669092/183477391-84ea6224-e7f5-4fba-a830-2e7fe3effcec.png)   |  ![image](https://user-images.githubusercontent.com/31669092/183477525-c3ba8cdc-ae0f-4113-8e0b-86db548f1e33.png) |\r\n\r\n| Import Multi Dialog scriptPubKey Tab  | Import Multi Dialog Descriptor Tab  |\r\n|---|---|\r\n| ![image](https://user-images.githubusercontent.com/31669092/183477928-232be9c4-fd64-4a20-91ba-00ebe41d66a6.png)  | ![image](https://user-images.githubusercontent.com/31669092/183478127-0b3c8aed-54d9-4fb4-a583-0a6bb5a46d28.png)  |\r\n\r\n|  Import Descriptors Dialog  |\r\n|---|\r\n|  ![image](https://user-images.githubusercontent.com/31669092/183478374-7f9c174d-0067-4812-9556-9e34e813b362.png) |\r\n\r\nFor Range before I had a lineedit with placeholders begin and end, @achow101 suggested I used QSpinBox, but it doesn't have placeholder text. So Currently if both are default value it counts as no input. It would look very nice if I implemented a custom QAbstractSpinBox with placeholder text, but I am not sure if it is overkill for this PR.",
     "labels": [
       {
         "id": 2145506980,
@@ -68,7 +68,7 @@
       }
     ],
     "created_at": "2022-08-08T17:43:21Z",
-    "updated_at": "2023-09-21T23:50:32Z",
+    "updated_at": "2023-09-22T00:40:26Z",
     "mergeable": false,
     "mergeable_state": "dirty",
     "merge_commit_sha": "7ec595ff2e22059396d8c443ff8df52f11bb0269",
@@ -352,7 +352,7 @@
     "changed_files": 31,
     "commits": 7,
     "review_comments": 40,
-    "comments": 9
+    "comments": 10
   },
   "events": [
     {
@@ -8438,6 +8438,118 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/650#issuecomment-1730504109",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/650"
+    },
+    {
+      "event": "commented",
+      "id": 1730544144,
+      "node_id": "IC_kwDOEEET9c5nJgIQ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/1730544144",
+      "actor": {
+        "login": "KolbyML",
+        "id": 31669092,
+        "node_id": "MDQ6VXNlcjMxNjY5MDky",
+        "avatar_url": "https://avatars.githubusercontent.com/u/31669092?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/KolbyML",
+        "html_url": "https://github.com/KolbyML",
+        "followers_url": "https://api.github.com/users/KolbyML/followers",
+        "following_url": "https://api.github.com/users/KolbyML/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/KolbyML/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/KolbyML/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/KolbyML/subscriptions",
+        "organizations_url": "https://api.github.com/users/KolbyML/orgs",
+        "repos_url": "https://api.github.com/users/KolbyML/repos",
+        "events_url": "https://api.github.com/users/KolbyML/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/KolbyML/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-09-22T00:40:26Z",
+      "updated_at": "2023-09-22T00:40:26Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "@pablomartin4btc sounds good I will try and get my 2 PR's rebased",
+      "user": {
+        "login": "KolbyML",
+        "id": 31669092,
+        "node_id": "MDQ6VXNlcjMxNjY5MDky",
+        "avatar_url": "https://avatars.githubusercontent.com/u/31669092?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/KolbyML",
+        "html_url": "https://github.com/KolbyML",
+        "followers_url": "https://api.github.com/users/KolbyML/followers",
+        "following_url": "https://api.github.com/users/KolbyML/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/KolbyML/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/KolbyML/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/KolbyML/subscriptions",
+        "organizations_url": "https://api.github.com/users/KolbyML/orgs",
+        "repos_url": "https://api.github.com/users/KolbyML/repos",
+        "events_url": "https://api.github.com/users/KolbyML/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/KolbyML/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/650#issuecomment-1730544144",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/650"
+    },
+    {
+      "event": "mentioned",
+      "id": 10441688549,
+      "node_id": "MEE_lADOEEET9c5PZ5y9zwAAAAJuX4Xl",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/10441688549",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-09-22T00:40:26Z"
+    },
+    {
+      "event": "subscribed",
+      "id": 10441688556,
+      "node_id": "SE_lADOEEET9c5PZ5y9zwAAAAJuX4Xs",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/10441688556",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-09-22T00:40:26Z"
     }
   ],
   "comments": [
