@@ -12,12 +12,12 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/754/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/754/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/26b9fa00278ff710785cdcd9fb23b192ecb1da1b",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/43268b0a2eaab02b8a23cddf3b4c6eae9bb36afe",
     "number": 754,
     "state": "open",
     "locked": false,
     "maintainer_can_modify": true,
-    "title": "Add BIP324 \"Transport\" label to peer details",
+    "title": "Add BIP324-specific labels to peer details",
     "user": {
       "login": "hebasto",
       "id": 32963518,
@@ -38,31 +38,19 @@
       "type": "User",
       "site_admin": false
     },
-    "body": "This PR adds a transport version (BIP324) to the peer details widget:\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/32963518/0e0b4c92-dde0-4b2e-b285-a2c69ef09efc)\r\n\r\n\r\nBased on https://github.com/bitcoin/bitcoin/pull/28331, so drafted for now.",
-    "labels": [
-      {
-        "id": 2145506980,
-        "node_id": "MDU6TGFiZWwyMTQ1NTA2OTgw",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Needs%20rebase",
-        "name": "Needs rebase",
-        "description": "",
-        "color": "cccccc",
-        "default": false
-      }
-    ],
+    "body": "This PR adds BIP324-specific labels to the peer details widget:\r\n-  a transport version\r\n- a session id\r\n\r\nSee: https://github.com/bitcoin/bitcoin/pull/28331#issuecomment-1693239025.\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/32963518/0e0b4c92-dde0-4b2e-b285-a2c69ef09efc)\r\n\r\n\r\nBased on https://github.com/bitcoin/bitcoin/pull/28331, so drafted for now.",
+    "labels": [],
     "created_at": "2023-09-11T11:16:49Z",
-    "updated_at": "2023-09-14T17:45:27Z",
-    "mergeable": false,
-    "mergeable_state": "dirty",
-    "merge_commit_sha": "13a4c7456851532a2431586584071a208f330f73",
+    "updated_at": "2023-09-22T14:54:41Z",
+    "mergeable_state": "unknown",
+    "merge_commit_sha": "648e7d9b0f09fc57b4ed73d325b3f2968bc45c0b",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
-    "rebaseable": false,
     "head": {
       "label": "hebasto:230911-bip324-peer-details",
       "ref": "230911-bip324-peer-details",
-      "sha": "26b9fa00278ff710785cdcd9fb23b192ecb1da1b",
+      "sha": "43268b0a2eaab02b8a23cddf3b4c6eae9bb36afe",
       "user": {
         "login": "hebasto",
         "id": 32963518,
@@ -158,7 +146,7 @@
         "forks_count": 2,
         "stargazers_count": 4,
         "watchers_count": 4,
-        "size": 152869,
+        "size": 153960,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -171,7 +159,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-09-11T16:43:36Z",
+        "pushed_at": "2023-09-22T14:26:57Z",
         "created_at": "2020-06-18T12:20:51Z",
         "updated_at": "2023-07-25T14:36:43Z",
         "license": {
@@ -194,7 +182,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "8f7b9eb8711fdb32e8bdb59d2a7462a46c7a8086",
+      "sha": "2e1d4bf444637450b5412780c36f8d2b5bfa4550",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -290,9 +278,9 @@
         "forks_count": 277,
         "stargazers_count": 508,
         "watchers_count": 508,
-        "size": 152100,
+        "size": 152955,
         "default_branch": "master",
-        "open_issues_count": 163,
+        "open_issues_count": 161,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -303,7 +291,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-09-14T17:21:33Z",
+        "pushed_at": "2023-09-22T14:26:48Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2023-09-12T12:06:40Z",
         "license": {
@@ -330,9 +318,9 @@
     },
     "author_association": "MEMBER",
     "draft": true,
-    "additions": 631,
-    "deletions": 125,
-    "changed_files": 22,
+    "additions": 633,
+    "deletions": 115,
+    "changed_files": 23,
     "commits": 10,
     "review_comments": 0,
     "comments": 6
@@ -366,9 +354,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2023-09-11T11:16:52Z",
-      "updated_at": "2023-09-14T17:45:27Z",
+      "updated_at": "2023-09-22T14:54:41Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [jarolrod](https://github.com/bitcoin-core/gui/pull/754#pullrequestreview-1621253578), [jonatack](https://github.com/bitcoin-core/gui/pull/754#issuecomment-1718397320), [theStack](https://github.com/bitcoin-core/gui/pull/754#pullrequestreview-1627453018) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#bitcoin/bitcoin/28463](https://github.com/bitcoin/bitcoin/pull/28463) (p2p: Increase inbound capacity for block-relay only connections by mzumsande)\n* [#bitcoin/bitcoin/28453](https://github.com/bitcoin/bitcoin/pull/28453) (wallet: Receive silent payment transactions by achow101)\n* [#bitcoin/bitcoin/28452](https://github.com/bitcoin/bitcoin/pull/28452) (Do not use std::vector = {} to release memory by sipa)\n* [#bitcoin/bitcoin/28423](https://github.com/bitcoin/bitcoin/pull/28423) (kernel: Remove protocol.h/netaddress.h/compat.h from kernel headers by TheCharlatan)\n* [#bitcoin/bitcoin/28331](https://github.com/bitcoin/bitcoin/pull/28331) (BIP324 integration by sipa)\n* [#bitcoin/bitcoin/28248](https://github.com/bitcoin/bitcoin/pull/28248) (p2p: peer connection bug fixes, logic and logging improvements by jonatack)\n* [#bitcoin/bitcoin/28155](https://github.com/bitcoin/bitcoin/pull/28155) (Improves addnode / m_added_nodes logic by sr-gi)\n* [#bitcoin/bitcoin/27114](https://github.com/bitcoin/bitcoin/pull/27114) (p2p: Allow whitelisting outgoing connections by brunoerg)\n* [#bitcoin/bitcoin/27052](https://github.com/bitcoin/bitcoin/pull/27052) (test: rpc: add last block announcement time to getpeerinfo result by LarryRuane)\n* [#bitcoin/bitcoin/26863](https://github.com/bitcoin/bitcoin/pull/26863) (test: merge banning test from p2p_disconnect_ban to rpc_setban by brunoerg)\n* [#bitcoin/bitcoin/26728](https://github.com/bitcoin/bitcoin/pull/26728) (wallet: Have the wallet store the key for automatically generated descriptors by achow101)\n* [#bitcoin/bitcoin/26621](https://github.com/bitcoin/bitcoin/pull/26621) (refactor: Continue moving application data from CNode to Peer by dergoegge)\n* [#bitcoin/bitcoin/26366](https://github.com/bitcoin/bitcoin/pull/26366) (rpc, test: `addnode` improv + add test coverage for invalid command by brunoerg)\n* [#bitcoin/bitcoin/26114](https://github.com/bitcoin/bitcoin/pull/26114) (net: Make AddrFetch connections to fixed seeds by mzumsande)\n* [#bitcoin/bitcoin/25907](https://github.com/bitcoin/bitcoin/pull/25907) (wallet: rpc to add automatically generated descriptors by achow101)\n* [#bitcoin/bitcoin/22341](https://github.com/bitcoin/bitcoin/pull/22341) (rpc: add getxpub by Sjors)\n* [#bitcoin/bitcoin/20892](https://github.com/bitcoin/bitcoin/pull/20892) (tests: Run both descriptor and legacy tests within a single test invocation by achow101)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [jarolrod](https://github.com/bitcoin-core/gui/pull/754#pullrequestreview-1621253578), [jonatack](https://github.com/bitcoin-core/gui/pull/754#issuecomment-1718397320), [theStack](https://github.com/bitcoin-core/gui/pull/754#pullrequestreview-1627453018) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#bitcoin/bitcoin/28463](https://github.com/bitcoin/bitcoin/pull/28463) (p2p: Increase inbound capacity for block-relay only connections by mzumsande)\n* [#bitcoin/bitcoin/28155](https://github.com/bitcoin/bitcoin/pull/28155) (net: improves addnode / m_added_nodes logic by sr-gi)\n* [#bitcoin/bitcoin/27114](https://github.com/bitcoin/bitcoin/pull/27114) (p2p: Allow whitelisting outgoing connections by brunoerg)\n* [#bitcoin/bitcoin/27052](https://github.com/bitcoin/bitcoin/pull/27052) (test: rpc: add last block announcement time to getpeerinfo result by LarryRuane)\n* [#bitcoin/bitcoin/26863](https://github.com/bitcoin/bitcoin/pull/26863) (test: merge banning test from p2p_disconnect_ban to rpc_setban by brunoerg)\n* [#bitcoin/bitcoin/26728](https://github.com/bitcoin/bitcoin/pull/26728) (wallet: Have the wallet store the key for automatically generated descriptors by achow101)\n* [#bitcoin/bitcoin/25907](https://github.com/bitcoin/bitcoin/pull/25907) (wallet: rpc to add automatically generated descriptors by achow101)\n* [#bitcoin/bitcoin/22341](https://github.com/bitcoin/bitcoin/pull/22341) (rpc: add getxpub by Sjors)\n* [#bitcoin/bitcoin/20892](https://github.com/bitcoin/bitcoin/pull/20892) (tests: Run both descriptor and legacy tests within a single test invocation by achow101)\n* [#bitcoin/bitcoin/10102](https://github.com/bitcoin/bitcoin/pull/10102) (Multiprocess bitcoin by ryanofsky)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -469,7 +457,7 @@
           "assignees": [],
           "author_association": "MEMBER",
           "locked": false,
-          "comments": 14,
+          "comments": 19,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/28331",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/28331",
@@ -477,210 +465,10 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/28331.patch"
           },
           "created_at": "2023-08-24T00:25:16Z",
-          "updated_at": "2023-09-14T14:50:24Z"
+          "updated_at": "2023-09-22T14:59:16Z"
         },
         "type": "issue"
       }
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDU1MDc5ZmVkZWVjYTQ4OGYzNjBkMjAwYjFkMmQyNGMyZjYxNGJjNzM",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/55079fedeeca488f360d200b1d2d24c2f614bc73",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/55079fedeeca488f360d200b1d2d24c2f614bc73",
-      "tree": {
-        "sha": "b932ee6525135c0e16620f5d7a7926872c97dad7",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/b932ee6525135c0e16620f5d7a7926872c97dad7"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/8f7b9eb8711fdb32e8bdb59d2a7462a46c7a8086",
-          "sha": "8f7b9eb8711fdb32e8bdb59d2a7462a46c7a8086",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/8f7b9eb8711fdb32e8bdb59d2a7462a46c7a8086"
-        }
-      ],
-      "message": "net: Fix V2Transport memory buffers not being released",
-      "committer": {
-        "name": "Pieter Wuille",
-        "email": "pieter@wuille.net",
-        "date": "2023-09-11T11:31:15Z"
-      },
-      "author": {
-        "name": "Pieter Wuille",
-        "email": "pieter@wuille.net",
-        "date": "2023-09-10T01:30:19Z"
-      },
-      "sha": "55079fedeeca488f360d200b1d2d24c2f614bc73"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDE3NjhhZmY1NmQ2ZmVlZGNiMjJiMjFkZjEyZTg5MjY5MjRmZGFjNmE",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/1768aff56d6feedcb22b21df12e8926924fdac6a",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/1768aff56d6feedcb22b21df12e8926924fdac6a",
-      "tree": {
-        "sha": "1272badfac1f062188e3f5dc9da0a03e4f88d5e5",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/1272badfac1f062188e3f5dc9da0a03e4f88d5e5"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/55079fedeeca488f360d200b1d2d24c2f614bc73",
-          "sha": "55079fedeeca488f360d200b1d2d24c2f614bc73",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/55079fedeeca488f360d200b1d2d24c2f614bc73"
-        }
-      ],
-      "message": "net: advertise NODE_P2P_V2 if CLI arg -v2transport is on\n\nCo-authored-by: Dhruv Mehta <856960+dhruv@users.noreply.github.com>",
-      "committer": {
-        "name": "Pieter Wuille",
-        "email": "pieter@wuille.net",
-        "date": "2023-09-11T11:31:15Z"
-      },
-      "author": {
-        "name": "Pieter Wuille",
-        "email": "pieter@wuille.net",
-        "date": "2023-08-22T21:50:59Z"
-      },
-      "sha": "1768aff56d6feedcb22b21df12e8926924fdac6a"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDdkMmFiMjBlYjI0MGY4ZGRmNWZmMDY3YTM2NzViNDA5ZDM4YTljZjg",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/7d2ab20eb240f8ddf5ff067a3675b409d38a9cf8",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/7d2ab20eb240f8ddf5ff067a3675b409d38a9cf8",
-      "tree": {
-        "sha": "f16676ddbd77214d20f80487ad92fcad2ac8928a",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/f16676ddbd77214d20f80487ad92fcad2ac8928a"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/1768aff56d6feedcb22b21df12e8926924fdac6a",
-          "sha": "1768aff56d6feedcb22b21df12e8926924fdac6a",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/1768aff56d6feedcb22b21df12e8926924fdac6a"
-        }
-      ],
-      "message": "net: use V2Transport when NODE_P2P_V2 service flag is present\n\nCo-authored-by: Dhruv Mehta <856960+dhruv@users.noreply.github.com>",
-      "committer": {
-        "name": "Pieter Wuille",
-        "email": "pieter@wuille.net",
-        "date": "2023-09-11T11:31:15Z"
-      },
-      "author": {
-        "name": "Pieter Wuille",
-        "email": "pieter@wuille.net",
-        "date": "2023-08-21T20:55:47Z"
-      },
-      "sha": "7d2ab20eb240f8ddf5ff067a3675b409d38a9cf8"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDFmYThlZmFmZjczYmRhMTliN2U4ZjJlMjdkMjRiMDhjY2YwZGU3NjQ",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/1fa8efaff73bda19b7e8f2e27d24b08ccf0de764",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/1fa8efaff73bda19b7e8f2e27d24b08ccf0de764",
-      "tree": {
-        "sha": "456d1a6226b677f5421ca9254cadff1d917019c1",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/456d1a6226b677f5421ca9254cadff1d917019c1"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/7d2ab20eb240f8ddf5ff067a3675b409d38a9cf8",
-          "sha": "7d2ab20eb240f8ddf5ff067a3675b409d38a9cf8",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/7d2ab20eb240f8ddf5ff067a3675b409d38a9cf8"
-        }
-      ],
-      "message": "rpc: addnode arg to use BIP324 v2 p2p",
-      "committer": {
-        "name": "Pieter Wuille",
-        "email": "pieter@wuille.net",
-        "date": "2023-09-11T11:31:15Z"
-      },
-      "author": {
-        "name": "dhruv",
-        "email": "856960+dhruv@users.noreply.github.com",
-        "date": "2021-12-28T21:26:20Z"
-      },
-      "sha": "1fa8efaff73bda19b7e8f2e27d24b08ccf0de764"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDg2NzJiODU0ZmI3YTgxYTQwMDE1MGVmMDllOTlhMDZjODI5YjY4Zjg",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/8672b854fb7a81a400150ef09e99a06c829b68f8",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/8672b854fb7a81a400150ef09e99a06c829b68f8",
-      "tree": {
-        "sha": "92922df44a3b0896bf42358a8fb64cbb8314e154",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/92922df44a3b0896bf42358a8fb64cbb8314e154"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/1fa8efaff73bda19b7e8f2e27d24b08ccf0de764",
-          "sha": "1fa8efaff73bda19b7e8f2e27d24b08ccf0de764",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/1fa8efaff73bda19b7e8f2e27d24b08ccf0de764"
-        }
-      ],
-      "message": "sync: modernize CSemaphore / CSemaphoreGrant",
-      "committer": {
-        "name": "Pieter Wuille",
-        "email": "pieter@wuille.net",
-        "date": "2023-09-11T11:31:15Z"
-      },
-      "author": {
-        "name": "Pieter Wuille",
-        "email": "pieter@wuille.net",
-        "date": "2023-08-21T22:14:52Z"
-      },
-      "sha": "8672b854fb7a81a400150ef09e99a06c829b68f8"
     },
     {
       "event": "labeled",
@@ -714,206 +502,6 @@
         "name": "Needs rebase",
         "color": "cccccc"
       }
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDRjZmJiY2VmZjM1ZmNmMjJhMjMyYzY2Mjc4YzRhYmFiZDc1MGQ5YmI",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/4cfbbceff35fcf22a232c66278c4ababd750d9bb",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/4cfbbceff35fcf22a232c66278c4ababd750d9bb",
-      "tree": {
-        "sha": "4ca791addb486b87417574ad9f55dcab07ca0ab5",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/4ca791addb486b87417574ad9f55dcab07ca0ab5"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/8672b854fb7a81a400150ef09e99a06c829b68f8",
-          "sha": "8672b854fb7a81a400150ef09e99a06c829b68f8",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/8672b854fb7a81a400150ef09e99a06c829b68f8"
-        }
-      ],
-      "message": "net: reconnect with V1Transport under certain conditions\n\nWhen an outbound v2 connection is disconnected without receiving anything, but at\nleast 24 bytes of our pubkey were sent out (enough to constitute an invalid v1\nheader), add them to a queue of reconnections to be tried.\n\nThe reconnections are in a queue rather than performed immediately, because we should\nnot block the socket handler thread with connection creation (a blocking operation\nthat can take multiple seconds).",
-      "committer": {
-        "name": "Pieter Wuille",
-        "email": "pieter@wuille.net",
-        "date": "2023-09-11T11:32:38Z"
-      },
-      "author": {
-        "name": "Pieter Wuille",
-        "email": "pieter@wuille.net",
-        "date": "2023-08-23T00:42:24Z"
-      },
-      "sha": "4cfbbceff35fcf22a232c66278c4ababd750d9bb"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDE5MDIzZTdkYWM5NTllMTE0ZTU3ODEwYzVlOTMwZjQ5MTA3N2FlYjE",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/19023e7dac959e114e57810c5e930f491077aeb1",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/19023e7dac959e114e57810c5e930f491077aeb1",
-      "tree": {
-        "sha": "e0380590ebbd7b2b0280913aec074f3b820e3bf5",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/e0380590ebbd7b2b0280913aec074f3b820e3bf5"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/4cfbbceff35fcf22a232c66278c4ababd750d9bb",
-          "sha": "4cfbbceff35fcf22a232c66278c4ababd750d9bb",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/4cfbbceff35fcf22a232c66278c4ababd750d9bb"
-        }
-      ],
-      "message": "net: expose transport types/session IDs of connections in RPC and logs\n\nCo-authored-by: Dhruv Mehta <856960+dhruv@users.noreply.github.com>",
-      "committer": {
-        "name": "Pieter Wuille",
-        "email": "pieter@wuille.net",
-        "date": "2023-09-11T11:32:39Z"
-      },
-      "author": {
-        "name": "Pieter Wuille",
-        "email": "pieter@wuille.net",
-        "date": "2023-07-31T03:26:04Z"
-      },
-      "sha": "19023e7dac959e114e57810c5e930f491077aeb1"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGJlOGE1ZGNkZGQzNmJlOGE1ZjEzN2JhZjNlYmQzMmQ1OTBhMDc0N2Q",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/be8a5dcddd36be8a5f137baf3ebd32d590a0747d",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/be8a5dcddd36be8a5f137baf3ebd32d590a0747d",
-      "tree": {
-        "sha": "4afe2b159958bf9946f8eb2ef3a21ba4da7510dd",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/4afe2b159958bf9946f8eb2ef3a21ba4da7510dd"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/19023e7dac959e114e57810c5e930f491077aeb1",
-          "sha": "19023e7dac959e114e57810c5e930f491077aeb1",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/19023e7dac959e114e57810c5e930f491077aeb1"
-        }
-      ],
-      "message": "test: Functional test for opportunistic encryption",
-      "committer": {
-        "name": "Pieter Wuille",
-        "email": "pieter@wuille.net",
-        "date": "2023-09-11T11:32:39Z"
-      },
-      "author": {
-        "name": "dhruv",
-        "email": "856960+dhruv@users.noreply.github.com",
-        "date": "2022-09-07T22:59:49Z"
-      },
-      "sha": "be8a5dcddd36be8a5f137baf3ebd32d590a0747d"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDJhYWJiZGY0ZGUwMWVmMWEzZmIwYzFiYjg2ZWYxNjNjOWZiYTU4N2I",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/2aabbdf4de01ef1a3fb0c1bb86ef163c9fba587b",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/2aabbdf4de01ef1a3fb0c1bb86ef163c9fba587b",
-      "tree": {
-        "sha": "22703edddae66e470f2eb419839668dadfc522d8",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/22703edddae66e470f2eb419839668dadfc522d8"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/be8a5dcddd36be8a5f137baf3ebd32d590a0747d",
-          "sha": "be8a5dcddd36be8a5f137baf3ebd32d590a0747d",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/be8a5dcddd36be8a5f137baf3ebd32d590a0747d"
-        }
-      ],
-      "message": "test: enable v2 transport between nodes in some functional tests",
-      "committer": {
-        "name": "Pieter Wuille",
-        "email": "pieter@wuille.net",
-        "date": "2023-09-11T11:32:39Z"
-      },
-      "author": {
-        "name": "Pieter Wuille",
-        "email": "pieter@wuille.net",
-        "date": "2023-09-10T01:20:17Z"
-      },
-      "sha": "2aabbdf4de01ef1a3fb0c1bb86ef163c9fba587b"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDI2YjlmYTAwMjc4ZmY3MTA3ODVjZGNkOWZiMjNiMTkyZWNiMWRhMWI",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/26b9fa00278ff710785cdcd9fb23b192ecb1da1b",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/26b9fa00278ff710785cdcd9fb23b192ecb1da1b",
-      "tree": {
-        "sha": "39172890715dfde2265deb3bacf3610fed0981ec",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/39172890715dfde2265deb3bacf3610fed0981ec"
-      },
-      "verification": {
-        "verified": true,
-        "reason": "valid",
-        "payload": "tree 39172890715dfde2265deb3bacf3610fed0981ec\nparent 2aabbdf4de01ef1a3fb0c1bb86ef163c9fba587b\nauthor Hennadii Stepanov <32963518+hebasto@users.noreply.github.com> 1694428343 +0100\ncommitter Hennadii Stepanov <32963518+hebasto@users.noreply.github.com> 1694433202 +0100\n\nqt: Add \"Transport\" label to peer details\n",
-        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEE0dvyxLlvLev0wWZUQQEIES5+qB8FAmT+/7IACgkQQQEIES5+\nqB+/7g/+Jdj9hYjNJIDlNSOs2Ik9oOzNr/iXd/TpYtmaskriTp89HDMOs0adEAwq\nTnfd/AixtKoHl/dThnAjcEe6aw80/CPGwmU0w+FxjTO79bcMCMDwWV5NlppuFsPz\nyzVF6qx8yGtKIWM1BYeq6IxCXi3a7PQG1I8TjTsXpvZGp6iJbynU485WsFe82C+R\nnx32sxHWkvlK/vr0QkmkuWX/rwqpLgL6FjhD4LQA50WSgQSgW25He0MV6trm78bl\nhpyoPw/KVEvONbM+h+csJRT/ixiSJsMjVj/0fHOx2aGtqlnzORTWxGdAS3LUKRMN\n99rVd0FbJ1RaOEyVy/N6i4C1SJH12dxxzkVFTEy4LIkvVm6qC/My0lN+BgTfQrNS\nrrl2I9kusUSodCBy/BRiJlN5I/9v0y5/YIq6QflZEkuz8Sgevf68s3DkjD6Hm2Z+\nP4L1I0kCWIrjzqswYz7KcpZOaT6LBumfY/j1KmKxwK1cT1YQMMTWSGwSwWN/uufY\nhssLhTkEijJsW8NOs/iup6c9RhWNSx85l6wXa9Ps8ndJAUzrhTcT9oYoLa1K0fs+\nz4H4cJuemjx/pkclIl1npXAKcDcKDpBDSXF9GVs0kYEqtaUxc18xDIk4vD/3e9mV\nwjOWa8DJ0QINWOM19q0Zk1bkGUFIcg0YRngR2Xl1cCq2ipGSDZI=\n=6thL\n-----END PGP SIGNATURE-----"
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/2aabbdf4de01ef1a3fb0c1bb86ef163c9fba587b",
-          "sha": "2aabbdf4de01ef1a3fb0c1bb86ef163c9fba587b",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/2aabbdf4de01ef1a3fb0c1bb86ef163c9fba587b"
-        }
-      ],
-      "message": "qt: Add \"Transport\" label to peer details",
-      "committer": {
-        "name": "Hennadii Stepanov",
-        "email": "32963518+hebasto@users.noreply.github.com",
-        "date": "2023-09-11T11:53:22Z"
-      },
-      "author": {
-        "name": "Hennadii Stepanov",
-        "email": "32963518+hebasto@users.noreply.github.com",
-        "date": "2023-09-11T10:32:23Z"
-      },
-      "sha": "26b9fa00278ff710785cdcd9fb23b192ecb1da1b"
     },
     {
       "event": "head_ref_force_pushed",
@@ -1162,7 +750,7 @@
           "assignees": [],
           "author_association": "CONTRIBUTOR",
           "locked": false,
-          "comments": 12,
+          "comments": 13,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/28423",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/28423",
@@ -1171,7 +759,7 @@
           },
           "closed_at": "2023-09-14T10:12:08Z",
           "created_at": "2023-09-06T19:58:47Z",
-          "updated_at": "2023-09-14T10:12:08Z"
+          "updated_at": "2023-09-14T19:56:56Z"
         },
         "type": "issue"
       }
@@ -1317,7 +905,7 @@
           "number": 28155,
           "state": "open",
           "state_reason": null,
-          "title": "Improves addnode / m_added_nodes logic",
+          "title": "net: improves addnode / m_added_nodes logic",
           "body": "## Rationale\r\n\r\nCurrently, `addnode` has a couple of corner cases that allow it to either connect to the same peer more than once, hence wasting outbound connection slots, or add redundant information to `m_added_nodes`, hence making Bitcoin iterate through useless data on a regular basis.\r\n\r\n### Connecting to the same node more than once\r\n\r\nIn general, connecting to the same node more than once is something we should try to prevent. Currently, this is possible via `addnode` in two different ways:\r\n\r\n1. Calling `addnode` more than once in a short time period, using two equivalent but distinct addresses\r\n2. Calling `addnode add` using an IP, and `addnode onetry` after with an address that resolved to the same IP\r\n\r\nFor the former, the issue boils down to `CConnman::ThreadOpenAddedConnections` calling `CConnman::GetAddedNodeInfo` once, and iterating over the result to open connections (`CConman::OpenNetworkConnection`) on the same loop for all addresses.`CConnman::ConnectNode` only checks a single address, at random, when resolving from a hostname, and uses it to check whether we are already connected to it.\r\n\r\nAn example to test this would be calling:\r\n\r\n```\r\nbitcoin-cli addnode \"127.0.0.1:port\" add\r\nbitcoin-cli addnode \"localhost:port\" add\r\n```\r\n\r\nAnd check how it allows us to perform both connections some times, and some times it fails.\r\n\r\nThe latter boils down to the same issue, but takes advantage of `onetry` bypassing the `CConnman::ThreadOpenAddedConnections` logic and calling `CConnman::OpenNetworkConnection` straightaway. A way to test this would be:\r\n\r\n```\r\nbitcoin-cli addnode \"127.0.0.1:port\" add\r\nbitcoin-cli addnode \"localhost:port\" onetry\r\n```\r\n\r\n### Adding the same peer with two different, yet equivalent, addresses\r\n\r\nThe current implementation of `addnode` is pretty naive when checking what data is added to `m_added_nodes`. Given the collection stores strings, the checks at `CConnman::AddNode()` basically check wether the exact provided string is already in the collection. If so, the data is rejected, otherwise, it is accepted. However, ips can be formatted in several ways that would bypass those checks. \r\n\r\nTwo examples would be `127.0.0.1` being equal to `127.1` and `[::1]` being equal to `[0:0:0:0:0:0:0:1]`. Adding any pair of these will be allowed by the rpc command, and both will be reported as connected by `getaddednodeinfo`, given they map to the same `CService`. \r\n\r\nThis is less severe than the previous issue, since even tough both nodes are reported as connected by `getaddednodeinfo`, there is only a single connection to them (as properly reported by `getpeerinfo`). However, this adds redundant data to `m_added_nodes`, which is undesirable.\r\n\r\n\r\n### Parametrize `CConnman::GetAddedNodeInfo`\r\nFinally, this PR also parametrizes `CConnman::GetAddedNodeInfo` so it returns either all added nodes info, or only info about the nodes we are **not** connected to. This method is used both for `rpc`, in `getaddednodeinfo`, in which we are reporting all data to the user, so the former applies, and to check what nodes we are not connected to, in `CConnman::ThreadOpenAddedConnections`, in which we are currently returning more data than needed and then actively filtering using `CService.fConnected()`\r\n",
           "user": {
             "login": "sr-gi",
@@ -1339,7 +927,16 @@
             "type": "User",
             "site_admin": false
           },
-          "labels": [],
+          "labels": [
+            {
+              "id": 98298007,
+              "node_id": "MDU6TGFiZWw5ODI5ODAwNw==",
+              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/P2P",
+              "name": "P2P",
+              "color": "006b75",
+              "default": false
+            }
+          ],
           "assignees": [],
           "author_association": "NONE",
           "locked": false,
@@ -1351,7 +948,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/28155.patch"
           },
           "created_at": "2023-07-25T20:47:02Z",
-          "updated_at": "2023-09-14T15:13:38Z"
+          "updated_at": "2023-09-21T14:12:57Z"
         },
         "type": "issue"
       }
@@ -1396,7 +993,7 @@
           "events_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/28078/events",
           "html_url": "https://github.com/bitcoin/bitcoin/pull/28078",
           "number": 28078,
-          "state": "open",
+          "state": "closed",
           "state_reason": null,
           "title": "net, refactor: remove unneeded exports, use helpers over low-level code, use optional",
           "body": "and other improvements noticed while reviewing #27411.\r\n\r\nAddresses https://github.com/bitcoin/bitcoin/pull/27411#discussion_r1263969104 and https://github.com/bitcoin/bitcoin/pull/27411#discussion_r1263967598.\r\n\r\nSee commit messages for details.",
@@ -1424,15 +1021,16 @@
           "assignees": [],
           "author_association": "CONTRIBUTOR",
           "locked": false,
-          "comments": 9,
+          "comments": 11,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/28078",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/28078",
             "diff_url": "https://github.com/bitcoin/bitcoin/pull/28078.diff",
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/28078.patch"
           },
+          "closed_at": "2023-09-21T15:26:38Z",
           "created_at": "2023-07-14T17:27:45Z",
-          "updated_at": "2023-09-14T15:20:47Z"
+          "updated_at": "2023-09-21T19:16:43Z"
         },
         "type": "issue"
       }
@@ -1509,12 +1107,21 @@
               "name": "P2P",
               "color": "006b75",
               "default": false
+            },
+            {
+              "id": 955867938,
+              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
+              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
+              "name": "Needs rebase",
+              "description": "",
+              "color": "cccccc",
+              "default": false
             }
           ],
           "assignees": [],
           "author_association": "CONTRIBUTOR",
           "locked": false,
-          "comments": 8,
+          "comments": 9,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/27581",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/27581",
@@ -1522,7 +1129,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/27581.patch"
           },
           "created_at": "2023-05-05T12:16:53Z",
-          "updated_at": "2023-09-14T15:52:52Z"
+          "updated_at": "2023-09-21T17:23:11Z"
         },
         "type": "issue"
       }
@@ -1612,7 +1219,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/27114.patch"
           },
           "created_at": "2023-02-16T20:31:10Z",
-          "updated_at": "2023-09-14T16:07:14Z"
+          "updated_at": "2023-09-21T15:17:34Z"
         },
         "type": "issue"
       }
@@ -1702,7 +1309,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/27052.patch"
           },
           "created_at": "2023-02-06T18:32:56Z",
-          "updated_at": "2023-09-14T16:09:51Z"
+          "updated_at": "2023-09-21T15:20:25Z"
         },
         "type": "issue"
       }
@@ -1792,7 +1399,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/26863.patch"
           },
           "created_at": "2023-01-10T13:25:40Z",
-          "updated_at": "2023-09-14T16:15:48Z"
+          "updated_at": "2023-09-21T15:28:53Z"
         },
         "type": "issue"
       }
@@ -1882,7 +1489,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/26728.patch"
           },
           "created_at": "2022-12-19T22:31:05Z",
-          "updated_at": "2023-09-14T16:21:12Z"
+          "updated_at": "2023-09-21T20:59:14Z"
         },
         "type": "issue"
       }
@@ -1981,7 +1588,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/26621.patch"
           },
           "created_at": "2022-12-01T17:26:32Z",
-          "updated_at": "2023-09-14T10:44:53Z"
+          "updated_at": "2023-09-20T16:24:56Z"
         },
         "type": "issue"
       }
@@ -2026,7 +1633,7 @@
           "events_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/26366/events",
           "html_url": "https://github.com/bitcoin/bitcoin/pull/26366",
           "number": 26366,
-          "state": "open",
+          "state": "closed",
           "state_reason": null,
           "title": "rpc, test: `addnode` improv + add test coverage for invalid command",
           "body": "This PR:\r\n\r\n- Adds test coverage for an invalid `command` in `addnode`.\r\n- Rename `test_getaddednodeinfo` to `test_addnode_getaddednodeinfo` and its log since this function also tests `addnode` and it doesn't worth to split into 2 ones.\r\n- Makes it clear in docs that `node` in `addnode` refers to the node's address. It seemed a little weird for me \"The node (see getpeerinfo for nodes)\", it could mean a lot of things e.g. the node id.\r\n- Some small improv/clean-up: use `const` where possible, rename some vars, and remove the check for nullance for `command` since it's a non-optional field.",
@@ -2051,18 +1658,60 @@
             "site_admin": false
           },
           "labels": [],
-          "assignees": [],
+          "assignee": {
+            "login": "achow101",
+            "id": 3782274,
+            "node_id": "MDQ6VXNlcjM3ODIyNzQ=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3782274?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/achow101",
+            "html_url": "https://github.com/achow101",
+            "followers_url": "https://api.github.com/users/achow101/followers",
+            "following_url": "https://api.github.com/users/achow101/following%7B/other_user%7D",
+            "gists_url": "https://api.github.com/users/achow101/gists%7B/gist_id%7D",
+            "starred_url": "https://api.github.com/users/achow101/starred%7B/owner%7D%7B/repo%7D",
+            "subscriptions_url": "https://api.github.com/users/achow101/subscriptions",
+            "organizations_url": "https://api.github.com/users/achow101/orgs",
+            "repos_url": "https://api.github.com/users/achow101/repos",
+            "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
+            "received_events_url": "https://api.github.com/users/achow101/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "assignees": [
+            {
+              "login": "achow101",
+              "id": 3782274,
+              "node_id": "MDQ6VXNlcjM3ODIyNzQ=",
+              "avatar_url": "https://avatars.githubusercontent.com/u/3782274?v=4",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/achow101",
+              "html_url": "https://github.com/achow101",
+              "followers_url": "https://api.github.com/users/achow101/followers",
+              "following_url": "https://api.github.com/users/achow101/following%7B/other_user%7D",
+              "gists_url": "https://api.github.com/users/achow101/gists%7B/gist_id%7D",
+              "starred_url": "https://api.github.com/users/achow101/starred%7B/owner%7D%7B/repo%7D",
+              "subscriptions_url": "https://api.github.com/users/achow101/subscriptions",
+              "organizations_url": "https://api.github.com/users/achow101/orgs",
+              "repos_url": "https://api.github.com/users/achow101/repos",
+              "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
+              "received_events_url": "https://api.github.com/users/achow101/received_events",
+              "type": "User",
+              "site_admin": false
+            }
+          ],
           "author_association": "CONTRIBUTOR",
           "locked": false,
-          "comments": 4,
+          "comments": 5,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/26366",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/26366",
             "diff_url": "https://github.com/bitcoin/bitcoin/pull/26366.diff",
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/26366.patch"
           },
+          "closed_at": "2023-09-21T10:35:53Z",
           "created_at": "2022-10-21T21:46:47Z",
-          "updated_at": "2023-09-14T16:31:51Z"
+          "updated_at": "2023-09-21T12:41:31Z"
         },
         "type": "issue"
       }
@@ -2251,7 +1900,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/25907.patch"
           },
           "created_at": "2022-08-22T23:17:45Z",
-          "updated_at": "2023-09-14T16:43:36Z"
+          "updated_at": "2023-09-21T21:17:06Z"
         },
         "type": "issue"
       }
@@ -2349,7 +1998,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/22341.patch"
           },
           "created_at": "2021-06-25T15:12:03Z",
-          "updated_at": "2023-09-14T17:00:36Z"
+          "updated_at": "2023-09-21T21:37:41Z"
         },
         "type": "issue"
       }
@@ -2439,7 +2088,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/20892.patch"
           },
           "created_at": "2021-01-09T03:50:55Z",
-          "updated_at": "2023-09-14T17:05:57Z"
+          "updated_at": "2023-09-21T16:20:49Z"
         },
         "type": "issue"
       }
@@ -2518,6 +2167,15 @@
               "default": false
             },
             {
+              "id": 955867938,
+              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
+              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
+              "name": "Needs rebase",
+              "description": "",
+              "color": "cccccc",
+              "default": false
+            },
+            {
               "id": 5334691551,
               "node_id": "LA_kwDOABII588AAAABPfju3w",
               "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/CI%20failed",
@@ -2530,7 +2188,7 @@
           "assignees": [],
           "author_association": "MEMBER",
           "locked": false,
-          "comments": 4,
+          "comments": 5,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/28453",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/28453",
@@ -2538,7 +2196,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/28453.patch"
           },
           "created_at": "2023-09-11T20:39:25Z",
-          "updated_at": "2023-09-14T14:40:57Z"
+          "updated_at": "2023-09-19T18:09:11Z"
         },
         "type": "issue"
       }
@@ -2609,6 +2267,15 @@
           },
           "labels": [
             {
+              "id": 955867938,
+              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
+              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
+              "name": "Needs rebase",
+              "description": "",
+              "color": "cccccc",
+              "default": false
+            },
+            {
               "id": 5334691551,
               "node_id": "LA_kwDOABII588AAAABPfju3w",
               "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/CI%20failed",
@@ -2621,7 +2288,7 @@
           "assignees": [],
           "author_association": "MEMBER",
           "locked": false,
-          "comments": 5,
+          "comments": 6,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/28451",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/28451",
@@ -2629,7 +2296,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/28451.patch"
           },
           "created_at": "2023-09-11T16:07:31Z",
-          "updated_at": "2023-09-14T14:31:59Z"
+          "updated_at": "2023-09-20T13:04:47Z"
         },
         "type": "issue"
       }
@@ -2710,7 +2377,7 @@
           "events_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/28452/events",
           "html_url": "https://github.com/bitcoin/bitcoin/pull/28452",
           "number": 28452,
-          "state": "open",
+          "state": "closed",
           "state_reason": null,
           "title": "Do not use std::vector = {} to release memory",
           "body": "It appears that invoking `v = {};` for an `std::vector<...> v` is equivalent to `v.clear()`, which does not release its allocated memory. There are a number of places in the codebase where it appears to be used for that purpose however (mostly written by me). Replace those with `std::vector<...>{}.swap(v);` (using a helper function `ClearShrink` in util/vector.h).\r\n\r\nTo explain what is going on: `v = {...};` is equivalent in general to `v.operator=({...});`. For many types, the `{}` is converted to the type of `v`, and then assigned to `v` - which for `std::vector` would ordinarily have the effect of clearing its memory (constructing a new empty vector, and then move-assigning it to `v`). However, since `std::vector<T>` has an `operator=(std::initializer_list<T>)` defined, it has precedence (since no implicit conversion is needed), and with an empty list, that is equivalent to `clear()`.\r\n\r\nI did consider using `v = std::vector<T>{};` as replacement for `v = {};` instances where memory releasing is desired, but it appears that it does not actually work universally either. `V{}.swap(v);` does.",
@@ -2734,29 +2401,20 @@
             "type": "User",
             "site_admin": false
           },
-          "labels": [
-            {
-              "id": 5483054654,
-              "node_id": "LA_kwDOABII588AAAABRtDGPg",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20backport%20(25.x)",
-              "name": "Needs backport (25.x)",
-              "description": "",
-              "color": "ff8200",
-              "default": false
-            }
-          ],
+          "labels": [],
           "assignees": [],
           "author_association": "MEMBER",
           "locked": false,
-          "comments": 11,
+          "comments": 13,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/28452",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/28452",
             "diff_url": "https://github.com/bitcoin/bitcoin/pull/28452.diff",
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/28452.patch"
           },
+          "closed_at": "2023-09-15T09:04:56Z",
           "created_at": "2023-09-11T18:16:53Z",
-          "updated_at": "2023-09-14T14:31:22Z"
+          "updated_at": "2023-09-15T10:26:24Z"
         },
         "type": "issue"
       }
@@ -2900,7 +2558,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/28463.patch"
           },
           "created_at": "2023-09-12T20:36:39Z",
-          "updated_at": "2023-09-14T14:27:36Z"
+          "updated_at": "2023-09-21T13:12:59Z"
         },
         "type": "issue"
       }
@@ -2993,60 +2651,6 @@
       }
     },
     {
-      "event": "commented",
-      "id": 1719196589,
-      "node_id": "IC_kwDOEEET9c5meNut",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/1719196589",
-      "actor": {
-        "login": "DrahtBot",
-        "id": 39886733,
-        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
-        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/DrahtBot",
-        "html_url": "https://github.com/DrahtBot",
-        "followers_url": "https://api.github.com/users/DrahtBot/followers",
-        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
-        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
-        "repos_url": "https://api.github.com/users/DrahtBot/repos",
-        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": "2023-09-14T10:32:57Z",
-      "updated_at": "2023-09-14T10:32:57Z",
-      "author_association": "CONTRIBUTOR",
-      "body": "<!--cf906140f33d8803c4a75a2196329ecb-->\n🐙 This pull request conflicts with the target branch and [needs rebase](https://github.com/bitcoin-core/gui/blob/master/CONTRIBUTING.md#rebasing-changes).\n",
-      "user": {
-        "login": "DrahtBot",
-        "id": 39886733,
-        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
-        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/DrahtBot",
-        "html_url": "https://github.com/DrahtBot",
-        "followers_url": "https://api.github.com/users/DrahtBot/followers",
-        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
-        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
-        "repos_url": "https://api.github.com/users/DrahtBot/repos",
-        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "html_url": "https://github.com/bitcoin-core/gui/pull/754#issuecomment-1719196589",
-      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/754"
-    },
-    {
       "event": "reviewed",
       "id": 1627453018,
       "node_id": "PRR_kwDOEEET9c5hAPZa",
@@ -3081,6 +2685,555 @@
       "submitted_at": "2023-09-14T17:45:24Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/754"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDQ5ODhkOGVmMGM0MDczYzhkZjQyMTQyNjExMzg4MTczNDVhMzJkNmQ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/4988d8ef0c4073c8df4214261138817345a32d6d",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/4988d8ef0c4073c8df4214261138817345a32d6d",
+      "tree": {
+        "sha": "e6cd56e3991b89ebe855dbdf14817d4fad3a33b4",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/e6cd56e3991b89ebe855dbdf14817d4fad3a33b4"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/b66f6dcb26906ca8187c7e54735e21168b8101c7",
+          "sha": "b66f6dcb26906ca8187c7e54735e21168b8101c7",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/b66f6dcb26906ca8187c7e54735e21168b8101c7"
+        }
+      ],
+      "message": "net: advertise NODE_P2P_V2 if CLI arg -v2transport is on\n\nCo-authored-by: Dhruv Mehta <856960+dhruv@users.noreply.github.com>",
+      "committer": {
+        "name": "Pieter Wuille",
+        "email": "pieter@wuille.net",
+        "date": "2023-09-22T10:25:13Z"
+      },
+      "author": {
+        "name": "Pieter Wuille",
+        "email": "pieter@wuille.net",
+        "date": "2023-08-22T21:50:59Z"
+      },
+      "sha": "4988d8ef0c4073c8df4214261138817345a32d6d"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGJjZGU1MDAzNWUwMmRjMGIwNDY5MzQyM2JjODlhMDI5YjM0NjhjYTQ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/bcde50035e02dc0b04693423bc89a029b3468ca4",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/bcde50035e02dc0b04693423bc89a029b3468ca4",
+      "tree": {
+        "sha": "4df00c3f3a0e49379fd836367d4d072dc0abaa32",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/4df00c3f3a0e49379fd836367d4d072dc0abaa32"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/4988d8ef0c4073c8df4214261138817345a32d6d",
+          "sha": "4988d8ef0c4073c8df4214261138817345a32d6d",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/4988d8ef0c4073c8df4214261138817345a32d6d"
+        }
+      ],
+      "message": "net: use V2Transport when NODE_P2P_V2 service flag is present\n\nCo-authored-by: Dhruv Mehta <856960+dhruv@users.noreply.github.com>",
+      "committer": {
+        "name": "Pieter Wuille",
+        "email": "pieter@wuille.net",
+        "date": "2023-09-22T10:25:13Z"
+      },
+      "author": {
+        "name": "Pieter Wuille",
+        "email": "pieter@wuille.net",
+        "date": "2023-08-21T20:55:47Z"
+      },
+      "sha": "bcde50035e02dc0b04693423bc89a029b3468ca4"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDFjYTExMDgzMDgwMWJjYjBiZDE0YjM1YzAxZDhiYTY0MjBjZDM4MTY",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/1ca110830801bcb0bd14b35c01d8ba6420cd3816",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/1ca110830801bcb0bd14b35c01d8ba6420cd3816",
+      "tree": {
+        "sha": "7d68ceb4c4edc6f3c0457a81b13693a01365a069",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/7d68ceb4c4edc6f3c0457a81b13693a01365a069"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/bcde50035e02dc0b04693423bc89a029b3468ca4",
+          "sha": "bcde50035e02dc0b04693423bc89a029b3468ca4",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/bcde50035e02dc0b04693423bc89a029b3468ca4"
+        }
+      ],
+      "message": "rpc: addnode arg to use BIP324 v2 p2p\n\nCo-authored-by: Pieter Wuille <bitcoin-dev@wuille.net>",
+      "committer": {
+        "name": "Pieter Wuille",
+        "email": "pieter@wuille.net",
+        "date": "2023-09-22T13:20:10Z"
+      },
+      "author": {
+        "name": "dhruv",
+        "email": "856960+dhruv@users.noreply.github.com",
+        "date": "2021-12-28T21:26:20Z"
+      },
+      "sha": "1ca110830801bcb0bd14b35c01d8ba6420cd3816"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDhhMTU4YzkyZDM4NzI5ZGNiOGNhY2MwMjY2ZjE0YTE1YzVhZTEwZDk",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/8a158c92d38729dcb8cacc0266f14a15c5ae10d9",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/8a158c92d38729dcb8cacc0266f14a15c5ae10d9",
+      "tree": {
+        "sha": "894844a20679651851e190bbd94e1520f05ab25b",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/894844a20679651851e190bbd94e1520f05ab25b"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/1ca110830801bcb0bd14b35c01d8ba6420cd3816",
+          "sha": "1ca110830801bcb0bd14b35c01d8ba6420cd3816",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/1ca110830801bcb0bd14b35c01d8ba6420cd3816"
+        }
+      ],
+      "message": "sync: modernize CSemaphore / CSemaphoreGrant",
+      "committer": {
+        "name": "Pieter Wuille",
+        "email": "pieter@wuille.net",
+        "date": "2023-09-22T13:21:05Z"
+      },
+      "author": {
+        "name": "Pieter Wuille",
+        "email": "pieter@wuille.net",
+        "date": "2023-08-21T22:14:52Z"
+      },
+      "sha": "8a158c92d38729dcb8cacc0266f14a15c5ae10d9"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDU5MTdiNmI1ZDc5OGIxOGRhYTk0OWYwM2RlN2MzN2I2MDM4MDExZmQ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/5917b6b5d798b18daa949f03de7c37b6038011fd",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/5917b6b5d798b18daa949f03de7c37b6038011fd",
+      "tree": {
+        "sha": "9b511bcbc03e0479ccc80312fa366f505d5e007b",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/9b511bcbc03e0479ccc80312fa366f505d5e007b"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/8a158c92d38729dcb8cacc0266f14a15c5ae10d9",
+          "sha": "8a158c92d38729dcb8cacc0266f14a15c5ae10d9",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/8a158c92d38729dcb8cacc0266f14a15c5ae10d9"
+        }
+      ],
+      "message": "net: reconnect with V1Transport under certain conditions\n\nWhen an outbound v2 connection is disconnected without receiving anything, but at\nleast 24 bytes of our pubkey were sent out (enough to constitute an invalid v1\nheader), add them to a queue of reconnections to be tried.\n\nThe reconnections are in a queue rather than performed immediately, because we should\nnot block the socket handler thread with connection creation (a blocking operation\nthat can take multiple seconds).",
+      "committer": {
+        "name": "Pieter Wuille",
+        "email": "pieter@wuille.net",
+        "date": "2023-09-22T13:21:05Z"
+      },
+      "author": {
+        "name": "Pieter Wuille",
+        "email": "pieter@wuille.net",
+        "date": "2023-08-23T00:42:24Z"
+      },
+      "sha": "5917b6b5d798b18daa949f03de7c37b6038011fd"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDRiOGRhYThkMjM0ZmY4ZGFiNTBkN2Y1YjQ3ZDNjZTU0NWYzOTU5Y2M",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/4b8daa8d234ff8dab50d7f5b47d3ce545f3959cc",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/4b8daa8d234ff8dab50d7f5b47d3ce545f3959cc",
+      "tree": {
+        "sha": "a88ddd83b425c3d6de2e477729d256b7a8ee781c",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/a88ddd83b425c3d6de2e477729d256b7a8ee781c"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/5917b6b5d798b18daa949f03de7c37b6038011fd",
+          "sha": "5917b6b5d798b18daa949f03de7c37b6038011fd",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/5917b6b5d798b18daa949f03de7c37b6038011fd"
+        }
+      ],
+      "message": "net: expose transport types/session IDs of connections in RPC and logs\n\nCo-authored-by: Dhruv Mehta <856960+dhruv@users.noreply.github.com>",
+      "committer": {
+        "name": "Pieter Wuille",
+        "email": "pieter@wuille.net",
+        "date": "2023-09-22T13:21:05Z"
+      },
+      "author": {
+        "name": "Pieter Wuille",
+        "email": "pieter@wuille.net",
+        "date": "2023-07-31T03:26:04Z"
+      },
+      "sha": "4b8daa8d234ff8dab50d7f5b47d3ce545f3959cc"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDM2NDJlMjg3MzA2YjlmNjI3ZjgxMDkzYzU1NjBiZTkzMDMwN2U4ZTc",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/3642e287306b9f627f81093c5560be930307e8e7",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/3642e287306b9f627f81093c5560be930307e8e7",
+      "tree": {
+        "sha": "06fce14b90779ab4bafb5aeafcfc21292dcba90d",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/06fce14b90779ab4bafb5aeafcfc21292dcba90d"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/4b8daa8d234ff8dab50d7f5b47d3ce545f3959cc",
+          "sha": "4b8daa8d234ff8dab50d7f5b47d3ce545f3959cc",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/4b8daa8d234ff8dab50d7f5b47d3ce545f3959cc"
+        }
+      ],
+      "message": "test: Functional test for opportunistic encryption\n\nCo-authored-by: Pieter Wuille <bitcoin-dev@wuille.net>",
+      "committer": {
+        "name": "Pieter Wuille",
+        "email": "pieter@wuille.net",
+        "date": "2023-09-22T13:21:05Z"
+      },
+      "author": {
+        "name": "dhruv",
+        "email": "856960+dhruv@users.noreply.github.com",
+        "date": "2022-09-07T22:59:49Z"
+      },
+      "sha": "3642e287306b9f627f81093c5560be930307e8e7"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDk2NGE4Yjg4ZWY2OTY0MzE4MWUxMTQ3NWYwM2Y5NGNjMjc4MDc3MmU",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/964a8b88ef69643181e11475f03f94cc2780772e",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/964a8b88ef69643181e11475f03f94cc2780772e",
+      "tree": {
+        "sha": "f10908307c851828e3c50532c0b2afcb337c2446",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/f10908307c851828e3c50532c0b2afcb337c2446"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/3642e287306b9f627f81093c5560be930307e8e7",
+          "sha": "3642e287306b9f627f81093c5560be930307e8e7",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/3642e287306b9f627f81093c5560be930307e8e7"
+        }
+      ],
+      "message": "test: enable v2 transport between nodes in some functional tests",
+      "committer": {
+        "name": "Pieter Wuille",
+        "email": "pieter@wuille.net",
+        "date": "2023-09-22T13:21:05Z"
+      },
+      "author": {
+        "name": "Pieter Wuille",
+        "email": "pieter@wuille.net",
+        "date": "2023-09-10T01:20:17Z"
+      },
+      "sha": "964a8b88ef69643181e11475f03f94cc2780772e"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGQ3YzhlNmZiNTY0MGM3OTQwZjZhZTI1ODUwNDExZTdkMWUyMDk1YmI",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/d7c8e6fb5640c7940f6ae25850411e7d1e2095bb",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/d7c8e6fb5640c7940f6ae25850411e7d1e2095bb",
+      "tree": {
+        "sha": "00d80a1fc01158e2742992d645c36f1a0b05b72f",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/00d80a1fc01158e2742992d645c36f1a0b05b72f"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree 00d80a1fc01158e2742992d645c36f1a0b05b72f\nparent 964a8b88ef69643181e11475f03f94cc2780772e\nauthor Hennadii Stepanov <32963518+hebasto@users.noreply.github.com> 1695391770 +0100\ncommitter Hennadii Stepanov <32963518+hebasto@users.noreply.github.com> 1695391770 +0100\n\nqt: Add \"Transport\" label to peer details\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEE0dvyxLlvLev0wWZUQQEIES5+qB8FAmUNoBoACgkQQQEIES5+\nqB/etQ/+M3ofB16VXunHhXHY2C96YLZL8c5lZ4P0TJu31J2t8JI+RTNjZL83j5cH\nCi2VyC5RATirlbMLRCx+TUzlvT862ejdjSxKQkj88eRjOc9eWPGRdq8T0i0EYbLZ\nd06mbuMyOR6E2MfYBZSEqv+1FphbYDczOS8A1/SEQVk7Gp7LkCCHMDFoOHewuIHQ\nXWEpaE2VtOeUAoXZGH5HkZMMqEVDyUnD4T+Md9kLFQBnfyGiqG8E/KZ1OrKIuO0l\noEq28sRoVgA1Z9u2c7n3lzqe7EaAv0qgqG3jzqFRgTaz10jR6pPLvNmSFRWengPG\nRh714RHltT9N970QLhFZhwv2KBJFPhVWTzDJVvGKfAwZ5uvxdHwfJxfCCC5HLC8a\nNJ32M7OQq0sH0Dni2k3PRYptCfdxO99CC4rjRnzWnKqSUNIzNUTRC53xlO7GJZ6m\nP8oQreLFtkA1h2aVoAT5Ww1tFKGU9zz5LJDHkXigNY+gbdE988lRzRw9ktBrrr3U\nw6dOjHusnM+UovN5QZ9xB7WZFtrTu8233yNEA8xWupE7ljMsl8YIgUzPiyzyGUWS\nWTlS6828ntcz6rXWehdOb/ULgPhSFC9b8ji02OUx7KoBRiMvxx2MCBLn33L480VN\n9+ZrpgUrV31apwJDYGOV8Yswl680M32Ij6daEJXO6CyOP9sEpYo=\n=aVSe\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/964a8b88ef69643181e11475f03f94cc2780772e",
+          "sha": "964a8b88ef69643181e11475f03f94cc2780772e",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/964a8b88ef69643181e11475f03f94cc2780772e"
+        }
+      ],
+      "message": "qt: Add \"Transport\" label to peer details",
+      "committer": {
+        "name": "Hennadii Stepanov",
+        "email": "32963518+hebasto@users.noreply.github.com",
+        "date": "2023-09-22T14:09:30Z"
+      },
+      "author": {
+        "name": "Hennadii Stepanov",
+        "email": "32963518+hebasto@users.noreply.github.com",
+        "date": "2023-09-22T14:09:30Z"
+      },
+      "sha": "d7c8e6fb5640c7940f6ae25850411e7d1e2095bb"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDQzMjY4YjBhMmVhYWIwMmI4YTIzY2RkZjNiNGM2ZWFlOWJiMzZhZmU",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/43268b0a2eaab02b8a23cddf3b4c6eae9bb36afe",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/43268b0a2eaab02b8a23cddf3b4c6eae9bb36afe",
+      "tree": {
+        "sha": "216c406a397e0a1d6e241ac8766efea0b5edd133",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/216c406a397e0a1d6e241ac8766efea0b5edd133"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree 216c406a397e0a1d6e241ac8766efea0b5edd133\nparent d7c8e6fb5640c7940f6ae25850411e7d1e2095bb\nauthor Hennadii Stepanov <32963518+hebasto@users.noreply.github.com> 1695391791 +0100\ncommitter Hennadii Stepanov <32963518+hebasto@users.noreply.github.com> 1695391791 +0100\n\nqt: Add \"Session id\" label to peer details\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEE0dvyxLlvLev0wWZUQQEIES5+qB8FAmUNoC8ACgkQQQEIES5+\nqB9Btg//QUCNMOwaY+qL+PnZ/29xFss9bpuHf2B2yiXfvAhaiX82X4e04nvmtpJx\nGm/ZWAWtHbXf43aT1ZcfBn6BojGedsCLeqCHCa6eugRy316+7wfTO7jVQSUzEsO3\nFfkbbD3T/wJTgEvrsMoz/y1ojf7EGT7V76l0JOz1Kp6yUA+ct0KXI8BqoDgPBIiu\nj6Yk7S4zCo5fvMuEdORFypyriSXZWv1yVJwqbCUb225ph3JbicQQ8Am+W1VGsD5S\n0j/pJTUsUTJFOmL/HBGZrZ39fhdz5CYDicat/fr/kBTtvzTzwC9y6BJD5PaqWOTi\nED+5P7YHplGAKOODpMwr5vcPpxfQAaui3EkUAYQ4H6gdQZLq2cdg0pzPo5Gyr5ue\n0Gh/rzzB76RxyJK4MzXVkuxHjJnzyqp5KN7v0Qw/jR8h+yJ8fq/fr6cYCunHYiRp\n7twam8GIYU4pTV1mdL4/mXwiDW0c5FQ5Hb0EURQNKzSu5BRHLm+TprVa4VTJySjz\nPpDN/FziCZfmC936v/pWEi65NN/7QUwDYmd1zoIKWzUjMiW9ufcIAE2R3rQlfRVA\ndD8wg8QHZLrIRctp4oWlnIEEX7M96w2r9rYcp8BjNIaYk3IwKBdTD1Ldmy48ApiX\neUogsuhyAUrU5/iW6mTHdU06gF8Myl+8l15w4AVtE1j5oq3Irnw=\n=IGqY\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/d7c8e6fb5640c7940f6ae25850411e7d1e2095bb",
+          "sha": "d7c8e6fb5640c7940f6ae25850411e7d1e2095bb",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/d7c8e6fb5640c7940f6ae25850411e7d1e2095bb"
+        }
+      ],
+      "message": "qt: Add \"Session id\" label to peer details",
+      "committer": {
+        "name": "Hennadii Stepanov",
+        "email": "32963518+hebasto@users.noreply.github.com",
+        "date": "2023-09-22T14:09:51Z"
+      },
+      "author": {
+        "name": "Hennadii Stepanov",
+        "email": "32963518+hebasto@users.noreply.github.com",
+        "date": "2023-09-22T14:09:51Z"
+      },
+      "sha": "43268b0a2eaab02b8a23cddf3b4c6eae9bb36afe"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 10447925519,
+      "node_id": "HRFPE_lADOEEET9c5wq1DJzwAAAAJuvrEP",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/10447925519",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-09-22T14:10:33Z"
+    },
+    {
+      "event": "renamed",
+      "id": 10447932428,
+      "node_id": "RTE_lADOEEET9c5wq1DJzwAAAAJuvswM",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/10447932428",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-09-22T14:11:12Z",
+      "rename": {
+        "from": "Add BIP324 \"Transport\" label to peer details",
+        "to": "Add BIP324-specific labels to peer details"
+      }
+    },
+    {
+      "event": "unlabeled",
+      "id": 10447938796,
+      "node_id": "UNLE_lADOEEET9c5wq1DJzwAAAAJuvuTs",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/10447938796",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-09-22T14:11:48Z",
+      "label": {
+        "name": "Needs rebase",
+        "color": "cccccc"
+      }
+    },
+    {
+      "event": "commented",
+      "id": 1731496486,
+      "node_id": "IC_kwDOEEET9c5nNIom",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/1731496486",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-09-22T14:14:04Z",
+      "updated_at": "2023-09-22T14:14:04Z",
+      "author_association": "MEMBER",
+      "body": "> But can you add the session id?\r\n\r\nDone.",
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/754#issuecomment-1731496486",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/754"
     }
   ],
   "comments": []
