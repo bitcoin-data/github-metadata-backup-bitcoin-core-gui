@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/762/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/762/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/7398ef45eab5ac0ee3d00e7a767ff2f989710158",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/30c235b2e6fd9b7e3634d795cedc171d4d8d0e27",
     "number": 762,
     "state": "open",
     "locked": false,
@@ -41,10 +41,10 @@
     "body": "It fixes #761.\r\n\r\nAs it's displayed in following image, about logo icon is updated now with the correct colour indicating the chain type of the QT instance that user is running (as the splash screen), plus the title of the about window also is updated with the chain type string as in the main window.\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/b6ce187f-ca81-4c4b-b2f6-a2e3b15e6010)\r\n\r\n(current splash screen - this hasn't been touched, just to show consistency)\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/2a1c329b-baa6-4603-bf20-dac2746682f4)\r\n\r\nTested it also with:\r\n- mainnet (no command line args after `bitcoin-qt` or `bitcoin-qt -chain=main`), \r\n- `-regtest` and \r\n- `-testnet`.",
     "labels": [],
     "created_at": "2023-09-25T00:03:25Z",
-    "updated_at": "2023-09-25T00:03:27Z",
+    "updated_at": "2023-09-25T02:21:37Z",
     "mergeable": true,
     "mergeable_state": "unstable",
-    "merge_commit_sha": "cb3df65707fcc7518224e987a2153b87418fff00",
+    "merge_commit_sha": "1b4582949ffade63e4cc5b5715f297c3ce4beda1",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -52,7 +52,7 @@
     "head": {
       "label": "pablomartin4btc:gui-update-about-logo-icon",
       "ref": "gui-update-about-logo-icon",
-      "sha": "7398ef45eab5ac0ee3d00e7a767ff2f989710158",
+      "sha": "30c235b2e6fd9b7e3634d795cedc171d4d8d0e27",
       "user": {
         "login": "pablomartin4btc",
         "id": 110166421,
@@ -161,7 +161,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-09-24T23:45:22Z",
+        "pushed_at": "2023-09-25T02:21:35Z",
         "created_at": "2022-09-10T13:37:44Z",
         "updated_at": "2022-12-30T18:34:57Z",
         "license": {
@@ -293,7 +293,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-09-25T00:03:25Z",
+        "pushed_at": "2023-09-25T02:21:37Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2023-09-22T15:48:27Z",
         "license": {
@@ -328,46 +328,6 @@
     "comments": 1
   },
   "events": [
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDczOThlZjQ1ZWFiNWFjMGVlM2QwMGU3YTc2N2ZmMmY5ODk3MTAxNTg",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/7398ef45eab5ac0ee3d00e7a767ff2f989710158",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/7398ef45eab5ac0ee3d00e7a767ff2f989710158",
-      "tree": {
-        "sha": "1490e4c8a2bb174c60249fa5483a64c5f5ff4d0b",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/1490e4c8a2bb174c60249fa5483a64c5f5ff4d0b"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/dcfbf3c2107c3cb9d343ebfa0eee78278dea8d66",
-          "sha": "dcfbf3c2107c3cb9d343ebfa0eee78278dea8d66",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/dcfbf3c2107c3cb9d343ebfa0eee78278dea8d66"
-        }
-      ],
-      "message": "gui: Update about logo icon to denote chain type\n\nAdding the networkStyle parameter to the HelpMessageDialog\ncreator on utilitydialog, updating all calls where its instance\nis being created from bitcoingui.cpp. In the object itself,\nuse this new parameter object to build the about window title and\nset the icon of the about logo widget.",
-      "committer": {
-        "name": "pablomartin4btc",
-        "email": "pablomartin4btc@gmail.com",
-        "date": "2023-09-24T23:44:38Z"
-      },
-      "author": {
-        "name": "pablomartin4btc",
-        "email": "pablomartin4btc@gmail.com",
-        "date": "2023-09-24T23:44:38Z"
-      },
-      "sha": "7398ef45eab5ac0ee3d00e7a767ff2f989710158"
-    },
     {
       "event": "commented",
       "id": 1732706241,
@@ -421,6 +381,141 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/762#issuecomment-1732706241",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/762"
+    },
+    {
+      "event": "labeled",
+      "id": 10456736924,
+      "node_id": "LE_lADOEEET9c5x3tTozwAAAAJvRSSc",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/10456736924",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-09-25T02:08:33Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
+      }
+    },
+    {
+      "event": "unlabeled",
+      "id": 10456747979,
+      "node_id": "UNLE_lADOEEET9c5x3tTozwAAAAJvRU_L",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/10456747979",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-09-25T02:11:02Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
+      }
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDMwYzIzNWIyZTZmZDliN2UzNjM0ZDc5NWNlZGMxNzFkNGQ4ZDBlMjc",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/30c235b2e6fd9b7e3634d795cedc171d4d8d0e27",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/30c235b2e6fd9b7e3634d795cedc171d4d8d0e27",
+      "tree": {
+        "sha": "1490e4c8a2bb174c60249fa5483a64c5f5ff4d0b",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/1490e4c8a2bb174c60249fa5483a64c5f5ff4d0b"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/dcfbf3c2107c3cb9d343ebfa0eee78278dea8d66",
+          "sha": "dcfbf3c2107c3cb9d343ebfa0eee78278dea8d66",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/dcfbf3c2107c3cb9d343ebfa0eee78278dea8d66"
+        }
+      ],
+      "message": "gui: Update about logo icon to denote chain type\n\nAdding the networkStyle parameter to the HelpMessageDialog\ncreator on utilitydialog, updating all calls where its instance\nis being created from bitcoingui.cpp. In the object itself,\nuse this new parameter object to build the about window title and\nset the icon of the about logo widget.",
+      "committer": {
+        "name": "pablomartin4btc",
+        "email": "pablomartin4btc@gmail.com",
+        "date": "2023-09-25T02:21:16Z"
+      },
+      "author": {
+        "name": "pablomartin4btc",
+        "email": "pablomartin4btc@gmail.com",
+        "date": "2023-09-24T23:44:38Z"
+      },
+      "sha": "30c235b2e6fd9b7e3634d795cedc171d4d8d0e27"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 10456793880,
+      "node_id": "HRFPE_lADOEEET9c5x3tTozwAAAAJvRgMY",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/10456793880",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-09-25T02:21:37Z"
     }
   ],
   "comments": []
