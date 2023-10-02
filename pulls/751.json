@@ -41,7 +41,7 @@
     "body": "As the 'QMenuBar' is created without a parent window in MacOS, the app crashes when the user presses the shutdown button and, right after it, triggers any action in the menu bar.\r\n\r\nThis happens because the QMenuBar is manually deleted in the BitcoinGUI destructor but the events attached to it children actions are not disconnected, so QActions events such us the 'QMenu::aboutToShow' could try to access null pointers.\r\n\r\nInstead of guarding every single QAction pointer inside the QMenu::aboutToShow slot, or manually disconnecting all registered events in the destructor, we can check if a shutdown was requested and discard the event.\r\n\r\nThe 'node' field is a ref whose memory is held by the main application class, so it is safe to use here. Events are disconnected prior destructing the main application object.\r\n\r\nFurthermore, the 'MacDockIconHandler::dockIconClicked' signal can make the app crash during shutdown for the very same reason. The 'show()' call triggers the 'QApplication::focusWindowChanged' event, which is connected to the 'minimize_action' QAction, which is also part of the app menu bar, which could no longer exist.\r\n\r\nImportant Note:\r\nThis happened to me few times. The worst consequence was an inconsistent chain state during IBD. Which triggered a full \"replay blocks\" process on the next startup. Which was painfully slow.",
     "labels": [],
     "created_at": "2023-09-08T14:34:56Z",
-    "updated_at": "2023-10-02T03:25:43Z",
+    "updated_at": "2023-10-02T08:08:06Z",
     "mergeable": true,
     "mergeable_state": "clean",
     "merge_commit_sha": "f133170510ba792d0f7435d7fbc6a9d8aed8abfd",
@@ -325,7 +325,7 @@
     "changed_files": 1,
     "commits": 2,
     "review_comments": 2,
-    "comments": 3
+    "comments": 4
   },
   "events": [
     {
@@ -951,6 +951,60 @@
         "site_admin": false
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/751#issuecomment-1742352296",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/751"
+    },
+    {
+      "event": "commented",
+      "id": 1742573959,
+      "node_id": "IC_kwDOEEET9c5n3ZGH",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/1742573959",
+      "actor": {
+        "login": "Sjors",
+        "id": 10217,
+        "node_id": "MDQ6VXNlcjEwMjE3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/10217?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Sjors",
+        "html_url": "https://github.com/Sjors",
+        "followers_url": "https://api.github.com/users/Sjors/followers",
+        "following_url": "https://api.github.com/users/Sjors/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/Sjors/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/Sjors/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/Sjors/subscriptions",
+        "organizations_url": "https://api.github.com/users/Sjors/orgs",
+        "repos_url": "https://api.github.com/users/Sjors/repos",
+        "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/Sjors/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-10-02T08:08:06Z",
+      "updated_at": "2023-10-02T08:08:06Z",
+      "author_association": "MEMBER",
+      "body": "Tested with bae209e3879fa099302d3b211362c49bbbfbdd14\r\n\r\nTested on (Intel) macOS Ventura 13.6, was able to reproduce various crashes.\r\n\r\nI used the Load URL option in the File menu, which crashes without this PR. With this PR the dialog appears and then goes away when the app is done quitting, but no crash. Similiar result when opening the Information menu.\r\n\r\nAnother way to trigger a crash is to hover over the Open Wallet menu option. This PR doesn't fix that, so maybe it's a different bug?\r\n\r\nThe `m_node.shutdownRequested()` seems a simple enough fix.\r\n\r\nI didn't study the second commit deeply. It might be good to point to the PR where it was introduced and retry whatever bug was being fixed at the time.\r\n\r\n(in unrelated news, I'll be able to test Ventura for quite some time into the future, because my 2017 iMac doesn't support newer macOS versions)",
+      "user": {
+        "login": "Sjors",
+        "id": 10217,
+        "node_id": "MDQ6VXNlcjEwMjE3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/10217?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Sjors",
+        "html_url": "https://github.com/Sjors",
+        "followers_url": "https://api.github.com/users/Sjors/followers",
+        "following_url": "https://api.github.com/users/Sjors/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/Sjors/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/Sjors/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/Sjors/subscriptions",
+        "organizations_url": "https://api.github.com/users/Sjors/orgs",
+        "repos_url": "https://api.github.com/users/Sjors/repos",
+        "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/Sjors/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/751#issuecomment-1742573959",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/751"
     }
   ],
