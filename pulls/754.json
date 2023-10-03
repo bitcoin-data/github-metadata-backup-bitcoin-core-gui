@@ -85,12 +85,14 @@
       "updated_at": "2023-10-03T09:23:24Z"
     },
     "created_at": "2023-09-11T11:16:49Z",
-    "updated_at": "2023-10-03T09:35:16Z",
-    "mergeable_state": "unknown",
-    "merge_commit_sha": "90b6be460677d35dcb49c8edf19a3932c648d8a0",
+    "updated_at": "2023-10-03T10:28:07Z",
+    "mergeable": true,
+    "mergeable_state": "unstable",
+    "merge_commit_sha": "abc0d61e87df5f138520346c7654126876b4b357",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
+    "rebaseable": true,
     "head": {
       "label": "hebasto:230911-bip324-peer-details",
       "ref": "230911-bip324-peer-details",
@@ -190,7 +192,7 @@
         "forks_count": 2,
         "stargazers_count": 4,
         "watchers_count": 4,
-        "size": 152035,
+        "size": 152242,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -322,7 +324,7 @@
         "forks_count": 278,
         "stargazers_count": 509,
         "watchers_count": 509,
-        "size": 151128,
+        "size": 151227,
         "default_branch": "master",
         "open_issues_count": 160,
         "is_template": false,
@@ -398,9 +400,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2023-09-11T11:16:52Z",
-      "updated_at": "2023-10-03T09:35:16Z",
+      "updated_at": "2023-10-03T10:28:07Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| ACK | [Sjors](https://github.com/bitcoin-core/gui/pull/754#issuecomment-1744595551) |\n| Concept ACK | [jarolrod](https://github.com/bitcoin-core/gui/pull/754#pullrequestreview-1621253578), [jonatack](https://github.com/bitcoin-core/gui/pull/754#issuecomment-1718397320), [theStack](https://github.com/bitcoin-core/gui/pull/754#pullrequestreview-1627453018) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#bitcoin/bitcoin/28463](https://github.com/bitcoin/bitcoin/pull/28463) (p2p: Increase inbound capacity for block-relay only connections by mzumsande)\n* [#bitcoin/bitcoin/28331](https://github.com/bitcoin/bitcoin/pull/28331) (BIP324 integration by sipa)\n* [#bitcoin/bitcoin/28155](https://github.com/bitcoin/bitcoin/pull/28155) (net: improves addnode / m_added_nodes logic by sr-gi)\n* [#bitcoin/bitcoin/27581](https://github.com/bitcoin/bitcoin/pull/27581) (net: Continuous ASMap health check by fjahr)\n* [#bitcoin/bitcoin/27114](https://github.com/bitcoin/bitcoin/pull/27114) (p2p: Allow whitelisting outgoing connections by brunoerg)\n* [#bitcoin/bitcoin/27052](https://github.com/bitcoin/bitcoin/pull/27052) (test: rpc: add last block announcement time to getpeerinfo result by LarryRuane)\n* [#bitcoin/bitcoin/26863](https://github.com/bitcoin/bitcoin/pull/26863) (test: merge banning test from p2p_disconnect_ban to rpc_setban by brunoerg)\n* [#bitcoin/bitcoin/26728](https://github.com/bitcoin/bitcoin/pull/26728) (wallet: Have the wallet store the key for automatically generated descriptors by achow101)\n* [#bitcoin/bitcoin/26114](https://github.com/bitcoin/bitcoin/pull/26114) (net: Make AddrFetch connections to fixed seeds by mzumsande)\n* [#bitcoin/bitcoin/25907](https://github.com/bitcoin/bitcoin/pull/25907) (wallet: rpc to add automatically generated descriptors by achow101)\n* [#bitcoin/bitcoin/22341](https://github.com/bitcoin/bitcoin/pull/22341) (rpc: add getxpub by Sjors)\n* [#bitcoin/bitcoin/20892](https://github.com/bitcoin/bitcoin/pull/20892) (tests: Run both descriptor and legacy tests within a single test invocation by achow101)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| ACK | [Sjors](https://github.com/bitcoin-core/gui/pull/754#issuecomment-1744595551) |\n| Concept ACK | [jarolrod](https://github.com/bitcoin-core/gui/pull/754#pullrequestreview-1621253578), [jonatack](https://github.com/bitcoin-core/gui/pull/754#issuecomment-1718397320), [theStack](https://github.com/bitcoin-core/gui/pull/754#pullrequestreview-1627453018) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nNo conflicts as of last run.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -980,12 +982,21 @@
               "name": "P2P",
               "color": "006b75",
               "default": false
+            },
+            {
+              "id": 955867938,
+              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
+              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
+              "name": "Needs rebase",
+              "description": "",
+              "color": "cccccc",
+              "default": false
             }
           ],
           "assignees": [],
           "author_association": "MEMBER",
           "locked": false,
-          "comments": 7,
+          "comments": 8,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/28155",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/28155",
@@ -993,7 +1004,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/28155.patch"
           },
           "created_at": "2023-07-25T20:47:02Z",
-          "updated_at": "2023-09-22T16:03:18Z"
+          "updated_at": "2023-10-03T10:25:48Z"
         },
         "type": "issue"
       }
@@ -1154,6 +1165,15 @@
               "default": false
             },
             {
+              "id": 955867938,
+              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
+              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
+              "name": "Needs rebase",
+              "description": "",
+              "color": "cccccc",
+              "default": false
+            },
+            {
               "id": 5334691551,
               "node_id": "LA_kwDOABII588AAAABPfju3w",
               "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/CI%20failed",
@@ -1166,7 +1186,7 @@
           "assignees": [],
           "author_association": "CONTRIBUTOR",
           "locked": false,
-          "comments": 9,
+          "comments": 10,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/27581",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/27581",
@@ -1174,7 +1194,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/27581.patch"
           },
           "created_at": "2023-05-05T12:16:53Z",
-          "updated_at": "2023-09-30T15:49:43Z"
+          "updated_at": "2023-10-03T10:29:40Z"
         },
         "type": "issue"
       }
@@ -1251,12 +1271,21 @@
               "name": "P2P",
               "color": "006b75",
               "default": false
+            },
+            {
+              "id": 955867938,
+              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
+              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
+              "name": "Needs rebase",
+              "description": "",
+              "color": "cccccc",
+              "default": false
             }
           ],
           "assignees": [],
           "author_association": "CONTRIBUTOR",
           "locked": false,
-          "comments": 17,
+          "comments": 18,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/27114",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/27114",
@@ -1264,7 +1293,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/27114.patch"
           },
           "created_at": "2023-02-16T20:31:10Z",
-          "updated_at": "2023-09-28T05:31:48Z"
+          "updated_at": "2023-10-03T10:31:26Z"
         },
         "type": "issue"
       }
@@ -1341,12 +1370,21 @@
               "name": "Tests",
               "color": "d4c5f9",
               "default": false
+            },
+            {
+              "id": 955867938,
+              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
+              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
+              "name": "Needs rebase",
+              "description": "",
+              "color": "cccccc",
+              "default": false
             }
           ],
           "assignees": [],
           "author_association": "CONTRIBUTOR",
           "locked": false,
-          "comments": 6,
+          "comments": 7,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/27052",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/27052",
@@ -1354,7 +1392,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/27052.patch"
           },
           "created_at": "2023-02-06T18:32:56Z",
-          "updated_at": "2023-10-03T02:17:00Z"
+          "updated_at": "2023-10-03T10:31:43Z"
         },
         "type": "issue"
       }
@@ -1431,12 +1469,21 @@
               "name": "Tests",
               "color": "d4c5f9",
               "default": false
+            },
+            {
+              "id": 955867938,
+              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
+              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
+              "name": "Needs rebase",
+              "description": "",
+              "color": "cccccc",
+              "default": false
             }
           ],
           "assignees": [],
           "author_association": "CONTRIBUTOR",
           "locked": false,
-          "comments": 5,
+          "comments": 6,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/26863",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/26863",
@@ -1444,7 +1491,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/26863.patch"
           },
           "created_at": "2023-01-10T13:25:40Z",
-          "updated_at": "2023-09-22T16:55:25Z"
+          "updated_at": "2023-10-03T10:32:24Z"
         },
         "type": "issue"
       }
@@ -1521,12 +1568,21 @@
               "name": "Wallet",
               "color": "08a781",
               "default": false
+            },
+            {
+              "id": 955867938,
+              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
+              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
+              "name": "Needs rebase",
+              "description": "",
+              "color": "cccccc",
+              "default": false
             }
           ],
           "assignees": [],
           "author_association": "MEMBER",
           "locked": false,
-          "comments": 19,
+          "comments": 20,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/26728",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/26728",
@@ -1534,7 +1590,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/26728.patch"
           },
           "created_at": "2022-12-19T22:31:05Z",
-          "updated_at": "2023-10-03T02:25:09Z"
+          "updated_at": "2023-10-03T10:33:01Z"
         },
         "type": "issue"
       }
@@ -1834,12 +1890,21 @@
               "name": "P2P",
               "color": "006b75",
               "default": false
+            },
+            {
+              "id": 955867938,
+              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
+              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
+              "name": "Needs rebase",
+              "description": "",
+              "color": "cccccc",
+              "default": false
             }
           ],
           "assignees": [],
           "author_association": "CONTRIBUTOR",
           "locked": false,
-          "comments": 20,
+          "comments": 21,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/26114",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/26114",
@@ -1847,7 +1912,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/26114.patch"
           },
           "created_at": "2022-09-16T21:01:39Z",
-          "updated_at": "2023-09-26T02:24:58Z"
+          "updated_at": "2023-10-03T10:34:27Z"
         },
         "type": "issue"
       }
@@ -1924,12 +1989,21 @@
               "name": "Wallet",
               "color": "08a781",
               "default": false
+            },
+            {
+              "id": 955867938,
+              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
+              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
+              "name": "Needs rebase",
+              "description": "",
+              "color": "cccccc",
+              "default": false
             }
           ],
           "assignees": [],
           "author_association": "MEMBER",
           "locked": false,
-          "comments": 12,
+          "comments": 13,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/25907",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/25907",
@@ -1937,7 +2011,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/25907.patch"
           },
           "created_at": "2022-08-22T23:17:45Z",
-          "updated_at": "2023-10-03T02:44:05Z"
+          "updated_at": "2023-10-03T10:35:03Z"
         },
         "type": "issue"
       }
@@ -2022,12 +2096,21 @@
               "name": "RPC/REST/ZMQ",
               "color": "0052cc",
               "default": false
+            },
+            {
+              "id": 955867938,
+              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
+              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
+              "name": "Needs rebase",
+              "description": "",
+              "color": "cccccc",
+              "default": false
             }
           ],
           "assignees": [],
           "author_association": "MEMBER",
           "locked": false,
-          "comments": 30,
+          "comments": 31,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/22341",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/22341",
@@ -2035,7 +2118,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/22341.patch"
           },
           "created_at": "2021-06-25T15:12:03Z",
-          "updated_at": "2023-10-03T03:02:47Z"
+          "updated_at": "2023-10-03T10:37:27Z"
         },
         "type": "issue"
       }
@@ -2112,12 +2195,21 @@
               "name": "Tests",
               "color": "d4c5f9",
               "default": false
+            },
+            {
+              "id": 955867938,
+              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
+              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
+              "name": "Needs rebase",
+              "description": "",
+              "color": "cccccc",
+              "default": false
             }
           ],
           "assignees": [],
           "author_association": "MEMBER",
           "locked": false,
-          "comments": 18,
+          "comments": 19,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/20892",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/20892",
@@ -2125,7 +2217,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/20892.patch"
           },
           "created_at": "2021-01-09T03:50:55Z",
-          "updated_at": "2023-10-03T03:07:17Z"
+          "updated_at": "2023-10-03T10:37:54Z"
         },
         "type": "issue"
       }
@@ -2304,15 +2396,6 @@
           },
           "labels": [
             {
-              "id": 955867938,
-              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
-              "name": "Needs rebase",
-              "description": "",
-              "color": "cccccc",
-              "default": false
-            },
-            {
               "id": 5334691551,
               "node_id": "LA_kwDOABII588AAAABPfju3w",
               "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/CI%20failed",
@@ -2325,7 +2408,7 @@
           "assignees": [],
           "author_association": "MEMBER",
           "locked": false,
-          "comments": 6,
+          "comments": 5,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/28451",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/28451",
@@ -2333,7 +2416,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/28451.patch"
           },
           "created_at": "2023-09-11T16:07:31Z",
-          "updated_at": "2023-09-20T13:04:47Z"
+          "updated_at": "2023-10-03T10:21:47Z"
         },
         "type": "issue"
       }
@@ -2582,12 +2665,21 @@
               "name": "P2P",
               "color": "006b75",
               "default": false
+            },
+            {
+              "id": 955867938,
+              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
+              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
+              "name": "Needs rebase",
+              "description": "",
+              "color": "cccccc",
+              "default": false
             }
           ],
           "assignees": [],
           "author_association": "CONTRIBUTOR",
           "locked": false,
-          "comments": 4,
+          "comments": 5,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/28463",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/28463",
@@ -2595,7 +2687,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/28463.patch"
           },
           "created_at": "2023-09-12T20:36:39Z",
-          "updated_at": "2023-09-28T16:16:39Z"
+          "updated_at": "2023-10-03T10:21:23Z"
         },
         "type": "issue"
       }
