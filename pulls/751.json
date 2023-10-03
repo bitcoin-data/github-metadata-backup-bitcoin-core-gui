@@ -38,10 +38,10 @@
       "type": "User",
       "site_admin": false
     },
-    "body": "As the 'QMenuBar' is created without a parent window in MacOS, the app crashes when the user presses the shutdown button and, right after it, triggers any action in the menu bar.\r\n\r\nThis happens because the QMenuBar is manually deleted in the BitcoinGUI destructor but the events attached to it children actions are not disconnected, so QActions events such us the 'QMenu::aboutToShow' could try to access null pointers.\r\n\r\nInstead of guarding every single QAction pointer inside the QMenu::aboutToShow slot, or manually disconnecting all registered events in the destructor, we can check if a shutdown was requested and discard the event.\r\n\r\nThe 'node' field is a ref whose memory is held by the main application class, so it is safe to use here. Events are disconnected prior destructing the main application object.\r\n\r\nFurthermore, the 'MacDockIconHandler::dockIconClicked' signal can make the app crash during shutdown for the very same reason. The 'show()' call triggers the 'QApplication::focusWindowChanged' event, which is connected to the 'minimize_action' QAction, which is also part of the app menu bar, which could no longer exist.\r\n\r\nAnother cause of crashes stems from the shortcuts provided by the `appMenuBar` submenus during shutdown. For instance, executing actions like opening the information dialog (command + I) or the console dialog (command + T) lead to access null pointers. The second commit addresses and resolves these issues.\r\nBasically, in the present setup, we create a parentless `appMenuBar` whose submenus `QActions` are connected to `qApp` events (the app's global instance). However, at the `BitcoinGUI` destructor, we manually destruct this object without properly disconnecting the events. This leaves `qApp` events, such as `focusWindowChanged`, tied to submenus' `QAction` pointers, which causes the application to crash when it attempts to access them.\r\n\r\nImportant Note:\r\nThis happened to me few times. The worst consequence was an inconsistent chain state during IBD. Which triggered a full \"replay blocks\" process on the next startup. Which was painfully slow.",
+    "body": "As the 'QMenuBar' is created without a parent window in MacOS, the app crashes when the user presses the shutdown button and, right after it, triggers any action in the menu bar.\r\n\r\nThis happens because the QMenuBar is manually deleted in the BitcoinGUI destructor but the events attached to it children actions are not disconnected, so QActions events such us the 'QMenu::aboutToShow' could try to access null pointers.\r\n\r\nInstead of guarding every single QAction pointer inside the QMenu::aboutToShow slot, or manually disconnecting all registered events in the destructor, we can check if a shutdown was requested and discard the event.\r\n\r\nThe 'node' field is a ref whose memory is held by the main application class, so it is safe to use here. Events are disconnected prior destructing the main application object.\r\n\r\nFurthermore, the 'MacDockIconHandler::dockIconClicked' signal can make the app crash during shutdown for the very same reason. The 'show()' call triggers the 'QApplication::focusWindowChanged' event, which is connected to the 'minimize_action' QAction, which is also part of the app menu bar, which could no longer exist.\r\n\r\nAnother cause of crashes stems from the shortcuts provided by the `appMenuBar` submenus during shutdown. For instance, executing actions like opening the information dialog (command + I) or the console dialog (command + T) lead to access null pointers. The second commit addresses and resolves these issues.\r\nBasically, in the present setup, we create a parentless `appMenuBar` whose submenus `QActions` are connected to `qApp` events (the app's global instance). However, at the `BitcoinGUI` destructor, we manually destruct this object without properly disconnecting the events. This leaves `qApp` events, such as `focusWindowChanged`, tied to submenus' `QAction` pointers, which causes the app to crash when it attempts to access them.\r\n\r\nImportant Note:\r\nThis happened to me few times. The worst consequence was an inconsistent chain state during IBD. Which triggered a full \"replay blocks\" process on the next startup. Which was painfully slow.",
     "labels": [],
     "created_at": "2023-09-08T14:34:56Z",
-    "updated_at": "2023-10-03T12:57:04Z",
+    "updated_at": "2023-10-03T13:01:18Z",
     "closed_at": "2023-10-03T12:57:04Z",
     "mergeable_state": "unknown",
     "merged_at": "2023-10-03T12:57:04Z",
@@ -161,7 +161,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-09-12T17:37:34Z",
+        "pushed_at": "2023-10-03T13:00:40Z",
         "created_at": "2022-05-09T14:34:00Z",
         "updated_at": "2023-09-08T14:09:02Z",
         "license": {
@@ -280,7 +280,7 @@
         "forks_count": 278,
         "stargazers_count": 509,
         "watchers_count": 509,
-        "size": 151227,
+        "size": 151233,
         "default_branch": "master",
         "open_issues_count": 159,
         "is_template": false,
@@ -293,7 +293,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-10-03T12:57:02Z",
+        "pushed_at": "2023-10-03T13:57:54Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2023-10-03T00:16:41Z",
         "license": {
@@ -1154,6 +1154,35 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2023-10-03T12:57:04Z"
+    },
+    {
+      "event": "head_ref_deleted",
+      "id": 10538174075,
+      "node_id": "HRDE_lADOEEET9c5wha2_zwAAAAJ0H8Z7",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/10538174075",
+      "actor": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-10-03T13:00:40Z"
     }
   ],
   "comments": [
