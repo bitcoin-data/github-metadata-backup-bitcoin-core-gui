@@ -38,7 +38,7 @@
       "type": "User",
       "site_admin": false
     },
-    "body": "It fixes #756.\r\n\r\nEach address book page window it's now labeled with the wallet name they were opened with, so the user can easily identify which addresses belong to which wallet even when there are many windows opened. It's a helpful enhancement for users managing multiple wallets.\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/628e37bb-87b9-42fb-9158-bffdd8428bcb)\r\n",
+    "body": "It fixes https://github.com/bitcoin-core/gui/pull/756.\r\n\r\nEach address book page window it's now labeled with the wallet name they were opened with, so the user can easily identify which addresses belong to which wallet even when there are many windows opened. It's a helpful enhancement for users managing multiple wallets.\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/628e37bb-87b9-42fb-9158-bffdd8428bcb)\r\n",
     "labels": [
       {
         "id": 2927906211,
@@ -60,10 +60,10 @@
       }
     ],
     "created_at": "2023-09-13T23:47:43Z",
-    "updated_at": "2023-10-04T15:48:22Z",
+    "updated_at": "2023-10-04T18:53:09Z",
     "mergeable": true,
     "mergeable_state": "unstable",
-    "merge_commit_sha": "0f53cb7a5e65886186ac8eb84701b1de4c543940",
+    "merge_commit_sha": "4d4756fca53739c9abd157cc104480828fe63cd8",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -167,7 +167,7 @@
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 153197,
+        "size": 151348,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -299,7 +299,7 @@
         "forks_count": 278,
         "stargazers_count": 509,
         "watchers_count": 509,
-        "size": 151325,
+        "size": 151359,
         "default_branch": "master",
         "open_issues_count": 159,
         "is_template": false,
@@ -312,7 +312,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-10-04T15:47:41Z",
+        "pushed_at": "2023-10-04T17:37:36Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2023-10-03T00:16:41Z",
         "license": {
@@ -343,7 +343,7 @@
     "deletions": 11,
     "changed_files": 4,
     "commits": 1,
-    "review_comments": 8,
+    "review_comments": 10,
     "comments": 4
   },
   "events": [
@@ -1206,6 +1206,41 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2023-10-04T15:47:41Z"
+    },
+    {
+      "event": "reviewed",
+      "id": 1658282649,
+      "node_id": "PRR_kwDOEEET9c5i12KZ",
+      "url": null,
+      "actor": null,
+      "commit_id": "e604229ce1e5cf21119e2fb792dc222b530627a3",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "MEMBER",
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/757#pullrequestreview-1658282649",
+      "submitted_at": "2023-10-04T18:52:08Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/757"
     }
   ],
   "comments": [
@@ -1623,6 +1658,110 @@
       "start_side": null,
       "line": null,
       "original_line": 334,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1346320313",
+      "pull_request_review_id": 1658282649,
+      "id": 1346320313,
+      "node_id": "PRRC_kwDOEEET9c5QPze5",
+      "diff_hunk": "@@ -328,3 +319,16 @@ void AddressBookPage::selectNewAddress(const QModelIndex &parent, int begin, int\n         newAddressToSelect.clear();\n     }\n }\n+\n+void AddressBookPage::updateWindowsTitleWithWalletName()\n+{\n+    const QString walletName = this->model->GetWalletDisplayName();\n+\n+    if (mode == ForEditing) {\n+        switch(tab)\n+        {\n+        case SendingTab: setWindowTitle(tr(\"Sending addresses - %s\").arg(walletName)); break;\n+        case ReceivingTab: setWindowTitle(tr(\"Receiving addresses - %s\").arg(walletName)); break;",
+      "path": "src/qt/addressbookpage.cpp",
+      "position": 47,
+      "original_position": 47,
+      "commit_id": "e604229ce1e5cf21119e2fb792dc222b530627a3",
+      "original_commit_id": "e604229ce1e5cf21119e2fb792dc222b530627a3",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "```suggestion\r\n        case SendingTab: setWindowTitle(tr(\"Sending addresses - %1\").arg(walletName)); break;\r\n        case ReceivingTab: setWindowTitle(tr(\"Receiving addresses - %1\").arg(walletName)); break;\r\n```\r\n\r\nPlease refer to https://doc.qt.io/qt-5/qstring.html#arg",
+      "created_at": "2023-10-04T18:52:08Z",
+      "updated_at": "2023-10-04T18:52:08Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/757#discussion_r1346320313",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1346320313"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/757"
+        }
+      },
+      "start_line": 330,
+      "original_start_line": 330,
+      "start_side": "RIGHT",
+      "line": 331,
+      "original_line": 331,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1346321315",
+      "pull_request_review_id": 1658284095,
+      "id": 1346321315,
+      "node_id": "PRRC_kwDOEEET9c5QPzuj",
+      "diff_hunk": "@@ -328,3 +319,16 @@ void AddressBookPage::selectNewAddress(const QModelIndex &parent, int begin, int\n         newAddressToSelect.clear();\n     }\n }\n+\n+void AddressBookPage::updateWindowsTitleWithWalletName()\n+{\n+    const QString walletName = this->model->GetWalletDisplayName();\n+\n+    if (mode == ForEditing) {\n+        switch(tab)\n+        {\n+        case SendingTab: setWindowTitle(tr(\"Sending addresses - \").append(walletName)); break;\n+        case ReceivingTab: setWindowTitle(tr(\"Receiving addresses - \").append(walletName)); break;",
+      "path": "src/qt/addressbookpage.cpp",
+      "position": null,
+      "original_position": 47,
+      "commit_id": "e604229ce1e5cf21119e2fb792dc222b530627a3",
+      "original_commit_id": "9fc21cfd3bdf2ab7d446a5f78318ce1b95b0dbbe",
+      "in_reply_to_id": 1343264110,
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "It does not [work](https://github.com/bitcoin-core/gui/pull/757#discussion_r1346320313).",
+      "created_at": "2023-10-04T18:53:09Z",
+      "updated_at": "2023-10-04T18:53:09Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/757#discussion_r1346321315",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1346321315"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/757"
+        }
+      },
+      "start_line": null,
+      "original_start_line": 330,
+      "start_side": "RIGHT",
+      "line": null,
+      "original_line": 331,
       "side": "RIGHT"
     }
   ]
