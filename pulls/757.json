@@ -60,10 +60,10 @@
       }
     ],
     "created_at": "2023-09-13T23:47:43Z",
-    "updated_at": "2023-10-04T18:53:09Z",
+    "updated_at": "2023-10-04T19:57:55Z",
     "mergeable": true,
     "mergeable_state": "unstable",
-    "merge_commit_sha": "4d4756fca53739c9abd157cc104480828fe63cd8",
+    "merge_commit_sha": "ce5bc831edb765b2c3cdf030784edd74ef0cd3c1",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -180,7 +180,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-10-04T15:49:03Z",
+        "pushed_at": "2023-10-04T19:59:46Z",
         "created_at": "2022-09-10T13:37:44Z",
         "updated_at": "2022-12-30T18:34:57Z",
         "license": {
@@ -312,7 +312,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-10-04T17:37:36Z",
+        "pushed_at": "2023-10-04T19:37:07Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2023-10-03T00:16:41Z",
         "license": {
@@ -343,7 +343,7 @@
     "deletions": 11,
     "changed_files": 4,
     "commits": 1,
-    "review_comments": 10,
+    "review_comments": 12,
     "comments": 4
   },
   "events": [
@@ -1752,6 +1752,110 @@
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1346321315"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/757"
+        }
+      },
+      "start_line": null,
+      "original_start_line": 330,
+      "start_side": "RIGHT",
+      "line": null,
+      "original_line": 331,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1346385257",
+      "pull_request_review_id": 1658375778,
+      "id": 1346385257,
+      "node_id": "PRRC_kwDOEEET9c5QQDVp",
+      "diff_hunk": "@@ -328,3 +319,16 @@ void AddressBookPage::selectNewAddress(const QModelIndex &parent, int begin, int\n         newAddressToSelect.clear();\n     }\n }\n+\n+void AddressBookPage::updateWindowsTitleWithWalletName()\n+{\n+    const QString walletName = this->model->GetWalletDisplayName();\n+\n+    if (mode == ForEditing) {\n+        switch(tab)\n+        {\n+        case SendingTab: setWindowTitle(tr(\"Sending addresses - %s\").arg(walletName)); break;\n+        case ReceivingTab: setWindowTitle(tr(\"Receiving addresses - %s\").arg(walletName)); break;",
+      "path": "src/qt/addressbookpage.cpp",
+      "position": 47,
+      "original_position": 47,
+      "commit_id": "e604229ce1e5cf21119e2fb792dc222b530627a3",
+      "original_commit_id": "e604229ce1e5cf21119e2fb792dc222b530627a3",
+      "in_reply_to_id": 1346320313,
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "This works now.",
+      "created_at": "2023-10-04T19:51:08Z",
+      "updated_at": "2023-10-04T19:51:08Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/757#discussion_r1346385257",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1346385257"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/757"
+        }
+      },
+      "start_line": 330,
+      "original_start_line": 330,
+      "start_side": "RIGHT",
+      "line": 331,
+      "original_line": 331,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1346392284",
+      "pull_request_review_id": 1658385837,
+      "id": 1346392284,
+      "node_id": "PRRC_kwDOEEET9c5QQFDc",
+      "diff_hunk": "@@ -328,3 +319,16 @@ void AddressBookPage::selectNewAddress(const QModelIndex &parent, int begin, int\n         newAddressToSelect.clear();\n     }\n }\n+\n+void AddressBookPage::updateWindowsTitleWithWalletName()\n+{\n+    const QString walletName = this->model->GetWalletDisplayName();\n+\n+    if (mode == ForEditing) {\n+        switch(tab)\n+        {\n+        case SendingTab: setWindowTitle(tr(\"Sending addresses - \").append(walletName)); break;\n+        case ReceivingTab: setWindowTitle(tr(\"Receiving addresses - \").append(walletName)); break;",
+      "path": "src/qt/addressbookpage.cpp",
+      "position": null,
+      "original_position": 47,
+      "commit_id": "e604229ce1e5cf21119e2fb792dc222b530627a3",
+      "original_commit_id": "9fc21cfd3bdf2ab7d446a5f78318ce1b95b0dbbe",
+      "in_reply_to_id": 1343264110,
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "Thanks @hebasto for checking it and provide also the QT QString documentation regarding [usage of .arg](https://doc.qt.io/qt-5/qstring.html#arg)! I've verified that `%s` doesn't actually work.",
+      "created_at": "2023-10-04T19:57:55Z",
+      "updated_at": "2023-10-04T19:57:55Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/757#discussion_r1346392284",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1346392284"
         },
         "pull_request": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/757"
