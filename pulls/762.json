@@ -41,14 +41,12 @@
     "body": "It fixes #761.\r\n\r\nAs it's displayed in the following image, about logo icon is updated now (please check issue above for current display) with the correct colour indicating the chain type of the QT instance that user is running (as the splash screen), plus the title of the about window also is updated with the chain type string as in the main window.\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/b6ce187f-ca81-4c4b-b2f6-a2e3b15e6010)\r\n\r\n(current splash screen - this hasn't been touched, just to show consistency)\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/2a1c329b-baa6-4603-bf20-dac2746682f4)\r\n\r\nTested it also with:\r\n- mainnet (no command line args after `bitcoin-qt` or `bitcoin-qt -chain=main`), \r\n- `-regtest` and \r\n- `-testnet`.",
     "labels": [],
     "created_at": "2023-09-25T00:03:25Z",
-    "updated_at": "2023-10-05T14:39:06Z",
-    "mergeable": true,
-    "mergeable_state": "clean",
-    "merge_commit_sha": "dde28be0286c9b7170204cfc8c7e64fb5cfe38a6",
+    "updated_at": "2023-10-05T15:38:27Z",
+    "mergeable_state": "unknown",
+    "merge_commit_sha": "27545b6ff7713826bfe5a98bcae83f2e87e401f8",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
-    "rebaseable": true,
     "head": {
       "label": "pablomartin4btc:gui-update-about-logo-icon",
       "ref": "gui-update-about-logo-icon",
@@ -293,7 +291,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-10-05T13:06:45Z",
+        "pushed_at": "2023-10-05T15:58:17Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2023-10-03T00:16:41Z",
         "license": {
@@ -324,7 +322,7 @@
     "deletions": 6,
     "changed_files": 3,
     "commits": 1,
-    "review_comments": 1,
+    "review_comments": 2,
     "comments": 2
   },
   "events": [
@@ -707,6 +705,58 @@
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1347478375"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/762"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 143,
+      "original_line": 143,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1347627281",
+      "pull_request_review_id": 1660186101,
+      "id": 1347627281,
+      "node_id": "PRRC_kwDOEEET9c5QUykR",
+      "diff_hunk": "@@ -135,6 +137,19 @@ void HelpMessageDialog::on_okButton_accepted()\n     close();\n }\n \n+void HelpMessageDialog::setAboutWindowTitle(const NetworkStyle *networkStyle)\n+{\n+    QString aboutTitle = tr(\"About %1\").arg(PACKAGE_NAME);\n+    if ((networkStyle) && (Params().GetChainType() != ChainType::MAIN)) aboutTitle.append(\" \" + networkStyle->getTitleAddText());",
+      "path": "src/qt/utilitydialog.cpp",
+      "position": 36,
+      "original_position": 36,
+      "commit_id": "30c235b2e6fd9b7e3634d795cedc171d4d8d0e27",
+      "original_commit_id": "30c235b2e6fd9b7e3634d795cedc171d4d8d0e27",
+      "in_reply_to_id": 1347478375,
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "I didn't want to touch `src/qt/bitcoin.cpp`:\r\n\r\nhttps://github.com/bitcoin-core/gui/blob/db19a7e89d19d97094bcf8753b37619a16b7f033/src/qt/bitcoin.cpp#L568\r\n\r\nAnd I also needed to move where the `networkStyle` is initialised/ set before the `HelpMessageDialog` constructor:\r\n\r\nhttps://github.com/bitcoin-core/gui/blob/db19a7e89d19d97094bcf8753b37619a16b7f033/src/qt/bitcoin.cpp#L607\r\n\r\nBut I can do it if that's better.",
+      "created_at": "2023-10-05T15:38:27Z",
+      "updated_at": "2023-10-05T15:38:27Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/762#discussion_r1347627281",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1347627281"
         },
         "pull_request": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/762"
