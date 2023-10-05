@@ -68,7 +68,7 @@
       }
     ],
     "created_at": "2020-12-10T23:30:21Z",
-    "updated_at": "2023-10-05T20:51:45Z",
+    "updated_at": "2023-10-05T21:14:28Z",
     "mergeable": false,
     "mergeable_state": "dirty",
     "merge_commit_sha": "a9165f298da49472581e431c34a083fd639e1278",
@@ -350,7 +350,7 @@
     "deletions": 18,
     "changed_files": 6,
     "commits": 2,
-    "review_comments": 15,
+    "review_comments": 16,
     "comments": 13
   },
   "events": [
@@ -5592,6 +5592,41 @@
       "submitted_at": "2023-10-05T20:51:42Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/149"
+    },
+    {
+      "event": "reviewed",
+      "id": 1660745335,
+      "node_id": "PRR_kwDOEEET9c5i_PZ3",
+      "url": null,
+      "actor": null,
+      "commit_id": "cf940f0e5f5ffb14ec7b6f751879bd70b3c350be",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "CONTRIBUTOR",
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/149#pullrequestreview-1660745335",
+      "submitted_at": "2023-10-05T21:14:28Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/149"
     }
   ],
   "comments": [
@@ -6373,6 +6408,58 @@
       "start_side": null,
       "line": null,
       "original_line": 191,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1347989009",
+      "pull_request_review_id": 1660745335,
+      "id": 1347989009,
+      "node_id": "PRRC_kwDOEEET9c5QWK4R",
+      "diff_hunk": "@@ -161,6 +161,37 @@ Intro::Intro(QWidget *parent, int64_t blockchain_size_gb, int64_t chain_state_si\n         UpdateFreeSpaceLabel();\n     });\n \n+    bool have_user_assumevalid = false;\n+    if (gArgs.IsArgSet(\"-assumevalid\")) {\n+        const auto user_assumevalid = gArgs.GetArg(\"-assumevalid\", /* ignored default; determines return type */ \"\");\n+        if (uint256S(user_assumevalid).IsNull()) {\n+            // -assumevalid=0: default checkbox to off, and initialise with chainparams later\n+            ui->assumevalid->setChecked(false);\n+        } else {\n+            // -assumevalid=blockhash: initialise with the user-specified value, enabled\n+            ui->assumevalid->setChecked(true);\n+            ui->assumevalidBlock->setText(QString::fromStdString(user_assumevalid));\n+            have_user_assumevalid = true;\n+        }\n+    }",
+      "path": "src/qt/intro.cpp",
+      "position": 16,
+      "original_position": 16,
+      "commit_id": "cf940f0e5f5ffb14ec7b6f751879bd70b3c350be",
+      "original_commit_id": "cf940f0e5f5ffb14ec7b6f751879bd70b3c350be",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "nit: while not mandatory nor blocker, maybe you could consider refactoring these `if` statements into functions like the above `UpdateFreeSpaceLabel()`, as it could improve code readability and maintainability, especially as we keep adding more logic.",
+      "created_at": "2023-10-05T21:14:28Z",
+      "updated_at": "2023-10-05T21:14:28Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/149#discussion_r1347989009",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1347989009"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/149"
+        }
+      },
+      "start_line": 165,
+      "original_start_line": 165,
+      "start_side": "RIGHT",
+      "line": 176,
+      "original_line": 176,
       "side": "RIGHT"
     }
   ]
