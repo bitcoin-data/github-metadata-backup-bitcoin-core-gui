@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/764/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/764/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/97020281ec562fc341da90e1b25b8869ec7a1cfa",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/038616b57e95197a421430cb179d967043de9999",
     "number": 764,
     "state": "open",
     "locked": false,
@@ -38,7 +38,7 @@
       "type": "User",
       "site_admin": false
     },
-    "body": "Fixes #763\r\n\r\nPreventing users from creating a legacy wallet prior to its deprecation in the upcoming releases.\r\n\r\nNote:\r\nThis is still available using the `createwallet` RPC command.",
+    "body": "Fixes #763\r\n\r\nPreventing users from creating a legacy wallet prior to its deprecation in the upcoming releases.\r\n\r\nNote:\r\nThis is still available using the `createwallet` RPC command.\r\n\r\nFuture Note:\r\nWould be nice to re-write this modal as a wizard. And improve the design.\r\n\r\n<details><summary> Pre-Changes Screenshot </summary>\r\n<img width=\"611\" alt=\"Screenshot 2023-10-06 at 11 30 14\" src=\"https://github.com/bitcoin-core/gui/assets/5377650/ca10c97d-46e8-4aed-82da-068f2afbe25c\">\r\n</details>\r\n\r\n<details><summary> Post-Changes  Screenshot </summary>\r\n<img width=\"729\" alt=\"Screenshot 2023-10-06 at 11 32 58\" src=\"https://github.com/bitcoin-core/gui/assets/5377650/f6bdcb57-646a-43d8-86a7-476e3cca683f\">\r\n</details>",
     "labels": [
       {
         "id": 2927906211,
@@ -86,10 +86,10 @@
       "updated_at": "2023-10-06T13:36:27Z"
     },
     "created_at": "2023-10-06T13:35:16Z",
-    "updated_at": "2023-10-06T13:36:50Z",
+    "updated_at": "2023-10-06T14:56:03Z",
     "mergeable": true,
     "mergeable_state": "unstable",
-    "merge_commit_sha": "647911e6b4a644859b0c7abf094fd9fe728bf60d",
+    "merge_commit_sha": "98fab159c8ebdf0cd2e9b89929e00b12c7ba389f",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -97,7 +97,7 @@
     "head": {
       "label": "furszy:2023_gui_remove_legacy_wallet_creation",
       "ref": "2023_gui_remove_legacy_wallet_creation",
-      "sha": "97020281ec562fc341da90e1b25b8869ec7a1cfa",
+      "sha": "038616b57e95197a421430cb179d967043de9999",
       "user": {
         "login": "furszy",
         "id": 5377650,
@@ -193,7 +193,7 @@
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 148335,
+        "size": 152134,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -206,7 +206,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-10-06T13:43:18Z",
+        "pushed_at": "2023-10-06T14:56:01Z",
         "created_at": "2022-05-09T14:34:00Z",
         "updated_at": "2023-09-08T14:09:02Z",
         "license": {
@@ -338,7 +338,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-10-06T13:51:49Z",
+        "pushed_at": "2023-10-06T14:56:03Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2023-10-06T07:53:38Z",
         "license": {
@@ -365,54 +365,14 @@
     },
     "author_association": "MEMBER",
     "draft": false,
-    "additions": 70,
-    "deletions": 42,
+    "additions": 77,
+    "deletions": 50,
     "changed_files": 6,
     "commits": 1,
-    "review_comments": 0,
-    "comments": 2
+    "review_comments": 2,
+    "comments": 3
   },
   "events": [
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDk3MDIwMjgxZWM1NjJmYzM0MWRhOTBlMWIyNWI4ODY5ZWM3YTFjZmE",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/97020281ec562fc341da90e1b25b8869ec7a1cfa",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/97020281ec562fc341da90e1b25b8869ec7a1cfa",
-      "tree": {
-        "sha": "ab4796c56c47a31c8b60c4d6c520012fd6c6609f",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/ab4796c56c47a31c8b60c4d6c520012fd6c6609f"
-      },
-      "verification": {
-        "verified": true,
-        "reason": "valid",
-        "payload": "tree ab4796c56c47a31c8b60c4d6c520012fd6c6609f\nparent 634b68f0dc6b837f774f646188281757c055c78a\nauthor furszy <matiasfurszyfer@protonmail.com> 1696598906 -0300\ncommitter furszy <matiasfurszyfer@protonmail.com> 1696598906 -0300\n\ngui: remove legacy wallet creation\n",
-        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEEA++0fqwRHQpmlZfQXdI8zGhqpiMFAmUgC3oACgkQXdI8zGhq\npiMz7g//QkKaTjRQHCeruj+XebIbhav/3ct1hH4g4Ez+QAhE+cIdU1K8fHIMCW4R\nmz890jbj2EMGcorMSOMmXfqkigej05BVsFY/AQqrPvffOoMTxsfBuw+Eq9YA2svE\nMI5t/U3W/I9dlgg/+BbE5bjvZzs/rWJU5yS7bhSkv7VWw4jq27qMTG5dMyadevxl\na567toZ6L7HnOUOYSnRhyQuuZf7TCvcOHbkwaihPeCLBD1COnNKddwcRtsbIBK/4\nbCgAHEDblhcK5FzphU/8S9iab6oKqsDyNsMhpqU25WR+DabJk8xv17lu9/1FJoCA\n2pC/UuJbK4lbhwwmK8Sfch00liAQsm5eMB+SvqZ8NZHLnaimcedzIOC7NXMq55ZI\noPnveA5DZC+BATXyvo/4nFXcUzokSqm1yObIqAmBi3FGWmsLN+tOUfMxvFW1oZSB\nd3yABy7kUMLtJKHuL3pKLDRpFG3zW5sR/t1BpOLQ/eZ/ia/9YZzv2XSZos/qwpLq\naq1kvVuyeqx/CoWtFgQ5FS45CY1VRhPjeDpBQpmyOKFCpNwOe04iCek46jNE/se1\n/civiqsDxHp6B+Tb/b++aobD+syuksNNlYoKRkUKLg8ocprQy9LXTZPihUy+Rb04\nyPtTaP+yOLhOszm9j52+GVPUEwDNEjMfC0hCTQ5S5+gYuSmoxg8=\n=QiJD\n-----END PGP SIGNATURE-----"
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/634b68f0dc6b837f774f646188281757c055c78a",
-          "sha": "634b68f0dc6b837f774f646188281757c055c78a",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/634b68f0dc6b837f774f646188281757c055c78a"
-        }
-      ],
-      "message": "gui: remove legacy wallet creation",
-      "committer": {
-        "name": "furszy",
-        "email": "matiasfurszyfer@protonmail.com",
-        "date": "2023-10-06T13:28:26Z"
-      },
-      "author": {
-        "name": "furszy",
-        "email": "matiasfurszyfer@protonmail.com",
-        "date": "2023-10-06T13:28:26Z"
-      },
-      "sha": "97020281ec562fc341da90e1b25b8869ec7a1cfa"
-    },
     {
       "event": "commented",
       "id": 1750693701,
@@ -441,9 +401,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2023-10-06T13:35:19Z",
-      "updated_at": "2023-10-06T13:36:14Z",
+      "updated_at": "2023-10-06T14:29:35Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [hebasto](https://github.com/bitcoin-core/gui/pull/764#issuecomment-1750694966) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Approach ACK | [hebasto](https://github.com/bitcoin-core/gui/pull/764#pullrequestreview-1661991783) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -676,7 +636,364 @@
         "name": "Wallet",
         "color": "08a781"
       }
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 10575645701,
+      "node_id": "HRFPE_lADOEEET9c5zDIOHzwAAAAJ2W4wF",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/10575645701",
+      "actor": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-10-06T14:04:46Z"
+    },
+    {
+      "event": "commented",
+      "id": 1750745537,
+      "node_id": "IC_kwDOEEET9c5oWkHB",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/1750745537",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-10-06T14:09:44Z",
+      "updated_at": "2023-10-06T14:09:44Z",
+      "author_association": "MEMBER",
+      "body": "It would be nice to have screenshots \"before\" and \"after\" in the PR description.",
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/764#issuecomment-1750745537",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/764"
+    },
+    {
+      "event": "reviewed",
+      "id": 1661972454,
+      "node_id": "PRR_kwDOEEET9c5jD6_m",
+      "url": null,
+      "actor": null,
+      "commit_id": "6b83663eb8ed06216351e76439b825de4840a481",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "MEMBER",
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/764#pullrequestreview-1661972454",
+      "submitted_at": "2023-10-06T14:20:48Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/764"
+    },
+    {
+      "event": "reviewed",
+      "id": 1661991783,
+      "node_id": "PRR_kwDOEEET9c5jD_tn",
+      "url": null,
+      "actor": null,
+      "commit_id": "6b83663eb8ed06216351e76439b825de4840a481",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "MEMBER",
+      "body": "Approach ACK 6b83663eb8ed06216351e76439b825de4840a481.\r\n\r\nTested a build compiled with no SQLite support:\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/32963518/4df641dd-9ae9-465d-b45c-c3e631874cc5)\r\n",
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/764#pullrequestreview-1661991783",
+      "submitted_at": "2023-10-06T14:29:32Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/764"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 10575994374,
+      "node_id": "HRFPE_lADOEEET9c5zDIOHzwAAAAJ2YN4G",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/10575994374",
+      "actor": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-10-06T14:34:44Z"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDAzODYxNmI1N2U5NTE5N2E0MjE0MzBjYjE3OWQ5NjcwNDNkZTk5OTk",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/038616b57e95197a421430cb179d967043de9999",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/038616b57e95197a421430cb179d967043de9999",
+      "tree": {
+        "sha": "5a64156c91609d1c0df7aef63efd06faccde524d",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/5a64156c91609d1c0df7aef63efd06faccde524d"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree 5a64156c91609d1c0df7aef63efd06faccde524d\nparent 634b68f0dc6b837f774f646188281757c055c78a\nauthor furszy <matiasfurszyfer@protonmail.com> 1696598906 -0300\ncommitter furszy <matiasfurszyfer@protonmail.com> 1696604157 -0300\n\ngui: remove legacy wallet creation\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEEA++0fqwRHQpmlZfQXdI8zGhqpiMFAmUgH/0ACgkQXdI8zGhq\npiMWSw/+MuK14RQwzaEIArYiFIzz/oYez9dmVfdHAem2em2RoRm2xZFf9Q+M+6Ak\naG13RqzdGvVQn68rgHcav2xZtMsifNQFFOOEp9lbmocNIs5SYU9Rx1Qdp7VEsvzk\nqYa9wd1xDbxZylMHBWD0hV6QHQuAo8VhXw5U6fJzodJJZo+DjOZGkViUGDcEJGSs\nPD9l0UZSM0v5L6GaPDi5G1a2B8mFxETBZ7xZM+itKGRQiFav7m7HFN4n52ksNRQb\ndtHU1dMFynB6uteKKWsByEUY4YaksrGJ64ARWvkZPuqfugq7Fsbi+a3z5d16vPpH\ng4dydHKLNw1y1r2ia0OwdxQlkO3LMZwdEBh5Nnrs1NLs8r+F+nqTqnO1Ljt/uCWS\nVa7SMDnvYPKoxuNZMAT/HSYEPN2u0xukQENalCRdqg29YV3+SZbg/TuWlYRYtRbl\nQPTvljETEP+626zWCzUW5ugLkI5quuDMd9LBmcUmhyUqpELyn+lyDBl0M0hjjGz8\nWaBXWQdbb2PHL/5F36K/ZXgaelmC9+3ZOEKc9iaJNkBS6lRSEAdkpfnjhHls3QTI\nxHg4hTHYzSkl2S+D/Tcg/v//2E0ENHAHvMr1Yyih52R0qc3oqO3leNMaPOoopj2V\nbA5pAkwTotgttJj0i38WhxL5k7osfHmQy2/LiO8EgZSHNmGCtYc=\n=wngx\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/634b68f0dc6b837f774f646188281757c055c78a",
+          "sha": "634b68f0dc6b837f774f646188281757c055c78a",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/634b68f0dc6b837f774f646188281757c055c78a"
+        }
+      ],
+      "message": "gui: remove legacy wallet creation",
+      "committer": {
+        "name": "furszy",
+        "email": "matiasfurszyfer@protonmail.com",
+        "date": "2023-10-06T14:55:57Z"
+      },
+      "author": {
+        "name": "furszy",
+        "email": "matiasfurszyfer@protonmail.com",
+        "date": "2023-10-06T13:28:26Z"
+      },
+      "sha": "038616b57e95197a421430cb179d967043de9999"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 10576274249,
+      "node_id": "HRFPE_lADOEEET9c5zDIOHzwAAAAJ2ZSNJ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/10576274249",
+      "actor": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-10-06T14:56:03Z"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1348788277",
+      "pull_request_review_id": 1661972454,
+      "id": 1348788277,
+      "node_id": "PRRC_kwDOEEET9c5QZOA1",
+      "diff_hunk": "@@ -17,6 +17,41 @@\n    <bool>true</bool>\n   </property>\n   <layout class=\"QVBoxLayout\" name=\"verticalLayout\">\n+   <item alignment=\"Qt::AlignHCenter\">\n+    <widget class=\"QLabel\" name=\"label\">\n+     <property name=\"sizePolicy\">\n+      <sizepolicy hsizetype=\"Preferred\" vsizetype=\"Preferred\">\n+       <horstretch>0</horstretch>\n+       <verstretch>0</verstretch>\n+      </sizepolicy>\n+     </property>\n+     <property name=\"text\">\n+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;You are one step away from creating your new descriptors wallet!&lt;/p&gt;&lt;p&gt;Please enter the name and, if desired, enable any custom options&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>",
+      "path": "src/qt/forms/createwalletdialog.ui",
+      "position": null,
+      "original_position": 24,
+      "commit_id": "038616b57e95197a421430cb179d967043de9999",
+      "original_commit_id": "6b83663eb8ed06216351e76439b825de4840a481",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "HTML markups will go as a part translatable strings. Can it be avoided?\r\n\r\nIs it better to replace \"custom options\" with \"advanced options\" as they are named in https://github.com/bitcoin-core/gui/blob/6b83663eb8ed06216351e76439b825de4840a481/src/qt/forms/createwalletdialog.ui#L111 ?",
+      "created_at": "2023-10-06T14:20:48Z",
+      "updated_at": "2023-10-06T14:20:48Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/764#discussion_r1348788277",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1348788277"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/764"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": null,
+      "original_line": 29,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1348790299",
+      "pull_request_review_id": 1661975670,
+      "id": 1348790299,
+      "node_id": "PRRC_kwDOEEET9c5QZOgb",
+      "diff_hunk": "@@ -17,6 +17,41 @@\n    <bool>true</bool>\n   </property>\n   <layout class=\"QVBoxLayout\" name=\"verticalLayout\">\n+   <item alignment=\"Qt::AlignHCenter\">\n+    <widget class=\"QLabel\" name=\"label\">\n+     <property name=\"sizePolicy\">\n+      <sizepolicy hsizetype=\"Preferred\" vsizetype=\"Preferred\">\n+       <horstretch>0</horstretch>\n+       <verstretch>0</verstretch>\n+      </sizepolicy>\n+     </property>\n+     <property name=\"text\">\n+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;You are one step away from creating your new descriptors wallet!&lt;/p&gt;&lt;p&gt;Please enter the name and, if desired, enable any custom options&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>",
+      "path": "src/qt/forms/createwalletdialog.ui",
+      "position": null,
+      "original_position": 24,
+      "commit_id": "038616b57e95197a421430cb179d967043de9999",
+      "original_commit_id": "6b83663eb8ed06216351e76439b825de4840a481",
+      "in_reply_to_id": 1348788277,
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "And \"new descriptors wallet\" --> \"new descriptor wallet\" probably?",
+      "created_at": "2023-10-06T14:22:29Z",
+      "updated_at": "2023-10-06T14:22:29Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/764#discussion_r1348790299",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1348790299"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/764"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": null,
+      "original_line": 29,
+      "side": "RIGHT"
+    }
+  ]
 }
