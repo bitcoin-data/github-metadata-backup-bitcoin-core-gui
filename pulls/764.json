@@ -86,9 +86,9 @@
       "updated_at": "2023-10-06T13:36:27Z"
     },
     "created_at": "2023-10-06T13:35:16Z",
-    "updated_at": "2023-10-06T16:24:23Z",
+    "updated_at": "2023-10-06T17:14:59Z",
     "mergeable": true,
-    "mergeable_state": "unstable",
+    "mergeable_state": "clean",
     "merge_commit_sha": "98fab159c8ebdf0cd2e9b89929e00b12c7ba389f",
     "assignees": [],
     "requested_reviewers": [],
@@ -338,7 +338,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-10-06T14:56:03Z",
+        "pushed_at": "2023-10-06T17:32:31Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2023-10-06T07:53:38Z",
         "license": {
@@ -369,7 +369,7 @@
     "deletions": 50,
     "changed_files": 6,
     "commits": 1,
-    "review_comments": 3,
+    "review_comments": 5,
     "comments": 4
   },
   "events": [
@@ -401,9 +401,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2023-10-06T13:35:19Z",
-      "updated_at": "2023-10-06T16:23:51Z",
+      "updated_at": "2023-10-06T17:14:00Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| ACK | [hebasto](https://github.com/bitcoin-core/gui/pull/764#pullrequestreview-1662245776) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| ACK | [hebasto](https://github.com/bitcoin-core/gui/pull/764#pullrequestreview-1662245776), [Sjors](https://github.com/bitcoin-core/gui/pull/764#pullrequestreview-1662323573) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -1152,6 +1152,42 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2023-10-06T16:24:23Z"
+    },
+    {
+      "event": "reviewed",
+      "id": 1662323573,
+      "node_id": "PRR_kwDOEEET9c5jFQt1",
+      "url": null,
+      "actor": null,
+      "commit_id": "038616b57e95197a421430cb179d967043de9999",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "MEMBER",
+      "body": "tACK 038616b57e95197a421430cb179d967043de9999\r\n\r\nI also checked the wallet creation error message when sqlite is not compiled (`./configure --without-sqlite`).\r\n\r\n(text can always be changed later, so don't let my remarks block a merge)",
+      "user": {
+        "login": "Sjors",
+        "id": 10217,
+        "node_id": "MDQ6VXNlcjEwMjE3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/10217?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Sjors",
+        "html_url": "https://github.com/Sjors",
+        "followers_url": "https://api.github.com/users/Sjors/followers",
+        "following_url": "https://api.github.com/users/Sjors/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/Sjors/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/Sjors/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/Sjors/subscriptions",
+        "organizations_url": "https://api.github.com/users/Sjors/orgs",
+        "repos_url": "https://api.github.com/users/Sjors/repos",
+        "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/Sjors/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/764#pullrequestreview-1662323573",
+      "submitted_at": "2023-10-06T17:13:57Z",
+      "state": "APPROVED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/764"
     }
   ],
   "comments": [
@@ -1309,6 +1345,110 @@
       "start_side": null,
       "line": null,
       "original_line": 29,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1348986239",
+      "pull_request_review_id": 1662323573,
+      "id": 1348986239,
+      "node_id": "PRRC_kwDOEEET9c5QZ-V_",
+      "diff_hunk": "@@ -17,6 +17,48 @@\n    <bool>true</bool>\n   </property>\n   <layout class=\"QVBoxLayout\" name=\"verticalLayout\">\n+   <item>\n+    <widget class=\"QLabel\" name=\"label_description\">\n+     <property name=\"sizePolicy\">\n+      <sizepolicy hsizetype=\"Preferred\" vsizetype=\"Preferred\">\n+       <horstretch>0</horstretch>\n+       <verstretch>0</verstretch>\n+      </sizepolicy>\n+     </property>\n+     <property name=\"text\">\n+      <string>You are one step away from creating your new descriptor wallet!</string>",
+      "path": "src/qt/forms/createwalletdialog.ui",
+      "position": 24,
+      "original_position": 24,
+      "commit_id": "038616b57e95197a421430cb179d967043de9999",
+      "original_commit_id": "038616b57e95197a421430cb179d967043de9999",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "Sjors",
+        "id": 10217,
+        "node_id": "MDQ6VXNlcjEwMjE3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/10217?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Sjors",
+        "html_url": "https://github.com/Sjors",
+        "followers_url": "https://api.github.com/users/Sjors/followers",
+        "following_url": "https://api.github.com/users/Sjors/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/Sjors/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/Sjors/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/Sjors/subscriptions",
+        "organizations_url": "https://api.github.com/users/Sjors/orgs",
+        "repos_url": "https://api.github.com/users/Sjors/repos",
+        "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/Sjors/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "This line just seems extra clutter. In any case please don't use the scary word \"descriptor\".",
+      "created_at": "2023-10-06T17:03:09Z",
+      "updated_at": "2023-10-06T17:13:57Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/764#discussion_r1348986239",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1348986239"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/764"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 29,
+      "original_line": 29,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1349021211",
+      "pull_request_review_id": 1662323573,
+      "id": 1349021211,
+      "node_id": "PRRC_kwDOEEET9c5QaG4b",
+      "diff_hunk": "@@ -17,6 +17,48 @@\n    <bool>true</bool>\n   </property>\n   <layout class=\"QVBoxLayout\" name=\"verticalLayout\">\n+   <item>\n+    <widget class=\"QLabel\" name=\"label_description\">\n+     <property name=\"sizePolicy\">\n+      <sizepolicy hsizetype=\"Preferred\" vsizetype=\"Preferred\">\n+       <horstretch>0</horstretch>\n+       <verstretch>0</verstretch>\n+      </sizepolicy>\n+     </property>\n+     <property name=\"text\">\n+      <string>You are one step away from creating your new descriptor wallet!</string>\n+     </property>\n+     <property name=\"alignment\">\n+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>\n+     </property>\n+     <property name=\"wordWrap\">\n+      <bool>false</bool>\n+     </property>\n+    </widget>\n+   </item>\n+   <item>\n+    <widget class=\"QLabel\" name=\"label_subdescription\">\n+     <property name=\"text\">\n+      <string>Please enter the name and, if desired, enable any advanced options</string>",
+      "path": "src/qt/forms/createwalletdialog.ui",
+      "position": 37,
+      "original_position": 37,
+      "commit_id": "038616b57e95197a421430cb179d967043de9999",
+      "original_commit_id": "038616b57e95197a421430cb179d967043de9999",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "Sjors",
+        "id": 10217,
+        "node_id": "MDQ6VXNlcjEwMjE3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/10217?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Sjors",
+        "html_url": "https://github.com/Sjors",
+        "followers_url": "https://api.github.com/users/Sjors/followers",
+        "following_url": "https://api.github.com/users/Sjors/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/Sjors/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/Sjors/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/Sjors/subscriptions",
+        "organizations_url": "https://api.github.com/users/Sjors/orgs",
+        "repos_url": "https://api.github.com/users/Sjors/repos",
+        "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/Sjors/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "`Please provide a name …`",
+      "created_at": "2023-10-06T17:13:28Z",
+      "updated_at": "2023-10-06T17:13:57Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/764#discussion_r1349021211",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1349021211"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/764"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 42,
+      "original_line": 42,
       "side": "RIGHT"
     }
   ]
