@@ -76,7 +76,7 @@
       "updated_at": "2023-10-07T10:58:11Z"
     },
     "created_at": "2023-10-06T13:51:49Z",
-    "updated_at": "2023-10-07T10:58:11Z",
+    "updated_at": "2023-10-07T12:29:06Z",
     "mergeable": true,
     "mergeable_state": "clean",
     "merge_commit_sha": "fd9b2616105bcf13a7d5fee2aaa8004001afdc1d",
@@ -196,7 +196,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-10-06T20:22:50Z",
+        "pushed_at": "2023-10-07T12:29:28Z",
         "created_at": "2022-05-09T14:34:00Z",
         "updated_at": "2023-09-08T14:09:02Z",
         "license": {
@@ -315,7 +315,7 @@
         "forks_count": 278,
         "stargazers_count": 510,
         "watchers_count": 510,
-        "size": 152117,
+        "size": 152314,
         "default_branch": "master",
         "open_issues_count": 158,
         "is_template": false,
@@ -360,7 +360,7 @@
     "changed_files": 1,
     "commits": 1,
     "review_comments": 0,
-    "comments": 1
+    "comments": 2
   },
   "events": [
     {
@@ -521,6 +521,60 @@
       "milestone": {
         "title": "26.0"
       }
+    },
+    {
+      "event": "commented",
+      "id": 1751699705,
+      "node_id": "IC_kwDOEEET9c5oaND5",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/1751699705",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-10-07T12:29:06Z",
+      "updated_at": "2023-10-07T12:29:06Z",
+      "author_association": "MEMBER",
+      "body": "> Future Note: This surely happen in other places as well, we should re-work the way we connect signals. Register lambas without any precaution can leave dangling pointers.\r\n\r\nWouldn't be enough to use an `QObject::connect` overload with the additional `context` parameter, i.e.\r\n```\r\nQObject::connect(const QObject* sender, PointerToMemberFunction signal, const QObject* context, Functor functor, Qt::ConnectionType type)\r\n```\r\ninstead of\r\n```\r\nQObject::connect(const QObject* sender, PointerToMemberFunction signal, Functor functor)\r\n```\r\n\r\nThe former [assumes](https://doc.qt.io/qt-5/qobject.html#connect-5) that:\r\n> The connection will automatically disconnect if the sender or the context is destroyed. However, you should take care that any objects used within the functor are still alive when the signal is emitted.\r\n\r\nAlso see a discussion in https://github.com/bitcoin-core/gui/pull/680.",
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/765#issuecomment-1751699705",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/765"
     }
   ],
   "comments": []
