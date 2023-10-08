@@ -39,22 +39,12 @@
       "site_admin": false
     },
     "body": "This PR fixes #646 and introduces some enhancements to the Address Book functionality.\r\n\r\nA new \"Address Type\" column has been added to the address book table page, only visible for the \"Receiving address\" tab. Users can employ an also new added combo box at the bottom of the page to filter address by their type, this filtering can be combined with the current search line text box.\r\nWhen the export feature is used, this new field will be included.\r\n\r\n![Peek 2023-09-10 19-25](https://github.com/bitcoin-core/gui/assets/110166421/24c674a2-417e-4309-8fb3-8c099a562cc1)\r\n\r\nAs highlighted with the performed manual testing shown in the image above:\r\n- address type combo box has been reused from receive coins dialog, but each widget container can specify different tool-tips for their items;\r\n- \"Sending address\" tab doesn't display the new column, combo box or its label, and the search text specify only the fields to be filtered out;\r\n-  \"Receiving address\" tab display the new added widgets, filter works fine in combination of either text, combo item selection or combination of both, tool-tip texts differs from the ones on the receive coins dialog where the address can be created specifying their types.\r\n\r\nTested in `mainnet` and all test networks.\r\n\r\nFor code reviewers, please check the commit messages for a detailed breakdown.\r\n",
-    "labels": [
-      {
-        "id": 2145506980,
-        "node_id": "MDU6TGFiZWwyMTQ1NTA2OTgw",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Needs%20rebase",
-        "name": "Needs rebase",
-        "description": "",
-        "color": "cccccc",
-        "default": false
-      }
-    ],
+    "labels": [],
     "created_at": "2023-09-10T05:32:46Z",
-    "updated_at": "2023-10-07T03:28:59Z",
+    "updated_at": "2023-10-08T17:23:16Z",
     "mergeable": true,
     "mergeable_state": "clean",
-    "merge_commit_sha": "3eb48b6f0135fcc658384932718fd2c81e8cea11",
+    "merge_commit_sha": "54438a21c7f2310eb8eb26a9905f66bb116ec45c",
     "assignees": [],
     "requested_reviewers": [
       {
@@ -311,9 +301,9 @@
         "forks_count": 278,
         "stargazers_count": 510,
         "watchers_count": 510,
-        "size": 152117,
+        "size": 152292,
         "default_branch": "master",
-        "open_issues_count": 160,
+        "open_issues_count": 158,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -324,7 +314,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-10-07T01:36:18Z",
+        "pushed_at": "2023-10-08T16:34:06Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2023-10-06T07:53:38Z",
         "license": {
@@ -356,7 +346,7 @@
     "changed_files": 11,
     "commits": 5,
     "review_comments": 0,
-    "comments": 8
+    "comments": 7
   },
   "events": [
     {
@@ -1340,60 +1330,6 @@
       }
     },
     {
-      "event": "commented",
-      "id": 1747643545,
-      "node_id": "IC_kwDOEEET9c5oKuyZ",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/1747643545",
-      "actor": {
-        "login": "DrahtBot",
-        "id": 39886733,
-        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
-        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/DrahtBot",
-        "html_url": "https://github.com/DrahtBot",
-        "followers_url": "https://api.github.com/users/DrahtBot/followers",
-        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
-        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
-        "repos_url": "https://api.github.com/users/DrahtBot/repos",
-        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": "2023-10-04T21:08:03Z",
-      "updated_at": "2023-10-04T21:08:03Z",
-      "author_association": "CONTRIBUTOR",
-      "body": "<!--cf906140f33d8803c4a75a2196329ecb-->\n🐙 This pull request conflicts with the target branch and [needs rebase](https://github.com/bitcoin-core/gui/blob/master/CONTRIBUTING.md#rebasing-changes).\n",
-      "user": {
-        "login": "DrahtBot",
-        "id": 39886733,
-        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
-        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/DrahtBot",
-        "html_url": "https://github.com/DrahtBot",
-        "followers_url": "https://api.github.com/users/DrahtBot/followers",
-        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
-        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
-        "repos_url": "https://api.github.com/users/DrahtBot/repos",
-        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "html_url": "https://github.com/bitcoin-core/gui/pull/753#issuecomment-1747643545",
-      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/753"
-    },
-    {
       "event": "reviewed",
       "id": 1662823343,
       "node_id": "PRR_kwDOEEET9c5jHKuv",
@@ -1932,6 +1868,39 @@
       "label": {
         "name": "CI failed",
         "color": "ededed"
+      }
+    },
+    {
+      "event": "unlabeled",
+      "id": 10584754273,
+      "node_id": "UNLE_lADOEEET9c5wl74TzwAAAAJ25ohh",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/10584754273",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-10-08T17:23:15Z",
+      "label": {
+        "name": "Needs rebase",
+        "color": "cccccc"
       }
     }
   ],
