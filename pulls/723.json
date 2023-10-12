@@ -14,9 +14,9 @@
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/723/comments",
     "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/d6519a80eaa79371616053906723e74c6f06cc1a",
     "number": 723,
-    "state": "open",
+    "state": "closed",
     "locked": false,
-    "maintainer_can_modify": true,
+    "maintainer_can_modify": false,
     "title": "Add warnings for non-active addresses in receive tab and address book",
     "user": {
       "login": "pinheadmz",
@@ -60,7 +60,8 @@
       }
     ],
     "created_at": "2023-03-24T18:47:32Z",
-    "updated_at": "2023-10-07T19:57:42Z",
+    "updated_at": "2023-10-12T14:51:01Z",
+    "closed_at": "2023-10-12T14:51:01Z",
     "mergeable": false,
     "mergeable_state": "dirty",
     "merge_commit_sha": "e7290ca4030a35cd5a606df54fa2a9d7db7159b1",
@@ -295,10 +296,10 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 278,
+        "forks_count": 279,
         "stargazers_count": 510,
         "watchers_count": 510,
-        "size": 152314,
+        "size": 152541,
         "default_branch": "master",
         "open_issues_count": 158,
         "is_template": false,
@@ -311,7 +312,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-10-07T10:54:02Z",
+        "pushed_at": "2023-10-12T10:00:18Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2023-10-06T07:53:38Z",
         "license": {
@@ -343,7 +344,7 @@
     "changed_files": 27,
     "commits": 8,
     "review_comments": 16,
-    "comments": 9
+    "comments": 10
   },
   "events": [
     {
@@ -1476,7 +1477,7 @@
           "events_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/27216/events",
           "html_url": "https://github.com/bitcoin/bitcoin/pull/27216",
           "number": 27216,
-          "state": "open",
+          "state": "closed",
           "state_reason": null,
           "title": "wallet: Add wallet method to detect if a key is \"active\"",
           "body": "This is a first step towards closing https://github.com/bitcoin/bitcoin/issues/3314 by implementing functions in Wallet and ScriptPubKeyMan that determine if a key is \"active\" meaning \"derived from a currently active scriptpubkey manager.\" \r\n\r\nA key is NOT \"active\" if:\r\n- It was imported using an `import{privkey, address, pubkey}` rpc\r\n- It was derived before the wallet was encrypted (which replaces the active SPKM(s))\r\n\r\nUsers should be informed that these keys may be compromised:\r\n- Some other wallet generated the private key and may still have a copy\r\n- The private key was stored on disk unencrypted\r\n\r\nThis PR adds a new field `isactive` to rpc `getaddressinfo`, follow-up work will be adding this to the GUI address book as well, [something like this](https://github.com/bitcoin/bitcoin/issues/3314#issuecomment-81567665). The original issue also recommends sweeping all value from keys in this category, I think that feature can be discussed in the future as a follow-up.\r\n\r\nThis PR also patches `PKDescriptor` from https://github.com/bitcoin/bitcoin/pull/22051 where matching public keys were not returned.\r\n\r\nFollow-up PR for the GUI: https://github.com/bitcoin-core/gui/pull/723",
@@ -1522,15 +1523,16 @@
           "assignees": [],
           "author_association": "MEMBER",
           "locked": false,
-          "comments": 15,
+          "comments": 16,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/27216",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/27216",
             "diff_url": "https://github.com/bitcoin/bitcoin/pull/27216.diff",
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/27216.patch"
           },
+          "closed_at": "2023-10-12T14:50:36Z",
           "created_at": "2023-03-06T21:36:57Z",
-          "updated_at": "2023-10-05T16:52:25Z"
+          "updated_at": "2023-10-12T14:50:36Z"
         },
         "type": "issue"
       }
@@ -3083,6 +3085,89 @@
       "submitted_at": "2023-10-07T19:57:39Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/723"
+    },
+    {
+      "event": "commented",
+      "id": 1759767185,
+      "node_id": "IC_kwDOEEET9c5o4-qR",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/1759767185",
+      "actor": {
+        "login": "pinheadmz",
+        "id": 2084648,
+        "node_id": "MDQ6VXNlcjIwODQ2NDg=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/2084648?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pinheadmz",
+        "html_url": "https://github.com/pinheadmz",
+        "followers_url": "https://api.github.com/users/pinheadmz/followers",
+        "following_url": "https://api.github.com/users/pinheadmz/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pinheadmz/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pinheadmz/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pinheadmz/subscriptions",
+        "organizations_url": "https://api.github.com/users/pinheadmz/orgs",
+        "repos_url": "https://api.github.com/users/pinheadmz/repos",
+        "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-10-12T14:51:01Z",
+      "updated_at": "2023-10-12T14:51:01Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "closing for now, #27216 needs better approach",
+      "user": {
+        "login": "pinheadmz",
+        "id": 2084648,
+        "node_id": "MDQ6VXNlcjIwODQ2NDg=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/2084648?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pinheadmz",
+        "html_url": "https://github.com/pinheadmz",
+        "followers_url": "https://api.github.com/users/pinheadmz/followers",
+        "following_url": "https://api.github.com/users/pinheadmz/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pinheadmz/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pinheadmz/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pinheadmz/subscriptions",
+        "organizations_url": "https://api.github.com/users/pinheadmz/orgs",
+        "repos_url": "https://api.github.com/users/pinheadmz/repos",
+        "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/723#issuecomment-1759767185",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/723"
+    },
+    {
+      "event": "closed",
+      "id": 10632719833,
+      "node_id": "CE_lADOEEET9c5hvogxzwAAAAJ5wm3Z",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/10632719833",
+      "actor": {
+        "login": "pinheadmz",
+        "id": 2084648,
+        "node_id": "MDQ6VXNlcjIwODQ2NDg=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/2084648?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pinheadmz",
+        "html_url": "https://github.com/pinheadmz",
+        "followers_url": "https://api.github.com/users/pinheadmz/followers",
+        "following_url": "https://api.github.com/users/pinheadmz/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pinheadmz/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pinheadmz/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pinheadmz/subscriptions",
+        "organizations_url": "https://api.github.com/users/pinheadmz/orgs",
+        "repos_url": "https://api.github.com/users/pinheadmz/repos",
+        "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-10-12T14:51:01Z"
     }
   ],
   "comments": [
