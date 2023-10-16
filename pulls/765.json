@@ -76,10 +76,10 @@
       "updated_at": "2023-10-09T11:33:00Z"
     },
     "created_at": "2023-10-06T13:51:49Z",
-    "updated_at": "2023-10-14T08:24:49Z",
+    "updated_at": "2023-10-16T10:58:46Z",
     "mergeable": true,
     "mergeable_state": "clean",
-    "merge_commit_sha": "bf0771a98b34ba7c955b5fe233819733c311a526",
+    "merge_commit_sha": "39a9f04b06c9fcf2e0b7624411911279d01a6e8c",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -312,12 +312,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 279,
+        "forks_count": 280,
         "stargazers_count": 511,
         "watchers_count": 511,
-        "size": 152543,
+        "size": 152521,
         "default_branch": "master",
-        "open_issues_count": 158,
+        "open_issues_count": 159,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -328,7 +328,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-10-13T20:42:30Z",
+        "pushed_at": "2023-10-16T09:21:52Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2023-10-13T22:03:58Z",
         "license": {
@@ -359,7 +359,7 @@
     "deletions": 7,
     "changed_files": 1,
     "commits": 2,
-    "review_comments": 0,
+    "review_comments": 1,
     "comments": 2
   },
   "events": [
@@ -391,9 +391,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2023-10-06T13:51:52Z",
-      "updated_at": "2023-10-06T13:51:52Z",
+      "updated_at": "2023-10-16T10:58:46Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\nA summary of reviews will appear here.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| ACK | [hebasto](https://github.com/bitcoin-core/gui/pull/765#pullrequestreview-1679690340) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -775,7 +775,96 @@
         "name": "CI failed",
         "color": "ededed"
       }
+    },
+    {
+      "event": "reviewed",
+      "id": 1679690340,
+      "node_id": "PRR_kwDOEEET9c5kHgpk",
+      "url": null,
+      "actor": null,
+      "commit_id": "8b6470a90652fcffc45b8d7998af7c8ad6251332",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "MEMBER",
+      "body": "ACK 8b6470a90652fcffc45b8d7998af7c8ad6251332, I've tested each commit separately on macOS Sonoma 14.0 (Apple M1).",
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/765#pullrequestreview-1679690340",
+      "submitted_at": "2023-10-16T10:58:43Z",
+      "state": "APPROVED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/765"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1360483618",
+      "pull_request_review_id": 1679690340,
+      "id": 1360483618,
+      "node_id": "PRRC_kwDOEEET9c5RF1Ui",
+      "diff_hunk": "@@ -650,7 +650,8 @@ void BitcoinGUI::setClientModel(ClientModel *_clientModel, interfaces::BlockAndH\n \n         m_mask_values_action->setChecked(_clientModel->getOptionsModel()->getOption(OptionsModel::OptionID::MaskValues).toBool());\n     } else {\n-        if(trayIconMenu)\n+        // Shutdown requested, disable menus\n+        if (trayIconMenu)\n         {",
+      "path": "src/qt/bitcoingui.cpp",
+      "position": 52,
+      "original_position": 52,
+      "commit_id": "8b6470a90652fcffc45b8d7998af7c8ad6251332",
+      "original_commit_id": "8b6470a90652fcffc45b8d7998af7c8ad6251332",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "style nit:\r\n```suggestion\r\n        if (trayIconMenu) {\r\n```",
+      "created_at": "2023-10-16T10:57:10Z",
+      "updated_at": "2023-10-16T10:58:43Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/765#discussion_r1360483618",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1360483618"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/765"
+        }
+      },
+      "start_line": 654,
+      "original_start_line": 654,
+      "start_side": "RIGHT",
+      "line": 655,
+      "original_line": 655,
+      "side": "RIGHT"
+    }
+  ]
 }
