@@ -48,13 +48,21 @@
         "description": "All about \"how to get things done\"",
         "color": "0052cc",
         "default": false
+      },
+      {
+        "id": 5353934559,
+        "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
+        "name": "CI failed",
+        "color": "ededed",
+        "default": false
       }
     ],
     "created_at": "2022-12-05T14:30:50Z",
-    "updated_at": "2023-09-20T03:13:18Z",
+    "updated_at": "2023-10-21T19:11:21Z",
     "mergeable": true,
-    "mergeable_state": "clean",
-    "merge_commit_sha": "e9a2caafcf9033526226944eb84692ed142a9fe7",
+    "mergeable_state": "unstable",
+    "merge_commit_sha": "919590e42d5351f0cbb97834510c15324ae3495e",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -287,12 +295,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 277,
-        "stargazers_count": 508,
-        "watchers_count": 508,
-        "size": 152005,
+        "forks_count": 280,
+        "stargazers_count": 512,
+        "watchers_count": 512,
+        "size": 153620,
         "default_branch": "master",
-        "open_issues_count": 164,
+        "open_issues_count": 157,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -303,9 +311,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-09-19T17:11:18Z",
+        "pushed_at": "2023-10-21T18:03:36Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2023-09-12T12:06:40Z",
+        "updated_at": "2023-10-21T00:00:30Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -1193,7 +1201,7 @@
           "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/723/events",
           "html_url": "https://github.com/bitcoin-core/gui/pull/723",
           "number": 723,
-          "state": "open",
+          "state": "closed",
           "state_reason": null,
           "title": "Add warnings for non-active addresses in receive tab and address book",
           "body": "Closes https://github.com/bitcoin/bitcoin/issues/3314\r\nBuilt off of https://github.com/bitcoin/bitcoin/pull/27216 (== first two commits of this PR, required core updates)\r\n\r\nThis PR adds a \"warnings\" column in the receive coins dialog (recent requests table) and the address book receive page. Hovering over the ⚠️ if present shows a tooltip with a list of warnings.  We also add a \"warnings\" field in the receive request dialog (shown after double-clicking an address in the first table) with the same message.\r\n\r\nThe warnings shown can be anything implemented in new methods `GetWarnings()` but for now the only message we show there is:\r\n\r\n> This address should not be used. It was derived from an inactive seed, was imported, or may have been stored unencrypted.\r\n\r\nExample screenshots:\r\n\r\n# 1. Create new unencrypted wallet, get new receive address\r\n\r\n![1](https://user-images.githubusercontent.com/2084648/229900643-52c49c2c-589a-450c-b78d-1d3f5489bf63.png)\r\n\r\n# 2. Encrypt wallet\r\n\r\nNotice how the first address is immediately flagged.\r\n\r\n![2](https://user-images.githubusercontent.com/2084648/229900642-b3a02025-39fa-4679-913d-e8cd9984a5ab.png)\r\n\r\n# 3. Get new receive address after encrypting wallet\r\n\r\nNew address is not flagged, it is active and safe to use.\r\n\r\n![3](https://user-images.githubusercontent.com/2084648/229900641-4dd59d82-c9a9-4134-bb5a-155dc90811d2.png)\r\n\r\n\r\n\r\n\r\n\r\n",
@@ -1240,15 +1248,16 @@
           "assignees": [],
           "author_association": "CONTRIBUTOR",
           "locked": false,
-          "comments": 8,
+          "comments": 10,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/723",
             "html_url": "https://github.com/bitcoin-core/gui/pull/723",
             "diff_url": "https://github.com/bitcoin-core/gui/pull/723.diff",
             "patch_url": "https://github.com/bitcoin-core/gui/pull/723.patch"
           },
+          "closed_at": "2023-10-12T14:51:01Z",
           "created_at": "2023-03-24T18:47:32Z",
-          "updated_at": "2023-07-27T21:48:01Z"
+          "updated_at": "2023-10-12T14:51:01Z"
         },
         "type": "issue"
       }
@@ -1528,6 +1537,39 @@
       "submitted_at": "2023-09-20T03:13:15Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/684"
+    },
+    {
+      "event": "labeled",
+      "id": 10731969051,
+      "node_id": "LE_lADOEEET9c5YBLV4zwAAAAJ_rNob",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/10731969051",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-10-21T19:11:21Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
+      }
     }
   ],
   "comments": []
