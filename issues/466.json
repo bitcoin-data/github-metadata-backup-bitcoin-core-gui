@@ -50,7 +50,7 @@
     "locked": false,
     "comments": 3,
     "created_at": "2021-11-11T13:00:19Z",
-    "updated_at": "2021-11-20T03:50:40Z"
+    "updated_at": "2023-10-24T15:13:11Z"
   },
   "events": [
     {
@@ -305,6 +305,81 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/issues/466#issuecomment-974587503",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/466"
+    },
+    {
+      "event": "cross-referenced",
+      "id": null,
+      "node_id": null,
+      "url": null,
+      "actor": {
+        "login": "willcl-ark",
+        "id": 6606587,
+        "node_id": "MDQ6VXNlcjY2MDY1ODc=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6606587?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/willcl-ark",
+        "html_url": "https://github.com/willcl-ark",
+        "followers_url": "https://api.github.com/users/willcl-ark/followers",
+        "following_url": "https://api.github.com/users/willcl-ark/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/willcl-ark/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/willcl-ark/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/willcl-ark/subscriptions",
+        "organizations_url": "https://api.github.com/users/willcl-ark/orgs",
+        "repos_url": "https://api.github.com/users/willcl-ark/repos",
+        "events_url": "https://api.github.com/users/willcl-ark/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/willcl-ark/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-10-11T13:20:08Z",
+      "updated_at": "2023-10-11T13:20:08Z",
+      "source": {
+        "issue": {
+          "id": 1937768251,
+          "node_id": "I_kwDOEEET9c5zf_87",
+          "url": "https://api.github.com/repos/bitcoin-core/gui/issues/768",
+          "repository_url": "https://api.github.com/repos/bitcoin-core/gui",
+          "labels_url": "https://api.github.com/repos/bitcoin-core/gui/issues/768/labels%7B/name%7D",
+          "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/768/comments",
+          "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/768/events",
+          "html_url": "https://github.com/bitcoin-core/gui/issues/768",
+          "number": 768,
+          "state": "open",
+          "state_reason": null,
+          "title": "High CPU load when network traffic page left open",
+          "body": "### Is there an existing issue for this?\n\n- [X] I have searched the existing issues\n\n### Current behaviour\n\nPossibly related to https://github.com/bitcoin-core/gui/issues/466\r\n\r\nRunning `Bitcoin Core version v25.99.0-04265ba9378e`\r\n\r\nWhen running `bitcoin-qt` with an additional `network traffic` window open, after some time CPU usage on a single core starts to thrash between 60-100%. The CPU thrashing will (immediately) drop when the `network traffic` window is closed.\n\n### Expected behaviour\n\nViewing the `network traffic` page should not use 100% CPU or cause thrashing.\n\n### Steps to reproduce\n\n## steps\r\n\r\n* Run `bitcoin-qt`, open `network traffic` and wait some time? I think the graph needs to include a wide range of datapoints for this (rendering?) bug to occur (see below screenshots).\r\n\r\n## actions\r\n\r\nI ran `perf` for 30 seconds on `bitcoin-qt` while CPU was thrashing, but it seemed to only [show a lot of time spent in `libQT5Gui.so`](https://tmp.256k1.dev/23_10_bitcoin_qt_cpu.svg),  which doesn't seem particularly helpful.  \r\n\r\nI noticed that the CPU spikes seem to only be present when the graph is well-populated with many variously-valued data points, like this:\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/6606587/97b752af-89dc-42e9-83ff-08302ec08c51)\r\n\r\nHowever CPU usage drops if there is a large spike in network activity, which causes a low level of datapoint variation (plus one large spike), like this:\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/6606587/20b0a757-2f8c-4887-a89f-b2f390ebcce2)\n\n### Relevant log output\n\nNothing of interest was present in the logs.\n\n### How did you obtain Bitcoin Core\n\nCompiled from source\n\n### What version of Bitcoin Core are you using?\n\nv25.99.0-04265ba9378e\n\n### Operating system and version\n\nUbuntu 23.04\n\n### Machine specifications\n\nOS: Ubuntu 23.04 x86_64\r\nCPU: 11th Gen Intel i7-11700K (16) @ 3.800GHz\r\nGPU: NVIDIA GeForce RTX 3060 Ti\r\nMemory: 64162MiB\r\nHDD: Samsung SSD 990 PRO 2TB\r\nMB: Z590 AORUS ELITE AX\r\nKernel: 6.2.0-33-generic\r\nResolution: 3840x2160\r\nWM: i3\r\nTerminal: tmux\r\nShell: fish 3.6.1",
+          "user": {
+            "login": "willcl-ark",
+            "id": 6606587,
+            "node_id": "MDQ6VXNlcjY2MDY1ODc=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/6606587?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/willcl-ark",
+            "html_url": "https://github.com/willcl-ark",
+            "followers_url": "https://api.github.com/users/willcl-ark/followers",
+            "following_url": "https://api.github.com/users/willcl-ark/following%7B/other_user%7D",
+            "gists_url": "https://api.github.com/users/willcl-ark/gists%7B/gist_id%7D",
+            "starred_url": "https://api.github.com/users/willcl-ark/starred%7B/owner%7D%7B/repo%7D",
+            "subscriptions_url": "https://api.github.com/users/willcl-ark/subscriptions",
+            "organizations_url": "https://api.github.com/users/willcl-ark/orgs",
+            "repos_url": "https://api.github.com/users/willcl-ark/repos",
+            "events_url": "https://api.github.com/users/willcl-ark/events%7B/privacy%7D",
+            "received_events_url": "https://api.github.com/users/willcl-ark/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "labels": [],
+          "assignees": [],
+          "author_association": "CONTRIBUTOR",
+          "locked": false,
+          "comments": 6,
+          "created_at": "2023-10-11T13:20:07Z",
+          "updated_at": "2023-10-24T15:53:51Z"
+        },
+        "type": "issue"
+      }
     }
   ]
 }
