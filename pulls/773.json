@@ -51,7 +51,7 @@
       }
     ],
     "created_at": "2023-10-24T21:25:26Z",
-    "updated_at": "2023-10-25T19:55:48Z",
+    "updated_at": "2023-10-25T20:01:33Z",
     "mergeable": true,
     "mergeable_state": "clean",
     "merge_commit_sha": "769449036e571e29848068b83e297b57fba1cfc8",
@@ -334,7 +334,7 @@
     "changed_files": 1,
     "commits": 1,
     "review_comments": 2,
-    "comments": 3
+    "comments": 4
   },
   "events": [
     {
@@ -800,6 +800,60 @@
       "submitted_at": "2023-10-25T19:51:12Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/773"
+    },
+    {
+      "event": "commented",
+      "id": 1779966956,
+      "node_id": "IC_kwDOEEET9c5qGCPs",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/1779966956",
+      "actor": {
+        "login": "achow101",
+        "id": 3782274,
+        "node_id": "MDQ6VXNlcjM3ODIyNzQ=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3782274?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/achow101",
+        "html_url": "https://github.com/achow101",
+        "followers_url": "https://api.github.com/users/achow101/followers",
+        "following_url": "https://api.github.com/users/achow101/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/achow101/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/achow101/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/achow101/subscriptions",
+        "organizations_url": "https://api.github.com/users/achow101/orgs",
+        "repos_url": "https://api.github.com/users/achow101/repos",
+        "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/achow101/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-10-25T20:01:32Z",
+      "updated_at": "2023-10-25T20:01:32Z",
+      "author_association": "MEMBER",
+      "body": "> Doesn't mean that the migration process will also be blocked when this happen? --> [look at this line](https://github.com/bitcoin/bitcoin/blob/2a349f9ea5de9f0157cd117289996e8640473a6d/src/qt/walletcontroller.cpp#L457) `getEncryptionStatus()` should be returning `Locked`, which here would trigger the askpassphrase dialog in the same way described on #772.\r\n\r\nThat's a good point. Perhaps `getEncryptionStatus()` should just move to returning `NoKeys` for all private key disabled wallets.\r\n\r\n> Also, what is the expectation here, merge and backport this PR without backporting #28724? Because, after #28724, this isn't a problem anymore.\r\n\r\n28724 is a much scarier change since it deletes things from the wallet database and I wasn't sure if people were comfortable with that. If we move forward with it, then that can supersede this PR.",
+      "user": {
+        "login": "achow101",
+        "id": 3782274,
+        "node_id": "MDQ6VXNlcjM3ODIyNzQ=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3782274?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/achow101",
+        "html_url": "https://github.com/achow101",
+        "followers_url": "https://api.github.com/users/achow101/followers",
+        "following_url": "https://api.github.com/users/achow101/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/achow101/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/achow101/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/achow101/subscriptions",
+        "organizations_url": "https://api.github.com/users/achow101/orgs",
+        "repos_url": "https://api.github.com/users/achow101/repos",
+        "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/achow101/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/773#issuecomment-1779966956",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/773"
     }
   ],
   "comments": [
