@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/733/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/733/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/219dd62e5c59ebe31e5d480eaaccd1057cadd93c",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/c781cd8863bb12e60ce8905063c8041145db63ac",
     "number": 733,
     "state": "open",
     "locked": false,
@@ -68,10 +68,10 @@
       }
     ],
     "created_at": "2023-05-21T06:32:50Z",
-    "updated_at": "2023-10-28T20:52:56Z",
+    "updated_at": "2023-10-28T21:03:19Z",
     "mergeable": true,
     "mergeable_state": "unstable",
-    "merge_commit_sha": "d88f4f9d520832ddeb62d3814ce54426a37681f1",
+    "merge_commit_sha": "5990ae1215b1035fddc3e24c0c35d58956c617c3",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -79,7 +79,7 @@
     "head": {
       "label": "denavila:deniability",
       "ref": "deniability",
-      "sha": "219dd62e5c59ebe31e5d480eaaccd1057cadd93c",
+      "sha": "c781cd8863bb12e60ce8905063c8041145db63ac",
       "user": {
         "login": "denavila",
         "id": 123340139,
@@ -175,7 +175,7 @@
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 152905,
+        "size": 152940,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -188,7 +188,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-10-28T20:25:44Z",
+        "pushed_at": "2023-10-28T21:00:39Z",
         "created_at": "2023-05-21T04:12:26Z",
         "updated_at": "2023-09-02T21:29:07Z",
         "license": {
@@ -320,7 +320,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-10-28T20:25:47Z",
+        "pushed_at": "2023-10-28T21:00:42Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2023-10-26T13:50:43Z",
         "license": {
@@ -347,11 +347,11 @@
     },
     "author_association": "NONE",
     "draft": true,
-    "additions": 2968,
+    "additions": 2971,
     "deletions": 7,
     "changed_files": 24,
-    "commits": 9,
-    "review_comments": 7,
+    "commits": 10,
+    "review_comments": 8,
     "comments": 14
   },
   "events": [
@@ -3667,7 +3667,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/28710.patch"
           },
           "created_at": "2023-10-23T23:36:07Z",
-          "updated_at": "2023-10-26T19:30:06Z"
+          "updated_at": "2023-10-28T21:29:17Z"
         },
         "type": "issue"
       }
@@ -4077,166 +4077,6 @@
       "sha": "639fe1a01d09e7877672c012e80105e5d863722f"
     },
     {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDJjOGQ5YzliNjEyYzU2ZGFkZTliYzJjMTkyNTRkOGIwYzBkZjFhN2Y",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/2c8d9c9b612c56dade9bc2c19254d8b0c0df1a7f",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/2c8d9c9b612c56dade9bc2c19254d8b0c0df1a7f",
-      "tree": {
-        "sha": "07d6f916a5d1f06835baf51229b8f4827becf5a3",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/07d6f916a5d1f06835baf51229b8f4827becf5a3"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/639fe1a01d09e7877672c012e80105e5d863722f",
-          "sha": "639fe1a01d09e7877672c012e80105e5d863722f",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/639fe1a01d09e7877672c012e80105e5d863722f"
-        }
-      ],
-      "message": "Deniability - a tool to automatically improve coin ownership privacy\n\nThis new feature is an implementation of the ideas in Paul Sztorc's blog post \"Deniability - Unilateral Transaction Meta-Privacy\"(https://www.truthcoin.info/blog/deniability/).\n\nIn short, the idea is to periodically split coins and send them to yourself, making it look like a common \"spend\" transaction, such that blockchain ownership analysis becomes more difficult, and thus improving the user's privacy.\n\nThis is the GUI portion of the PR (bitcoin-core/gui). The core functionality PR is in the main repo (bitcoin/bitcoin).\n\nThis PR implements an additional \"Deniability\" wallet view. The majority of the GUI code is in a new deniabilitydialog.cpp/h source files containing a new DeniabilityDialog class, hooked up via the WalletView class. \n\nOn startup and on notable events (new blocks, new transactions, etc), we evaluate the privacy of all coins in the wallet, and we build a \"deniabilization\" candidate list. UTXOs that share the same destination address are grouped together into a single candidate (see DeniabilityDialog::updateCoins and DeniabilityDialog::updateCoinTable).\n\nWe inspect the blockchain data to find out if we have performed \"deniabilization\" transactions already, and we count how many \"cycles\" (self-sends) have been performed for each coin (see DeniabilityDialog::calculateDeniabilizationStats).\nSince we infer the state entirely from the blockchain data, even if the wallet is restored from a seed phrase, the state would not be lost. This also means that if the user has performed manual self-sends that have improved the ownership privacy, they will be counted too.\n\nThe user can initiate the \"deniabillization\" process by pressing a Start button (DeniabilityDialog::startDeniabilization). The process periodically perform a \"deniabilization\" cycle (DeniabilityDialog::deniabilizeProc). Each such cycle goes as follows:\nA coin is selected form the candidate list. The more a coin is \"deniabilized\", the less likely it is to be selected. Smaller coins are also less likely to be selected.\nIf a coin is selected, we prepare and broadcast a transaction, which splits the coin into a pair of new wallet addresses (DeniabilityDialog::deniabilizeCoin). \n\nThe user can control this process via a Frequency selector and a Budget spinner, which respectively determine how often to perform the cycle and how much total BTC to spend on transaction fees.\n\nIf Bitcoin Core is left running continuously, the cycles would be performed at the selected frequency (with some randomization). If Bitcoin Core is shutdown, the \"deniabilization\" process will resume at the next restart, and if more time has elapsed than the selected frequency, it will perform a single cycle. We deliberately don't \"catch up\" all missed cycles, since that would expose the process to blockchain analysis.\nThe state is saved and restored via QSettings (DeniabilityDialog::loadSettings and DeniabilityDialog::saveSettings).\n\nWe monitor each broadcasted transaction and we automatically attempt a fee bump if the transaction is still in the memory pool since the previous cycle (DeniabilityDialog::bumpDeniabilizationTx).\nWe don't issue any other deniabilization transactions until the previous transaction is confirmed (or abandoned/dropped).\n\nThe process ends when the budget is exhausted or if there's no candidates left. The user can also stop the process manually by pressing a Stop button (DeniabilityDialog::stopDeniabilization).\n\nExternal signers are supported in a \"best effort\" way - since the user needs to manually sign, we postpone the processing till the external signer is connected and use some additional UI to get the user's attention to sign (see the codepath predicated on hasExternalSigner). This is not ideal, so I'm looking for some ideas if we can improve this in some way.\n\nWatch-only wallets are partially supported, where we display the candidate list, but we don't allow any processing (since we don't have the private keys to issue transactions).\n\nI've tested all this functionality on regtest, testnet, signet and mainnet. I've also added some unit tests (under WalletTests) to exercise the main GUI functionality.\n\nThis is my first change and PR for Bitcoin Core, and I tried as much as possible to validate everything against the guidelines and documentation and to follow the patterns in the existing code, but I'm sure there are things I missed, so I'm looking forward to your feedback.\nIn particular things I'm not very sure about - the save/restore of state via QSettings makes me a bit nervous as we store some wallet specific data there which I put some effort to validate on load, however keying the settings based on wallet name is not ideal, so I'd like to improve this somehow - either by storing the settings based on some wallet identity signature, or by storing the state in the wallet database (however that doesn't seem accessible via the interfaces::Wallet API).\nPlease let me know your thoughts and suggestions.\n\nThank you.",
-      "committer": {
-        "name": "denavila",
-        "email": "denny_avila@tuta.io",
-        "date": "2023-10-28T20:24:29Z"
-      },
-      "author": {
-        "name": "denavila",
-        "email": "denny_avila@tuta.io",
-        "date": "2023-10-20T23:51:29Z"
-      },
-      "sha": "2c8d9c9b612c56dade9bc2c19254d8b0c0df1a7f"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDM1YTg0OGUwYWFiZTA2YTlhYzJkYjI2ZTNlZGQ5ZWE1ZmFjNWQ4MGM",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/35a848e0aabe06a9ac2db26e3edd9ea5fac5d80c",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/35a848e0aabe06a9ac2db26e3edd9ea5fac5d80c",
-      "tree": {
-        "sha": "e29c98cbcc88f0e13c561ff450a0af8d513ba0a1",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/e29c98cbcc88f0e13c561ff450a0af8d513ba0a1"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/2c8d9c9b612c56dade9bc2c19254d8b0c0df1a7f",
-          "sha": "2c8d9c9b612c56dade9bc2c19254d8b0c0df1a7f",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/2c8d9c9b612c56dade9bc2c19254d8b0c0df1a7f"
-        }
-      ],
-      "message": "Updates to deniabilizeCoin per Deniability API changes.\n\nFixed the gui wallet test, as output type is LEGACY again.\nFixed const-correctness in saveSettings.",
-      "committer": {
-        "name": "denavila",
-        "email": "denny_avila@tuta.io",
-        "date": "2023-10-28T20:24:29Z"
-      },
-      "author": {
-        "name": "denavila",
-        "email": "denny_avila@tuta.io",
-        "date": "2023-10-22T17:13:44Z"
-      },
-      "sha": "35a848e0aabe06a9ac2db26e3edd9ea5fac5d80c"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGVmZTc4OGY3YjRlOTEzZGNkZjA5MjM5OWE0NzczNjhhMjE5ZTUyODc",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/efe788f7b4e913dcdf092399a477368a219e5287",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/efe788f7b4e913dcdf092399a477368a219e5287",
-      "tree": {
-        "sha": "abe4a2874ed302efc0fc861b9da7026a1b778832",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/abe4a2874ed302efc0fc861b9da7026a1b778832"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/35a848e0aabe06a9ac2db26e3edd9ea5fac5d80c",
-          "sha": "35a848e0aabe06a9ac2db26e3edd9ea5fac5d80c",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/35a848e0aabe06a9ac2db26e3edd9ea5fac5d80c"
-        }
-      ],
-      "message": "Refactored the coin update to explicitly match utxos by scriptPubKey and not rely on the ListCoin destination grouping.",
-      "committer": {
-        "name": "denavila",
-        "email": "denny_avila@tuta.io",
-        "date": "2023-10-28T20:24:29Z"
-      },
-      "author": {
-        "name": "denavila",
-        "email": "denny_avila@tuta.io",
-        "date": "2023-10-25T03:00:51Z"
-      },
-      "sha": "efe788f7b4e913dcdf092399a477368a219e5287"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDIxOWRkNjJlNWM1OWViZTMxZTVkNDgwZWFhY2NkMTA1N2NhZGQ5M2M",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/219dd62e5c59ebe31e5d480eaaccd1057cadd93c",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/219dd62e5c59ebe31e5d480eaaccd1057cadd93c",
-      "tree": {
-        "sha": "693a1bbd844ba52439624662af3a65afe1626b44",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/693a1bbd844ba52439624662af3a65afe1626b44"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/efe788f7b4e913dcdf092399a477368a219e5287",
-          "sha": "efe788f7b4e913dcdf092399a477368a219e5287",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/efe788f7b4e913dcdf092399a477368a219e5287"
-        }
-      ],
-      "message": "Reworked status message translation spacing to pass the lint tests",
-      "committer": {
-        "name": "denavila",
-        "email": "denny_avila@tuta.io",
-        "date": "2023-10-28T20:24:29Z"
-      },
-      "author": {
-        "name": "denavila",
-        "email": "denny_avila@tuta.io",
-        "date": "2023-10-25T23:00:17Z"
-      },
-      "sha": "219dd62e5c59ebe31e5d480eaaccd1057cadd93c"
-    },
-    {
       "event": "head_ref_force_pushed",
       "id": 10798516215,
       "node_id": "HRFPE_lADOEEET9c5mbIhxzwAAAAKDpEf3",
@@ -4264,6 +4104,235 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2023-10-28T20:25:47Z"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDEzMDMzNWQzYTdlMjhlMzg5NTRiMDIzYjcxMzBhZDljMmZhZDJkZmI",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/130335d3a7e28e38954b023b7130ad9c2fad2dfb",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/130335d3a7e28e38954b023b7130ad9c2fad2dfb",
+      "tree": {
+        "sha": "f3846e4671222881b3d1a0cb65528d89b4cc9ca5",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/f3846e4671222881b3d1a0cb65528d89b4cc9ca5"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/639fe1a01d09e7877672c012e80105e5d863722f",
+          "sha": "639fe1a01d09e7877672c012e80105e5d863722f",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/639fe1a01d09e7877672c012e80105e5d863722f"
+        }
+      ],
+      "message": "Updated std::accumulate call code readability per PR feedback.",
+      "committer": {
+        "name": "denavila",
+        "email": "denny_avila@tuta.io",
+        "date": "2023-10-28T20:59:03Z"
+      },
+      "author": {
+        "name": "denavila",
+        "email": "denny_avila@tuta.io",
+        "date": "2023-10-28T20:59:03Z"
+      },
+      "sha": "130335d3a7e28e38954b023b7130ad9c2fad2dfb"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGZhYjNmMmZmNGM1M2I1ZGNhOWQwODU4OWU3MTg5OWZlNzZlNjkwZjA",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/fab3f2ff4c53b5dca9d08589e71899fe76e690f0",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/fab3f2ff4c53b5dca9d08589e71899fe76e690f0",
+      "tree": {
+        "sha": "69c1f2b68a05f945d73f0cdb9f9eed77e71a80c3",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/69c1f2b68a05f945d73f0cdb9f9eed77e71a80c3"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/130335d3a7e28e38954b023b7130ad9c2fad2dfb",
+          "sha": "130335d3a7e28e38954b023b7130ad9c2fad2dfb",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/130335d3a7e28e38954b023b7130ad9c2fad2dfb"
+        }
+      ],
+      "message": "Deniability - a tool to automatically improve coin ownership privacy\n\nThis new feature is an implementation of the ideas in Paul Sztorc's blog post \"Deniability - Unilateral Transaction Meta-Privacy\"(https://www.truthcoin.info/blog/deniability/).\n\nIn short, the idea is to periodically split coins and send them to yourself, making it look like a common \"spend\" transaction, such that blockchain ownership analysis becomes more difficult, and thus improving the user's privacy.\n\nThis is the GUI portion of the PR (bitcoin-core/gui). The core functionality PR is in the main repo (bitcoin/bitcoin).\n\nThis PR implements an additional \"Deniability\" wallet view. The majority of the GUI code is in a new deniabilitydialog.cpp/h source files containing a new DeniabilityDialog class, hooked up via the WalletView class. \n\nOn startup and on notable events (new blocks, new transactions, etc), we evaluate the privacy of all coins in the wallet, and we build a \"deniabilization\" candidate list. UTXOs that share the same destination address are grouped together into a single candidate (see DeniabilityDialog::updateCoins and DeniabilityDialog::updateCoinTable).\n\nWe inspect the blockchain data to find out if we have performed \"deniabilization\" transactions already, and we count how many \"cycles\" (self-sends) have been performed for each coin (see DeniabilityDialog::calculateDeniabilizationStats).\nSince we infer the state entirely from the blockchain data, even if the wallet is restored from a seed phrase, the state would not be lost. This also means that if the user has performed manual self-sends that have improved the ownership privacy, they will be counted too.\n\nThe user can initiate the \"deniabillization\" process by pressing a Start button (DeniabilityDialog::startDeniabilization). The process periodically perform a \"deniabilization\" cycle (DeniabilityDialog::deniabilizeProc). Each such cycle goes as follows:\nA coin is selected form the candidate list. The more a coin is \"deniabilized\", the less likely it is to be selected. Smaller coins are also less likely to be selected.\nIf a coin is selected, we prepare and broadcast a transaction, which splits the coin into a pair of new wallet addresses (DeniabilityDialog::deniabilizeCoin). \n\nThe user can control this process via a Frequency selector and a Budget spinner, which respectively determine how often to perform the cycle and how much total BTC to spend on transaction fees.\n\nIf Bitcoin Core is left running continuously, the cycles would be performed at the selected frequency (with some randomization). If Bitcoin Core is shutdown, the \"deniabilization\" process will resume at the next restart, and if more time has elapsed than the selected frequency, it will perform a single cycle. We deliberately don't \"catch up\" all missed cycles, since that would expose the process to blockchain analysis.\nThe state is saved and restored via QSettings (DeniabilityDialog::loadSettings and DeniabilityDialog::saveSettings).\n\nWe monitor each broadcasted transaction and we automatically attempt a fee bump if the transaction is still in the memory pool since the previous cycle (DeniabilityDialog::bumpDeniabilizationTx).\nWe don't issue any other deniabilization transactions until the previous transaction is confirmed (or abandoned/dropped).\n\nThe process ends when the budget is exhausted or if there's no candidates left. The user can also stop the process manually by pressing a Stop button (DeniabilityDialog::stopDeniabilization).\n\nExternal signers are supported in a \"best effort\" way - since the user needs to manually sign, we postpone the processing till the external signer is connected and use some additional UI to get the user's attention to sign (see the codepath predicated on hasExternalSigner). This is not ideal, so I'm looking for some ideas if we can improve this in some way.\n\nWatch-only wallets are partially supported, where we display the candidate list, but we don't allow any processing (since we don't have the private keys to issue transactions).\n\nI've tested all this functionality on regtest, testnet, signet and mainnet. I've also added some unit tests (under WalletTests) to exercise the main GUI functionality.\n\nThis is my first change and PR for Bitcoin Core, and I tried as much as possible to validate everything against the guidelines and documentation and to follow the patterns in the existing code, but I'm sure there are things I missed, so I'm looking forward to your feedback.\nIn particular things I'm not very sure about - the save/restore of state via QSettings makes me a bit nervous as we store some wallet specific data there which I put some effort to validate on load, however keying the settings based on wallet name is not ideal, so I'd like to improve this somehow - either by storing the settings based on some wallet identity signature, or by storing the state in the wallet database (however that doesn't seem accessible via the interfaces::Wallet API).\nPlease let me know your thoughts and suggestions.\n\nThank you.",
+      "committer": {
+        "name": "denavila",
+        "email": "denny_avila@tuta.io",
+        "date": "2023-10-28T20:59:38Z"
+      },
+      "author": {
+        "name": "denavila",
+        "email": "denny_avila@tuta.io",
+        "date": "2023-10-20T23:51:29Z"
+      },
+      "sha": "fab3f2ff4c53b5dca9d08589e71899fe76e690f0"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDVmOWU2NTIyMzNiMDNiZDAzOTMwNjFiNjU2MTcxNWMyN2ExMDgyYWQ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/5f9e652233b03bd0393061b6561715c27a1082ad",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/5f9e652233b03bd0393061b6561715c27a1082ad",
+      "tree": {
+        "sha": "2b0f9b78ab855348f20156426afca352ffededaa",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/2b0f9b78ab855348f20156426afca352ffededaa"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/fab3f2ff4c53b5dca9d08589e71899fe76e690f0",
+          "sha": "fab3f2ff4c53b5dca9d08589e71899fe76e690f0",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/fab3f2ff4c53b5dca9d08589e71899fe76e690f0"
+        }
+      ],
+      "message": "Updates to deniabilizeCoin per Deniability API changes.\n\nFixed the gui wallet test, as output type is LEGACY again.\nFixed const-correctness in saveSettings.",
+      "committer": {
+        "name": "denavila",
+        "email": "denny_avila@tuta.io",
+        "date": "2023-10-28T20:59:38Z"
+      },
+      "author": {
+        "name": "denavila",
+        "email": "denny_avila@tuta.io",
+        "date": "2023-10-22T17:13:44Z"
+      },
+      "sha": "5f9e652233b03bd0393061b6561715c27a1082ad"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDQwZDU5YzgzZDJmYWY0ZDdhMzY0NTExYmI2ZGQ3YzQ0YmFhMDkxZTc",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/40d59c83d2faf4d7a364511bb6dd7c44baa091e7",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/40d59c83d2faf4d7a364511bb6dd7c44baa091e7",
+      "tree": {
+        "sha": "4c24ced1e27f221db8c5df346dbe03a128d9ac02",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/4c24ced1e27f221db8c5df346dbe03a128d9ac02"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/5f9e652233b03bd0393061b6561715c27a1082ad",
+          "sha": "5f9e652233b03bd0393061b6561715c27a1082ad",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/5f9e652233b03bd0393061b6561715c27a1082ad"
+        }
+      ],
+      "message": "Refactored the coin update to explicitly match utxos by scriptPubKey and not rely on the ListCoin destination grouping.",
+      "committer": {
+        "name": "denavila",
+        "email": "denny_avila@tuta.io",
+        "date": "2023-10-28T20:59:38Z"
+      },
+      "author": {
+        "name": "denavila",
+        "email": "denny_avila@tuta.io",
+        "date": "2023-10-25T03:00:51Z"
+      },
+      "sha": "40d59c83d2faf4d7a364511bb6dd7c44baa091e7"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGM3ODFjZDg4NjNiYjEyZTYwY2U4OTA1MDYzYzgwNDExNDVkYjYzYWM",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/c781cd8863bb12e60ce8905063c8041145db63ac",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/c781cd8863bb12e60ce8905063c8041145db63ac",
+      "tree": {
+        "sha": "253f2c03d4797e6f9e009118d3b1be05f6a59344",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/253f2c03d4797e6f9e009118d3b1be05f6a59344"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/40d59c83d2faf4d7a364511bb6dd7c44baa091e7",
+          "sha": "40d59c83d2faf4d7a364511bb6dd7c44baa091e7",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/40d59c83d2faf4d7a364511bb6dd7c44baa091e7"
+        }
+      ],
+      "message": "Reworked status message translation spacing to pass the lint tests",
+      "committer": {
+        "name": "denavila",
+        "email": "denny_avila@tuta.io",
+        "date": "2023-10-28T20:59:38Z"
+      },
+      "author": {
+        "name": "denavila",
+        "email": "denny_avila@tuta.io",
+        "date": "2023-10-25T23:00:17Z"
+      },
+      "sha": "c781cd8863bb12e60ce8905063c8041145db63ac"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 10798552547,
+      "node_id": "HRFPE_lADOEEET9c5mbIhxzwAAAAKDpNXj",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/10798552547",
+      "actor": {
+        "login": "denavila",
+        "id": 123340139,
+        "node_id": "U_kgDOB1oFaw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/123340139?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/denavila",
+        "html_url": "https://github.com/denavila",
+        "followers_url": "https://api.github.com/users/denavila/followers",
+        "following_url": "https://api.github.com/users/denavila/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/denavila/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/denavila/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/denavila/subscriptions",
+        "organizations_url": "https://api.github.com/users/denavila/orgs",
+        "repos_url": "https://api.github.com/users/denavila/repos",
+        "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/denavila/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-10-28T21:00:41Z"
     }
   ],
   "comments": [
@@ -4276,7 +4345,7 @@
       "path": "src/qt/test/wallettests.cpp",
       "position": 240,
       "original_position": 240,
-      "commit_id": "219dd62e5c59ebe31e5d480eaaccd1057cadd93c",
+      "commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
       "original_commit_id": "16d50b3699232bfe48b21057e6175ab12417ebe3",
       "in_reply_to_id": null,
       "user": {
@@ -4328,7 +4397,7 @@
       "path": "src/wallet/feebumper.cpp",
       "position": 4,
       "original_position": 4,
-      "commit_id": "219dd62e5c59ebe31e5d480eaaccd1057cadd93c",
+      "commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
       "original_commit_id": "16d50b3699232bfe48b21057e6175ab12417ebe3",
       "in_reply_to_id": null,
       "user": {
@@ -4380,7 +4449,7 @@
       "path": "src/wallet/spend.cpp",
       "position": 232,
       "original_position": 232,
-      "commit_id": "219dd62e5c59ebe31e5d480eaaccd1057cadd93c",
+      "commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
       "original_commit_id": "16d50b3699232bfe48b21057e6175ab12417ebe3",
       "in_reply_to_id": null,
       "user": {
@@ -4430,9 +4499,9 @@
       "node_id": "PRRC_kwDOEEET9c5R374t",
       "diff_hunk": "@@ -1392,4 +1392,381 @@ bool FundTransaction(CWallet& wallet, CMutableTransaction& tx, CAmount& nFeeRet,\n \n     return true;\n }\n+\n+constexpr int NUM_DENIABILIZATION_OUTPUTS = 2;\n+\n+static unsigned int CalculateDeniabilizationTxSize(const CScript& script, CAmount value, unsigned int numTxIn)\n+{\n+    // Calculation based on the comments and code in GetDustThreshold and CreateTransactionInternal\n+    unsigned int txOutSize = (unsigned int)GetSerializeSize(CTxOut(value, script), PROTOCOL_VERSION);\n+\n+    const size_t txOutCount = NUM_DENIABILIZATION_OUTPUTS;\n+    unsigned int txSize = 10 + GetSizeOfCompactSize(txOutCount); // bytes for output count\n+    txSize += txOutSize * txOutCount;\n+\n+    int witnessversion = 0;\n+    std::vector<unsigned char> witnessprogram;\n+    if (script.IsWitnessProgram(witnessversion, witnessprogram)) {\n+        txSize += (unsigned int)(numTxIn * 67.75f + 0.5f);\n+    } else {\n+        txSize += numTxIn * 148;\n+    }\n+    return txSize;\n+}\n+\n+float CalculateDeniabilizationProbability(unsigned int deniabilization_cycles)\n+{\n+    // 100%, 50%, 25%, 13%, 6%, 3%, 2%, 1%\n+    return powf(0.5f, deniabilization_cycles);\n+}\n+\n+bool IsDeniabilizationWorthwhile(CAmount total_value, CAmount fee_estimate)\n+{\n+    constexpr CAmount value_to_fee_ratio = 10;\n+    return total_value > fee_estimate * value_to_fee_ratio;\n+}\n+\n+CCoinControl SetupDeniabilizationCoinControl(unsigned int confirm_target)\n+{\n+    CCoinControl coin_control;\n+    coin_control.m_avoid_address_reuse = true;\n+    coin_control.m_avoid_partial_spends = true;\n+    coin_control.m_allow_other_inputs = false;\n+    coin_control.m_signal_bip125_rbf = true;\n+    coin_control.m_confirm_target = confirm_target;\n+    // we'll automatically bump the fee if economical ends up not confirming by the next deniabilization cycle\n+    coin_control.m_fee_mode = FeeEstimateMode::ECONOMICAL;\n+    return coin_control;\n+}\n+\n+CFeeRate CalculateDeniabilizationFeeRate(const CWallet& wallet, unsigned int confirm_target)\n+{\n+    CCoinControl coin_control = SetupDeniabilizationCoinControl(confirm_target);\n+\n+    CFeeRate requiredFeeRate = GetRequiredFeeRate(wallet);\n+    FeeCalculation fee_calc;\n+    CFeeRate minFeeRate = GetMinimumFeeRate(wallet, coin_control, &fee_calc);\n+    if (fee_calc.reason == FeeReason::FALLBACK || requiredFeeRate > minFeeRate)\n+        return requiredFeeRate;\n+    return minFeeRate;\n+}\n+\n+static CAmount CalculateDeniabilizationTxFee(const CScript& shared_script, CAmount total_value, unsigned int num_utxos, const CFeeRate& fee_rate)\n+{\n+    Assert(num_utxos > 0);\n+    unsigned int deniabilization_tx_size = CalculateDeniabilizationTxSize(shared_script, total_value, num_utxos);\n+    return fee_rate.GetFee(deniabilization_tx_size);\n+}\n+\n+CAmount CalculateDeniabilizationFeeEstimate(const CScript& shared_script, CAmount total_value, unsigned int num_utxos, unsigned int deniabilization_cycles, const CFeeRate& fee_rate)\n+{\n+    float deniabilizationProbability = CalculateDeniabilizationProbability(deniabilization_cycles);\n+    // convert to integer percent to truncate and check for zero probability\n+    unsigned int deniabilizationProbabilityPercent = deniabilizationProbability * 100;\n+    if (deniabilizationProbabilityPercent == 0) {\n+        return 0;\n+    }\n+\n+    // this cycle will use all the UTXOs, while following cycles will have just one UTXO\n+    CAmount deniabilizationFee = CalculateDeniabilizationTxFee(shared_script, total_value, num_utxos, fee_rate);\n+\n+    // calculate the fees from future deniabilization cycles\n+    CAmount futureDeniabilizationFee = CalculateDeniabilizationFeeEstimate(shared_script, total_value / NUM_DENIABILIZATION_OUTPUTS, 1, deniabilization_cycles + 1, fee_rate) * 2;\n+\n+    // if it's worthwhile to do future deniabilizations then add them to this cycle estimate\n+    if (IsDeniabilizationWorthwhile(total_value, deniabilizationFee + futureDeniabilizationFee)) {\n+        deniabilizationFee += futureDeniabilizationFee;\n+    }\n+    return deniabilizationFee;\n+}\n+\n+std::pair<unsigned int, bool> CalculateDeniabilizationCycles(CWallet& wallet, const COutPoint& outpoint)\n+{\n+    LOCK(wallet.cs_wallet);\n+    auto walletTx = wallet.GetWalletTx(outpoint.hash);\n+    if (!walletTx) {\n+        return std::make_pair(0, false);\n+    }\n+    auto tx = walletTx->tx;\n+\n+    if (tx->IsCoinBase()) {\n+        // this is a block reward tx, so we tag it as such\n+        return std::make_pair(0, true);\n+    }\n+\n+    // an deniabilized coin is one we sent to ourselves\n+    // all txIn should belong to our wallet\n+    if (tx->vin.empty()) {\n+        return std::make_pair(0, false);\n+    }\n+    for (const auto& txIn : tx->vin) {\n+        if (InputIsMine(wallet, txIn) == ISMINE_NO) {\n+            return std::make_pair(0, false);\n+        }\n+    }\n+\n+    // all txOut should belong to our wallet\n+    Assert(outpoint.n < tx->vout.size());\n+    unsigned int n = 0;\n+    for (const auto& txOut : tx->vout) {\n+        if (wallet.IsMine(txOut) == ISMINE_NO) {\n+            Assert(n != outpoint.n);\n+            return std::make_pair(0, false);\n+        }\n+        n++;\n+    }\n+\n+    unsigned int uniqueTxOutCount = 0;\n+    for (const auto& txOut : tx->vout) {\n+        // check if it's a valid destination\n+        CTxDestination txOutDestination;\n+        ExtractDestination(txOut.scriptPubKey, txOutDestination);\n+        if (std::get_if<CNoDestination>(&txOutDestination)) {\n+            continue;\n+        }\n+\n+        // don't count outputs that match any input addresses (eg it's change output)\n+        bool matchesInput = false;\n+        for (const auto& txIn : tx->vin) {\n+            auto prevWalletTx = wallet.GetWalletTx(txIn.prevout.hash);\n+            if (prevWalletTx && prevWalletTx->tx->vout[txIn.prevout.n].scriptPubKey == txOut.scriptPubKey) {\n+                matchesInput = true;\n+                break;\n+            }\n+        }\n+        if (matchesInput) {\n+            continue;\n+        }\n+\n+        uniqueTxOutCount++;\n+    }\n+\n+    // we consider two or more unique outputs an \"deniabilization\" of the coin\n+    unsigned int deniabilizationCycles = uniqueTxOutCount >= 2 ? 1 : 0;\n+\n+    // all txIn and txOut are from our wallet\n+    // however if we have multiple txIn this was either an initial deniabilization of multiple UTXOs or the user manually merged deniabilized UTXOs\n+    // in either case we don't need to recurse into parent transactions and we can return the calculated cycles\n+    if (tx->vin.size() > 1) {\n+        return std::make_pair(deniabilizationCycles, false);\n+    }\n+\n+    const auto& txIn = tx->vin[0];\n+    // now recursively calculate the deniabilization cycles of the input\n+    auto inputStats = CalculateDeniabilizationCycles(wallet, txIn.prevout);\n+    return std::make_pair(inputStats.first + deniabilizationCycles, inputStats.second);\n+};\n+\n+void SpoofTransactionFingerprint(CMutableTransaction& tx, FastRandomContext& rng_fast)\n+{\n+    // Transaction \"fingerprint\" spoofing\n+    struct Fingerprint {\n+        bool standardVersion = false;\n+        bool antiFeeSniping = false;\n+        bool bip69Ordering = false;\n+    };\n+\n+    // wallet fingerprints based on info from variuous sources, see:\n+    // https://github.com/achow101/wallet-fingerprinting/blob/main/fingerprints.md\n+    // https://gitlab.com/1440000bytes/goldfish\n+    // https://ishaana.com/blog/wallet_fingerprinting/\n+    static const Fingerprint s_walletFingerprints[] = {\n+        {true, true, false},   // Core\n+        {true, true, true},    // Electrum\n+        {true, false, false},  // Blue\n+        {false, false, true},  // Trezor\n+        {false, false, false}, // Trust, Ledger\n+    };\n+    constexpr size_t NUM_WALLET_FINGERPRINTS = sizeof(s_walletFingerprints) / sizeof(s_walletFingerprints[0]);\n+\n+    auto fingerprintIndex = rng_fast.randrange(NUM_WALLET_FINGERPRINTS);\n+    const Fingerprint& fingerprint = s_walletFingerprints[fingerprintIndex];\n+\n+    if (fingerprint.standardVersion) {\n+        Assert(tx.nVersion == TX_MAX_STANDARD_VERSION);\n+    } else {\n+        tx.nVersion = 1;\n+    }\n+\n+    if (fingerprint.antiFeeSniping) {\n+        // By default \"Core\" implements anti-fee-sniping (nLockTime == block_height - rng_fast.randrange(100))\n+    } else {\n+        // no anti-fee-sniping\n+        tx.nLockTime = 0;\n+    }\n+\n+    if (fingerprint.bip69Ordering) {\n+        // Sort the inputs and outputs in accordance with BIP69\n+        auto sortInputsBip69 = [](const CTxIn& a, const CTxIn& b) {\n+            // COutPoint operator< does sort in accordance with Bip69, so just use that.\n+            return a.prevout < b.prevout;\n+        };\n+        std::sort(tx.vin.begin(), tx.vin.end(), sortInputsBip69);\n+\n+        auto sortOutputsBip69 = [](const CTxOut& a, const CTxOut& b) {\n+            if (a.nValue == b.nValue) {\n+                // Note: prevector operator< does NOT properly order scriptPubKeys lexicographically. So instead we\n+                // fall-back to using std::memcmp.\n+                const auto& spkA = a.scriptPubKey;\n+                const auto& spkB = b.scriptPubKey;\n+                const int cmp = std::memcmp(spkA.data(), spkB.data(), std::min(spkA.size(), spkB.size()));\n+                return cmp < 0 || (cmp == 0 && spkA.size() < spkB.size());\n+            }\n+            return a.nValue < b.nValue;\n+        };\n+        std::sort(tx.vout.begin(), tx.vout.end(), sortOutputsBip69);\n+    } else {\n+        // By default \"Core\" doesn't perform BIP69 ordering\n+    }\n+}\n+\n+util::Result<CreatedTransactionResult> CreateDeniabilizationTransaction(CWallet& wallet, const std::set<COutPoint>& inputs, const std::optional<OutputType>& opt_output_type, unsigned int confirm_target, unsigned int deniabilization_cycles, bool sign, bool& insufficient_amount)\n+{\n+    if (inputs.empty()) {\n+        return util::Error{_(\"Inputs must not be empty\")};\n+    }\n+\n+    CCoinControl coin_control = SetupDeniabilizationCoinControl(confirm_target);\n+    // TODO: Do we need to limit number of inputs to OUTPUT_GROUP_MAX_ENTRIES\n+    for (const auto& input : inputs) {\n+        coin_control.Select(input);\n+    }\n+    Assert(coin_control.HasSelected());\n+    CFeeRate deniabilization_fee_rate = CalculateDeniabilizationFeeRate(wallet, confirm_target);\n+    coin_control.m_feerate = deniabilization_fee_rate;\n+\n+    LOCK(wallet.cs_wallet);\n+\n+    FastRandomContext rng_fast;\n+    CoinSelectionParams coin_selection_params{rng_fast};\n+    coin_selection_params.m_avoid_partial_spends = coin_control.m_avoid_partial_spends;\n+    coin_selection_params.m_include_unsafe_inputs = coin_control.m_include_unsafe_inputs;\n+    coin_selection_params.m_effective_feerate = deniabilization_fee_rate;\n+    coin_selection_params.m_long_term_feerate = wallet.m_consolidate_feerate;\n+    coin_selection_params.m_subtract_fee_outputs = true;\n+\n+    auto res_fetch_inputs = FetchSelectedInputs(wallet, coin_control, coin_selection_params);\n+    if (!res_fetch_inputs) {\n+        return util::Error{util::ErrorString(res_fetch_inputs)};\n+    }\n+    PreSelectedInputs preset_inputs = *res_fetch_inputs;\n+    CAmount total_amount = preset_inputs.total_amount;\n+\n+    // validate that all UTXOs share the same address\n+    std::optional<CScript> op_shared_script;\n+    for (const auto& coin : preset_inputs.coins) {\n+        if (!op_shared_script) {\n+            op_shared_script = coin->txout.scriptPubKey;\n+        }\n+        if (!op_shared_script || !(*op_shared_script == coin->txout.scriptPubKey)) {\n+            return util::Error{_(\"Input addresses must all match.\")};\n+        }\n+    }\n+    Assert(op_shared_script);\n+    CScript shared_script = *op_shared_script;\n+\n+    CFeeRate discard_feerate = GetDiscardRate(wallet);\n+    CAmount dust_threshold = GetDustThreshold(CTxOut(total_amount, shared_script), discard_feerate);\n+\n+    // deniabilize the UTXOs by splitting the value randomly\n+    // find a split that leaves enough amount post split to finish the deniabilization process in each new UTXO\n+    CAmount min_post_split_amount = CalculateDeniabilizationFeeEstimate(shared_script, total_amount / NUM_DENIABILIZATION_OUTPUTS, 1, deniabilization_cycles + 1, deniabilization_fee_rate) + dust_threshold;\n+    CAmount estimated_tx_fee = CalculateDeniabilizationTxFee(shared_script, total_amount, preset_inputs.coins.size(), deniabilization_fee_rate);\n+\n+    CAmount total_random_range = total_amount - min_post_split_amount * NUM_DENIABILIZATION_OUTPUTS - estimated_tx_fee;\n+    if (total_random_range < 0) {\n+        insufficient_amount = true;\n+        return util::Error{strprintf(_(\"Insufficient amount (%d) for a deniabilization transaction, min amount (%d), tx fee (%d).\"), total_amount, min_post_split_amount, estimated_tx_fee)};\n+    }\n+\n+    OutputType output_type = wallet.m_default_address_type;\n+    if (opt_output_type) {\n+        output_type = *opt_output_type;\n+    } else {\n+        // if no output type was specified, try to infer it from the source inputs\n+        CTxDestination shared_destination = CNoDestination();\n+        if (ExtractDestination(shared_script, shared_destination)) {\n+            std::optional<OutputType> opt_shared_output_type = OutputTypeFromDestination(shared_destination);\n+            if (opt_shared_output_type) {\n+                output_type = *opt_shared_output_type;\n+            }\n+        }\n+    }\n+\n+    const int num_recipients = NUM_DENIABILIZATION_OUTPUTS;\n+    std::vector<CRecipient> recipients(num_recipients);\n+    std::list<ReserveDestination> reservedests;\n+    constexpr bool reservdest_internal = false; // TODO: Should this be \"true\" or \"false\". What does \"internal\" mean?\n+    for (int recipient_index = 0; recipient_index < num_recipients; recipient_index++) {\n+        bool lastRecipient = recipient_index == (num_recipients - 1);\n+        if (!lastRecipient) {\n+            // all recipients except for the last one,\n+            // calculate a random range based on the remaining total random range and the number of remaining recipients\n+            // then generate a random amount within that range\n+            CAmount random_range = total_random_range / (num_recipients - recipient_index - 1);\n+            CAmount random_amount = 0;\n+            if (random_range > 0) {\n+                random_amount = GetRand<CAmount>(random_range);\n+                Assert(total_random_range >= random_amount);\n+                total_random_range -= random_amount;\n+            }\n+            recipients[recipient_index].nAmount = min_post_split_amount + random_amount;\n+        } else {\n+            // the last recipient takes any leftover random amount and the estimated fee\n+            recipients[recipient_index].nAmount = min_post_split_amount + total_random_range + estimated_tx_fee;\n+        }\n+\n+        // the last recipient pays the tx fees\n+        recipients[recipient_index].fSubtractFeeFromAmount = lastRecipient;\n+\n+        auto& reservedest = reservedests.emplace_back(&wallet, output_type);\n+        CTxDestination dest;\n+        auto op_dest = reservedest.GetReservedDestination(reservdest_internal);\n+        if (!op_dest) {\n+            return util::Error{_(\"Failed to reserve a new address.\") + Untranslated(\" \") + util::ErrorString(op_dest)};\n+        }\n+        dest = *op_dest;\n+        recipients[recipient_index].dest = dest;\n+        if (lastRecipient) {\n+            // we don't expect to get change, but we provide the address to prevent CreateTransactionInternal from generating a change address\n+            coin_control.destChange = dest;\n+        }\n+    }\n+\n+    CAmount recipient_amount = std::accumulate(recipients.cbegin(), recipients.cend(), CAmount{0}, [](CAmount sum, const CRecipient& recipient) { return sum + recipient.nAmount; });",
       "path": "src/wallet/spend.cpp",
-      "position": 345,
+      "position": null,
       "original_position": 345,
-      "commit_id": "219dd62e5c59ebe31e5d480eaaccd1057cadd93c",
+      "commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
       "original_commit_id": "16d50b3699232bfe48b21057e6175ab12417ebe3",
       "in_reply_to_id": null,
       "user": {
@@ -4471,7 +4540,7 @@
       "start_line": null,
       "original_start_line": null,
       "start_side": null,
-      "line": 1736,
+      "line": null,
       "original_line": 1736,
       "side": "RIGHT"
     },
@@ -4484,7 +4553,7 @@
       "path": "src/wallet/spend.cpp",
       "position": 232,
       "original_position": 232,
-      "commit_id": "219dd62e5c59ebe31e5d480eaaccd1057cadd93c",
+      "commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
       "original_commit_id": "16d50b3699232bfe48b21057e6175ab12417ebe3",
       "in_reply_to_id": 1373616084,
       "user": {
@@ -4536,7 +4605,7 @@
       "path": "src/wallet/feebumper.cpp",
       "position": 4,
       "original_position": 4,
-      "commit_id": "219dd62e5c59ebe31e5d480eaaccd1057cadd93c",
+      "commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
       "original_commit_id": "16d50b3699232bfe48b21057e6175ab12417ebe3",
       "in_reply_to_id": 1373610526,
       "user": {
@@ -4588,7 +4657,7 @@
       "path": "src/qt/test/wallettests.cpp",
       "position": 240,
       "original_position": 240,
-      "commit_id": "219dd62e5c59ebe31e5d480eaaccd1057cadd93c",
+      "commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
       "original_commit_id": "16d50b3699232bfe48b21057e6175ab12417ebe3",
       "in_reply_to_id": 1373600315,
       "user": {
@@ -4629,6 +4698,58 @@
       "start_side": null,
       "line": 546,
       "original_line": 546,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1375321647",
+      "pull_request_review_id": 1702852547,
+      "id": 1375321647,
+      "node_id": "PRRC_kwDOEEET9c5R-b4v",
+      "diff_hunk": "@@ -1392,4 +1392,381 @@ bool FundTransaction(CWallet& wallet, CMutableTransaction& tx, CAmount& nFeeRet,\n \n     return true;\n }\n+\n+constexpr int NUM_DENIABILIZATION_OUTPUTS = 2;\n+\n+static unsigned int CalculateDeniabilizationTxSize(const CScript& script, CAmount value, unsigned int numTxIn)\n+{\n+    // Calculation based on the comments and code in GetDustThreshold and CreateTransactionInternal\n+    unsigned int txOutSize = (unsigned int)GetSerializeSize(CTxOut(value, script), PROTOCOL_VERSION);\n+\n+    const size_t txOutCount = NUM_DENIABILIZATION_OUTPUTS;\n+    unsigned int txSize = 10 + GetSizeOfCompactSize(txOutCount); // bytes for output count\n+    txSize += txOutSize * txOutCount;\n+\n+    int witnessversion = 0;\n+    std::vector<unsigned char> witnessprogram;\n+    if (script.IsWitnessProgram(witnessversion, witnessprogram)) {\n+        txSize += (unsigned int)(numTxIn * 67.75f + 0.5f);\n+    } else {\n+        txSize += numTxIn * 148;\n+    }\n+    return txSize;\n+}\n+\n+float CalculateDeniabilizationProbability(unsigned int deniabilization_cycles)\n+{\n+    // 100%, 50%, 25%, 13%, 6%, 3%, 2%, 1%\n+    return powf(0.5f, deniabilization_cycles);\n+}\n+\n+bool IsDeniabilizationWorthwhile(CAmount total_value, CAmount fee_estimate)\n+{\n+    constexpr CAmount value_to_fee_ratio = 10;\n+    return total_value > fee_estimate * value_to_fee_ratio;\n+}\n+\n+CCoinControl SetupDeniabilizationCoinControl(unsigned int confirm_target)\n+{\n+    CCoinControl coin_control;\n+    coin_control.m_avoid_address_reuse = true;\n+    coin_control.m_avoid_partial_spends = true;\n+    coin_control.m_allow_other_inputs = false;\n+    coin_control.m_signal_bip125_rbf = true;\n+    coin_control.m_confirm_target = confirm_target;\n+    // we'll automatically bump the fee if economical ends up not confirming by the next deniabilization cycle\n+    coin_control.m_fee_mode = FeeEstimateMode::ECONOMICAL;\n+    return coin_control;\n+}\n+\n+CFeeRate CalculateDeniabilizationFeeRate(const CWallet& wallet, unsigned int confirm_target)\n+{\n+    CCoinControl coin_control = SetupDeniabilizationCoinControl(confirm_target);\n+\n+    CFeeRate requiredFeeRate = GetRequiredFeeRate(wallet);\n+    FeeCalculation fee_calc;\n+    CFeeRate minFeeRate = GetMinimumFeeRate(wallet, coin_control, &fee_calc);\n+    if (fee_calc.reason == FeeReason::FALLBACK || requiredFeeRate > minFeeRate)\n+        return requiredFeeRate;\n+    return minFeeRate;\n+}\n+\n+static CAmount CalculateDeniabilizationTxFee(const CScript& shared_script, CAmount total_value, unsigned int num_utxos, const CFeeRate& fee_rate)\n+{\n+    Assert(num_utxos > 0);\n+    unsigned int deniabilization_tx_size = CalculateDeniabilizationTxSize(shared_script, total_value, num_utxos);\n+    return fee_rate.GetFee(deniabilization_tx_size);\n+}\n+\n+CAmount CalculateDeniabilizationFeeEstimate(const CScript& shared_script, CAmount total_value, unsigned int num_utxos, unsigned int deniabilization_cycles, const CFeeRate& fee_rate)\n+{\n+    float deniabilizationProbability = CalculateDeniabilizationProbability(deniabilization_cycles);\n+    // convert to integer percent to truncate and check for zero probability\n+    unsigned int deniabilizationProbabilityPercent = deniabilizationProbability * 100;\n+    if (deniabilizationProbabilityPercent == 0) {\n+        return 0;\n+    }\n+\n+    // this cycle will use all the UTXOs, while following cycles will have just one UTXO\n+    CAmount deniabilizationFee = CalculateDeniabilizationTxFee(shared_script, total_value, num_utxos, fee_rate);\n+\n+    // calculate the fees from future deniabilization cycles\n+    CAmount futureDeniabilizationFee = CalculateDeniabilizationFeeEstimate(shared_script, total_value / NUM_DENIABILIZATION_OUTPUTS, 1, deniabilization_cycles + 1, fee_rate) * 2;\n+\n+    // if it's worthwhile to do future deniabilizations then add them to this cycle estimate\n+    if (IsDeniabilizationWorthwhile(total_value, deniabilizationFee + futureDeniabilizationFee)) {\n+        deniabilizationFee += futureDeniabilizationFee;\n+    }\n+    return deniabilizationFee;\n+}\n+\n+std::pair<unsigned int, bool> CalculateDeniabilizationCycles(CWallet& wallet, const COutPoint& outpoint)\n+{\n+    LOCK(wallet.cs_wallet);\n+    auto walletTx = wallet.GetWalletTx(outpoint.hash);\n+    if (!walletTx) {\n+        return std::make_pair(0, false);\n+    }\n+    auto tx = walletTx->tx;\n+\n+    if (tx->IsCoinBase()) {\n+        // this is a block reward tx, so we tag it as such\n+        return std::make_pair(0, true);\n+    }\n+\n+    // an deniabilized coin is one we sent to ourselves\n+    // all txIn should belong to our wallet\n+    if (tx->vin.empty()) {\n+        return std::make_pair(0, false);\n+    }\n+    for (const auto& txIn : tx->vin) {\n+        if (InputIsMine(wallet, txIn) == ISMINE_NO) {\n+            return std::make_pair(0, false);\n+        }\n+    }\n+\n+    // all txOut should belong to our wallet\n+    Assert(outpoint.n < tx->vout.size());\n+    unsigned int n = 0;\n+    for (const auto& txOut : tx->vout) {\n+        if (wallet.IsMine(txOut) == ISMINE_NO) {\n+            Assert(n != outpoint.n);\n+            return std::make_pair(0, false);\n+        }\n+        n++;\n+    }\n+\n+    unsigned int uniqueTxOutCount = 0;\n+    for (const auto& txOut : tx->vout) {\n+        // check if it's a valid destination\n+        CTxDestination txOutDestination;\n+        ExtractDestination(txOut.scriptPubKey, txOutDestination);\n+        if (std::get_if<CNoDestination>(&txOutDestination)) {\n+            continue;\n+        }\n+\n+        // don't count outputs that match any input addresses (eg it's change output)\n+        bool matchesInput = false;\n+        for (const auto& txIn : tx->vin) {\n+            auto prevWalletTx = wallet.GetWalletTx(txIn.prevout.hash);\n+            if (prevWalletTx && prevWalletTx->tx->vout[txIn.prevout.n].scriptPubKey == txOut.scriptPubKey) {\n+                matchesInput = true;\n+                break;\n+            }\n+        }\n+        if (matchesInput) {\n+            continue;\n+        }\n+\n+        uniqueTxOutCount++;\n+    }\n+\n+    // we consider two or more unique outputs an \"deniabilization\" of the coin\n+    unsigned int deniabilizationCycles = uniqueTxOutCount >= 2 ? 1 : 0;\n+\n+    // all txIn and txOut are from our wallet\n+    // however if we have multiple txIn this was either an initial deniabilization of multiple UTXOs or the user manually merged deniabilized UTXOs\n+    // in either case we don't need to recurse into parent transactions and we can return the calculated cycles\n+    if (tx->vin.size() > 1) {\n+        return std::make_pair(deniabilizationCycles, false);\n+    }\n+\n+    const auto& txIn = tx->vin[0];\n+    // now recursively calculate the deniabilization cycles of the input\n+    auto inputStats = CalculateDeniabilizationCycles(wallet, txIn.prevout);\n+    return std::make_pair(inputStats.first + deniabilizationCycles, inputStats.second);\n+};\n+\n+void SpoofTransactionFingerprint(CMutableTransaction& tx, FastRandomContext& rng_fast)\n+{\n+    // Transaction \"fingerprint\" spoofing\n+    struct Fingerprint {\n+        bool standardVersion = false;\n+        bool antiFeeSniping = false;\n+        bool bip69Ordering = false;\n+    };\n+\n+    // wallet fingerprints based on info from variuous sources, see:\n+    // https://github.com/achow101/wallet-fingerprinting/blob/main/fingerprints.md\n+    // https://gitlab.com/1440000bytes/goldfish\n+    // https://ishaana.com/blog/wallet_fingerprinting/\n+    static const Fingerprint s_walletFingerprints[] = {\n+        {true, true, false},   // Core\n+        {true, true, true},    // Electrum\n+        {true, false, false},  // Blue\n+        {false, false, true},  // Trezor\n+        {false, false, false}, // Trust, Ledger\n+    };\n+    constexpr size_t NUM_WALLET_FINGERPRINTS = sizeof(s_walletFingerprints) / sizeof(s_walletFingerprints[0]);\n+\n+    auto fingerprintIndex = rng_fast.randrange(NUM_WALLET_FINGERPRINTS);\n+    const Fingerprint& fingerprint = s_walletFingerprints[fingerprintIndex];\n+\n+    if (fingerprint.standardVersion) {\n+        Assert(tx.nVersion == TX_MAX_STANDARD_VERSION);\n+    } else {\n+        tx.nVersion = 1;\n+    }\n+\n+    if (fingerprint.antiFeeSniping) {\n+        // By default \"Core\" implements anti-fee-sniping (nLockTime == block_height - rng_fast.randrange(100))\n+    } else {\n+        // no anti-fee-sniping\n+        tx.nLockTime = 0;\n+    }\n+\n+    if (fingerprint.bip69Ordering) {\n+        // Sort the inputs and outputs in accordance with BIP69\n+        auto sortInputsBip69 = [](const CTxIn& a, const CTxIn& b) {\n+            // COutPoint operator< does sort in accordance with Bip69, so just use that.\n+            return a.prevout < b.prevout;\n+        };\n+        std::sort(tx.vin.begin(), tx.vin.end(), sortInputsBip69);\n+\n+        auto sortOutputsBip69 = [](const CTxOut& a, const CTxOut& b) {\n+            if (a.nValue == b.nValue) {\n+                // Note: prevector operator< does NOT properly order scriptPubKeys lexicographically. So instead we\n+                // fall-back to using std::memcmp.\n+                const auto& spkA = a.scriptPubKey;\n+                const auto& spkB = b.scriptPubKey;\n+                const int cmp = std::memcmp(spkA.data(), spkB.data(), std::min(spkA.size(), spkB.size()));\n+                return cmp < 0 || (cmp == 0 && spkA.size() < spkB.size());\n+            }\n+            return a.nValue < b.nValue;\n+        };\n+        std::sort(tx.vout.begin(), tx.vout.end(), sortOutputsBip69);\n+    } else {\n+        // By default \"Core\" doesn't perform BIP69 ordering\n+    }\n+}\n+\n+util::Result<CreatedTransactionResult> CreateDeniabilizationTransaction(CWallet& wallet, const std::set<COutPoint>& inputs, const std::optional<OutputType>& opt_output_type, unsigned int confirm_target, unsigned int deniabilization_cycles, bool sign, bool& insufficient_amount)\n+{\n+    if (inputs.empty()) {\n+        return util::Error{_(\"Inputs must not be empty\")};\n+    }\n+\n+    CCoinControl coin_control = SetupDeniabilizationCoinControl(confirm_target);\n+    // TODO: Do we need to limit number of inputs to OUTPUT_GROUP_MAX_ENTRIES\n+    for (const auto& input : inputs) {\n+        coin_control.Select(input);\n+    }\n+    Assert(coin_control.HasSelected());\n+    CFeeRate deniabilization_fee_rate = CalculateDeniabilizationFeeRate(wallet, confirm_target);\n+    coin_control.m_feerate = deniabilization_fee_rate;\n+\n+    LOCK(wallet.cs_wallet);\n+\n+    FastRandomContext rng_fast;\n+    CoinSelectionParams coin_selection_params{rng_fast};\n+    coin_selection_params.m_avoid_partial_spends = coin_control.m_avoid_partial_spends;\n+    coin_selection_params.m_include_unsafe_inputs = coin_control.m_include_unsafe_inputs;\n+    coin_selection_params.m_effective_feerate = deniabilization_fee_rate;\n+    coin_selection_params.m_long_term_feerate = wallet.m_consolidate_feerate;\n+    coin_selection_params.m_subtract_fee_outputs = true;\n+\n+    auto res_fetch_inputs = FetchSelectedInputs(wallet, coin_control, coin_selection_params);\n+    if (!res_fetch_inputs) {\n+        return util::Error{util::ErrorString(res_fetch_inputs)};\n+    }\n+    PreSelectedInputs preset_inputs = *res_fetch_inputs;\n+    CAmount total_amount = preset_inputs.total_amount;\n+\n+    // validate that all UTXOs share the same address\n+    std::optional<CScript> op_shared_script;\n+    for (const auto& coin : preset_inputs.coins) {\n+        if (!op_shared_script) {\n+            op_shared_script = coin->txout.scriptPubKey;\n+        }\n+        if (!op_shared_script || !(*op_shared_script == coin->txout.scriptPubKey)) {\n+            return util::Error{_(\"Input addresses must all match.\")};\n+        }\n+    }\n+    Assert(op_shared_script);\n+    CScript shared_script = *op_shared_script;\n+\n+    CFeeRate discard_feerate = GetDiscardRate(wallet);\n+    CAmount dust_threshold = GetDustThreshold(CTxOut(total_amount, shared_script), discard_feerate);\n+\n+    // deniabilize the UTXOs by splitting the value randomly\n+    // find a split that leaves enough amount post split to finish the deniabilization process in each new UTXO\n+    CAmount min_post_split_amount = CalculateDeniabilizationFeeEstimate(shared_script, total_amount / NUM_DENIABILIZATION_OUTPUTS, 1, deniabilization_cycles + 1, deniabilization_fee_rate) + dust_threshold;\n+    CAmount estimated_tx_fee = CalculateDeniabilizationTxFee(shared_script, total_amount, preset_inputs.coins.size(), deniabilization_fee_rate);\n+\n+    CAmount total_random_range = total_amount - min_post_split_amount * NUM_DENIABILIZATION_OUTPUTS - estimated_tx_fee;\n+    if (total_random_range < 0) {\n+        insufficient_amount = true;\n+        return util::Error{strprintf(_(\"Insufficient amount (%d) for a deniabilization transaction, min amount (%d), tx fee (%d).\"), total_amount, min_post_split_amount, estimated_tx_fee)};\n+    }\n+\n+    OutputType output_type = wallet.m_default_address_type;\n+    if (opt_output_type) {\n+        output_type = *opt_output_type;\n+    } else {\n+        // if no output type was specified, try to infer it from the source inputs\n+        CTxDestination shared_destination = CNoDestination();\n+        if (ExtractDestination(shared_script, shared_destination)) {\n+            std::optional<OutputType> opt_shared_output_type = OutputTypeFromDestination(shared_destination);\n+            if (opt_shared_output_type) {\n+                output_type = *opt_shared_output_type;\n+            }\n+        }\n+    }\n+\n+    const int num_recipients = NUM_DENIABILIZATION_OUTPUTS;\n+    std::vector<CRecipient> recipients(num_recipients);\n+    std::list<ReserveDestination> reservedests;\n+    constexpr bool reservdest_internal = false; // TODO: Should this be \"true\" or \"false\". What does \"internal\" mean?\n+    for (int recipient_index = 0; recipient_index < num_recipients; recipient_index++) {\n+        bool lastRecipient = recipient_index == (num_recipients - 1);\n+        if (!lastRecipient) {\n+            // all recipients except for the last one,\n+            // calculate a random range based on the remaining total random range and the number of remaining recipients\n+            // then generate a random amount within that range\n+            CAmount random_range = total_random_range / (num_recipients - recipient_index - 1);\n+            CAmount random_amount = 0;\n+            if (random_range > 0) {\n+                random_amount = GetRand<CAmount>(random_range);\n+                Assert(total_random_range >= random_amount);\n+                total_random_range -= random_amount;\n+            }\n+            recipients[recipient_index].nAmount = min_post_split_amount + random_amount;\n+        } else {\n+            // the last recipient takes any leftover random amount and the estimated fee\n+            recipients[recipient_index].nAmount = min_post_split_amount + total_random_range + estimated_tx_fee;\n+        }\n+\n+        // the last recipient pays the tx fees\n+        recipients[recipient_index].fSubtractFeeFromAmount = lastRecipient;\n+\n+        auto& reservedest = reservedests.emplace_back(&wallet, output_type);\n+        CTxDestination dest;\n+        auto op_dest = reservedest.GetReservedDestination(reservdest_internal);\n+        if (!op_dest) {\n+            return util::Error{_(\"Failed to reserve a new address.\") + Untranslated(\" \") + util::ErrorString(op_dest)};\n+        }\n+        dest = *op_dest;\n+        recipients[recipient_index].dest = dest;\n+        if (lastRecipient) {\n+            // we don't expect to get change, but we provide the address to prevent CreateTransactionInternal from generating a change address\n+            coin_control.destChange = dest;\n+        }\n+    }\n+\n+    CAmount recipient_amount = std::accumulate(recipients.cbegin(), recipients.cend(), CAmount{0}, [](CAmount sum, const CRecipient& recipient) { return sum + recipient.nAmount; });",
+      "path": "src/wallet/spend.cpp",
+      "position": null,
+      "original_position": 345,
+      "commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
+      "original_commit_id": "16d50b3699232bfe48b21057e6175ab12417ebe3",
+      "in_reply_to_id": 1373617709,
+      "user": {
+        "login": "denavila",
+        "id": 123340139,
+        "node_id": "U_kgDOB1oFaw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/123340139?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/denavila",
+        "html_url": "https://github.com/denavila",
+        "followers_url": "https://api.github.com/users/denavila/followers",
+        "following_url": "https://api.github.com/users/denavila/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/denavila/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/denavila/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/denavila/subscriptions",
+        "organizations_url": "https://api.github.com/users/denavila/orgs",
+        "repos_url": "https://api.github.com/users/denavila/repos",
+        "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/denavila/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "Yes, indeed. I split the code into several lines in the latest commit.\r\nThanks!",
+      "created_at": "2023-10-28T21:03:19Z",
+      "updated_at": "2023-10-28T21:03:19Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/733#discussion_r1375321647",
+      "author_association": "NONE",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1375321647"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/733"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": null,
+      "original_line": 1736,
       "side": "RIGHT"
     }
   ]
