@@ -60,7 +60,7 @@
       }
     ],
     "created_at": "2023-05-21T06:32:50Z",
-    "updated_at": "2023-10-29T14:50:30Z",
+    "updated_at": "2023-10-30T01:11:56Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merge_commit_sha": "7978837400f32b9d0ec28ff1a6a8b29018044011",
@@ -343,7 +343,7 @@
     "deletions": 7,
     "changed_files": 24,
     "commits": 10,
-    "review_comments": 13,
+    "review_comments": 16,
     "comments": 14
   },
   "events": [
@@ -1564,7 +1564,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/25273.patch"
           },
           "created_at": "2022-06-03T18:58:15Z",
-          "updated_at": "2023-10-25T22:57:58Z"
+          "updated_at": "2023-10-29T21:04:13Z"
         },
         "type": "issue"
       }
@@ -1770,7 +1770,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/27792.patch"
           },
           "created_at": "2023-05-31T07:50:37Z",
-          "updated_at": "2023-10-29T00:23:26Z"
+          "updated_at": "2023-10-30T00:55:19Z"
         },
         "type": "issue"
       }
@@ -1968,7 +1968,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/25907.patch"
           },
           "created_at": "2022-08-22T23:17:45Z",
-          "updated_at": "2023-10-24T23:23:38Z"
+          "updated_at": "2023-10-29T17:01:08Z"
         },
         "type": "issue"
       }
@@ -2181,7 +2181,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/21283.patch"
           },
           "created_at": "2021-02-23T18:29:20Z",
-          "updated_at": "2023-10-29T00:25:39Z"
+          "updated_at": "2023-10-29T17:24:53Z"
         },
         "type": "issue"
       }
@@ -5158,6 +5158,162 @@
       "start_side": null,
       "line": null,
       "original_line": 1736,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1375571803",
+      "pull_request_review_id": 1703109392,
+      "id": 1375571803,
+      "node_id": "PRRC_kwDOEEET9c5R_Y9b",
+      "diff_hunk": "@@ -1392,4 +1392,384 @@ bool FundTransaction(CWallet& wallet, CMutableTransaction& tx, CAmount& nFeeRet,\n \n     return true;\n }\n+\n+constexpr int NUM_DENIABILIZATION_OUTPUTS = 2;",
+      "path": "src/wallet/spend.cpp",
+      "position": 5,
+      "original_position": 5,
+      "commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
+      "original_commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
+      "in_reply_to_id": 1375450500,
+      "user": {
+        "login": "denavila",
+        "id": 123340139,
+        "node_id": "U_kgDOB1oFaw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/123340139?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/denavila",
+        "html_url": "https://github.com/denavila",
+        "followers_url": "https://api.github.com/users/denavila/followers",
+        "following_url": "https://api.github.com/users/denavila/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/denavila/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/denavila/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/denavila/subscriptions",
+        "organizations_url": "https://api.github.com/users/denavila/orgs",
+        "repos_url": "https://api.github.com/users/denavila/repos",
+        "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/denavila/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "2 outputs is a common spend transaction and we're trying to mimic that. \r\nAnother concern with a larger output count is that the number of deniabilization chunks grows much larger with each \"cycle\", and thus becomes more expensive to perform further cycles.\r\nIn the end 2 looked like the sweet spot, but I made the constant just in case we want to play with other output counts in the future.\r\nI'll add comments in the code to that effect so that it's more obvious.\r\nThanks!",
+      "created_at": "2023-10-30T01:02:13Z",
+      "updated_at": "2023-10-30T01:02:13Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/733#discussion_r1375571803",
+      "author_association": "NONE",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1375571803"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/733"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 1396,
+      "original_line": 1396,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1375574194",
+      "pull_request_review_id": 1703112750,
+      "id": 1375574194,
+      "node_id": "PRRC_kwDOEEET9c5R_Ziy",
+      "diff_hunk": "@@ -1392,4 +1392,384 @@ bool FundTransaction(CWallet& wallet, CMutableTransaction& tx, CAmount& nFeeRet,\n \n     return true;\n }\n+\n+constexpr int NUM_DENIABILIZATION_OUTPUTS = 2;\n+\n+static unsigned int CalculateDeniabilizationTxSize(const CScript& script, CAmount value, unsigned int numTxIn)\n+{\n+    // Calculation based on the comments and code in GetDustThreshold and CreateTransactionInternal\n+    unsigned int txOutSize = (unsigned int)GetSerializeSize(CTxOut(value, script), PROTOCOL_VERSION);\n+\n+    const size_t txOutCount = NUM_DENIABILIZATION_OUTPUTS;\n+    unsigned int txSize = 10 + GetSizeOfCompactSize(txOutCount); // bytes for output count\n+    txSize += txOutSize * txOutCount;\n+\n+    int witnessversion = 0;\n+    std::vector<unsigned char> witnessprogram;\n+    if (script.IsWitnessProgram(witnessversion, witnessprogram)) {\n+        txSize += (unsigned int)(numTxIn * 67.75f + 0.5f);\n+    } else {\n+        txSize += numTxIn * 148;",
+      "path": "src/wallet/spend.cpp",
+      "position": 21,
+      "original_position": 21,
+      "commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
+      "original_commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
+      "in_reply_to_id": 1375450923,
+      "user": {
+        "login": "denavila",
+        "id": 123340139,
+        "node_id": "U_kgDOB1oFaw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/123340139?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/denavila",
+        "html_url": "https://github.com/denavila",
+        "followers_url": "https://api.github.com/users/denavila/followers",
+        "following_url": "https://api.github.com/users/denavila/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/denavila/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/denavila/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/denavila/subscriptions",
+        "organizations_url": "https://api.github.com/users/denavila/orgs",
+        "repos_url": "https://api.github.com/users/denavila/repos",
+        "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/denavila/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "Yes, these are legacy vs Segwit tx size calculation, I think I found the code in GetDustThreshold. I'll see if we have named constants for some of those.",
+      "created_at": "2023-10-30T01:08:17Z",
+      "updated_at": "2023-10-30T01:08:18Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/733#discussion_r1375574194",
+      "author_association": "NONE",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1375574194"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/733"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 1412,
+      "original_line": 1412,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1375575224",
+      "pull_request_review_id": 1703114144,
+      "id": 1375575224,
+      "node_id": "PRRC_kwDOEEET9c5R_Zy4",
+      "diff_hunk": "@@ -1392,4 +1392,384 @@ bool FundTransaction(CWallet& wallet, CMutableTransaction& tx, CAmount& nFeeRet,\n \n     return true;\n }\n+\n+constexpr int NUM_DENIABILIZATION_OUTPUTS = 2;\n+\n+static unsigned int CalculateDeniabilizationTxSize(const CScript& script, CAmount value, unsigned int numTxIn)\n+{\n+    // Calculation based on the comments and code in GetDustThreshold and CreateTransactionInternal\n+    unsigned int txOutSize = (unsigned int)GetSerializeSize(CTxOut(value, script), PROTOCOL_VERSION);\n+\n+    const size_t txOutCount = NUM_DENIABILIZATION_OUTPUTS;\n+    unsigned int txSize = 10 + GetSizeOfCompactSize(txOutCount); // bytes for output count\n+    txSize += txOutSize * txOutCount;\n+\n+    int witnessversion = 0;\n+    std::vector<unsigned char> witnessprogram;\n+    if (script.IsWitnessProgram(witnessversion, witnessprogram)) {\n+        txSize += (unsigned int)(numTxIn * 67.75f + 0.5f);\n+    } else {\n+        txSize += numTxIn * 148;\n+    }\n+    return txSize;\n+}\n+\n+float CalculateDeniabilizationProbability(unsigned int deniabilization_cycles)\n+{\n+    // 100%, 50%, 25%, 13%, 6%, 3%, 2%, 1%\n+    return powf(0.5f, deniabilization_cycles);\n+}\n+\n+bool IsDeniabilizationWorthwhile(CAmount total_value, CAmount fee_estimate)\n+{\n+    constexpr CAmount value_to_fee_ratio = 10;\n+    return total_value > fee_estimate * value_to_fee_ratio;\n+}\n+\n+CCoinControl SetupDeniabilizationCoinControl(unsigned int confirm_target)\n+{\n+    CCoinControl coin_control;\n+    coin_control.m_avoid_address_reuse = true;\n+    coin_control.m_avoid_partial_spends = true;\n+    coin_control.m_allow_other_inputs = false;\n+    coin_control.m_signal_bip125_rbf = true;\n+    coin_control.m_confirm_target = confirm_target;\n+    // we'll automatically bump the fee if economical ends up not confirming by the next deniabilization cycle\n+    coin_control.m_fee_mode = FeeEstimateMode::ECONOMICAL;\n+    return coin_control;\n+}\n+\n+CFeeRate CalculateDeniabilizationFeeRate(const CWallet& wallet, unsigned int confirm_target)\n+{\n+    CCoinControl coin_control = SetupDeniabilizationCoinControl(confirm_target);\n+\n+    CFeeRate requiredFeeRate = GetRequiredFeeRate(wallet);\n+    FeeCalculation fee_calc;\n+    CFeeRate minFeeRate = GetMinimumFeeRate(wallet, coin_control, &fee_calc);\n+    if (fee_calc.reason == FeeReason::FALLBACK || requiredFeeRate > minFeeRate)\n+        return requiredFeeRate;\n+    return minFeeRate;\n+}\n+\n+static CAmount CalculateDeniabilizationTxFee(const CScript& shared_script, CAmount total_value, unsigned int num_utxos, const CFeeRate& fee_rate)\n+{\n+    Assert(num_utxos > 0);\n+    unsigned int deniabilization_tx_size = CalculateDeniabilizationTxSize(shared_script, total_value, num_utxos);\n+    return fee_rate.GetFee(deniabilization_tx_size);\n+}\n+\n+CAmount CalculateDeniabilizationFeeEstimate(const CScript& shared_script, CAmount total_value, unsigned int num_utxos, unsigned int deniabilization_cycles, const CFeeRate& fee_rate)\n+{\n+    float deniabilizationProbability = CalculateDeniabilizationProbability(deniabilization_cycles);\n+    // convert to integer percent to truncate and check for zero probability\n+    unsigned int deniabilizationProbabilityPercent = deniabilizationProbability * 100;\n+    if (deniabilizationProbabilityPercent == 0) {\n+        return 0;\n+    }\n+\n+    // this cycle will use all the UTXOs, while following cycles will have just one UTXO\n+    CAmount deniabilizationFee = CalculateDeniabilizationTxFee(shared_script, total_value, num_utxos, fee_rate);\n+\n+    // calculate the fees from future deniabilization cycles\n+    CAmount futureDeniabilizationFee = CalculateDeniabilizationFeeEstimate(shared_script, total_value / NUM_DENIABILIZATION_OUTPUTS, 1, deniabilization_cycles + 1, fee_rate) * 2;",
+      "path": "src/wallet/spend.cpp",
+      "position": 83,
+      "original_position": 83,
+      "commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
+      "original_commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
+      "in_reply_to_id": 1375451033,
+      "user": {
+        "login": "denavila",
+        "id": 123340139,
+        "node_id": "U_kgDOB1oFaw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/123340139?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/denavila",
+        "html_url": "https://github.com/denavila",
+        "followers_url": "https://api.github.com/users/denavila/followers",
+        "following_url": "https://api.github.com/users/denavila/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/denavila/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/denavila/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/denavila/subscriptions",
+        "organizations_url": "https://api.github.com/users/denavila/orgs",
+        "repos_url": "https://api.github.com/users/denavila/repos",
+        "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/denavila/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "Oh, that 2 probably needs to be NUM_DENIABILIZATION_OUTPUTS. Basically we calculate the future cycle cost for each of the chunks we split into. Each chunk should cost the same if the number of splits is the same, so we can calculate one chunk and multiply by the number of splits.\r\nThanks for spotting that. I'll fix it.",
+      "created_at": "2023-10-30T01:11:56Z",
+      "updated_at": "2023-10-30T01:11:57Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/733#discussion_r1375575224",
+      "author_association": "NONE",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1375575224"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/733"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 1474,
+      "original_line": 1474,
       "side": "RIGHT"
     }
   ]
