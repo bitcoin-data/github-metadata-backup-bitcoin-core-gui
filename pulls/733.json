@@ -60,10 +60,10 @@
       }
     ],
     "created_at": "2023-05-21T06:32:50Z",
-    "updated_at": "2023-10-30T01:11:56Z",
+    "updated_at": "2023-10-30T16:49:35Z",
     "mergeable": true,
     "mergeable_state": "unstable",
-    "merge_commit_sha": "7978837400f32b9d0ec28ff1a6a8b29018044011",
+    "merge_commit_sha": "c94c7b7ccfed4ba6d2c39d02434c58365e592d71",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -296,10 +296,10 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 280,
+        "forks_count": 281,
         "stargazers_count": 513,
         "watchers_count": 513,
-        "size": 153140,
+        "size": 153238,
         "default_branch": "master",
         "open_issues_count": 157,
         "is_template": false,
@@ -312,7 +312,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-10-29T09:22:18Z",
+        "pushed_at": "2023-10-30T16:36:20Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2023-10-26T13:50:43Z",
         "license": {
@@ -343,7 +343,7 @@
     "deletions": 7,
     "changed_files": 24,
     "commits": 10,
-    "review_comments": 16,
+    "review_comments": 19,
     "comments": 14
   },
   "events": [
@@ -5314,6 +5314,162 @@
       "start_side": null,
       "line": 1474,
       "original_line": 1474,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1376523133",
+      "pull_request_review_id": 1704625827,
+      "id": 1376523133,
+      "node_id": "PRRC_kwDOEEET9c5SDBN9",
+      "diff_hunk": "@@ -1392,4 +1392,384 @@ bool FundTransaction(CWallet& wallet, CMutableTransaction& tx, CAmount& nFeeRet,\n \n     return true;\n }\n+\n+constexpr int NUM_DENIABILIZATION_OUTPUTS = 2;\n+\n+static unsigned int CalculateDeniabilizationTxSize(const CScript& script, CAmount value, unsigned int numTxIn)\n+{\n+    // Calculation based on the comments and code in GetDustThreshold and CreateTransactionInternal\n+    unsigned int txOutSize = (unsigned int)GetSerializeSize(CTxOut(value, script), PROTOCOL_VERSION);\n+\n+    const size_t txOutCount = NUM_DENIABILIZATION_OUTPUTS;\n+    unsigned int txSize = 10 + GetSizeOfCompactSize(txOutCount); // bytes for output count\n+    txSize += txOutSize * txOutCount;\n+\n+    int witnessversion = 0;\n+    std::vector<unsigned char> witnessprogram;\n+    if (script.IsWitnessProgram(witnessversion, witnessprogram)) {\n+        txSize += (unsigned int)(numTxIn * 67.75f + 0.5f);\n+    } else {\n+        txSize += numTxIn * 148;\n+    }\n+    return txSize;\n+}\n+\n+float CalculateDeniabilizationProbability(unsigned int deniabilization_cycles)\n+{\n+    // 100%, 50%, 25%, 13%, 6%, 3%, 2%, 1%\n+    return powf(0.5f, deniabilization_cycles);\n+}\n+\n+bool IsDeniabilizationWorthwhile(CAmount total_value, CAmount fee_estimate)\n+{\n+    constexpr CAmount value_to_fee_ratio = 10;\n+    return total_value > fee_estimate * value_to_fee_ratio;\n+}\n+\n+CCoinControl SetupDeniabilizationCoinControl(unsigned int confirm_target)\n+{\n+    CCoinControl coin_control;\n+    coin_control.m_avoid_address_reuse = true;\n+    coin_control.m_avoid_partial_spends = true;\n+    coin_control.m_allow_other_inputs = false;\n+    coin_control.m_signal_bip125_rbf = true;\n+    coin_control.m_confirm_target = confirm_target;\n+    // we'll automatically bump the fee if economical ends up not confirming by the next deniabilization cycle\n+    coin_control.m_fee_mode = FeeEstimateMode::ECONOMICAL;\n+    return coin_control;\n+}\n+\n+CFeeRate CalculateDeniabilizationFeeRate(const CWallet& wallet, unsigned int confirm_target)\n+{\n+    CCoinControl coin_control = SetupDeniabilizationCoinControl(confirm_target);\n+\n+    CFeeRate requiredFeeRate = GetRequiredFeeRate(wallet);\n+    FeeCalculation fee_calc;\n+    CFeeRate minFeeRate = GetMinimumFeeRate(wallet, coin_control, &fee_calc);\n+    if (fee_calc.reason == FeeReason::FALLBACK || requiredFeeRate > minFeeRate)\n+        return requiredFeeRate;\n+    return minFeeRate;\n+}\n+\n+static CAmount CalculateDeniabilizationTxFee(const CScript& shared_script, CAmount total_value, unsigned int num_utxos, const CFeeRate& fee_rate)\n+{\n+    Assert(num_utxos > 0);\n+    unsigned int deniabilization_tx_size = CalculateDeniabilizationTxSize(shared_script, total_value, num_utxos);\n+    return fee_rate.GetFee(deniabilization_tx_size);\n+}\n+\n+CAmount CalculateDeniabilizationFeeEstimate(const CScript& shared_script, CAmount total_value, unsigned int num_utxos, unsigned int deniabilization_cycles, const CFeeRate& fee_rate)\n+{\n+    float deniabilizationProbability = CalculateDeniabilizationProbability(deniabilization_cycles);\n+    // convert to integer percent to truncate and check for zero probability\n+    unsigned int deniabilizationProbabilityPercent = deniabilizationProbability * 100;\n+    if (deniabilizationProbabilityPercent == 0) {\n+        return 0;\n+    }\n+\n+    // this cycle will use all the UTXOs, while following cycles will have just one UTXO\n+    CAmount deniabilizationFee = CalculateDeniabilizationTxFee(shared_script, total_value, num_utxos, fee_rate);\n+\n+    // calculate the fees from future deniabilization cycles\n+    CAmount futureDeniabilizationFee = CalculateDeniabilizationFeeEstimate(shared_script, total_value / NUM_DENIABILIZATION_OUTPUTS, 1, deniabilization_cycles + 1, fee_rate) * 2;",
+      "path": "src/wallet/spend.cpp",
+      "position": 83,
+      "original_position": 83,
+      "commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
+      "original_commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
+      "in_reply_to_id": 1375451033,
+      "user": {
+        "login": "katesalazar",
+        "id": 52637275,
+        "node_id": "MDQ6VXNlcjUyNjM3Mjc1",
+        "avatar_url": "https://avatars.githubusercontent.com/u/52637275?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/katesalazar",
+        "html_url": "https://github.com/katesalazar",
+        "followers_url": "https://api.github.com/users/katesalazar/followers",
+        "following_url": "https://api.github.com/users/katesalazar/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/katesalazar/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/katesalazar/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/katesalazar/subscriptions",
+        "organizations_url": "https://api.github.com/users/katesalazar/orgs",
+        "repos_url": "https://api.github.com/users/katesalazar/repos",
+        "events_url": "https://api.github.com/users/katesalazar/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/katesalazar/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "happpy to help",
+      "created_at": "2023-10-30T16:42:54Z",
+      "updated_at": "2023-10-30T16:42:55Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/733#discussion_r1376523133",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1376523133"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/733"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 1474,
+      "original_line": 1474,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1376527605",
+      "pull_request_review_id": 1704632821,
+      "id": 1376527605,
+      "node_id": "PRRC_kwDOEEET9c5SDCT1",
+      "diff_hunk": "@@ -1392,4 +1392,384 @@ bool FundTransaction(CWallet& wallet, CMutableTransaction& tx, CAmount& nFeeRet,\n \n     return true;\n }\n+\n+constexpr int NUM_DENIABILIZATION_OUTPUTS = 2;\n+\n+static unsigned int CalculateDeniabilizationTxSize(const CScript& script, CAmount value, unsigned int numTxIn)\n+{\n+    // Calculation based on the comments and code in GetDustThreshold and CreateTransactionInternal\n+    unsigned int txOutSize = (unsigned int)GetSerializeSize(CTxOut(value, script), PROTOCOL_VERSION);\n+\n+    const size_t txOutCount = NUM_DENIABILIZATION_OUTPUTS;\n+    unsigned int txSize = 10 + GetSizeOfCompactSize(txOutCount); // bytes for output count\n+    txSize += txOutSize * txOutCount;\n+\n+    int witnessversion = 0;\n+    std::vector<unsigned char> witnessprogram;\n+    if (script.IsWitnessProgram(witnessversion, witnessprogram)) {\n+        txSize += (unsigned int)(numTxIn * 67.75f + 0.5f);\n+    } else {\n+        txSize += numTxIn * 148;",
+      "path": "src/wallet/spend.cpp",
+      "position": 21,
+      "original_position": 21,
+      "commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
+      "original_commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
+      "in_reply_to_id": 1375450923,
+      "user": {
+        "login": "katesalazar",
+        "id": 52637275,
+        "node_id": "MDQ6VXNlcjUyNjM3Mjc1",
+        "avatar_url": "https://avatars.githubusercontent.com/u/52637275?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/katesalazar",
+        "html_url": "https://github.com/katesalazar",
+        "followers_url": "https://api.github.com/users/katesalazar/followers",
+        "following_url": "https://api.github.com/users/katesalazar/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/katesalazar/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/katesalazar/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/katesalazar/subscriptions",
+        "organizations_url": "https://api.github.com/users/katesalazar/orgs",
+        "repos_url": "https://api.github.com/users/katesalazar/repos",
+        "events_url": "https://api.github.com/users/katesalazar/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/katesalazar/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "and/or simple one line comments could help clarify,\r\nI feel like named constant for magic number is a better strategy than commenting,\r\nbut maintainer should take final choice :thinking:",
+      "created_at": "2023-10-30T16:46:28Z",
+      "updated_at": "2023-10-30T16:46:28Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/733#discussion_r1376527605",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1376527605"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/733"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 1412,
+      "original_line": 1412,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1376531693",
+      "pull_request_review_id": 1704638992,
+      "id": 1376531693,
+      "node_id": "PRRC_kwDOEEET9c5SDDTt",
+      "diff_hunk": "@@ -1392,4 +1392,384 @@ bool FundTransaction(CWallet& wallet, CMutableTransaction& tx, CAmount& nFeeRet,\n \n     return true;\n }\n+\n+constexpr int NUM_DENIABILIZATION_OUTPUTS = 2;",
+      "path": "src/wallet/spend.cpp",
+      "position": 5,
+      "original_position": 5,
+      "commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
+      "original_commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
+      "in_reply_to_id": 1375450500,
+      "user": {
+        "login": "katesalazar",
+        "id": 52637275,
+        "node_id": "MDQ6VXNlcjUyNjM3Mjc1",
+        "avatar_url": "https://avatars.githubusercontent.com/u/52637275?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/katesalazar",
+        "html_url": "https://github.com/katesalazar",
+        "followers_url": "https://api.github.com/users/katesalazar/followers",
+        "following_url": "https://api.github.com/users/katesalazar/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/katesalazar/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/katesalazar/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/katesalazar/subscriptions",
+        "organizations_url": "https://api.github.com/users/katesalazar/orgs",
+        "repos_url": "https://api.github.com/users/katesalazar/repos",
+        "events_url": "https://api.github.com/users/katesalazar/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/katesalazar/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "Maybe commenting the constant helps,\r\nmaybe best commented in some function,\r\nat the extremely minimum least I think such intrincacies should be commented in the commit message introducing either the constant or whatever function",
+      "created_at": "2023-10-30T16:49:34Z",
+      "updated_at": "2023-10-30T16:49:35Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/733#discussion_r1376531693",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1376531693"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/733"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 1396,
+      "original_line": 1396,
       "side": "RIGHT"
     }
   ]
