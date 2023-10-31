@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/774/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/774/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/757e58d6f4cc9592de3d960df0eee44f1cbf6c7d",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/e26e665f9f64a962dd56053be817cc953e714847",
     "number": 774,
     "state": "open",
     "locked": false,
@@ -38,22 +38,13 @@
       "type": "User",
       "site_admin": false
     },
-    "body": "This PR fixes a crash bug that can be caused with the following steps:\r\n- change to the \"Transactions\" view\r\n- right-click on an arbitrary transaction -> \"Show transaction details\"\r\n- close the transaction detail window again\r\n- select menu item \"Settings\" -> \"Mask values\"\r\n\r\nThe problem is that the list of opened dialogs, tracked in the member variable `m_opened_dialogs` (introduced in #708, commit 4492de1be11f4131811f504a037342c78f480e20), is only ever appended with newly opened transaction detail dialog pointers, but never removed. This leads to dangling pointers in the list, and if the \"Mask values\" menu item is selected, a crash is caused in the course of trying to close the opened transaction detail dialogs (see `closeOpenedDialogs()` method). Fix this by removing a pointer of the list if the corresponding widget is destroyed.\r\n\r\nHappy to hear about alternative solutions, as I'm not too familiar with qt (and GUI programming in general); could imagine that there are solutions that are a bit less ugly and don't introduce a circular dependency.",
-    "labels": [
-      {
-        "id": 5353934559,
-        "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
-        "name": "CI failed",
-        "color": "ededed",
-        "default": false
-      }
-    ],
+    "body": "This PR fixes a crash bug that can be caused with the following steps:\r\n- change to the \"Transactions\" view\r\n- right-click on an arbitrary transaction -> \"Show transaction details\"\r\n- close the transaction detail window again\r\n- select menu item \"Settings\" -> \"Mask values\"\r\n\r\nThe problem is that the list of opened dialogs, tracked in the member variable `m_opened_dialogs` (introduced in #708, commit 4492de1be11f4131811f504a037342c78f480e20), is only ever appended with newly opened transaction detail dialog pointers, but never removed. This leads to dangling pointers in the list, and if the \"Mask values\" menu item is selected, a crash is caused in the course of trying to close the opened transaction detail dialogs (see `closeOpenedDialogs()` method). Fix this by removing a pointer of the list if the corresponding widget is destroyed.",
+    "labels": [],
     "created_at": "2023-10-30T21:20:16Z",
-    "updated_at": "2023-10-30T21:54:05Z",
+    "updated_at": "2023-10-30T23:35:19Z",
     "mergeable": true,
     "mergeable_state": "unstable",
-    "merge_commit_sha": "9a5681d802473153cbeb9050388733576d9fc33f",
+    "merge_commit_sha": "462a445fee96c88082f253f63bc30fceb40229b4",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -61,7 +52,7 @@
     "head": {
       "label": "theStack:202310-gui-fix_mask_values_crash_in_transaction_view",
       "ref": "202310-gui-fix_mask_values_crash_in_transaction_view",
-      "sha": "757e58d6f4cc9592de3d960df0eee44f1cbf6c7d",
+      "sha": "e26e665f9f64a962dd56053be817cc953e714847",
       "user": {
         "login": "theStack",
         "id": 91535,
@@ -156,7 +147,7 @@
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 152036,
+        "size": 153083,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -169,7 +160,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-10-30T21:53:39Z",
+        "pushed_at": "2023-10-30T23:29:18Z",
         "created_at": "2023-03-13T22:40:28Z",
         "updated_at": "2023-03-11T23:33:45Z",
         "license": {
@@ -301,7 +292,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-10-30T21:53:42Z",
+        "pushed_at": "2023-10-30T23:29:20Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2023-10-26T13:50:43Z",
         "license": {
@@ -328,12 +319,12 @@
     },
     "author_association": "CONTRIBUTOR",
     "draft": false,
-    "additions": 11,
-    "deletions": 1,
-    "changed_files": 4,
+    "additions": 3,
+    "deletions": 0,
+    "changed_files": 1,
     "commits": 1,
     "review_comments": 0,
-    "comments": 2
+    "comments": 3
   },
   "events": [
     {
@@ -364,9 +355,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2023-10-30T21:20:19Z",
-      "updated_at": "2023-10-30T21:20:19Z",
+      "updated_at": "2023-10-30T23:29:22Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\nA summary of reviews will appear here.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/774#pullrequestreview-1705225439) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -503,46 +494,6 @@
       "created_at": "2023-10-30T21:21:57Z"
     },
     {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDc1N2U1OGQ2ZjRjYzk1OTJkZTNkOTYwZGYwZWVlNDRmMWNiZjZjN2Q",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/757e58d6f4cc9592de3d960df0eee44f1cbf6c7d",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/757e58d6f4cc9592de3d960df0eee44f1cbf6c7d",
-      "tree": {
-        "sha": "618ce70d4700ac39bbaa2fe989ace1e288ff9235",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/618ce70d4700ac39bbaa2fe989ace1e288ff9235"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/4458ae811a264968c2a7ea4bb7050eed492a7e36",
-          "sha": "4458ae811a264968c2a7ea4bb7050eed492a7e36",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/4458ae811a264968c2a7ea4bb7050eed492a7e36"
-        }
-      ],
-      "message": "gui: fix crash on selecting \"Mask values\" in transaction view\n\nThis commits fixes a crash bug that can be caused with the following steps:\n- change to the \"Transactions\" view\n- right-click on an arbitrary transaction -> \"Show transaction details\"\n- close the transaction detail window again\n- select \"Settings\" -> \"Mask values\"\n\nThe problem is that the list of opened dialogs, tracked in the member\nvariable `m_opened_dialogs`, is only ever appended with newly opened\ntransaction detail dialog pointers, but never removed. This leads to\ndangling pointers in the list, and if the \"Mask values\" menu item is\nselected, a crash is caused in the course of trying to close the opened\ntransaction detail dialogs (see `closeOpenedDialogs()` method). Fix this\nby removing a pointer of the list if the corresponding widget is\ndestroyed.",
-      "committer": {
-        "name": "Sebastian Falbesoner",
-        "email": "sebastian.falbesoner@gmail.com",
-        "date": "2023-10-30T21:53:18Z"
-      },
-      "author": {
-        "name": "Sebastian Falbesoner",
-        "email": "sebastian.falbesoner@gmail.com",
-        "date": "2023-10-30T21:06:02Z"
-      },
-      "sha": "757e58d6f4cc9592de3d960df0eee44f1cbf6c7d"
-    },
-    {
       "event": "head_ref_force_pushed",
       "id": 10813439590,
       "node_id": "HRFPE_lADOEEET9c51YEtHzwAAAAKEh_5m",
@@ -603,6 +554,198 @@
         "name": "CI failed",
         "color": "ededed"
       }
+    },
+    {
+      "event": "unlabeled",
+      "id": 10813887862,
+      "node_id": "UNLE_lADOEEET9c51YEtHzwAAAAKEjtV2",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/10813887862",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-10-30T23:02:27Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
+      }
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGUyNmU2NjVmOWY2NGE5NjJkZDU2MDUzYmU4MTdjYzk1M2U3MTQ4NDc",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/e26e665f9f64a962dd56053be817cc953e714847",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/e26e665f9f64a962dd56053be817cc953e714847",
+      "tree": {
+        "sha": "d9d158358a2c8acd82b5935e4c68c0c10caba758",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/d9d158358a2c8acd82b5935e4c68c0c10caba758"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/4458ae811a264968c2a7ea4bb7050eed492a7e36",
+          "sha": "4458ae811a264968c2a7ea4bb7050eed492a7e36",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/4458ae811a264968c2a7ea4bb7050eed492a7e36"
+        }
+      ],
+      "message": "gui: fix crash on selecting \"Mask values\" in transaction view\n\nThis commits fixes a crash bug that can be caused with the following steps:\n- change to the \"Transactions\" view\n- right-click on an arbitrary transaction -> \"Show transaction details\"\n- close the transaction detail window again\n- select \"Settings\" -> \"Mask values\"\n\nThe problem is that the list of opened dialogs, tracked in the member\nvariable `m_opened_dialogs`, is only ever appended with newly opened\ntransaction detail dialog pointers, but never removed. This leads to\ndangling pointers in the list, and if the \"Mask values\" menu item is\nselected, a crash is caused in the course of trying to close the opened\ntransaction detail dialogs (see `closeOpenedDialogs()` method). Fix this\nby removing the pointer from the list if the corresponding widget is\ndestroyed.",
+      "committer": {
+        "name": "Sebastian Falbesoner",
+        "email": "sebastian.falbesoner@gmail.com",
+        "date": "2023-10-30T23:27:26Z"
+      },
+      "author": {
+        "name": "Sebastian Falbesoner",
+        "email": "sebastian.falbesoner@gmail.com",
+        "date": "2023-10-30T21:06:02Z"
+      },
+      "sha": "e26e665f9f64a962dd56053be817cc953e714847"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 10814046935,
+      "node_id": "HRFPE_lADOEEET9c51YEtHzwAAAAKEkULX",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/10814046935",
+      "actor": {
+        "login": "theStack",
+        "id": 91535,
+        "node_id": "MDQ6VXNlcjkxNTM1",
+        "avatar_url": "https://avatars.githubusercontent.com/u/91535?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/theStack",
+        "html_url": "https://github.com/theStack",
+        "followers_url": "https://api.github.com/users/theStack/followers",
+        "following_url": "https://api.github.com/users/theStack/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/theStack/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/theStack/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/theStack/subscriptions",
+        "organizations_url": "https://api.github.com/users/theStack/orgs",
+        "repos_url": "https://api.github.com/users/theStack/repos",
+        "events_url": "https://api.github.com/users/theStack/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/theStack/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-10-30T23:29:20Z"
+    },
+    {
+      "event": "reviewed",
+      "id": 1705225439,
+      "node_id": "PRR_kwDOEEET9c5lo6zf",
+      "url": null,
+      "actor": null,
+      "commit_id": "757e58d6f4cc9592de3d960df0eee44f1cbf6c7d",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "CONTRIBUTOR",
+      "body": "Concept ACK\r\n\r\nGood catch! I'm the culprit perhaps, I'll take a deeper look at it ASAP! \r\n\r\nI took a quick look at the code and LGTM, the original issue with the multiple transaction details dialogs was [caught](https://github.com/bitcoin-core/gui/pull/708#pullrequestreview-1322039724) by another reviewer and solved on the original PR #708 but this is a different one.",
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/774#pullrequestreview-1705225439",
+      "submitted_at": "2023-10-30T23:29:20Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/774"
+    },
+    {
+      "event": "commented",
+      "id": 1786205522,
+      "node_id": "IC_kwDOEEET9c5qd1VS",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/1786205522",
+      "actor": {
+        "login": "theStack",
+        "id": 91535,
+        "node_id": "MDQ6VXNlcjkxNTM1",
+        "avatar_url": "https://avatars.githubusercontent.com/u/91535?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/theStack",
+        "html_url": "https://github.com/theStack",
+        "followers_url": "https://api.github.com/users/theStack/followers",
+        "following_url": "https://api.github.com/users/theStack/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/theStack/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/theStack/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/theStack/subscriptions",
+        "organizations_url": "https://api.github.com/users/theStack/orgs",
+        "repos_url": "https://api.github.com/users/theStack/repos",
+        "events_url": "https://api.github.com/users/theStack/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/theStack/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-10-30T23:33:01Z",
+      "updated_at": "2023-10-30T23:33:01Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "Just force-pushed a much simpler version (only three lines) which avoids the circular dependency and the introduction of new methods. The old version is still available here for reference (or in case the current solution has problems that I'm not aware of): https://github.com/bitcoin-core/gui/commit/757e58d6f4cc9592de3d960df0eee44f1cbf6c7d",
+      "user": {
+        "login": "theStack",
+        "id": 91535,
+        "node_id": "MDQ6VXNlcjkxNTM1",
+        "avatar_url": "https://avatars.githubusercontent.com/u/91535?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/theStack",
+        "html_url": "https://github.com/theStack",
+        "followers_url": "https://api.github.com/users/theStack/followers",
+        "following_url": "https://api.github.com/users/theStack/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/theStack/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/theStack/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/theStack/subscriptions",
+        "organizations_url": "https://api.github.com/users/theStack/orgs",
+        "repos_url": "https://api.github.com/users/theStack/repos",
+        "events_url": "https://api.github.com/users/theStack/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/theStack/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/774#issuecomment-1786205522",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/774"
     }
   ],
   "comments": []
