@@ -41,10 +41,10 @@
     "body": "While reviewing a different PR (see https://github.com/bitcoin-core/gui/pull/742 ) @hebasto suggested that the help for bitcoin-qt should be updated to reflect the fact that bitcoin-qt supports an optional BIP21 URI parameter.\r\n\r\nSince this reflects actual behaviour of bitcoin-qt and is independent of whether or not the other PR gets merged, I created this simple PR to fix the help message.\r\n",
     "labels": [],
     "created_at": "2023-09-08T23:03:11Z",
-    "updated_at": "2023-11-14T17:26:29Z",
+    "updated_at": "2023-11-20T12:38:27Z",
     "mergeable": true,
     "mergeable_state": "clean",
-    "merge_commit_sha": "927cbc6a91870f61c662537436a259d0cfcdae3e",
+    "merge_commit_sha": "62916fe1db2ba7ec70445f0144b39bb007679d03",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -277,10 +277,10 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 283,
+        "forks_count": 285,
         "stargazers_count": 516,
         "watchers_count": 516,
-        "size": 149931,
+        "size": 150407,
         "default_branch": "master",
         "open_issues_count": 159,
         "is_template": false,
@@ -293,9 +293,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-11-14T15:45:09Z",
+        "pushed_at": "2023-11-19T18:22:21Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2023-11-12T11:16:26Z",
+        "updated_at": "2023-11-17T11:46:17Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -414,9 +414,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2023-09-08T23:03:13Z",
-      "updated_at": "2023-11-14T17:26:29Z",
+      "updated_at": "2023-11-20T12:38:27Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [RandyMcMillan](https://github.com/bitcoin-core/gui/pull/752#issuecomment-1712484697), [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/752#pullrequestreview-1668738752) |\n| Stale ACK | [jarolrod](https://github.com/bitcoin-core/gui/pull/752#pullrequestreview-1621368343) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#777](https://github.com/bitcoin-core/gui/pull/777) (gui: getrawtransaction implementation by BrandonOdiwuor)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [RandyMcMillan](https://github.com/bitcoin-core/gui/pull/752#issuecomment-1712484697), [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/752#pullrequestreview-1668738752) |\n| Stale ACK | [jarolrod](https://github.com/bitcoin-core/gui/pull/752#pullrequestreview-1621368343) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#777](https://github.com/bitcoin-core/gui/pull/777) (getrawtransaction implementation by BrandonOdiwuor)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -1019,7 +1019,7 @@
           "number": 777,
           "state": "open",
           "state_reason": null,
-          "title": "gui: getrawtransaction implementation",
+          "title": "getrawtransaction implementation",
           "body": "Fixes https://github.com/bitcoin-core/gui/issues/645.\r\nAdd `getrawtransaction` RPC to GUI on `Help -> Verify external txid.` tab\r\n\r\n![Screenshot from 2023-11-13 20-26-10](https://github.com/bitcoin-core/gui/assets/15610188/e1cacf63-fc01-4af5-8ba7-a673f980b13e)\r\n\r\nverbose off: `getrawtransaction txid false blockhash`\r\n![Screenshot from 2023-11-13 21-12-04](https://github.com/bitcoin-core/gui/assets/15610188/d1d9c654-7902-4285-960d-8f49095b8a90)\r\n\r\nverbose on:  `getrawtransaction txid true blockhash`\r\n![Screenshot from 2023-11-13 21-11-47](https://github.com/bitcoin-core/gui/assets/15610188/64a76fc4-a7b0-4c89-ad4b-d706c9928488)\r\n",
           "user": {
             "login": "BrandonOdiwuor",
@@ -1053,7 +1053,7 @@
             "patch_url": "https://github.com/bitcoin-core/gui/pull/777.patch"
           },
           "created_at": "2023-11-14T11:36:45Z",
-          "updated_at": "2023-11-14T17:19:12Z"
+          "updated_at": "2023-11-20T12:05:57Z"
         },
         "type": "issue"
       }
