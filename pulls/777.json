@@ -41,10 +41,10 @@
     "body": "Fixes https://github.com/bitcoin-core/gui/issues/645.\r\nAdd `getrawtransaction` RPC to GUI on `Help -> Verify external txid.` tab\r\n\r\n![Screenshot from 2023-11-13 20-26-10](https://github.com/bitcoin-core/gui/assets/15610188/e1cacf63-fc01-4af5-8ba7-a673f980b13e)\r\n\r\nverbose off: `getrawtransaction txid false blockhash`\r\n![Screenshot from 2023-11-13 21-12-04](https://github.com/bitcoin-core/gui/assets/15610188/d1d9c654-7902-4285-960d-8f49095b8a90)\r\n\r\nverbose on:  `getrawtransaction txid true blockhash`\r\n![Screenshot from 2023-11-13 21-11-47](https://github.com/bitcoin-core/gui/assets/15610188/64a76fc4-a7b0-4c89-ad4b-d706c9928488)\r\n",
     "labels": [],
     "created_at": "2023-11-14T11:36:45Z",
-    "updated_at": "2023-11-20T12:05:57Z",
+    "updated_at": "2023-11-22T15:58:04Z",
     "mergeable": true,
     "mergeable_state": "clean",
-    "merge_commit_sha": "4d7a2b5e9bba3ca31dbe4a42a6a0e2865e2d006d",
+    "merge_commit_sha": "913b47ba0e5288f29a599b08fd5ef2969b7a64b1",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -280,9 +280,9 @@
         "forks_count": 285,
         "stargazers_count": 516,
         "watchers_count": 516,
-        "size": 150407,
+        "size": 150236,
         "default_branch": "master",
-        "open_issues_count": 159,
+        "open_issues_count": 163,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -293,7 +293,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-11-19T18:22:21Z",
+        "pushed_at": "2023-11-22T11:48:18Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2023-11-17T11:46:17Z",
         "license": {
@@ -324,7 +324,7 @@
     "deletions": 67,
     "changed_files": 6,
     "commits": 2,
-    "review_comments": 0,
+    "review_comments": 1,
     "comments": 4
   },
   "events": [
@@ -396,9 +396,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2023-11-14T11:36:48Z",
-      "updated_at": "2023-11-14T17:19:12Z",
+      "updated_at": "2023-11-22T15:58:04Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\nA summary of reviews will appear here.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#762](https://github.com/bitcoin-core/gui/pull/762) (Update about logo icon (colour) to denote the chain type of the QT instance in About/ Help Message Window/ Dialog by pablomartin4btc)\n* [#752](https://github.com/bitcoin-core/gui/pull/752) (Modify command line help to show support for BIP21 URIs by hernanmarino)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/777#pullrequestreview-1744793504) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#762](https://github.com/bitcoin-core/gui/pull/762) (Update about logo icon (colour) to denote the chain type of the QT instance in About/ Help Message Window/ Dialog by pablomartin4btc)\n* [#752](https://github.com/bitcoin-core/gui/pull/752) (Modify command line help to show support for BIP21 URIs by hernanmarino)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -1040,7 +1040,96 @@
         "from": "gui: getrawtransaction implementation",
         "to": "getrawtransaction implementation"
       }
+    },
+    {
+      "event": "reviewed",
+      "id": 1744793504,
+      "node_id": "PRR_kwDOEEET9c5n_2-g",
+      "url": null,
+      "actor": null,
+      "commit_id": "e233da29dbc53185eaac5faf8ac5a339b6ce547f",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "CONTRIBUTOR",
+      "body": "Concept ACK\r\n\r\nAs @luke-jr perhaps we can create a separate menu item like \"Tools\" or \"Utils\" with this feature in it (and would be more suitable if we need to add for example other features as @willcl-ark [mentioned](https://github.com/bitcoin-core/gui/pull/777#issuecomment-1810068057)).\r\n\r\nLight CR.",
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/777#pullrequestreview-1744793504",
+      "submitted_at": "2023-11-22T15:58:01Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/777"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1402321260",
+      "pull_request_review_id": 1744793504,
+      "id": 1402321260,
+      "node_id": "PRRC_kwDOEEET9c5Tlbls",
+      "diff_hunk": "@@ -27,82 +29,117 @@\n #include <QTextCursor>\n #include <QTextTable>\n #include <QVBoxLayout>\n+#include <QPushButton>\n \n /** \"Help message\" or \"About\" dialog box */\n-HelpMessageDialog::HelpMessageDialog(QWidget *parent, bool about) :\n+HelpMessageDialog::HelpMessageDialog(QWidget *parent, Mode _mode, interfaces::Node* _node) :\n     QDialog(parent, GUIUtil::dialog_flags),\n-    ui(new Ui::HelpMessageDialog)\n+    ui(new Ui::HelpMessageDialog),\n+    mode(_mode),\n+    node(_node)\n {\n     ui->setupUi(this);\n \n     QString version = QString{PACKAGE_NAME} + \" \" + tr(\"version\") + \" \" + QString::fromStdString(FormatFullVersion());\n \n-    if (about)\n+    switch(mode)\n     {\n-        setWindowTitle(tr(\"About %1\").arg(PACKAGE_NAME));\n-\n-        std::string licenseInfo = LicenseInfo();\n-        /// HTML-format the license message from the core\n-        QString licenseInfoHTML = QString::fromStdString(LicenseInfo());\n-        // Make URLs clickable\n-        QRegularExpression uri(QStringLiteral(\"<(.*)>\"), QRegularExpression::InvertedGreedinessOption);\n-        licenseInfoHTML.replace(uri, QStringLiteral(\"<a href=\\\"\\\\1\\\">\\\\1</a>\"));\n-        // Replace newlines with HTML breaks\n-        licenseInfoHTML.replace(\"\\n\", \"<br>\");\n-\n-        ui->aboutMessage->setTextFormat(Qt::RichText);\n-        ui->scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);\n-        text = version + \"\\n\" + QString::fromStdString(FormatParagraph(licenseInfo));\n-        ui->aboutMessage->setText(version + \"<br><br>\" + licenseInfoHTML);\n-        ui->aboutMessage->setWordWrap(true);\n-        ui->helpMessage->setVisible(false);\n-    } else {\n-        setWindowTitle(tr(\"Command-line options\"));\n-        QString header = \"Usage:  bitcoin-qt [command-line options]                     \\n\";\n-        QTextCursor cursor(ui->helpMessage->document());\n-        cursor.insertText(version);\n-        cursor.insertBlock();\n-        cursor.insertText(header);\n-        cursor.insertBlock();\n-\n-        std::string strUsage = gArgs.GetHelpMessage();\n-        QString coreOptions = QString::fromStdString(strUsage);\n-        text = version + \"\\n\\n\" + header + \"\\n\" + coreOptions;\n-\n-        QTextTableFormat tf;\n-        tf.setBorderStyle(QTextFrameFormat::BorderStyle_None);\n-        tf.setCellPadding(2);\n-        QVector<QTextLength> widths;\n-        widths << QTextLength(QTextLength::PercentageLength, 35);\n-        widths << QTextLength(QTextLength::PercentageLength, 65);\n-        tf.setColumnWidthConstraints(widths);\n-\n-        QTextCharFormat bold;\n-        bold.setFontWeight(QFont::Bold);\n-\n-        for (const QString &line : coreOptions.split(\"\\n\")) {\n-            if (line.startsWith(\"  -\"))\n-            {\n-                cursor.currentTable()->appendRows(1);\n-                cursor.movePosition(QTextCursor::PreviousCell);\n-                cursor.movePosition(QTextCursor::NextRow);\n-                cursor.insertText(line.trimmed());\n-                cursor.movePosition(QTextCursor::NextCell);\n-            } else if (line.startsWith(\"   \")) {\n-                cursor.insertText(line.trimmed()+' ');\n-            } else if (line.size() > 0) {\n-                //Title of a group\n-                if (cursor.currentTable())\n+        case AboutMode:\n+        {\n+            setWindowTitle(tr(\"About %1\").arg(PACKAGE_NAME));\n+\n+            std::string licenseInfo = LicenseInfo();\n+            /// HTML-format the license message from the core\n+            QString licenseInfoHTML = QString::fromStdString(LicenseInfo());\n+            // Make URLs clickable\n+            QRegularExpression uri(QStringLiteral(\"<(.*)>\"), QRegularExpression::InvertedGreedinessOption);\n+            licenseInfoHTML.replace(uri, QStringLiteral(\"<a href=\\\"\\\\1\\\">\\\\1</a>\"));\n+            // Replace newlines with HTML breaks\n+            licenseInfoHTML.replace(\"\\n\", \"<br>\");\n+\n+            ui->aboutMessage->setTextFormat(Qt::RichText);\n+            ui->scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);\n+            text = version + \"\\n\" + QString::fromStdString(FormatParagraph(licenseInfo));\n+            ui->aboutMessage->setText(version + \"<br><br>\" + licenseInfoHTML);\n+            ui->aboutMessage->setWordWrap(true);\n+            ui->helpMessage->setVisible(false);\n+            ui->labelTxId->setVisible(false);\n+            ui->txidEdit->setVisible(false);\n+            ui->labelBlockHash->setVisible(false);\n+            ui->blockHashEdit->setVisible(false);\n+            ui->submitButton->setVisible(false);\n+            ui->verboseCheckbox->setVisible(false);\n+            break;",
+      "path": "src/qt/utilitydialog.cpp",
+      "position": 110,
+      "original_position": 110,
+      "commit_id": "e233da29dbc53185eaac5faf8ac5a339b6ce547f",
+      "original_commit_id": "e233da29dbc53185eaac5faf8ac5a339b6ce547f",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "Since you are here (refactoring commit 10b3cd129e1fa8ece229a255d6fff89f419751c0) I'd extract all these settings into a function like \"`initializeAboutModeWindow`\" or something like that, same for the other modes, making the code a bit more maintainable and easier to follow. ",
+      "created_at": "2023-11-22T15:57:47Z",
+      "updated_at": "2023-11-22T15:58:01Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/777#discussion_r1402321260",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1402321260"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/777"
+        }
+      },
+      "start_line": 49,
+      "original_start_line": 49,
+      "start_side": "RIGHT",
+      "line": 72,
+      "original_line": 72,
+      "side": "RIGHT"
+    }
+  ]
 }
