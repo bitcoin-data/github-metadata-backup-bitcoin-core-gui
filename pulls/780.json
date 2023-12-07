@@ -17,7 +17,7 @@
     "state": "open",
     "locked": false,
     "maintainer_can_modify": true,
-    "title": "Fix: Disable both \"Mask Values\" and \"Transaction View\" if no wallet is selected",
+    "title": "Fix: Ensure 'Transaction View' remains disabled if no wallet is selected",
     "user": {
       "login": "pablomartin4btc",
       "id": 110166421,
@@ -38,13 +38,13 @@
       "type": "User",
       "site_admin": false
     },
-    "body": "This PR addresses an issue where, with no wallet selected, ticking on \"Settings -> Mask values\" checkbox twice enables the transaction tab when the checkbox is unticked. \r\n\r\n<details>\r\n<summary>Current behavior display on master</summary>\r\n\r\n![Peek 2023-12-06 19-18](https://github.com/bitcoin-core/gui/assets/110166421/6ca4eab6-5ef0-44c1-971c-89b8bc7f0283)\r\n\r\n</details>\r\n\r\n<details>\r\n<summary>Correction display from this branch</summary>\r\n\r\n![Peek 2023-12-06 19-11](https://github.com/bitcoin-core/gui/assets/110166421/66fdf023-998a-434d-a5bd-1a3d848fb751)\r\n\r\n\r\n</details>\r\n\r\nNote for maintaners: this PR should be backported to both 25.x and 26.x.\r\n\r\nOriginally this PR was disabling the \"Mask Values\" checkbox when no wallet was selected but since a reviewer pointed out that a user might want to open a wallet already on \"privacy mode\" I rolled that change out. \r\n",
+    "body": "This PR addresses an issue where, with no wallet selected, ticking on \"Settings -> Mask values\" checkbox twice enables the transaction tab when the checkbox is unticked. \r\n\r\n<details>\r\n<summary>Current behavior display on master</summary>\r\n\r\n![Peek 2023-12-06 19-18](https://github.com/bitcoin-core/gui/assets/110166421/6ca4eab6-5ef0-44c1-971c-89b8bc7f0283)\r\n\r\n</details>\r\n\r\n<details>\r\n<summary>Correction display from this branch</summary>\r\n\r\n![Peek 2023-12-07 13-07](https://github.com/bitcoin-core/gui/assets/110166421/1c78f2aa-1cf7-4d63-b4ce-c034877b4832)\r\n\r\n</details>\r\n\r\nNote for maintaners: this PR should be backported to both 25.x and 26.x.\r\n\r\n\r\n---\r\n\r\nOriginally this PR was disabling the \"Mask Values\" checkbox when no wallet was selected but since a reviewer pointed out that a user might want to open a wallet already on \"privacy mode\" I rolled that change out. \r\n\r\n<details>\r\n<summary>Original correction  display disabling \"Mask Values\" </summary>\r\n\r\n![Peek 2023-12-06 19-11](https://github.com/bitcoin-core/gui/assets/110166421/66fdf023-998a-434d-a5bd-1a3d848fb751)\r\n\r\n</details>",
     "labels": [],
     "created_at": "2023-12-07T05:10:34Z",
-    "updated_at": "2023-12-07T15:59:12Z",
+    "updated_at": "2023-12-07T16:55:23Z",
     "mergeable": true,
     "mergeable_state": "unstable",
-    "merge_commit_sha": "73488fe9a7d20f50e136b2492fa314dc2a2e5fb5",
+    "merge_commit_sha": "575466c1ccd2b027de49e8b70857e1466ea4d727",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -293,7 +293,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-12-07T15:52:21Z",
+        "pushed_at": "2023-12-07T16:02:12Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2023-12-06T09:24:11Z",
         "license": {
@@ -325,7 +325,7 @@
     "changed_files": 1,
     "commits": 1,
     "review_comments": 0,
-    "comments": 2
+    "comments": 3
   },
   "events": [
     {
@@ -540,6 +540,93 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2023-12-07T15:52:20Z"
+    },
+    {
+      "event": "renamed",
+      "id": 11183850383,
+      "node_id": "RTE_lADOEEET9c54_gq4zwAAAAKanAOP",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/11183850383",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-12-07T16:01:41Z",
+      "rename": {
+        "from": "Fix: Disable both \"Mask Values\" and \"Transaction View\" if no wallet is selected",
+        "to": "Fix: Ensure 'Transaction View' remains disabled if no wallet is selected"
+      }
+    },
+    {
+      "event": "commented",
+      "id": 1845700681,
+      "node_id": "IC_kwDOEEET9c5uAyhJ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/1845700681",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-12-07T16:54:18Z",
+      "updated_at": "2023-12-07T16:55:23Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "> I'm not sure if this is the right approach: user might want to enable `Mask values` before opening his wallet?\r\n\r\nI was just giving it a second thought and if we follow the original approach a user could still have the desired behaviour as the following:\r\n\r\n<details>\r\n<summary>check display here</summary>\r\n\r\n![Peek 2023-12-07 13-42](https://github.com/bitcoin-core/gui/assets/110166421/f8bf473e-aca3-44de-8df1-00720fddfa59)\r\n\r\n</details>\r\n\r\nFirst time the user opens or creates a wallet can tick the checkbox on \"Mask Values\", this is also persisted, so next time the wallet is open or selected will be on privacy mode. The fix was not changing the current value of the \"Mask Values\", so if a user updates QT to the version containing the fix it won't impact on their setup.",
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/780#issuecomment-1845700681",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/780"
     }
   ],
   "comments": []
