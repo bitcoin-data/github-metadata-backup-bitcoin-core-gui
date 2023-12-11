@@ -38,9 +38,64 @@
     "assignees": [],
     "author_association": "CONTRIBUTOR",
     "locked": false,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2023-12-10T20:15:31Z",
-    "updated_at": "2023-12-10T20:16:58Z"
+    "updated_at": "2023-12-11T11:02:52Z"
   },
-  "events": []
+  "events": [
+    {
+      "event": "commented",
+      "id": 1849838605,
+      "node_id": "IC_kwDOEEET9c5uQkwN",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/1849838605",
+      "actor": {
+        "login": "willcl-ark",
+        "id": 6606587,
+        "node_id": "MDQ6VXNlcjY2MDY1ODc=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6606587?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/willcl-ark",
+        "html_url": "https://github.com/willcl-ark",
+        "followers_url": "https://api.github.com/users/willcl-ark/followers",
+        "following_url": "https://api.github.com/users/willcl-ark/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/willcl-ark/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/willcl-ark/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/willcl-ark/subscriptions",
+        "organizations_url": "https://api.github.com/users/willcl-ark/orgs",
+        "repos_url": "https://api.github.com/users/willcl-ark/repos",
+        "events_url": "https://api.github.com/users/willcl-ark/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/willcl-ark/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-12-11T11:02:50Z",
+      "updated_at": "2023-12-11T11:02:50Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "I think Wayland is much stricter about loading the icon from the `.desktop` file (which must have an exactly matching name). I didn't test this any further, but running Wayland on my system with an appropriate `.desktop` file installed I do get the correct icon:\r\n\r\n![Screenshot from 2023-12-10 20-36-06](https://github.com/bitcoin-core/gui/assets/6606587/a3e37606-d3e1-4382-a3a8-03dcbcc382b0)\r\n\r\nThat said, I added my .desktop file manually a while ago, and I notice now that on my machine the code which appears to write the .desktop file is **not being included** in the compilation, after being exluded by the C preprocessor. Specifically `Q_OS_LINUX` does not appear to have been set by `./configure`, so the code following this is skipped:\r\n\r\nhttps://github.com/bitcoin/bitcoin/blob/36fabb01b16c70902c085187b0a6978c70c691c0/src/qt/guiutil.cpp#L574\r\nThis seems problematic to me, oir at least, I don't understand why on Linux this code is being excluded by the CPP.\r\n\r\nDid you try installing with `sudo make install`, or are you just running the binary as built by `make`? If you didn't install, you could try running `sudo make install; bitcoin-qt` and see if the installed version references the correct icon? (Note this will overwrite any previously-installed version).\r\n\r\nI've not worked on the GUI or QT much, so will defer to others here. For reference, my .desktop file in `/usr/local/share/applications` is in the form:\r\n\r\n```bash\r\nwill@ubuntu /u/s/applications $ cat Bitcoin-qt.desktop\r\n[Desktop Entry]\r\nName=Bitcoin-Qt\r\nExec=/usr/local/bin/bitcoin-qt\r\nIcon=/home/will/src/bitcoin/share/pixmaps/bitcoin64.png\r\nType=Application\r\nCategories=Utility;\r\n```\r\n",
+      "user": {
+        "login": "willcl-ark",
+        "id": 6606587,
+        "node_id": "MDQ6VXNlcjY2MDY1ODc=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6606587?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/willcl-ark",
+        "html_url": "https://github.com/willcl-ark",
+        "followers_url": "https://api.github.com/users/willcl-ark/followers",
+        "following_url": "https://api.github.com/users/willcl-ark/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/willcl-ark/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/willcl-ark/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/willcl-ark/subscriptions",
+        "organizations_url": "https://api.github.com/users/willcl-ark/orgs",
+        "repos_url": "https://api.github.com/users/willcl-ark/repos",
+        "events_url": "https://api.github.com/users/willcl-ark/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/willcl-ark/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/issues/781#issuecomment-1849838605",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/781"
+    }
+  ]
 }
