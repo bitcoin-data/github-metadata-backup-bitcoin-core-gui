@@ -41,7 +41,7 @@
     "body": "This PR addresses an issue where, with no wallet selected, ticking on \"Settings -> Mask values\" checkbox twice enables the transaction tab when the checkbox is unticked. \r\n\r\n<details>\r\n<summary>Current behavior display on master</summary>\r\n\r\n![Peek 2023-12-06 19-18](https://github.com/bitcoin-core/gui/assets/110166421/6ca4eab6-5ef0-44c1-971c-89b8bc7f0283)\r\n\r\n</details>\r\n\r\n<details>\r\n<summary>Correction display from this branch</summary>\r\n\r\n![Peek 2023-12-07 13-07](https://github.com/bitcoin-core/gui/assets/110166421/1c78f2aa-1cf7-4d63-b4ce-c034877b4832)\r\n\r\n</details>\r\n\r\nNote for maintaners: this PR should be backported to both 25.x and 26.x.\r\n\r\n\r\n---\r\n\r\nOriginally this PR was disabling the \"Mask Values\" checkbox when no wallet was selected but since a reviewer pointed out that a user might want to open a wallet already on \"privacy mode\" I rolled that change out. \r\n\r\n<details>\r\n<summary>Original correction  display disabling \"Mask Values\" </summary>\r\n\r\n![Peek 2023-12-06 19-11](https://github.com/bitcoin-core/gui/assets/110166421/66fdf023-998a-434d-a5bd-1a3d848fb751)\r\n\r\n</details>",
     "labels": [],
     "created_at": "2023-12-07T05:10:34Z",
-    "updated_at": "2023-12-18T22:19:41Z",
+    "updated_at": "2023-12-19T01:29:52Z",
     "mergeable": true,
     "mergeable_state": "clean",
     "merge_commit_sha": "c16e84dac8d025beaeb15b7cc406bfebe678aab1",
@@ -325,7 +325,7 @@
     "changed_files": 1,
     "commits": 1,
     "review_comments": 0,
-    "comments": 4
+    "comments": 5
   },
   "events": [
     {
@@ -775,6 +775,60 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2023-12-18T22:19:41Z"
+    },
+    {
+      "event": "commented",
+      "id": 1861954800,
+      "node_id": "IC_kwDOEEET9c5u-yzw",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/1861954800",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-12-19T01:29:51Z",
+      "updated_at": "2023-12-19T01:29:51Z",
+      "author_association": "CONTRIBUTOR",
+      "body": " > Being only able to change it requires a wallet to be open, to me would feel like a bug, no? that's more my \"concern\"\r\n\r\nFair enough, thanks for sharing your insights.\r\n",
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/780#issuecomment-1861954800",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/780"
     }
   ],
   "comments": []
