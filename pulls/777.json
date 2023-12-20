@@ -41,7 +41,7 @@
     "body": "Fixes https://github.com/bitcoin-core/gui/issues/645.\r\nAdd `getrawtransaction` RPC to GUI on `Help -> Verify external txid.` tab\r\n\r\n![Screenshot from 2023-11-13 20-26-10](https://github.com/bitcoin-core/gui/assets/15610188/e1cacf63-fc01-4af5-8ba7-a673f980b13e)\r\n\r\nverbose off: `getrawtransaction txid false blockhash`\r\n![Screenshot from 2023-11-13 21-12-04](https://github.com/bitcoin-core/gui/assets/15610188/d1d9c654-7902-4285-960d-8f49095b8a90)\r\n\r\nverbose on:  `getrawtransaction txid true blockhash`\r\n![Screenshot from 2023-11-13 21-11-47](https://github.com/bitcoin-core/gui/assets/15610188/64a76fc4-a7b0-4c89-ad4b-d706c9928488)\r\n",
     "labels": [],
     "created_at": "2023-11-14T11:36:45Z",
-    "updated_at": "2023-12-20T15:36:36Z",
+    "updated_at": "2023-12-20T18:39:36Z",
     "mergeable": true,
     "mergeable_state": "clean",
     "merge_commit_sha": "21f04a8511fc66caadd71c36d1aaaf25c94203d8",
@@ -356,9 +356,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2023-11-14T11:36:48Z",
-      "updated_at": "2023-11-22T15:58:04Z",
+      "updated_at": "2023-12-20T18:39:36Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/777#pullrequestreview-1744793504) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#762](https://github.com/bitcoin-core/gui/pull/762) (Update about logo icon (colour) to denote the chain type of the QT instance in About/ Help Message Window/ Dialog by pablomartin4btc)\n* [#752](https://github.com/bitcoin-core/gui/pull/752) (Modify command line help to show support for BIP21 URIs by hernanmarino)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/777#pullrequestreview-1744793504), [hernanmarino](https://github.com/bitcoin-core/gui/pull/777#pullrequestreview-1791462649) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nNo conflicts as of last run.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -806,7 +806,7 @@
             "patch_url": "https://github.com/bitcoin-core/gui/pull/762.patch"
           },
           "created_at": "2023-09-25T00:03:25Z",
-          "updated_at": "2023-11-20T12:35:52Z"
+          "updated_at": "2023-12-20T18:42:23Z"
         },
         "type": "issue"
       }
@@ -887,7 +887,7 @@
             "patch_url": "https://github.com/bitcoin-core/gui/pull/752.patch"
           },
           "created_at": "2023-09-08T23:03:11Z",
-          "updated_at": "2023-11-24T18:51:30Z"
+          "updated_at": "2023-12-20T18:45:13Z"
         },
         "type": "issue"
       }
@@ -1160,6 +1160,42 @@
         "name": "CI failed",
         "color": "ededed"
       }
+    },
+    {
+      "event": "reviewed",
+      "id": 1791462649,
+      "node_id": "PRR_kwDOEEET9c5qx4z5",
+      "url": null,
+      "actor": null,
+      "commit_id": "9659890f7c9223d85dda3d066c2e3de42cabe7cf",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "CONTRIBUTOR",
+      "body": "Concept ACK. ",
+      "user": {
+        "login": "hernanmarino",
+        "id": 87907936,
+        "node_id": "MDQ6VXNlcjg3OTA3OTM2",
+        "avatar_url": "https://avatars.githubusercontent.com/u/87907936?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hernanmarino",
+        "html_url": "https://github.com/hernanmarino",
+        "followers_url": "https://api.github.com/users/hernanmarino/followers",
+        "following_url": "https://api.github.com/users/hernanmarino/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hernanmarino/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hernanmarino/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hernanmarino/subscriptions",
+        "organizations_url": "https://api.github.com/users/hernanmarino/orgs",
+        "repos_url": "https://api.github.com/users/hernanmarino/repos",
+        "events_url": "https://api.github.com/users/hernanmarino/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hernanmarino/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/777#pullrequestreview-1791462649",
+      "submitted_at": "2023-12-20T18:36:41Z",
+      "state": "APPROVED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/777"
     }
   ],
   "comments": [
