@@ -41,10 +41,10 @@
     "body": "It fixes #761.\r\n\r\nAbout logo icon is updated now with the correct colour indicating the chain type of the QT instance that user is running (as the splash screen), plus the title of the about window also is updated with the chain type string as in the main window.\r\n<details>\r\n<summary>Before PR changes screenshot</summary>\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/63945955-2e29-4dc9-8a2e-2a5567983e9b)\r\n</details>\r\n\r\n<details>\r\n<summary>After PR changes screenshot</summary>\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/b6ce187f-ca81-4c4b-b2f6-a2e3b15e6010)\r\n</details>\r\n\r\n<details>\r\n<summary>Current splash screen screenshot</summary>\r\n(this hasn't been touched, just to show consistency with this PR changes)\r\n\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/2a1c329b-baa6-4603-bf20-dac2746682f4)\r\n</details>\r\n\r\nTested it also with:\r\n- mainnet (no command line args after `bitcoin-qt` or `bitcoin-qt -chain=main`), \r\n- `-regtest` and \r\n- `-testnet`.",
     "labels": [],
     "created_at": "2023-09-25T00:03:25Z",
-    "updated_at": "2023-12-20T18:42:23Z",
+    "updated_at": "2023-12-27T18:20:46Z",
     "mergeable": true,
     "mergeable_state": "clean",
-    "merge_commit_sha": "d80cf61ce436ef1885212408bd82e0d4d5360ad6",
+    "merge_commit_sha": "21d11cf0d530bf0ee59b1222676b0c8e26c167a6",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -278,11 +278,11 @@
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
         "forks_count": 291,
-        "stargazers_count": 521,
-        "watchers_count": 521,
-        "size": 151841,
+        "stargazers_count": 523,
+        "watchers_count": 523,
+        "size": 152407,
         "default_branch": "master",
-        "open_issues_count": 164,
+        "open_issues_count": 165,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -293,9 +293,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-12-20T14:19:41Z",
+        "pushed_at": "2023-12-22T10:35:12Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2023-12-20T03:53:20Z",
+        "updated_at": "2023-12-27T09:41:45Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -324,7 +324,7 @@
     "deletions": 6,
     "changed_files": 3,
     "commits": 1,
-    "review_comments": 2,
+    "review_comments": 3,
     "comments": 3
   },
   "events": [
@@ -950,7 +950,7 @@
           "state": "open",
           "state_reason": null,
           "title": "getrawtransaction implementation",
-          "body": "Fixes https://github.com/bitcoin-core/gui/issues/645.\r\nAdd `getrawtransaction` RPC to GUI on `Help -> Verify external txid.` tab\r\n\r\n![Screenshot from 2023-11-13 20-26-10](https://github.com/bitcoin-core/gui/assets/15610188/e1cacf63-fc01-4af5-8ba7-a673f980b13e)\r\n\r\nverbose off: `getrawtransaction txid false blockhash`\r\n![Screenshot from 2023-11-13 21-12-04](https://github.com/bitcoin-core/gui/assets/15610188/d1d9c654-7902-4285-960d-8f49095b8a90)\r\n\r\nverbose on:  `getrawtransaction txid true blockhash`\r\n![Screenshot from 2023-11-13 21-11-47](https://github.com/bitcoin-core/gui/assets/15610188/64a76fc4-a7b0-4c89-ad4b-d706c9928488)\r\n",
+          "body": "Fixes https://github.com/bitcoin-core/gui/issues/645.\r\n\r\nAdd `getrawtransaction` RPC to GUI on `Tools -> Verify external txid.` tab\r\n\r\n[Screencast from 21-12-2023 06:35:04 ASUBUHI.webm](https://github.com/bitcoin-core/gui/assets/15610188/00124a6e-5a16-48b4-b956-6682b7144415)\r\n\r\n",
           "user": {
             "login": "BrandonOdiwuor",
             "id": 15610188,
@@ -975,7 +975,7 @@
           "assignees": [],
           "author_association": "CONTRIBUTOR",
           "locked": false,
-          "comments": 4,
+          "comments": 5,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/777",
             "html_url": "https://github.com/bitcoin-core/gui/pull/777",
@@ -983,10 +983,45 @@
             "patch_url": "https://github.com/bitcoin-core/gui/pull/777.patch"
           },
           "created_at": "2023-11-14T11:36:45Z",
-          "updated_at": "2023-12-20T18:39:36Z"
+          "updated_at": "2023-12-21T03:59:51Z"
         },
         "type": "issue"
       }
+    },
+    {
+      "event": "reviewed",
+      "id": 1797422268,
+      "node_id": "PRR_kwDOEEET9c5rIny8",
+      "url": null,
+      "actor": null,
+      "commit_id": "30c235b2e6fd9b7e3634d795cedc171d4d8d0e27",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "CONTRIBUTOR",
+      "user": {
+        "login": "kristapsk",
+        "id": 4500994,
+        "node_id": "MDQ6VXNlcjQ1MDA5OTQ=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/4500994?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/kristapsk",
+        "html_url": "https://github.com/kristapsk",
+        "followers_url": "https://api.github.com/users/kristapsk/followers",
+        "following_url": "https://api.github.com/users/kristapsk/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/kristapsk/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/kristapsk/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/kristapsk/subscriptions",
+        "organizations_url": "https://api.github.com/users/kristapsk/orgs",
+        "repos_url": "https://api.github.com/users/kristapsk/repos",
+        "events_url": "https://api.github.com/users/kristapsk/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/kristapsk/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/762#pullrequestreview-1797422268",
+      "submitted_at": "2023-12-27T18:20:46Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/762"
     }
   ],
   "comments": [
@@ -1092,6 +1127,58 @@
       "start_side": null,
       "line": 143,
       "original_line": 143,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1437190084",
+      "pull_request_review_id": 1797422268,
+      "id": 1437190084,
+      "node_id": "PRRC_kwDOEEET9c5VqcfE",
+      "diff_hunk": "@@ -135,6 +137,19 @@ void HelpMessageDialog::on_okButton_accepted()\n     close();\n }\n \n+void HelpMessageDialog::setAboutWindowTitle(const NetworkStyle *networkStyle)\n+{\n+    QString aboutTitle = tr(\"About %1\").arg(PACKAGE_NAME);\n+    if ((networkStyle) && (Params().GetChainType() != ChainType::MAIN)) aboutTitle.append(\" \" + networkStyle->getTitleAddText());\n+    setWindowTitle(aboutTitle);\n+}\n+\n+void HelpMessageDialog::setChainTypeIconOnAboutLogo(const NetworkStyle *networkStyle)\n+{\n+    const QSize requiredSize(1024,1024);",
+      "path": "src/qt/utilitydialog.cpp",
+      "position": 42,
+      "original_position": 42,
+      "commit_id": "30c235b2e6fd9b7e3634d795cedc171d4d8d0e27",
+      "original_commit_id": "30c235b2e6fd9b7e3634d795cedc171d4d8d0e27",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "kristapsk",
+        "id": 4500994,
+        "node_id": "MDQ6VXNlcjQ1MDA5OTQ=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/4500994?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/kristapsk",
+        "html_url": "https://github.com/kristapsk",
+        "followers_url": "https://api.github.com/users/kristapsk/followers",
+        "following_url": "https://api.github.com/users/kristapsk/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/kristapsk/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/kristapsk/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/kristapsk/subscriptions",
+        "organizations_url": "https://api.github.com/users/kristapsk/orgs",
+        "repos_url": "https://api.github.com/users/kristapsk/repos",
+        "events_url": "https://api.github.com/users/kristapsk/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/kristapsk/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "nit\r\n```suggestion\r\n    const QSize requiredSize(1024, 1024);\r\n```",
+      "created_at": "2023-12-27T18:20:45Z",
+      "updated_at": "2023-12-27T18:20:46Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/762#discussion_r1437190084",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1437190084"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/762"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 149,
+      "original_line": 149,
       "side": "RIGHT"
     }
   ]
