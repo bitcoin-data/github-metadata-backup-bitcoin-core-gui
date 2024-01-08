@@ -14,9 +14,9 @@
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/747/comments",
     "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/93fe316ff098b396fa0d98428ba1a2b25e4abce1",
     "number": 747,
-    "state": "open",
+    "state": "closed",
     "locked": false,
-    "maintainer_can_modify": true,
+    "maintainer_can_modify": false,
     "title": "Open fully encrypted wallets",
     "user": {
       "login": "achow101",
@@ -68,7 +68,8 @@
       }
     ],
     "created_at": "2023-07-24T21:21:21Z",
-    "updated_at": "2023-12-22T00:57:31Z",
+    "updated_at": "2024-01-08T15:51:41Z",
+    "closed_at": "2024-01-08T15:51:41Z",
     "mergeable": false,
     "mergeable_state": "dirty",
     "merge_commit_sha": "d05b2ea1363881252e4d4ddf3890bd8581b727cd",
@@ -303,10 +304,10 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 291,
-        "stargazers_count": 521,
-        "watchers_count": 521,
-        "size": 152398,
+        "forks_count": 292,
+        "stargazers_count": 526,
+        "watchers_count": 526,
+        "size": 152585,
         "default_branch": "master",
         "open_issues_count": 164,
         "is_template": false,
@@ -319,9 +320,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-12-21T17:27:38Z",
+        "pushed_at": "2024-01-08T14:44:53Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2023-12-20T03:53:20Z",
+        "updated_at": "2024-01-07T15:24:57Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -1173,7 +1174,7 @@
           "events_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/26728/events",
           "html_url": "https://github.com/bitcoin/bitcoin/pull/26728",
           "number": 26728,
-          "state": "open",
+          "state": "closed",
           "state_reason": null,
           "title": "wallet: Have the wallet store the key for automatically generated descriptors",
           "body": "The wallet currently does not know the master key that was used to generate the automatically generated descriptors. This makes it difficult to add new automatically generated descriptors when new ones are introduced. So instead of losing this information after the descriptors are created, have `CWallet` store it. The xpub will be stored in a new `activehdkey` field. The private key must be one of the keys that is used by the descriptors, and will be extracted upon loading.\r\n\r\nAs this is a new field, wallets will be automatically upgraded upon loading. This loading is backwards compatible and uses a new non-required flag `WALLET_FLAG_GLOBAL_HD_KEY` to signal that the upgrade completed. The upgrade will search for an xpub that is shared by `pkh()`, `wpkh()`, and `sh(wpkh()` descriptors with the derivation pattern that we use. For new wallets, the xpub will be set during descriptor creation rather than trying to reverse engineer it. The flag will be set for all wallets, regardless of whether such an xpub was found or can even exist, in order to indicate that the upgrade will not need to be run in the future.\r\n\r\nThis allows us to have a `gethdkey` command which is useful for those who need a simple way to get an xpub from a wallet. `gethdkey` can also take a boolean parameter to indicate whether it should also output the corresponding xprv.\r\n\r\nSupercedes #23417",
@@ -1210,15 +1211,16 @@
           "assignees": [],
           "author_association": "MEMBER",
           "locked": false,
-          "comments": 60,
+          "comments": 65,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/26728",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/26728",
             "diff_url": "https://github.com/bitcoin/bitcoin/pull/26728.diff",
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/26728.patch"
           },
+          "closed_at": "2024-01-06T00:05:58Z",
           "created_at": "2022-12-19T22:31:05Z",
-          "updated_at": "2023-12-21T21:36:10Z"
+          "updated_at": "2024-01-06T00:05:58Z"
         },
         "type": "issue"
       }
@@ -1308,7 +1310,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/26606.patch"
           },
           "created_at": "2022-11-29T21:50:53Z",
-          "updated_at": "2023-12-20T09:35:16Z"
+          "updated_at": "2024-01-06T11:07:35Z"
         },
         "type": "issue"
       }
@@ -1398,7 +1400,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/26596.patch"
           },
           "created_at": "2022-11-28T23:46:50Z",
-          "updated_at": "2023-12-21T05:01:18Z"
+          "updated_at": "2024-01-06T11:08:44Z"
         },
         "type": "issue"
       }
@@ -1524,7 +1526,7 @@
           "events_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/25907/events",
           "html_url": "https://github.com/bitcoin/bitcoin/pull/25907",
           "number": 25907,
-          "state": "open",
+          "state": "closed",
           "state_reason": null,
           "title": "wallet: rpc to add automatically generated descriptors",
           "body": "It is useful to have a RPC that can create and add the automatically generated descriptors (that are normally made during creation) to a wallet. This is especially useful when a new default descriptor has been implemented as it allows wallets created before that time to quickly and easily add that type of descriptor.\r\n\r\nIn particular, descriptor wallets created before Taproot was implemented can use the new `createwalletdescriptor` RPC in order to get a Taproot descriptor.\r\n\r\nFurthermore, to keep the newly generated descriptor in line with the existing descriptors, this PR uses #26728 as it exposes a \"wallet extended key\" for us (in addition to upgrading wallets implemented prior to have a wallet xpub). The newly generated descriptors will use the \"wallet extended key\" stored in `CWallet` that PR adds.\r\n\r\n`createwalletdescriptor` is generic and so it can also be used with the other address types. Of course, it given the same wallet extended key, address type, and internal-ness, it will create the same descriptor. So some refactoring has been done in order to detect that the same descriptor is about to be created, and to avoid overwriting any existing descriptors.",
@@ -1561,15 +1563,16 @@
           "assignees": [],
           "author_association": "MEMBER",
           "locked": false,
-          "comments": 17,
+          "comments": 18,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/25907",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/25907",
             "diff_url": "https://github.com/bitcoin/bitcoin/pull/25907.diff",
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/25907.patch"
           },
+          "closed_at": "2024-01-06T00:06:14Z",
           "created_at": "2022-08-22T23:17:45Z",
-          "updated_at": "2023-12-21T05:12:04Z"
+          "updated_at": "2024-01-06T00:06:14Z"
         },
         "type": "issue"
       }
@@ -1762,12 +1765,21 @@
               "name": "RPC/REST/ZMQ",
               "color": "0052cc",
               "default": false
+            },
+            {
+              "id": 955867938,
+              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
+              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
+              "name": "Needs rebase",
+              "description": "",
+              "color": "cccccc",
+              "default": false
             }
           ],
           "assignees": [],
           "author_association": "MEMBER",
           "locked": false,
-          "comments": 30,
+          "comments": 34,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/22341",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/22341",
@@ -1775,7 +1787,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/22341.patch"
           },
           "created_at": "2021-06-25T15:12:03Z",
-          "updated_at": "2023-12-21T05:31:41Z"
+          "updated_at": "2024-01-08T14:56:18Z"
         },
         "type": "issue"
       }
@@ -2122,7 +2134,7 @@
           "events_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/28142/events",
           "html_url": "https://github.com/bitcoin/bitcoin/pull/28142",
           "number": 28142,
-          "state": "open",
+          "state": "closed",
           "state_reason": null,
           "title": "wallet: Allow users to create a wallet that encrypts all database records",
           "body": "A couple of users have requested that we support wallets that encrypt everything, even if the wallet is watch-only, in order to have better privacy if the wallet is stolen. This PR introduces an `EncryptedDatabase` backend for the wallet which encrypts/decrypts each key-value record individually before reading from or writing to the database.\r\n\r\n`EncryptedDatabase` is only supported for SQLite databases and descriptor wallets. This was done in order to have an easier way to get downgrade protection that also does not involve writing an existing record in plaintext (e.g. `minversion` or `flags`). SQLite has a fixed field \"application id\" that we already use for cross-network protection. This is reused to detect if a sqlite database is an encrypted wallet, and thus it prevents older software from attempting to open such wallets.\r\n\r\nIn order to read records from the database, `EncryptedDatabase` will cache the decrypted key in memory so that it can lookup the encrypted key in the database. Values will always be decrypted when read.\r\n\r\nThe encryption scheme is the same one that we use for encrypting private keys. It's not that great, but I didn't feel like re-implementing it, and it seems good enough. The encryption key itself is encrypted with the passphrase and stored in a new record.\r\n\r\nWallets with encrypted databases cannot be loaded on start. They can only be loaded by explicit user action through `loadwallet` which now has a `db_passphrase` parameter to allow the decryption of these wallets. `createwallet` also has a `db_passphrase` to create these wallets. For now, there is no way to encrypt the database after it has been created, nor is there a way to change the passphrase.",
@@ -2154,20 +2166,29 @@
               "name": "Wallet",
               "color": "08a781",
               "default": false
+            },
+            {
+              "id": 749416508,
+              "node_id": "MDU6TGFiZWw3NDk0MTY1MDg=",
+              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Up%20for%20grabs",
+              "name": "Up for grabs",
+              "color": "99a810",
+              "default": false
             }
           ],
           "assignees": [],
           "author_association": "MEMBER",
           "locked": false,
-          "comments": 7,
+          "comments": 8,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/28142",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/28142",
             "diff_url": "https://github.com/bitcoin/bitcoin/pull/28142.diff",
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/28142.patch"
           },
+          "closed_at": "2024-01-06T00:03:50Z",
           "created_at": "2023-07-24T21:15:15Z",
-          "updated_at": "2023-12-21T18:00:20Z"
+          "updated_at": "2024-01-06T02:17:55Z"
         },
         "type": "issue"
       }
@@ -2660,6 +2681,35 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/747#issuecomment-1867099742",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/747"
+    },
+    {
+      "event": "closed",
+      "id": 11419415664,
+      "node_id": "CE_lADOEEET9c5sbkDzzwAAAAKopnRw",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/11419415664",
+      "actor": {
+        "login": "achow101",
+        "id": 3782274,
+        "node_id": "MDQ6VXNlcjM3ODIyNzQ=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3782274?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/achow101",
+        "html_url": "https://github.com/achow101",
+        "followers_url": "https://api.github.com/users/achow101/followers",
+        "following_url": "https://api.github.com/users/achow101/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/achow101/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/achow101/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/achow101/subscriptions",
+        "organizations_url": "https://api.github.com/users/achow101/orgs",
+        "repos_url": "https://api.github.com/users/achow101/repos",
+        "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/achow101/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-01-08T15:51:41Z"
     }
   ],
   "comments": []
