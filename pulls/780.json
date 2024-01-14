@@ -39,12 +39,21 @@
       "site_admin": false
     },
     "body": "This PR addresses an issue where, with no wallet selected, ticking on \"Settings -> Mask values\" checkbox twice enables the transaction tab when the checkbox is unticked. \r\n\r\n<details>\r\n<summary>Current behavior display on master</summary>\r\n\r\n![Peek 2023-12-06 19-18](https://github.com/bitcoin-core/gui/assets/110166421/6ca4eab6-5ef0-44c1-971c-89b8bc7f0283)\r\n\r\n</details>\r\n\r\n<details>\r\n<summary>Correction display from this branch</summary>\r\n\r\n![Peek 2023-12-07 13-07](https://github.com/bitcoin-core/gui/assets/110166421/1c78f2aa-1cf7-4d63-b4ce-c034877b4832)\r\n\r\n</details>\r\n\r\nNote for maintaners: this PR should be backported to both 25.x and 26.x.\r\n\r\n\r\n---\r\n\r\nOriginally this PR was disabling the \"Mask Values\" checkbox when no wallet was selected but since a reviewer pointed out that a user might want to open a wallet already on \"privacy mode\" I rolled that change out. \r\n\r\n<details>\r\n<summary>Original correction  display disabling \"Mask Values\" </summary>\r\n\r\n![Peek 2023-12-06 19-11](https://github.com/bitcoin-core/gui/assets/110166421/66fdf023-998a-434d-a5bd-1a3d848fb751)\r\n\r\n</details>",
-    "labels": [],
+    "labels": [
+      {
+        "id": 5353934559,
+        "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
+        "name": "CI failed",
+        "color": "ededed",
+        "default": false
+      }
+    ],
     "created_at": "2023-12-07T05:10:34Z",
-    "updated_at": "2023-12-28T13:44:23Z",
+    "updated_at": "2024-01-14T13:29:54Z",
     "mergeable": true,
-    "mergeable_state": "clean",
-    "merge_commit_sha": "b83e3f04a8f5893379428a6cf1507564e418fabb",
+    "mergeable_state": "unstable",
+    "merge_commit_sha": "a832fe7244d76c42e90d046907205f53dc4327b8",
     "assignees": [],
     "requested_reviewers": [
       {
@@ -169,7 +178,7 @@
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 151472,
+        "size": 152421,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -182,7 +191,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-12-07T15:52:19Z",
+        "pushed_at": "2023-12-31T22:21:17Z",
         "created_at": "2022-09-10T13:37:44Z",
         "updated_at": "2022-12-30T18:34:57Z",
         "license": {
@@ -298,12 +307,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 291,
-        "stargazers_count": 523,
-        "watchers_count": 523,
-        "size": 152407,
+        "forks_count": 294,
+        "stargazers_count": 527,
+        "watchers_count": 527,
+        "size": 152133,
         "default_branch": "master",
-        "open_issues_count": 165,
+        "open_issues_count": 166,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -314,9 +323,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-12-22T10:35:12Z",
+        "pushed_at": "2024-01-12T14:22:27Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2023-12-27T09:41:45Z",
+        "updated_at": "2024-01-12T22:35:37Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -1219,6 +1228,39 @@
       "submitted_at": "2023-12-28T13:44:21Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/780"
+    },
+    {
+      "event": "labeled",
+      "id": 11481259828,
+      "node_id": "LE_lADOEEET9c54_gq4zwAAAAKsVh80",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/11481259828",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-01-14T13:29:54Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
+      }
     }
   ],
   "comments": []
