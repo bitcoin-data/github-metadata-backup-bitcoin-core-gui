@@ -50,10 +50,10 @@
       }
     ],
     "created_at": "2024-01-10T18:30:25Z",
-    "updated_at": "2024-01-10T18:35:07Z",
+    "updated_at": "2024-01-21T02:54:35Z",
     "mergeable": true,
     "mergeable_state": "unstable",
-    "merge_commit_sha": "25ed8bfbc068a42213653ca5d59b190c0358a393",
+    "merge_commit_sha": "884d8f26de7f6743f6503403ee5ef6cd720b3cdd",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -156,7 +156,7 @@
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 151968,
+        "size": 151992,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -285,12 +285,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 293,
-        "stargazers_count": 525,
-        "watchers_count": 525,
-        "size": 151968,
+        "forks_count": 294,
+        "stargazers_count": 527,
+        "watchers_count": 527,
+        "size": 152167,
         "default_branch": "master",
-        "open_issues_count": 166,
+        "open_issues_count": 168,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -301,9 +301,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-01-10T18:35:03Z",
+        "pushed_at": "2024-01-19T20:13:16Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-01-09T03:48:56Z",
+        "updated_at": "2024-01-12T22:35:37Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -332,7 +332,7 @@
     "deletions": 1,
     "changed_files": 2,
     "commits": 2,
-    "review_comments": 0,
+    "review_comments": 1,
     "comments": 1
   },
   "events": [
@@ -502,7 +502,96 @@
         "name": "CI failed",
         "color": "ededed"
       }
+    },
+    {
+      "event": "reviewed",
+      "id": 1834755623,
+      "node_id": "PRR_kwDOEEET9c5tXCYn",
+      "url": null,
+      "actor": null,
+      "commit_id": "4e1c91352e032649f6f048d8aae170188e5d6bcc",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "CONTRIBUTOR",
+      "body": "Thanks @xonx4l for working on this.\r\n\r\nI don't think this PR fixes #259 as, according to its description and what I understand, a fix should be add more clarification (percentage?) about the rescanning of a wallet when they get open in 2 situations:\r\n1. During bitcoin-qt startup, as author of the PR specified, the user could add the wallets manually into the `settings.json` `qt` config file. In this case, perhaps the name of each wallet (if there are many, and may be also x/ total) should be added after the \"rescanning...\" text on the spash-screen (initial/ startup window).\r\n2. When a user open a wallet for the first time thru the menu->File->Open Wallet. For this case, perhaps a \"rescanning...\" (and maybe a % or progress bar - check issue #679) text could be added at the bottom of the opening window.\r\n\r\n@hebasto on his [comment](https://github.com/bitcoin-core/gui/issues/259#issuecomment-811297476) on the issue, mentioned to add the wallet name on the title of \"Receiving addresses\" & \"Sending addresses\" windows (which has been done and merged already on #757), not to the `receivecoins` or `sendcoins` dialogs which this PR changes, moreover since these dialogs are within the main window and titles won't be displayed:\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/18adfd01-e2d6-44ff-8fb7-cfab90a2d561)\r\n\r\nOther than that, the title and description of the PR doesn't reflect the proper change that's making, please check the [contributor](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md) and [developer](https://github.com/bitcoin/bitcoin/blob/master/doc/developer-notes.md) guidelines (e.g. commit name may start with prefix `gui:`, please check other PRs as reference).\r\n\r\nPlease don't get discouraged by these observations. Feel free to reach out if you have questions or need clarification on any points. I encourage you to continue working on this issue or any others. Thanks again!",
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/786#pullrequestreview-1834755623",
+      "submitted_at": "2024-01-21T02:54:35Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/786"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1460707827",
+      "pull_request_review_id": 1834755623,
+      "id": 1460707827,
+      "node_id": "PRRC_kwDOEEET9c5XEKHz",
+      "diff_hunk": "@@ -72,6 +72,9 @@ void ReceiveCoinsDialog::setModel(WalletModel *_model)\n {\n     this->model = _model;\n \n+        setWindowTitle(tr(\"Request payments - %1\").arg(model->getWalletName()));",
+      "path": "src/qt/receivecoinsdialog.cpp",
+      "position": 4,
+      "original_position": 4,
+      "commit_id": "4e1c91352e032649f6f048d8aae170188e5d6bcc",
+      "original_commit_id": "4e1c91352e032649f6f048d8aae170188e5d6bcc",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "CI lint is [failing](https://github.com/bitcoin-core/gui/pull/786/checks?check_run_id=20356215277) due to unnecessary white-spaces in the files (you can run the script `lint-whitespace.py` locally or even [all linters](https://github.com/bitcoin/bitcoin/blob/master/test/lint/README.md#running-locally))\r\n```suggestion\r\n    setWindowTitle(tr(\"Request payments - %1\").arg(model->getWalletName()));\r\n```",
+      "created_at": "2024-01-21T02:54:13Z",
+      "updated_at": "2024-01-21T02:54:35Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/786#discussion_r1460707827",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1460707827"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/786"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 75,
+      "original_line": 75,
+      "side": "RIGHT"
+    }
+  ]
 }
