@@ -51,10 +51,10 @@
       }
     ],
     "created_at": "2022-06-29T13:56:10Z",
-    "updated_at": "2023-09-22T14:35:56Z",
+    "updated_at": "2024-01-21T21:44:54Z",
     "mergeable": true,
     "mergeable_state": "unstable",
-    "merge_commit_sha": "6622d2bb74c7c99ffca7b5330cd7665ca5127438",
+    "merge_commit_sha": "f564e62b15226959cb46c04e5c29dc3f8ab1b8f1",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -155,8 +155,8 @@
         "svn_url": "https://github.com/jadijadi/bitcoin-core-gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "forks_count": 2,
-        "stargazers_count": 49,
-        "watchers_count": 49,
+        "stargazers_count": 47,
+        "watchers_count": 47,
         "size": 131835,
         "default_branch": "master",
         "open_issues_count": 0,
@@ -172,7 +172,7 @@
         "visibility": "public",
         "pushed_at": "2022-09-22T08:05:42Z",
         "created_at": "2022-06-29T12:52:48Z",
-        "updated_at": "2023-08-18T20:04:32Z",
+        "updated_at": "2023-12-30T22:01:54Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -286,12 +286,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 277,
-        "stargazers_count": 508,
-        "watchers_count": 508,
-        "size": 152955,
+        "forks_count": 295,
+        "stargazers_count": 527,
+        "watchers_count": 527,
+        "size": 152167,
         "default_branch": "master",
-        "open_issues_count": 161,
+        "open_issues_count": 169,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -302,9 +302,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-09-22T14:26:48Z",
+        "pushed_at": "2024-01-21T20:23:04Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2023-09-12T12:06:40Z",
+        "updated_at": "2024-01-12T22:35:37Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -498,7 +498,7 @@
       "commit_id": "e3c2e0337e233e05a5543c45960e9769e9023cfe",
       "commit_url": null,
       "created_at": null,
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "Aside from the code comments, there is an important topic to mention:\r\n\r\nLet's not access fields from the net layer in a GUI widget/view, the sources architecture is (should be) widget -> model -> interface -> backend.\r\n\r\nBetter to create the proper flow to access the information that you are looking for:\r\nrpcconsole -> clientModel -> node interface -> net layer.\r\n\r\nIn this way, the field access is encapsulated, layers responsibilities are respected and the same function can be used, and tested, from other user facing end points like the RPC server equally.",
       "user": {
         "login": "furszy",
@@ -904,9 +904,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2023-03-27T14:21:44Z",
-      "updated_at": "2023-09-22T00:30:51Z",
+      "updated_at": "2024-01-21T21:44:54Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| ACK | [shaavan](https://github.com/bitcoin-core/gui/pull/626#pullrequestreview-1033540502), [jarolrod](https://github.com/bitcoin-core/gui/pull/626#pullrequestreview-1056723817) |\n| Concept ACK | [RandyMcMillan](https://github.com/bitcoin-core/gui/pull/626#issuecomment-1485245445), [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/626#pullrequestreview-1634197316), [kristapsk](https://github.com/bitcoin-core/gui/pull/626#issuecomment-1730532322) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| ACK | [shaavan](https://github.com/bitcoin-core/gui/pull/626#pullrequestreview-1033540502), [jarolrod](https://github.com/bitcoin-core/gui/pull/626#pullrequestreview-1056723817) |\n| Concept ACK | [RandyMcMillan](https://github.com/bitcoin-core/gui/pull/626#issuecomment-1485245445), [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/626#pullrequestreview-1634197316), [kristapsk](https://github.com/bitcoin-core/gui/pull/626#issuecomment-1730532322) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#790](https://github.com/bitcoin-core/gui/pull/790) (refactor: Readable widget naming for debug window by s1Sharp)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -1195,6 +1195,87 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/626#issuecomment-1731532285",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/626"
+    },
+    {
+      "event": "cross-referenced",
+      "id": null,
+      "node_id": null,
+      "url": null,
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-01-21T21:15:02Z",
+      "updated_at": "2024-01-21T21:15:02Z",
+      "source": {
+        "issue": {
+          "id": 2092755588,
+          "node_id": "PR_kwDOEEET9c5kqQ1G",
+          "url": "https://api.github.com/repos/bitcoin-core/gui/issues/790",
+          "repository_url": "https://api.github.com/repos/bitcoin-core/gui",
+          "labels_url": "https://api.github.com/repos/bitcoin-core/gui/issues/790/labels%7B/name%7D",
+          "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/790/comments",
+          "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/790/events",
+          "html_url": "https://github.com/bitcoin-core/gui/pull/790",
+          "number": 790,
+          "state": "open",
+          "state_reason": null,
+          "title": "refactor: Readable widget naming for debug window",
+          "body": "Fixed widget names in the debug window. Make it more developer friendly to avoid confusion inside Qt Designer.",
+          "user": {
+            "login": "s1Sharp",
+            "id": 44301838,
+            "node_id": "MDQ6VXNlcjQ0MzAxODM4",
+            "avatar_url": "https://avatars.githubusercontent.com/u/44301838?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/s1Sharp",
+            "html_url": "https://github.com/s1Sharp",
+            "followers_url": "https://api.github.com/users/s1Sharp/followers",
+            "following_url": "https://api.github.com/users/s1Sharp/following%7B/other_user%7D",
+            "gists_url": "https://api.github.com/users/s1Sharp/gists%7B/gist_id%7D",
+            "starred_url": "https://api.github.com/users/s1Sharp/starred%7B/owner%7D%7B/repo%7D",
+            "subscriptions_url": "https://api.github.com/users/s1Sharp/subscriptions",
+            "organizations_url": "https://api.github.com/users/s1Sharp/orgs",
+            "repos_url": "https://api.github.com/users/s1Sharp/repos",
+            "events_url": "https://api.github.com/users/s1Sharp/events%7B/privacy%7D",
+            "received_events_url": "https://api.github.com/users/s1Sharp/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "labels": [],
+          "assignees": [],
+          "author_association": "NONE",
+          "locked": false,
+          "comments": 2,
+          "pull_request": {
+            "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/790",
+            "html_url": "https://github.com/bitcoin-core/gui/pull/790",
+            "diff_url": "https://github.com/bitcoin-core/gui/pull/790.diff",
+            "patch_url": "https://github.com/bitcoin-core/gui/pull/790.patch"
+          },
+          "created_at": "2024-01-21T20:23:04Z",
+          "updated_at": "2024-01-21T21:15:02Z"
+        },
+        "type": "issue"
+      }
     }
   ],
   "comments": [
@@ -1234,7 +1315,7 @@
       "created_at": "2022-06-30T18:04:13Z",
       "updated_at": "2022-07-01T12:19:06Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/626#discussion_r911312946",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/911312946"
@@ -1286,7 +1367,7 @@
       "created_at": "2022-06-30T18:06:07Z",
       "updated_at": "2022-07-01T12:19:06Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/626#discussion_r911314276",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/911314276"
@@ -1338,7 +1419,7 @@
       "created_at": "2022-06-30T18:28:24Z",
       "updated_at": "2022-07-01T12:19:06Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/626#discussion_r911333997",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/911333997"
@@ -1598,7 +1679,7 @@
       "created_at": "2022-07-01T12:04:17Z",
       "updated_at": "2022-07-01T12:19:06Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/626#discussion_r911901493",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/911901493"
@@ -1702,7 +1783,7 @@
       "created_at": "2022-07-01T17:09:29Z",
       "updated_at": "2022-07-01T19:59:40Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/626#discussion_r912125235",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/912125235"
@@ -2066,7 +2147,7 @@
       "created_at": "2022-07-06T23:44:08Z",
       "updated_at": "2022-07-07T00:07:56Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/626#discussion_r915334998",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/915334998"
