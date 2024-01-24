@@ -41,6 +41,15 @@
     "body": "This new feature is an implementation of the ideas in Paul Sztorc's blog post \"Deniability - Unilateral Transaction Meta-Privacy\"(https://www.truthcoin.info/blog/deniability/).\r\n\r\nIn short, the idea is to periodically split coins and send them to yourself, making it look like common \"spend\" transactions, such that blockchain ownership analysis becomes more difficult, and thus improving the user's privacy.\r\n\r\nThis is the GUI portion of the PR (bitcoin-core/gui). The core functionality PR ( https://github.com/bitcoin/bitcoin/pull/27792 ) is in the main repo (bitcoin/bitcoin).\r\n\r\nThis PR implements an additional \"Deniability\" wallet view. The majority of the GUI code is in a new deniabilitydialog.cpp/h source files containing a new DeniabilityDialog class, hooked up via the WalletView class. \r\n\r\nOn startup and on notable events (new blocks, new transactions, etc), we evaluate the privacy of all coins in the wallet, and we build a \"deniabilization\" candidate list. UTXOs that share the same destination address are grouped together into a single candidate (see DeniabilityDialog::updateCoins and DeniabilityDialog::updateCoinTable).\r\n\r\nWe inspect the blockchain data to find out if we have performed \"deniabilization\" transactions already, and we count how many \"cycles\" (self-sends) have been performed for each coin (see DeniabilityDialog::calculateDeniabilizationStats). Since we infer the state entirely from the blockchain data, even if the wallet is restored from a backup, the state would not be lost. This also means that if the user has performed manual self-sends that have improved the ownership privacy, they will be counted too.\r\n\r\n<img width=\"983\" alt=\"deniability_view_initial\" src=\"https://github.com/bitcoin-core/gui/assets/123340139/6626cca3-1b96-4ccd-9463-2a91a9993faa\">\r\n\r\nThe user has a couple of controls for the \"deniabillization\" process - a Frequency selector and a Budget spinner, which respectively determine how often to perform a cycle (see below) and how much total BTC to spend on transaction fees.\r\n\r\n<img width=\"983\" alt=\"deniability_view_pick_budget_frequency\" src=\"https://github.com/bitcoin-core/gui/assets/123340139/7508c23f-2ebb-4345-a440-49b9f60b8412\">\r\n\r\nThe user can initiate the \"deniabillization\" process by pressing the Start button (DeniabilityDialog::startDeniabilization). \r\nThe first time the button is pressed, we offer an information / confirmation box to explain to the user how Deniability works.\r\n\r\n<img width=\"532\" alt=\"deniability_view_start_confirmation\" src=\"https://github.com/bitcoin-core/gui/assets/123340139/c08ee856-8736-4e4e-be71-28219735f764\">\r\n\r\nThe process periodically perform a \"deniabilization\" cycle (DeniabilityDialog::deniabilizeProc). In each such cycle we do the following: \r\nA coin is selected form the candidate list. The more a coin is \"deniabilized\", the less likely it is to be selected. Smaller coins are also less likely to be selected. If a coin is selected, we prepare and broadcast a transaction, which splits the coin into a pair of new wallet addresses (DeniabilityDialog::deniabilizeCoin). \r\n\r\n<img width=\"983\" alt=\"deniability_view_tx_awaiting_confirmation\" src=\"https://github.com/bitcoin-core/gui/assets/123340139/df0354dc-f60f-45db-b692-db5c6ca36253\">\r\n\r\n<img width=\"983\" alt=\"transaction_view_after_deniabilization\" src=\"https://github.com/bitcoin-core/gui/assets/123340139/709084d3-227d-4c0d-ac47-cd83433b992a\">\r\n\r\nIf Bitcoin Core is left running continuously, the cycles would be performed at the selected frequency (with some randomization). If Bitcoin Core is shutdown, the \"deniabilization\" process will resume at the next restart, and if more time has elapsed than the selected frequency, it will perform a single cycle. We deliberately don't \"catch up\" all missed cycles, since that would expose the process to blockchain analysis. The state is saved and restored via QSettings (DeniabilityDialog::loadSettings and DeniabilityDialog::saveSettings).\r\n\r\n<img width=\"983\" alt=\"deniability_view_next_cycle_countdown\" src=\"https://github.com/bitcoin-core/gui/assets/123340139/da5a71e1-0174-4f2a-a9b3-b8a635abe769\">\r\n\r\nWe monitor each broadcasted transaction and we automatically attempt a fee bump if the transaction is still in the memory pool since the previous cycle (DeniabilityDialog::bumpDeniabilizationTx). We don't issue any other deniabilization transactions until the previous transaction is confirmed (or abandoned/dropped).\r\n\r\nThe process ends when the budget is exhausted or if there's no candidates left. The user can also stop the process manually by pressing a Stop button (DeniabilityDialog::stopDeniabilization).\r\n\r\nExternal signers are supported in a \"best effort\" way - since the user needs to manually sign, we postpone the deniabilization processing till the external signer is connected and use some additional UI to get the user's attention to sign (see the codepath predicated on hasExternalSigner). This is not ideal, so I'm looking for ideas if we can improve this in some way.\r\n\r\nWatch-only wallets are partially supported, where we display the candidate list, but we don't allow any processing (since we don't have the private keys to issue transactions).\r\n\r\nI've tested all this functionality on regtest, testnet, signet and mainnet. I've also added some unit tests (under WalletTests) to exercise the main functions.\r\n\r\nThis is my first change and PR for Bitcoin Core, and I did my best to validate everything against the guidelines and documentation and to follow the patterns in the existing code, but I'm sure there may be things I've missed, so I'm looking forward to your feedback. \r\nIn particular one thing I'm not particularly happy with - the save/restore of state via QSettings makes me a bit nervous as we store wallet specific data keyed on wallet name, however wallets can be erased and new ones created with the same name, so this is not ideal. I made an effort to validate all data on load, but it would be great if we could improve this somehow - either by storing the settings based on some wallet identity signature, or by storing the state in the wallet database (however that doesn't seem accessible via the interfaces::Wallet API). Please let me know your thoughts and suggestions.\r\n\r\nThank you.\r\n",
     "labels": [
       {
+        "id": 2145506980,
+        "node_id": "MDU6TGFiZWwyMTQ1NTA2OTgw",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Needs%20rebase",
+        "name": "Needs rebase",
+        "description": "",
+        "color": "cccccc",
+        "default": false
+      },
+      {
         "id": 2147693884,
         "node_id": "MDU6TGFiZWwyMTQ3NjkzODg0",
         "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Feature",
@@ -68,14 +77,14 @@
       }
     ],
     "created_at": "2023-05-21T06:32:50Z",
-    "updated_at": "2024-01-17T22:15:48Z",
-    "mergeable": true,
-    "mergeable_state": "unstable",
-    "merge_commit_sha": "f59ee76b6b3b44f1bcf9a7f7e372ad71132cc2f8",
+    "updated_at": "2024-01-23T23:28:30Z",
+    "mergeable": false,
+    "mergeable_state": "dirty",
+    "merge_commit_sha": "2530f850d28ee4595bda5327b5184e3ae30fabc5",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
-    "rebaseable": true,
+    "rebaseable": false,
     "head": {
       "label": "denavila:deniability",
       "ref": "deniability",
@@ -305,11 +314,11 @@
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
         "forks_count": 294,
-        "stargazers_count": 527,
-        "watchers_count": 527,
-        "size": 152130,
+        "stargazers_count": 528,
+        "watchers_count": 528,
+        "size": 152905,
         "default_branch": "master",
-        "open_issues_count": 167,
+        "open_issues_count": 168,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -320,9 +329,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-01-17T16:08:15Z",
+        "pushed_at": "2024-01-23T21:41:11Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-01-12T22:35:37Z",
+        "updated_at": "2024-01-21T22:26:18Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -352,7 +361,7 @@
     "changed_files": 24,
     "commits": 2,
     "review_comments": 19,
-    "comments": 14
+    "comments": 15
   },
   "events": [
     {
@@ -1768,6 +1777,15 @@
               "default": false
             },
             {
+              "id": 955867938,
+              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
+              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
+              "name": "Needs rebase",
+              "description": "",
+              "color": "cccccc",
+              "default": false
+            },
+            {
               "id": 5334691551,
               "node_id": "LA_kwDOABII588AAAABPfju3w",
               "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/CI%20failed",
@@ -1780,7 +1798,7 @@
           "assignees": [],
           "author_association": "NONE",
           "locked": false,
-          "comments": 26,
+          "comments": 27,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/27792",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/27792",
@@ -1788,7 +1806,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/27792.patch"
           },
           "created_at": "2023-05-31T07:50:37Z",
-          "updated_at": "2024-01-16T08:05:29Z"
+          "updated_at": "2024-01-23T23:32:18Z"
         },
         "type": "issue"
       }
@@ -1887,7 +1905,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/27286.patch"
           },
           "created_at": "2023-03-20T21:02:45Z",
-          "updated_at": "2024-01-17T09:57:22Z"
+          "updated_at": "2024-01-18T02:57:49Z"
         },
         "type": "issue"
       }
@@ -2191,7 +2209,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/21283.patch"
           },
           "created_at": "2021-02-23T18:29:20Z",
-          "updated_at": "2024-01-17T11:10:34Z"
+          "updated_at": "2024-01-18T04:12:30Z"
         },
         "type": "issue"
       }
@@ -2514,7 +2532,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/27865.patch"
           },
           "created_at": "2023-06-12T18:40:10Z",
-          "updated_at": "2024-01-17T09:32:29Z"
+          "updated_at": "2024-01-18T02:33:10Z"
         },
         "type": "issue"
       }
@@ -3014,7 +3032,7 @@
           "events_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/28560/events",
           "html_url": "https://github.com/bitcoin/bitcoin/pull/28560",
           "number": 28560,
-          "state": "open",
+          "state": "closed",
           "state_reason": null,
           "title": "wallet, rpc: `FundTransaction` refactor",
           "body": "## Motivation\r\n\r\nThe primary motivation for this PR is to enable `FundTransaction` to take a vector of `CRecipient` objects to allow passing BIP352 silent payment addresses to RPCs that use `FundTransaction` (e.g. `send`, `walletcreatefundedpsbt`). To do that, SFFO logic needs to be moved out of `FundTransaction` so the `CRecipient` objects with the correct SFFO information can be created and then passed to `FundTransaction`.\r\n\r\nAs a secondary motivation, this PR moves the SFFO stuff closer to the caller, making the code cleaner and easier to understand. This is done by having a single function which parses RPC inputs for SFFO and consistently using the `set<int>` method for communicating SFFO.\r\n\r\nI'm also not convinced we need to pass a full `CMutableTx` object to `FundTransaction`, but I'm leaving that for a follow-up PR/discussion, as its not a blocker for silent payments.",
@@ -3038,29 +3056,20 @@
             "type": "User",
             "site_admin": false
           },
-          "labels": [
-            {
-              "id": 5334691551,
-              "node_id": "LA_kwDOABII588AAAABPfju3w",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/CI%20failed",
-              "name": "CI failed",
-              "description": "",
-              "color": "cccccc",
-              "default": false
-            }
-          ],
+          "labels": [],
           "assignees": [],
           "author_association": "MEMBER",
           "locked": false,
-          "comments": 5,
+          "comments": 8,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/28560",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/28560",
             "diff_url": "https://github.com/bitcoin/bitcoin/pull/28560.diff",
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/28560.patch"
           },
+          "closed_at": "2024-01-23T21:41:13Z",
           "created_at": "2023-10-02T16:50:20Z",
-          "updated_at": "2024-01-17T08:12:38Z"
+          "updated_at": "2024-01-23T23:13:23Z"
         },
         "type": "issue"
       }
@@ -3129,21 +3138,11 @@
             "type": "User",
             "site_admin": false
           },
-          "labels": [
-            {
-              "id": 5334691551,
-              "node_id": "LA_kwDOABII588AAAABPfju3w",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/CI%20failed",
-              "name": "CI failed",
-              "description": "",
-              "color": "cccccc",
-              "default": false
-            }
-          ],
+          "labels": [],
           "assignees": [],
           "author_association": "MEMBER",
           "locked": false,
-          "comments": 4,
+          "comments": 5,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/28201",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/28201",
@@ -3151,7 +3150,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/28201.patch"
           },
           "created_at": "2023-08-02T16:37:04Z",
-          "updated_at": "2024-01-17T21:36:45Z"
+          "updated_at": "2024-01-19T20:41:12Z"
         },
         "type": "issue"
       }
@@ -4812,6 +4811,93 @@
         "name": "CI failed",
         "color": "ededed"
       }
+    },
+    {
+      "event": "labeled",
+      "id": 11577177840,
+      "node_id": "LE_lADOEEET9c5mbIhxzwAAAAKyDbbw",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/11577177840",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-01-23T23:28:28Z",
+      "label": {
+        "name": "Needs rebase",
+        "color": "cccccc"
+      }
+    },
+    {
+      "event": "commented",
+      "id": 1907086580,
+      "node_id": "IC_kwDOEEET9c5xq9T0",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/1907086580",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-01-23T23:28:29Z",
+      "updated_at": "2024-01-23T23:28:29Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "<!--cf906140f33d8803c4a75a2196329ecb-->\n🐙 This pull request conflicts with the target branch and [needs rebase](https://github.com/bitcoin-core/gui/blob/master/CONTRIBUTING.md#rebasing-changes).\n",
+      "user": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1907086580",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/733"
     }
   ],
   "comments": [
