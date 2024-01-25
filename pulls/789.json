@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/789/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/789/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/c95767aa68e9e0e71e76884dbc83d237afdd7a37",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/8023640a71a10ec54a6a8e6b95a29d07f7be218d",
     "number": 789,
     "state": "open",
     "locked": false,
@@ -51,10 +51,10 @@
       }
     ],
     "created_at": "2024-01-19T20:13:16Z",
-    "updated_at": "2024-01-23T10:10:38Z",
+    "updated_at": "2024-01-25T10:27:03Z",
     "mergeable": true,
-    "mergeable_state": "clean",
-    "merge_commit_sha": "e160b9acf8a5252b3c8e0d501d67335c3e7f5fb6",
+    "mergeable_state": "unstable",
+    "merge_commit_sha": "b1ad45ad16b87965095b5cf2fa9284107fd82709",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -62,7 +62,7 @@
     "head": {
       "label": "hebasto:240119-windows",
       "ref": "240119-windows",
-      "sha": "c95767aa68e9e0e71e76884dbc83d237afdd7a37",
+      "sha": "8023640a71a10ec54a6a8e6b95a29d07f7be218d",
       "user": {
         "login": "hebasto",
         "id": 32963518,
@@ -171,7 +171,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-01-22T10:57:52Z",
+        "pushed_at": "2024-01-25T10:26:46Z",
         "created_at": "2020-06-18T12:20:51Z",
         "updated_at": "2023-11-11T23:52:41Z",
         "license": {
@@ -194,7 +194,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "03752444cd54df05a731557968d5a9f33a55c55c",
+      "sha": "4ad83ef09b772f3f1e8ea9ea3a8c43dcd9db8458",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -290,7 +290,7 @@
         "forks_count": 294,
         "stargazers_count": 528,
         "watchers_count": 528,
-        "size": 152797,
+        "size": 152910,
         "default_branch": "master",
         "open_issues_count": 168,
         "is_template": false,
@@ -303,7 +303,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-01-22T10:04:47Z",
+        "pushed_at": "2024-01-25T10:26:44Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2024-01-21T22:26:18Z",
         "license": {
@@ -334,50 +334,10 @@
     "deletions": 1,
     "changed_files": 1,
     "commits": 1,
-    "review_comments": 1,
+    "review_comments": 2,
     "comments": 6
   },
   "events": [
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGM5NTc2N2FhNjhlOWUwZTcxZTc2ODg0ZGJjODNkMjM3YWZkZDdhMzc",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/c95767aa68e9e0e71e76884dbc83d237afdd7a37",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/c95767aa68e9e0e71e76884dbc83d237afdd7a37",
-      "tree": {
-        "sha": "305d39d82cea607df8625c8132db9a401004e75c",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/305d39d82cea607df8625c8132db9a401004e75c"
-      },
-      "verification": {
-        "verified": true,
-        "reason": "valid",
-        "payload": "tree 305d39d82cea607df8625c8132db9a401004e75c\nparent 03752444cd54df05a731557968d5a9f33a55c55c\nauthor Hennadii Stepanov <32963518+hebasto@users.noreply.github.com> 1705695097 +0000\ncommitter Hennadii Stepanov <32963518+hebasto@users.noreply.github.com> 1705695097 +0000\n\nqt: Avoid non-self-contained Windows header\n\nUsing the `windows.h` header guarantees correctness regardless of the\ncontent of other headers.\nFor more details, please refer to https://stackoverflow.com/questions/4845198/fatal-error-no-target-architecture-in-visual-studio\n\nFixes the MSVC build when using the upcoming CMake-based build system\nand Qt packages installed via the vcpkg package manager.\n",
-        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEE0dvyxLlvLev0wWZUQQEIES5+qB8FAmWq13kACgkQQQEIES5+\nqB/EZg//Wy7HgXuvXo3gQQFShAWnQxtWRYKzyf0/fTboFgxJjvJQ93nhAMtHNwBv\n2dda/IAAzskwf/sLlW7gsrg+iFYaw0XdYKOFRZoabeAGppKSIf0FFon28hPO59FI\nKomjbHcTLj/Ygufz+MzWDflWzgvqF3lJr3YTMK09SB1TPP6QYkurmvrGmcS9Ikx1\nu9aepKSL+IAXcDdAnz3ywP0Ae+G8PnPPFctfaMO6RWrrp4DWd5Tzyc0ltoRo92iS\nZZR32K229O8SAu186iaS7kbDI0c+vWXccpuxic33+4AMmIscRJtJaDvm8hYH6ye5\nZOyMJDE4EnxI+1YvqJq70ifC7h0bv8g/r50jRZsf4vn/zRYaNBCro2S8HlCIGpPd\nsJ4FaVYh8Y87W0TVv01WSEZAyNnN2uzGBMKOBHq4I3xL9NwqL8VytdsEML4UBdPf\nSuS7iAkeP1cQyrvjjUpmJr5zB6SF1HwQSiWwL2ClH93+eSZ+aZWH+/vyE2NfqFyq\nf2ORqe7eYM0TNkWiaPhk0O50GTBxr22LQNBd3f/4FLjMIrIFMYSF9X456JBBLYhr\n8Lv7BK+NeSKynzWpPznJ4igwwSEPwXPhlsr+7JQWebo59L0AO0eVZMZIZyttGFpp\nVwnPTAbtgmJnzQi3vquXcaNL+OeiBeINgUW/8zdfKvxO8SKNpjs=\n=QQz/\n-----END PGP SIGNATURE-----"
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/03752444cd54df05a731557968d5a9f33a55c55c",
-          "sha": "03752444cd54df05a731557968d5a9f33a55c55c",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/03752444cd54df05a731557968d5a9f33a55c55c"
-        }
-      ],
-      "message": "qt: Avoid non-self-contained Windows header\n\nUsing the `windows.h` header guarantees correctness regardless of the\ncontent of other headers.\nFor more details, please refer to https://stackoverflow.com/questions/4845198/fatal-error-no-target-architecture-in-visual-studio\n\nFixes the MSVC build when using the upcoming CMake-based build system\nand Qt packages installed via the vcpkg package manager.",
-      "committer": {
-        "name": "Hennadii Stepanov",
-        "email": "32963518+hebasto@users.noreply.github.com",
-        "date": "2024-01-19T20:11:37Z"
-      },
-      "author": {
-        "name": "Hennadii Stepanov",
-        "email": "32963518+hebasto@users.noreply.github.com",
-        "date": "2024-01-19T20:11:37Z"
-      },
-      "sha": "c95767aa68e9e0e71e76884dbc83d237afdd7a37"
-    },
     {
       "event": "commented",
       "id": 1901045010,
@@ -406,9 +366,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-01-19T20:13:19Z",
-      "updated_at": "2024-01-19T21:35:53Z",
+      "updated_at": "2024-01-25T10:26:46Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| ACK | [sipsorcery](https://github.com/bitcoin-core/gui/pull/789#issuecomment-1901146553) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Stale ACK | [sipsorcery](https://github.com/bitcoin-core/gui/pull/789#issuecomment-1901146553) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -500,7 +460,7 @@
           "assignees": [],
           "author_association": "OWNER",
           "locked": false,
-          "comments": 9,
+          "comments": 10,
           "pull_request": {
             "url": "https://api.github.com/repos/hebasto/bitcoin/pulls/77",
             "html_url": "https://github.com/hebasto/bitcoin/pull/77",
@@ -508,7 +468,7 @@
             "patch_url": "https://github.com/hebasto/bitcoin/pull/77.patch"
           },
           "created_at": "2024-01-17T16:15:35Z",
-          "updated_at": "2024-01-23T02:59:41Z"
+          "updated_at": "2024-01-25T10:24:28Z"
         },
         "type": "issue"
       }
@@ -966,6 +926,75 @@
       "submitted_at": "2024-01-23T10:10:38Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/789"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDgwMjM2NDBhNzFhMTBlYzU0YTZhOGU2Yjk1YTI5ZDA3ZjdiZTIxOGQ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/8023640a71a10ec54a6a8e6b95a29d07f7be218d",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/8023640a71a10ec54a6a8e6b95a29d07f7be218d",
+      "tree": {
+        "sha": "5c69939fdc4828a8b16a795dfc798be0738c6ada",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/5c69939fdc4828a8b16a795dfc798be0738c6ada"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree 5c69939fdc4828a8b16a795dfc798be0738c6ada\nparent 03752444cd54df05a731557968d5a9f33a55c55c\nauthor Hennadii Stepanov <32963518+hebasto@users.noreply.github.com> 1706178386 +0000\ncommitter Hennadii Stepanov <32963518+hebasto@users.noreply.github.com> 1706178386 +0000\n\nqt: Avoid non-self-contained Windows header\n\nUsing the `windows.h` header guarantees correctness regardless of the\ncontent of other headers.\nFor more details, please refer to https://stackoverflow.com/questions/4845198/fatal-error-no-target-architecture-in-visual-studio\n\nFixes the MSVC build when using the upcoming CMake-based build system\nand Qt packages installed via the vcpkg package manager.\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEE0dvyxLlvLev0wWZUQQEIES5+qB8FAmWyN1IACgkQQQEIES5+\nqB9OYg/+KlvzmXQ23orn0ZWY8kAWB/vNguFV9Enb1SuOeQWmJfQpjQ7xz9ARRAYs\nm6PtaRruYUShGh+Xwjq/yKSiC/mbwKE5C93Ap3FkgxaQ7Hog9efWgJU2CgfeC00E\nEw88NMcfq+opTiDDya+aXcozj60RJB6cQ9W7ZXaUXCf0NSBoAd1CZfCLhx0Z7hN/\nU+tz5tjMXHEycvJDwkKULfHBVg3pkYZdwRtX7QSHq1AyntKgnOxNLsvo7RpFVMlE\neZvaFgKCBI1D1EyaH4eRrFtHVaqqMYFIP5UkvRZa1Nvnz/ciweIuv7YiLh/y8jO0\nu5NTXkoNmcJ0mFV38p0zTOjvY68Kro2UI2tZfdx1bsGSeLyCzryKxBVtdLTpAbq9\n/xQ6vagpAihspn6o+GeNXvpkPA/JwpEeQQN/d1lQLQE/Akjx4bpWSlc5PHHwhyw4\nmIAAoO71Fef1EVkcDMLuKiEwXSVwqOl2AcSya3N+LE1VN7W6grcaJx9qJU12CqLP\nLZ4mOo5p19onYZz/ZpkYvOdf/xmV/ApyUuCQnwtKCa+LWWgStMpj1/84E54WVxBL\nYGFRY2iDWQcU2/trdnp9ffeHEg3w480vGv5U1Bbv50gZsFnUT1BAGK5E4fuKWahF\ndJbVdTa+elch4Ik1rxrIB8hFQpfSwxu37aAWJ3IwSh2t0hgbGQM=\n=16Qd\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/03752444cd54df05a731557968d5a9f33a55c55c",
+          "sha": "03752444cd54df05a731557968d5a9f33a55c55c",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/03752444cd54df05a731557968d5a9f33a55c55c"
+        }
+      ],
+      "message": "qt: Avoid non-self-contained Windows header\n\nUsing the `windows.h` header guarantees correctness regardless of the\ncontent of other headers.\nFor more details, please refer to https://stackoverflow.com/questions/4845198/fatal-error-no-target-architecture-in-visual-studio\n\nFixes the MSVC build when using the upcoming CMake-based build system\nand Qt packages installed via the vcpkg package manager.",
+      "committer": {
+        "name": "Hennadii Stepanov",
+        "email": "32963518+hebasto@users.noreply.github.com",
+        "date": "2024-01-25T10:26:26Z"
+      },
+      "author": {
+        "name": "Hennadii Stepanov",
+        "email": "32963518+hebasto@users.noreply.github.com",
+        "date": "2024-01-25T10:26:26Z"
+      },
+      "sha": "8023640a71a10ec54a6a8e6b95a29d07f7be218d"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 11595376924,
+      "node_id": "HRFPE_lADOEEET9c58pvftzwAAAAKzI2kc",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/11595376924",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-01-25T10:26:44Z"
     }
   ],
   "comments": [
@@ -976,9 +1005,9 @@
       "node_id": "PRRC_kwDOEEET9c5XNBW3",
       "diff_hunk": "@@ -10,7 +10,7 @@\n #include <QString>\n #include <functional>\n \n-#include <windef.h> // for HWND\n+#include <windows.h> // for HWND",
       "path": "src/qt/winshutdownmonitor.h",
-      "position": 5,
+      "position": null,
       "original_position": 5,
-      "commit_id": "c95767aa68e9e0e71e76884dbc83d237afdd7a37",
+      "commit_id": "8023640a71a10ec54a6a8e6b95a29d07f7be218d",
       "original_commit_id": "c95767aa68e9e0e71e76884dbc83d237afdd7a37",
       "in_reply_to_id": null,
       "user": {
@@ -1017,7 +1046,59 @@
       "start_line": null,
       "original_start_line": null,
       "start_side": null,
-      "line": 13,
+      "line": null,
+      "original_line": 13,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1466158566",
+      "pull_request_review_id": 1843353382,
+      "id": 1466158566,
+      "node_id": "PRRC_kwDOEEET9c5XY83m",
+      "diff_hunk": "@@ -10,7 +10,7 @@\n #include <QString>\n #include <functional>\n \n-#include <windef.h> // for HWND\n+#include <windows.h> // for HWND",
+      "path": "src/qt/winshutdownmonitor.h",
+      "position": null,
+      "original_position": 5,
+      "commit_id": "8023640a71a10ec54a6a8e6b95a29d07f7be218d",
+      "original_commit_id": "c95767aa68e9e0e71e76884dbc83d237afdd7a37",
+      "in_reply_to_id": 1463031223,
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "> Comment should be removed?\r\n\r\nThanks! Done.",
+      "created_at": "2024-01-25T10:27:03Z",
+      "updated_at": "2024-01-25T10:27:03Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/789#discussion_r1466158566",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1466158566"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/789"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": null,
       "original_line": 13,
       "side": "RIGHT"
     }
