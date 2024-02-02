@@ -38,9 +38,9 @@
     "assignees": [],
     "author_association": "MEMBER",
     "locked": false,
-    "comments": 5,
+    "comments": 6,
     "created_at": "2024-01-09T13:34:36Z",
-    "updated_at": "2024-01-29T21:26:14Z"
+    "updated_at": "2024-02-02T12:01:27Z"
   },
   "events": [
     {
@@ -470,6 +470,60 @@
         "site_admin": false
       },
       "html_url": "https://github.com/bitcoin-core/gui/issues/785#issuecomment-1915600627",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/785"
+    },
+    {
+      "event": "commented",
+      "id": 1923669190,
+      "node_id": "IC_kwDOEEET9c5yqNzG",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/1923669190",
+      "actor": {
+        "login": "dooglus",
+        "id": 573356,
+        "node_id": "MDQ6VXNlcjU3MzM1Ng==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/573356?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/dooglus",
+        "html_url": "https://github.com/dooglus",
+        "followers_url": "https://api.github.com/users/dooglus/followers",
+        "following_url": "https://api.github.com/users/dooglus/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/dooglus/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/dooglus/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/dooglus/subscriptions",
+        "organizations_url": "https://api.github.com/users/dooglus/orgs",
+        "repos_url": "https://api.github.com/users/dooglus/repos",
+        "events_url": "https://api.github.com/users/dooglus/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/dooglus/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-02-02T12:01:26Z",
+      "updated_at": "2024-02-02T12:01:26Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "It crashed again. This crash looks the same as the last one:\r\n\r\n```\r\n[Thread 0x7fffea7fb6c0 (LWP 2748) exited]\r\n[Thread 0x7fffeaffc6c0 (LWP 2747) exited]\r\n\r\nThread 1 \"bitcoin-qt-v26.\" received signal SIGSEGV, Segmentation fault.\r\nQSortFilterProxyModelPrivate::build_source_to_proxy_mapping (\r\n    proxy_to_source=..., source_to_proxy=..., this=this@entry=0x555557a7d520)\r\n    at ../../include/QtCore/../../src/corelib/tools/qarraydata.h:61\r\n61      ../../include/QtCore/../../src/corelib/tools/qarraydata.h: No such file or directory.\r\n(gdb) where\r\n#0  QSortFilterProxyModelPrivate::build_source_to_proxy_mapping (proxy_to_source=..., source_to_proxy=..., this=this@entry=0x555557a7d520)\r\n    at ../../include/QtCore/../../src/corelib/tools/qarraydata.h:61\r\n#1  0x00007ffff7a82b57 in QSortFilterProxyModelPrivate::sort (this=0x555557a82020) at itemmodels/qsortfilterproxymodel.cpp:634\r\n#2  0x000055555576a6ca in OverviewPage::setWalletModel(WalletModel*) ()\r\n#3  0x000055555572b9de in WalletView::WalletView(WalletModel*, PlatformStyle const*, QWidget*) ()\r\n#4  0x00005555555ea8ef in BitcoinGUI::addWallet(WalletModel*) ()\r\n#5  0x00005555556090ff in _ZZN7GUIUtil20ExceptionSafeConnectIP16WalletControllerMS1_FvP11WalletModelEP10BitcoinGUIMS7_FvS4_EEEDaT_T0_T1_T2_N2Qt14ConnectionTypeEENKUlDpOT_E_clIJRS4_EEEDaSJ_ ()\r\n#6  0x000055555560996d in _ZN9QtPrivate11FunctorCallINS_11IndexesListIJLi0EEEENS_4ListIJP11WalletModelEEEvZN7GUIUtil20ExceptionSafeConnectIP16WalletControllerMS9_FvS5_EP10BitcoinGUIMSD_FvS5_EEEDaT_T0_T1_T2_N2Qt14ConnectionTypeEEUlDpOT_E_E4callERSQ_PPv ()\r\n#7  0x000055555560713b in _ZN9QtPrivate7FunctorIZN7GUIUtil20ExceptionSafeConnectIP16WalletControllerMS3_FvP11WalletModelEP10BitcoinGUIMS9_FvS6_EEEDaT_T0_T1_T2_N2Qt14ConnectionTypeEEUlDpOT_E_Li1EE4callINS_4ListIJS6_EEEvEEvRSM_PvPSS_ ()\r\n#8  0x0000555555604d8c in _ZN9QtPrivate18QFunctorSlotObjectIZN7GUIUtil20ExceptionSafeConnectIP16WalletControllerMS3_FvP11WalletModelEP10BitcoinGUIMS9_FvS6_EEEDaT_T0_T1_T2_N2Qt14ConnectionTypeEEUlDpOT_E_Li1ENS_4ListIJS6_EEEvE4implEiPNS_15QSlotObjectBaseEP7QObjectPPvPb ()\r\n#9  0x00007ffff7add6f0 in QObject::event (this=0x5555577cb050, e=0x7ffe802085c0) at kernel/qobject.cpp:1347\r\n#10 0x00007ffff7162fae in QApplicationPrivate::notify_helper (this=<optimized out>, receiver=0x5555577cb050, e=0x7ffe802085c0) at kernel/qapplication.cpp:3640\r\n#11 0x00007ffff7ab16f8 in QCoreApplication::notifyInternal2 (receiver=0x5555577cb050, event=0x7ffe802085c0) at kernel/qcoreapplication.cpp:1064\r\n#12 0x00007ffff7ab18be in QCoreApplication::sendEvent (receiver=<optimized out>, event=<optimized out>) at kernel/qcoreapplication.cpp:1462\r\n#13 0x00007ffff7ab4681 in QCoreApplicationPrivate::sendPostedEvents (receiver=0x0, event_type=0, data=0x55555727f5d0) at kernel/qcoreapplication.cpp:1821\r\n#14 0x00007ffff7ab4b08 in QCoreApplication::sendPostedEvents (receiver=<optimized out>, event_type=<optimized out>) at kernel/qcoreapplication.cpp:1680\r\n#15 0x00007ffff7b0a153 in postEventSourceDispatch (s=0x5555573876f0) at kernel/qeventdispatcher_glib.cpp:277\r\n#16 0x00007ffff591e7a9 in g_main_context_dispatch () from /lib/x86_64-linux-gnu/libglib-2.0.so.0\r\n#17 0x00007ffff591ea38 in ?? () from /lib/x86_64-linux-gnu/libglib-2.0.so.0\r\n#18 0x00007ffff591eacc in g_main_context_iteration () from /lib/x86_64-linux-gnu/libglib-2.0.so.0\r\n#19 0x00007ffff7b09836 in QEventDispatcherGlib::processEvents (this=0x555557315c40, flags=...) at kernel/qeventdispatcher_glib.cpp:423\r\n#20 0x00007ffff7ab017b in QEventLoop::exec (this=this@entry=0x7fffffffd470, flags=..., flags@entry=...)\r\n    at ../../include/QtCore/../../src/corelib/global/qflags.h:69\r\n#21 0x00007ffff7ab82d6 in QCoreApplication::exec () at ../../include/QtCore/../../src/corelib/global/qflags.h:121\r\n#22 0x00005555555ccd4a in GuiMain(int, char**) ()\r\n#23 0x00005555555c489c in main ()\r\n(gdb) \r\n```",
+      "user": {
+        "login": "dooglus",
+        "id": 573356,
+        "node_id": "MDQ6VXNlcjU3MzM1Ng==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/573356?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/dooglus",
+        "html_url": "https://github.com/dooglus",
+        "followers_url": "https://api.github.com/users/dooglus/followers",
+        "following_url": "https://api.github.com/users/dooglus/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/dooglus/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/dooglus/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/dooglus/subscriptions",
+        "organizations_url": "https://api.github.com/users/dooglus/orgs",
+        "repos_url": "https://api.github.com/users/dooglus/repos",
+        "events_url": "https://api.github.com/users/dooglus/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/dooglus/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/issues/785#issuecomment-1923669190",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/785"
     }
   ]
