@@ -68,10 +68,10 @@
       }
     ],
     "created_at": "2023-01-23T21:13:11Z",
-    "updated_at": "2024-01-26T13:55:56Z",
+    "updated_at": "2024-02-12T13:55:56Z",
     "mergeable": true,
     "mergeable_state": "unstable",
-    "merge_commit_sha": "ea4e318934422411811cd6fa402fb7bc057200e4",
+    "merge_commit_sha": "b92ee403fe8717ed41289bef2287ab1f4afcfaae",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -304,11 +304,11 @@
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
         "forks_count": 293,
-        "stargazers_count": 529,
-        "watchers_count": 529,
-        "size": 152906,
+        "stargazers_count": 537,
+        "watchers_count": 537,
+        "size": 155761,
         "default_branch": "master",
-        "open_issues_count": 168,
+        "open_issues_count": 158,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -319,9 +319,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-01-26T11:31:40Z",
+        "pushed_at": "2024-02-12T13:08:45Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-01-26T00:01:51Z",
+        "updated_at": "2024-02-11T16:53:01Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -350,7 +350,7 @@
     "deletions": 6,
     "changed_files": 10,
     "commits": 3,
-    "review_comments": 0,
+    "review_comments": 1,
     "comments": 5
   },
   "events": [
@@ -768,7 +768,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/25979.patch"
           },
           "created_at": "2022-09-01T20:40:07Z",
-          "updated_at": "2024-01-22T03:33:45Z"
+          "updated_at": "2024-02-10T16:13:12Z"
         },
         "type": "issue"
       }
@@ -1549,7 +1549,7 @@
             "patch_url": "https://github.com/bitcoin-core/gui/pull/733.patch"
           },
           "created_at": "2023-05-21T06:32:50Z",
-          "updated_at": "2024-01-26T13:52:50Z"
+          "updated_at": "2024-02-10T10:24:36Z"
         },
         "type": "issue"
       }
@@ -2333,7 +2333,96 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-01-08T16:13:13Z"
+    },
+    {
+      "event": "reviewed",
+      "id": 1875289512,
+      "node_id": "PRR_kwDOEEET9c5vxqWo",
+      "url": null,
+      "actor": null,
+      "commit_id": "c697167741a46a14e60ec5462e52b3ae980c4a94",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "MEMBER",
+      "body": "The first commit e1ea0ba0f2aa9b36df6b74b664087b236f174990 fails to compile:\r\n```\r\n  CXX      qt/libbitcoinqt_a-walletmodel.o\r\nqt/walletmodel.cpp: In member function ‘bool WalletModel::bumpFee(uint256, uint256&)’:\r\nqt/walletmodel.cpp:486:41: error: no matching function for call to ‘interfaces::Wallet::createBumpTransaction(uint256&, wallet::CCoinControl&, std::vector<bilingual_str>&, CAmount&, CAmount&, CMutableTransaction&)’\r\n  486 |     if (!m_wallet->createBumpTransaction(hash, coin_control, errors, old_fee, new_fee, mtx)) {\r\n      |          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\nIn file included from ./qt/walletmodel.h:16,\r\n                 from qt/walletmodel.cpp:9:\r\n./interfaces/wallet.h:166:18: note: candidate: ‘virtual bool interfaces::Wallet::createBumpTransaction(const uint256&, const wallet::CCoinControl&, std::vector<bilingual_str>&, CAmount&, CAmount&, CMutableTransaction&, std::optional<unsigned int>)’\r\n  166 |     virtual bool createBumpTransaction(const uint256& txid,\r\n      |                  ^~~~~~~~~~~~~~~~~~~~~\r\n./interfaces/wallet.h:166:18: note:   candidate expects 7 arguments, 6 provided\r\nmake: *** [Makefile:13550: qt/libbitcoinqt_a-walletmodel.o] Error 1\r\n```",
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/700#pullrequestreview-1875289512",
+      "submitted_at": "2024-02-12T13:55:56Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/700"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1486212254",
+      "pull_request_review_id": 1875289512,
+      "id": 1486212254,
+      "node_id": "PRRC_kwDOEEET9c5Ylcye",
+      "diff_hunk": "@@ -0,0 +1,75 @@\n+// Copyright (c) 2022 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or https://www.opensource.org/licenses/mit-license.php.\n+\n+#if defined(HAVE_CONFIG_H)\n+#include <config/bitcoin-config.h>\n+#endif\n+\n+#include <qt/bumpfeechoosechangedialog.h>\n+#include <qt/forms/ui_bumpfeechoosechangedialog.h>\n+\n+#include <addresstype.h>\n+#include <key_io.h>\n+#include <qt/bitcoinunits.h>\n+#include <qt/guiutil.h>\n+#include <qt/optionsmodel.h>\n+#include <qt/walletmodel.h>\n+\n+#include <QHBoxLayout>\n+#include <QLabel>\n+#include <QRadioButton>\n+#include <QVBoxLayout>\n+\n+BumpfeeChooseChangeDialog::BumpfeeChooseChangeDialog(WalletModel *model, QWidget *parent, const uint256& txid) :\n+    QDialog(parent, GUIUtil::dialog_flags),\n+    ui(new Ui::BumpfeeChooseChangeDialog),\n+    model(model)\n+{\n+    ui->setupUi(this);\n+\n+    bool found_change = false;\n+    CTransactionRef tx = model->wallet().getTx(txid);\n+    for (size_t i = 0; i < tx->vout.size(); ++i) {\n+        const CTxOut& txout = tx->vout.at(i);\n+        QString address_info = tr(\"No address decoded\");\n+        CTxDestination dest;\n+        if (ExtractDestination(txout.scriptPubKey, dest)) {\n+            std::string address = EncodeDestination(dest);\n+            std::string label;\n+            if (model->wallet().getAddress(dest, &label, nullptr, nullptr) && !label.empty()) {\n+                address_info = QString::fromStdString(label) + QString(\" (\") + QString::fromStdString(address) + QString(\")\");\n+            } else {\n+                address_info = QString::fromStdString(address);\n+            }\n+        }\n+        QString output_info = QString::number(i) + QString(\": \") + BitcoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), txout.nValue) + tr(\" to \") + address_info;",
+      "path": "src/qt/bumpfeechoosechangedialog.cpp",
+      "position": 46,
+      "original_position": 46,
+      "commit_id": "c697167741a46a14e60ec5462e52b3ae980c4a94",
+      "original_commit_id": "c697167741a46a14e60ec5462e52b3ae980c4a94",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "To make translators' life easier and to keep the context as large as possible, I suggest to use `QString::arg`. Also it will fix the `lint-qt-translation.py` warning.",
+      "created_at": "2024-02-12T13:54:32Z",
+      "updated_at": "2024-02-12T13:55:56Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/700#discussion_r1486212254",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1486212254"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/700"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 46,
+      "original_line": 46,
+      "side": "RIGHT"
+    }
+  ]
 }
