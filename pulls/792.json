@@ -41,7 +41,7 @@
     "body": "This is a continuation of https://github.com/bitcoin-core/gui/pull/37\r\nThis is a simple change, but imho necessary because it leads to confusion.\r\nThe objective of this change is to provide a better description for the tooltip for the \"Available Balance\" balance because the current version on master mentions the word \"You current spendable balance\" which is a bit misleading, because that balance is not always spendable , or not always yours on watch only wallets.\r\n",
     "labels": [],
     "created_at": "2024-02-09T04:31:48Z",
-    "updated_at": "2024-02-20T21:10:47Z",
+    "updated_at": "2024-02-20T22:32:25Z",
     "mergeable": true,
     "mergeable_state": "clean",
     "merge_commit_sha": "495cdac8fb482133ff7242ee9e5bf5a101c6162a",
@@ -324,7 +324,7 @@
     "deletions": 0,
     "changed_files": 1,
     "commits": 1,
-    "review_comments": 0,
+    "review_comments": 1,
     "comments": 2
   },
   "events": [
@@ -766,7 +766,96 @@
         },
         "type": "issue"
       }
+    },
+    {
+      "event": "reviewed",
+      "id": 1891712511,
+      "node_id": "PRR_kwDOEEET9c5wwT3_",
+      "url": null,
+      "actor": null,
+      "commit_id": "2e24c0cc107ed14d47e6e5aacbd14a6f68d0e384",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "MEMBER",
+      "body": "",
+      "user": {
+        "login": "luke-jr",
+        "id": 1095675,
+        "node_id": "MDQ6VXNlcjEwOTU2NzU=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1095675?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/luke-jr",
+        "html_url": "https://github.com/luke-jr",
+        "followers_url": "https://api.github.com/users/luke-jr/followers",
+        "following_url": "https://api.github.com/users/luke-jr/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/luke-jr/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/luke-jr/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/luke-jr/subscriptions",
+        "organizations_url": "https://api.github.com/users/luke-jr/orgs",
+        "repos_url": "https://api.github.com/users/luke-jr/repos",
+        "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/luke-jr/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/792#pullrequestreview-1891712511",
+      "submitted_at": "2024-02-20T22:32:25Z",
+      "state": "CHANGES_REQUESTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/792"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1496623669",
+      "pull_request_review_id": 1891712511,
+      "id": 1496623669,
+      "node_id": "PRRC_kwDOEEET9c5ZNKo1",
+      "diff_hunk": "@@ -197,7 +197,10 @@ void OverviewPage::setBalance(const interfaces::WalletBalances& balances)\n     BitcoinUnit unit = walletModel->getOptionsModel()->getDisplayUnit();\n     if (walletModel->wallet().isLegacy()) {\n         if (walletModel->wallet().privateKeysDisabled()) {\n+            ui->labelSpendable->setText(tr(\"Watch-only:\"));\n+            ui->labelSpendable->setVisible(true);\n             ui->labelBalance->setText(BitcoinUnits::formatWithPrivacy(unit, balances.watch_only_balance, BitcoinUnits::SeparatorStyle::ALWAYS, m_privacy));\n+            ui->labelBalance->setToolTip(tr(\"Your current balance in watch-only addresses\"));",
+      "path": "src/qt/overviewpage.cpp",
+      "position": 7,
+      "original_position": 7,
+      "commit_id": "2e24c0cc107ed14d47e6e5aacbd14a6f68d0e384",
+      "original_commit_id": "2e24c0cc107ed14d47e6e5aacbd14a6f68d0e384",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "luke-jr",
+        "id": 1095675,
+        "node_id": "MDQ6VXNlcjEwOTU2NzU=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1095675?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/luke-jr",
+        "html_url": "https://github.com/luke-jr",
+        "followers_url": "https://api.github.com/users/luke-jr/followers",
+        "following_url": "https://api.github.com/users/luke-jr/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/luke-jr/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/luke-jr/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/luke-jr/subscriptions",
+        "organizations_url": "https://api.github.com/users/luke-jr/orgs",
+        "repos_url": "https://api.github.com/users/luke-jr/repos",
+        "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/luke-jr/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "Despite the confusing interfaces, watch-only wallets are not based on addresses (or they would never see spends). Prefer to use less confusing language here.",
+      "created_at": "2024-02-20T22:32:20Z",
+      "updated_at": "2024-02-20T22:32:25Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/792#discussion_r1496623669",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1496623669"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/792"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 203,
+      "original_line": 203,
+      "side": "RIGHT"
+    }
+  ]
 }
