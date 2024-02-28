@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/801/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/801/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/4b47c785e0adfb946b9874fb7d6c76e68471868b",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/f357578badc12f7816b56af8486caadba90a534b",
     "number": 801,
     "state": "open",
     "locked": false,
@@ -41,10 +41,10 @@
     "body": "Fixing #800.\r\n\r\nDuring shutdown, already queue events dispatched from the backend such\r\n'numConnectionsChanged' and 0networkActiveChanged' could try to access\r\nthe clientModel object, which might not exist because we manually delete\r\nit inside 'BitcoinApplication::requestShutdown()'.\r\n\r\nThis happen because boost does not clears the queued events when they arise\r\nconcurrently with the signal disconnection (see https://www.boost.org/doc/libs/1_55_0/doc/html/signals2/thread-safety.html).\r\nFrom the docs:\r\n1) \"Note that since we unlock the connection's mutex before executing its associated slot, it is possible a slot will still be executing after it has been disconnected by a [connection::disconnect](https://www.boost.org/doc/libs/1_55_0/doc/html/boost/signals2/connection.html#idp89761576-bb)(), if the disconnect was called concurrently with signal invocation.\"\r\n2)  \"The fact that concurrent signal invocations use the same combiner object means you need to insure any custom combiner you write is thread-safe\" \r\n\r\nSo, we need to guard `clientModel` before accessing it at the handler side.",
     "labels": [],
     "created_at": "2024-02-28T13:12:06Z",
-    "updated_at": "2024-02-28T17:48:46Z",
+    "updated_at": "2024-02-28T20:59:03Z",
     "mergeable": true,
-    "mergeable_state": "clean",
-    "merge_commit_sha": "fc29d4e2c340cd5acc008c4c984c491fdfc01aa0",
+    "mergeable_state": "unstable",
+    "merge_commit_sha": "c82a11ad4da1a6f0e4ef39b2a877f32f61dce7e9",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -52,7 +52,7 @@
     "head": {
       "label": "furszy:2024_gui_dont_access_nullptr_clientmodel",
       "ref": "2024_gui_dont_access_nullptr_clientmodel",
-      "sha": "4b47c785e0adfb946b9874fb7d6c76e68471868b",
+      "sha": "f357578badc12f7816b56af8486caadba90a534b",
       "user": {
         "login": "furszy",
         "id": 5377650,
@@ -161,7 +161,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-02-28T13:49:22Z",
+        "pushed_at": "2024-02-28T20:59:02Z",
         "created_at": "2022-05-09T14:34:00Z",
         "updated_at": "2023-09-08T14:09:02Z",
         "license": {
@@ -293,7 +293,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-02-28T13:49:23Z",
+        "pushed_at": "2024-02-28T20:59:04Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2024-02-28T16:28:24Z",
         "license": {
@@ -320,9 +320,9 @@
     },
     "author_association": "MEMBER",
     "draft": false,
-    "additions": 21,
+    "additions": 31,
     "deletions": 29,
-    "changed_files": 4,
+    "changed_files": 5,
     "commits": 2,
     "review_comments": 7,
     "comments": 1
@@ -557,86 +557,6 @@
       "created_at": "2024-02-28T13:48:33Z"
     },
     {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGYwZDdjYWJkZDc0NDNkM2NhOTFlZWNjZmQ4MjE0ZTlmY2RlYzMzYWU",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/f0d7cabdd7443d3ca91eeccfd8214e9fcdec33ae",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/f0d7cabdd7443d3ca91eeccfd8214e9fcdec33ae",
-      "tree": {
-        "sha": "d507bfaa56be3331da3739a13765cace43f5b1cb",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/d507bfaa56be3331da3739a13765cace43f5b1cb"
-      },
-      "verification": {
-        "verified": true,
-        "reason": "valid",
-        "payload": "tree d507bfaa56be3331da3739a13765cace43f5b1cb\nparent ba907f96ad37c09c49c0e1532fad118fcb8dd4a8\nauthor furszy <matiasfurszyfer@protonmail.com> 1709124440 -0300\ncommitter furszy <matiasfurszyfer@protonmail.com> 1709128157 -0300\n\ngui: guard from accessing a nullptr 'clientModel'\n\nDuring shutdown, already queue events dispatched from the backend such\n'numConnectionsChanged' and 0networkActiveChanged' could try to access\nthe clientModel object, which might not exist because we manually delete\nit inside 'BitcoinApplication::requestShutdown()'.\n",
-        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEEA++0fqwRHQpmlZfQXdI8zGhqpiMFAmXfOd0ACgkQXdI8zGhq\npiM97A/7B8cxFcLM4unxoe1DQ7R+0xW2Kwqe2+e83BimhWiqQQ9lFELzFEhPlrZA\naa7chL8VI+l3I4D/4AMt6AR0EtE/0SZTPvnQpbsg5dmMF0G7qWK/o2ewBcPbkArq\naWnUyeVffox322dFeV6aGvTOoVgYGBNIa1oH0lqPTEj296QE3mP6/MXrnRIa9MxB\ntYdzZYtEtBK87KKFPwBRw2QZof9hI7vY8kRG6J2QDDU+JnE7WWSsSLBIiQ6/jTOK\n0AS0VCQ8uNG1gXLTMYlt7fksosmMKn3RKIvIopbK9ewlWIJRqHdOZp5eLogZdAM5\nMT1xdGtt7+zWo4eP1glHgYvhMQIj57oYGO3Xfqhas6C1PHMmQvAT9EbsZMHRioBI\nC4o1c3OuGVk5QlPohVtpKudZaFjeNEC4FHXXUi1oFe08QlWQM8wBKmSSpEXrgidO\n4sAjF3Q5Ral5mJdAhabWvsHHOlhQkPPpQ+IKDfmWE5FORQ9f5aPm0b+RQ6TCpNc5\nnAbnIXSVJh6o0KDkZfCQh4xtDPFoVBlDVLHDfQyOBOj+/lE+ffhxLpx/2fJJMFCe\naUzpjE1tnyOp/aRAtH4oMlI1BLulw/CAYlr6jELA5vu8KXPviyiZF1P90/qrD7dO\ndl+rsYBaPI6Z7DNo+RbnQ1QkcUspnys6Go73KGu0cupXOajR1pE=\n=O7a/\n-----END PGP SIGNATURE-----"
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/ba907f96ad37c09c49c0e1532fad118fcb8dd4a8",
-          "sha": "ba907f96ad37c09c49c0e1532fad118fcb8dd4a8",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/ba907f96ad37c09c49c0e1532fad118fcb8dd4a8"
-        }
-      ],
-      "message": "gui: guard from accessing a nullptr 'clientModel'\n\nDuring shutdown, already queue events dispatched from the backend such\n'numConnectionsChanged' and 0networkActiveChanged' could try to access\nthe clientModel object, which might not exist because we manually delete\nit inside 'BitcoinApplication::requestShutdown()'.",
-      "committer": {
-        "name": "furszy",
-        "email": "matiasfurszyfer@protonmail.com",
-        "date": "2024-02-28T13:49:17Z"
-      },
-      "author": {
-        "name": "furszy",
-        "email": "matiasfurszyfer@protonmail.com",
-        "date": "2024-02-28T12:47:20Z"
-      },
-      "sha": "f0d7cabdd7443d3ca91eeccfd8214e9fcdec33ae"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDRiNDdjNzg1ZTBhZGZiOTQ2Yjk4NzRmYjdkNmM3NmU2ODQ3MTg2OGI",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/4b47c785e0adfb946b9874fb7d6c76e68471868b",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/4b47c785e0adfb946b9874fb7d6c76e68471868b",
-      "tree": {
-        "sha": "26649f4b215e975d18bf6b29ba29c69c61718c39",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/26649f4b215e975d18bf6b29ba29c69c61718c39"
-      },
-      "verification": {
-        "verified": true,
-        "reason": "valid",
-        "payload": "tree 26649f4b215e975d18bf6b29ba29c69c61718c39\nparent f0d7cabdd7443d3ca91eeccfd8214e9fcdec33ae\nauthor furszy <matiasfurszyfer@protonmail.com> 1709125069 -0300\ncommitter furszy <matiasfurszyfer@protonmail.com> 1709128157 -0300\n\ngui: clientModel, destroy boost signals during shutdown\n\nSimpler and safer code.\n",
-        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEEA++0fqwRHQpmlZfQXdI8zGhqpiMFAmXfOd0ACgkQXdI8zGhq\npiNKKQ//V+aq3yztr7XEqpg+oRDg5E/zMx+/U8atw4/CG0pw5zUVucCy64K6XAN0\nndMTL7x+drjNZM1KF/98Kyft9+R1VBTKDxaD0Xz+w46COkihx2V5HIOVsqOw+X62\nqEAZc5VxOLGP3KnSK2DoiZx4cYIU98Swwy67HjapCCticfuGBCB9x3qQdbT/MUvD\n3OiMqI0Bcp0xPS+KKm7ajckvODzYjXW+6Ye/r/WQAGS3fD3enfZu1XCDxMZQ8MAm\nhB8QSdBuM2tvGKD+W88UVbj/FVVVJ9wUzR2g3LQ4Bn+J2DqEnhka+RwQbpNFYHAq\ndZS7f25VTgvbQkk8sxqviSzVqyeaZBY7QAR2H442BqB2gS0kTXGQfAWNspP/fzVM\ns8YODrBMjmEE3y5jw20xDhE2wIsixVpmPXqNj1OOe6qO5Lnn3VbpVAAfGxws18vs\nlZZ+jfhoqgVn4tb2NlHxvT3zoei5ISSDr4Qu2MVWUHACCpUL8HunOKwKJ6LlazE2\nkXlncajedrcwBrxJXP4OVeO6kSLGaI2Nt4fRLSCgeezKzHmFTYK11emcm5OboQa5\nwWu2m9SB0rHIgnT4hUORA+TrCzh6TKjdjdxwVu8LHpvvDPB9IwmqaP570F5VZzlw\n7mIKa7i9D8LcmmI87YiCRWa3MJSd5zLPmm8FJdNp6VuzW0BsCns=\n=1Hkc\n-----END PGP SIGNATURE-----"
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/f0d7cabdd7443d3ca91eeccfd8214e9fcdec33ae",
-          "sha": "f0d7cabdd7443d3ca91eeccfd8214e9fcdec33ae",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/f0d7cabdd7443d3ca91eeccfd8214e9fcdec33ae"
-        }
-      ],
-      "message": "gui: clientModel, destroy boost signals during shutdown\n\nSimpler and safer code.",
-      "committer": {
-        "name": "furszy",
-        "email": "matiasfurszyfer@protonmail.com",
-        "date": "2024-02-28T13:49:17Z"
-      },
-      "author": {
-        "name": "furszy",
-        "email": "matiasfurszyfer@protonmail.com",
-        "date": "2024-02-28T12:57:49Z"
-      },
-      "sha": "4b47c785e0adfb946b9874fb7d6c76e68471868b"
-    },
-    {
       "event": "head_ref_force_pushed",
       "id": 11952021565,
       "node_id": "HRFPE_lADOEEET9c6ArteDzwAAAALIZWA9",
@@ -664,6 +584,115 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-02-28T13:49:23Z"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGYzYTYxMmY5MDE2ZmUxZjU5YzczZDYwNTkyNzRiZWE4MDI1Yjg5NDA",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/f3a612f9016fe1f59c73d6059274bea8025b8940",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/f3a612f9016fe1f59c73d6059274bea8025b8940",
+      "tree": {
+        "sha": "e633a0fcae1e101b358b17f5779790ab2fba3d88",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/e633a0fcae1e101b358b17f5779790ab2fba3d88"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree e633a0fcae1e101b358b17f5779790ab2fba3d88\nparent ba907f96ad37c09c49c0e1532fad118fcb8dd4a8\nauthor furszy <matiasfurszyfer@protonmail.com> 1709124440 -0300\ncommitter furszy <matiasfurszyfer@protonmail.com> 1709153927 -0300\n\ngui: guard accessing a nullptr 'clientModel'\n\nDuring shutdown, already queue events dispatched from the backend such\n'numConnectionsChanged' and 'networkActiveChanged' could try to access\nthe clientModel object, which might not exist because we manually delete\nit inside 'BitcoinApplication::requestShutdown()'.\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEEA++0fqwRHQpmlZfQXdI8zGhqpiMFAmXfnocACgkQXdI8zGhq\npiOyyRAAj95KY9cZ7w2tyLhH+nqbnBkB86EbV3oakknIBj8kOoKAYU4oai+Q6aWB\nv+ZdpNCpW7NQtdt98epDoHw0KjwU0FB62r7yiMHiVs9rCaL6WYCubZiuIQHtSpIO\nUEjOZHmr4csd79rdmFokRlo1I8WSzCqlGeEvk7l7ZzSADA5+9LFtLCG/Mz2FWLqY\nlRHKu/GnC8UbOaMFd0sohklHRk6TnQWu7x6Fy9GGkpN7AuOOeKKAQ0q2UeR13iwt\nlqoswf0EcoNXyKS/UfpP+AKucgEKGx/jrtTY3KtBFyU7K1Od75o/6Tp7K7oJm5/b\n194REPO9Wberce0+cgyLmkVppN5HLjJA9YQNb3zegB4WBLJIfXwnK0JNLKMisqfc\n4jE+mjvQ0wwt3JM7n8RKTgz5SRvHC457KufzNd6EJSW2rVTYRDT8TkQ2RKEO6w0q\n6HciRzo0obSlxg0sH1IljsSGhB0yGpG1ZdRLPGc1dP5c3RuKUXo+aJHFTdC5RRfW\nbsW1T1I15mrLbZSzhilaFaICIS5JwJpIVObliTTxJzM+4pUoCMoG/UtUxffCtulx\nV8+3raXW6sL+uPDLjdsLv//B/si+hopGSOnmq/3ZlAto2yaHWrMunEYWD/kX91at\nDqoq15D0xMlmgIk64wE/J55VOt8OyxTTbGdJcjVkQ9/6PrnIStA=\n=Hrk4\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/ba907f96ad37c09c49c0e1532fad118fcb8dd4a8",
+          "sha": "ba907f96ad37c09c49c0e1532fad118fcb8dd4a8",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/ba907f96ad37c09c49c0e1532fad118fcb8dd4a8"
+        }
+      ],
+      "message": "gui: guard accessing a nullptr 'clientModel'\n\nDuring shutdown, already queue events dispatched from the backend such\n'numConnectionsChanged' and 'networkActiveChanged' could try to access\nthe clientModel object, which might not exist because we manually delete\nit inside 'BitcoinApplication::requestShutdown()'.",
+      "committer": {
+        "name": "furszy",
+        "email": "matiasfurszyfer@protonmail.com",
+        "date": "2024-02-28T20:58:47Z"
+      },
+      "author": {
+        "name": "furszy",
+        "email": "matiasfurszyfer@protonmail.com",
+        "date": "2024-02-28T12:47:20Z"
+      },
+      "sha": "f3a612f9016fe1f59c73d6059274bea8025b8940"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGYzNTc1NzhiYWRjMTJmNzgxNmI1NmFmODQ4NmNhYWRiYTkwYTUzNGI",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/f357578badc12f7816b56af8486caadba90a534b",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/f357578badc12f7816b56af8486caadba90a534b",
+      "tree": {
+        "sha": "8e8b7e4bcc68946fa5a5d3abb60441085bc59db3",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/8e8b7e4bcc68946fa5a5d3abb60441085bc59db3"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree 8e8b7e4bcc68946fa5a5d3abb60441085bc59db3\nparent f3a612f9016fe1f59c73d6059274bea8025b8940\nauthor furszy <matiasfurszyfer@protonmail.com> 1709125069 -0300\ncommitter furszy <matiasfurszyfer@protonmail.com> 1709153927 -0300\n\ngui: clientModel, destroy boost signals during shutdown\n\nSimpler and safer code.\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEEA++0fqwRHQpmlZfQXdI8zGhqpiMFAmXfnocACgkQXdI8zGhq\npiMNDRAAso4LVOMwznZuLzi6+5Ke30Y+/+Io6ERTR7Uev8vnqIArbAyTIJ0ZPDaD\nNrPfUdJNODRl6FgTe0kqhvwoPbKuiqJT8hwgWjN8zpFlus2FIsKLpKEw6d59fVpH\nlx246RpvHkt5bBh/f5kW39DBgVFuiUZCkQJ5xdkyieG/rE7B08JSr69DTTn5111E\nKkWL4JjXu6KfHAzzG9qnfqTs4tuT+EPRkFr47hZUQCFLiSlxqik5nqAHIQKK5G7T\nX3BxncsDwgydGtw2DA7rV44QEEp6qXy8iEsU/p7fd06TBHwp823znCs+9xB2WV4W\n0JBK4aHc9mbni3fEnpifCQF9Muinmu7CznerU+Po/qrCc06JHsbSucq+lrFyEz+k\nC/N6MBeyv9kYKbOrZMFLQdikc+w9reCjY/BSyY7jOjLWPV/Q1WXPdjjZuZtHfj1h\nIDr4DQ4jM0ZblsNZe6f599h1xVwjSL/uZoNnnpZbv0uUykyGrl2Aqv7POn3nlHx0\nTJUNkWE3akLrmPuS5miTwFVJuSbA9Ee+qrQfe5nfXSneAdA6bO3IaEQVOurSZ3rC\nJJQPv4reS2fM5dnKoRuOuXepv8q9w9nPZYkaqUoZuBS8aFYhjQElsiSYIffslxs5\nBU0fahkVkZcXhOdy2xwX/pR86coNpnpV9x6bo+Ngjh3zWyhFNNw=\n=yI4H\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/f3a612f9016fe1f59c73d6059274bea8025b8940",
+          "sha": "f3a612f9016fe1f59c73d6059274bea8025b8940",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/f3a612f9016fe1f59c73d6059274bea8025b8940"
+        }
+      ],
+      "message": "gui: clientModel, destroy boost signals during shutdown\n\nSimpler and safer code.",
+      "committer": {
+        "name": "furszy",
+        "email": "matiasfurszyfer@protonmail.com",
+        "date": "2024-02-28T20:58:47Z"
+      },
+      "author": {
+        "name": "furszy",
+        "email": "matiasfurszyfer@protonmail.com",
+        "date": "2024-02-28T12:57:49Z"
+      },
+      "sha": "f357578badc12f7816b56af8486caadba90a534b"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 11957477366,
+      "node_id": "HRFPE_lADOEEET9c6ArteDzwAAAALIuJ_2",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/11957477366",
+      "actor": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-02-28T20:59:03Z"
     }
   ],
   "comments": [
@@ -676,7 +705,7 @@
       "path": "src/qt/bitcoingui.cpp",
       "position": 4,
       "original_position": 4,
-      "commit_id": "4b47c785e0adfb946b9874fb7d6c76e68471868b",
+      "commit_id": "f357578badc12f7816b56af8486caadba90a534b",
       "original_commit_id": "a568d6e44b8bbdcd0f4c36640f43847016079260",
       "in_reply_to_id": null,
       "user": {
@@ -728,7 +757,7 @@
       "path": "src/qt/bitcoingui.cpp",
       "position": 4,
       "original_position": 4,
-      "commit_id": "4b47c785e0adfb946b9874fb7d6c76e68471868b",
+      "commit_id": "f357578badc12f7816b56af8486caadba90a534b",
       "original_commit_id": "a568d6e44b8bbdcd0f4c36640f43847016079260",
       "in_reply_to_id": 1505961330,
       "user": {
@@ -780,7 +809,7 @@
       "path": "src/qt/bitcoingui.cpp",
       "position": 4,
       "original_position": 4,
-      "commit_id": "4b47c785e0adfb946b9874fb7d6c76e68471868b",
+      "commit_id": "f357578badc12f7816b56af8486caadba90a534b",
       "original_commit_id": "a568d6e44b8bbdcd0f4c36640f43847016079260",
       "in_reply_to_id": 1505961330,
       "user": {
@@ -832,7 +861,7 @@
       "path": "src/qt/bitcoingui.cpp",
       "position": 4,
       "original_position": 4,
-      "commit_id": "4b47c785e0adfb946b9874fb7d6c76e68471868b",
+      "commit_id": "f357578badc12f7816b56af8486caadba90a534b",
       "original_commit_id": "a568d6e44b8bbdcd0f4c36640f43847016079260",
       "in_reply_to_id": 1505961330,
       "user": {
@@ -884,7 +913,7 @@
       "path": "src/qt/bitcoingui.cpp",
       "position": 4,
       "original_position": 4,
-      "commit_id": "4b47c785e0adfb946b9874fb7d6c76e68471868b",
+      "commit_id": "f357578badc12f7816b56af8486caadba90a534b",
       "original_commit_id": "a568d6e44b8bbdcd0f4c36640f43847016079260",
       "in_reply_to_id": 1505961330,
       "user": {
@@ -936,7 +965,7 @@
       "path": "src/qt/bitcoingui.cpp",
       "position": 4,
       "original_position": 4,
-      "commit_id": "4b47c785e0adfb946b9874fb7d6c76e68471868b",
+      "commit_id": "f357578badc12f7816b56af8486caadba90a534b",
       "original_commit_id": "a568d6e44b8bbdcd0f4c36640f43847016079260",
       "in_reply_to_id": 1505961330,
       "user": {
@@ -988,7 +1017,7 @@
       "path": "src/qt/bitcoingui.cpp",
       "position": 4,
       "original_position": 4,
-      "commit_id": "4b47c785e0adfb946b9874fb7d6c76e68471868b",
+      "commit_id": "f357578badc12f7816b56af8486caadba90a534b",
       "original_commit_id": "a568d6e44b8bbdcd0f4c36640f43847016079260",
       "in_reply_to_id": 1505961330,
       "user": {
