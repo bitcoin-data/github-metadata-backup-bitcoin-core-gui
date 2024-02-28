@@ -41,7 +41,7 @@
     "body": "Fixing #800.\r\n\r\nDuring shutdown, already queue events dispatched from the backend such\r\n'numConnectionsChanged' and 0networkActiveChanged' could try to access\r\nthe clientModel object, which might not exist because we manually delete\r\nit inside 'BitcoinApplication::requestShutdown()'.\r\n\r\nThis happen because boost does not clears the queued events when they arise\r\nconcurrently with the signal disconnection (see https://www.boost.org/doc/libs/1_55_0/doc/html/signals2/thread-safety.html).\r\nFrom the docs:\r\n1) \"Note that since we unlock the connection's mutex before executing its associated slot, it is possible a slot will still be executing after it has been disconnected by a [connection::disconnect](https://www.boost.org/doc/libs/1_55_0/doc/html/boost/signals2/connection.html#idp89761576-bb)(), if the disconnect was called concurrently with signal invocation.\"\r\n2)  \"The fact that concurrent signal invocations use the same combiner object means you need to insure any custom combiner you write is thread-safe\" \r\n\r\nSo, we need to guard `clientModel` before accessing it at the handler side.",
     "labels": [],
     "created_at": "2024-02-28T13:12:06Z",
-    "updated_at": "2024-02-28T16:58:15Z",
+    "updated_at": "2024-02-28T17:48:46Z",
     "mergeable": true,
     "mergeable_state": "clean",
     "merge_commit_sha": "fc29d4e2c340cd5acc008c4c984c491fdfc01aa0",
@@ -324,7 +324,7 @@
     "deletions": 29,
     "changed_files": 4,
     "commits": 2,
-    "review_comments": 6,
+    "review_comments": 7,
     "comments": 1
   },
   "events": [
@@ -967,6 +967,58 @@
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1506288521"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/801"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 992,
+      "original_line": 992,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1506353996",
+      "pull_request_review_id": 1906898835,
+      "id": 1506353996,
+      "node_id": "PRRC_kwDOEEET9c5ZySNM",
+      "diff_hunk": "@@ -989,6 +989,7 @@ void BitcoinGUI::gotoLoadPSBT(bool from_clipboard)\n \n void BitcoinGUI::updateNetworkState()\n {\n+    if (!clientModel) return;",
+      "path": "src/qt/bitcoingui.cpp",
+      "position": 4,
+      "original_position": 4,
+      "commit_id": "4b47c785e0adfb946b9874fb7d6c76e68471868b",
+      "original_commit_id": "a568d6e44b8bbdcd0f4c36640f43847016079260",
+      "in_reply_to_id": 1505961330,
+      "user": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "A bit late but here again. Sorry, life called.\r\n\r\n> it means this check in this line could be removed?\r\n\r\nNot really. While `requestShutdown()` is being executed, no other task can be processed in the main thread but new tasks can be enqueued to be executed by the main thread after it. So, any event coming from the backend while  `requestShutdown()` is running (prior to the `unsubscribeFromCoreSignals` call) will be executed right after it finishes it.\r\nSo.. this means that we also need to guard `RPCConsole::updateNetworkState()` function for a nullptr `clientModel`. The same segfault could arise there too.\r\n\r\n> I think not if the events are queued, but again I'm not too sure.\r\n\r\nYes. Both events are running on the main thread. The diff is on who enqueues them: the quit action is appended by the main thread (when we press the quit button) and the \"network active change\" is enqueued by the backend thread, when the RPC changes the value.\r\n\r\n--------------\r\n\r\nThat being said, it is all theoretical. Let me do some tests.",
+      "created_at": "2024-02-28T17:48:45Z",
+      "updated_at": "2024-02-28T17:59:33Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/801#discussion_r1506353996",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1506353996"
         },
         "pull_request": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/801"
