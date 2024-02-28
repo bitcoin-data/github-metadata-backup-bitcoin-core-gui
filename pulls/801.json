@@ -41,9 +41,9 @@
     "body": "Fixing #800.\r\n\r\nDuring shutdown, already queue events dispatched from the backend such\r\n'numConnectionsChanged' and 0networkActiveChanged' could try to access\r\nthe clientModel object, which might not exist because we manually delete\r\nit inside 'BitcoinApplication::requestShutdown()'.\r\n\r\nThis happen because boost does not clears the queued events when they arise\r\nconcurrently with the signal disconnection (see https://www.boost.org/doc/libs/1_55_0/doc/html/signals2/thread-safety.html).\r\nFrom the docs:\r\n1) \"Note that since we unlock the connection's mutex before executing its associated slot, it is possible a slot will still be executing after it has been disconnected by a [connection::disconnect](https://www.boost.org/doc/libs/1_55_0/doc/html/boost/signals2/connection.html#idp89761576-bb)(), if the disconnect was called concurrently with signal invocation.\"\r\n2)  \"The fact that concurrent signal invocations use the same combiner object means you need to insure any custom combiner you write is thread-safe\" \r\n\r\nSo, we need to guard `clientModel` before accessing it at the handler side.",
     "labels": [],
     "created_at": "2024-02-28T13:12:06Z",
-    "updated_at": "2024-02-28T14:00:48Z",
+    "updated_at": "2024-02-28T16:58:15Z",
     "mergeable": true,
-    "mergeable_state": "unstable",
+    "mergeable_state": "clean",
     "merge_commit_sha": "fc29d4e2c340cd5acc008c4c984c491fdfc01aa0",
     "assignees": [],
     "requested_reviewers": [],
@@ -278,8 +278,8 @@
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
         "forks_count": 242,
-        "stargazers_count": 540,
-        "watchers_count": 540,
+        "stargazers_count": 541,
+        "watchers_count": 541,
         "size": 152162,
         "default_branch": "master",
         "open_issues_count": 160,
@@ -295,7 +295,7 @@
         "visibility": "public",
         "pushed_at": "2024-02-28T13:49:23Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-02-24T00:54:43Z",
+        "updated_at": "2024-02-28T16:28:24Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -324,7 +324,7 @@
     "deletions": 29,
     "changed_files": 4,
     "commits": 2,
-    "review_comments": 3,
+    "review_comments": 6,
     "comments": 1
   },
   "events": [
@@ -811,6 +811,162 @@
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1506012105"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/801"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 992,
+      "original_line": 992,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1506276598",
+      "pull_request_review_id": 1906771543,
+      "id": 1506276598,
+      "node_id": "PRRC_kwDOEEET9c5Zx_T2",
+      "diff_hunk": "@@ -989,6 +989,7 @@ void BitcoinGUI::gotoLoadPSBT(bool from_clipboard)\n \n void BitcoinGUI::updateNetworkState()\n {\n+    if (!clientModel) return;",
+      "path": "src/qt/bitcoingui.cpp",
+      "position": 4,
+      "original_position": 4,
+      "commit_id": "4b47c785e0adfb946b9874fb7d6c76e68471868b",
+      "original_commit_id": "a568d6e44b8bbdcd0f4c36640f43847016079260",
+      "in_reply_to_id": 1505961330,
+      "user": {
+        "login": "ryanofsky",
+        "id": 7133040,
+        "node_id": "MDQ6VXNlcjcxMzMwNDA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/7133040?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ryanofsky",
+        "html_url": "https://github.com/ryanofsky",
+        "followers_url": "https://api.github.com/users/ryanofsky/followers",
+        "following_url": "https://api.github.com/users/ryanofsky/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/ryanofsky/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/ryanofsky/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/ryanofsky/subscriptions",
+        "organizations_url": "https://api.github.com/users/ryanofsky/orgs",
+        "repos_url": "https://api.github.com/users/ryanofsky/repos",
+        "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "> What about events that are already running? Does the destructor ensure they are flushed/discarded, or will it just disconnect?\r\n\r\nI haven't looked in detail, but it seems like in principle, if any boost signal events are currently running, and they send asynchronous Q_EMIT qt signals that are run in the GUI event loop thread, there should not be a problem. That is assuming this method is always running the GUI event loop thread, and the code deleting clientModel is also running in the GUI event loop thread.",
+      "created_at": "2024-02-28T16:49:36Z",
+      "updated_at": "2024-02-28T16:49:36Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/801#discussion_r1506276598",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1506276598"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/801"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 992,
+      "original_line": 992,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1506282496",
+      "pull_request_review_id": 1906780813,
+      "id": 1506282496,
+      "node_id": "PRRC_kwDOEEET9c5ZyAwA",
+      "diff_hunk": "@@ -989,6 +989,7 @@ void BitcoinGUI::gotoLoadPSBT(bool from_clipboard)\n \n void BitcoinGUI::updateNetworkState()\n {\n+    if (!clientModel) return;",
+      "path": "src/qt/bitcoingui.cpp",
+      "position": 4,
+      "original_position": 4,
+      "commit_id": "4b47c785e0adfb946b9874fb7d6c76e68471868b",
+      "original_commit_id": "a568d6e44b8bbdcd0f4c36640f43847016079260",
+      "in_reply_to_id": 1505961330,
+      "user": {
+        "login": "maflcko",
+        "id": 6399679,
+        "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "Ok, but then it means this check in this line could be removed?\r\n\r\n",
+      "created_at": "2024-02-28T16:54:00Z",
+      "updated_at": "2024-02-28T16:54:00Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/801#discussion_r1506282496",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1506282496"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/801"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 992,
+      "original_line": 992,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1506288521",
+      "pull_request_review_id": 1906790436,
+      "id": 1506288521,
+      "node_id": "PRRC_kwDOEEET9c5ZyCOJ",
+      "diff_hunk": "@@ -989,6 +989,7 @@ void BitcoinGUI::gotoLoadPSBT(bool from_clipboard)\n \n void BitcoinGUI::updateNetworkState()\n {\n+    if (!clientModel) return;",
+      "path": "src/qt/bitcoingui.cpp",
+      "position": 4,
+      "original_position": 4,
+      "commit_id": "4b47c785e0adfb946b9874fb7d6c76e68471868b",
+      "original_commit_id": "a568d6e44b8bbdcd0f4c36640f43847016079260",
+      "in_reply_to_id": 1505961330,
+      "user": {
+        "login": "ryanofsky",
+        "id": 7133040,
+        "node_id": "MDQ6VXNlcjcxMzMwNDA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/7133040?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ryanofsky",
+        "html_url": "https://github.com/ryanofsky",
+        "followers_url": "https://api.github.com/users/ryanofsky/followers",
+        "following_url": "https://api.github.com/users/ryanofsky/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/ryanofsky/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/ryanofsky/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/ryanofsky/subscriptions",
+        "organizations_url": "https://api.github.com/users/ryanofsky/orgs",
+        "repos_url": "https://api.github.com/users/ryanofsky/repos",
+        "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "> Ok, but then it means this check in this line could be removed?\r\n\r\nI think not if the events are queued, but again I'm not too sure.",
+      "created_at": "2024-02-28T16:58:15Z",
+      "updated_at": "2024-02-28T16:58:15Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/801#discussion_r1506288521",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1506288521"
         },
         "pull_request": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/801"
