@@ -41,7 +41,7 @@
     "body": "Fixing #800.\r\n\r\nDuring shutdown, already queue events dispatched from the backend such\r\n'numConnectionsChanged' and 0networkActiveChanged' could try to access\r\nthe clientModel object, which might not exist because we manually delete\r\nit inside 'BitcoinApplication::requestShutdown()'.\r\n\r\nThis happen because boost does not clears the queued events when they arise\r\nconcurrently with the signal disconnection (see https://www.boost.org/doc/libs/1_55_0/doc/html/signals2/thread-safety.html).\r\nFrom the docs:\r\n1) \"Note that since we unlock the connection's mutex before executing its associated slot, it is possible a slot will still be executing after it has been disconnected by a [connection::disconnect](https://www.boost.org/doc/libs/1_55_0/doc/html/boost/signals2/connection.html#idp89761576-bb)(), if the disconnect was called concurrently with signal invocation.\"\r\n2)  \"The fact that concurrent signal invocations use the same combiner object means you need to insure any custom combiner you write is thread-safe\" \r\n\r\nSo, we need to guard `clientModel` before accessing it at the handler side.",
     "labels": [],
     "created_at": "2024-02-28T13:12:06Z",
-    "updated_at": "2024-02-28T13:58:28Z",
+    "updated_at": "2024-02-28T14:00:48Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merge_commit_sha": "fc29d4e2c340cd5acc008c4c984c491fdfc01aa0",
@@ -148,7 +148,7 @@
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 148333,
+        "size": 152201,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -324,7 +324,7 @@
     "deletions": 29,
     "changed_files": 4,
     "commits": 2,
-    "review_comments": 2,
+    "review_comments": 3,
     "comments": 1
   },
   "events": [
@@ -759,6 +759,58 @@
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1506006531"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/801"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 992,
+      "original_line": 992,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1506012105",
+      "pull_request_review_id": 1906346891,
+      "id": 1506012105,
+      "node_id": "PRRC_kwDOEEET9c5Zw-vJ",
+      "diff_hunk": "@@ -989,6 +989,7 @@ void BitcoinGUI::gotoLoadPSBT(bool from_clipboard)\n \n void BitcoinGUI::updateNetworkState()\n {\n+    if (!clientModel) return;",
+      "path": "src/qt/bitcoingui.cpp",
+      "position": 4,
+      "original_position": 4,
+      "commit_id": "4b47c785e0adfb946b9874fb7d6c76e68471868b",
+      "original_commit_id": "a568d6e44b8bbdcd0f4c36640f43847016079260",
+      "in_reply_to_id": 1505961330,
+      "user": {
+        "login": "maflcko",
+        "id": 6399679,
+        "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "What about events that are already running? Does the destructor ensure they are flushed/discarded, or will it just disconnect?",
+      "created_at": "2024-02-28T14:00:48Z",
+      "updated_at": "2024-02-28T14:00:48Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/801#discussion_r1506012105",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1506012105"
         },
         "pull_request": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/801"
