@@ -51,7 +51,7 @@
       }
     ],
     "created_at": "2024-03-05T07:11:53Z",
-    "updated_at": "2024-03-11T15:55:36Z",
+    "updated_at": "2024-03-11T20:19:16Z",
     "closed_at": "2024-03-07T12:50:50Z",
     "mergeable_state": "unknown",
     "merged_at": "2024-03-07T12:50:49Z",
@@ -355,7 +355,7 @@
     "deletions": 19,
     "changed_files": 2,
     "commits": 2,
-    "review_comments": 1,
+    "review_comments": 2,
     "comments": 5
   },
   "events": [
@@ -1446,6 +1446,58 @@
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1519964559"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/803"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 95,
+      "original_line": 95,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1520381088",
+      "pull_request_review_id": 1929141187,
+      "id": 1520381088,
+      "node_id": "PRRC_kwDOEEET9c5anyyg",
+      "diff_hunk": "@@ -85,37 +85,45 @@ int main(int argc, char* argv[])\n         setenv(\"QT_QPA_PLATFORM\", \"minimal\", 0 /* overwrite */);\n     #endif\n \n-    BitcoinApplication app;\n-    app.setOrganizationName(QAPP_ORG_NAME);\n-    app.setApplicationName(QAPP_APP_NAME_DEFAULT \"-test\");\n-    app.createNode(*init);\n+\n+    QCoreApplication::setOrganizationName(QAPP_ORG_NAME);\n+    QCoreApplication::setApplicationName(QAPP_APP_NAME_DEFAULT \"-test\");\n \n     int num_test_failures{0};\n \n-    AppTests app_tests(app);\n-    num_test_failures += QTest::qExec(&app_tests);\n+    {\n+        BitcoinApplication app;",
+      "path": "src/qt/test/test_main.cpp",
+      "position": 17,
+      "original_position": 17,
+      "commit_id": "0dcbad341b0a8420a899c6dce0db56dd0deaa036",
+      "original_commit_id": "0dcbad341b0a8420a899c6dce0db56dd0deaa036",
+      "in_reply_to_id": 1519964559,
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "It was a required change because `~BitcoinApplication` calls `~BitcoinGUI`, which in turn saves the window geometry to the settings.",
+      "created_at": "2024-03-11T20:19:16Z",
+      "updated_at": "2024-03-11T20:19:16Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/803#discussion_r1520381088",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1520381088"
         },
         "pull_request": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/803"
