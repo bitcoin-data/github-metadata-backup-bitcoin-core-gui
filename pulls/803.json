@@ -51,7 +51,7 @@
       }
     ],
     "created_at": "2024-03-05T07:11:53Z",
-    "updated_at": "2024-03-07T12:51:08Z",
+    "updated_at": "2024-03-11T15:55:36Z",
     "closed_at": "2024-03-07T12:50:50Z",
     "mergeable_state": "unknown",
     "merged_at": "2024-03-07T12:50:49Z",
@@ -179,7 +179,7 @@
         "forks_count": 2,
         "stargazers_count": 4,
         "watchers_count": 4,
-        "size": 155401,
+        "size": 155560,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -308,12 +308,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 242,
-        "stargazers_count": 544,
-        "watchers_count": 544,
-        "size": 154557,
+        "forks_count": 243,
+        "stargazers_count": 546,
+        "watchers_count": 546,
+        "size": 154971,
         "default_branch": "master",
-        "open_issues_count": 157,
+        "open_issues_count": 158,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -324,9 +324,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-03-07T12:50:48Z",
+        "pushed_at": "2024-03-11T14:29:41Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-03-05T18:05:49Z",
+        "updated_at": "2024-03-10T00:49:04Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -355,7 +355,7 @@
     "deletions": 19,
     "changed_files": 2,
     "commits": 2,
-    "review_comments": 0,
+    "review_comments": 1,
     "comments": 5
   },
   "events": [
@@ -884,7 +884,7 @@
           "state": "open",
           "state_reason": null,
           "title": "cmake: Build `test_bitcoin-qt` executable",
-          "body": "A new configuration option is `BUILD_GUI_TESTS`.\r\n\r\nBased on https://github.com/hebasto/bitcoin/pull/103.",
+          "body": "A new configuration option is `BUILD_GUI_TESTS`.\r\n\r\n---\r\n\r\n**Native Windows / MSVC Notes:**\r\n1. vcpkg configures Qt with `-opengl dynamic`, which makes the \"minimal\" platform plugin unusable due to internal Qt bugs.\r\n2. `ctest` workarounds this issue by setting the environment variable `QT_QPA_PLATFORM=windows`.\r\n3. This approach works nice in the CI for both `x64-windows` and `x64-windows-static` triplets. Please note that `test_bitcoin-qt.exe` fails to run in the CI environment on the master branch.\r\n4. One who is willing to debug Qt with the \"minimal\" platform plugin could run the `test_bitcoin-qt.exe` directly (not driven by `ctest`).",
           "user": {
             "login": "hebasto",
             "id": 32963518,
@@ -919,7 +919,7 @@
           "assignees": [],
           "author_association": "OWNER",
           "locked": false,
-          "comments": 5,
+          "comments": 9,
           "pull_request": {
             "url": "https://api.github.com/repos/hebasto/bitcoin/pulls/101",
             "html_url": "https://github.com/hebasto/bitcoin/pull/101",
@@ -927,7 +927,7 @@
             "patch_url": "https://github.com/hebasto/bitcoin/pull/101.patch"
           },
           "created_at": "2024-02-11T16:06:21Z",
-          "updated_at": "2024-03-05T07:59:15Z"
+          "updated_at": "2024-03-10T22:28:51Z"
         },
         "type": "issue"
       }
@@ -1285,7 +1285,178 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-03-07T12:51:08Z"
+    },
+    {
+      "event": "cross-referenced",
+      "id": null,
+      "node_id": null,
+      "url": null,
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-03-08T14:13:18Z",
+      "updated_at": "2024-03-08T14:13:18Z",
+      "source": {
+        "issue": {
+          "id": 2176118840,
+          "node_id": "PR_kwDOCIlA6s5pFitG",
+          "url": "https://api.github.com/repos/hebasto/bitcoin/issues/112",
+          "repository_url": "https://api.github.com/repos/hebasto/bitcoin",
+          "labels_url": "https://api.github.com/repos/hebasto/bitcoin/issues/112/labels%7B/name%7D",
+          "comments_url": "https://api.github.com/repos/hebasto/bitcoin/issues/112/comments",
+          "events_url": "https://api.github.com/repos/hebasto/bitcoin/issues/112/events",
+          "html_url": "https://github.com/hebasto/bitcoin/pull/112",
+          "number": 112,
+          "state": "closed",
+          "state_reason": null,
+          "title": "cmake: Regular rebasing of the `cmake-staging` branch",
+          "body": "This is the [cmake-staging](https://github.com/hebasto/bitcoin/commit/2716ccf79a8781478965bad5c15da67fde7fc433) branch rebased on the recent [bitcoin/master](https://github.com/bitcoin/bitcoin/commit/54172c688cbea09ad8baceb712a55cb3e6e3976b) one with the squashed \"!fixup\" and \"FIXUP:\" commits.\r\n\r\nThe goal is to incorporate changes from the following PRs:\r\n- https://github.com/bitcoin/bitcoin/pull/29263\r\n- https://github.com/bitcoin/bitcoin/pull/29577\r\n- https://github.com/bitcoin-core/gui/pull/803\r\n\r\nSteps to reproduce:\r\n1. Run the command as follows:\r\n```\r\ngit checkout 2716ccf79a8781478965bad5c15da67fde7fc433\r\ngit rebase -i --autosquash 54172c688cbea09ad8baceb712a55cb3e6e3976b\r\n```\r\nThere are a few conflicts that have to be resolved.\r\n\r\nAt this point the diff between `HEAD` and this PR branch must coincides with changes in the following item 4.\r\n\r\n2. Manually move changes from \"FIXUP:\" commits to the appropriate previous ones.\r\n\r\n3. Reorder the recent commits to pop up the CI one.\r\n\r\n4. Backport changes from https://github.com/bitcoin/bitcoin/pull/29579.\r\n",
+          "user": {
+            "login": "hebasto",
+            "id": 32963518,
+            "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+            "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/hebasto",
+            "html_url": "https://github.com/hebasto",
+            "followers_url": "https://api.github.com/users/hebasto/followers",
+            "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+            "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+            "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+            "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+            "organizations_url": "https://api.github.com/users/hebasto/orgs",
+            "repos_url": "https://api.github.com/users/hebasto/repos",
+            "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+            "received_events_url": "https://api.github.com/users/hebasto/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "labels": [],
+          "assignees": [],
+          "author_association": "OWNER",
+          "locked": false,
+          "comments": 3,
+          "pull_request": {
+            "url": "https://api.github.com/repos/hebasto/bitcoin/pulls/112",
+            "html_url": "https://github.com/hebasto/bitcoin/pull/112",
+            "diff_url": "https://github.com/hebasto/bitcoin/pull/112.diff",
+            "patch_url": "https://github.com/hebasto/bitcoin/pull/112.patch"
+          },
+          "closed_at": "2024-03-08T15:22:48Z",
+          "created_at": "2024-03-08T14:10:11Z",
+          "updated_at": "2024-03-08T15:22:48Z"
+        },
+        "type": "issue"
+      }
+    },
+    {
+      "event": "reviewed",
+      "id": 1928235164,
+      "node_id": "PRR_kwDOEEET9c5y7oic",
+      "url": null,
+      "actor": null,
+      "commit_id": "0dcbad341b0a8420a899c6dce0db56dd0deaa036",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "CONTRIBUTOR",
+      "body": "Post-merge code review ACK 0dcbad341b0a8420a899c6dce0db56dd0deaa036\r\n",
+      "user": {
+        "login": "ryanofsky",
+        "id": 7133040,
+        "node_id": "MDQ6VXNlcjcxMzMwNDA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/7133040?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ryanofsky",
+        "html_url": "https://github.com/ryanofsky",
+        "followers_url": "https://api.github.com/users/ryanofsky/followers",
+        "following_url": "https://api.github.com/users/ryanofsky/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/ryanofsky/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/ryanofsky/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/ryanofsky/subscriptions",
+        "organizations_url": "https://api.github.com/users/ryanofsky/orgs",
+        "repos_url": "https://api.github.com/users/ryanofsky/repos",
+        "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/803#pullrequestreview-1928235164",
+      "submitted_at": "2024-03-11T15:55:36Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/803"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1519964559",
+      "pull_request_review_id": 1928235164,
+      "id": 1519964559,
+      "node_id": "PRRC_kwDOEEET9c5amNGP",
+      "diff_hunk": "@@ -85,37 +85,45 @@ int main(int argc, char* argv[])\n         setenv(\"QT_QPA_PLATFORM\", \"minimal\", 0 /* overwrite */);\n     #endif\n \n-    BitcoinApplication app;\n-    app.setOrganizationName(QAPP_ORG_NAME);\n-    app.setApplicationName(QAPP_APP_NAME_DEFAULT \"-test\");\n-    app.createNode(*init);\n+\n+    QCoreApplication::setOrganizationName(QAPP_ORG_NAME);\n+    QCoreApplication::setApplicationName(QAPP_APP_NAME_DEFAULT \"-test\");\n \n     int num_test_failures{0};\n \n-    AppTests app_tests(app);\n-    num_test_failures += QTest::qExec(&app_tests);\n+    {\n+        BitcoinApplication app;",
+      "path": "src/qt/test/test_main.cpp",
+      "position": 17,
+      "original_position": 17,
+      "commit_id": "0dcbad341b0a8420a899c6dce0db56dd0deaa036",
+      "original_commit_id": "0dcbad341b0a8420a899c6dce0db56dd0deaa036",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "ryanofsky",
+        "id": 7133040,
+        "node_id": "MDQ6VXNlcjcxMzMwNDA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/7133040?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ryanofsky",
+        "html_url": "https://github.com/ryanofsky",
+        "followers_url": "https://api.github.com/users/ryanofsky/followers",
+        "following_url": "https://api.github.com/users/ryanofsky/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/ryanofsky/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/ryanofsky/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/ryanofsky/subscriptions",
+        "organizations_url": "https://api.github.com/users/ryanofsky/orgs",
+        "repos_url": "https://api.github.com/users/ryanofsky/repos",
+        "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "In commit \"qt, test: Clean settings after tests\" (0dcbad341b0a8420a899c6dce0db56dd0deaa036)\r\n\r\nIt seems reasonable to move the `BitcoinApplication app` into a nested scope, so BitcoinApplication is fully destroyed before `settings.clear()` is called. But I don't understand if this was a required change, or just cleanup, since I would expect the `settings.clear()` call to work in practice either way.",
+      "created_at": "2024-03-11T15:55:17Z",
+      "updated_at": "2024-03-11T15:55:36Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/803#discussion_r1519964559",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1519964559"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/803"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 95,
+      "original_line": 95,
+      "side": "RIGHT"
+    }
+  ]
 }
