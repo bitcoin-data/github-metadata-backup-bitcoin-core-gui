@@ -39,20 +39,11 @@
       "site_admin": false
     },
     "body": "Bundle all function's outputs inside the `util::Result` returned object.\r\n\r\nRemovals:\r\n- The input-output 'change_pos' ref arg from `createTransaction`, which has been a source of bugs in the past.\r\n- The 'fee' ref arg from `createTransaction`, which is currently only set when the transaction creation process succeeds.\r\n- The currently unreachable `AmountWithFeeExceedsBalance` error (more info about its re-introduction at https://github.com/bitcoin/bitcoin/pull/25269).\r\n\r\nAdditionally, this PR moves the `CreatedTransactionResult` struct into its own file. This change is made to avoid further expanding the GUI dependencies on `wallet.h`. Structurally, the GUI should only access the model/interfaces and never the wallet directly.",
-    "labels": [
-      {
-        "id": 5353934559,
-        "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
-        "name": "CI failed",
-        "color": "ededed",
-        "default": false
-      }
-    ],
+    "labels": [],
     "created_at": "2024-03-22T12:55:51Z",
-    "updated_at": "2024-03-22T14:46:58Z",
+    "updated_at": "2024-03-22T15:37:37Z",
     "mergeable": true,
-    "mergeable_state": "unstable",
+    "mergeable_state": "clean",
     "merge_commit_sha": "4a8d3f71a9f5f6e627a71d39a2daa5c418854be3",
     "assignees": [],
     "requested_reviewers": [],
@@ -781,6 +772,39 @@
           "updated_at": "2024-03-22T14:48:33Z"
         },
         "type": "issue"
+      }
+    },
+    {
+      "event": "unlabeled",
+      "id": 12217507151,
+      "node_id": "UNLE_lADOEEET9c6DRom7zwAAAALYOF1P",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/12217507151",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-03-22T15:37:37Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
       }
     }
   ],
