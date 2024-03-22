@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/808/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/808/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/c6fa0ab9c9ba8096de7abf97cace1308d189f189",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/960b2d401e2fb4b657446305df7a4a0de50ece67",
     "number": 808,
     "state": "open",
     "locked": false,
@@ -41,10 +41,10 @@
     "body": "Legacy addresses are less and less common these days and not recommended to use, so it seems senseful to also reflect that in the example addresses and update to the most recent address / output type (bech32m / P2TR). Also, as I couldn't see any value in computing these at runtime, they are pre-generated. This was done with the following Python script, executed in `./test/functional` (it's also included in the commit body, though without the she-bang):\r\n```python\r\n#!/usr/bin/env python3\r\nfrom test_framework.segwit_addr import CHARSET, decode_segwit_address, encode_segwit_address\r\nfrom test_framework.messages import sha256\r\n\r\noutput_key = sha256(b'bitcoin dummy taproot output key')\r\nfor network, hrp in [('mainnet', 'bc'), ('signet', 'tb'), ('testnet', 'tb'), ('regtest', 'bcrt')]:\r\n    dummy_address = encode_segwit_address(hrp, 1, output_key)\r\n    while decode_segwit_address(hrp, dummy_address) != (None, None):\r\n        last_char = CHARSET[(CHARSET.index(dummy_address[-1]) + 1) % 32]\r\n        dummy_address = dummy_address[:-1] + last_char\r\n    print(f'{network:7} example address: {dummy_address}')\r\n```\r\n\r\nNote that the last bech32 character is modified in order to make the checksum fail.\r\n\r\nmaster (mainnet):\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/91535/8c94cc1e-5649-47ed-8b2d-33b18654f6a2)\r\n\r\nPR (mainnet):\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/91535/1ce208a6-1218-4850-93e0-5323c73e9049)\r\n",
     "labels": [],
     "created_at": "2024-03-22T16:55:49Z",
-    "updated_at": "2024-03-22T16:55:53Z",
+    "updated_at": "2024-03-22T17:41:03Z",
     "mergeable": true,
     "mergeable_state": "unstable",
-    "merge_commit_sha": "df09aabdb7cbfbb957cc7d2ff4bc7335d513aa4b",
+    "merge_commit_sha": "535e916181b4930e5653f5210f862c5a2b156c0f",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -52,7 +52,7 @@
     "head": {
       "label": "theStack:example-addr_update_to_p2tr",
       "ref": "example-addr_update_to_p2tr",
-      "sha": "c6fa0ab9c9ba8096de7abf97cace1308d189f189",
+      "sha": "960b2d401e2fb4b657446305df7a4a0de50ece67",
       "user": {
         "login": "theStack",
         "id": 91535,
@@ -147,7 +147,7 @@
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 155916,
+        "size": 156117,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -160,7 +160,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-03-22T16:34:03Z",
+        "pushed_at": "2024-03-22T17:08:03Z",
         "created_at": "2023-03-13T22:40:28Z",
         "updated_at": "2023-03-11T23:33:45Z",
         "license": {
@@ -292,7 +292,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-03-22T16:55:50Z",
+        "pushed_at": "2024-03-22T17:53:57Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2024-03-22T02:39:29Z",
         "license": {
@@ -319,7 +319,7 @@
     },
     "author_association": "CONTRIBUTOR",
     "draft": false,
-    "additions": 13,
+    "additions": 11,
     "deletions": 14,
     "changed_files": 1,
     "commits": 1,
@@ -327,46 +327,6 @@
     "comments": 1
   },
   "events": [
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGM2ZmEwYWI5YzliYTgwOTZkZTdhYmY5N2NhY2UxMzA4ZDE4OWYxODk",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/c6fa0ab9c9ba8096de7abf97cace1308d189f189",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/c6fa0ab9c9ba8096de7abf97cace1308d189f189",
-      "tree": {
-        "sha": "fde95fb8343e974251fd3a1ac92f9bb5c0cdbdc3",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/fde95fb8343e974251fd3a1ac92f9bb5c0cdbdc3"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/bf1b6383dbbfdd0c96a161d4693a48bf3a6b6150",
-          "sha": "bf1b6383dbbfdd0c96a161d4693a48bf3a6b6150",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/bf1b6383dbbfdd0c96a161d4693a48bf3a6b6150"
-        }
-      ],
-      "message": "gui: change example address from legacy (P2PKH) to bech32m (P2TR)\n\nThe dummy addresses have been computed with the following Python script\n(executed under ./test/functional):\n\n--------------------------------------------------------------------------------------------------------\nfrom test_framework.segwit_addr import CHARSET, decode_segwit_address, encode_segwit_address\nfrom test_framework.messages import sha256\n\noutput_key = sha256(b'bitcoin dummy taproot output key')\nfor network, hrp in [('mainnet', 'bc'), ('signet', 'tb'), ('testnet', 'tb'), ('regtest', 'bcrt')]:\n    dummy_address = encode_segwit_address(hrp, 1, output_key)\n    while decode_segwit_address(hrp, dummy_address) != (None, None):\n        last_char = CHARSET[(CHARSET.index(dummy_address[-1]) + 1) % 32]\n        dummy_address = dummy_address[:-1] + last_char\n    print(f'{network:7} example address: {dummy_address}')\n--------------------------------------------------------------------------------------------------------",
-      "committer": {
-        "name": "Sebastian Falbesoner",
-        "email": "sebastian.falbesoner@gmail.com",
-        "date": "2024-03-22T16:33:57Z"
-      },
-      "author": {
-        "name": "Sebastian Falbesoner",
-        "email": "sebastian.falbesoner@gmail.com",
-        "date": "2024-03-22T09:28:53Z"
-      },
-      "sha": "c6fa0ab9c9ba8096de7abf97cace1308d189f189"
-    },
     {
       "event": "commented",
       "id": 2015510084,
@@ -395,9 +355,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-03-22T16:55:52Z",
-      "updated_at": "2024-03-22T16:55:52Z",
+      "updated_at": "2024-03-22T17:41:03Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\nA summary of reviews will appear here.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [MarnixCroes](https://github.com/bitcoin-core/gui/pull/808#pullrequestreview-1955403375) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -420,6 +380,111 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/808#issuecomment-2015510084",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/808"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDk2MGIyZDQwMWUyZmI0YjY1NzQ0NjMwNWRmN2E0YTBkZTUwZWNlNjc",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/960b2d401e2fb4b657446305df7a4a0de50ece67",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/960b2d401e2fb4b657446305df7a4a0de50ece67",
+      "tree": {
+        "sha": "155a5ac5594f07a1550c916cabcf1b9ba125172b",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/155a5ac5594f07a1550c916cabcf1b9ba125172b"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/bf1b6383dbbfdd0c96a161d4693a48bf3a6b6150",
+          "sha": "bf1b6383dbbfdd0c96a161d4693a48bf3a6b6150",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/bf1b6383dbbfdd0c96a161d4693a48bf3a6b6150"
+        }
+      ],
+      "message": "gui: change example address from legacy (P2PKH) to bech32m (P2TR)\n\nThe dummy addresses have been computed with the following Python script\n(executed under ./test/functional):\n\n--------------------------------------------------------------------------------------------------------\nfrom test_framework.segwit_addr import CHARSET, decode_segwit_address, encode_segwit_address\nfrom test_framework.messages import sha256\n\noutput_key = sha256(b'bitcoin dummy taproot output key')\nfor network, hrp in [('mainnet', 'bc'), ('signet', 'tb'), ('testnet', 'tb'), ('regtest', 'bcrt')]:\n    dummy_address = encode_segwit_address(hrp, 1, output_key)\n    while decode_segwit_address(hrp, dummy_address) != (None, None):\n        last_char = CHARSET[(CHARSET.index(dummy_address[-1]) + 1) % 32]\n        dummy_address = dummy_address[:-1] + last_char\n    print(f'{network:7} example address: {dummy_address}')\n--------------------------------------------------------------------------------------------------------",
+      "committer": {
+        "name": "Sebastian Falbesoner",
+        "email": "sebastian.falbesoner@gmail.com",
+        "date": "2024-03-22T17:07:35Z"
+      },
+      "author": {
+        "name": "Sebastian Falbesoner",
+        "email": "sebastian.falbesoner@gmail.com",
+        "date": "2024-03-22T09:28:53Z"
+      },
+      "sha": "960b2d401e2fb4b657446305df7a4a0de50ece67"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 12218591653,
+      "node_id": "HRFPE_lADOEEET9c6DTeuazwAAAALYSOml",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/12218591653",
+      "actor": {
+        "login": "theStack",
+        "id": 91535,
+        "node_id": "MDQ6VXNlcjkxNTM1",
+        "avatar_url": "https://avatars.githubusercontent.com/u/91535?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/theStack",
+        "html_url": "https://github.com/theStack",
+        "followers_url": "https://api.github.com/users/theStack/followers",
+        "following_url": "https://api.github.com/users/theStack/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/theStack/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/theStack/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/theStack/subscriptions",
+        "organizations_url": "https://api.github.com/users/theStack/orgs",
+        "repos_url": "https://api.github.com/users/theStack/repos",
+        "events_url": "https://api.github.com/users/theStack/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/theStack/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-03-22T17:08:04Z"
+    },
+    {
+      "event": "reviewed",
+      "id": 1955403375,
+      "node_id": "PRR_kwDOEEET9c50jRZv",
+      "url": null,
+      "actor": null,
+      "commit_id": "960b2d401e2fb4b657446305df7a4a0de50ece67",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "CONTRIBUTOR",
+      "body": "cACK\r\n\r\nUsing the default address type (bech32) for this makes the most sense I think, instead of the latest, no?",
+      "user": {
+        "login": "MarnixCroes",
+        "id": 93143998,
+        "node_id": "U_kgDOBY1Dvg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/93143998?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/MarnixCroes",
+        "html_url": "https://github.com/MarnixCroes",
+        "followers_url": "https://api.github.com/users/MarnixCroes/followers",
+        "following_url": "https://api.github.com/users/MarnixCroes/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/MarnixCroes/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/MarnixCroes/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/MarnixCroes/subscriptions",
+        "organizations_url": "https://api.github.com/users/MarnixCroes/orgs",
+        "repos_url": "https://api.github.com/users/MarnixCroes/repos",
+        "events_url": "https://api.github.com/users/MarnixCroes/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/MarnixCroes/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/808#pullrequestreview-1955403375",
+      "submitted_at": "2024-03-22T17:41:01Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/808"
     }
   ],
   "comments": []
