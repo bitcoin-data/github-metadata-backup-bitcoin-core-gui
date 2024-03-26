@@ -41,10 +41,10 @@
     "body": "This is a continuation of https://github.com/bitcoin-core/gui/pull/37\r\nThis is a simple change, but imho necessary because it leads to confusion.\r\nThe objective of this change is to provide a better description for the tooltip for the \"Available Balance\" balance because the current version on master mentions the word \"You current spendable balance\" which is a bit misleading, because that balance is not always spendable , or not always yours on watch only wallets.\r\n",
     "labels": [],
     "created_at": "2024-02-09T04:31:48Z",
-    "updated_at": "2024-03-18T23:33:57Z",
+    "updated_at": "2024-03-26T22:26:41Z",
     "mergeable": true,
     "mergeable_state": "clean",
-    "merge_commit_sha": "79bc4bdec50d8df4e212953a35f474483c1b7924",
+    "merge_commit_sha": "70fe89882c68798ac83811142f445876f2658b81",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -277,12 +277,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 243,
-        "stargazers_count": 547,
-        "watchers_count": 547,
-        "size": 155864,
+        "forks_count": 247,
+        "stargazers_count": 551,
+        "watchers_count": 551,
+        "size": 156596,
         "default_branch": "master",
-        "open_issues_count": 158,
+        "open_issues_count": 161,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -293,9 +293,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-03-18T18:24:50Z",
+        "pushed_at": "2024-03-26T13:45:40Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-03-13T11:29:09Z",
+        "updated_at": "2024-03-23T16:09:14Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -324,7 +324,7 @@
     "deletions": 0,
     "changed_files": 1,
     "commits": 1,
-    "review_comments": 1,
+    "review_comments": 2,
     "comments": 2
   },
   "events": [
@@ -854,6 +854,58 @@
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1496623669"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/792"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 203,
+      "original_line": 203,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1540188502",
+      "pull_request_review_id": 1961868836,
+      "id": 1540188502,
+      "node_id": "PRRC_kwDOEEET9c5bzWlW",
+      "diff_hunk": "@@ -197,7 +197,10 @@ void OverviewPage::setBalance(const interfaces::WalletBalances& balances)\n     BitcoinUnit unit = walletModel->getOptionsModel()->getDisplayUnit();\n     if (walletModel->wallet().isLegacy()) {\n         if (walletModel->wallet().privateKeysDisabled()) {\n+            ui->labelSpendable->setText(tr(\"Watch-only:\"));\n+            ui->labelSpendable->setVisible(true);\n             ui->labelBalance->setText(BitcoinUnits::formatWithPrivacy(unit, balances.watch_only_balance, BitcoinUnits::SeparatorStyle::ALWAYS, m_privacy));\n+            ui->labelBalance->setToolTip(tr(\"Your current balance in watch-only addresses\"));",
+      "path": "src/qt/overviewpage.cpp",
+      "position": 7,
+      "original_position": 7,
+      "commit_id": "2e24c0cc107ed14d47e6e5aacbd14a6f68d0e384",
+      "original_commit_id": "2e24c0cc107ed14d47e6e5aacbd14a6f68d0e384",
+      "in_reply_to_id": 1496623669,
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "Perhaps \"Your current watch-only balance\" or \"Your current watch-only wallet balance\"?",
+      "created_at": "2024-03-26T22:26:41Z",
+      "updated_at": "2024-03-26T22:26:42Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/792#discussion_r1540188502",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1540188502"
         },
         "pull_request": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/792"
