@@ -38,9 +38,9 @@
     "assignees": [],
     "author_association": "CONTRIBUTOR",
     "locked": false,
-    "comments": 12,
+    "comments": 13,
     "created_at": "2024-03-20T18:59:19Z",
-    "updated_at": "2024-03-27T21:35:49Z"
+    "updated_at": "2024-03-27T22:50:01Z"
   },
   "events": [
     {
@@ -944,6 +944,60 @@
         "site_admin": false
       },
       "html_url": "https://github.com/bitcoin-core/gui/issues/805#issuecomment-2024032699",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/805"
+    },
+    {
+      "event": "commented",
+      "id": 2024113934,
+      "node_id": "IC_kwDOEEET9c54pYcO",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2024113934",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-03-27T22:50:00Z",
+      "updated_at": "2024-03-27T22:50:00Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "<details>\r\n<summary>Yep, \"subtract fee from amount\" to be ticked was</summary>\r\n\r\n```\r\n./src/qt/bitcoin-qt -regtest -datadir=$QT_ISSUE_806_TEST_DIR\r\n\r\nWarning: Ignoring XDG_SESSION_TYPE=wayland on Gnome. Use QT_QPA_PLATFORM=wayland to run on Wayland anyway.\r\nwallet/interfaces.cpp:289:57: runtime error: implicit conversion from type 'int' of value -1 (32-bit, signed) to type 'unsigned int' changed the value to 4294967295 (32-bit, unsigned)\r\n    #0 0x63d87d6f373c in wallet::(anonymous namespace)::WalletImpl::createTransaction(std::vector<wallet::CRecipient, std::allocator<wallet::CRecipient> > const&, wallet::CCoinControl const&, bool, int&, long&) src/./src/wallet/interfaces.cpp:289:57\r\n    #1 0x63d87d1d5f61 in WalletModel::prepareTransaction(WalletModelTransaction&, wallet::CCoinControl const&) src/./src/qt/walletmodel.cpp:211:37\r\n    #2 0x63d87d22abb8 in SendCoinsDialog::PrepareSendText(QString&, QString&, QString&) src/./src/qt/sendcoinsdialog.cpp:287:28\r\n    #3 0x63d87d227dca in SendCoinsDialog::sendButtonClicked(bool) src/./src/qt/sendcoinsdialog.cpp:482:10\r\n    #4 0x63d87d2356e1 in auto auto GUIUtil::ExceptionSafeConnect<QPushButton*, void (QAbstractButton::*)(bool), SendCoinsDialog*, void (SendCoinsDialog::*)(bool)>(QPushButton*, void (QAbstractButton::*)(bool), SendCoinsDialog*, void (SendCoinsDialog::*)(bool), Qt::ConnectionType)::'lambda'(auto&&...)::operator()<bool&>(auto&&...) const src/./qt/guiutil.h:400:21\r\n    #5 0x63d87d23567f in QtPrivate::FunctorCall<QtPrivate::IndexesList<0>, QtPrivate::List<bool>, void, auto GUIUtil::ExceptionSafeConnect<QPushButton*, void (QAbstractButton::*)(bool), SendCoinsDialog*, void (SendCoinsDialog::*)(bool)>(QPushButton*, void (QAbstractButton::*)(bool), SendCoinsDialog*, void (SendCoinsDialog::*)(bool), Qt::ConnectionType)::'lambda'(auto&&...)>::call(auto GUIUtil::ExceptionSafeConnect<QPushButton*, void (QAbstractButton::*)(bool), SendCoinsDialog*, void (SendCoinsDialog::*)(bool)>(QPushButton*, void (QAbstractButton::*)(bool), SendCoinsDialog*, void (SendCoinsDialog::*)(bool), Qt::ConnectionType)::'lambda'(auto&&...)&, void**) /usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs_impl.h:146:13\r\n    #6 0x63d87d23567f in void QtPrivate::Functor<auto GUIUtil::ExceptionSafeConnect<QPushButton*, void (QAbstractButton::*)(bool), SendCoinsDialog*, void (SendCoinsDialog::*)(bool)>(QPushButton*, void (QAbstractButton::*)(bool), SendCoinsDialog*, void (SendCoinsDialog::*)(bool), Qt::ConnectionType)::'lambda'(auto&&...), 1>::call<QtPrivate::List<bool>, void>(auto GUIUtil::ExceptionSafeConnect<QPushButton*, void (QAbstractButton::*)(bool), SendCoinsDialog*, void (SendCoinsDialog::*)(bool)>(QPushButton*, void (QAbstractButton::*)(bool), SendCoinsDialog*, void (SendCoinsDialog::*)(bool), Qt::ConnectionType)::'lambda'(auto&&...)&, void*, void**) /usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs_impl.h:256:13\r\n    #7 0x63d87d23567f in QtPrivate::QFunctorSlotObject<auto GUIUtil::ExceptionSafeConnect<QPushButton*, void (QAbstractButton::*)(bool), SendCoinsDialog*, void (SendCoinsDialog::*)(bool)>(QPushButton*, void (QAbstractButton::*)(bool), SendCoinsDialog*, void (SendCoinsDialog::*)(bool), Qt::ConnectionType)::'lambda'(auto&&...), 1, QtPrivate::List<bool>, void>::impl(int, QtPrivate::QSlotObjectBase*, QObject*, void**, bool*) /usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs_impl.h:443:17\r\n    #8 0x7b6cffcf1792  (/lib/x86_64-linux-gnu/libQt5Core.so.5+0x2f1792) (BuildId: 4745cda28772e27ab5124c79ddc26da084782cee)\r\n    #9 0x7b6cff462115 in QAbstractButton::clicked(bool) (/lib/x86_64-linux-gnu/libQt5Widgets.so.5+0x262115) (BuildId: 5dfa607522386957ffec95c0a46150c189e064bd)\r\n    #10 0x7b6cff46239d  (/lib/x86_64-linux-gnu/libQt5Widgets.so.5+0x26239d) (BuildId: 5dfa607522386957ffec95c0a46150c189e064bd)\r\n    #11 0x7b6cff463fc3  (/lib/x86_64-linux-gnu/libQt5Widgets.so.5+0x263fc3) (BuildId: 5dfa607522386957ffec95c0a46150c189e064bd)\r\n    #12 0x7b6cff4641e6 in QAbstractButton::mouseReleaseEvent(QMouseEvent*) (/lib/x86_64-linux-gnu/libQt5Widgets.so.5+0x2641e6) (BuildId: 5dfa607522386957ffec95c0a46150c189e064bd)\r\n    #13 0x7b6cff3af4ed in QWidget::event(QEvent*) (/lib/x86_64-linux-gnu/libQt5Widgets.so.5+0x1af4ed) (BuildId: 5dfa607522386957ffec95c0a46150c189e064bd)\r\n    #14 0x7b6cff36c712 in QApplicationPrivate::notify_helper(QObject*, QEvent*) (/lib/x86_64-linux-gnu/libQt5Widgets.so.5+0x16c712) (BuildId: 5dfa607522386957ffec95c0a46150c189e064bd)\r\n    #15 0x7b6cff374363 in QApplication::notify(QObject*, QEvent*) (/lib/x86_64-linux-gnu/libQt5Widgets.so.5+0x174363) (BuildId: 5dfa607522386957ffec95c0a46150c189e064bd)\r\n    #16 0x7b6cffcb9e39 in QCoreApplication::notifyInternal2(QObject*, QEvent*) (/lib/x86_64-linux-gnu/libQt5Core.so.5+0x2b9e39) (BuildId: 4745cda28772e27ab5124c79ddc26da084782cee)\r\n    #17 0x7b6cff372e46 in QApplicationPrivate::sendMouseEvent(QWidget*, QMouseEvent*, QWidget*, QWidget*, QWidget**, QPointer<QWidget>&, bool, bool) (/lib/x86_64-linux-gnu/libQt5Widgets.so.5+0x172e46) (BuildId: 5dfa607522386957ffec95c0a46150c189e064bd)\r\n    #18 0x7b6cff3c8d3f  (/lib/x86_64-linux-gnu/libQt5Widgets.so.5+0x1c8d3f) (BuildId: 5dfa607522386957ffec95c0a46150c189e064bd)\r\n    #19 0x7b6cff3cbfd4  (/lib/x86_64-linux-gnu/libQt5Widgets.so.5+0x1cbfd4) (BuildId: 5dfa607522386957ffec95c0a46150c189e064bd)\r\n    #20 0x7b6cff36c712 in QApplicationPrivate::notify_helper(QObject*, QEvent*) (/lib/x86_64-linux-gnu/libQt5Widgets.so.5+0x16c712) (BuildId: 5dfa607522386957ffec95c0a46150c189e064bd)\r\n    #21 0x7b6cffcb9e39 in QCoreApplication::notifyInternal2(QObject*, QEvent*) (/lib/x86_64-linux-gnu/libQt5Core.so.5+0x2b9e39) (BuildId: 4745cda28772e27ab5124c79ddc26da084782cee)\r\n    #22 0x7b6cfeb41306 in QGuiApplicationPrivate::processMouseEvent(QWindowSystemInterfacePrivate::MouseEvent*) (/lib/x86_64-linux-gnu/libQt5Gui.so.5+0x141306) (BuildId: 9732c114cf66c10694879a302e94acd2199646cb)\r\n    #23 0x7b6cfeb16a2b in QWindowSystemInterface::sendWindowSystemEvents(QFlags<QEventLoop::ProcessEventsFlag>) (/lib/x86_64-linux-gnu/libQt5Gui.so.5+0x116a2b) (BuildId: 9732c114cf66c10694879a302e94acd2199646cb)\r\n    #24 0x7b6cf98f8d6d  (/lib/x86_64-linux-gnu/libQt5XcbQpa.so.5+0x73d6d) (BuildId: 431728065877d9043132d65c1fafedab195974f6)\r\n    #25 0x7b6cfdb20d3a in g_main_context_dispatch (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x55d3a) (BuildId: c74e800dfd5f72649d673b44292f4a817e45150b)\r\n    #26 0x7b6cfdb76257  (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0xab257) (BuildId: c74e800dfd5f72649d673b44292f4a817e45150b)\r\n    #27 0x7b6cfdb1e3e2 in g_main_context_iteration (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x533e2) (BuildId: c74e800dfd5f72649d673b44292f4a817e45150b)\r\n    #28 0x7b6cffd130b7 in QEventDispatcherGlib::processEvents(QFlags<QEventLoop::ProcessEventsFlag>) (/lib/x86_64-linux-gnu/libQt5Core.so.5+0x3130b7) (BuildId: 4745cda28772e27ab5124c79ddc26da084782cee)\r\n    #29 0x7b6cffcb875a in QEventLoop::exec(QFlags<QEventLoop::ProcessEventsFlag>) (/lib/x86_64-linux-gnu/libQt5Core.so.5+0x2b875a) (BuildId: 4745cda28772e27ab5124c79ddc26da084782cee)\r\n    #30 0x7b6cffcc0cf3 in QCoreApplication::exec() (/lib/x86_64-linux-gnu/libQt5Core.so.5+0x2c0cf3) (BuildId: 4745cda28772e27ab5124c79ddc26da084782cee)\r\n    #31 0x63d87d139b67 in GuiMain(int, char**) src/./src/qt/bitcoin.cpp:706:13\r\n    #32 0x63d87d133fc9 in main src/./src/qt/main.cpp:26:12\r\n    #33 0x7b6cfe229d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16\r\n    #34 0x7b6cfe229e3f in __libc_start_main csu/../csu/libc-start.c:392:3\r\n    #35 0x63d87d10a3f4 in _start (/home/pablo/workspace/bitcoin/src/qt/bitcoin-qt+0x1fe3f4) (BuildId: 1964c5fb2ae670ca1919146a50178c72815cf99d)\r\n\r\nSUMMARY: UndefinedBehaviorSanitizer: implicit-integer-sign-change wallet/interfaces.cpp:289:57 in \r\n\r\n```\r\n\r\n</details>\r\n\r\nFinally got the 3/ 3 :pray:. I'll review the fix now!",
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/issues/805#issuecomment-2024113934",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/805"
     }
   ]
