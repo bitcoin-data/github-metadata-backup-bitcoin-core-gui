@@ -38,9 +38,9 @@
     "assignees": [],
     "author_association": "CONTRIBUTOR",
     "locked": false,
-    "comments": 3,
+    "comments": 4,
     "created_at": "2024-03-20T18:59:19Z",
-    "updated_at": "2024-03-22T12:57:15Z"
+    "updated_at": "2024-03-27T03:55:10Z"
   },
   "events": [
     {
@@ -227,7 +227,7 @@
             "patch_url": "https://github.com/bitcoin-core/gui/pull/806.patch"
           },
           "created_at": "2024-03-21T18:45:31Z",
-          "updated_at": "2024-03-22T09:19:23Z"
+          "updated_at": "2024-03-22T14:48:33Z"
         },
         "type": "issue"
       }
@@ -284,6 +284,60 @@
         "site_admin": false
       },
       "html_url": "https://github.com/bitcoin-core/gui/issues/805#issuecomment-2015048893",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/805"
+    },
+    {
+      "event": "commented",
+      "id": 2021876645,
+      "node_id": "IC_kwDOEEET9c54g2Ol",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2021876645",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-03-27T03:55:09Z",
+      "updated_at": "2024-03-27T03:55:09Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "How can I reproduce the issue?\r\n\r\nI've tried on Ubuntu 22.04 with these configures:\r\n- `./configure --with-incompatible-bdb --enable-suppress-external-warnings --with-sqlite --without-bdb --with-sanitizers=undefined,integer CC=clang CXX=clang++`\r\n- `./configure --with-incompatible-bdb --enable-suppress-external-warnings --with-sqlite --without-bdb --with-sanitizers=integer CC=clang CXX=clang++`\r\n- `./configure --with-incompatible-bdb --enable-suppress-external-warnings --with-sqlite --without-bdb --with-sanitizers=signed-integer-overflow CC=clang CXX=clang++`\r\n\r\nGot a lot of errors on the crypto library:\r\n```\r\nSUMMARY: UndefinedBehaviorSanitizer: undefined-behavior crypto/sha256.cpp:146:76 in \r\ncrypto/sha256.cpp:147:50: runtime error: unsigned integer overflow: 1986661051 + 3477181053 cannot be represented in type 'unsigned int'\r\n...\r\n\r\nscript/interpreter.cpp:1066:42: runtime error: unsigned integer overflow: 2 + 18446744073709551615 cannot be represented in type 'unsigned long'\r\nSUMMARY: UndefinedBehaviorSanitizer: undefined-behavior script/interpreter.cpp:1066:42 in \r\n/usr/bin/../lib/gcc/x86_64-linux-gnu/12/../../../../include/c++/12/bits/stl_algobase.h:385:20: runtime error: implicit conversion from type 'char' of value -24 (8-bit, signed) to type 'unsigned char' changed the value to 232 (8-bit, unsigned)\r\nSUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /usr/bin/../lib/gcc/x86_64-linux-gnu/12/../../../../include/c++/12/bits/stl_algobase.h:385:20 in \r\n\r\n```\r\n\r\nTried `bitcoin-qt` on `regtest`, sent some sats and got this (after the above):\r\n\r\n```\r\nsrc/hash_impl.h:79:5: runtime error: unsigned integer overflow: 4281340545 + 113926993 cannot be represented in type 'unsigned int'\r\nSUMMARY: UndefinedBehaviorSanitizer: undefined-behavior src/hash_impl.h:79:5 in \r\n\r\n```",
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/issues/805#issuecomment-2021876645",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/805"
     }
   ]
