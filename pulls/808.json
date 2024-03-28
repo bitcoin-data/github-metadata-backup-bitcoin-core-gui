@@ -41,7 +41,7 @@
     "body": "Legacy addresses are less and less common these days and not recommended to use, so it seems senseful to also reflect that in the example addresses and update to the most recent address / output type (bech32m / P2TR). Also, as I couldn't see any value in computing these at runtime, they are pre-generated. This was done with the following Python script, executed in `./test/functional` (it's also included in the commit body, though without the she-bang):\r\n```python\r\n#!/usr/bin/env python3\r\nfrom test_framework.segwit_addr import CHARSET, decode_segwit_address, encode_segwit_address\r\nfrom test_framework.messages import sha256\r\n\r\noutput_key = sha256(b'bitcoin dummy taproot output key')\r\nfor network, hrp in [('mainnet', 'bc'), ('signet', 'tb'), ('testnet', 'tb'), ('regtest', 'bcrt')]:\r\n    dummy_address = encode_segwit_address(hrp, 1, output_key)\r\n    while decode_segwit_address(hrp, dummy_address) != (None, None):\r\n        last_char = CHARSET[(CHARSET.index(dummy_address[-1]) + 1) % 32]\r\n        dummy_address = dummy_address[:-1] + last_char\r\n    print(f'{network:7} example address: {dummy_address}')\r\n```\r\n\r\nNote that the last bech32 character is modified in order to make the checksum fail.\r\n\r\nmaster (mainnet):\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/91535/8c94cc1e-5649-47ed-8b2d-33b18654f6a2)\r\n\r\nPR (mainnet):\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/91535/1ce208a6-1218-4850-93e0-5323c73e9049)\r\n",
     "labels": [],
     "created_at": "2024-03-22T16:55:49Z",
-    "updated_at": "2024-03-28T07:20:33Z",
+    "updated_at": "2024-03-28T09:27:57Z",
     "mergeable": true,
     "mergeable_state": "clean",
     "merge_commit_sha": "9426c8e412f06b6775098ffce0614a7168def3e0",
@@ -323,8 +323,8 @@
     "deletions": 14,
     "changed_files": 1,
     "commits": 1,
-    "review_comments": 1,
-    "comments": 1
+    "review_comments": 2,
+    "comments": 2
   },
   "events": [
     {
@@ -521,6 +521,118 @@
       "submitted_at": "2024-03-28T07:20:33Z",
       "state": "APPROVED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/808"
+    },
+    {
+      "event": "commented",
+      "id": 2024754657,
+      "node_id": "IC_kwDOEEET9c54r03h",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2024754657",
+      "actor": {
+        "login": "theStack",
+        "id": 91535,
+        "node_id": "MDQ6VXNlcjkxNTM1",
+        "avatar_url": "https://avatars.githubusercontent.com/u/91535?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/theStack",
+        "html_url": "https://github.com/theStack",
+        "followers_url": "https://api.github.com/users/theStack/followers",
+        "following_url": "https://api.github.com/users/theStack/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/theStack/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/theStack/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/theStack/subscriptions",
+        "organizations_url": "https://api.github.com/users/theStack/orgs",
+        "repos_url": "https://api.github.com/users/theStack/repos",
+        "events_url": "https://api.github.com/users/theStack/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/theStack/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-03-28T09:27:55Z",
+      "updated_at": "2024-03-28T09:27:55Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "@MarnixCroes \r\n\r\n> Using the default address type (bech32) for this makes the most sense I think, instead of the latest, no?\r\n\r\nP2TR addresses look similar enough to P2WPKH ones (with the only difference that they are longer and start with \"bc1p...\" rather than \"bc1q...\"), so I thought it's fine if use the most recent one already. No hard feelings though, I'm happy to change this if requested, it doesn't take too much effort to adapt the Python script used.",
+      "user": {
+        "login": "theStack",
+        "id": 91535,
+        "node_id": "MDQ6VXNlcjkxNTM1",
+        "avatar_url": "https://avatars.githubusercontent.com/u/91535?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/theStack",
+        "html_url": "https://github.com/theStack",
+        "followers_url": "https://api.github.com/users/theStack/followers",
+        "following_url": "https://api.github.com/users/theStack/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/theStack/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/theStack/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/theStack/subscriptions",
+        "organizations_url": "https://api.github.com/users/theStack/orgs",
+        "repos_url": "https://api.github.com/users/theStack/repos",
+        "events_url": "https://api.github.com/users/theStack/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/theStack/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/808#issuecomment-2024754657",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/808"
+    },
+    {
+      "event": "mentioned",
+      "id": 12278488666,
+      "node_id": "MEE_lADOEEET9c6DTeuazwAAAALb2t5a",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/12278488666",
+      "actor": {
+        "login": "MarnixCroes",
+        "id": 93143998,
+        "node_id": "U_kgDOBY1Dvg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/93143998?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/MarnixCroes",
+        "html_url": "https://github.com/MarnixCroes",
+        "followers_url": "https://api.github.com/users/MarnixCroes/followers",
+        "following_url": "https://api.github.com/users/MarnixCroes/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/MarnixCroes/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/MarnixCroes/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/MarnixCroes/subscriptions",
+        "organizations_url": "https://api.github.com/users/MarnixCroes/orgs",
+        "repos_url": "https://api.github.com/users/MarnixCroes/repos",
+        "events_url": "https://api.github.com/users/MarnixCroes/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/MarnixCroes/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-03-28T09:27:57Z"
+    },
+    {
+      "event": "subscribed",
+      "id": 12278488684,
+      "node_id": "SE_lADOEEET9c6DTeuazwAAAALb2t5s",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/12278488684",
+      "actor": {
+        "login": "MarnixCroes",
+        "id": 93143998,
+        "node_id": "U_kgDOBY1Dvg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/93143998?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/MarnixCroes",
+        "html_url": "https://github.com/MarnixCroes",
+        "followers_url": "https://api.github.com/users/MarnixCroes/followers",
+        "following_url": "https://api.github.com/users/MarnixCroes/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/MarnixCroes/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/MarnixCroes/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/MarnixCroes/subscriptions",
+        "organizations_url": "https://api.github.com/users/MarnixCroes/orgs",
+        "repos_url": "https://api.github.com/users/MarnixCroes/repos",
+        "events_url": "https://api.github.com/users/MarnixCroes/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/MarnixCroes/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-03-28T09:27:57Z"
     }
   ],
   "comments": [
@@ -564,6 +676,58 @@
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1542429910"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/808"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 124,
+      "original_line": 124,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1542577673",
+      "pull_request_review_id": 1965579563,
+      "id": 1542577673,
+      "node_id": "PRRC_kwDOEEET9c5b8d4J",
+      "diff_hunk": "@@ -109,22 +109,19 @@ QFont fixedPitchFont(bool use_embedded_font)\n     return QFontDatabase::systemFont(QFontDatabase::FixedFont);\n }\n \n-// Just some dummy data to generate a convincing random-looking (but consistent) address\n-static const uint8_t dummydata[] = {0xeb,0x15,0x23,0x1d,0xfc,0xeb,0x60,0x92,0x58,0x86,0xb6,0x7d,0x06,0x52,0x99,0x92,0x59,0x15,0xae,0xb1,0x72,0xc0,0x66,0x47};\n-\n-// Generate a dummy address with invalid CRC, starting with the network prefix.\n+// Return a pre-generated dummy bech32m address (P2TR) with invalid checksum.\n static std::string DummyAddress(const CChainParams &params)\n {\n-    std::vector<unsigned char> sourcedata = params.Base58Prefix(CChainParams::PUBKEY_ADDRESS);\n-    sourcedata.insert(sourcedata.end(), dummydata, dummydata + sizeof(dummydata));\n-    for(int i=0; i<256; ++i) { // Try every trailing byte\n-        std::string s = EncodeBase58(sourcedata);\n-        if (!IsValidDestinationString(s)) {\n-            return s;\n-        }\n-        sourcedata[sourcedata.size()-1] += 1;\n-    }\n-    return \"\";\n+    switch (params.GetChainType()) {\n+    case ChainType::MAIN:\n+        return \"bc1p35yvjel7srp783ztf8v6jdra7dhfzk5jaun8xz2qp6ws7z80n4tq2jku9f\";\n+    case ChainType::SIGNET:\n+    case ChainType::TESTNET:\n+        return \"tb1p35yvjel7srp783ztf8v6jdra7dhfzk5jaun8xz2qp6ws7z80n4tqa6qnlg\";\n+    case ChainType::REGTEST:\n+        return \"bcrt1p35yvjel7srp783ztf8v6jdra7dhfzk5jaun8xz2qp6ws7z80n4tqsr2427\";\n+    } // no default case, so the compiler can warn about missing cases\n+    assert(false);",
+      "path": "src/qt/guiutil.cpp",
+      "position": 30,
+      "original_position": 30,
+      "commit_id": "960b2d401e2fb4b657446305df7a4a0de50ece67",
+      "original_commit_id": "960b2d401e2fb4b657446305df7a4a0de50ece67",
+      "in_reply_to_id": 1542429910,
+      "user": {
+        "login": "theStack",
+        "id": 91535,
+        "node_id": "MDQ6VXNlcjkxNTM1",
+        "avatar_url": "https://avatars.githubusercontent.com/u/91535?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/theStack",
+        "html_url": "https://github.com/theStack",
+        "followers_url": "https://api.github.com/users/theStack/followers",
+        "following_url": "https://api.github.com/users/theStack/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/theStack/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/theStack/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/theStack/subscriptions",
+        "organizations_url": "https://api.github.com/users/theStack/orgs",
+        "repos_url": "https://api.github.com/users/theStack/repos",
+        "events_url": "https://api.github.com/users/theStack/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/theStack/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "Sure, good idea. With an `Assert`? (I'm always a bit unsure when to use `Assert` and when `Assume`; the old `assert` should rather be avoided in general, from my understanding).",
+      "created_at": "2024-03-28T09:24:59Z",
+      "updated_at": "2024-03-28T09:24:59Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/808#discussion_r1542577673",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1542577673"
         },
         "pull_request": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/808"
