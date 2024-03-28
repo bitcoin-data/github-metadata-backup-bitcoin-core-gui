@@ -41,10 +41,10 @@
     "body": "Legacy addresses are less and less common these days and not recommended to use, so it seems senseful to also reflect that in the example addresses and update to the most recent address / output type (bech32m / P2TR). Also, as I couldn't see any value in computing these at runtime, they are pre-generated. This was done with the following Python script, executed in `./test/functional` (it's also included in the commit body, though without the she-bang):\r\n```python\r\n#!/usr/bin/env python3\r\nfrom test_framework.segwit_addr import CHARSET, decode_segwit_address, encode_segwit_address\r\nfrom test_framework.messages import sha256\r\n\r\noutput_key = sha256(b'bitcoin dummy taproot output key')\r\nfor network, hrp in [('mainnet', 'bc'), ('signet', 'tb'), ('testnet', 'tb'), ('regtest', 'bcrt')]:\r\n    dummy_address = encode_segwit_address(hrp, 1, output_key)\r\n    while decode_segwit_address(hrp, dummy_address) != (None, None):\r\n        last_char = CHARSET[(CHARSET.index(dummy_address[-1]) + 1) % 32]\r\n        dummy_address = dummy_address[:-1] + last_char\r\n    print(f'{network:7} example address: {dummy_address}')\r\n```\r\n\r\nNote that the last bech32 character is modified in order to make the checksum fail.\r\n\r\nmaster (mainnet):\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/91535/8c94cc1e-5649-47ed-8b2d-33b18654f6a2)\r\n\r\nPR (mainnet):\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/91535/1ce208a6-1218-4850-93e0-5323c73e9049)\r\n",
     "labels": [],
     "created_at": "2024-03-22T16:55:49Z",
-    "updated_at": "2024-03-22T17:41:03Z",
+    "updated_at": "2024-03-28T07:20:33Z",
     "mergeable": true,
-    "mergeable_state": "unstable",
-    "merge_commit_sha": "535e916181b4930e5653f5210f862c5a2b156c0f",
+    "mergeable_state": "clean",
+    "merge_commit_sha": "9426c8e412f06b6775098ffce0614a7168def3e0",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -276,10 +276,10 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 245,
-        "stargazers_count": 550,
-        "watchers_count": 550,
-        "size": 155915,
+        "forks_count": 247,
+        "stargazers_count": 551,
+        "watchers_count": 551,
+        "size": 155768,
         "default_branch": "master",
         "open_issues_count": 161,
         "is_template": false,
@@ -292,9 +292,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-03-22T17:53:57Z",
+        "pushed_at": "2024-03-28T01:47:57Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-03-22T02:39:29Z",
+        "updated_at": "2024-03-23T16:09:14Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -323,7 +323,7 @@
     "deletions": 14,
     "changed_files": 1,
     "commits": 1,
-    "review_comments": 0,
+    "review_comments": 1,
     "comments": 1
   },
   "events": [
@@ -485,7 +485,96 @@
       "submitted_at": "2024-03-22T17:41:01Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/808"
+    },
+    {
+      "event": "reviewed",
+      "id": 1965349734,
+      "node_id": "PRR_kwDOEEET9c51JNtm",
+      "url": null,
+      "actor": null,
+      "commit_id": "960b2d401e2fb4b657446305df7a4a0de50ece67",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "CONTRIBUTOR",
+      "body": "",
+      "user": {
+        "login": "maflcko",
+        "id": 6399679,
+        "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/808#pullrequestreview-1965349734",
+      "submitted_at": "2024-03-28T07:20:33Z",
+      "state": "APPROVED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/808"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1542429910",
+      "pull_request_review_id": 1965349734,
+      "id": 1542429910,
+      "node_id": "PRRC_kwDOEEET9c5b75zW",
+      "diff_hunk": "@@ -109,22 +109,19 @@ QFont fixedPitchFont(bool use_embedded_font)\n     return QFontDatabase::systemFont(QFontDatabase::FixedFont);\n }\n \n-// Just some dummy data to generate a convincing random-looking (but consistent) address\n-static const uint8_t dummydata[] = {0xeb,0x15,0x23,0x1d,0xfc,0xeb,0x60,0x92,0x58,0x86,0xb6,0x7d,0x06,0x52,0x99,0x92,0x59,0x15,0xae,0xb1,0x72,0xc0,0x66,0x47};\n-\n-// Generate a dummy address with invalid CRC, starting with the network prefix.\n+// Return a pre-generated dummy bech32m address (P2TR) with invalid checksum.\n static std::string DummyAddress(const CChainParams &params)\n {\n-    std::vector<unsigned char> sourcedata = params.Base58Prefix(CChainParams::PUBKEY_ADDRESS);\n-    sourcedata.insert(sourcedata.end(), dummydata, dummydata + sizeof(dummydata));\n-    for(int i=0; i<256; ++i) { // Try every trailing byte\n-        std::string s = EncodeBase58(sourcedata);\n-        if (!IsValidDestinationString(s)) {\n-            return s;\n-        }\n-        sourcedata[sourcedata.size()-1] += 1;\n-    }\n-    return \"\";\n+    switch (params.GetChainType()) {\n+    case ChainType::MAIN:\n+        return \"bc1p35yvjel7srp783ztf8v6jdra7dhfzk5jaun8xz2qp6ws7z80n4tq2jku9f\";\n+    case ChainType::SIGNET:\n+    case ChainType::TESTNET:\n+        return \"tb1p35yvjel7srp783ztf8v6jdra7dhfzk5jaun8xz2qp6ws7z80n4tqa6qnlg\";\n+    case ChainType::REGTEST:\n+        return \"bcrt1p35yvjel7srp783ztf8v6jdra7dhfzk5jaun8xz2qp6ws7z80n4tqsr2427\";\n+    } // no default case, so the compiler can warn about missing cases\n+    assert(false);",
+      "path": "src/qt/guiutil.cpp",
+      "position": 30,
+      "original_position": 30,
+      "commit_id": "960b2d401e2fb4b657446305df7a4a0de50ece67",
+      "original_commit_id": "960b2d401e2fb4b657446305df7a4a0de50ece67",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "maflcko",
+        "id": 6399679,
+        "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "Can the `!IsValidDestinationString` check be kept?",
+      "created_at": "2024-03-28T07:20:25Z",
+      "updated_at": "2024-03-28T07:20:33Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/808#discussion_r1542429910",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1542429910"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/808"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 124,
+      "original_line": 124,
+      "side": "RIGHT"
+    }
+  ]
 }
