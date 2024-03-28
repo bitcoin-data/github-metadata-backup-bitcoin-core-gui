@@ -41,10 +41,10 @@
     "body": "This is allowed by the language. However, the `integer` sanitizer complains about it. Thus, fix it, so that the `integer` sanitizer can be used in the future to catch unintended sign changes.\r\n\r\nFixes #805.",
     "labels": [],
     "created_at": "2024-03-21T18:45:31Z",
-    "updated_at": "2024-03-28T06:13:32Z",
+    "updated_at": "2024-03-28T15:51:57Z",
     "mergeable": true,
     "mergeable_state": "clean",
-    "merge_commit_sha": "6df5c702932fc51b9beb0852fa2c88668ec32845",
+    "merge_commit_sha": "ca172c66b40f1f62fc0253cfcf73384b1e1b31d3",
     "assignees": [],
     "requested_reviewers": [
       {
@@ -300,9 +300,9 @@
         "forks_count": 247,
         "stargazers_count": 551,
         "watchers_count": 551,
-        "size": 155768,
+        "size": 155772,
         "default_branch": "master",
-        "open_issues_count": 162,
+        "open_issues_count": 161,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -313,7 +313,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-03-28T01:47:57Z",
+        "pushed_at": "2024-03-28T11:44:14Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2024-03-23T16:09:14Z",
         "license": {
@@ -344,7 +344,7 @@
     "deletions": 6,
     "changed_files": 3,
     "commits": 3,
-    "review_comments": 0,
+    "review_comments": 1,
     "comments": 5
   },
   "events": [
@@ -1056,7 +1056,96 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-03-28T06:13:32Z"
+    },
+    {
+      "event": "reviewed",
+      "id": 1966590309,
+      "node_id": "PRR_kwDOEEET9c51N8ll",
+      "url": null,
+      "actor": null,
+      "commit_id": "05416422d354b29d59558ce227e076028338b442",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "CONTRIBUTOR",
+      "body": "I've been playing a bit with the code and found out that the problem was a mix of the fix you provided in the 2nd commit, plus the initialisation of `hasAlpha` in the constructor of `FreedesktopImage`. It seems setting it in the `private:` section of the class definition works and the error is not raised 🙄.\r\n\r\n```\r\nprivate:\r\n    int width, height, stride;\r\n    bool hasAlpha{true};\r\n\r\n```\r\n",
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/806#pullrequestreview-1966590309",
+      "submitted_at": "2024-03-28T15:51:57Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/806"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1543201119",
+      "pull_request_review_id": 1966590309,
+      "id": 1543201119,
+      "node_id": "PRRC_kwDOEEET9c5b-2Ff",
+      "diff_hunk": "@@ -112,10 +112,10 @@ FreedesktopImage::FreedesktopImage(const QImage &img):\n \n     for(unsigned int ptr = 0; ptr < num_pixels; ++ptr)\n     {\n-        image[ptr*BYTES_PER_PIXEL+0] = data[ptr] >> 16; // R\n-        image[ptr*BYTES_PER_PIXEL+1] = data[ptr] >> 8;  // G\n-        image[ptr*BYTES_PER_PIXEL+2] = data[ptr];       // B\n-        image[ptr*BYTES_PER_PIXEL+3] = data[ptr] >> 24; // A\n+        image[ptr * BYTES_PER_PIXEL + 0] = char(data[ptr] >> 16); // R\n+        image[ptr * BYTES_PER_PIXEL + 1] = char(data[ptr] >> 8);  // G\n+        image[ptr * BYTES_PER_PIXEL + 2] = char(data[ptr]);       // B\n+        image[ptr * BYTES_PER_PIXEL + 3] = char(data[ptr] >> 24); // A",
+      "path": "src/qt/notificator.cpp",
+      "position": 11,
+      "original_position": 11,
+      "commit_id": "05416422d354b29d59558ce227e076028338b442",
+      "original_commit_id": "05416422d354b29d59558ce227e076028338b442",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "nit: since we are touching this, perhaps we could use `static_cast<char>` instead of the C-style?\r\n```suggestion\r\n        image[ptr * BYTES_PER_PIXEL + 0] = static_cast<char>(data[ptr] >> 16); // R\r\n        image[ptr * BYTES_PER_PIXEL + 1] = static_cast<char>(data[ptr] >> 8);  // G\r\n        image[ptr * BYTES_PER_PIXEL + 2] = static_cast<char>(data[ptr]);       // B\r\n        image[ptr * BYTES_PER_PIXEL + 3] = static_cast<char>(data[ptr] >> 24); // A\r\n```",
+      "created_at": "2024-03-28T15:47:03Z",
+      "updated_at": "2024-03-28T15:51:57Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/806#discussion_r1543201119",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1543201119"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/806"
+        }
+      },
+      "start_line": 115,
+      "original_start_line": 115,
+      "start_side": "RIGHT",
+      "line": 118,
+      "original_line": 118,
+      "side": "RIGHT"
+    }
+  ]
 }
