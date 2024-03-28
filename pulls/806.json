@@ -41,7 +41,7 @@
     "body": "This is allowed by the language. However, the `integer` sanitizer complains about it. Thus, fix it, so that the `integer` sanitizer can be used in the future to catch unintended sign changes.\r\n\r\nFixes #805.",
     "labels": [],
     "created_at": "2024-03-21T18:45:31Z",
-    "updated_at": "2024-03-28T15:51:57Z",
+    "updated_at": "2024-03-28T17:31:36Z",
     "mergeable": true,
     "mergeable_state": "clean",
     "merge_commit_sha": "ca172c66b40f1f62fc0253cfcf73384b1e1b31d3",
@@ -344,8 +344,8 @@
     "deletions": 6,
     "changed_files": 3,
     "commits": 3,
-    "review_comments": 1,
-    "comments": 5
+    "review_comments": 2,
+    "comments": 6
   },
   "events": [
     {
@@ -1092,6 +1092,60 @@
       "submitted_at": "2024-03-28T15:51:57Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/806"
+    },
+    {
+      "event": "commented",
+      "id": 2025758015,
+      "node_id": "IC_kwDOEEET9c54vp0_",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2025758015",
+      "actor": {
+        "login": "maflcko",
+        "id": 6399679,
+        "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-03-28T17:31:36Z",
+      "updated_at": "2024-03-28T17:31:36Z",
+      "author_association": "CONTRIBUTOR",
+      "body": " \r\n\r\n\r\n\r\n> I've been playing a bit with the code and found out that the problem was a mix of the fix you provided in the 2nd commit, plus the initialisation of `hasAlpha` in the constructor of `FreedesktopImage`. It seems setting it in the `private:` section of the class definition works and the error is not raised 🙄.\r\n> \r\n> ```\r\n> private:\r\n>     int width, height, stride;\r\n>     bool hasAlpha{true};\r\n> ```\r\n\r\nI see. So this is an actual uninitialized read (UB)? I think this should be fixed separate from a refactor that only documents that the code is correct and the integer sanitizer can be silent about them.",
+      "user": {
+        "login": "maflcko",
+        "id": 6399679,
+        "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/806#issuecomment-2025758015",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/806"
     }
   ],
   "comments": [
@@ -1135,6 +1189,58 @@
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1543201119"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/806"
+        }
+      },
+      "start_line": 115,
+      "original_start_line": 115,
+      "start_side": "RIGHT",
+      "line": 118,
+      "original_line": 118,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1543363453",
+      "pull_request_review_id": 1966839007,
+      "id": 1543363453,
+      "node_id": "PRRC_kwDOEEET9c5b_dt9",
+      "diff_hunk": "@@ -112,10 +112,10 @@ FreedesktopImage::FreedesktopImage(const QImage &img):\n \n     for(unsigned int ptr = 0; ptr < num_pixels; ++ptr)\n     {\n-        image[ptr*BYTES_PER_PIXEL+0] = data[ptr] >> 16; // R\n-        image[ptr*BYTES_PER_PIXEL+1] = data[ptr] >> 8;  // G\n-        image[ptr*BYTES_PER_PIXEL+2] = data[ptr];       // B\n-        image[ptr*BYTES_PER_PIXEL+3] = data[ptr] >> 24; // A\n+        image[ptr * BYTES_PER_PIXEL + 0] = char(data[ptr] >> 16); // R\n+        image[ptr * BYTES_PER_PIXEL + 1] = char(data[ptr] >> 8);  // G\n+        image[ptr * BYTES_PER_PIXEL + 2] = char(data[ptr]);       // B\n+        image[ptr * BYTES_PER_PIXEL + 3] = char(data[ptr] >> 24); // A",
+      "path": "src/qt/notificator.cpp",
+      "position": 11,
+      "original_position": 11,
+      "commit_id": "05416422d354b29d59558ce227e076028338b442",
+      "original_commit_id": "05416422d354b29d59558ce227e076028338b442",
+      "in_reply_to_id": 1543201119,
+      "user": {
+        "login": "maflcko",
+        "id": 6399679,
+        "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "I don't think there is a difference for integral values, other than one being more to type and read",
+      "created_at": "2024-03-28T17:27:34Z",
+      "updated_at": "2024-03-28T17:27:34Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/806#discussion_r1543363453",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1543363453"
         },
         "pull_request": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/806"
