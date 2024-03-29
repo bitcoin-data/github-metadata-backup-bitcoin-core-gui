@@ -1,0 +1,80 @@
+{
+  "type": "issue",
+  "issue": {
+    "id": 2215083327,
+    "node_id": "I_kwDOEEET9c6EB30_",
+    "url": "https://api.github.com/repos/bitcoin-core/gui/issues/811",
+    "repository_url": "https://api.github.com/repos/bitcoin-core/gui",
+    "labels_url": "https://api.github.com/repos/bitcoin-core/gui/issues/811/labels%7B/name%7D",
+    "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/811/comments",
+    "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/811/events",
+    "html_url": "https://github.com/bitcoin-core/gui/issues/811",
+    "number": 811,
+    "state": "open",
+    "state_reason": null,
+    "title": "A config option to separately store blocks and state in start window",
+    "body": "### Feature request for GUI\r\n\r\nI think, in the 'Welcome' window poped in the first time we run bitcoin-qt, add an option to config different storage location for `blocks` data and `state` data, which allows store them on different type disks (HDD vs. SSD), is really useful.\r\n\r\n### Description for its usage and advantages\r\n\r\nAt first, separately store block data and state date has obvious performance improvement, and allows more economic and standing setup.\r\nStoring blocks on big capacity HDD, while storing state on small capacity SSD (or somewhere on SSD), could utilize SSD's better performance in random I/O (involved in tx validation), and avoid big economic cost of buying extra big capacity SSD. At the same time, it also relaxes performance requirement towards HDD (We can use older and cheaper HDD, or, the same HDD could be on service longer.)\r\n\r\nexample:\r\n- Currently, I make `state` directory in my `datadir` as a symbolic link, to migarate state data to my SSD, successfully making my HDD (a Western Digital Green disk,  produced in 2012) reborn to be able to run a full node. Priviouly, it cannot catch up the chain tip by itself. It just need extra 10 GB space on my SSD!\r\n- I also apply this method for a new full node. The IBD speeds up to cost less than three days (typically cost more than 1 week in HDD-only node in where I live).\r\n\r\n### Actual benifits in practice\r\n\r\nIf we can offer an easy way to config it, users will no longer need to bear high economic burden of big capacity SSD, but still be able to enjoy SSD's advantage via small capacity SSD, which is more affordable for new specialized node divices.\r\n\r\nMoreover, nowadays, most personal computers use SSD for the operating system (or even media data). There is enough space on the SSD for state date (but not block data). A relaxing requirement for block-storing disk will decrease their burden for running full node - they have more options in disks, older and cheaper ones are also available.\r\n\r\nAdd it as an explicit option and tell users what it means (instead of requiring them to learn secure usages of symbolic links), we can help users a lot.",
+    "user": {
+      "login": "editor-Ajian",
+      "id": 34365188,
+      "node_id": "MDQ6VXNlcjM0MzY1MTg4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/34365188?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/editor-Ajian",
+      "html_url": "https://github.com/editor-Ajian",
+      "followers_url": "https://api.github.com/users/editor-Ajian/followers",
+      "following_url": "https://api.github.com/users/editor-Ajian/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/editor-Ajian/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/editor-Ajian/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/editor-Ajian/subscriptions",
+      "organizations_url": "https://api.github.com/users/editor-Ajian/orgs",
+      "repos_url": "https://api.github.com/users/editor-Ajian/repos",
+      "events_url": "https://api.github.com/users/editor-Ajian/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/editor-Ajian/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [],
+    "assignees": [],
+    "author_association": "NONE",
+    "locked": false,
+    "comments": 0,
+    "created_at": "2024-03-29T10:27:25Z",
+    "updated_at": "2024-03-29T10:30:25Z"
+  },
+  "events": [
+    {
+      "event": "renamed",
+      "id": 12293680530,
+      "node_id": "RTE_lADOEEET9c6EB30_zwAAAALcwq2S",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/12293680530",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-03-29T10:29:03Z",
+      "rename": {
+        "from": "A config option to separately stroe blocks and state in start window",
+        "to": "A config option to separately store blocks and state in start window"
+      }
+    }
+  ]
+}
