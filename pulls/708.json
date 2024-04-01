@@ -39,19 +39,9 @@
       "site_admin": false
     },
     "body": "Currently the mask values option (Settings menu->Mask values) hides the wallet balances shown on the Overview page including the recent transactions list from the right panel but it doesn't hide the amounts from the transaction view.\r\n\r\n\r\n![mask values - hiding wallet balances on overview tab but not on transactions tab](https://user-images.githubusercontent.com/110166421/216876325-56a68006-1be0-4b3f-b1e2-a0575c377cf5.gif)\r\n\r\n\r\nThis enhancement has been mentioned on PR #701 as a [desirable follow-up](https://github.com/bitcoin-core/gui/pull/701#issuecomment-1401350037).\r\n\r\nFirst approach was to hide the amounts on the  transactions view when mask values option is checked:\r\n\r\n![mask values - hiding amounts on transactions tab](https://user-images.githubusercontent.com/110166421/216876440-0ff1a2ec-2ef2-405c-8b62-e4a94b9221cc.gif)\r\n\r\nBut later on as reviewer **furszy** recommended, I've disabled the Transaction tab directly and switch to the Overview tab if the mask values option is set, check the new screenshots in the [comment below](https://github.com/bitcoin-core/gui/pull/708#issuecomment-1449025828).",
-    "labels": [
-      {
-        "id": 2891203085,
-        "node_id": "MDU6TGFiZWwyODkxMjAzMDg1",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Needs%20release%20notes",
-        "name": "Needs release notes",
-        "description": "",
-        "color": "b60205",
-        "default": false
-      }
-    ],
+    "labels": [],
     "created_at": "2023-02-06T03:20:16Z",
-    "updated_at": "2023-05-27T17:37:36Z",
+    "updated_at": "2024-04-01T08:22:27Z",
     "closed_at": "2023-03-14T10:03:49Z",
     "mergeable_state": "unknown",
     "merged_at": "2023-03-14T10:03:49Z",
@@ -158,7 +148,7 @@
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 147342,
+        "size": 155782,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -171,7 +161,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-06-21T14:35:08Z",
+        "pushed_at": "2024-03-28T18:38:20Z",
         "created_at": "2022-09-10T13:37:44Z",
         "updated_at": "2022-12-30T18:34:57Z",
         "license": {
@@ -287,12 +277,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 271,
-        "stargazers_count": 491,
-        "watchers_count": 491,
-        "size": 149681,
+        "forks_count": 247,
+        "stargazers_count": 553,
+        "watchers_count": 553,
+        "size": 155891,
         "default_branch": "master",
-        "open_issues_count": 155,
+        "open_issues_count": 164,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -303,9 +293,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-08-01T15:59:41Z",
+        "pushed_at": "2024-03-29T23:53:03Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2023-08-02T07:56:25Z",
+        "updated_at": "2024-03-31T15:45:34Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -509,6 +499,92 @@
       "created_at": "2023-02-06T03:43:09Z"
     },
     {
+      "event": "cross-referenced",
+      "id": null,
+      "node_id": null,
+      "url": null,
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-02-08T21:21:49Z",
+      "updated_at": "2023-02-08T21:21:49Z",
+      "source": {
+        "issue": {
+          "id": 1336908196,
+          "node_id": "I_kwDOEEET9c5Pr5mk",
+          "url": "https://api.github.com/repos/bitcoin-core/gui/issues/652",
+          "repository_url": "https://api.github.com/repos/bitcoin-core/gui",
+          "labels_url": "https://api.github.com/repos/bitcoin-core/gui/issues/652/labels%7B/name%7D",
+          "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/652/comments",
+          "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/652/events",
+          "html_url": "https://github.com/bitcoin-core/gui/issues/652",
+          "number": 652,
+          "state": "closed",
+          "state_reason": "completed",
+          "title": "Persist \"mask values\" to prevent shoulder surfing",
+          "body": "Current Behavior: \"Mask values\" mode is off each launch and must be manually re-enabled.\r\nIf a wallet loads on startup from settings.json this leaves user vulnerable to shoulder surfing.\r\n\r\nSolution: This mode should persist across restarts of bitcoin-qt by being saved in Bitcoin-Qt.conf.\r\nExactly how nDisplayUnit=0 will persist the unit to show amounts in.\r\n\r\nExpected Behavior: If I shutdown Bitcoin core with it on, I'd expect it to be on when I restart and vice versa.\r\n\r\nMoved from: https://github.com/bitcoin/bitcoin/issues/25826.",
+          "user": {
+            "login": "fanquake",
+            "id": 863730,
+            "node_id": "MDQ6VXNlcjg2MzczMA==",
+            "avatar_url": "https://avatars.githubusercontent.com/u/863730?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/fanquake",
+            "html_url": "https://github.com/fanquake",
+            "followers_url": "https://api.github.com/users/fanquake/followers",
+            "following_url": "https://api.github.com/users/fanquake/following%7B/other_user%7D",
+            "gists_url": "https://api.github.com/users/fanquake/gists%7B/gist_id%7D",
+            "starred_url": "https://api.github.com/users/fanquake/starred%7B/owner%7D%7B/repo%7D",
+            "subscriptions_url": "https://api.github.com/users/fanquake/subscriptions",
+            "organizations_url": "https://api.github.com/users/fanquake/orgs",
+            "repos_url": "https://api.github.com/users/fanquake/repos",
+            "events_url": "https://api.github.com/users/fanquake/events%7B/privacy%7D",
+            "received_events_url": "https://api.github.com/users/fanquake/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "labels": [
+            {
+              "id": 2147693884,
+              "node_id": "MDU6TGFiZWwyMTQ3NjkzODg0",
+              "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Feature",
+              "name": "Feature",
+              "description": "",
+              "color": "8fe567",
+              "default": false
+            }
+          ],
+          "assignees": [],
+          "author_association": "MEMBER",
+          "locked": false,
+          "comments": 2,
+          "closed_at": "2023-06-18T10:50:25Z",
+          "created_at": "2022-08-12T08:26:30Z",
+          "updated_at": "2023-06-18T10:50:25Z"
+        },
+        "type": "issue"
+      }
+    },
+    {
       "event": "head_ref_force_pushed",
       "id": 8490491718,
       "node_id": "HRFPE_lADOEEET9c5dsEUmzwAAAAH6Ep9G",
@@ -604,7 +680,7 @@
       "commit_id": "0369d8b7dff451b27077844194af2f40f48d948d",
       "commit_url": null,
       "created_at": null,
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "Code ACK 0369d8b7",
       "user": {
         "login": "furszy",
@@ -767,7 +843,7 @@
       "commit_id": "2634584bb3b2ed7730b4af345c00a6ffe16727d0",
       "commit_url": null,
       "created_at": null,
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "Need to adapt `BitcoinUnits::formatWithPrivacy` function to accept negative amounts. Otherwise, when the wallet make a send, the assertion crashes the software.",
       "user": {
         "login": "furszy",
@@ -975,7 +1051,7 @@
       "commit_url": null,
       "created_at": "2023-02-28T16:18:51Z",
       "updated_at": "2023-02-28T16:28:15Z",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "Thinking further about this, if the \"privacy\" option is enabled, the transactions screen has no usage, thus shouldn't be accessible for the user.\r\n\r\nIn the current form, the screen is showing all the spends and receives ordered by date..\r\nIt presents the addresses where the user sent coins and the addresses where the user received them, so.. anyone could easily lookup them in an explorer and see how much money the wallet contains. Hiding amounts is not enough.\r\n\r\nWe could either block the view when the privacy option is enabled, or could create an empty screen image to replace the transactions list when privacy is enabled.",
       "user": {
         "login": "furszy",
@@ -1240,7 +1316,7 @@
       "commit_id": "d41037bfb154befad433e9c1a3d497dea9c7cb0c",
       "commit_url": null,
       "created_at": null,
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "",
       "user": {
         "login": "furszy",
@@ -1641,7 +1717,7 @@
       "commit_id": "4d0d15badbe57c2916ebd99f48bf8d9533847e0f",
       "commit_url": null,
       "created_at": null,
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "Code review ACK 4d0d15ba\r\nleft two details.",
       "user": {
         "login": "furszy",
@@ -2229,7 +2305,7 @@
       "commit_id": "4492de1be11f4131811f504a037342c78f480e20",
       "commit_url": null,
       "created_at": null,
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "ACK 4492de1",
       "user": {
         "login": "furszy",
@@ -2686,6 +2762,150 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/708#issuecomment-1565610693",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/708"
+    },
+    {
+      "event": "cross-referenced",
+      "id": null,
+      "node_id": null,
+      "url": null,
+      "actor": {
+        "login": "theStack",
+        "id": 91535,
+        "node_id": "MDQ6VXNlcjkxNTM1",
+        "avatar_url": "https://avatars.githubusercontent.com/u/91535?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/theStack",
+        "html_url": "https://github.com/theStack",
+        "followers_url": "https://api.github.com/users/theStack/followers",
+        "following_url": "https://api.github.com/users/theStack/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/theStack/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/theStack/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/theStack/subscriptions",
+        "organizations_url": "https://api.github.com/users/theStack/orgs",
+        "repos_url": "https://api.github.com/users/theStack/repos",
+        "events_url": "https://api.github.com/users/theStack/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/theStack/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2023-10-30T21:20:16Z",
+      "updated_at": "2023-10-30T21:20:16Z",
+      "source": {
+        "issue": {
+          "id": 1969244999,
+          "node_id": "PR_kwDOEEET9c5eKu7k",
+          "url": "https://api.github.com/repos/bitcoin-core/gui/issues/774",
+          "repository_url": "https://api.github.com/repos/bitcoin-core/gui",
+          "labels_url": "https://api.github.com/repos/bitcoin-core/gui/issues/774/labels%7B/name%7D",
+          "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/774/comments",
+          "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/774/events",
+          "html_url": "https://github.com/bitcoin-core/gui/pull/774",
+          "number": 774,
+          "state": "closed",
+          "state_reason": null,
+          "title": "Fix crash on selecting \"Mask values\" in transaction view",
+          "body": "This PR fixes a crash bug that can be caused with the following steps:\r\n- change to the \"Transactions\" view\r\n- right-click on an arbitrary transaction -> \"Show transaction details\"\r\n- close the transaction detail window again\r\n- select menu item \"Settings\" -> \"Mask values\"\r\n\r\nThe problem is that the list of opened dialogs, tracked in the member variable `m_opened_dialogs` (introduced in https://github.com/bitcoin-core/gui/pull/708, commit 4492de1be11f4131811f504a037342c78f480e20), is only ever appended with newly opened transaction detail dialog pointers, but never removed. This leads to dangling pointers in the list, and if the \"Mask values\" menu item is selected, a crash is caused in the course of trying to close the opened transaction detail dialogs (see `closeOpenedDialogs()` method). Fix this by removing a pointer of the list if the corresponding widget is destroyed.",
+          "user": {
+            "login": "theStack",
+            "id": 91535,
+            "node_id": "MDQ6VXNlcjkxNTM1",
+            "avatar_url": "https://avatars.githubusercontent.com/u/91535?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/theStack",
+            "html_url": "https://github.com/theStack",
+            "followers_url": "https://api.github.com/users/theStack/followers",
+            "following_url": "https://api.github.com/users/theStack/following%7B/other_user%7D",
+            "gists_url": "https://api.github.com/users/theStack/gists%7B/gist_id%7D",
+            "starred_url": "https://api.github.com/users/theStack/starred%7B/owner%7D%7B/repo%7D",
+            "subscriptions_url": "https://api.github.com/users/theStack/subscriptions",
+            "organizations_url": "https://api.github.com/users/theStack/orgs",
+            "repos_url": "https://api.github.com/users/theStack/repos",
+            "events_url": "https://api.github.com/users/theStack/events%7B/privacy%7D",
+            "received_events_url": "https://api.github.com/users/theStack/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "labels": [],
+          "assignees": [],
+          "author_association": "CONTRIBUTOR",
+          "locked": false,
+          "comments": 12,
+          "pull_request": {
+            "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/774",
+            "html_url": "https://github.com/bitcoin-core/gui/pull/774",
+            "diff_url": "https://github.com/bitcoin-core/gui/pull/774.diff",
+            "patch_url": "https://github.com/bitcoin-core/gui/pull/774.patch"
+          },
+          "closed_at": "2023-11-01T09:57:25Z",
+          "created_at": "2023-10-30T21:20:16Z",
+          "updated_at": "2023-11-01T13:25:59Z"
+        },
+        "type": "issue"
+      }
+    },
+    {
+      "event": "referenced",
+      "id": 10830491737,
+      "node_id": "REFE_lADOEEET9c5dsEUmzwAAAAKFjDBZ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/10830491737",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": "04bfe8c9c3ffd066b6103a4d49f54c33a13f1053",
+      "commit_url": "https://api.github.com/repos/bitcoin-core/gui/commits/04bfe8c9c3ffd066b6103a4d49f54c33a13f1053",
+      "created_at": "2023-11-01T09:57:25Z"
+    },
+    {
+      "event": "unlabeled",
+      "id": 12308098374,
+      "node_id": "UNLE_lADOEEET9c5dsEUmzwAAAALdnq1G",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/12308098374",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-04-01T08:22:27Z",
+      "label": {
+        "name": "Needs release notes",
+        "color": "b60205"
+      }
     }
   ],
   "comments": [
@@ -2725,7 +2945,7 @@
       "created_at": "2023-02-10T21:59:52Z",
       "updated_at": "2023-02-10T22:00:19Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/708#discussion_r1103295515",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1103295515"
@@ -2829,7 +3049,7 @@
       "created_at": "2023-03-01T18:46:50Z",
       "updated_at": "2023-03-01T18:47:04Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/708#discussion_r1122170162",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1122170162"
@@ -2933,7 +3153,7 @@
       "created_at": "2023-03-10T14:59:27Z",
       "updated_at": "2023-03-10T15:03:29Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/708#discussion_r1132487327",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1132487327"
@@ -2985,7 +3205,7 @@
       "created_at": "2023-03-10T15:02:44Z",
       "updated_at": "2023-03-10T15:03:29Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/708#discussion_r1132491161",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1132491161"
