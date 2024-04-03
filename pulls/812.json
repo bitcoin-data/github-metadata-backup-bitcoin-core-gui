@@ -41,10 +41,10 @@
     "body": "Fixes #810.\r\n\r\nNot much to explain; we were requiring the wallet to be unlocked for the unsigned transaction creation process.\r\nFix this by moving the unlock wallet request to the signed transaction creation process.",
     "labels": [],
     "created_at": "2024-03-29T14:46:47Z",
-    "updated_at": "2024-04-02T09:34:26Z",
+    "updated_at": "2024-04-03T04:57:04Z",
     "mergeable": true,
     "mergeable_state": "clean",
-    "merge_commit_sha": "be06ecf2e0c9823af0f94d76b3914e1271cfc616",
+    "merge_commit_sha": "95197a3d3a03279ec1fc29dccb82b9146970e42c",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -280,7 +280,7 @@
         "forks_count": 247,
         "stargazers_count": 553,
         "watchers_count": 553,
-        "size": 155988,
+        "size": 156020,
         "default_branch": "master",
         "open_issues_count": 164,
         "is_template": false,
@@ -293,7 +293,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-04-01T17:00:04Z",
+        "pushed_at": "2024-04-02T16:05:20Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2024-03-31T15:45:34Z",
         "license": {
@@ -324,7 +324,7 @@
     "deletions": 7,
     "changed_files": 1,
     "commits": 1,
-    "review_comments": 0,
+    "review_comments": 1,
     "comments": 1
   },
   "events": [
@@ -396,9 +396,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-03-29T14:46:51Z",
-      "updated_at": "2024-04-02T02:57:21Z",
+      "updated_at": "2024-04-03T04:57:04Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/812#pullrequestreview-1972520640) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| ACK | [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/812#pullrequestreview-1975499213) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -611,7 +611,96 @@
       "submitted_at": "2024-04-02T09:34:26Z",
       "state": "APPROVED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/812"
+    },
+    {
+      "event": "reviewed",
+      "id": 1975499213,
+      "node_id": "PRR_kwDOEEET9c51v7nN",
+      "url": null,
+      "actor": null,
+      "commit_id": "671b7a32516d62e1e79393ded4b45910bd08010a",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "CONTRIBUTOR",
+      "body": "tACK 671b7a32516d62e1e79393ded4b45910bd08010a\r\n\r\nTested and verified this PR fixes #810 and now creation of unsigned tx/ PSBT/ during fee-bumping doesn't ask for passphrase/ requires wallet unlock.",
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/812#pullrequestreview-1975499213",
+      "submitted_at": "2024-04-03T04:57:01Z",
+      "state": "APPROVED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/812"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1548912316",
+      "pull_request_review_id": 1975499213,
+      "id": 1548912316,
+      "node_id": "PRRC_kwDOEEET9c5cUoa8",
+      "diff_hunk": "@@ -549,10 +543,15 @@ bool WalletModel::bumpFee(uint256 hash, uint256& new_hash)\n         DataStream ssTx{};\n         ssTx << psbtx;\n         GUIUtil::setClipboard(EncodeBase64(ssTx.str()).c_str());\n-        Q_EMIT message(tr(\"PSBT copied\"), tr(\"Copied to clipboard\", \"Fee-bump PSBT saved\"), CClientUIInterface::MSG_INFORMATION);\n+        Q_EMIT message(tr(\"PSBT copied\"), tr(\"Fee-bump PSBT copied to clipboard\"), CClientUIInterface::MSG_INFORMATION | CClientUIInterface::MODAL);",
+      "path": "src/qt/walletmodel.cpp",
+      "position": 18,
+      "original_position": 18,
+      "commit_id": "671b7a32516d62e1e79393ded4b45910bd08010a",
+      "original_commit_id": "671b7a32516d62e1e79393ded4b45910bd08010a",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "At least on Ubuntu 22.04, now after the fee-bumping unsigned a modal pop-up is displayed:\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/792ecd94-3662-4bfd-a048-095c5a6f790b)\r\n\r\nwhile before there was a message sent thru the OS system information (?):\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/950fbcab-b5f5-432f-9604-1cd55c8bbbeb)\r\n\r\nI see in the code we usually use `CClientUIInterface::MSG_INFORMATION` (`transactionview.cpp`, `walletview.cpp`) and I'd prefer to keep this look & feel but at the same time I think having the modal window popping up it's making the user more aware of what just happened with the intention to accept it.",
+      "created_at": "2024-04-03T04:56:53Z",
+      "updated_at": "2024-04-03T04:57:01Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/812#discussion_r1548912316",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1548912316"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/812"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 546,
+      "original_line": 546,
+      "side": "RIGHT"
+    }
+  ]
 }
