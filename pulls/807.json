@@ -41,10 +41,10 @@
     "body": "Bundle all function's outputs inside the `util::Result` returned object.\r\n\r\nRemovals:\r\n- The input-output 'change_pos' ref arg from `createTransaction`, which has been a source of bugs in the past.\r\n- The 'fee' ref arg from `createTransaction`, which is currently only set when the transaction creation process succeeds.\r\n- The currently unreachable `AmountWithFeeExceedsBalance` error (more info about its re-introduction at https://github.com/bitcoin/bitcoin/pull/25269).\r\n\r\nAdditionally, this PR moves the `CreatedTransactionResult` struct into its own file. This change is made to avoid further expanding the GUI dependencies on `wallet.h`. Structurally, the GUI should only access the model/interfaces and never the wallet directly.",
     "labels": [],
     "created_at": "2024-03-22T12:55:51Z",
-    "updated_at": "2024-04-02T23:58:44Z",
+    "updated_at": "2024-04-03T13:01:18Z",
     "mergeable": true,
     "mergeable_state": "clean",
-    "merge_commit_sha": "21661b853ebdcb1dc6b966b8d669d94f9b226934",
+    "merge_commit_sha": "c6f0c2d5de79a7b2193a228d5bb156e8c7f4cd35",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -277,12 +277,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 247,
+        "forks_count": 245,
         "stargazers_count": 553,
         "watchers_count": 553,
-        "size": 156020,
+        "size": 156033,
         "default_branch": "master",
-        "open_issues_count": 164,
+        "open_issues_count": 165,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -293,7 +293,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-04-02T16:05:20Z",
+        "pushed_at": "2024-04-03T12:41:40Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2024-03-31T15:45:34Z",
         "license": {
@@ -324,7 +324,7 @@
     "deletions": 41,
     "changed_files": 6,
     "commits": 3,
-    "review_comments": 1,
+    "review_comments": 2,
     "comments": 2
   },
   "events": [
@@ -1082,6 +1082,58 @@
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1548752403"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/807"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 146,
+      "original_line": 146,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1549695878",
+      "pull_request_review_id": 1976736605,
+      "id": 1549695878,
+      "node_id": "PRRC_kwDOEEET9c5cXnuG",
+      "diff_hunk": "@@ -142,11 +143,10 @@ class Wallet\n     virtual void listLockedCoins(std::vector<COutPoint>& outputs) = 0;\n \n     //! Create transaction.\n-    virtual util::Result<CTransactionRef> createTransaction(const std::vector<wallet::CRecipient>& recipients,\n+    virtual util::Result<CreatedTransactionResult> createTransaction(const std::vector<wallet::CRecipient>& recipients,",
+      "path": "src/interfaces/wallet.h",
+      "position": 13,
+      "original_position": 13,
+      "commit_id": "dfbd145676255f82bad529976928dff1939c5e48",
+      "original_commit_id": "dfbd145676255f82bad529976928dff1939c5e48",
+      "in_reply_to_id": 1548752403,
+      "user": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "`CreatedTransactionResult` is an existing struct. The suggestion wouldn't compile.\r\nWe could rename the struct if that is generating confusion.",
+      "created_at": "2024-04-03T13:01:18Z",
+      "updated_at": "2024-04-03T13:01:18Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/807#discussion_r1549695878",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1549695878"
         },
         "pull_request": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/807"
