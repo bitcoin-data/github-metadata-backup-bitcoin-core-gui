@@ -50,7 +50,7 @@
       }
     ],
     "created_at": "2024-04-03T12:41:39Z",
-    "updated_at": "2024-04-03T15:02:20Z",
+    "updated_at": "2024-04-03T22:29:44Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merge_commit_sha": "7d10ed6c3fcc4b5270591bde6eba6a79a08f9b4c",
@@ -286,8 +286,8 @@
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
         "forks_count": 245,
-        "stargazers_count": 553,
-        "watchers_count": 553,
+        "stargazers_count": 554,
+        "watchers_count": 554,
         "size": 156033,
         "default_branch": "master",
         "open_issues_count": 165,
@@ -303,7 +303,7 @@
         "visibility": "public",
         "pushed_at": "2024-04-03T12:41:40Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-03-31T15:45:34Z",
+        "updated_at": "2024-04-03T16:15:06Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -404,9 +404,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-04-03T12:41:43Z",
-      "updated_at": "2024-04-03T12:41:43Z",
+      "updated_at": "2024-04-03T22:27:00Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\nA summary of reviews will appear here.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/813#pullrequestreview-1978210897) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -462,6 +462,42 @@
         "name": "CI failed",
         "color": "ededed"
       }
+    },
+    {
+      "event": "reviewed",
+      "id": 1978210897,
+      "node_id": "PRR_kwDOEEET9c516RpR",
+      "url": null,
+      "actor": null,
+      "commit_id": "94173eac6e89f374f1a98b5d0e449a0a07ed832d",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "CONTRIBUTOR",
+      "body": "Concept ACK 94173eac6e89f374f1a98b5d0e449a0a07ed832d\r\n\r\nI'd suggest to use a regex validator for the IP address, it's much simpler I think and the user won't be allow to enter any other symbols or chars (typo?) that aren't digits (plus user can't type more than 3 subnets separated by dots where currently you could and any symbols):\r\n\r\n```diff\r\ndiff --git a/src/qt/optionsdialog.cpp b/src/qt/optionsdialog.cpp\r\nindex dd654a7ab..1fabee7f2 100644\r\n--- a/src/qt/optionsdialog.cpp\r\n+++ b/src/qt/optionsdialog.cpp\r\n@@ -33,6 +33,11 @@\r\n #include <QSystemTrayIcon>\r\n #include <QTimer>\r\n \r\n+// For IP address validators\r\n+QRegularExpression ipRegex(\"^([0-9]{1,3}\\\\.){3}[0-9]{1,3}$\");\r\n+// For Port number validators\r\n+QRegularExpression portRegex(\"^(6553[0-5]|655[0-2]\\\\d|65[0-4]\\\\d{2}|6[0-4]\\\\d{3}|[1-5]\\\\d{4}|[1-9]\\\\d{0,3})$\");\r\n+\r\n int setFontChoice(QComboBox* cb, const OptionsModel::FontChoice& fc)\r\n {\r\n     int i;\r\n@@ -112,13 +117,18 @@ OptionsDialog::OptionsDialog(QWidget* parent, bool enableWallet)\r\n     ui->mapPortNatpmp->setEnabled(false);\r\n #endif\r\n \r\n+    QRegularExpressionValidator *ipValidator = new QRegularExpressionValidator(ipRegex, this);\r\n+    QRegularExpressionValidator *portValidator = new QRegularExpressionValidator(portRegex, this);\r\n+\r\n     ui->proxyIp->setEnabled(false);\r\n+    ui->proxyIp->setValidator(ipValidator);\r\n+\r\n     ui->proxyPort->setEnabled(false);\r\n-    ui->proxyPort->setValidator(new QIntValidator(1, 65535, this));\r\n+    ui->proxyPort->setValidator(portValidator);\r\n \r\n     ui->proxyIpTor->setEnabled(false);\r\n+    ui->proxyIpTor->setValidator(ipValidator);\r\n     ui->proxyPortTor->setEnabled(false);\r\n-    ui->proxyPortTor->setValidator(new QIntValidator(1, 65535, this));\r\n+    ui->proxyPortTor->setValidator(portValidator);\r\n \r\n     connect(ui->connectSocks, &QPushButton::toggled, ui->proxyIp, &QWidget::setEnabled);\r\n     connect(ui->connectSocks, &QPushButton::toggled, ui->proxyPort, &QWidget::setEnabled);\r\n\r\n```\r\n\r\nI've also included in the above a \"port number validator\", the regex there is a bit more \"elaborated\" if you like but currently using the int validator, user can enter a dot and then the `CService` will return that the port is not valid.\r\n\r\nLast one since we are here, I'd change the call to 'CService' (that performs currently the validation of the port number - eg as a mentioned above that user can enter a dot) to when the value is changed (`textChanged`?) - this is something that some [reviewer noticed](https://github.com/bitcoin-core/gui-qml/pull/391#issuecomment-2021250132) testing the [corresponding control/ widget](https://github.com/bitcoin-core/gui-qml/pull/391) in the [QML gui repo](https://github.com/bitcoin-core/gui-qml/) and I find it more practical - not as how currently behaves that the validation is done on focus changed (you can also see in the code that the tor inputs have different signal connections somehow, and the `textChanged` there doesn't work properly either) but this can be done also on a follow-up.",
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/813#pullrequestreview-1978210897",
+      "submitted_at": "2024-04-03T22:26:57Z",
+      "state": "CHANGES_REQUESTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/813"
     }
   ],
   "comments": []
