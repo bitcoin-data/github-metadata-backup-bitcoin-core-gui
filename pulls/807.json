@@ -41,10 +41,10 @@
     "body": "Bundle all function's outputs inside the `util::Result` returned object.\r\n\r\nRemovals:\r\n- The input-output 'change_pos' ref arg from `createTransaction`, which has been a source of bugs in the past.\r\n- The 'fee' ref arg from `createTransaction`, which is currently only set when the transaction creation process succeeds.\r\n- The currently unreachable `AmountWithFeeExceedsBalance` error (more info about its re-introduction at https://github.com/bitcoin/bitcoin/pull/25269).\r\n\r\nAdditionally, this PR moves the `CreatedTransactionResult` struct into its own file. This change is made to avoid further expanding the GUI dependencies on `wallet.h`. Structurally, the GUI should only access the model/interfaces and never the wallet directly.",
     "labels": [],
     "created_at": "2024-03-22T12:55:51Z",
-    "updated_at": "2024-04-02T04:16:43Z",
+    "updated_at": "2024-04-02T23:58:44Z",
     "mergeable": true,
     "mergeable_state": "clean",
-    "merge_commit_sha": "f55cd1a4f2a1a11b80bd59941dbbbdac58f11d7e",
+    "merge_commit_sha": "21661b853ebdcb1dc6b966b8d669d94f9b226934",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -280,7 +280,7 @@
         "forks_count": 247,
         "stargazers_count": 553,
         "watchers_count": 553,
-        "size": 155988,
+        "size": 156020,
         "default_branch": "master",
         "open_issues_count": 164,
         "is_template": false,
@@ -293,7 +293,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-04-01T17:00:04Z",
+        "pushed_at": "2024-04-02T16:05:20Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2024-03-31T15:45:34Z",
         "license": {
@@ -324,7 +324,7 @@
     "deletions": 41,
     "changed_files": 6,
     "commits": 3,
-    "review_comments": 0,
+    "review_comments": 1,
     "comments": 2
   },
   "events": [
@@ -396,9 +396,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-03-22T12:55:54Z",
-      "updated_at": "2024-04-02T02:54:31Z",
+      "updated_at": "2024-04-02T23:58:44Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| ACK | [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/807#pullrequestreview-1972518710) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#806](https://github.com/bitcoin-core/gui/pull/806) (refactor: Misc int sign change fixes by maflcko)\n* [#bitcoin/bitcoin/25722](https://github.com/bitcoin/bitcoin/pull/25722) (refactor: Use util::Result class for wallet loading by ryanofsky)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| ACK | [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/807#pullrequestreview-1975255350) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#806](https://github.com/bitcoin-core/gui/pull/806) (refactor: Misc int sign change fixes by maflcko)\n* [#bitcoin/bitcoin/25722](https://github.com/bitcoin/bitcoin/pull/25722) (refactor: Use util::Result class for wallet loading by ryanofsky)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -892,7 +892,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/25722.patch"
           },
           "created_at": "2022-07-27T19:26:58Z",
-          "updated_at": "2024-03-30T06:37:36Z"
+          "updated_at": "2024-04-02T06:32:44Z"
         },
         "type": "issue"
       }
@@ -968,7 +968,131 @@
       "submitted_at": "2024-04-02T04:16:43Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/807"
+    },
+    {
+      "event": "reviewed",
+      "id": 1975253818,
+      "node_id": "PRR_kwDOEEET9c51u_s6",
+      "url": null,
+      "actor": null,
+      "commit_id": "dfbd145676255f82bad529976928dff1939c5e48",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "CONTRIBUTOR",
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/807#pullrequestreview-1975253818",
+      "submitted_at": "2024-04-02T23:57:09Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/807"
+    },
+    {
+      "event": "reviewed",
+      "id": 1975255350,
+      "node_id": "PRR_kwDOEEET9c51vAE2",
+      "url": null,
+      "actor": null,
+      "commit_id": "dfbd145676255f82bad529976928dff1939c5e48",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "CONTRIBUTOR",
+      "body": "cr ACK dfbd145676255f82bad529976928dff1939c5e48",
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/807#pullrequestreview-1975255350",
+      "submitted_at": "2024-04-02T23:58:41Z",
+      "state": "APPROVED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/807"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1548752403",
+      "pull_request_review_id": 1975253818,
+      "id": 1548752403,
+      "node_id": "PRRC_kwDOEEET9c5cUBYT",
+      "diff_hunk": "@@ -142,11 +143,10 @@ class Wallet\n     virtual void listLockedCoins(std::vector<COutPoint>& outputs) = 0;\n \n     //! Create transaction.\n-    virtual util::Result<CTransactionRef> createTransaction(const std::vector<wallet::CRecipient>& recipients,\n+    virtual util::Result<CreatedTransactionResult> createTransaction(const std::vector<wallet::CRecipient>& recipients,",
+      "path": "src/interfaces/wallet.h",
+      "position": 13,
+      "original_position": 13,
+      "commit_id": "dfbd145676255f82bad529976928dff1939c5e48",
+      "original_commit_id": "dfbd145676255f82bad529976928dff1939c5e48",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "**nit**: the tx won't be created when an error is raised during the `createTransaction`'s call (eg no recipient) so the obj should represent the correct thing, unless I misunderstanding the use case here... ok I see now this is how `src/util/result.h` works, so ignore my correction, I find it a bit weird but perhaps cos I'm not used to it yet. As a ref this change could be useful https://github.com/bitcoin/bitcoin/pull/25665 \r\n```suggestion\r\n    virtual util::Result<CreateTransactionResult> createTransaction(const std::vector<wallet::CRecipient>& recipients,\r\n```",
+      "created_at": "2024-04-02T23:57:09Z",
+      "updated_at": "2024-04-02T23:57:09Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/807#discussion_r1548752403",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1548752403"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/807"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 146,
+      "original_line": 146,
+      "side": "RIGHT"
+    }
+  ]
 }
