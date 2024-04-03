@@ -41,10 +41,10 @@
     "body": "Fixes #810.\r\n\r\nNot much to explain; we were requiring the wallet to be unlocked for the unsigned transaction creation process.\r\nFix this by moving the unlock wallet request to the signed transaction creation process.",
     "labels": [],
     "created_at": "2024-03-29T14:46:47Z",
-    "updated_at": "2024-04-03T04:57:04Z",
+    "updated_at": "2024-04-03T12:37:57Z",
     "mergeable": true,
     "mergeable_state": "clean",
-    "merge_commit_sha": "95197a3d3a03279ec1fc29dccb82b9146970e42c",
+    "merge_commit_sha": "a7f7d111827ee3d530ad8a450928a8f18c52cd75",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -277,12 +277,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 247,
+        "forks_count": 245,
         "stargazers_count": 553,
         "watchers_count": 553,
-        "size": 156020,
+        "size": 156033,
         "default_branch": "master",
-        "open_issues_count": 164,
+        "open_issues_count": 165,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -293,7 +293,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-04-02T16:05:20Z",
+        "pushed_at": "2024-04-03T12:41:40Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2024-03-31T15:45:34Z",
         "license": {
@@ -324,7 +324,7 @@
     "deletions": 7,
     "changed_files": 1,
     "commits": 1,
-    "review_comments": 1,
+    "review_comments": 2,
     "comments": 1
   },
   "events": [
@@ -690,6 +690,58 @@
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1548912316"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/812"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 546,
+      "original_line": 546,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1549656233",
+      "pull_request_review_id": 1976675240,
+      "id": 1549656233,
+      "node_id": "PRRC_kwDOEEET9c5cXeCp",
+      "diff_hunk": "@@ -549,10 +543,15 @@ bool WalletModel::bumpFee(uint256 hash, uint256& new_hash)\n         DataStream ssTx{};\n         ssTx << psbtx;\n         GUIUtil::setClipboard(EncodeBase64(ssTx.str()).c_str());\n-        Q_EMIT message(tr(\"PSBT copied\"), tr(\"Copied to clipboard\", \"Fee-bump PSBT saved\"), CClientUIInterface::MSG_INFORMATION);\n+        Q_EMIT message(tr(\"PSBT copied\"), tr(\"Fee-bump PSBT copied to clipboard\"), CClientUIInterface::MSG_INFORMATION | CClientUIInterface::MODAL);",
+      "path": "src/qt/walletmodel.cpp",
+      "position": 18,
+      "original_position": 18,
+      "commit_id": "671b7a32516d62e1e79393ded4b45910bd08010a",
+      "original_commit_id": "671b7a32516d62e1e79393ded4b45910bd08010a",
+      "in_reply_to_id": 1548912316,
+      "user": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "The change was introduced because the OS system notification wasn't popping up on macOS. Either way is ok for me.",
+      "created_at": "2024-04-03T12:37:23Z",
+      "updated_at": "2024-04-03T12:37:57Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/812#discussion_r1549656233",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1549656233"
         },
         "pull_request": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/812"
