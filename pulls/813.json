@@ -50,7 +50,7 @@
       }
     ],
     "created_at": "2024-04-03T12:41:39Z",
-    "updated_at": "2024-04-04T13:12:25Z",
+    "updated_at": "2024-04-04T15:28:52Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merge_commit_sha": "459b845a2c6fbaeba37cf089ce6b4f21b5b19dbc",
@@ -288,7 +288,7 @@
         "forks_count": 245,
         "stargazers_count": 554,
         "watchers_count": 554,
-        "size": 156042,
+        "size": 156050,
         "default_branch": "master",
         "open_issues_count": 165,
         "is_template": false,
@@ -333,7 +333,7 @@
     "changed_files": 1,
     "commits": 1,
     "review_comments": 2,
-    "comments": 2
+    "comments": 3
   },
   "events": [
     {
@@ -588,6 +588,60 @@
       "submitted_at": "2024-04-04T13:08:25Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/813"
+    },
+    {
+      "event": "commented",
+      "id": 2037524282,
+      "node_id": "IC_kwDOEEET9c55cic6",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2037524282",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-04-04T15:28:51Z",
+      "updated_at": "2024-04-04T15:28:51Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "> I'm not convinced that a large regex is \"simpler\" than checking if a \":\" is in the string?\r\n\r\nThe large one was for the port number, the one I referred as \"simpler\" was for the IP address: `QRegularExpression ipRegex(\"^([0-9]{1,3}\\\\.){3}[0-9]{1,3}$\");`. What I meant is that we know in advance that the \":\" would be invalid so we could restrict the user to even enter it. As current we could see this (not only \":\"):\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/139224e2-aa0d-444b-9ff9-ad75f4763c7c)\r\n\r\nThe regex would keep it cleaner, more user friendly and we don't have to do an extra validation, but I'll stop trying to convince you :smile: (btw, also we'd need to set the max length to 15/ follow up).\r\n\r\n> I don't feel that interested in picking them here with the QML work going on, and them not being much of an issue IMO. \r\n\r\nQML is far for being at the stage where QT currently is, improving user experience could also be useful for both projects feedback.\r\n\r\n> In contrast this fix prevents a bug whereby an incorrect setting can stop the node starting up.\r\n\r\nI agree and there's a [workaround](https://github.com/bitcoin-core/gui/issues/809#issuecomment-2026525827) already which is just removing the IP line from the file.\r\n\r\n> The only potential issue I saw with my own solution was that it would outright prevent setting the tor proxy IP to an IPv6 address, however from my (quick) research, it didn't seem that this was actually something anyone did (and it might not even be possible/practical to do). If I'm wrong on this, I'll be happy to update the solution further, but from what I can see even setting Tor ORPort to IPV6 is barely supported, and ControlPort is limited to an IPv4 address:port...\r\n\r\nIs it even possible to enable those checkboxes?\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/762d4653-3d8b-402e-86e0-4b78257ab5fb)\r\n",
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/813#issuecomment-2037524282",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/813"
     }
   ],
   "comments": [
