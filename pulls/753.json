@@ -50,7 +50,7 @@
       }
     ],
     "created_at": "2023-09-10T05:32:46Z",
-    "updated_at": "2024-04-12T13:19:57Z",
+    "updated_at": "2024-04-12T19:15:56Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merge_commit_sha": "53951ba0bf1a0e7491dd20216e025feec37d959d",
@@ -170,7 +170,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-04-12T03:32:03Z",
+        "pushed_at": "2024-04-12T15:16:12Z",
         "created_at": "2022-09-10T13:37:44Z",
         "updated_at": "2022-12-30T18:34:57Z",
         "license": {
@@ -302,7 +302,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-04-12T04:00:52Z",
+        "pushed_at": "2024-04-12T15:16:14Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2024-04-11T03:40:02Z",
         "license": {
@@ -333,7 +333,7 @@
     "deletions": 37,
     "changed_files": 11,
     "commits": 5,
-    "review_comments": 1,
+    "review_comments": 2,
     "comments": 10
   },
   "events": [
@@ -2294,6 +2294,58 @@
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1562541010"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/753"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 175,
+      "original_line": 175,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1563067060",
+      "pull_request_review_id": 1998272499,
+      "id": 1563067060,
+      "node_id": "PRRC_kwDOEEET9c5dKoK0",
+      "diff_hunk": "@@ -135,17 +163,20 @@ void AddressBookPage::setModel(AddressTableModel *_model)\n         return;\n \n     auto type = tab == ReceivingTab ? AddressTableModel::Receive : AddressTableModel::Send;\n-    proxyModel = new AddressBookSortFilterProxyModel(type, this);\n+    proxyModel.reset(new AddressBookSortFilterProxyModel(type, this, true));\n     proxyModel->setSourceModel(_model);\n \n-    connect(ui->searchLineEdit, &QLineEdit::textChanged, proxyModel, &QSortFilterProxyModel::setFilterWildcard);\n+    connect(ui->searchLineEdit, &QLineEdit::textChanged, proxyModel.get(), &QSortFilterProxyModel::setFilterWildcard);\n \n-    ui->tableView->setModel(proxyModel);\n+    ui->tableView->setModel(proxyModel->nestedProxyModel());\n     ui->tableView->sortByColumn(0, Qt::AscendingOrder);\n \n     // Set column widths\n-    ui->tableView->horizontalHeader()->setSectionResizeMode(AddressTableModel::Label, QHeaderView::Stretch);\n+    ui->tableView->horizontalHeader()->setSectionResizeMode(AddressTableModel::Label, QHeaderView::ResizeToContents);",
+      "path": "src/qt/addressbookpage.cpp",
+      "position": 92,
+      "original_position": 92,
+      "commit_id": "dffc37f15c4c19ccd5f4eca802d09990331a2b21",
+      "original_commit_id": "dffc37f15c4c19ccd5f4eca802d09990331a2b21",
+      "in_reply_to_id": 1562541010,
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "Good point, this is something that could be subject for discussion, I'm open to any suggestions. Originally, as for this change, I decided to change the resize mode from `Stretch` to `ResizeToContents` as it looked tighter to me (resize mode [enum](https://doc.qt.io/qt-5/qheaderview.html#ResizeMode-enum) - qt doc ref). I was thinking to make a bit of a mix of both of them, `Stretch` for some columns and `ResizeToContents` to others (e.g. check [here](https://forum.qt.io/topic/115561/qheaderview-stretch-and-resizetocontents)), but I see there are [other devs](https://stackoverflow.com/questions/47793748/qheaderview-stretch-or-resizetocontents-based-on-columns-content-size) that also calculate the size of certain columns (in the latest link they also mentioned the property `setStretchLastSection`, which extends the size of the last column to cover the rest of the table so there's no gap as you see in your 2nd screenshot, and I played a bit with but I finally discarded it cos there was an unexpected behaviour that can't remember now). We could also allow users resize each column as their preference and save them in the settings (I think this is done on the \"Peers\" table).\r\n\r\nPlease let me know your opinion on this or if you have any suggestions. Thanks!",
+      "created_at": "2024-04-12T19:15:56Z",
+      "updated_at": "2024-04-12T19:15:56Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/753#discussion_r1563067060",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1563067060"
         },
         "pull_request": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/753"
