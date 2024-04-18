@@ -41,7 +41,7 @@
     "body": "Limit to one the transaction details dialogs that a user can open.\r\n\r\n<details>\r\n<summary>Currently a user can open unlimited tx details dialogs for the same tx id.</summary>\r\n\r\n![Peek 2024-04-12 00-50](https://github.com/bitcoin-core/gui/assets/110166421/ba5a261b-9234-437f-b496-2f01320f14ce)\r\n\r\n</details>\r\n<details>\r\n<summary>This PR fixes the issue.</summary>\r\n\r\n![Peek 2024-04-12 00-37](https://github.com/bitcoin-core/gui/assets/110166421/22f0f9e4-ec58-4ee2-bff4-6793435dd6d5)\r\n\r\n</details>",
     "labels": [],
     "created_at": "2024-04-12T04:00:51Z",
-    "updated_at": "2024-04-17T23:35:54Z",
+    "updated_at": "2024-04-18T04:17:49Z",
     "mergeable": true,
     "mergeable_state": "clean",
     "merge_commit_sha": "cf2ecc75f55b30ebed026a7121a48457fddd20c0",
@@ -324,7 +324,7 @@
     "deletions": 8,
     "changed_files": 4,
     "commits": 1,
-    "review_comments": 1,
+    "review_comments": 2,
     "comments": 5
   },
   "events": [
@@ -939,6 +939,58 @@
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1569483043"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/817"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 673,
+      "original_line": 673,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1569924233",
+      "pull_request_review_id": 2007792369,
+      "id": 1569924233,
+      "node_id": "PRRC_kwDOEEET9c5dkySJ",
+      "diff_hunk": "@@ -663,3 +665,14 @@ void TransactionView::closeOpenedDialogs()\n     }\n     m_opened_dialogs.clear();\n }\n+\n+bool TransactionView::detailsAlreadyShown(const QModelIndex &idx)\n+{\n+    for (TransactionDescDialog* dlg : m_opened_dialogs) {\n+        if (dlg->getTransactionId() == idx.data(TransactionTableModel::TxHashRole).toString()) {\n+            dlg->activateWindow();",
+      "path": "src/qt/transactionview.cpp",
+      "position": 32,
+      "original_position": 32,
+      "commit_id": "b26d2e81ec6ac4b5bd97bc7f7ec0c44e502b6a18",
+      "original_commit_id": "b26d2e81ec6ac4b5bd97bc7f7ec0c44e502b6a18",
+      "in_reply_to_id": 1569483043,
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "Thanks for reviewing and spotting that. I tried on Ubuntu to call **only** `dlg->raise()` but doesn't seem to work (also try other things like `dlg->setFocus()`, `dlg->setFocusPolicy(Qt::StrongFocus)`, `dlg->focusWidget()` and some combinations), until I found this in the QT documentation about [activateWindow()](https://doc.qt.io/qt-5/qwidget.html#activateWindow) (which I should have checked first):\r\n\r\n_This function performs the same operation as clicking the mouse on the title bar of a top-level window. On **X11**, the result depends on the Window Manager. **If you want to ensure that the window is stacked on top as well you should also call [raise](https://doc.qt.io/qt-5/qwidget.html#raise)**. Note that the window must be visible, otherwise activateWindow() has no effect._\r\n\r\n_On **Windows**, if you are calling this when the application is not currently the active one then it will not make it the active window. It will change the color of the taskbar entry to indicate that the window has changed in some way. This is because Microsoft does not allow an application to interrupt what the user is currently doing in another application._\r\n\r\nSo, since you tried it on Mac already, let me take a look on how it behaves on **Windows**.",
+      "created_at": "2024-04-18T04:17:49Z",
+      "updated_at": "2024-04-18T04:17:49Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/817#discussion_r1569924233",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1569924233"
         },
         "pull_request": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/817"
