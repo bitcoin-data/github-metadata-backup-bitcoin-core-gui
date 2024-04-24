@@ -50,10 +50,10 @@
       }
     ],
     "created_at": "2023-11-03T08:36:13Z",
-    "updated_at": "2024-02-29T11:58:43Z",
+    "updated_at": "2024-04-24T00:41:32Z",
     "mergeable": true,
     "mergeable_state": "unstable",
-    "merge_commit_sha": "5b19d91758374f18ce507658573ce800bf091b73",
+    "merge_commit_sha": "f2bec414405e50aa4150215398b463b7a3fcb1cd",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -286,12 +286,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 242,
-        "stargazers_count": 542,
-        "watchers_count": 542,
-        "size": 152348,
+        "forks_count": 251,
+        "stargazers_count": 560,
+        "watchers_count": 560,
+        "size": 157584,
         "default_branch": "master",
-        "open_issues_count": 160,
+        "open_issues_count": 165,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -302,9 +302,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-02-29T08:06:45Z",
+        "pushed_at": "2024-04-23T21:21:06Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-02-29T07:29:24Z",
+        "updated_at": "2024-04-23T21:21:10Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -334,7 +334,7 @@
     "changed_files": 4,
     "commits": 1,
     "review_comments": 2,
-    "comments": 2
+    "comments": 3
   },
   "events": [
     {
@@ -471,7 +471,7 @@
           "events_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/28776/events",
           "html_url": "https://github.com/bitcoin/bitcoin/pull/28776",
           "number": 28776,
-          "state": "open",
+          "state": "closed",
           "state_reason": null,
           "title": "Wallet: Functions to enable adding used balance to GUI overview page",
           "body": "**First Part:** Fixes https://github.com/bitcoin-core/gui/issues/769\r\n\r\nFunctions to enable adding used balance to the overview page for wallets with the avoid_reuse flag\r\n\r\n### Dependency\r\n\r\n- **Part two**: https://github.com/bitcoin-core/gui/pull/775\r\n\r\n![Screenshot from 2023-11-02 18-10-06](https://github.com/bitcoin/bitcoin/assets/15610188/99864db1-2b44-495d-a782-50b64f77094d)\r\n",
@@ -524,8 +524,9 @@
             "diff_url": "https://github.com/bitcoin/bitcoin/pull/28776.diff",
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/28776.patch"
           },
+          "closed_at": "2024-04-09T14:59:02Z",
           "created_at": "2023-11-02T15:23:10Z",
-          "updated_at": "2024-02-26T23:54:38Z"
+          "updated_at": "2024-04-09T14:59:02Z"
         },
         "type": "issue"
       }
@@ -830,8 +831,8 @@
           "number": 29062,
           "state": "open",
           "state_reason": null,
-          "title": "Wallet: Add GetFullBalance(...) which included used balance",
-          "body": "Add `GetFullBalance()` to compute `used` balance in `getbalances RPC` and on GUI [GUI PR #775](https://github.com/bitcoin-core/gui/pull/775)\r\n\r\n_Check https://github.com/bitcoin/bitcoin/pull/28776#discussion_r1407875236 by @achow101_\r\n\r\n> However, I think it would be better to move all of this into `GetBalance` itself and just have it always compute the used balance for us rather than having the caller do this extra computation.",
+          "title": "Wallet: (Refactor) GetBalance to calculate used balance",
+          "body": "Add `GetFullBalance()` to compute `used` balance in `getbalances RPC` and on GUI [GUI PR #775](https://github.com/bitcoin-core/gui/pull/775)\r\n\r\n_Check https://github.com/bitcoin/bitcoin/pull/28776#discussion_r1407875236 by @achow101_\r\n\r\n> However, I think it would be better to move all of this into `GetBalance` itself and just have it always compute the used balance for us rather than having the caller do this extra computation.\r\n\r\n### Update:\r\n- Compute `used` balance from `GetBalance(...)`",
           "user": {
             "login": "BrandonOdiwuor",
             "id": 15610188,
@@ -860,15 +861,6 @@
               "name": "Wallet",
               "color": "08a781",
               "default": false
-            },
-            {
-              "id": 5334691551,
-              "node_id": "LA_kwDOABII588AAAABPfju3w",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/CI%20failed",
-              "name": "CI failed",
-              "description": "",
-              "color": "cccccc",
-              "default": false
             }
           ],
           "assignees": [],
@@ -882,7 +874,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/29062.patch"
           },
           "created_at": "2023-12-12T14:38:08Z",
-          "updated_at": "2024-01-16T01:24:23Z"
+          "updated_at": "2024-04-23T06:47:56Z"
         },
         "type": "issue"
       }
@@ -939,6 +931,60 @@
         "site_admin": false
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/775#issuecomment-1970985941",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/775"
+    },
+    {
+      "event": "commented",
+      "id": 2073729945,
+      "node_id": "IC_kwDOEEET9c57mpuZ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2073729945",
+      "actor": {
+        "login": "luke-jr",
+        "id": 1095675,
+        "node_id": "MDQ6VXNlcjEwOTU2NzU=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1095675?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/luke-jr",
+        "html_url": "https://github.com/luke-jr",
+        "followers_url": "https://api.github.com/users/luke-jr/followers",
+        "following_url": "https://api.github.com/users/luke-jr/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/luke-jr/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/luke-jr/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/luke-jr/subscriptions",
+        "organizations_url": "https://api.github.com/users/luke-jr/orgs",
+        "repos_url": "https://api.github.com/users/luke-jr/repos",
+        "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/luke-jr/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-04-24T00:41:31Z",
+      "updated_at": "2024-04-24T00:41:31Z",
+      "author_association": "MEMBER",
+      "body": "What is the use case here? (And the avoid_reuse flag in general...)",
+      "user": {
+        "login": "luke-jr",
+        "id": 1095675,
+        "node_id": "MDQ6VXNlcjEwOTU2NzU=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1095675?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/luke-jr",
+        "html_url": "https://github.com/luke-jr",
+        "followers_url": "https://api.github.com/users/luke-jr/followers",
+        "following_url": "https://api.github.com/users/luke-jr/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/luke-jr/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/luke-jr/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/luke-jr/subscriptions",
+        "organizations_url": "https://api.github.com/users/luke-jr/orgs",
+        "repos_url": "https://api.github.com/users/luke-jr/repos",
+        "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/luke-jr/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/775#issuecomment-2073729945",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/775"
     }
   ],
