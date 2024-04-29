@@ -41,10 +41,10 @@
     "body": "As described in https://github.com/bitcoin/bitcoin/issues/10542 (and numerous other places), message signing in Bitcoin Core does not support \"signing with a segwit address\" and likely will not in the foreseeable future, or at least until a new message-signing standard is agreed upon.\r\n\r\nTherefore update the possibly misleading error message presented to the user in the GUI to detail more specifically the reason their message cannot be signed, in the case that a non P2PKH address is entered.\r\n\r\nThis change takes the [suggested wording](https://github.com/bitcoin/bitcoin/issues/10542#issuecomment-1960313569) from @adiabat.\r\n\r\nPerhaps with this we can close https://github.com/bitcoin/bitcoin/issues/10542 ?",
     "labels": [],
     "created_at": "2024-04-29T13:02:23Z",
-    "updated_at": "2024-04-29T13:02:28Z",
+    "updated_at": "2024-04-29T18:49:49Z",
     "mergeable": true,
-    "mergeable_state": "unstable",
-    "merge_commit_sha": "a94119e9ad73b500ad79df8570f3b2709bccb3fb",
+    "mergeable_state": "clean",
+    "merge_commit_sha": "fe726a757ca73451f47ea0db4a32c2ff6363c896",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -277,9 +277,9 @@
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
         "forks_count": 253,
-        "stargazers_count": 560,
-        "watchers_count": 560,
-        "size": 157635,
+        "stargazers_count": 561,
+        "watchers_count": 561,
+        "size": 157656,
         "default_branch": "master",
         "open_issues_count": 166,
         "is_template": false,
@@ -292,9 +292,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-04-29T13:37:59Z",
+        "pushed_at": "2024-04-29T14:38:58Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-04-29T13:38:02Z",
+        "updated_at": "2024-04-29T14:39:01Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -323,7 +323,7 @@
     "deletions": 3,
     "changed_files": 2,
     "commits": 1,
-    "review_comments": 0,
+    "review_comments": 1,
     "comments": 1
   },
   "events": [
@@ -478,7 +478,96 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/819#issuecomment-2082669861",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/819"
+    },
+    {
+      "event": "reviewed",
+      "id": 2029148876,
+      "node_id": "PRR_kwDOEEET9c548lrM",
+      "url": null,
+      "actor": null,
+      "commit_id": "93c82529125ca6ec25083d9e829801875a31da6a",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "CONTRIBUTOR",
+      "body": "cack",
+      "user": {
+        "login": "MarnixCroes",
+        "id": 93143998,
+        "node_id": "U_kgDOBY1Dvg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/93143998?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/MarnixCroes",
+        "html_url": "https://github.com/MarnixCroes",
+        "followers_url": "https://api.github.com/users/MarnixCroes/followers",
+        "following_url": "https://api.github.com/users/MarnixCroes/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/MarnixCroes/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/MarnixCroes/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/MarnixCroes/subscriptions",
+        "organizations_url": "https://api.github.com/users/MarnixCroes/orgs",
+        "repos_url": "https://api.github.com/users/MarnixCroes/repos",
+        "events_url": "https://api.github.com/users/MarnixCroes/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/MarnixCroes/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/819#pullrequestreview-2029148876",
+      "submitted_at": "2024-04-29T18:49:49Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/819"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1583469857",
+      "pull_request_review_id": 2029148876,
+      "id": 1583469857,
+      "node_id": "PRRC_kwDOEEET9c5eYdUh",
+      "diff_hunk": "@@ -123,7 +123,10 @@ void SignVerifyMessageDialog::on_signMessageButton_SM_clicked()\n     if (!pkhash) {\n         ui->addressIn_SM->setValid(false);\n         ui->statusLabel_SM->setStyleSheet(\"QLabel { color: red; }\");\n-        ui->statusLabel_SM->setText(tr(\"The entered address does not refer to a key.\") + QString(\" \") + tr(\"Please check the address and try again.\"));\n+        ui->statusLabel_SM->setText(\n+            tr(\"The entered address does not refer to a legacy (P2PKH) key.\") + QString(\" \") +\n+            tr(\"Message signing for segwit addresses (addresses starting with bc1/tb1) is not supported in this version of Bitcoin Core.\") + QString(\" \") +",
+      "path": "src/qt/signverifymessagedialog.cpp",
+      "position": 7,
+      "original_position": 7,
+      "commit_id": "93c82529125ca6ec25083d9e829801875a31da6a",
+      "original_commit_id": "93c82529125ca6ec25083d9e829801875a31da6a",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "MarnixCroes",
+        "id": 93143998,
+        "node_id": "U_kgDOBY1Dvg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/93143998?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/MarnixCroes",
+        "html_url": "https://github.com/MarnixCroes",
+        "followers_url": "https://api.github.com/users/MarnixCroes/followers",
+        "following_url": "https://api.github.com/users/MarnixCroes/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/MarnixCroes/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/MarnixCroes/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/MarnixCroes/subscriptions",
+        "organizations_url": "https://api.github.com/users/MarnixCroes/orgs",
+        "repos_url": "https://api.github.com/users/MarnixCroes/repos",
+        "events_url": "https://api.github.com/users/MarnixCroes/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/MarnixCroes/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "- it doesn't work for P2SH either, which doesn't start with bc1/tb1\r\n\r\n- I'd probably leave out the testnet/signet example/mentioning of tb1, to prevent confusion, or remove `addresses staring with...` in full\r\n\r\n- nit: maybe write segwit with capitals S and W as used in the rest of the UI",
+      "created_at": "2024-04-29T17:39:10Z",
+      "updated_at": "2024-04-29T18:49:49Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/819#discussion_r1583469857",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1583469857"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/819"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 128,
+      "original_line": 128,
+      "side": "RIGHT"
+    }
+  ]
 }
