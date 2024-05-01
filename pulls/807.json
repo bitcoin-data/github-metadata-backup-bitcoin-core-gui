@@ -41,10 +41,10 @@
     "body": "Bundle all function's outputs inside the `util::Result` returned object.\r\n\r\nRemovals:\r\n- The input-output 'change_pos' ref arg from `createTransaction`, which has been a source of bugs in the past.\r\n- The 'fee' ref arg from `createTransaction`, which is currently only set when the transaction creation process succeeds.\r\n- The currently unreachable `AmountWithFeeExceedsBalance` error (more info about its re-introduction at https://github.com/bitcoin/bitcoin/pull/25269).\r\n\r\nAdditionally, this PR moves the `CreatedTransactionResult` struct into its own file. This change is made to avoid further expanding the GUI dependencies on `wallet.h`. Structurally, the GUI should only access the model/interfaces and never the wallet directly.",
     "labels": [],
     "created_at": "2024-03-22T12:55:51Z",
-    "updated_at": "2024-04-18T16:04:30Z",
+    "updated_at": "2024-05-01T00:27:07Z",
     "mergeable": true,
     "mergeable_state": "clean",
-    "merge_commit_sha": "eeafafd04b49a043259ee795c2f9b5459684d047",
+    "merge_commit_sha": "9c925bef54fedef3aaec89b4868be6e7e7cb6b5e",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -277,12 +277,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 247,
-        "stargazers_count": 557,
-        "watchers_count": 557,
-        "size": 157414,
+        "forks_count": 253,
+        "stargazers_count": 562,
+        "watchers_count": 562,
+        "size": 158014,
         "default_branch": "master",
-        "open_issues_count": 165,
+        "open_issues_count": 166,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -293,9 +293,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-04-18T11:47:31Z",
+        "pushed_at": "2024-05-01T00:17:12Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-04-16T21:56:27Z",
+        "updated_at": "2024-05-01T00:17:15Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -356,9 +356,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-03-22T12:55:54Z",
-      "updated_at": "2024-04-18T16:04:30Z",
+      "updated_at": "2024-05-01T00:27:07Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Stale ACK | [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/807#pullrequestreview-1975255350) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#bitcoin/bitcoin/25722](https://github.com/bitcoin/bitcoin/pull/25722) (refactor: Use util::Result class for wallet loading by ryanofsky)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Stale ACK | [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/807#pullrequestreview-1975255350) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nNo conflicts as of last run.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -761,12 +761,21 @@
               "name": "Refactoring",
               "color": "E6F6D6",
               "default": false
+            },
+            {
+              "id": 955867938,
+              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
+              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
+              "name": "Needs rebase",
+              "description": "",
+              "color": "cccccc",
+              "default": false
             }
           ],
           "assignees": [],
           "author_association": "CONTRIBUTOR",
           "locked": false,
-          "comments": 6,
+          "comments": 7,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/25722",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/25722",
@@ -774,7 +783,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/25722.patch"
           },
           "created_at": "2022-07-27T19:26:58Z",
-          "updated_at": "2024-04-16T02:24:44Z"
+          "updated_at": "2024-04-30T18:38:13Z"
         },
         "type": "issue"
       }
