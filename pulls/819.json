@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/819/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/819/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/0fea73fc7444884dc6831b1fe9e608898a398a92",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/8428fa317e8ecde635a892470b0f042870af1c0a",
     "number": 819,
     "state": "open",
     "locked": false,
@@ -50,18 +50,16 @@
       }
     ],
     "created_at": "2024-04-29T13:02:23Z",
-    "updated_at": "2024-05-02T16:25:16Z",
-    "mergeable": true,
-    "mergeable_state": "unstable",
-    "merge_commit_sha": "28ae2ae50ca003892470a705f9460417b8a66e1a",
+    "updated_at": "2024-05-02T20:42:31Z",
+    "mergeable_state": "unknown",
+    "merge_commit_sha": "3562c68fef3bf9b1f30567dc54c1009c5277dfca",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
-    "rebaseable": true,
     "head": {
       "label": "willcl-ark:signmessage-error-fix",
       "ref": "signmessage-error-fix",
-      "sha": "0fea73fc7444884dc6831b1fe9e608898a398a92",
+      "sha": "8428fa317e8ecde635a892470b0f042870af1c0a",
       "user": {
         "login": "willcl-ark",
         "id": 6606587,
@@ -169,7 +167,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-05-02T13:56:27Z",
+        "pushed_at": "2024-05-02T20:09:15Z",
         "created_at": "2024-04-03T12:38:47Z",
         "updated_at": "2024-04-03T12:38:47Z",
         "license": {
@@ -301,9 +299,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-05-02T13:56:29Z",
+        "pushed_at": "2024-05-02T20:45:53Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-05-02T16:43:22Z",
+        "updated_at": "2024-05-02T20:45:56Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -328,12 +326,12 @@
     },
     "author_association": "MEMBER",
     "draft": false,
-    "additions": 3,
+    "additions": 4,
     "deletions": 6,
     "changed_files": 2,
     "commits": 1,
-    "review_comments": 2,
-    "comments": 3
+    "review_comments": 3,
+    "comments": 4
   },
   "events": [
     {
@@ -691,46 +689,6 @@
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/819"
     },
     {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDBmZWE3M2ZjNzQ0NDg4NGRjNjgzMWIxZmU5ZTYwODg5OGEzOThhOTI",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/0fea73fc7444884dc6831b1fe9e608898a398a92",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/0fea73fc7444884dc6831b1fe9e608898a398a92",
-      "tree": {
-        "sha": "004c2783ea95ecb74ef60c1ed071119b5aa44ac1",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/004c2783ea95ecb74ef60c1ed071119b5aa44ac1"
-      },
-      "verification": {
-        "verified": true,
-        "reason": "valid",
-        "payload": "tree 004c2783ea95ecb74ef60c1ed071119b5aa44ac1\nparent a46065e36cf868265c909dc5edf29dc17be53c1f\nauthor willcl-ark <will@256k1.dev> 1714395008 +0100\ncommitter willcl-ark <will@256k1.dev> 1714658068 +0100\n\ngui: fix misleading signmessage error with segwit\n\nAs described in #10542 (and numerous other places), message signing in\nBitcoin Core only supports message signing using P2PKH addresses, at\nleast until a new message-signing standard is agreed upon.\n\nTherefore update the possibly-misleading error message presented to the\nuser in the GUI to detail more specifically the reason their message\ncannot be signed, in the case that a non P2PKH address is entered.\n",
-        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEEoAg2YPI1onAAzTyBzm7EmUXBfqYFAmYzmxUACgkQzm7EmUXB\nfqY/ERAApwx8hrERZFJdoJFEgseUv6H23IastBeDTcRJCpuQiu3nSBh1A7bQWLk6\nPvJ/+z1ytykXpsfMnVKiGcxVjh7BouwcfYO3wi5D9c7TS/g1/ZkcAxbl9v1nKE9U\njPBTs6n+if8ZZw0o3uXNqBCVCqZ6b5Wi0Rcd3bHYunuzFIps7T8PDl/haUZAGcLp\nDuwDj1UXxCyXzWSUcsGq4sFvwhbXrRBOCsES+9QXJG3JbTnzwveSh62Qm3b8lOzC\ngxWlMxNDAKo+qbAtIUq+Gg/EbdS0loG9kQq0F7HfRkdYhJ1LZgcr5jHmu+rvKxIu\nJAes0bq/KJAv6LGBE8HSSDjgzs6oY/FABu+2V1GBFDey2IPhZc6CtQxqYxq+bs0g\nzlT0AFNr8IrjfVgO1U6nYzzLat8qB2+CRtKHqTMC6t2FYPmjjgf0uG76NJSaVW9f\noTMmZrk8nKl/SOnjVogVr54qMD4MQ6+aulwpLCiToZM6ZHcMhGQfqA+j+4ucSrmt\nSCKZsPNyA0kjS+1cLfY8SakT8MCrJYFca0RYryrOsRXxXYyRDzt/Kva4Lq+RDFW9\nJ/45C6f0V1AIAPij0I16ztMOoE2ys+GN4eAWFl8O6OlvWboao1lUx1HCSf5ycj4n\nSvNpmplp3DYtnJoEkCeesALRyGdEqw9gGkxooPMYzlsVY7Ljors=\n=hsxJ\n-----END PGP SIGNATURE-----"
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/a46065e36cf868265c909dc5edf29dc17be53c1f",
-          "sha": "a46065e36cf868265c909dc5edf29dc17be53c1f",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/a46065e36cf868265c909dc5edf29dc17be53c1f"
-        }
-      ],
-      "message": "gui: fix misleading signmessage error with segwit\n\nAs described in #10542 (and numerous other places), message signing in\nBitcoin Core only supports message signing using P2PKH addresses, at\nleast until a new message-signing standard is agreed upon.\n\nTherefore update the possibly-misleading error message presented to the\nuser in the GUI to detail more specifically the reason their message\ncannot be signed, in the case that a non P2PKH address is entered.",
-      "committer": {
-        "name": "willcl-ark",
-        "email": "will@256k1.dev",
-        "date": "2024-05-02T13:54:28Z"
-      },
-      "author": {
-        "name": "willcl-ark",
-        "email": "will@256k1.dev",
-        "date": "2024-04-29T12:50:08Z"
-      },
-      "sha": "0fea73fc7444884dc6831b1fe9e608898a398a92"
-    },
-    {
       "event": "head_ref_force_pushed",
       "id": 12683760353,
       "node_id": "HRFPE_lADOEEET9c6HPgT3zwAAAAL0AtLh",
@@ -993,6 +951,164 @@
       "submitted_at": "2024-05-02T16:25:14Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/819"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDg0MjhmYTMxN2U4ZWNkZTYzNWE4OTI0NzBiMGYwNDI4NzBhZjFjMGE",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/8428fa317e8ecde635a892470b0f042870af1c0a",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/8428fa317e8ecde635a892470b0f042870af1c0a",
+      "tree": {
+        "sha": "9fe389c39f368137707ea13ebe52b266c5f9e43c",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/9fe389c39f368137707ea13ebe52b266c5f9e43c"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree 9fe389c39f368137707ea13ebe52b266c5f9e43c\nparent a46065e36cf868265c909dc5edf29dc17be53c1f\nauthor willcl-ark <will@256k1.dev> 1714395008 +0100\ncommitter willcl-ark <will@256k1.dev> 1714680546 +0100\n\ngui: fix misleading signmessage error with segwit\n\nAs described in #10542 (and numerous other places), message signing in\nBitcoin Core only supports message signing using P2PKH addresses, at\nleast until a new message-signing standard is agreed upon.\n\nTherefore update the possibly-misleading error message presented to the\nuser in the GUI to detail more specifically the reason their message\ncannot be signed, in the case that a non P2PKH address is entered.\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEEoAg2YPI1onAAzTyBzm7EmUXBfqYFAmYz8uYACgkQzm7EmUXB\nfqYVBhAAkk9AwfbLym4jQJ31u9J9XnxayXSx1QCwynRjrk0/hbB8TMmaiOh2nR45\nBfE3ICTq/AyUPAOjnNJRmbhMfNfm7quO5n9Wm8G706+3IK5gvgfjOSG807L9eNZa\n/ug8qQoyTFRWuhgX03M3hnxEXtkFTbT3NeNW23CCbKntvC1eXknjzp5aBNaV1oAP\nxGepAVU8SvmaCVBVnRItSf6bgUI1H2E5wimFFRnGW1prvI0GTfeWlAWDqK+pJfhl\n3nAXWecslgiuWor/B/MDineYe/mI/ZWUzOUv/pm/FO+Pt2QU/TSYqYXwDrSw6zMq\nM3NWQ8ju2vhNujWx9lylME3og3Ap/AerHtllcupRKNcuATG6s4MTFlvxxQCAL4GU\nH28xUYnNgw+k67ko7ZCxuBWc82tpby/d+AKaczH77qlmJopY9HE4fkujVE0PmMsk\n5BpTjcRz3uabVdu1TRsYDKrk4xOj6epd+JbV9eIRK6n9cAjTJpSymfBeQDLaB+YR\nxKDNFXfjXQhegMmM9oj2lWHYfvnPJAJh0kV3+UcLXjgVCdNW8Lt0uAD7DrwnsZrp\nMgmIQjKwD8BK2rbjIMJ9ZGsm73ig8PZEN2aV+YVE181U0CHMHZbogMRh8m3LoF7/\nFPqZfAlfgH+aOVWOm0p2Ny5Z5dpu5WYBnvhTfdkbdPaKeYtViyw=\n=3bdv\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/a46065e36cf868265c909dc5edf29dc17be53c1f",
+          "sha": "a46065e36cf868265c909dc5edf29dc17be53c1f",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/a46065e36cf868265c909dc5edf29dc17be53c1f"
+        }
+      ],
+      "message": "gui: fix misleading signmessage error with segwit\n\nAs described in #10542 (and numerous other places), message signing in\nBitcoin Core only supports message signing using P2PKH addresses, at\nleast until a new message-signing standard is agreed upon.\n\nTherefore update the possibly-misleading error message presented to the\nuser in the GUI to detail more specifically the reason their message\ncannot be signed, in the case that a non P2PKH address is entered.",
+      "committer": {
+        "name": "willcl-ark",
+        "email": "will@256k1.dev",
+        "date": "2024-05-02T20:09:06Z"
+      },
+      "author": {
+        "name": "willcl-ark",
+        "email": "will@256k1.dev",
+        "date": "2024-04-29T12:50:08Z"
+      },
+      "sha": "8428fa317e8ecde635a892470b0f042870af1c0a"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 12688661529,
+      "node_id": "HRFPE_lADOEEET9c6HPgT3zwAAAAL0TZwZ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/12688661529",
+      "actor": {
+        "login": "willcl-ark",
+        "id": 6606587,
+        "node_id": "MDQ6VXNlcjY2MDY1ODc=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6606587?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/willcl-ark",
+        "html_url": "https://github.com/willcl-ark",
+        "followers_url": "https://api.github.com/users/willcl-ark/followers",
+        "following_url": "https://api.github.com/users/willcl-ark/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/willcl-ark/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/willcl-ark/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/willcl-ark/subscriptions",
+        "organizations_url": "https://api.github.com/users/willcl-ark/orgs",
+        "repos_url": "https://api.github.com/users/willcl-ark/repos",
+        "events_url": "https://api.github.com/users/willcl-ark/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/willcl-ark/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-05-02T20:09:17Z"
+    },
+    {
+      "event": "commented",
+      "id": 2091482504,
+      "node_id": "IC_kwDOEEET9c58qX2I",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2091482504",
+      "actor": {
+        "login": "willcl-ark",
+        "id": 6606587,
+        "node_id": "MDQ6VXNlcjY2MDY1ODc=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6606587?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/willcl-ark",
+        "html_url": "https://github.com/willcl-ark",
+        "followers_url": "https://api.github.com/users/willcl-ark/followers",
+        "following_url": "https://api.github.com/users/willcl-ark/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/willcl-ark/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/willcl-ark/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/willcl-ark/subscriptions",
+        "organizations_url": "https://api.github.com/users/willcl-ark/orgs",
+        "repos_url": "https://api.github.com/users/willcl-ark/repos",
+        "events_url": "https://api.github.com/users/willcl-ark/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/willcl-ark/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-05-02T20:17:19Z",
+      "updated_at": "2024-05-02T20:17:19Z",
+      "author_association": "MEMBER",
+      "body": "Sorry, I've addressed the linter now.",
+      "user": {
+        "login": "willcl-ark",
+        "id": 6606587,
+        "node_id": "MDQ6VXNlcjY2MDY1ODc=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6606587?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/willcl-ark",
+        "html_url": "https://github.com/willcl-ark",
+        "followers_url": "https://api.github.com/users/willcl-ark/followers",
+        "following_url": "https://api.github.com/users/willcl-ark/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/willcl-ark/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/willcl-ark/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/willcl-ark/subscriptions",
+        "organizations_url": "https://api.github.com/users/willcl-ark/orgs",
+        "repos_url": "https://api.github.com/users/willcl-ark/repos",
+        "events_url": "https://api.github.com/users/willcl-ark/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/willcl-ark/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/819#issuecomment-2091482504",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/819"
+    },
+    {
+      "event": "reviewed",
+      "id": 2036851059,
+      "node_id": "PRR_kwDOEEET9c55Z-Fz",
+      "url": null,
+      "actor": null,
+      "commit_id": "8428fa317e8ecde635a892470b0f042870af1c0a",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "MEMBER",
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/819#pullrequestreview-2036851059",
+      "submitted_at": "2024-05-02T20:42:31Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/819"
     }
   ],
   "comments": [
@@ -1005,7 +1121,7 @@
       "path": "src/qt/signverifymessagedialog.cpp",
       "position": null,
       "original_position": 7,
-      "commit_id": "0fea73fc7444884dc6831b1fe9e608898a398a92",
+      "commit_id": "8428fa317e8ecde635a892470b0f042870af1c0a",
       "original_commit_id": "93c82529125ca6ec25083d9e829801875a31da6a",
       "in_reply_to_id": null,
       "user": {
@@ -1057,7 +1173,7 @@
       "path": "src/qt/signverifymessagedialog.cpp",
       "position": null,
       "original_position": 7,
-      "commit_id": "0fea73fc7444884dc6831b1fe9e608898a398a92",
+      "commit_id": "8428fa317e8ecde635a892470b0f042870af1c0a",
       "original_commit_id": "93c82529125ca6ec25083d9e829801875a31da6a",
       "in_reply_to_id": 1583469857,
       "user": {
@@ -1098,6 +1214,58 @@
       "start_side": null,
       "line": null,
       "original_line": 128,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1588327277",
+      "pull_request_review_id": 2036851059,
+      "id": 1588327277,
+      "node_id": "PRRC_kwDOEEET9c5eq_Nt",
+      "diff_hunk": "@@ -10,6 +10,7 @@\n #include <qt/platformstyle.h>\n #include <qt/walletmodel.h>\n \n+#include <config/bitcoin-config.h>",
+      "path": "src/qt/signverifymessagedialog.cpp",
+      "position": 4,
+      "original_position": 4,
+      "commit_id": "8428fa317e8ecde635a892470b0f042870af1c0a",
+      "original_commit_id": "8428fa317e8ecde635a892470b0f042870af1c0a",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "It is https://github.com/bitcoin/bitcoin/pull/29494 goal to include this headers unguarded :)\r\n\r\nEffectively, this PR conflicts with it. However, I believe it will be merged soon.\r\n\r\nAnyway, it seems reasonable in this PR to use:\r\n```c++\r\n#if defined(HAVE_CONFIG_H)\r\n#include <config/bitcoin-config.h>\r\n#endif\r\n```\r\nor\r\n```c++\r\n#include <config/bitcoin-config.h> // IWYU pragma: keep\r\n```",
+      "created_at": "2024-05-02T20:42:31Z",
+      "updated_at": "2024-05-02T20:42:31Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/819#discussion_r1588327277",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1588327277"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/819"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 13,
+      "original_line": 13,
       "side": "RIGHT"
     }
   ]
