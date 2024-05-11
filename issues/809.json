@@ -10,8 +10,8 @@
     "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/809/events",
     "html_url": "https://github.com/bitcoin-core/gui/issues/809",
     "number": 809,
-    "state": "open",
-    "state_reason": null,
+    "state": "closed",
+    "state_reason": "completed",
     "title": "gui: node shutting down after incorrect proxy IP address input",
     "body": "### Issues, reports or feature requests related to the GUI should be opened directly on the GUI repo\n\n- [X] I still think this issue should be opened here\n\n### Report\n\nMy node was running fine until I decided to change the setting under the nerwork tab, I checked the box for \"Use separate SOCKS5 proxy to reach peers via Tor onion services\" and on Proxy IP box i put 127.0.0.1:9150, on Port box 9150. When I tried to restart the node it wont start anymore, it gives me \"Error 127.0.0.1:9150 incorrect Proxy\" and it shuts down immediately. What can I do to get the node to start again?  the GUI is not even starting. I just stared exploring with bitcoin nodes and Im not knowledgable at all, any help will be greatly appreciated. Im running the node on Debian Linux.",
     "user": {
@@ -49,8 +49,9 @@
     "author_association": "NONE",
     "locked": false,
     "comments": 7,
+    "closed_at": "2024-05-11T18:34:30Z",
     "created_at": "2024-03-27T15:27:09Z",
-    "updated_at": "2024-04-04T08:53:07Z"
+    "updated_at": "2024-05-11T18:34:30Z"
   },
   "events": [
     {
@@ -82,7 +83,7 @@
       "commit_url": null,
       "created_at": "2024-03-27T15:38:12Z",
       "updated_at": "2024-03-27T15:38:12Z",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "Hi @nbit846,\r\n \r\nThis issue tracker is supposed to be used to track technical issues related to the Bitcoin Core GUI code base.\r\n\r\nGeneral bitcoin questions and/or support requests are best directed to the [Bitcoin StackExchange](https://bitcoin.stackexchange.com/) or the #bitcoin IRC channel on the [Libera Chat](https://libera.chat/) network.\r\n\r\nIn your case I'd advise checking the bitcoin data directory (`~/.bitcoin`) while the node is not running. You should find a file named `settings.json` which may be persisting the erroneous setting. This can be removed and the node then restarted.\r\n\r\nThat said, I don't experience the same issue as you when specifying a bad port in that dialogue box, so I'm not totally convinced this is the root cause of your issue (nor that the above step will solve it). Are the any other errors printed in `~/.bitcoin/debug.log`?",
       "user": {
         "login": "willcl-ark",
@@ -389,7 +390,7 @@
       "commit_url": null,
       "created_at": "2024-03-28T08:17:13Z",
       "updated_at": "2024-03-28T08:17:13Z",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "Yeah. It should not allow port to be duplicated as per this line:\n\n2024-03-27T20:18:53Z Error: Invalid -onion address or hostname: '127.0.0.1:9050:9050'",
       "user": {
         "login": "willcl-ark",
@@ -537,10 +538,10 @@
           "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/813/events",
           "html_url": "https://github.com/bitcoin-core/gui/pull/813",
           "number": 813,
-          "state": "open",
+          "state": "closed",
           "state_reason": null,
           "title": "Don't permit port in proxy IP option",
-          "body": "Fixes: #809\r\n\r\nPreviously it was possible through the GUI to enter an IP address:port into the \"Proxy IP\" configuration box. After the node was restarted the errant setting would prevent the node starting back up until manually removed from settings.json.\r\n\r\nPrevent this with a simple check for \":\" in the string. This is acceptable here in the GUI setting because we already fail on a hostname such as \"http://x.x.x.x\", so it won't cause false positives.\r\n\r\n<!--\r\n*** Please remove the following help text before submitting: ***\r\n\r\nPull requests without a rationale and clear improvement may be closed\r\nimmediately.\r\n\r\nGUI-related pull requests should be opened against\r\nhttps://github.com/bitcoin-core/gui\r\nfirst. See CONTRIBUTING.md\r\n-->\r\n\r\n<!--\r\nPlease provide clear motivation for your patch and explain how it improves\r\nBitcoin Core user experience or Bitcoin Core developer experience\r\nsignificantly:\r\n\r\n* Any test improvements or new tests that improve coverage are always welcome.\r\n* All other changes should have accompanying unit tests (see `src/test/`) or\r\n  functional tests (see `test/`). Contributors should note which tests cover\r\n  modified code. If no tests exist for a region of modified code, new tests\r\n  should accompany the change.\r\n* Bug fixes are most welcome when they come with steps to reproduce or an\r\n  explanation of the potential issue as well as reasoning for the way the bug\r\n  was fixed.\r\n* Features are welcome, but might be rejected due to design or scope issues.\r\n  If a feature is based on a lot of dependencies, contributors should first\r\n  consider building the system outside of Bitcoin Core, if possible.\r\n* Refactoring changes are only accepted if they are required for a feature or\r\n  bug fix or otherwise improve developer experience significantly. For example,\r\n  most \"code style\" refactoring changes require a thorough explanation why they\r\n  are useful, what downsides they have and why they *significantly* improve\r\n  developer experience or avoid serious programming bugs. Note that code style\r\n  is often a subjective matter. Unless they are explicitly mentioned to be\r\n  preferred in the [developer notes](/doc/developer-notes.md), stylistic code\r\n  changes are usually rejected.\r\n-->\r\n\r\n<!--\r\nBitcoin Core has a thorough review process and even the most trivial change\r\nneeds to pass a lot of eyes and requires non-zero or even substantial time\r\neffort to review. There is a huge lack of active reviewers on the project, so\r\npatches often sit for a long time.\r\n-->\r\n",
+          "body": "Fixes: https://github.com/bitcoin-core/gui/issues/809\r\n\r\nPreviously it was possible through the GUI to enter an IP address:port into the \"Proxy IP\" configuration box. After the node was restarted the errant setting would prevent the node starting back up until manually removed from settings.json.\r\n\r\nPrevent this with a simple check for \":\" in the string. This is acceptable here in the GUI setting because we already fail on a hostname such as \"http://x.x.x.x\", so it won't cause false positives.",
           "user": {
             "login": "willcl-ark",
             "id": 6606587,
@@ -561,28 +562,20 @@
             "type": "User",
             "site_admin": false
           },
-          "labels": [
-            {
-              "id": 5353934559,
-              "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
-              "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
-              "name": "CI failed",
-              "color": "ededed",
-              "default": false
-            }
-          ],
+          "labels": [],
           "assignees": [],
-          "author_association": "CONTRIBUTOR",
+          "author_association": "MEMBER",
           "locked": false,
-          "comments": 2,
+          "comments": 4,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/813",
             "html_url": "https://github.com/bitcoin-core/gui/pull/813",
             "diff_url": "https://github.com/bitcoin-core/gui/pull/813.diff",
             "patch_url": "https://github.com/bitcoin-core/gui/pull/813.patch"
           },
+          "closed_at": "2024-05-11T18:34:32Z",
           "created_at": "2024-04-03T12:41:39Z",
-          "updated_at": "2024-04-04T06:57:57Z"
+          "updated_at": "2024-05-11T18:34:32Z"
         },
         "type": "issue"
       }
@@ -673,6 +666,93 @@
         "from": "Node shutting down immediately",
         "to": "gui: node shutting down after incorrect proxy IP address input"
       }
+    },
+    {
+      "event": "referenced",
+      "id": 12364186784,
+      "node_id": "REFE_lADOEEET9c6DytFqzwAAAALg9oSg",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/12364186784",
+      "actor": {
+        "login": "willcl-ark",
+        "id": 6606587,
+        "node_id": "MDQ6VXNlcjY2MDY1ODc=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6606587?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/willcl-ark",
+        "html_url": "https://github.com/willcl-ark",
+        "followers_url": "https://api.github.com/users/willcl-ark/followers",
+        "following_url": "https://api.github.com/users/willcl-ark/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/willcl-ark/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/willcl-ark/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/willcl-ark/subscriptions",
+        "organizations_url": "https://api.github.com/users/willcl-ark/orgs",
+        "repos_url": "https://api.github.com/users/willcl-ark/repos",
+        "events_url": "https://api.github.com/users/willcl-ark/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/willcl-ark/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": "10c5275ba4532fb1bf54057d2f61fc35b51f1e85",
+      "commit_url": "https://api.github.com/repos/willcl-ark/bitcoin-core-gui/commits/10c5275ba4532fb1bf54057d2f61fc35b51f1e85",
+      "created_at": "2024-04-04T20:13:59Z"
+    },
+    {
+      "event": "closed",
+      "id": 12776998723,
+      "node_id": "CE_lADOEEET9c6DytFqzwAAAAL5kYdD",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/12776998723",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": "32072866809ade129a3219105f0851606dc9fd38",
+      "commit_url": "https://api.github.com/repos/bitcoin/bitcoin/commits/32072866809ade129a3219105f0851606dc9fd38",
+      "created_at": "2024-05-11T18:34:30Z"
+    },
+    {
+      "event": "referenced",
+      "id": 12776998777,
+      "node_id": "REFE_lADOEEET9c6DytFqzwAAAAL5kYd5",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/12776998777",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": "32072866809ade129a3219105f0851606dc9fd38",
+      "commit_url": "https://api.github.com/repos/bitcoin-core/gui/commits/32072866809ade129a3219105f0851606dc9fd38",
+      "created_at": "2024-05-11T18:34:32Z"
     }
   ]
 }
