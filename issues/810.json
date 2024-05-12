@@ -10,8 +10,8 @@
     "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/810/events",
     "html_url": "https://github.com/bitcoin-core/gui/issues/810",
     "number": 810,
-    "state": "open",
-    "state_reason": null,
+    "state": "closed",
+    "state_reason": "completed",
     "title": "Create unsigned when increasing fee asks for the passphrase",
     "body": "### Is there an existing issue for this?\n\n- [X] I have searched the existing issues\n\n### Current behaviour\n\nTrying to increase the fee on a pending transaction, creating a psbt is asking for the passphrase, though it shouldn't need to unlock the wallet to create a psbt (and didn't require when creating the initial transaction).\n\n### Expected behaviour\n\nCreate the psbt without the need for unlocking the wallet\n\n### Steps to reproduce\n\nLocked wallet\r\nSet PSBT actions to enabled in settings\r\ncreate a transaction with a fee increase replacement option and send it\r\nraise the fee\r\nChoose create PSBT\r\nGet prompt for wallet unlock\n\n### Relevant log output\n\n_No response_\n\n### How did you obtain Bitcoin Core\n\nPackage manager\n\n### What version of Bitcoin Core are you using?\n\n26.0.0.0\n\n### Operating system and version\n\nUbuntu 22.04\n\n### Machine specifications\n\n_No response_",
     "user": {
@@ -49,8 +49,9 @@
     "author_association": "NONE",
     "locked": false,
     "comments": 6,
+    "closed_at": "2024-05-12T14:31:00Z",
     "created_at": "2024-03-29T10:18:18Z",
-    "updated_at": "2024-05-03T01:49:04Z"
+    "updated_at": "2024-05-12T14:31:00Z"
   },
   "events": [
     {
@@ -350,7 +351,7 @@
           "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/812/events",
           "html_url": "https://github.com/bitcoin-core/gui/pull/812",
           "number": 812,
-          "state": "open",
+          "state": "closed",
           "state_reason": null,
           "title": "Fix create unsigned transaction fee bump",
           "body": "Fixes #810.\r\n\r\nNot much to explain; we were requiring the wallet to be unlocked for the unsigned transaction creation process.\r\nFix this by moving the unlock wallet request to the signed transaction creation process.",
@@ -385,8 +386,9 @@
             "diff_url": "https://github.com/bitcoin-core/gui/pull/812.diff",
             "patch_url": "https://github.com/bitcoin-core/gui/pull/812.patch"
           },
+          "closed_at": "2024-05-12T14:31:01Z",
           "created_at": "2024-03-29T14:46:47Z",
-          "updated_at": "2024-04-18T07:33:39Z"
+          "updated_at": "2024-05-12T14:57:45Z"
         },
         "type": "issue"
       }
@@ -722,6 +724,64 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/issues/810#issuecomment-2031265592",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/810"
+    },
+    {
+      "event": "closed",
+      "id": 12778761918,
+      "node_id": "CE_lADOEEET9c6EB0aTzwAAAAL5rG6-",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/12778761918",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": "b94061902e52132489fe296c12396798700f1f35",
+      "commit_url": "https://api.github.com/repos/bitcoin-core/gui/commits/b94061902e52132489fe296c12396798700f1f35",
+      "created_at": "2024-05-12T14:31:00Z"
+    },
+    {
+      "event": "referenced",
+      "id": 12778762244,
+      "node_id": "REFE_lADOEEET9c6EB0aTzwAAAAL5rHAE",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/12778762244",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": "b94061902e52132489fe296c12396798700f1f35",
+      "commit_url": "https://api.github.com/repos/hebasto/gui/commits/b94061902e52132489fe296c12396798700f1f35",
+      "created_at": "2024-05-12T14:31:10Z"
     }
   ]
 }
