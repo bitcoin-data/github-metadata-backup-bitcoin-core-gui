@@ -50,7 +50,7 @@
       }
     ],
     "created_at": "2023-09-25T00:03:25Z",
-    "updated_at": "2024-05-15T17:56:09Z",
+    "updated_at": "2024-05-15T18:10:05Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merge_commit_sha": "5c84d2c7ed7bcae0a6b2d9e099e90a263d8eed0c",
@@ -310,7 +310,7 @@
         "forks_count": 250,
         "stargazers_count": 561,
         "watchers_count": 561,
-        "size": 160018,
+        "size": 160028,
         "default_branch": "master",
         "open_issues_count": 159,
         "is_template": false,
@@ -354,7 +354,7 @@
     "deletions": 6,
     "changed_files": 3,
     "commits": 1,
-    "review_comments": 4,
+    "review_comments": 5,
     "comments": 9
   },
   "events": [
@@ -2636,6 +2636,42 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-05-15T17:56:09Z"
+    },
+    {
+      "event": "reviewed",
+      "id": 2058694015,
+      "node_id": "PRR_kwDOEEET9c56tS1_",
+      "url": null,
+      "actor": null,
+      "commit_id": "30c235b2e6fd9b7e3634d795cedc171d4d8d0e27",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "MEMBER",
+      "body": "If you will touch this branch, mind applying [`clang-format-diff.py`](https://github.com/bitcoin/bitcoin/blob/master/contrib/devtools/clang-format-diff.py)?",
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/762#pullrequestreview-2058694015",
+      "submitted_at": "2024-05-15T18:10:05Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/762"
     }
   ],
   "comments": [
@@ -2845,6 +2881,58 @@
       "start_side": null,
       "line": 149,
       "original_line": 149,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1602056777",
+      "pull_request_review_id": 2058694015,
+      "id": 1602056777,
+      "node_id": "PRRC_kwDOEEET9c5ffXJJ",
+      "diff_hunk": "@@ -34,6 +36,8 @@ class HelpMessageDialog : public QDialog\n \n private Q_SLOTS:\n     void on_okButton_accepted();\n+    void setAboutWindowTitle(const NetworkStyle *networkStyle = nullptr);\n+    void setChainTypeIconOnAboutLogo(const NetworkStyle *networkStyle = nullptr);",
+      "path": "src/qt/utilitydialog.h",
+      "position": 23,
+      "original_position": 23,
+      "commit_id": "30c235b2e6fd9b7e3634d795cedc171d4d8d0e27",
+      "original_commit_id": "30c235b2e6fd9b7e3634d795cedc171d4d8d0e27",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "Why these two member functions are declared as slots?",
+      "created_at": "2024-05-15T18:07:55Z",
+      "updated_at": "2024-05-15T18:10:05Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/762#discussion_r1602056777",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1602056777"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/762"
+        }
+      },
+      "start_line": 39,
+      "original_start_line": 39,
+      "start_side": "RIGHT",
+      "line": 40,
+      "original_line": 40,
       "side": "RIGHT"
     }
   ]
