@@ -59,10 +59,10 @@
       }
     ],
     "created_at": "2022-06-29T13:56:10Z",
-    "updated_at": "2024-05-22T08:28:15Z",
+    "updated_at": "2024-05-22T15:08:18Z",
     "mergeable": true,
     "mergeable_state": "unstable",
-    "merge_commit_sha": "c23aa54cd857cc0ee67882c485e249dd7dfe319a",
+    "merge_commit_sha": "60cc6aa39fcf7a0b9ea57c9bb48bee43961c3310",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -298,7 +298,7 @@
         "forks_count": 253,
         "stargazers_count": 561,
         "watchers_count": 561,
-        "size": 160584,
+        "size": 157800,
         "default_branch": "master",
         "open_issues_count": 159,
         "is_template": false,
@@ -311,9 +311,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-05-22T08:20:50Z",
+        "pushed_at": "2024-05-22T14:13:38Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-05-22T08:20:53Z",
+        "updated_at": "2024-05-22T13:43:42Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -342,7 +342,7 @@
     "deletions": 11,
     "changed_files": 8,
     "commits": 1,
-    "review_comments": 23,
+    "review_comments": 26,
     "comments": 12
   },
   "events": [
@@ -1792,6 +1792,42 @@
         "name": "CI failed",
         "color": "ededed"
       }
+    },
+    {
+      "event": "reviewed",
+      "id": 2071533836,
+      "node_id": "PRR_kwDOEEET9c57eRkM",
+      "url": null,
+      "actor": null,
+      "commit_id": "c3b5638b75e087aeed8ed0d87e2426be1c2f89a4",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "MEMBER",
+      "body": "thanks for the encapsulation jadijadi.",
+      "user": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/626#pullrequestreview-2071533836",
+      "submitted_at": "2024-05-22T15:08:17Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/626"
     }
   ],
   "comments": [
@@ -2989,6 +3025,162 @@
       "start_side": null,
       "line": null,
       "original_line": 966,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1610153233",
+      "pull_request_review_id": 2071533836,
+      "id": 1610153233,
+      "node_id": "PRRC_kwDOEEET9c5f-P0R",
+      "diff_hunk": "@@ -168,6 +168,9 @@ class Node\n     //! Get num blocks.\n     virtual int getNumBlocks() = 0;\n \n+    //! Get num blocks.\n+    virtual std::map<CNetAddr, LocalServiceInfo> getLocalAddresses() = 0;",
+      "path": "src/interfaces/node.h",
+      "position": 5,
+      "original_position": 5,
+      "commit_id": "c3b5638b75e087aeed8ed0d87e2426be1c2f89a4",
+      "original_commit_id": "c3b5638b75e087aeed8ed0d87e2426be1c2f89a4",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "wrong description",
+      "created_at": "2024-05-22T14:56:51Z",
+      "updated_at": "2024-05-22T15:08:18Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/626#discussion_r1610153233",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1610153233"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/626"
+        }
+      },
+      "start_line": 171,
+      "original_start_line": 171,
+      "start_side": "RIGHT",
+      "line": 172,
+      "original_line": 172,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1610158134",
+      "pull_request_review_id": 2071533836,
+      "id": 1610158134,
+      "node_id": "PRRC_kwDOEEET9c5f-RA2",
+      "diff_hunk": "@@ -281,6 +281,13 @@ class NodeImpl : public Node\n         }\n         return false;\n     }\n+    std::map<CNetAddr, LocalServiceInfo> getLocalAddresses() override\n+    {\n+        std::map<CNetAddr, LocalServiceInfo> empty;\n+\n+        return m_context->connman ? m_context->connman->getLocalAddresses() : empty;",
+      "path": "src/node/interfaces.cpp",
+      "position": 8,
+      "original_position": 8,
+      "commit_id": "c3b5638b75e087aeed8ed0d87e2426be1c2f89a4",
+      "original_commit_id": "c3b5638b75e087aeed8ed0d87e2426be1c2f89a4",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "```suggestion\r\nreturn m_context->connman ? m_context->connman->getLocalAddresses() : {};\r\n```",
+      "created_at": "2024-05-22T14:58:57Z",
+      "updated_at": "2024-05-22T15:08:18Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/626#discussion_r1610158134",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1610158134"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/626"
+        }
+      },
+      "start_line": 286,
+      "original_start_line": 286,
+      "start_side": "RIGHT",
+      "line": 288,
+      "original_line": 288,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1610174769",
+      "pull_request_review_id": 2071533836,
+      "id": 1610174769,
+      "node_id": "PRRC_kwDOEEET9c5f-VEx",
+      "diff_hunk": "@@ -975,6 +975,20 @@ void RPCConsole::updateNetworkState()\n     }\n \n     ui->numberOfConnections->setText(connections);\n+\n+    QString local_addresses;\n+    std::map<CNetAddr, LocalServiceInfo> mapHosts = clientModel->getLocalAddresses();\n+    for (auto it = mapHosts.begin(); it != mapHosts.end(); it++) {\n+        if (it != mapHosts.begin()) local_addresses += \", \";\n+        if (it->first.IsI2P())\n+            local_addresses += QString::fromStdString(it->first.ToStringAddr());\n+        else\n+            local_addresses += QString::fromStdString(it->first.ToStringAddr()) + \":\" + QString::number(it->second.nPort);\n+    }",
+      "path": "src/qt/rpcconsole.cpp",
+      "position": 13,
+      "original_position": 13,
+      "commit_id": "c3b5638b75e087aeed8ed0d87e2426be1c2f89a4",
+      "original_commit_id": "c3b5638b75e087aeed8ed0d87e2426be1c2f89a4",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "Maybe?\r\n```c++\r\nQString local_addresses;\r\nstd::map<CNetAddr, LocalServiceInfo> hosts = clientModel->getLocalAddresses();\r\nfor (const auto& [addr, info] : hosts) {\r\n    local_addresses += QString::fromStdString(it->first.ToStringAddr());\r\n    if (!addr.IsPrivacyNet()) local_addresses += \":\" + QString::number(it->second.nPort);\r\n    local_addresses += \", \";\r\n}\r\nlocal_addresses.chop(2); // remove last \", \"\r\n```",
+      "created_at": "2024-05-22T15:07:23Z",
+      "updated_at": "2024-05-22T15:08:18Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/626#discussion_r1610174769",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1610174769"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/626"
+        }
+      },
+      "start_line": 978,
+      "original_start_line": 978,
+      "start_side": "RIGHT",
+      "line": 987,
+      "original_line": 987,
       "side": "RIGHT"
     }
   ]
