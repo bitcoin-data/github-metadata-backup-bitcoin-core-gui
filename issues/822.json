@@ -1,0 +1,90 @@
+{
+  "type": "issue",
+  "issue": {
+    "id": 2324145557,
+    "node_id": "I_kwDOEEET9c6Kh6WV",
+    "url": "https://api.github.com/repos/bitcoin-core/gui/issues/822",
+    "repository_url": "https://api.github.com/repos/bitcoin-core/gui",
+    "labels_url": "https://api.github.com/repos/bitcoin-core/gui/issues/822/labels%7B/name%7D",
+    "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/822/comments",
+    "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/822/events",
+    "html_url": "https://github.com/bitcoin-core/gui/issues/822",
+    "number": 822,
+    "state": "open",
+    "state_reason": null,
+    "title": "Generalized fee bumping",
+    "body": "### Please describe the feature you'd like to see added.\r\n\r\nIt would be nice if we had a GUI implementation of this new RPC feature:\r\n\r\n- https://github.com/bitcoin/bitcoin/pull/25344\r\n\r\nMaybe the lowest common denominator here is:\r\n\r\n- [ ] #558 \r\n\r\nThis would allows us to edit transactions pre-flight and in-flight?\r\n\r\nThe main usecase here is that let's say you have a transaction that isn't\r\ngoing to confirm for a couple hours, days, weeks. Then all of a sudden\r\nyou remember that you wanted to add another output or remove an existing\r\none.\r\n\r\nIn my case, I had a single input and single output, and wanted to add another\r\noutput so that the output amount is split. This is pretty common for\r\ntransferring between different accounts with different security levels, such as\r\ncoldstore to multisig.\r\n\r\nMore specifically I created a transaction from my cold storage to\r\nmultisig, but wanted to update it to [coldstore input -> multisig +\r\nlightning wallet output]. I controlled every wallet involved in the\r\ntransaction, and just wanted to add another output that split the funds\r\nand bumped the fee on a single input.\r\n\r\nFee-bumping is just inflight-transaction editing without *user*-modification of\r\nthe number of input/outputs. So this would be in some sense \"generalized fee\r\nbumping\"?\r\n\r\nThe main thing that would be needed is restoring the send transaction view from\r\nan arbitrary transaction. Then bumping the fee could ask if you would like to\r\nmodify the transaction in any way, dropping you back into that send transaction\r\nview to re-create the transaction. It would also have to keep track of the\r\noriginal fee so that it can warn that editing the transaction may not confirm.\r\n\r\nDesign-wise, one might be tempted to just call this \"edit transaction\"\r\ninstead of bump fee, but this may be too confusing. If the user doesn't\r\nbump the fee during transaction editing it may not have any higher\r\npriority over the previous one, leading to confusion when the original tx\r\nconfirms, so it would make sense to make this a fee bumping feature.\r\n\r\nThoughts? or is this a too complex/niche use case? I find myself wanted to do\r\nthis a lot, at least in the pre-flight case, so I would be happy with PSBT\r\nediting in the meantime :sweat_smile: \r\n",
+    "user": {
+      "login": "jb55",
+      "id": 45598,
+      "node_id": "MDQ6VXNlcjQ1NTk4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/45598?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/jb55",
+      "html_url": "https://github.com/jb55",
+      "followers_url": "https://api.github.com/users/jb55/followers",
+      "following_url": "https://api.github.com/users/jb55/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/jb55/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/jb55/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/jb55/subscriptions",
+      "organizations_url": "https://api.github.com/users/jb55/orgs",
+      "repos_url": "https://api.github.com/users/jb55/repos",
+      "events_url": "https://api.github.com/users/jb55/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/jb55/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 2147693884,
+        "node_id": "MDU6TGFiZWwyMTQ3NjkzODg0",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Feature",
+        "name": "Feature",
+        "description": "",
+        "color": "8fe567",
+        "default": false
+      }
+    ],
+    "assignees": [],
+    "author_association": "CONTRIBUTOR",
+    "locked": false,
+    "comments": 0,
+    "created_at": "2024-05-29T19:56:00Z",
+    "updated_at": "2024-05-29T19:59:05Z"
+  },
+  "events": [
+    {
+      "event": "labeled",
+      "id": 12976664817,
+      "node_id": "LE_lADOEEET9c6Kh6WVzwAAAAMFeDDx",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/12976664817",
+      "actor": {
+        "login": "jb55",
+        "id": 45598,
+        "node_id": "MDQ6VXNlcjQ1NTk4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/45598?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/jb55",
+        "html_url": "https://github.com/jb55",
+        "followers_url": "https://api.github.com/users/jb55/followers",
+        "following_url": "https://api.github.com/users/jb55/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/jb55/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/jb55/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/jb55/subscriptions",
+        "organizations_url": "https://api.github.com/users/jb55/orgs",
+        "repos_url": "https://api.github.com/users/jb55/repos",
+        "events_url": "https://api.github.com/users/jb55/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/jb55/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-05-29T19:56:00Z",
+      "label": {
+        "name": "Feature",
+        "color": "8fe567"
+      }
+    }
+  ]
+}
