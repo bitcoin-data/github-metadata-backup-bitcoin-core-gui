@@ -41,14 +41,12 @@
     "body": "This is a continuation of https://github.com/bitcoin-core/gui/pull/37\r\nThis is a simple change, but imho necessary because it leads to confusion.\r\nThe objective of this change is to provide a better description for the tooltip for the \"Available Balance\" balance because the current version on master mentions the word \"You current spendable balance\" which is a bit misleading, because that balance is not always spendable , or not always yours on watch only wallets.\r\n",
     "labels": [],
     "created_at": "2024-02-09T04:31:48Z",
-    "updated_at": "2024-06-07T10:54:55Z",
-    "mergeable": true,
-    "mergeable_state": "clean",
-    "merge_commit_sha": "29712599876d26ee2c681a311f1497f52b2f29a6",
+    "updated_at": "2024-06-12T21:01:42Z",
+    "mergeable_state": "unknown",
+    "merge_commit_sha": "147073b43a62c0f37e48393eb3303533200b1425",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
-    "rebaseable": true,
     "head": {
       "label": "hernanmarino:change-spendable-wording-ui",
       "ref": "change-spendable-wording-ui",
@@ -278,11 +276,11 @@
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
         "forks_count": 256,
-        "stargazers_count": 565,
-        "watchers_count": 565,
-        "size": 158750,
+        "stargazers_count": 566,
+        "watchers_count": 566,
+        "size": 159279,
         "default_branch": "master",
-        "open_issues_count": 162,
+        "open_issues_count": 163,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -293,9 +291,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-06-06T23:19:07Z",
+        "pushed_at": "2024-06-12T21:19:57Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-06-06T23:19:11Z",
+        "updated_at": "2024-06-12T21:19:59Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -396,9 +394,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-02-09T04:31:51Z",
-      "updated_at": "2024-06-07T10:54:55Z",
+      "updated_at": "2024-06-12T21:01:42Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\nA summary of reviews will appear here.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#bitcoin/bitcoin/28710](https://github.com/bitcoin/bitcoin/pull/28710) (Remove the legacy wallet and BDB dependency by achow101)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\nA summary of reviews will appear here.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nNo conflicts as of last run.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -719,7 +717,7 @@
           "state": "open",
           "state_reason": null,
           "title": "Remove the legacy wallet and BDB dependency",
-          "body": "The final step of #20160.\r\n\r\nA bare minimum of legacy wallet code is kept in order to perform wallet migration. Migration of legacy wallets uses the independent BDB parser and a minimal `LegacyDataSPKM` that allows the legacy data to be loaded so that the migration can be completed.\r\n\r\nAll tests which tested legacy wallet behavior have been removed. The `--descriptors` and `--legacy-wallet` options are removed from the functional tests.\r\n\r\nBDB has been removed as a dependency and documentation have been updated to reflect that.\r\n\r\nDepends on #26596",
+          "body": "The final step of #20160.\r\n\r\nA bare minimum of legacy wallet code is kept in order to perform wallet migration. Migration of legacy wallets uses the independent BDB parser and a minimal `LegacyDataSPKM` that allows the legacy data to be loaded so that the migration can be completed.\r\n\r\nAll tests which tested legacy wallet behavior have been removed. The `--descriptors` and `--legacy-wallet` options are removed from the functional tests.\r\n\r\nBDB has been removed as a dependency and documentation have been updated to reflect that.\r\n\r\nDepends on #26596, https://github.com/bitcoin-core/gui/pull/824, and #30265",
           "user": {
             "login": "achow101",
             "id": 3782274,
@@ -742,10 +740,10 @@
           },
           "labels": [
             {
-              "id": 5334691551,
-              "node_id": "LA_kwDOABII588AAAABPfju3w",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/CI%20failed",
-              "name": "CI failed",
+              "id": 955867938,
+              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
+              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
+              "name": "Needs rebase",
               "description": "",
               "color": "cccccc",
               "default": false
@@ -754,7 +752,7 @@
           "assignees": [],
           "author_association": "MEMBER",
           "locked": false,
-          "comments": 1,
+          "comments": 2,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/28710",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/28710",
@@ -762,7 +760,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/28710.patch"
           },
           "created_at": "2023-10-23T23:36:07Z",
-          "updated_at": "2024-06-07T02:16:01Z"
+          "updated_at": "2024-06-12T15:34:27Z"
         },
         "type": "issue"
       }
