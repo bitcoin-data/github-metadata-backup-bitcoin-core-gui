@@ -41,10 +41,10 @@
     "body": "Currently the Migrate Wallet menu item can only be used to migrate the currently loaded wallet. This is not suitable for the future when legacy wallets can no longer be loaded at all, but should still be able to be migrated. This PR changes that menu item into a menu list like Open Wallet and lets users migrate any legacy wallet in their wallet directory regardless of the wallets loaded.\r\n\r\nOne issue I ran into was dealing with encrypted wallets. Ideally, we would detect whether a wallet is encrypted, and prompt the user for their passphrase at that time. However, that's actually difficult to do in the GUI since migration will unload the wallet if it was already loaded, and reload it without connecting it to any signals or interfaces. Only then can it detect whether a wallet is encrypted, but then there is no `WalletModel` or even an `interfaces::Wallet` that the GUI could use to unlock it via a callback.\r\n\r\nTo deal with this, I've opted to just add a button to the migration dialog box that has the user enter their passphrase first, along with instructional text to use that button if their wallet was encrypted. If the user enters the wrong passphrase or clicked the other button that does not prompt for the passphrase, migration will fail with a message indicating that the passphrase was incorrect.",
     "labels": [],
     "created_at": "2024-06-10T20:43:07Z",
-    "updated_at": "2024-06-12T21:24:34Z",
+    "updated_at": "2024-06-14T01:30:39Z",
     "mergeable": true,
     "mergeable_state": "clean",
-    "merge_commit_sha": "20f831b7834189fc0426b82073fedf0e97ba38dc",
+    "merge_commit_sha": "698f3afba68252e7213badeae3d13c6b37b4fa42",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -279,7 +279,7 @@
         "forks_count": 256,
         "stargazers_count": 566,
         "watchers_count": 566,
-        "size": 159279,
+        "size": 159496,
         "default_branch": "master",
         "open_issues_count": 163,
         "is_template": false,
@@ -292,9 +292,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-06-12T21:19:57Z",
+        "pushed_at": "2024-06-13T16:19:06Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-06-12T21:19:59Z",
+        "updated_at": "2024-06-13T16:19:09Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -435,9 +435,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-06-10T20:43:10Z",
-      "updated_at": "2024-06-12T20:42:53Z",
+      "updated_at": "2024-06-14T01:30:39Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [hebasto](https://github.com/bitcoin-core/gui/pull/824#issuecomment-2159966884) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#753](https://github.com/bitcoin-core/gui/pull/753) (Add new \"address type\" column to the \"receiving tab\" address book page by pablomartin4btc)\n* [#bitcoin/bitcoin/30265](https://github.com/bitcoin/bitcoin/pull/30265) (wallet: Fix listwalletdir listing of migrated default wallets and generated backup files by achow101)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [hebasto](https://github.com/bitcoin-core/gui/pull/824#issuecomment-2159966884) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#753](https://github.com/bitcoin-core/gui/pull/753) (Add new \"address type\" column to the \"receiving tab\" address book page by pablomartin4btc)\n* [#bitcoin/bitcoin/30265](https://github.com/bitcoin/bitcoin/pull/30265) (wallet: Fix listwalletdir listing of migrated default wallets and generated backup files by achow101)\n* [#bitcoin/bitcoin/28710](https://github.com/bitcoin/bitcoin/pull/28710) (Remove the legacy wallet and BDB dependency by achow101)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -792,10 +792,10 @@
           },
           "labels": [
             {
-              "id": 955867938,
-              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
-              "name": "Needs rebase",
+              "id": 5334691551,
+              "node_id": "LA_kwDOABII588AAAABPfju3w",
+              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/CI%20failed",
+              "name": "CI failed",
               "description": "",
               "color": "cccccc",
               "default": false
@@ -812,7 +812,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/28710.patch"
           },
           "created_at": "2023-10-23T23:36:07Z",
-          "updated_at": "2024-06-12T15:34:27Z"
+          "updated_at": "2024-06-14T01:01:47Z"
         },
         "type": "issue"
       }
@@ -902,7 +902,7 @@
             "patch_url": "https://github.com/bitcoin-core/gui/pull/753.patch"
           },
           "created_at": "2023-09-10T05:32:46Z",
-          "updated_at": "2024-06-12T21:16:11Z"
+          "updated_at": "2024-06-14T01:56:29Z"
         },
         "type": "issue"
       }
@@ -1079,7 +1079,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/30265.patch"
           },
           "created_at": "2024-06-10T21:54:11Z",
-          "updated_at": "2024-06-12T21:59:58Z"
+          "updated_at": "2024-06-13T18:15:15Z"
         },
         "type": "issue"
       }
