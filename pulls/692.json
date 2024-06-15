@@ -57,13 +57,21 @@
         "description": "All about \"how to get things done\"",
         "color": "0052cc",
         "default": false
+      },
+      {
+        "id": 5353934559,
+        "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
+        "name": "CI failed",
+        "color": "ededed",
+        "default": false
       }
     ],
     "created_at": "2022-12-28T16:47:21Z",
-    "updated_at": "2024-02-29T06:34:49Z",
+    "updated_at": "2024-06-15T09:23:22Z",
     "mergeable": true,
-    "mergeable_state": "clean",
-    "merge_commit_sha": "64f94e8895fbef034417bbe06b14747f42cbd40c",
+    "mergeable_state": "unstable",
+    "merge_commit_sha": "c32a4a51794b55f8121006f3688b4cac730a9810",
     "assignees": [],
     "requested_reviewers": [
       {
@@ -377,12 +385,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 242,
-        "stargazers_count": 541,
-        "watchers_count": 541,
-        "size": 152348,
+        "forks_count": 256,
+        "stargazers_count": 566,
+        "watchers_count": 566,
+        "size": 159701,
         "default_branch": "master",
-        "open_issues_count": 160,
+        "open_issues_count": 163,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -393,9 +401,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-02-28T22:55:05Z",
+        "pushed_at": "2024-06-14T18:46:11Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-02-28T16:28:24Z",
+        "updated_at": "2024-06-14T18:46:13Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -425,7 +433,7 @@
     "changed_files": 1,
     "commits": 2,
     "review_comments": 63,
-    "comments": 30
+    "comments": 31
   },
   "events": [
     {
@@ -2492,21 +2500,12 @@
               "name": "Scripts and tools",
               "color": "ffffee",
               "default": false
-            },
-            {
-              "id": 5334691551,
-              "node_id": "LA_kwDOABII588AAAABPfju3w",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/CI%20failed",
-              "name": "CI failed",
-              "description": "",
-              "color": "cccccc",
-              "default": false
             }
           ],
           "assignees": [],
           "author_association": "MEMBER",
           "locked": false,
-          "comments": 13,
+          "comments": 18,
           "pull_request": {
             "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/26990",
             "html_url": "https://github.com/bitcoin/bitcoin/pull/26990",
@@ -2514,7 +2513,7 @@
             "patch_url": "https://github.com/bitcoin/bitcoin/pull/26990.patch"
           },
           "created_at": "2023-01-30T05:16:12Z",
-          "updated_at": "2024-02-13T22:39:47Z"
+          "updated_at": "2024-05-24T21:24:00Z"
         },
         "type": "issue"
       }
@@ -7001,6 +7000,93 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-02-29T06:34:49Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
+      }
+    },
+    {
+      "event": "commented",
+      "id": 2169240205,
+      "node_id": "IC_kwDOEEET9c6BS_qN",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2169240205",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-06-15T09:23:20Z",
+      "updated_at": "2024-06-15T09:23:20Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "<!--85328a0da195eb286784d51f73fa0af9-->\n\n🚧 At least one of the CI tasks failed. Make sure to run all tests locally, according to the\ndocumentation.\n\nPossibly this is due to a silent merge conflict (the changes in this pull request being\nincompatible with the current code in the target branch). If so, make sure to rebase on the latest\ncommit of the target branch.\n\nLeave a comment here, if you need help tracking down a confusing failure.\n\n<sub>Debug: https://github.com/bitcoin-core/gui/runs/21044663226</sub>",
+      "user": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/692#issuecomment-2169240205",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/692"
+    },
+    {
+      "event": "labeled",
+      "id": 13168106845,
+      "node_id": "LE_lADOEEET9c5aLhyozwAAAAMQ4V1d",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/13168106845",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-06-15T09:23:20Z",
       "label": {
         "name": "CI failed",
         "color": "ededed"
