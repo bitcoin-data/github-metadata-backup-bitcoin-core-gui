@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/824/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/824/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/bc8a218a1dfb42548017d1fbe1b5861e236095f0",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/d45ac03a89cc500cd461f878f092cf8ec99e7760",
     "number": 824,
     "state": "open",
     "locked": false,
@@ -41,10 +41,10 @@
     "body": "Currently the Migrate Wallet menu item can only be used to migrate the currently loaded wallet. This is not suitable for the future when legacy wallets can no longer be loaded at all, but should still be able to be migrated. This PR changes that menu item into a menu list like Open Wallet and lets users migrate any legacy wallet in their wallet directory regardless of the wallets loaded.\r\n\r\nOne issue I ran into was dealing with encrypted wallets. Ideally, we would detect whether a wallet is encrypted, and prompt the user for their passphrase at that time. However, that's actually difficult to do in the GUI since migration will unload the wallet if it was already loaded, and reload it without connecting it to any signals or interfaces. Only then can it detect whether a wallet is encrypted, but then there is no `WalletModel` or even an `interfaces::Wallet` that the GUI could use to unlock it via a callback.\r\n\r\nTo deal with this, I've opted to just add a button to the migration dialog box that has the user enter their passphrase first, along with instructional text to use that button if their wallet was encrypted. If the user enters the wrong passphrase or clicked the other button that does not prompt for the passphrase, migration will fail with a message indicating that the passphrase was incorrect.",
     "labels": [],
     "created_at": "2024-06-10T20:43:07Z",
-    "updated_at": "2024-07-03T02:31:21Z",
+    "updated_at": "2024-07-11T19:26:08Z",
     "mergeable": true,
-    "mergeable_state": "clean",
-    "merge_commit_sha": "4ce65decaa1f2e3ddbd410f656d6f3113c2e8b47",
+    "mergeable_state": "unstable",
+    "merge_commit_sha": "6abc2191cf3e5f7b7921a81f310724ee7c07a1e8",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -52,7 +52,7 @@
     "head": {
       "label": "achow101:gui-migrate-unloaded",
       "ref": "gui-migrate-unloaded",
-      "sha": "bc8a218a1dfb42548017d1fbe1b5861e236095f0",
+      "sha": "d45ac03a89cc500cd461f878f092cf8ec99e7760",
       "user": {
         "login": "achow101",
         "id": 3782274,
@@ -160,7 +160,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-06-10T21:01:02Z",
+        "pushed_at": "2024-07-11T19:26:07Z",
         "created_at": "2020-11-12T20:04:24Z",
         "updated_at": "2022-01-19T00:36:29Z",
         "license": {
@@ -183,7 +183,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "b1ba1b178f501daa1afdd91f9efec34e5ec1e294",
+      "sha": "33af14e31b9fa436029a2bb8c2b11de8feb32f86",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -277,11 +277,11 @@
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
         "forks_count": 258,
-        "stargazers_count": 570,
-        "watchers_count": 570,
-        "size": 161547,
+        "stargazers_count": 572,
+        "watchers_count": 572,
+        "size": 161223,
         "default_branch": "master",
-        "open_issues_count": 164,
+        "open_issues_count": 166,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -292,9 +292,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-07-02T22:02:35Z",
+        "pushed_at": "2024-07-11T19:26:09Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-07-02T22:02:38Z",
+        "updated_at": "2024-07-11T19:08:25Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -327,86 +327,6 @@
     "comments": 4
   },
   "events": [
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDM1N2IxOWUwMWUzZDgwZGU5OTIyZGUwMTA0MjljYWNhNmViZjRhMTg",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/357b19e01e3d80de9922de010429caca6ebf4a18",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/357b19e01e3d80de9922de010429caca6ebf4a18",
-      "tree": {
-        "sha": "869899b4ae3ee8ea3154cb756218ce1cb8ed3405",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/869899b4ae3ee8ea3154cb756218ce1cb8ed3405"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/b1ba1b178f501daa1afdd91f9efec34e5ec1e294",
-          "sha": "b1ba1b178f501daa1afdd91f9efec34e5ec1e294",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/b1ba1b178f501daa1afdd91f9efec34e5ec1e294"
-        }
-      ],
-      "message": "wallet, interfaces: Include database format in listWalletDir",
-      "committer": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2024-06-10T20:28:37Z"
-      },
-      "author": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2024-06-10T19:00:21Z"
-      },
-      "sha": "357b19e01e3d80de9922de010429caca6ebf4a18"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDM3N2RjYTgzZDg0Mjg5ZjNlNGJjYzA1NzkyZmJjZDE4MDNkZjQyYzU",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/377dca83d84289f3e4bcc05792fbcd1803df42c5",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/377dca83d84289f3e4bcc05792fbcd1803df42c5",
-      "tree": {
-        "sha": "e0c76c78f2e08adb5baa2299a74d79a78d924c72",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/e0c76c78f2e08adb5baa2299a74d79a78d924c72"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/357b19e01e3d80de9922de010429caca6ebf4a18",
-          "sha": "357b19e01e3d80de9922de010429caca6ebf4a18",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/357b19e01e3d80de9922de010429caca6ebf4a18"
-        }
-      ],
-      "message": "gui: Consolidate wallet display name to GUIUtil function\n\nInstead of having the code for the wallet display name being copy and\npasted, use a GUIUtil function to get that for us.",
-      "committer": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2024-06-10T20:29:48Z"
-      },
-      "author": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2024-06-10T19:39:35Z"
-      },
-      "sha": "377dca83d84289f3e4bcc05792fbcd1803df42c5"
-    },
     {
       "event": "commented",
       "id": 2159249212,
@@ -524,86 +444,6 @@
       "milestone": {
         "title": "28.0"
       }
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDBkODk2NmI5ZWM0NmM0OGYxY2UzNzU1NjBhYmUzNDI5YzA4NjkxNjA",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/0d8966b9ec46c48f1ce375560abe3429c0869160",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/0d8966b9ec46c48f1ce375560abe3429c0869160",
-      "tree": {
-        "sha": "04b19be14db6f2c7a82eb3ca4bc4574c1f2d3efb",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/04b19be14db6f2c7a82eb3ca4bc4574c1f2d3efb"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/377dca83d84289f3e4bcc05792fbcd1803df42c5",
-          "sha": "377dca83d84289f3e4bcc05792fbcd1803df42c5",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/377dca83d84289f3e4bcc05792fbcd1803df42c5"
-        }
-      ],
-      "message": "gui: Use wallet name for wallet migration rather than WalletModel\n\nTo prepare for migrating wallets that are not loaded, when migration\noccurs in the GUI, it should not rely on a WalletModel existing.",
-      "committer": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2024-06-10T21:00:36Z"
-      },
-      "author": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2024-06-10T19:40:53Z"
-      },
-      "sha": "0d8966b9ec46c48f1ce375560abe3429c0869160"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGJjOGEyMThhMWRmYjQyNTQ4MDE3ZDFmYmUxYjU4NjFlMjM2MDk1ZjA",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/bc8a218a1dfb42548017d1fbe1b5861e236095f0",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/bc8a218a1dfb42548017d1fbe1b5861e236095f0",
-      "tree": {
-        "sha": "322802c4d0b565a47e1c1539acd58dd49908cbb6",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/322802c4d0b565a47e1c1539acd58dd49908cbb6"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/0d8966b9ec46c48f1ce375560abe3429c0869160",
-          "sha": "0d8966b9ec46c48f1ce375560abe3429c0869160",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/0d8966b9ec46c48f1ce375560abe3429c0869160"
-        }
-      ],
-      "message": "gui: Use menu for wallet migration\n\nOnce legacy wallets can no longer be loaded, we need to be able to\nmigrate them without loading. Thus we should use a menu that lists the\nwallets in the wallet directory instead of an action which migrates the\ncurrently loaded wallet.",
-      "committer": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2024-06-10T21:00:36Z"
-      },
-      "author": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2024-06-10T19:14:04Z"
-      },
-      "sha": "bc8a218a1dfb42548017d1fbe1b5861e236095f0"
     },
     {
       "event": "head_ref_force_pushed",
@@ -828,6 +668,195 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/824#issuecomment-2163926995",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/824"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDAxZDBhZGY2ZDAwMTM5Y2VjNjQ1YmYyYTI5ZjQ2MjM2ZjQ1MzFlMmI",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/01d0adf6d00139cec645bf2a29f46236f4531e2b",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/01d0adf6d00139cec645bf2a29f46236f4531e2b",
+      "tree": {
+        "sha": "2877640c153f526b40d9d7609b8a39660e5742b1",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/2877640c153f526b40d9d7609b8a39660e5742b1"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/33af14e31b9fa436029a2bb8c2b11de8feb32f86",
+          "sha": "33af14e31b9fa436029a2bb8c2b11de8feb32f86",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/33af14e31b9fa436029a2bb8c2b11de8feb32f86"
+        }
+      ],
+      "message": "wallet, interfaces: Include database format in listWalletDir",
+      "committer": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2024-07-11T19:26:03Z"
+      },
+      "author": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2024-06-10T19:00:21Z"
+      },
+      "sha": "01d0adf6d00139cec645bf2a29f46236f4531e2b"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDNlYjY3ZGNhMGEzZmU5ZmQ4ZDIwOWRhOGE3OTNiZDg2NGNkYmY5OTA",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/3eb67dca0a3fe9fd8d209da8a793bd864cdbf990",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/3eb67dca0a3fe9fd8d209da8a793bd864cdbf990",
+      "tree": {
+        "sha": "782c090f1f1be7f408a58d4a7bdcc11b270a4af3",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/782c090f1f1be7f408a58d4a7bdcc11b270a4af3"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/01d0adf6d00139cec645bf2a29f46236f4531e2b",
+          "sha": "01d0adf6d00139cec645bf2a29f46236f4531e2b",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/01d0adf6d00139cec645bf2a29f46236f4531e2b"
+        }
+      ],
+      "message": "gui: Consolidate wallet display name to GUIUtil function\n\nInstead of having the code for the wallet display name being copy and\npasted, use a GUIUtil function to get that for us.",
+      "committer": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2024-07-11T19:26:03Z"
+      },
+      "author": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2024-06-10T19:39:35Z"
+      },
+      "sha": "3eb67dca0a3fe9fd8d209da8a793bd864cdbf990"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGYxZWE1OGY4OWMwYmQ4N2FmNGFlZTJmZDBiOGE4MjU1ZGQ3NDk1YTM",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/f1ea58f89c0bd87af4aee2fd0b8a8255dd7495a3",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/f1ea58f89c0bd87af4aee2fd0b8a8255dd7495a3",
+      "tree": {
+        "sha": "3d2bce551981f8e4ef9d941c553ce10286b07c7c",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/3d2bce551981f8e4ef9d941c553ce10286b07c7c"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/3eb67dca0a3fe9fd8d209da8a793bd864cdbf990",
+          "sha": "3eb67dca0a3fe9fd8d209da8a793bd864cdbf990",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/3eb67dca0a3fe9fd8d209da8a793bd864cdbf990"
+        }
+      ],
+      "message": "gui: Use wallet name for wallet migration rather than WalletModel\n\nTo prepare for migrating wallets that are not loaded, when migration\noccurs in the GUI, it should not rely on a WalletModel existing.",
+      "committer": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2024-07-11T19:26:03Z"
+      },
+      "author": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2024-06-10T19:40:53Z"
+      },
+      "sha": "f1ea58f89c0bd87af4aee2fd0b8a8255dd7495a3"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGQ0NWFjMDNhODljYzUwMGNkNDYxZjg3OGYwOTJjZjhlYzk5ZTc3NjA",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/d45ac03a89cc500cd461f878f092cf8ec99e7760",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/d45ac03a89cc500cd461f878f092cf8ec99e7760",
+      "tree": {
+        "sha": "c19c72889f4b5ed3c825871ce41c41378f119455",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/c19c72889f4b5ed3c825871ce41c41378f119455"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/f1ea58f89c0bd87af4aee2fd0b8a8255dd7495a3",
+          "sha": "f1ea58f89c0bd87af4aee2fd0b8a8255dd7495a3",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/f1ea58f89c0bd87af4aee2fd0b8a8255dd7495a3"
+        }
+      ],
+      "message": "gui: Use menu for wallet migration\n\nOnce legacy wallets can no longer be loaded, we need to be able to\nmigrate them without loading. Thus we should use a menu that lists the\nwallets in the wallet directory instead of an action which migrates the\ncurrently loaded wallet.",
+      "committer": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2024-07-11T19:26:03Z"
+      },
+      "author": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2024-06-10T19:14:04Z"
+      },
+      "sha": "d45ac03a89cc500cd461f878f092cf8ec99e7760"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 13476517669,
+      "node_id": "HRFPE_lADOEEET9c6LwrC9zwAAAAMjQ1cl",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/13476517669",
+      "actor": {
+        "login": "achow101",
+        "id": 3782274,
+        "node_id": "MDQ6VXNlcjM3ODIyNzQ=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3782274?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/achow101",
+        "html_url": "https://github.com/achow101",
+        "followers_url": "https://api.github.com/users/achow101/followers",
+        "following_url": "https://api.github.com/users/achow101/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/achow101/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/achow101/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/achow101/subscriptions",
+        "organizations_url": "https://api.github.com/users/achow101/orgs",
+        "repos_url": "https://api.github.com/users/achow101/repos",
+        "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/achow101/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-07-11T19:26:08Z"
     }
   ],
   "comments": []
