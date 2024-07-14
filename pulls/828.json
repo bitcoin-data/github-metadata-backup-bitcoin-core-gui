@@ -41,7 +41,7 @@
     "body": "In the current implementation Qt uses '&' as a signal to underscore letter and use it as a hot-key, which is not expected for case of wallet name.\r\n\r\nThe [comment in the code](https://github.com/bitcoin/bitcoin/pull/30446/files#diff-2ecf8cbf369cf3d2f3d2b1cf5cfe4c1a647d63e11e2885d2fd0ac11fb5f7a804L402-L404) is misleading, if you replace one & to double &&, the next & will be a \"single one\". All of them in the string should be replaced, not only the first occurrence.\r\n\r\n\r\nSee screenshots before & after:\r\n![Screenshot_20240713_122454](https://github.com/user-attachments/assets/e36d6e4c-d872-4b4c-b55e-bcfde9881281)\r\n![Screenshot_20240713_131304](https://github.com/user-attachments/assets/9484687d-0aea-4061-a461-5d187762a4b4)",
     "labels": [],
     "created_at": "2024-07-13T12:32:11Z",
-    "updated_at": "2024-07-14T15:28:32Z",
+    "updated_at": "2024-07-14T16:25:59Z",
     "mergeable": true,
     "mergeable_state": "clean",
     "merge_commit_sha": "dc0b56161e89f10f6003e1293b7996c2250f983b",
@@ -323,8 +323,8 @@
     "deletions": 4,
     "changed_files": 1,
     "commits": 1,
-    "review_comments": 2,
-    "comments": 5
+    "review_comments": 1,
+    "comments": 6
   },
   "events": [
     {
@@ -788,6 +788,60 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-07-14T13:32:16Z"
+    },
+    {
+      "event": "commented",
+      "id": 2227403684,
+      "node_id": "IC_kwDOEEET9c6Ew3uk",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2227403684",
+      "actor": {
+        "login": "knst",
+        "id": 545784,
+        "node_id": "MDQ6VXNlcjU0NTc4NA==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/545784?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/knst",
+        "html_url": "https://github.com/knst",
+        "followers_url": "https://api.github.com/users/knst/followers",
+        "following_url": "https://api.github.com/users/knst/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/knst/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/knst/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/knst/subscriptions",
+        "organizations_url": "https://api.github.com/users/knst/orgs",
+        "repos_url": "https://api.github.com/users/knst/repos",
+        "events_url": "https://api.github.com/users/knst/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/knst/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-07-14T16:25:49Z",
+      "updated_at": "2024-07-14T16:25:49Z",
+      "author_association": "NONE",
+      "body": "> It might be a platform-specific issue though. See https://bugreports.qt.io/browse/QTBUG-63361.\r\n\r\ncould someone test on Mac?\r\nI will make probably platform's depend implementation of char replacement",
+      "user": {
+        "login": "knst",
+        "id": 545784,
+        "node_id": "MDQ6VXNlcjU0NTc4NA==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/545784?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/knst",
+        "html_url": "https://github.com/knst",
+        "followers_url": "https://api.github.com/users/knst/followers",
+        "following_url": "https://api.github.com/users/knst/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/knst/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/knst/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/knst/subscriptions",
+        "organizations_url": "https://api.github.com/users/knst/orgs",
+        "repos_url": "https://api.github.com/users/knst/repos",
+        "events_url": "https://api.github.com/users/knst/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/knst/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/828#issuecomment-2227403684",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/828"
     }
   ],
   "comments": [
@@ -831,58 +885,6 @@
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1677136023"
-        },
-        "pull_request": {
-          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/828"
-        }
-      },
-      "start_line": 402,
-      "original_start_line": 402,
-      "start_side": "LEFT",
-      "line": 404,
-      "original_line": 404,
-      "side": "LEFT"
-    },
-    {
-      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1677156648",
-      "pull_request_review_id": 2176675319,
-      "id": 1677156648,
-      "node_id": "PRRC_kwDOEEET9c5j92Eo",
-      "diff_hunk": "@@ -399,10 +399,7 @@ void BitcoinGUI::createActions()\n             for (const std::pair<const std::string, bool>& i : m_wallet_controller->listWalletDir()) {\n                 const std::string& path = i.first;\n                 QString name = path.empty() ? QString(\"[\"+tr(\"default wallet\")+\"]\") : QString::fromStdString(path);\n-                // Menu items remove single &. Single & are shown when && is in\n-                // the string, but only the first occurrence. So replace only\n-                // the first & with &&.",
-      "path": "src/qt/bitcoingui.cpp",
-      "position": 6,
-      "original_position": 6,
-      "commit_id": "948520b72d7fe8e7a3aa0d774159807058188627",
-      "original_commit_id": "948520b72d7fe8e7a3aa0d774159807058188627",
-      "in_reply_to_id": 1677136023,
-      "user": {
-        "login": "knst",
-        "id": 545784,
-        "node_id": "MDQ6VXNlcjU0NTc4NA==",
-        "avatar_url": "https://avatars.githubusercontent.com/u/545784?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/knst",
-        "html_url": "https://github.com/knst",
-        "followers_url": "https://api.github.com/users/knst/followers",
-        "following_url": "https://api.github.com/users/knst/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/knst/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/knst/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/knst/subscriptions",
-        "organizations_url": "https://api.github.com/users/knst/orgs",
-        "repos_url": "https://api.github.com/users/knst/repos",
-        "events_url": "https://api.github.com/users/knst/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/knst/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "body": "Could you suggest wording? English is not my native language",
-      "created_at": "2024-07-14T15:28:32Z",
-      "updated_at": "2024-07-14T15:28:32Z",
-      "html_url": "https://github.com/bitcoin-core/gui/pull/828#discussion_r1677156648",
-      "author_association": "NONE",
-      "_links": {
-        "self": {
-          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1677156648"
         },
         "pull_request": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/828"
