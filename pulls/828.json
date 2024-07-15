@@ -41,33 +41,12 @@
     "body": "In the current implementation Qt uses '&' as a signal to underscore letter and use it as a hot-key, which is not expected for case of wallet name.\r\n\r\nThe [comment in the code](https://github.com/bitcoin/bitcoin/pull/30446/files#diff-2ecf8cbf369cf3d2f3d2b1cf5cfe4c1a647d63e11e2885d2fd0ac11fb5f7a804L402-L404) is misleading, if you replace one & to double &&, the next & will be a \"single one\". All of them in the string should be replaced, not only the first occurrence.\r\n\r\n\r\nSee screenshots before & after:\r\n![Screenshot_20240713_122454](https://github.com/user-attachments/assets/e36d6e4c-d872-4b4c-b55e-bcfde9881281)\r\n![Screenshot_20240713_131304](https://github.com/user-attachments/assets/9484687d-0aea-4061-a461-5d187762a4b4)",
     "labels": [],
     "created_at": "2024-07-13T12:32:11Z",
-    "updated_at": "2024-07-15T12:21:16Z",
+    "updated_at": "2024-07-15T13:11:31Z",
     "mergeable": true,
     "mergeable_state": "unstable",
-    "merge_commit_sha": "025e121533649013e56bb318b52c307ae001da32",
+    "merge_commit_sha": "5901320076071344ed78874244f8bb98f85da59a",
     "assignees": [],
-    "requested_reviewers": [
-      {
-        "login": "hebasto",
-        "id": 32963518,
-        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
-        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/hebasto",
-        "html_url": "https://github.com/hebasto",
-        "followers_url": "https://api.github.com/users/hebasto/followers",
-        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
-        "organizations_url": "https://api.github.com/users/hebasto/orgs",
-        "repos_url": "https://api.github.com/users/hebasto/repos",
-        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/hebasto/received_events",
-        "type": "User",
-        "site_admin": false
-      }
-    ],
+    "requested_reviewers": [],
     "requested_teams": [],
     "rebaseable": true,
     "head": {
@@ -313,9 +292,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-07-15T12:19:14Z",
+        "pushed_at": "2024-07-15T13:11:20Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-07-15T11:15:46Z",
+        "updated_at": "2024-07-15T13:11:23Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -344,7 +323,7 @@
     "deletions": 4,
     "changed_files": 1,
     "commits": 1,
-    "review_comments": 2,
+    "review_comments": 3,
     "comments": 6
   },
   "events": [
@@ -376,9 +355,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-07-13T12:32:14Z",
-      "updated_at": "2024-07-15T12:19:16Z",
+      "updated_at": "2024-07-15T13:11:31Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Stale ACK | [hebasto](https://github.com/bitcoin-core/gui/pull/828#pullrequestreview-2177151747) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#824](https://github.com/bitcoin-core/gui/pull/824) (Migrate legacy wallets that are not loaded by achow101)\n* [#bitcoin/bitcoin/28710](https://github.com/bitcoin/bitcoin/pull/28710) (Remove the legacy wallet and BDB dependency by achow101)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| ACK | [hebasto](https://github.com/bitcoin-core/gui/pull/828#pullrequestreview-2177678028) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#824](https://github.com/bitcoin-core/gui/pull/824) (Migrate legacy wallets that are not loaded by achow101)\n* [#bitcoin/bitcoin/28710](https://github.com/bitcoin/bitcoin/pull/28710) (Remove the legacy wallet and BDB dependency by achow101)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -997,6 +976,42 @@
         "type": "User",
         "site_admin": false
       }
+    },
+    {
+      "event": "reviewed",
+      "id": 2177678028,
+      "node_id": "PRR_kwDOEEET9c6BzLrM",
+      "url": null,
+      "actor": null,
+      "commit_id": "7581817826e000c4f0a505e7f2785a611cac8f55",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "MEMBER",
+      "body": "re-ACK 7581817826e000c4f0a505e7f2785a611cac8f55",
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/828#pullrequestreview-2177678028",
+      "submitted_at": "2024-07-15T13:11:29Z",
+      "state": "APPROVED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/828"
     }
   ],
   "comments": [
@@ -1103,6 +1118,58 @@
       "line": 404,
       "original_line": 404,
       "side": "LEFT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1677806107",
+      "pull_request_review_id": 2177678028,
+      "id": 1677806107,
+      "node_id": "PRRC_kwDOEEET9c5kAUob",
+      "diff_hunk": "@@ -399,10 +399,9 @@ void BitcoinGUI::createActions()\n             for (const std::pair<const std::string, bool>& i : m_wallet_controller->listWalletDir()) {\n                 const std::string& path = i.first;\n                 QString name = path.empty() ? QString(\"[\"+tr(\"default wallet\")+\"]\") : QString::fromStdString(path);\n-                // Menu items remove single &. Single & are shown when && is in\n-                // the string, but only the first occurrence. So replace only\n-                // the first & with &&.\n-                name.replace(name.indexOf(QChar('&')), 1, QString(\"&&\"));\n+                // The single ampersand in the menu item's text sets a shortcut for this menu.",
+      "path": "src/qt/bitcoingui.cpp",
+      "position": 8,
+      "original_position": 8,
+      "commit_id": "7581817826e000c4f0a505e7f2785a611cac8f55",
+      "original_commit_id": "7581817826e000c4f0a505e7f2785a611cac8f55",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "Maybe\r\n```suggestion\r\n                // A single ampersand in the menu item's text sets a shortcut for this item.\r\n```\r\n?",
+      "created_at": "2024-07-15T13:11:24Z",
+      "updated_at": "2024-07-15T13:12:28Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/828#discussion_r1677806107",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1677806107"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/828"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 402,
+      "original_line": 402,
+      "side": "RIGHT"
     }
   ]
 }
