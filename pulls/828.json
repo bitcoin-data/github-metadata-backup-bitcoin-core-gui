@@ -41,10 +41,10 @@
     "body": "In the current implementation Qt uses '&' as a signal to underscore letter and use it as a hot-key, which is not expected for case of wallet name.\r\n\r\nThe [comment in the code](https://github.com/bitcoin/bitcoin/pull/30446/files#diff-2ecf8cbf369cf3d2f3d2b1cf5cfe4c1a647d63e11e2885d2fd0ac11fb5f7a804L402-L404) is misleading, if you replace one & to double &&, the next & will be a \"single one\". All of them in the string should be replaced, not only the first occurrence.\r\n\r\n\r\nSee screenshots before & after:\r\n![Screenshot_20240713_122454](https://github.com/user-attachments/assets/e36d6e4c-d872-4b4c-b55e-bcfde9881281)\r\n![Screenshot_20240713_131304](https://github.com/user-attachments/assets/9484687d-0aea-4061-a461-5d187762a4b4)",
     "labels": [],
     "created_at": "2024-07-13T12:32:11Z",
-    "updated_at": "2024-07-14T16:25:59Z",
+    "updated_at": "2024-07-15T08:40:24Z",
     "mergeable": true,
     "mergeable_state": "clean",
-    "merge_commit_sha": "dc0b56161e89f10f6003e1293b7996c2250f983b",
+    "merge_commit_sha": "baef978565d4f8dba602da8de64991e94a9b2322",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -292,9 +292,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-07-14T12:08:20Z",
+        "pushed_at": "2024-07-15T08:59:49Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-07-14T12:08:23Z",
+        "updated_at": "2024-07-15T08:59:53Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -323,7 +323,7 @@
     "deletions": 4,
     "changed_files": 1,
     "commits": 1,
-    "review_comments": 1,
+    "review_comments": 2,
     "comments": 6
   },
   "events": [
@@ -395,9 +395,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-07-13T12:32:14Z",
-      "updated_at": "2024-07-13T14:19:32Z",
+      "updated_at": "2024-07-15T08:39:29Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\nA summary of reviews will appear here.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#824](https://github.com/bitcoin-core/gui/pull/824) (Migrate legacy wallets that are not loaded by achow101)\n* [#bitcoin/bitcoin/28710](https://github.com/bitcoin/bitcoin/pull/28710) (Remove the legacy wallet and BDB dependency by achow101)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| ACK | [hebasto](https://github.com/bitcoin-core/gui/pull/828#pullrequestreview-2177151747) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#824](https://github.com/bitcoin-core/gui/pull/824) (Migrate legacy wallets that are not loaded by achow101)\n* [#bitcoin/bitcoin/28710](https://github.com/bitcoin/bitcoin/pull/28710) (Remove the legacy wallet and BDB dependency by achow101)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -842,6 +842,42 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/828#issuecomment-2227403684",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/828"
+    },
+    {
+      "event": "reviewed",
+      "id": 2177151747,
+      "node_id": "PRR_kwDOEEET9c6BxLMD",
+      "url": null,
+      "actor": null,
+      "commit_id": "948520b72d7fe8e7a3aa0d774159807058188627",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "MEMBER",
+      "body": "ACK 948520b72d7fe8e7a3aa0d774159807058188627, modulo https://github.com/bitcoin-core/gui/pull/828/files#r1677136023.\r\n\r\nTested on Ubuntu 24.04, Windows 11 Pro and macOS 12.7.5 Monterey (x86).",
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/828#pullrequestreview-2177151747",
+      "submitted_at": "2024-07-15T08:39:26Z",
+      "state": "APPROVED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/828"
     }
   ],
   "comments": [
@@ -885,6 +921,58 @@
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1677136023"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/828"
+        }
+      },
+      "start_line": 402,
+      "original_start_line": 402,
+      "start_side": "LEFT",
+      "line": 404,
+      "original_line": 404,
+      "side": "LEFT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1677487337",
+      "pull_request_review_id": 2177151747,
+      "id": 1677487337,
+      "node_id": "PRRC_kwDOEEET9c5j_Gzp",
+      "diff_hunk": "@@ -399,10 +399,7 @@ void BitcoinGUI::createActions()\n             for (const std::pair<const std::string, bool>& i : m_wallet_controller->listWalletDir()) {\n                 const std::string& path = i.first;\n                 QString name = path.empty() ? QString(\"[\"+tr(\"default wallet\")+\"]\") : QString::fromStdString(path);\n-                // Menu items remove single &. Single & are shown when && is in\n-                // the string, but only the first occurrence. So replace only\n-                // the first & with &&.",
+      "path": "src/qt/bitcoingui.cpp",
+      "position": 6,
+      "original_position": 6,
+      "commit_id": "948520b72d7fe8e7a3aa0d774159807058188627",
+      "original_commit_id": "948520b72d7fe8e7a3aa0d774159807058188627",
+      "in_reply_to_id": 1677136023,
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "Maybe:\r\n```C++\r\n                // Menu items remove single &. Single & are shown when && is in\r\n                // the string. So replace & with &&.\r\n```\r\n?",
+      "created_at": "2024-07-15T08:39:21Z",
+      "updated_at": "2024-07-15T08:39:26Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/828#discussion_r1677487337",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1677487337"
         },
         "pull_request": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/828"
