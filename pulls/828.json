@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/828/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/828/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/948520b72d7fe8e7a3aa0d774159807058188627",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/7581817826e000c4f0a505e7f2785a611cac8f55",
     "number": 828,
     "state": "open",
     "locked": false,
@@ -41,18 +41,39 @@
     "body": "In the current implementation Qt uses '&' as a signal to underscore letter and use it as a hot-key, which is not expected for case of wallet name.\r\n\r\nThe [comment in the code](https://github.com/bitcoin/bitcoin/pull/30446/files#diff-2ecf8cbf369cf3d2f3d2b1cf5cfe4c1a647d63e11e2885d2fd0ac11fb5f7a804L402-L404) is misleading, if you replace one & to double &&, the next & will be a \"single one\". All of them in the string should be replaced, not only the first occurrence.\r\n\r\n\r\nSee screenshots before & after:\r\n![Screenshot_20240713_122454](https://github.com/user-attachments/assets/e36d6e4c-d872-4b4c-b55e-bcfde9881281)\r\n![Screenshot_20240713_131304](https://github.com/user-attachments/assets/9484687d-0aea-4061-a461-5d187762a4b4)",
     "labels": [],
     "created_at": "2024-07-13T12:32:11Z",
-    "updated_at": "2024-07-15T08:40:24Z",
+    "updated_at": "2024-07-15T12:21:16Z",
     "mergeable": true,
-    "mergeable_state": "clean",
-    "merge_commit_sha": "baef978565d4f8dba602da8de64991e94a9b2322",
+    "mergeable_state": "unstable",
+    "merge_commit_sha": "025e121533649013e56bb318b52c307ae001da32",
     "assignees": [],
-    "requested_reviewers": [],
+    "requested_reviewers": [
+      {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      }
+    ],
     "requested_teams": [],
     "rebaseable": true,
     "head": {
       "label": "knst:fix-qt-wallet-underscore",
       "ref": "fix-qt-wallet-underscore",
-      "sha": "948520b72d7fe8e7a3aa0d774159807058188627",
+      "sha": "7581817826e000c4f0a505e7f2785a611cac8f55",
       "user": {
         "login": "knst",
         "id": 545784,
@@ -160,7 +181,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-07-13T12:31:36Z",
+        "pushed_at": "2024-07-15T12:19:12Z",
         "created_at": "2024-07-13T12:31:04Z",
         "updated_at": "2024-07-13T12:31:04Z",
         "license": {
@@ -183,7 +204,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "c4d45b695ef27e21d35e886b08887e2ecf272ce7",
+      "sha": "84063a4c4c0a5c8e39de1500b835c3a318eea089",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -279,9 +300,9 @@
         "forks_count": 257,
         "stargazers_count": 572,
         "watchers_count": 572,
-        "size": 161368,
+        "size": 161429,
         "default_branch": "master",
-        "open_issues_count": 166,
+        "open_issues_count": 163,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -292,9 +313,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-07-15T08:59:49Z",
+        "pushed_at": "2024-07-15T12:19:14Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-07-15T08:59:53Z",
+        "updated_at": "2024-07-15T11:15:46Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -319,7 +340,7 @@
     },
     "author_association": "NONE",
     "draft": false,
-    "additions": 1,
+    "additions": 3,
     "deletions": 4,
     "changed_files": 1,
     "commits": 1,
@@ -327,46 +348,6 @@
     "comments": 6
   },
   "events": [
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDk0ODUyMGI3MmQ3ZmU4ZTdhM2FhMGQ3NzQxNTk4MDcwNTgxODg2Mjc",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/948520b72d7fe8e7a3aa0d774159807058188627",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/948520b72d7fe8e7a3aa0d774159807058188627",
-      "tree": {
-        "sha": "c4e417312bac7b9688ae87ef4224bfee78ab84da",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/c4e417312bac7b9688ae87ef4224bfee78ab84da"
-      },
-      "verification": {
-        "verified": true,
-        "reason": "valid",
-        "payload": "tree c4e417312bac7b9688ae87ef4224bfee78ab84da\nparent c4d45b695ef27e21d35e886b08887e2ecf272ce7\nauthor Konstantin Akimov <knstqq@gmail.com> 1720851242 +0700\ncommitter Konstantin Akimov <knstqq@gmail.com> 1720851242 +0700\n\nfix: correct replacement of amp character in the wallet name for QMenu\n\nThe comment is missleading. If wallet name has & it is not supposed to use\nas a hot-key, but should be shown as it is without replacing to underscore\n",
-        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEEFRkdBbXPlW/jfJWWIXbEpdAepSQFAmaSG54ACgkQIXbEpdAe\npSRPSRAAlpyd4FABmbxxA4Pd7YaFth6h72tcQcKrb6QKG1d8z4e8DrMpUmKAHkdW\nkttqcXpDtva/VcTYiJuXh+j6rtHbq3KXtYaJIKP5EpK99xit2GTQj9YaCKz2AaaC\nKoqijIR5cO5VaJ2dnFr1rftxGy00R36mVCWWpL0ArFgiz4bMgPl2e12PqMOPu5Ek\n2WBMVZk49sma2JQb76hoft0yJwxkwnf2y61NP0WpqcQ8KAWvrK00NTNmzWO33wKU\nLF9b9+P0GwmqfyWHA0Pj805R/BJyhYhmcVZtb85xSOC1pwgQ6vFX7NHEN4mD7dxC\nuy9No9KuH7vZMDcyiRXuQOnzmFx1rUnJ4NYr9RhMcOul/Eqkrqze+IiOxej20JBO\nHDY83eYGNMAUty22sZ4wXJEQi5h63BvYBkQkyKZoX4bjQDLA8TfTzRukXYgwWoqj\nkxlkjJ4Oxh1TC2FSQjaOjsHisXbrv5vyP7AB5RR4VVS78AgM8Y7qHbBQ0z6yb78X\nkkK1M6Wypd4v6hdIRcZDF8FiajA1rHDOydVd1MjFgWhXEH8xZlaFXap1N6JzAOao\nhOg45sUUqq8bX4XjKDd9gnPX2t/53EKZa+2uQ4MZbirM03Cwz+GX/nOQF1yvRzPq\n7zv8h8wgj826AOHpSt2bREwYxD9RBLRCLMQ+oEgbajCaGjhkCME=\n=SwXy\n-----END PGP SIGNATURE-----"
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/c4d45b695ef27e21d35e886b08887e2ecf272ce7",
-          "sha": "c4d45b695ef27e21d35e886b08887e2ecf272ce7",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/c4d45b695ef27e21d35e886b08887e2ecf272ce7"
-        }
-      ],
-      "message": "fix: correct replacement of amp character in the wallet name for QMenu\n\nThe comment is missleading. If wallet name has & it is not supposed to use\nas a hot-key, but should be shown as it is without replacing to underscore",
-      "committer": {
-        "name": "Konstantin Akimov",
-        "email": "knstqq@gmail.com",
-        "date": "2024-07-13T06:14:02Z"
-      },
-      "author": {
-        "name": "Konstantin Akimov",
-        "email": "knstqq@gmail.com",
-        "date": "2024-07-13T06:14:02Z"
-      },
-      "sha": "948520b72d7fe8e7a3aa0d774159807058188627"
-    },
     {
       "event": "commented",
       "id": 2226884735,
@@ -395,9 +376,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-07-13T12:32:14Z",
-      "updated_at": "2024-07-15T08:39:29Z",
+      "updated_at": "2024-07-15T12:19:16Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| ACK | [hebasto](https://github.com/bitcoin-core/gui/pull/828#pullrequestreview-2177151747) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#824](https://github.com/bitcoin-core/gui/pull/824) (Migrate legacy wallets that are not loaded by achow101)\n* [#bitcoin/bitcoin/28710](https://github.com/bitcoin/bitcoin/pull/28710) (Remove the legacy wallet and BDB dependency by achow101)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Stale ACK | [hebasto](https://github.com/bitcoin-core/gui/pull/828#pullrequestreview-2177151747) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#824](https://github.com/bitcoin-core/gui/pull/824) (Migrate legacy wallets that are not loaded by achow101)\n* [#bitcoin/bitcoin/28710](https://github.com/bitcoin/bitcoin/pull/28710) (Remove the legacy wallet and BDB dependency by achow101)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -878,6 +859,144 @@
       "submitted_at": "2024-07-15T08:39:26Z",
       "state": "APPROVED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/828"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDc1ODE4MTc4MjZlMDAwYzRmMGE1MDVlN2YyNzg1YTYxMWNhYzhmNTU",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/7581817826e000c4f0a505e7f2785a611cac8f55",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/7581817826e000c4f0a505e7f2785a611cac8f55",
+      "tree": {
+        "sha": "268d856b4e924102910449439a47f1744c075118",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/268d856b4e924102910449439a47f1744c075118"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree 268d856b4e924102910449439a47f1744c075118\nparent c4d45b695ef27e21d35e886b08887e2ecf272ce7\nauthor Konstantin Akimov <knstqq@gmail.com> 1720851242 +0700\ncommitter Konstantin Akimov <knstqq@gmail.com> 1721045853 +0700\n\nfix: correct replacement of amp character in the wallet name for QMenu\n\nThe comment is missleading. If wallet name has & it is not supposed to use\nas a hot-key, but should be shown as it is without replacing to underscore\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEEFRkdBbXPlW/jfJWWIXbEpdAepSQFAmaVE14ACgkQIXbEpdAe\npSSQXw/+N3mvW3Ad2Bq4y1xT03mgHG89GkxiWw/RSLiDwtjwtz4cTvFkd4hqd7yF\n4CC1wQMf/ufpRQ0ooSwSKMn34MoycAzL8FLRvT4mmn8IjbO7BEBZbgtULmSAut2P\nBvAhTmXHSUPwMx8vB/Cj9CDGDvm6wBPBOAcFjZT/6z8wqtSMbCyDUina7YkxZAhy\noBSti2OjiFxCBsgHycLpELVeekzjWUHN+qa4rZWAoh+sluJDQ96EiQ/fwoFValKp\nMImau3hqYCkvVYQ8kWeBt4xoYHpwdlffy71+2E+hdEp8Lp+VG3SvGNzTZMal11CO\nU5BEsWcasibOfptreJctYxc6XJNmb6OsxNybz1wyiYWsxLkr5cYgu4cJBVM00FPK\njodY2gOLgoge6D3/guWD+2W+H2SZD+gNFqh6GFlc4P8OA8mvhzvJoHnGfAEuwVx1\nSOFZ3VTDQ6xA4GhoRCVOiB33+nxke1GbVeuJz/opprlIzUSbv60N/uqJoLfhYB8V\nbF9Fu1X7EaDxT2I+bA7g1kif124gluYpY27RqdjmlpY/aOY9rtbPzGPmggMndH9e\nSQiTfHEIKva1WGsGSLvHGf2CKeJVeA1U5FNSUP6WpyvFL6ggo1RmSnHnFItcbqH1\n+nvQs917Iy+8WpZw7OZkVv2yFJGiJ7+6AOssNTYme4um5mVQPaY=\n=W1hw\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/c4d45b695ef27e21d35e886b08887e2ecf272ce7",
+          "sha": "c4d45b695ef27e21d35e886b08887e2ecf272ce7",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/c4d45b695ef27e21d35e886b08887e2ecf272ce7"
+        }
+      ],
+      "message": "fix: correct replacement of amp character in the wallet name for QMenu\n\nThe comment is missleading. If wallet name has & it is not supposed to use\nas a hot-key, but should be shown as it is without replacing to underscore",
+      "committer": {
+        "name": "Konstantin Akimov",
+        "email": "knstqq@gmail.com",
+        "date": "2024-07-15T12:17:33Z"
+      },
+      "author": {
+        "name": "Konstantin Akimov",
+        "email": "knstqq@gmail.com",
+        "date": "2024-07-13T06:14:02Z"
+      },
+      "sha": "7581817826e000c4f0a505e7f2785a611cac8f55"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 13504678083,
+      "node_id": "HRFPE_lADOEEET9c6Pdhp4zwAAAAMk8QjD",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/13504678083",
+      "actor": {
+        "login": "knst",
+        "id": 545784,
+        "node_id": "MDQ6VXNlcjU0NTc4NA==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/545784?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/knst",
+        "html_url": "https://github.com/knst",
+        "followers_url": "https://api.github.com/users/knst/followers",
+        "following_url": "https://api.github.com/users/knst/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/knst/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/knst/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/knst/subscriptions",
+        "organizations_url": "https://api.github.com/users/knst/orgs",
+        "repos_url": "https://api.github.com/users/knst/repos",
+        "events_url": "https://api.github.com/users/knst/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/knst/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-07-15T12:19:13Z"
+    },
+    {
+      "event": "review_requested",
+      "id": 13504705491,
+      "node_id": "RRE_lADOEEET9c6Pdhp4zwAAAAMk8XPT",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/13504705491",
+      "actor": {
+        "login": "knst",
+        "id": 545784,
+        "node_id": "MDQ6VXNlcjU0NTc4NA==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/545784?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/knst",
+        "html_url": "https://github.com/knst",
+        "followers_url": "https://api.github.com/users/knst/followers",
+        "following_url": "https://api.github.com/users/knst/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/knst/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/knst/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/knst/subscriptions",
+        "organizations_url": "https://api.github.com/users/knst/orgs",
+        "repos_url": "https://api.github.com/users/knst/repos",
+        "events_url": "https://api.github.com/users/knst/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/knst/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-07-15T12:21:16Z",
+      "requested_reviewer": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "review_requester": {
+        "login": "knst",
+        "id": 545784,
+        "node_id": "MDQ6VXNlcjU0NTc4NA==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/545784?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/knst",
+        "html_url": "https://github.com/knst",
+        "followers_url": "https://api.github.com/users/knst/followers",
+        "following_url": "https://api.github.com/users/knst/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/knst/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/knst/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/knst/subscriptions",
+        "organizations_url": "https://api.github.com/users/knst/orgs",
+        "repos_url": "https://api.github.com/users/knst/repos",
+        "events_url": "https://api.github.com/users/knst/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/knst/received_events",
+        "type": "User",
+        "site_admin": false
+      }
     }
   ],
   "comments": [
@@ -890,7 +1009,7 @@
       "path": "src/qt/bitcoingui.cpp",
       "position": 6,
       "original_position": 6,
-      "commit_id": "948520b72d7fe8e7a3aa0d774159807058188627",
+      "commit_id": "7581817826e000c4f0a505e7f2785a611cac8f55",
       "original_commit_id": "948520b72d7fe8e7a3aa0d774159807058188627",
       "in_reply_to_id": null,
       "user": {
@@ -942,7 +1061,7 @@
       "path": "src/qt/bitcoingui.cpp",
       "position": 6,
       "original_position": 6,
-      "commit_id": "948520b72d7fe8e7a3aa0d774159807058188627",
+      "commit_id": "7581817826e000c4f0a505e7f2785a611cac8f55",
       "original_commit_id": "948520b72d7fe8e7a3aa0d774159807058188627",
       "in_reply_to_id": 1677136023,
       "user": {
