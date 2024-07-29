@@ -39,9 +39,19 @@
       "site_admin": false
     },
     "body": "Currently the Migrate Wallet menu item can only be used to migrate the currently loaded wallet. This is not suitable for the future when legacy wallets can no longer be loaded at all, but should still be able to be migrated. This PR changes that menu item into a menu list like Open Wallet and lets users migrate any legacy wallet in their wallet directory regardless of the wallets loaded.\r\n\r\nOne issue I ran into was dealing with encrypted wallets. Ideally, we would detect whether a wallet is encrypted, and prompt the user for their passphrase at that time. However, that's actually difficult to do in the GUI since migration will unload the wallet if it was already loaded, and reload it without connecting it to any signals or interfaces. Only then can it detect whether a wallet is encrypted, but then there is no `WalletModel` or even an `interfaces::Wallet` that the GUI could use to unlock it via a callback.\r\n\r\nTo deal with this, I've opted to just add a button to the migration dialog box that has the user enter their passphrase first, along with instructional text to use that button if their wallet was encrypted. If the user enters the wrong passphrase or clicked the other button that does not prompt for the passphrase, migration will fail with a message indicating that the passphrase was incorrect.",
-    "labels": [],
+    "labels": [
+      {
+        "id": 2145506980,
+        "node_id": "MDU6TGFiZWwyMTQ1NTA2OTgw",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Needs%20rebase",
+        "name": "Needs rebase",
+        "description": "",
+        "color": "cccccc",
+        "default": false
+      }
+    ],
     "created_at": "2024-06-10T20:43:07Z",
-    "updated_at": "2024-07-29T09:42:34Z",
+    "updated_at": "2024-07-29T10:08:07Z",
     "mergeable": false,
     "mergeable_state": "dirty",
     "merge_commit_sha": "9b51a7d696b0ea1469bf5503916f19d6f7e6dd2e",
@@ -279,9 +289,9 @@
         "forks_count": 257,
         "stargazers_count": 573,
         "watchers_count": 573,
-        "size": 163056,
+        "size": 163728,
         "default_branch": "master",
-        "open_issues_count": 161,
+        "open_issues_count": 160,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -324,7 +334,7 @@
     "changed_files": 13,
     "commits": 4,
     "review_comments": 4,
-    "comments": 6
+    "comments": 7
   },
   "events": [
     {
@@ -1000,6 +1010,93 @@
         "site_admin": false
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/824#issuecomment-2255472610",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/824"
+    },
+    {
+      "event": "labeled",
+      "id": 13677787728,
+      "node_id": "LE_lADOEEET9c6LwrC9zwAAAAMvQnpQ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/13677787728",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-07-29T10:08:05Z",
+      "label": {
+        "name": "Needs rebase",
+        "color": "cccccc"
+      }
+    },
+    {
+      "event": "commented",
+      "id": 2255525328,
+      "node_id": "IC_kwDOEEET9c6GcJXQ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2255525328",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-07-29T10:08:06Z",
+      "updated_at": "2024-07-29T10:08:06Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "<!--cf906140f33d8803c4a75a2196329ecb-->\n🐙 This pull request conflicts with the target branch and [needs rebase](https://github.com/bitcoin-core/gui/blob/master/CONTRIBUTING.md#rebasing-changes).\n",
+      "user": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/824#issuecomment-2255525328",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/824"
     }
   ],
