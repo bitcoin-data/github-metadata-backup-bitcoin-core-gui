@@ -41,10 +41,10 @@
     "body": "Limit to one the transaction details dialogs that a user can open.\r\n\r\n<details>\r\n<summary>Currently a user can open unlimited tx details dialogs for the same tx id.</summary>\r\n\r\n![Peek 2024-04-12 00-50](https://github.com/bitcoin-core/gui/assets/110166421/ba5a261b-9234-437f-b496-2f01320f14ce)\r\n\r\n</details>\r\n<details>\r\n<summary>This PR fixes the issue.</summary>\r\n\r\n![Peek 2024-04-12 00-37](https://github.com/bitcoin-core/gui/assets/110166421/22f0f9e4-ec58-4ee2-bff4-6793435dd6d5)\r\n\r\n</details>",
     "labels": [],
     "created_at": "2024-04-12T04:00:51Z",
-    "updated_at": "2024-07-29T14:52:56Z",
+    "updated_at": "2024-07-30T12:00:35Z",
     "mergeable": true,
     "mergeable_state": "clean",
-    "merge_commit_sha": "9000ded0559e199a78aeba817a1d1b7e62a5b258",
+    "merge_commit_sha": "5e318aa0f3496fee38eb92ddb2de14b996668ded",
     "assignees": [],
     "requested_reviewers": [
       {
@@ -301,7 +301,7 @@
         "forks_count": 257,
         "stargazers_count": 573,
         "watchers_count": 573,
-        "size": 163728,
+        "size": 163731,
         "default_branch": "master",
         "open_issues_count": 160,
         "is_template": false,
@@ -314,9 +314,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-07-29T09:34:02Z",
+        "pushed_at": "2024-07-29T15:19:32Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-07-29T09:34:05Z",
+        "updated_at": "2024-07-29T15:19:36Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -346,7 +346,7 @@
     "changed_files": 4,
     "commits": 1,
     "review_comments": 4,
-    "comments": 13
+    "comments": 14
   },
   "events": [
     {
@@ -1728,6 +1728,60 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-07-29T14:52:57Z"
+    },
+    {
+      "event": "commented",
+      "id": 2258179790,
+      "node_id": "IC_kwDOEEET9c6GmRbO",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2258179790",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-07-30T12:00:34Z",
+      "updated_at": "2024-07-30T12:00:34Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "> I think we should first fix our `GUIUtil::bringToFront()` first in a separate PR, which will also address similar issues in other cases.\r\n> \r\n> Then we can apply the fixed `GUIUtil::bringToFront()` in this PR.\r\n\r\nOk, I'll open a new PR for `GUIUtil::bringToFront()` and will put this one on draft in the meantime.",
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/817#issuecomment-2258179790",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/817"
     }
   ],
   "comments": [
