@@ -59,7 +59,7 @@
       }
     ],
     "created_at": "2022-06-29T13:56:10Z",
-    "updated_at": "2024-07-30T16:01:01Z",
+    "updated_at": "2024-07-30T18:28:23Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merge_commit_sha": "9ca4e5fceb79dabac2cebf7111be152b4a65154f",
@@ -296,9 +296,9 @@
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
         "forks_count": 257,
-        "stargazers_count": 573,
-        "watchers_count": 573,
-        "size": 159825,
+        "stargazers_count": 574,
+        "watchers_count": 574,
+        "size": 159844,
         "default_branch": "master",
         "open_issues_count": 157,
         "is_template": false,
@@ -313,7 +313,7 @@
         "visibility": "public",
         "pushed_at": "2024-07-30T16:56:17Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-07-30T16:56:20Z",
+        "updated_at": "2024-07-30T18:25:20Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -342,7 +342,7 @@
     "deletions": 11,
     "changed_files": 8,
     "commits": 2,
-    "review_comments": 31,
+    "review_comments": 32,
     "comments": 21
   },
   "events": [
@@ -2540,6 +2540,41 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-07-30T16:01:01Z"
+    },
+    {
+      "event": "reviewed",
+      "id": 2208390974,
+      "node_id": "PRR_kwDOEEET9c6DoV8-",
+      "url": null,
+      "actor": null,
+      "commit_id": "ea576b65592c23895f80c9116f881ff063253ff8",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "MEMBER",
+      "user": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/626#pullrequestreview-2208390974",
+      "submitted_at": "2024-07-30T18:28:23Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/626"
     }
   ],
   "comments": [
@@ -4153,6 +4188,58 @@
       "start_side": null,
       "line": null,
       "original_line": 172,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1697398200",
+      "pull_request_review_id": 2208390974,
+      "id": 1697398200,
+      "node_id": "PRRC_kwDOEEET9c5lLD24",
+      "diff_hunk": "@@ -13,6 +13,9 @@\n #include <sync.h>\n #include <uint256.h>\n \n+#include <net.h>",
+      "path": "src/qt/clientmodel.h",
+      "position": 4,
+      "original_position": 4,
+      "commit_id": "ea576b65592c23895f80c9116f881ff063253ff8",
+      "original_commit_id": "ca35d47318464b28f82da2bbde4bf2491d0b75b2",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "Could remove the need for adding this dependency here: \r\n```diff\r\ndiff --git a/src/qt/clientmodel.h b/src/qt/clientmodel.h\r\n--- a/src/qt/clientmodel.h\t(revision ea576b65592c23895f80c9116f881ff063253ff8)\r\n+++ b/src/qt/clientmodel.h\t(date 1722363555212)\r\n@@ -13,7 +13,6 @@\r\n #include <sync.h>\r\n #include <uint256.h>\r\n \r\n-#include <net.h>\r\n #include <netaddress.h>\r\n \r\n class BanTableModel;\r\n@@ -22,6 +21,7 @@\r\n class PeerTableModel;\r\n class PeerTableSortProxy;\r\n enum class SynchronizationState;\r\n+struct LocalServiceInfo;\r\n \r\n namespace interfaces {\r\n class Handler;\r\n```\r\n\r\nThis will avoid including the backend `net.h` file in all the gui files that are already including `clientmodel.h`.\r\n\r\nIdeally, `net.h` structs/classes shouldn't be accesible by the GUI widgets.  But no prob, it seems we are already including it in `rpcconsole.h` too.",
+      "created_at": "2024-07-30T18:27:12Z",
+      "updated_at": "2024-07-30T18:28:23Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/626#discussion_r1697398200",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1697398200"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/626"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 16,
+      "original_line": 16,
       "side": "RIGHT"
     }
   ]
