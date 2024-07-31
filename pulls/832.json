@@ -39,9 +39,18 @@
       "site_admin": false
     },
     "body": "Prior to this commit, when a psbt requiring multiple signers is signed via gui the dialogue is vague/confusing. Whether the signer successfully partially signs the psbt or not the same warning is displayed \"Could not sign any more inputs.\" After signing the tx, the only way for the user to know if their action had any effect is to inspect the psbt (unless it was the last signature that completed the psbt, in which case there is a success dialoge).\r\n\r\nNow we indicate when a psbt has been partially signed, and show how many partial signatures the psbt has in the transaction description.\r\n\r\nHere is what a \"daisy chain\" signing flow for a 4-of-4 multisig looks like via gui. Same as in bitcoin core's functional test [wallet_multisig_descriptor_psbt](https://github.com/bitcoin/bitcoin/blob/d367a4e36f7357c4ebd018e8e1c9c5071db2e1c2/test/functional/wallet_multisig_descriptor_psbt.py#L140-L147)\r\n\r\nFirst signer: \r\n![image](https://github.com/user-attachments/assets/61734da1-b962-41d6-9fd2-c41b7d89708b)\r\n\r\nSecond signer: \r\n![image](https://github.com/user-attachments/assets/fe080f7a-0f55-4ce1-a9dd-87c3ee76517d)\r\n\r\nThird signer: \r\n![image](https://github.com/user-attachments/assets/caaac83e-78f6-4d43-a0df-498d074c82c8)\r\n\r\nFourth and final signer (psbt is complete and can be broadcasted): \r\n![image](https://github.com/user-attachments/assets/36eea1de-6fa9-4668-9162-c87fade2044b)\r\n\r\nBefore this commit, the first-third signers would just see this after signing. It is at best confusing because it is the same warning a signer would see if they were not in the multisig and no signature was added to the psbt:\r\n![image](https://github.com/user-attachments/assets/16f08359-4d6a-4e4c-9807-9f5ebf8a24c6)\r\n",
-    "labels": [],
+    "labels": [
+      {
+        "id": 5353934559,
+        "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
+        "name": "CI failed",
+        "color": "ededed",
+        "default": false
+      }
+    ],
     "created_at": "2024-07-30T21:21:06Z",
-    "updated_at": "2024-07-30T21:21:10Z",
+    "updated_at": "2024-07-31T00:46:46Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merge_commit_sha": "19b9167e0ee4590bca1cd24a6001343cc85f94f3",
@@ -324,7 +333,7 @@
     "changed_files": 1,
     "commits": 1,
     "review_comments": 0,
-    "comments": 1
+    "comments": 2
   },
   "events": [
     {
@@ -419,6 +428,93 @@
         "site_admin": false
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/832#issuecomment-2259233184",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/832"
+    },
+    {
+      "event": "labeled",
+      "id": 13702738093,
+      "node_id": "LE_lADOEEET9c6RW6XuzwAAAAMwvzCt",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/13702738093",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-07-31T00:46:44Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
+      }
+    },
+    {
+      "event": "commented",
+      "id": 2259428854,
+      "node_id": "IC_kwDOEEET9c6GrCX2",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2259428854",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-07-31T00:46:45Z",
+      "updated_at": "2024-07-31T00:46:45Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "<!--85328a0da195eb286784d51f73fa0af9-->\n🚧 At least one of the CI tasks failed.\n<sub>Debug: https://github.com/bitcoin-core/gui/runs/28127968944</sub>\n\n<details><summary>Hints</summary>\n\nMake sure to run all tests locally, according to the documentation.\n\nThe failure may happen due to a number of reasons, for example:\n\n* Possibly due to a silent merge conflict (the changes in this pull request being\nincompatible with the current code in the target branch). If so, make sure to rebase on the latest\ncommit of the target branch.\n\n* A sanitizer issue, which can only be found by compiling with the sanitizer and running the\n  affected test.\n\n* An intermittent issue.\n\nLeave a comment here, if you need help tracking down a confusing failure.\n\n</details>\n",
+      "user": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/832#issuecomment-2259428854",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/832"
     }
   ],
