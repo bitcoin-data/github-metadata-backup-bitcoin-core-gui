@@ -41,7 +41,7 @@
     "body": "Prior to this commit, when a psbt requiring multiple signers is signed via gui the dialogue is vague/confusing. Whether the signer successfully partially signs the psbt or not the same warning is displayed \"Could not sign any more inputs.\" After signing the tx, the only way for the user to know if their action had any effect is to inspect the psbt (unless it was the last signature that completed the psbt, in which case there is a success dialoge).\r\n\r\nNow we indicate when a psbt has been partially signed, and show how many partial signatures the psbt has in the transaction description.\r\n\r\nHere is what a \"daisy chain\" signing flow for a 4-of-4 multisig looks like via gui. Same as in bitcoin core's functional test [wallet_multisig_descriptor_psbt](https://github.com/bitcoin/bitcoin/blob/d367a4e36f7357c4ebd018e8e1c9c5071db2e1c2/test/functional/wallet_multisig_descriptor_psbt.py#L140-L147)\r\n\r\nFirst signer: \r\n![image](https://github.com/user-attachments/assets/61734da1-b962-41d6-9fd2-c41b7d89708b)\r\n\r\nSecond signer: \r\n![image](https://github.com/user-attachments/assets/fe080f7a-0f55-4ce1-a9dd-87c3ee76517d)\r\n\r\nThird signer: \r\n![image](https://github.com/user-attachments/assets/caaac83e-78f6-4d43-a0df-498d074c82c8)\r\n\r\nFourth and final signer (psbt is complete and can be broadcasted): \r\n![image](https://github.com/user-attachments/assets/36eea1de-6fa9-4668-9162-c87fade2044b)\r\n\r\nBefore this commit, the first-third signers would just see this after signing. It is at best confusing because it is the same warning a signer would see if they were not in the multisig and no signature was added to the psbt:\r\n![image](https://github.com/user-attachments/assets/16f08359-4d6a-4e4c-9807-9f5ebf8a24c6)\r\n",
     "labels": [],
     "created_at": "2024-07-30T21:21:06Z",
-    "updated_at": "2024-07-31T16:55:33Z",
+    "updated_at": "2024-07-31T17:06:10Z",
     "mergeable": true,
     "mergeable_state": "clean",
     "merge_commit_sha": "823f77ad4263719f7f5b6aa274c8d0ca03b22122",
@@ -279,7 +279,7 @@
         "forks_count": 257,
         "stargazers_count": 574,
         "watchers_count": 574,
-        "size": 159878,
+        "size": 159882,
         "default_branch": "master",
         "open_issues_count": 159,
         "is_template": false,
@@ -324,7 +324,7 @@
     "changed_files": 1,
     "commits": 1,
     "review_comments": 3,
-    "comments": 4
+    "comments": 5
   },
   "events": [
     {
@@ -861,6 +861,60 @@
         "site_admin": false
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/832#issuecomment-2260948149",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/832"
+    },
+    {
+      "event": "commented",
+      "id": 2260977081,
+      "node_id": "IC_kwDOEEET9c6Gw8W5",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2260977081",
+      "actor": {
+        "login": "mjdietzx",
+        "id": 7217256,
+        "node_id": "MDQ6VXNlcjcyMTcyNTY=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/7217256?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/mjdietzx",
+        "html_url": "https://github.com/mjdietzx",
+        "followers_url": "https://api.github.com/users/mjdietzx/followers",
+        "following_url": "https://api.github.com/users/mjdietzx/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/mjdietzx/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/mjdietzx/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/mjdietzx/subscriptions",
+        "organizations_url": "https://api.github.com/users/mjdietzx/orgs",
+        "repos_url": "https://api.github.com/users/mjdietzx/repos",
+        "events_url": "https://api.github.com/users/mjdietzx/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/mjdietzx/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-07-31T17:05:41Z",
+      "updated_at": "2024-07-31T17:06:10Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "> It would be interesting to see a PSBT window's output sample when the user signed an input but couldn't sign another input which is also part of the transaction? (Is that possible?)\r\n\r\nIt's possible but I considered it outside the scope of this PR -  in such cases behavior is not changed by this PR. Because i want to keep this simple (seems trying to handle cases like this and communicate it to the user in a straightforward manner would be complicated).\r\n\r\nIn this PR I just try to improve the UX for \"normal\" multisigs like [wallet_multisig_descriptor_psbt.py](https://github.com/bitcoin/bitcoin/blob/master/test/functional/wallet_multisig_descriptor_psbt.py) and https://github.com/bitcoin/bitcoin/pull/29156 - I don't think it can ever be the case that one input is signed but another is not, and I'd expect this to be true for vast majority of wallets where users are using bitcoin core's gui to sign psbts\r\n\r\nAll that said, interested to see what reviewers with more experience than me think",
+      "user": {
+        "login": "mjdietzx",
+        "id": 7217256,
+        "node_id": "MDQ6VXNlcjcyMTcyNTY=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/7217256?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/mjdietzx",
+        "html_url": "https://github.com/mjdietzx",
+        "followers_url": "https://api.github.com/users/mjdietzx/followers",
+        "following_url": "https://api.github.com/users/mjdietzx/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/mjdietzx/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/mjdietzx/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/mjdietzx/subscriptions",
+        "organizations_url": "https://api.github.com/users/mjdietzx/orgs",
+        "repos_url": "https://api.github.com/users/mjdietzx/repos",
+        "events_url": "https://api.github.com/users/mjdietzx/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/mjdietzx/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/832#issuecomment-2260977081",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/832"
     }
   ],
