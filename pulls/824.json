@@ -51,7 +51,7 @@
       }
     ],
     "created_at": "2024-06-10T20:43:07Z",
-    "updated_at": "2024-07-31T21:42:39Z",
+    "updated_at": "2024-08-01T17:13:52Z",
     "mergeable": false,
     "mergeable_state": "dirty",
     "merge_commit_sha": "9b51a7d696b0ea1469bf5503916f19d6f7e6dd2e",
@@ -310,7 +310,7 @@
         "forks_count": 257,
         "stargazers_count": 574,
         "watchers_count": 574,
-        "size": 159882,
+        "size": 160498,
         "default_branch": "master",
         "open_issues_count": 159,
         "is_template": false,
@@ -323,9 +323,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-07-31T16:25:27Z",
+        "pushed_at": "2024-08-01T15:26:43Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-07-31T16:25:31Z",
+        "updated_at": "2024-08-01T15:26:49Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -1130,7 +1130,7 @@
       "commit_url": null,
       "created_at": null,
       "author_association": "CONTRIBUTOR",
-      "body": "tACK d45ac03a89cc500cd461f878f092cf8ec99e7760\r\n\r\n<details>\r\n<summary>Created a couple of legacy wallets (encrypted and not) to begin with.</summary>\r\n\r\nUsing `bitcoind` (`./src/bitcoind -regtest -deprecatedrpc=create_bdb\r\n`) and `bitcoin-cli` (`./src/bitcoin-cli -regtest createwallet legacyWallet false false \"\" false false\r\n`) or directly on the `rpc-console` (`createwallet legacyWalletEnc false false \"passphrase\" false false`) in `bitcoin-qt` (`./src/qt/bitcoin-qt -regtest -deprecatedrpc=create_bdb`).\r\n\r\n```\r\n{\r\n  \"name\": \"legacyWalletEnc\",\r\n  \"warnings\": [\r\n    \"Wallet created successfully. The legacy wallet type is being deprecated and support for creating and opening legacy wallets will be removed in the future.\"\r\n  ]\r\n}\r\n```\r\n\r\n```\r\n{\r\n  \"name\": \"legacyWallet\",\r\n  \"warnings\": [\r\n    \"Empty string given as passphrase, wallet will not be encrypted.\",\r\n    \"Wallet created successfully. The legacy wallet type is being deprecated and support for creating and opening legacy wallets will be removed in the future.\"\r\n  ]\r\n}\r\n```\r\n\r\n</details>\r\n\r\n<details>\r\n<summary>The menu item \"Migrate Wallet\" is shown when there are already wallets loaded.</summary>\r\n\r\n![image](https://github.com/user-attachments/assets/985dd708-9269-4ba5-9d20-7badefdbaa09)\r\n\r\n</details>\r\n\r\n<details>\r\n<summary>But \"Migrate Wallet\" is disabled when there are no wallets loaded as @hebasto mentioned <a href=\"https://github.com/bitcoin-core/gui/pull/824#issuecomment-2227310588\">above</a>.</summary>\r\n\r\n![image](https://github.com/user-attachments/assets/689a69f2-2062-42e3-8c1e-6eb167f3d809)\r\n\r\n</details>\r\n\r\n- I think that should be solved by removing the migration action from `BitcoinGUI::setWalletActionsEnabled` (the migration action has the same behaviour as the restore action which is not there).\r\n\r\n<details>\r\n<summary>\"Migrate Wallet\" is shown when there are no wallets available at all.</summary>\r\n\r\n![image](https://github.com/user-attachments/assets/36ec2131-943e-454d-992a-9137eb54144d)\r\n\r\n</details>\r\n\r\n\r\n<details>\r\n<summary>Tested migration of encrypted wallet with and without providing the passphrase, working both cases.</summary>\r\n\r\n![image](https://github.com/user-attachments/assets/931223de-d512-4c2d-9d66-9e71b25cb303)\r\n\r\n![image](https://github.com/user-attachments/assets/b90b4917-bc0b-4bce-8e44-4c7751afdb7b)\r\n\r\n</details>\r\n\r\n<details>\r\n<summary>Every migration failure on a particular wallet still creates a backup file. Do we want this?</summary>\r\n\r\n![image](https://github.com/user-attachments/assets/0ea96693-f4a5-4a0c-bfe8-0db9aa2d736c)\r\n</details>",
+      "body": "tACK d45ac03a89cc500cd461f878f092cf8ec99e7760\r\n\r\n<details>\r\n<summary>Created a couple of legacy wallets (encrypted and not) to begin with.</summary>\r\n\r\n <ins>**edit**</ins>: running ./configure with: `--with-bdb`.\r\n\r\nUsing `bitcoind` (`./src/bitcoind -regtest -deprecatedrpc=create_bdb\r\n`) and `bitcoin-cli` (`./src/bitcoin-cli -regtest createwallet legacyWallet false false \"\" false false\r\n`) or directly on the `rpc-console` (`createwallet legacyWalletEnc false false \"passphrase\" false false`) in `bitcoin-qt` (`./src/qt/bitcoin-qt -regtest -deprecatedrpc=create_bdb`).\r\n\r\n```\r\n{\r\n  \"name\": \"legacyWalletEnc\",\r\n  \"warnings\": [\r\n    \"Wallet created successfully. The legacy wallet type is being deprecated and support for creating and opening legacy wallets will be removed in the future.\"\r\n  ]\r\n}\r\n```\r\n\r\n```\r\n{\r\n  \"name\": \"legacyWallet\",\r\n  \"warnings\": [\r\n    \"Empty string given as passphrase, wallet will not be encrypted.\",\r\n    \"Wallet created successfully. The legacy wallet type is being deprecated and support for creating and opening legacy wallets will be removed in the future.\"\r\n  ]\r\n}\r\n```\r\n\r\n</details>\r\n\r\n<details>\r\n<summary>The menu item \"Migrate Wallet\" is shown when there are already wallets loaded.</summary>\r\n\r\n![image](https://github.com/user-attachments/assets/985dd708-9269-4ba5-9d20-7badefdbaa09)\r\n\r\n</details>\r\n\r\n<details>\r\n<summary>But \"Migrate Wallet\" is disabled when there are no wallets loaded as @hebasto mentioned <a href=\"https://github.com/bitcoin-core/gui/pull/824#issuecomment-2227310588\">above</a>.</summary>\r\n\r\n![image](https://github.com/user-attachments/assets/689a69f2-2062-42e3-8c1e-6eb167f3d809)\r\n\r\n</details>\r\n\r\n- I think that should be solved by removing the migration action from `BitcoinGUI::setWalletActionsEnabled` (the migration action has the same behaviour as the restore action which is not there).\r\n\r\n<details>\r\n<summary>\"Migrate Wallet\" is shown when there are no wallets available at all.</summary>\r\n\r\n![image](https://github.com/user-attachments/assets/36ec2131-943e-454d-992a-9137eb54144d)\r\n\r\n</details>\r\n\r\n\r\n<details>\r\n<summary>Tested migration of encrypted wallet with and without providing the passphrase, working both cases.</summary>\r\n\r\n![image](https://github.com/user-attachments/assets/931223de-d512-4c2d-9d66-9e71b25cb303)\r\n\r\n![image](https://github.com/user-attachments/assets/b90b4917-bc0b-4bce-8e44-4c7751afdb7b)\r\n\r\n</details>\r\n\r\n<details>\r\n<summary>Every migration failure on a particular wallet still creates a backup file. Do we want this?</summary>\r\n\r\n![image](https://github.com/user-attachments/assets/0ea96693-f4a5-4a0c-bfe8-0db9aa2d736c)\r\n</details>",
       "user": {
         "login": "pablomartin4btc",
         "id": 110166421,
