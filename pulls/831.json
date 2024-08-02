@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/831/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/831/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/bcc68747736171b37aac4a7dc896f16535b55221",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/15aa7d023688700a47997b92108de95f2d864f5a",
     "number": 831,
     "state": "open",
     "locked": false,
@@ -41,10 +41,10 @@
     "body": "There are known issues around handling windows focus in `Wayland` ([this one specific](https://bugs.kde.org/show_bug.cgi?id=462574) in KDE but also in [gnome](https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/730)).\r\n\r\nThe idea is that the workaround will be executed if `bitcoin-qt` is running using `Wayland` platform (e.g.: `QT_QPA_PLATFORM=wayland ./src/qt/bitcoin-qt -regtest`), since the workaround behaviour looks like re-opening the window again (which I tried to fix by moving the window to the original position and/ or re-setting the original geometry without success) while in `X11` (not sure in Mac) the current `GUIUtil::brintToFront` actually sets the focus to the desired window, keeping its original position as expected, and I didn't want to change that (`X11` behaviour).\r\n\r\nThe solution was [initially discussed](https://github.com/bitcoin-core/gui/pull/817#issuecomment-2256158902) with hebasto in #817.",
     "labels": [],
     "created_at": "2024-07-30T20:51:28Z",
-    "updated_at": "2024-08-02T15:41:26Z",
+    "updated_at": "2024-08-02T16:56:47Z",
     "mergeable": true,
-    "mergeable_state": "clean",
-    "merge_commit_sha": "ff0a8df904c3a80e8b9ae2be8a0f5e0f818f877d",
+    "mergeable_state": "unstable",
+    "merge_commit_sha": "444cd7cbcfced89c1995218cbc286c08b85d7c5c",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -52,7 +52,7 @@
     "head": {
       "label": "pablomartin4btc:gui-bringToFront-wayland-workaround",
       "ref": "gui-bringToFront-wayland-workaround",
-      "sha": "bcc68747736171b37aac4a7dc896f16535b55221",
+      "sha": "15aa7d023688700a47997b92108de95f2d864f5a",
       "user": {
         "login": "pablomartin4btc",
         "id": 110166421,
@@ -161,7 +161,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-07-31T10:44:29Z",
+        "pushed_at": "2024-08-02T16:56:46Z",
         "created_at": "2022-09-10T13:37:44Z",
         "updated_at": "2024-07-30T19:53:02Z",
         "license": {
@@ -184,7 +184,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "2ed82060b9059ca01a6ea4334acd42b48c9bf54b",
+      "sha": "2aff9a36c352640a263e8b5de469710f7e80eb54",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -293,7 +293,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-08-02T14:50:33Z",
+        "pushed_at": "2024-08-02T16:56:48Z",
         "created_at": "2020-06-16T12:20:07Z",
         "updated_at": "2024-08-02T14:50:38Z",
         "license": {
@@ -320,11 +320,11 @@
     },
     "author_association": "CONTRIBUTOR",
     "draft": false,
-    "additions": 14,
-    "deletions": 0,
-    "changed_files": 2,
+    "additions": 17,
+    "deletions": 10,
+    "changed_files": 1,
     "commits": 1,
-    "review_comments": 4,
+    "review_comments": 8,
     "comments": 3
   },
   "events": [
@@ -528,46 +528,6 @@
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/831"
     },
     {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGJjYzY4NzQ3NzM2MTcxYjM3YWFjNGE3ZGM4OTZmMTY1MzViNTUyMjE",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/bcc68747736171b37aac4a7dc896f16535b55221",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/bcc68747736171b37aac4a7dc896f16535b55221",
-      "tree": {
-        "sha": "45cd4f6537a72d0b56177da2909e3b90c79774f5",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/45cd4f6537a72d0b56177da2909e3b90c79774f5"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/d367a4e36f7357c4ebd018e8e1c9c5071db2e1c2",
-          "sha": "d367a4e36f7357c4ebd018e8e1c9c5071db2e1c2",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/d367a4e36f7357c4ebd018e8e1c9c5071db2e1c2"
-        }
-      ],
-      "message": "gui, qt: brintToFront workaround for Wayland",
-      "committer": {
-        "name": "pablomartin4btc",
-        "email": "pablomartin4btc@gmail.com",
-        "date": "2024-07-31T10:44:17Z"
-      },
-      "author": {
-        "name": "pablomartin4btc",
-        "email": "pablomartin4btc@gmail.com",
-        "date": "2024-07-30T20:24:36Z"
-      },
-      "sha": "bcc68747736171b37aac4a7dc896f16535b55221"
-    },
-    {
       "event": "head_ref_force_pushed",
       "id": 13708003880,
       "node_id": "HRFPE_lADOEEET9c6RWvdWzwAAAAMxD4oo",
@@ -717,6 +677,168 @@
       "submitted_at": "2024-08-02T15:24:08Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/831"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 13744412387,
+      "node_id": "HRFPE_lADOEEET9c6RWvdWzwAAAAMzOxbj",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/13744412387",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-08-02T16:44:27Z"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 13744432097,
+      "node_id": "HRFPE_lADOEEET9c6RWvdWzwAAAAMzO2Ph",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/13744432097",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-08-02T16:46:10Z"
+    },
+    {
+      "event": "reviewed",
+      "id": 2216013603,
+      "node_id": "PRR_kwDOEEET9c6EFa8j",
+      "url": null,
+      "actor": null,
+      "commit_id": "19f88421ac93be666dee4f0497e0211eb27dd989",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "MEMBER",
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/831#pullrequestreview-2216013603",
+      "submitted_at": "2024-08-02T16:47:58Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/831"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDE1YWE3ZDAyMzY4ODcwMGE0Nzk5N2I5MjEwOGRlOTVmMmQ4NjRmNWE",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/15aa7d023688700a47997b92108de95f2d864f5a",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/15aa7d023688700a47997b92108de95f2d864f5a",
+      "tree": {
+        "sha": "d2a2ae6f651f8ce3f07abb34b680873004022490",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/d2a2ae6f651f8ce3f07abb34b680873004022490"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/d367a4e36f7357c4ebd018e8e1c9c5071db2e1c2",
+          "sha": "d367a4e36f7357c4ebd018e8e1c9c5071db2e1c2",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/d367a4e36f7357c4ebd018e8e1c9c5071db2e1c2"
+        }
+      ],
+      "message": "gui, qt: brintToFront workaround for Wayland",
+      "committer": {
+        "name": "pablomartin4btc",
+        "email": "pablomartin4btc@gmail.com",
+        "date": "2024-08-02T16:56:38Z"
+      },
+      "author": {
+        "name": "pablomartin4btc",
+        "email": "pablomartin4btc@gmail.com",
+        "date": "2024-07-30T20:24:36Z"
+      },
+      "sha": "15aa7d023688700a47997b92108de95f2d864f5a"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 13744546152,
+      "node_id": "HRFPE_lADOEEET9c6RWvdWzwAAAAMzPSFo",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/13744546152",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-08-02T16:56:47Z"
     }
   ],
   "comments": [
@@ -727,9 +849,9 @@
       "node_id": "PRRC_kwDOEEET9c5lcms2",
       "diff_hunk": "@@ -1007,4 +1009,15 @@ void ShowModalDialogAsynchronously(QDialog* dialog)\n     dialog->show();\n }\n \n+void bringToFrontWorkaroundForWayland(QWidget* w)",
       "path": "src/qt/guiutil.cpp",
-      "position": 13,
+      "position": null,
       "original_position": 13,
-      "commit_id": "bcc68747736171b37aac4a7dc896f16535b55221",
+      "commit_id": "15aa7d023688700a47997b92108de95f2d864f5a",
       "original_commit_id": "bcc68747736171b37aac4a7dc896f16535b55221",
       "in_reply_to_id": null,
       "user": {
@@ -768,7 +890,7 @@
       "start_line": null,
       "original_start_line": null,
       "start_side": null,
-      "line": 1012,
+      "line": null,
       "original_line": 1012,
       "side": "RIGHT"
     },
@@ -779,9 +901,9 @@
       "node_id": "PRRC_kwDOEEET9c5lcnD9",
       "diff_hunk": "@@ -1007,4 +1009,15 @@ void ShowModalDialogAsynchronously(QDialog* dialog)\n     dialog->show();\n }\n \n+void bringToFrontWorkaroundForWayland(QWidget* w)\n+{\n+    if (QGuiApplication::platformName() == \"wayland\") {\n+        auto eFlags = w->windowFlags();",
       "path": "src/qt/guiutil.cpp",
-      "position": 16,
+      "position": null,
       "original_position": 16,
-      "commit_id": "bcc68747736171b37aac4a7dc896f16535b55221",
+      "commit_id": "15aa7d023688700a47997b92108de95f2d864f5a",
       "original_commit_id": "bcc68747736171b37aac4a7dc896f16535b55221",
       "in_reply_to_id": null,
       "user": {
@@ -820,7 +942,7 @@
       "start_line": null,
       "original_start_line": null,
       "start_side": null,
-      "line": 1015,
+      "line": null,
       "original_line": 1015,
       "side": "RIGHT"
     },
@@ -831,9 +953,9 @@
       "node_id": "PRRC_kwDOEEET9c5lcsEb",
       "diff_hunk": "@@ -1007,4 +1009,15 @@ void ShowModalDialogAsynchronously(QDialog* dialog)\n     dialog->show();\n }\n \n+void bringToFrontWorkaroundForWayland(QWidget* w)\n+{\n+    if (QGuiApplication::platformName() == \"wayland\") {\n+        auto eFlags = w->windowFlags();",
       "path": "src/qt/guiutil.cpp",
-      "position": 16,
+      "position": null,
       "original_position": 16,
-      "commit_id": "bcc68747736171b37aac4a7dc896f16535b55221",
+      "commit_id": "15aa7d023688700a47997b92108de95f2d864f5a",
       "original_commit_id": "bcc68747736171b37aac4a7dc896f16535b55221",
       "in_reply_to_id": 1701998845,
       "user": {
@@ -872,7 +994,7 @@
       "start_line": null,
       "original_start_line": null,
       "start_side": null,
-      "line": 1015,
+      "line": null,
       "original_line": 1015,
       "side": "RIGHT"
     },
@@ -883,9 +1005,9 @@
       "node_id": "PRRC_kwDOEEET9c5lctGG",
       "diff_hunk": "@@ -1007,4 +1009,15 @@ void ShowModalDialogAsynchronously(QDialog* dialog)\n     dialog->show();\n }\n \n+void bringToFrontWorkaroundForWayland(QWidget* w)",
       "path": "src/qt/guiutil.cpp",
-      "position": 13,
+      "position": null,
       "original_position": 13,
-      "commit_id": "bcc68747736171b37aac4a7dc896f16535b55221",
+      "commit_id": "15aa7d023688700a47997b92108de95f2d864f5a",
       "original_commit_id": "bcc68747736171b37aac4a7dc896f16535b55221",
       "in_reply_to_id": 1701997366,
       "user": {
@@ -924,8 +1046,216 @@
       "start_line": null,
       "original_start_line": null,
       "start_side": null,
-      "line": 1012,
+      "line": null,
       "original_line": 1012,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1702053655",
+      "pull_request_review_id": 2215949427,
+      "id": 1702053655,
+      "node_id": "PRRC_kwDOEEET9c5lc0cX",
+      "diff_hunk": "@@ -1007,4 +1009,15 @@ void ShowModalDialogAsynchronously(QDialog* dialog)\n     dialog->show();\n }\n \n+void bringToFrontWorkaroundForWayland(QWidget* w)",
+      "path": "src/qt/guiutil.cpp",
+      "position": null,
+      "original_position": 13,
+      "commit_id": "15aa7d023688700a47997b92108de95f2d864f5a",
+      "original_commit_id": "bcc68747736171b37aac4a7dc896f16535b55221",
+      "in_reply_to_id": 1701997366,
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "This makes the diff bigger, as you are touching the header. Also, on Wayland, the `activateWindow()` and `raise()` calls above can be unneeded.",
+      "created_at": "2024-08-02T16:09:09Z",
+      "updated_at": "2024-08-02T16:10:04Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/831#discussion_r1702053655",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1702053655"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/831"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": null,
+      "original_line": 1012,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1702062694",
+      "pull_request_review_id": 2215964832,
+      "id": 1702062694,
+      "node_id": "PRRC_kwDOEEET9c5lc2pm",
+      "diff_hunk": "@@ -1007,4 +1009,15 @@ void ShowModalDialogAsynchronously(QDialog* dialog)\n     dialog->show();\n }\n \n+void bringToFrontWorkaroundForWayland(QWidget* w)",
+      "path": "src/qt/guiutil.cpp",
+      "position": null,
+      "original_position": 13,
+      "commit_id": "15aa7d023688700a47997b92108de95f2d864f5a",
+      "original_commit_id": "bcc68747736171b37aac4a7dc896f16535b55221",
+      "in_reply_to_id": 1701997366,
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "Ok, I'll add a conditional there then.",
+      "created_at": "2024-08-02T16:18:17Z",
+      "updated_at": "2024-08-02T16:18:17Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/831#discussion_r1702062694",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1702062694"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/831"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": null,
+      "original_line": 1012,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1702092782",
+      "pull_request_review_id": 2216013603,
+      "id": 1702092782,
+      "node_id": "PRRC_kwDOEEET9c5lc9_u",
+      "diff_hunk": "@@ -411,14 +411,22 @@ void bringToFront(QWidget* w)\n #endif\n \n     if (w) {\n-        // activateWindow() (sometimes) helps with keyboard focus on Windows\n-        if (w->isMinimized()) {\n-            w->showNormal();\n-        } else {\n+        if (QGuiApplication::platformName() == \"wayland\") {\n+            auto flags = w->windowFlags();\n+            w->setWindowFlags(flags|Qt::WindowStaysOnTopHint);\n+            w->show();\n+            w->setWindowFlags(flags);\n             w->show();\n+        } else {\n+            // activateWindow() (sometimes) helps with keyboard focus on Windows",
+      "path": "src/qt/guiutil.cpp",
+      "position": 23,
+      "original_position": 15,
+      "commit_id": "15aa7d023688700a47997b92108de95f2d864f5a",
+      "original_commit_id": "19f88421ac93be666dee4f0497e0211eb27dd989",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "Shouldn't macOS-specific `ForceActivation();` go in this branch as well?",
+      "created_at": "2024-08-02T16:47:52Z",
+      "updated_at": "2024-08-02T16:47:58Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/831#discussion_r1702092782",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1702092782"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/831"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 420,
+      "original_line": 420,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1702097811",
+      "pull_request_review_id": 2216023876,
+      "id": 1702097811,
+      "node_id": "PRRC_kwDOEEET9c5lc_OT",
+      "diff_hunk": "@@ -411,14 +411,22 @@ void bringToFront(QWidget* w)\n #endif\n \n     if (w) {\n-        // activateWindow() (sometimes) helps with keyboard focus on Windows\n-        if (w->isMinimized()) {\n-            w->showNormal();\n-        } else {\n+        if (QGuiApplication::platformName() == \"wayland\") {\n+            auto flags = w->windowFlags();\n+            w->setWindowFlags(flags|Qt::WindowStaysOnTopHint);\n+            w->show();\n+            w->setWindowFlags(flags);\n             w->show();\n+        } else {\n+            // activateWindow() (sometimes) helps with keyboard focus on Windows",
+      "path": "src/qt/guiutil.cpp",
+      "position": 23,
+      "original_position": 15,
+      "commit_id": "15aa7d023688700a47997b92108de95f2d864f5a",
+      "original_commit_id": "19f88421ac93be666dee4f0497e0211eb27dd989",
+      "in_reply_to_id": 1702092782,
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "Yeah, it makes sense.",
+      "created_at": "2024-08-02T16:52:49Z",
+      "updated_at": "2024-08-02T16:52:50Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/831#discussion_r1702097811",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1702097811"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/831"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 420,
+      "original_line": 420,
       "side": "RIGHT"
     }
   ]
