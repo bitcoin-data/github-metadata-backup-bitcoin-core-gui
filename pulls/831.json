@@ -39,12 +39,21 @@
       "site_admin": false
     },
     "body": "There are known issues around handling windows focus in `Wayland` ([this one specific](https://bugs.kde.org/show_bug.cgi?id=462574) in KDE but also in [gnome](https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/730)).\r\n\r\nThe idea is that the workaround will be executed if `bitcoin-qt` is running using `Wayland` platform (e.g.: `QT_QPA_PLATFORM=wayland ./src/qt/bitcoin-qt -regtest`), since the workaround behaviour looks like re-opening the window again (which I tried to fix by moving the window to the original position and/ or re-setting the original geometry without success) while in `X11` (not sure in Mac) the current `GUIUtil::brintToFront` actually sets the focus to the desired window, keeping its original position as expected, and I didn't want to change that (`X11` behaviour).\r\n\r\nThe solution was [initially discussed](https://github.com/bitcoin-core/gui/pull/817#issuecomment-2256158902) with hebasto in #817.",
-    "labels": [],
+    "labels": [
+      {
+        "id": 5353934559,
+        "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
+        "name": "CI failed",
+        "color": "ededed",
+        "default": false
+      }
+    ],
     "created_at": "2024-07-30T20:51:28Z",
-    "updated_at": "2024-08-04T14:51:01Z",
+    "updated_at": "2024-08-08T22:14:36Z",
     "mergeable": true,
-    "mergeable_state": "clean",
-    "merge_commit_sha": "444cd7cbcfced89c1995218cbc286c08b85d7c5c",
+    "mergeable_state": "unstable",
+    "merge_commit_sha": "f4c56adbcfcc95e4fc4f9571407078cd2622101f",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -148,7 +157,7 @@
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 159867,
+        "size": 162204,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -161,9 +170,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-08-02T17:18:49Z",
+        "pushed_at": "2024-08-08T14:03:45Z",
         "created_at": "2022-09-10T13:37:44Z",
-        "updated_at": "2024-07-30T19:53:02Z",
+        "updated_at": "2024-08-08T14:04:06Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -280,9 +289,9 @@
         "forks_count": 257,
         "stargazers_count": 575,
         "watchers_count": 575,
-        "size": 160626,
+        "size": 162166,
         "default_branch": "master",
-        "open_issues_count": 156,
+        "open_issues_count": 154,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -293,9 +302,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-08-02T17:18:51Z",
+        "pushed_at": "2024-08-08T14:44:18Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-08-03T19:55:04Z",
+        "updated_at": "2024-08-08T00:06:51Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -875,6 +884,39 @@
       "submitted_at": "2024-08-04T14:50:59Z",
       "state": "APPROVED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/831"
+    },
+    {
+      "event": "labeled",
+      "id": 13813000755,
+      "node_id": "LE_lADOEEET9c6RWvdWzwAAAAM3Uaoz",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/13813000755",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-08-08T22:14:36Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
+      }
     }
   ],
   "comments": [
