@@ -39,7 +39,16 @@
       "site_admin": false
     },
     "body": "Currently the Migrate Wallet menu item can only be used to migrate the currently loaded wallet. This is not suitable for the future when legacy wallets can no longer be loaded at all, but should still be able to be migrated. This PR changes that menu item into a menu list like Open Wallet and lets users migrate any legacy wallet in their wallet directory regardless of the wallets loaded.\r\n\r\nOne issue I ran into was dealing with encrypted wallets. Ideally, we would detect whether a wallet is encrypted, and prompt the user for their passphrase at that time. However, that's actually difficult to do in the GUI since migration will unload the wallet if it was already loaded, and reload it without connecting it to any signals or interfaces. Only then can it detect whether a wallet is encrypted, but then there is no `WalletModel` or even an `interfaces::Wallet` that the GUI could use to unlock it via a callback.\r\n\r\nTo deal with this, I've opted to just add a button to the migration dialog box that has the user enter their passphrase first, along with instructional text to use that button if their wallet was encrypted. If the user enters the wrong passphrase or clicked the other button that does not prompt for the passphrase, migration will fail with a message indicating that the passphrase was incorrect.",
-    "labels": [],
+    "labels": [
+      {
+        "id": 5353934559,
+        "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
+        "name": "CI failed",
+        "color": "ededed",
+        "default": false
+      }
+    ],
     "milestone": {
       "url": "https://api.github.com/repos/bitcoin-core/gui/milestones/13",
       "html_url": "https://github.com/bitcoin-core/gui/milestone/13",
@@ -76,10 +85,10 @@
       "updated_at": "2024-08-08T14:11:10Z"
     },
     "created_at": "2024-06-10T20:43:07Z",
-    "updated_at": "2024-08-12T18:56:31Z",
+    "updated_at": "2024-08-12T19:24:13Z",
     "mergeable": true,
     "mergeable_state": "unstable",
-    "merge_commit_sha": "640488a9efcb3fcedb1c6206007e00c93ec67a75",
+    "merge_commit_sha": "99cb76c80e4261636bbf7bac37bc92358ac3fa77",
     "assignees": [],
     "requested_reviewers": [
       {
@@ -335,7 +344,7 @@
         "forks_count": 259,
         "stargazers_count": 576,
         "watchers_count": 576,
-        "size": 162714,
+        "size": 162743,
         "default_branch": "master",
         "open_issues_count": 152,
         "is_template": false,
@@ -348,9 +357,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-08-12T18:50:24Z",
+        "pushed_at": "2024-08-12T19:23:11Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-08-12T18:50:27Z",
+        "updated_at": "2024-08-12T19:23:14Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -1603,6 +1612,39 @@
       "label": {
         "name": "Needs rebase",
         "color": "cccccc"
+      }
+    },
+    {
+      "event": "labeled",
+      "id": 13853745651,
+      "node_id": "LE_lADOEEET9c6LwrC9zwAAAAM5v2Hz",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/13853745651",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-08-12T19:24:12Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
       }
     }
   ],
