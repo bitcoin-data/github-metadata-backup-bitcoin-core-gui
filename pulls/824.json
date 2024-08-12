@@ -76,10 +76,10 @@
       "updated_at": "2024-08-08T14:11:10Z"
     },
     "created_at": "2024-06-10T20:43:07Z",
-    "updated_at": "2024-08-09T16:31:28Z",
-    "mergeable": true,
-    "mergeable_state": "clean",
-    "merge_commit_sha": "79ea0f549045e4460ea9a781babba48383c7a6b5",
+    "updated_at": "2024-08-12T15:33:51Z",
+    "mergeable": false,
+    "mergeable_state": "dirty",
+    "merge_commit_sha": "20f8dfa2a097998a803b1e60767ff8243dd813f1",
     "assignees": [],
     "requested_reviewers": [
       {
@@ -104,7 +104,7 @@
       }
     ],
     "requested_teams": [],
-    "rebaseable": true,
+    "rebaseable": false,
     "head": {
       "label": "achow101:gui-migrate-unloaded",
       "ref": "gui-migrate-unloaded",
@@ -335,7 +335,7 @@
         "forks_count": 259,
         "stargazers_count": 575,
         "watchers_count": 575,
-        "size": 162207,
+        "size": 162711,
         "default_branch": "master",
         "open_issues_count": 154,
         "is_template": false,
@@ -348,9 +348,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-08-09T16:55:35Z",
+        "pushed_at": "2024-08-12T14:58:50Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-08-09T16:55:39Z",
+        "updated_at": "2024-08-12T14:58:53Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -379,7 +379,7 @@
     "deletions": 55,
     "changed_files": 13,
     "commits": 4,
-    "review_comments": 8,
+    "review_comments": 11,
     "comments": 8
   },
   "events": [
@@ -1433,6 +1433,42 @@
       "submitted_at": "2024-08-09T16:31:25Z",
       "state": "APPROVED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/824"
+    },
+    {
+      "event": "reviewed",
+      "id": 2231855105,
+      "node_id": "PRR_kwDOEEET9c6FB2gB",
+      "url": null,
+      "actor": null,
+      "commit_id": "bcf47b9f34e4f21e5ac75521ddd4f25ff3812412",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "MEMBER",
+      "body": "Few comments. Will continue reviewing.",
+      "user": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/824#pullrequestreview-2231855105",
+      "submitted_at": "2024-08-12T15:33:51Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/824"
     }
   ],
   "comments": [
@@ -1850,6 +1886,162 @@
       "start_side": null,
       "line": null,
       "original_line": 49,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1713021114",
+      "pull_request_review_id": 2231855105,
+      "id": 1713021114,
+      "node_id": "PRRC_kwDOEEET9c5mGqC6",
+      "diff_hunk": "@@ -455,10 +456,33 @@ void BitcoinGUI::createActions()\n         connect(m_close_all_wallets_action, &QAction::triggered, [this] {\n             m_wallet_controller->closeAllWallets(this);\n         });\n-        connect(m_migrate_wallet_action, &QAction::triggered, [this] {\n-            auto activity = new MigrateWalletActivity(m_wallet_controller, this);\n-            connect(activity, &MigrateWalletActivity::migrated, this, &BitcoinGUI::setCurrentWallet);\n-            activity->migrate(walletFrame->currentWalletModel()->wallet().getWalletName());\n+        connect(m_migrate_wallet_menu, &QMenu::aboutToShow, [this] {\n+            m_migrate_wallet_menu->clear();\n+            for (const auto& [wallet_name, info] : m_wallet_controller->listWalletDir()) {\n+                const auto& [loaded, format] = info;\n+                QString name = GUIUtil::WalletDisplayName(wallet_name);\n+                // Menu items remove single &. Single & are shown when && is in\n+                // the string, but only the first occurrence. So replace only\n+                // the first & with &&.\n+                name.replace(name.indexOf(QChar('&')), 1, QString(\"&&\"));\n+                QAction* action = m_migrate_wallet_menu->addAction(name);\n+\n+                if (format != \"bdb\") {\n+                    // This wallet is already migrated\n+                    action->setEnabled(false);\n+                    continue;\n+                }",
+      "path": "src/qt/bitcoingui.cpp",
+      "position": 31,
+      "original_position": 31,
+      "commit_id": "bcf47b9f34e4f21e5ac75521ddd4f25ff3812412",
+      "original_commit_id": "bcf47b9f34e4f21e5ac75521ddd4f25ff3812412",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "I don't think showing the already migrated wallets here adds any value. The user cannot do anything with them and they do not present any extra information. I would skip them:\r\n```diff\r\ndiff --git a/src/qt/bitcoingui.cpp b/src/qt/bitcoingui.cpp\r\n--- a/src/qt/bitcoingui.cpp\r\n+++ b/src/qt/bitcoingui.cpp\r\n@@ -460,6 +460,10 @@\r\n             m_migrate_wallet_menu->clear();\r\n             for (const auto& [wallet_name, info] : m_wallet_controller->listWalletDir()) {\r\n                 const auto& [loaded, format] = info;\r\n+                if (format != \"bdb\") { // skip already migrated wallets\r\n+                    continue;\r\n+                }\r\n+\r\n                 QString name = GUIUtil::WalletDisplayName(wallet_name);\r\n                 // Menu items remove single &. Single & are shown when && is in\r\n                 // the string, but only the first occurrence. So replace only\r\n@@ -467,12 +471,6 @@\r\n                 name.replace(name.indexOf(QChar('&')), 1, QString(\"&&\"));\r\n                 QAction* action = m_migrate_wallet_menu->addAction(name);\r\n-\r\n-                if (format != \"bdb\") {\r\n-                    // This wallet is already migrated\r\n-                    action->setEnabled(false);\r\n-                    continue;\r\n-                }\r\n-\r\n                 connect(action, &QAction::triggered, [this, wallet_name] {\r\n                     auto activity = new MigrateWalletActivity(m_wallet_controller, this);\r\n                     connect(activity, &MigrateWalletActivity::migrated, this, &BitcoinGUI::setCurrentWallet);\r\n```",
+      "created_at": "2024-08-11T16:41:57Z",
+      "updated_at": "2024-08-12T15:33:51Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/824#discussion_r1713021114",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1713021114"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/824"
+        }
+      },
+      "start_line": 468,
+      "original_start_line": 468,
+      "start_side": "RIGHT",
+      "line": 474,
+      "original_line": 474,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1713845934",
+      "pull_request_review_id": 2231855105,
+      "id": 1713845934,
+      "node_id": "PRRC_kwDOEEET9c5mJzau",
+      "diff_hunk": "@@ -455,10 +456,33 @@ void BitcoinGUI::createActions()\n         connect(m_close_all_wallets_action, &QAction::triggered, [this] {\n             m_wallet_controller->closeAllWallets(this);\n         });\n-        connect(m_migrate_wallet_action, &QAction::triggered, [this] {\n-            auto activity = new MigrateWalletActivity(m_wallet_controller, this);\n-            connect(activity, &MigrateWalletActivity::migrated, this, &BitcoinGUI::setCurrentWallet);\n-            activity->migrate(walletFrame->currentWalletModel()->wallet().getWalletName());\n+        connect(m_migrate_wallet_menu, &QMenu::aboutToShow, [this] {\n+            m_migrate_wallet_menu->clear();\n+            for (const auto& [wallet_name, info] : m_wallet_controller->listWalletDir()) {\n+                const auto& [loaded, format] = info;\n+                QString name = GUIUtil::WalletDisplayName(wallet_name);\n+                // Menu items remove single &. Single & are shown when && is in\n+                // the string, but only the first occurrence. So replace only\n+                // the first & with &&.\n+                name.replace(name.indexOf(QChar('&')), 1, QString(\"&&\"));\n+                QAction* action = m_migrate_wallet_menu->addAction(name);\n+\n+                if (format != \"bdb\") {\n+                    // This wallet is already migrated\n+                    action->setEnabled(false);\n+                    continue;\n+                }\n+\n+                connect(action, &QAction::triggered, [this, wallet_name] {\n+                    auto activity = new MigrateWalletActivity(m_wallet_controller, this);\n+                    connect(activity, &MigrateWalletActivity::migrated, this, &BitcoinGUI::setCurrentWallet);\n+                    activity->migrate(wallet_name);",
+      "path": "src/qt/bitcoingui.cpp",
+      "position": 36,
+      "original_position": 36,
+      "commit_id": "bcf47b9f34e4f21e5ac75521ddd4f25ff3812412",
+      "original_commit_id": "bcf47b9f34e4f21e5ac75521ddd4f25ff3812412",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "Compilation error: `error: 'wallet_name' in capture list does not name a variable`.\r\n\r\nIt seems the lambda expression cannot capture the structured binding. A local reference of the variable fixes it.\r\n\r\nSame happens on the `m_open_wallet_menu` action lambda with the \"path\" variable.",
+      "created_at": "2024-08-12T14:05:53Z",
+      "updated_at": "2024-08-12T15:33:51Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/824#discussion_r1713845934",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1713845934"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/824"
+        }
+      },
+      "start_line": 476,
+      "original_start_line": 476,
+      "start_side": "RIGHT",
+      "line": 479,
+      "original_line": 479,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1713981246",
+      "pull_request_review_id": 2231855105,
+      "id": 1713981246,
+      "node_id": "PRRC_kwDOEEET9c5mKUc-",
+      "diff_hunk": "@@ -436,47 +445,50 @@ void RestoreWalletActivity::finish()\n     Q_EMIT finished();\n }\n \n-void MigrateWalletActivity::migrate(WalletModel* wallet_model)\n+void MigrateWalletActivity::migrate(const std::string& name)\n {\n     // Warn the user about migration\n     QMessageBox box(m_parent_widget);\n     box.setWindowTitle(tr(\"Migrate wallet\"));\n-    box.setText(tr(\"Are you sure you wish to migrate the wallet <i>%1</i>?\").arg(GUIUtil::HtmlEscape(wallet_model->getDisplayName())));\n+    box.setText(tr(\"Are you sure you wish to migrate the wallet <i>%1</i>?\").arg(GUIUtil::HtmlEscape(GUIUtil::WalletDisplayName(name))));\n     box.setInformativeText(tr(\"Migrating the wallet will convert this wallet to one or more descriptor wallets. A new wallet backup will need to be made.\\n\"\n                 \"If this wallet contains any watchonly scripts, a new wallet will be created which contains those watchonly scripts.\\n\"\n                 \"If this wallet contains any solvable but not watched scripts, a different and new wallet will be created which contains those scripts.\\n\\n\"\n                 \"The migration process will create a backup of the wallet before migrating. This backup file will be named \"\n                 \"<wallet name>-<timestamp>.legacy.bak and can be found in the directory for this wallet. In the event of \"\n-                \"an incorrect migration, the backup can be restored with the \\\"Restore Wallet\\\" functionality.\"));\n-    box.setStandardButtons(QMessageBox::Yes|QMessageBox::Cancel);\n-    box.setDefaultButton(QMessageBox::Yes);\n-    if (box.exec() != QMessageBox::Yes) return;\n+                \"an incorrect migration, the backup can be restored with the \\\"Restore Wallet\\\" functionality.\\n\\n\"\n+                \"If your wallet is encrypted, please provide the passphrase now as by choosing \\\"Yes, encrypted\\\".\"));\n+    QPushButton* yes_enc_button = box.addButton(tr(\"Yes, encrypted\"), QMessageBox::YesRole);\n+    QPushButton* yes_button = box.addButton(QMessageBox::Yes);\n+    QPushButton* cancel_button = box.addButton(QMessageBox::Cancel);\n+    box.setDefaultButton(yes_button);\n+    box.exec();\n+    if (!box.clickedButton() || box.clickedButton() == (QAbstractButton*)cancel_button) return;\n \n-    // Get the passphrase if it is encrypted regardless of it is locked or unlocked. We need the passphrase itself.\n     SecureString passphrase;\n-    WalletModel::EncryptionStatus enc_status = wallet_model->getEncryptionStatus();\n-    if (enc_status == WalletModel::EncryptionStatus::Locked || enc_status == WalletModel::EncryptionStatus::Unlocked) {\n-        AskPassphraseDialog dlg(AskPassphraseDialog::Unlock, m_parent_widget, &passphrase);\n-        dlg.setModel(wallet_model);\n-        dlg.exec();\n+    if (box.clickedButton() == (QAbstractButton*)yes_enc_button) {\n+        // Get the passphrase for the wallet\n+        AskPassphraseDialog dlg(AskPassphraseDialog::UnlockMigration, m_parent_widget, &passphrase);\n+        if (dlg.exec() == QDialog::Rejected) return;\n     }\n \n     // GUI needs to remove the wallet so that it can actually be unloaded by migration\n-    const std::string name = wallet_model->wallet().getWalletName();\n-    m_wallet_controller->removeAndDeleteWallet(wallet_model);\n+    if (WalletModel* wallet = m_wallet_controller->getWallet(name)) {\n+        m_wallet_controller->removeAndDeleteWallet(wallet);\n+    };",
+      "path": "src/qt/walletcontroller.cpp",
+      "position": 95,
+      "original_position": 64,
+      "commit_id": "bcf47b9f34e4f21e5ac75521ddd4f25ff3812412",
+      "original_commit_id": "2c116ea99f6491fae00bd1738a63adceb5c7c89f",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "We don't actually need to do this. Could cherry-pick https://github.com/furszy/bitcoin-core/commit/f5c0c58977a8989fe17db361d179281d051b0806 and remove the introduced `getWallet` function.",
+      "created_at": "2024-08-12T15:22:03Z",
+      "updated_at": "2024-08-12T15:34:19Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/824#discussion_r1713981246",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1713981246"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/824"
+        }
+      },
+      "start_line": 476,
+      "original_start_line": 476,
+      "start_side": "RIGHT",
+      "line": 478,
+      "original_line": 478,
       "side": "RIGHT"
     }
   ]
