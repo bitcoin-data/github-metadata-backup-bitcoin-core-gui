@@ -14,9 +14,9 @@
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/824/comments",
     "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/8f2522d242961ceb9e79672aa43e856863a1a6dd",
     "number": 824,
-    "state": "open",
+    "state": "closed",
     "locked": false,
-    "maintainer_can_modify": true,
+    "maintainer_can_modify": false,
     "title": "Migrate legacy wallets that are not loaded",
     "user": {
       "login": "achow101",
@@ -39,7 +39,17 @@
       "site_admin": false
     },
     "body": "Currently the Migrate Wallet menu item can only be used to migrate the currently loaded wallet. This is not suitable for the future when legacy wallets can no longer be loaded at all, but should still be able to be migrated. This PR changes that menu item into a menu list like Open Wallet and lets users migrate any legacy wallet in their wallet directory regardless of the wallets loaded.\r\n\r\nOne issue I ran into was dealing with encrypted wallets. Ideally, we would detect whether a wallet is encrypted, and prompt the user for their passphrase at that time. However, that's actually difficult to do in the GUI since migration will unload the wallet if it was already loaded, and reload it without connecting it to any signals or interfaces. Only then can it detect whether a wallet is encrypted, but then there is no `WalletModel` or even an `interfaces::Wallet` that the GUI could use to unlock it via a callback.\r\n\r\nTo deal with this, I've opted to just add a button to the migration dialog box that has the user enter their passphrase first, along with instructional text to use that button if their wallet was encrypted. If the user enters the wrong passphrase or clicked the other button that does not prompt for the passphrase, migration will fail with a message indicating that the passphrase was incorrect.",
-    "labels": [],
+    "labels": [
+      {
+        "id": 2927906211,
+        "node_id": "MDU6TGFiZWwyOTI3OTA2MjEx",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Wallet",
+        "name": "Wallet",
+        "description": "",
+        "color": "08a781",
+        "default": false
+      }
+    ],
     "milestone": {
       "url": "https://api.github.com/repos/bitcoin-core/gui/milestones/13",
       "html_url": "https://github.com/bitcoin-core/gui/milestone/13",
@@ -70,16 +80,17 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 2,
-      "closed_issues": 5,
+      "open_issues": 1,
+      "closed_issues": 6,
       "created_at": "2024-02-15T11:11:22Z",
-      "updated_at": "2024-08-13T10:16:18Z"
+      "updated_at": "2024-08-14T13:09:49Z"
     },
     "created_at": "2024-06-10T20:43:07Z",
-    "updated_at": "2024-08-14T12:55:36Z",
-    "mergeable": true,
-    "mergeable_state": "clean",
-    "merge_commit_sha": "78a9b031a0545a1822979b7dd4d64f228746f221",
+    "updated_at": "2024-08-14T13:17:01Z",
+    "closed_at": "2024-08-14T13:09:49Z",
+    "mergeable_state": "unknown",
+    "merged_at": "2024-08-14T13:09:49Z",
+    "merge_commit_sha": "e682e7db7e399ce888e492eab8f99c389aae05b5",
     "assignees": [],
     "requested_reviewers": [
       {
@@ -104,7 +115,6 @@
       }
     ],
     "requested_teams": [],
-    "rebaseable": true,
     "head": {
       "label": "achow101:gui-migrate-unloaded",
       "ref": "gui-migrate-unloaded",
@@ -337,7 +347,7 @@
         "watchers_count": 576,
         "size": 162724,
         "default_branch": "master",
-        "open_issues_count": 153,
+        "open_issues_count": 152,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -348,9 +358,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-08-13T23:18:15Z",
+        "pushed_at": "2024-08-14T13:23:26Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-08-13T15:02:53Z",
+        "updated_at": "2024-08-14T13:09:52Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -2241,6 +2251,97 @@
       "submitted_at": "2024-08-14T12:55:33Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/824"
+    },
+    {
+      "event": "merged",
+      "id": 13879960806,
+      "node_id": "ME_lADOEEET9c6LwrC9zwAAAAM7T2Tm",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/13879960806",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": "e682e7db7e399ce888e492eab8f99c389aae05b5",
+      "commit_url": "https://api.github.com/repos/bitcoin-core/gui/commits/e682e7db7e399ce888e492eab8f99c389aae05b5",
+      "created_at": "2024-08-14T13:09:49Z"
+    },
+    {
+      "event": "closed",
+      "id": 13879960854,
+      "node_id": "CE_lADOEEET9c6LwrC9zwAAAAM7T2UW",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/13879960854",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-08-14T13:09:49Z"
+    },
+    {
+      "event": "labeled",
+      "id": 13880066826,
+      "node_id": "LE_lADOEEET9c6LwrC9zwAAAAM7UQMK",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/13880066826",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-08-14T13:17:01Z",
+      "label": {
+        "name": "Wallet",
+        "color": "08a781"
+      }
     }
   ],
   "comments": [
