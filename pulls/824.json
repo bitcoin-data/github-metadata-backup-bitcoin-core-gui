@@ -80,13 +80,13 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 1,
-      "closed_issues": 6,
+      "open_issues": 0,
+      "closed_issues": 7,
       "created_at": "2024-02-15T11:11:22Z",
-      "updated_at": "2024-08-14T13:09:49Z"
+      "updated_at": "2024-08-14T14:22:35Z"
     },
     "created_at": "2024-06-10T20:43:07Z",
-    "updated_at": "2024-08-14T13:17:01Z",
+    "updated_at": "2024-08-14T16:19:43Z",
     "closed_at": "2024-08-14T13:09:49Z",
     "mergeable_state": "unknown",
     "merged_at": "2024-08-14T13:09:49Z",
@@ -345,9 +345,9 @@
         "forks_count": 257,
         "stargazers_count": 576,
         "watchers_count": 576,
-        "size": 162724,
+        "size": 162770,
         "default_branch": "master",
-        "open_issues_count": 152,
+        "open_issues_count": 151,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -358,9 +358,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-08-14T13:23:26Z",
+        "pushed_at": "2024-08-14T16:16:37Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-08-14T13:09:52Z",
+        "updated_at": "2024-08-14T16:16:40Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -389,7 +389,7 @@
     "deletions": 56,
     "changed_files": 15,
     "commits": 5,
-    "review_comments": 17,
+    "review_comments": 18,
     "comments": 10
   },
   "events": [
@@ -2342,6 +2342,41 @@
         "name": "Wallet",
         "color": "08a781"
       }
+    },
+    {
+      "event": "reviewed",
+      "id": 2238653261,
+      "node_id": "PRR_kwDOEEET9c6FbyNN",
+      "url": null,
+      "actor": null,
+      "commit_id": "8f2522d242961ceb9e79672aa43e856863a1a6dd",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "CONTRIBUTOR",
+      "user": {
+        "login": "MarnixCroes",
+        "id": 93143998,
+        "node_id": "U_kgDOBY1Dvg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/93143998?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/MarnixCroes",
+        "html_url": "https://github.com/MarnixCroes",
+        "followers_url": "https://api.github.com/users/MarnixCroes/followers",
+        "following_url": "https://api.github.com/users/MarnixCroes/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/MarnixCroes/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/MarnixCroes/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/MarnixCroes/subscriptions",
+        "organizations_url": "https://api.github.com/users/MarnixCroes/orgs",
+        "repos_url": "https://api.github.com/users/MarnixCroes/repos",
+        "events_url": "https://api.github.com/users/MarnixCroes/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/MarnixCroes/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/824#pullrequestreview-2238653261",
+      "submitted_at": "2024-08-14T16:19:43Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/824"
     }
   ],
   "comments": [
@@ -3227,6 +3262,58 @@
       "start_side": "RIGHT",
       "line": null,
       "original_line": 472,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1717223832",
+      "pull_request_review_id": 2238653261,
+      "id": 1717223832,
+      "node_id": "PRRC_kwDOEEET9c5mWsGY",
+      "diff_hunk": "@@ -455,10 +456,31 @@ void BitcoinGUI::createActions()\n         connect(m_close_all_wallets_action, &QAction::triggered, [this] {\n             m_wallet_controller->closeAllWallets(this);\n         });\n-        connect(m_migrate_wallet_action, &QAction::triggered, [this] {\n-            auto activity = new MigrateWalletActivity(m_wallet_controller, this);\n-            connect(activity, &MigrateWalletActivity::migrated, this, &BitcoinGUI::setCurrentWallet);\n-            activity->migrate(walletFrame->currentWalletModel());\n+        connect(m_migrate_wallet_menu, &QMenu::aboutToShow, [this] {\n+            m_migrate_wallet_menu->clear();\n+            for (const auto& [wallet_name, info] : m_wallet_controller->listWalletDir()) {\n+                const auto& [loaded, format] = info;\n+\n+                if (format != \"bdb\") { // Skip already migrated wallets\n+                    continue;\n+                }\n+\n+                QString name = GUIUtil::WalletDisplayName(wallet_name);\n+                // An single ampersand in the menu item's text sets a shortcut for this item.\n+                // Single & are shown when && is in the string. So replace & with &&.\n+                name.replace(QChar('&'), QString(\"&&\"));\n+                QAction* action = m_migrate_wallet_menu->addAction(name);\n+\n+                connect(action, &QAction::triggered, [this, wallet_name] {\n+                    auto activity = new MigrateWalletActivity(m_wallet_controller, this);\n+                    connect(activity, &MigrateWalletActivity::migrated, this, &BitcoinGUI::setCurrentWallet);\n+                    activity->migrate(wallet_name);\n+                });\n+            }\n+            if (m_migrate_wallet_menu->isEmpty()) {\n+                QAction* action = m_migrate_wallet_menu->addAction(tr(\"No wallets available\"));",
+      "path": "src/qt/bitcoingui.cpp",
+      "position": 58,
+      "original_position": 58,
+      "commit_id": "8f2522d242961ceb9e79672aa43e856863a1a6dd",
+      "original_commit_id": "8f2522d242961ceb9e79672aa43e856863a1a6dd",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "MarnixCroes",
+        "id": 93143998,
+        "node_id": "U_kgDOBY1Dvg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/93143998?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/MarnixCroes",
+        "html_url": "https://github.com/MarnixCroes",
+        "followers_url": "https://api.github.com/users/MarnixCroes/followers",
+        "following_url": "https://api.github.com/users/MarnixCroes/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/MarnixCroes/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/MarnixCroes/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/MarnixCroes/subscriptions",
+        "organizations_url": "https://api.github.com/users/MarnixCroes/orgs",
+        "repos_url": "https://api.github.com/users/MarnixCroes/repos",
+        "events_url": "https://api.github.com/users/MarnixCroes/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/MarnixCroes/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "nit: maybe a more descriptive text would be good?\r\nsomething like `No wallets that need to be migrated`\r\n\r\nfor people who don't know about the migration and why/what it is.\r\nseeing _No wallets available_ while they have wallet(s) might seem wrong/confusing.\r\n\r\nsry for commenting post-merge",
+      "created_at": "2024-08-14T16:19:43Z",
+      "updated_at": "2024-08-14T16:19:43Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/824#discussion_r1717223832",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1717223832"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/824"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 481,
+      "original_line": 481,
       "side": "RIGHT"
     }
   ]
