@@ -95,7 +95,7 @@
       "updated_at": "2024-09-13T10:28:44Z"
     },
     "created_at": "2024-09-12T22:01:32Z",
-    "updated_at": "2024-09-13T20:56:43Z",
+    "updated_at": "2024-09-13T21:12:48Z",
     "closed_at": "2024-09-13T10:28:44Z",
     "mergeable_state": "unknown",
     "merged_at": "2024-09-13T10:28:44Z",
@@ -347,9 +347,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-09-13T20:12:26Z",
+        "pushed_at": "2024-09-13T21:58:23Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-09-13T20:12:29Z",
+        "updated_at": "2024-09-13T21:58:26Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -379,7 +379,7 @@
     "changed_files": 2,
     "commits": 1,
     "review_comments": 0,
-    "comments": 5
+    "comments": 6
   },
   "events": [
     {
@@ -1212,6 +1212,60 @@
         "site_admin": false
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/835#issuecomment-2350111993",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/835"
+    },
+    {
+      "event": "commented",
+      "id": 2350230453,
+      "node_id": "IC_kwDOEEET9c6MFau1",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2350230453",
+      "actor": {
+        "login": "ryanofsky",
+        "id": 7133040,
+        "node_id": "MDQ6VXNlcjcxMzMwNDA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/7133040?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ryanofsky",
+        "html_url": "https://github.com/ryanofsky",
+        "followers_url": "https://api.github.com/users/ryanofsky/followers",
+        "following_url": "https://api.github.com/users/ryanofsky/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/ryanofsky/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/ryanofsky/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/ryanofsky/subscriptions",
+        "organizations_url": "https://api.github.com/users/ryanofsky/orgs",
+        "repos_url": "https://api.github.com/users/ryanofsky/repos",
+        "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-09-13T21:12:46Z",
+      "updated_at": "2024-09-13T21:12:46Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "> As `RemoveWallet` erases the wallet from the context's wallets vector (locking the context's mutex) prior to calling `NotifyUnload`, the only way it could be called twice is if we re-add the wallet in-between the two `RemoveWallet` calls. Which shouldn't be possible anywhere.\r\n\r\nOh, I didn't notice there is a `return false` in the middle of `RemoveWallet` so it does look like RemoveWallet code path is safe and won't (currently) notify more than once.\r\n\r\nNevertheless it doesn't make sense for the Qt signal handler that deletes the WalletModel to outlive the wallet_model, so the code I change I suggested is more correct than current code, would have prevented this bug, and could prevent future bugs, because as you say, wallet unloading is asynchronous, and there is a gap between time wallet unload is requested and the time it is actually deleted. So when the GUI wants to close the wallet it should update itself as soon as possible without putting itself in a vulnerable state and being sensitive to implementation details of RemoveWallet,\r\n\r\n> I'm not so agree here. I think the GUI should call the close method and wait asynchronously until the wallet's backend emit the closure event prior to disconnecting the views (ideally with a progress dialog saying something like \"Closing wallet..\" and disallowing the specific wallet usage). This is because the closing procedure could also fail and leave the wallet loaded without GUI access. And for me, this even make more sense in a multiprocess world where every interface call would be better to handle it asynchronously due to the potentially longer wait time.\r\n\r\nThat's a reasonable approach but the change in a965f2bc07a3588f8c2b8d6a542961562e3f5d0e makes that harder not easier to implement correctly because it keeps wallet model and GUI alive and potentially refreshing itself while unloading is happening. The correct way to implement that change would be to make wallet unload function take a std::function and return a interface::Handler object, and not confuse a signal meant to notifying the GUI when wallet is about to be unloaded with a signal notifying the GUI that a wallet has been unloaded, which are not the same thing.",
+      "user": {
+        "login": "ryanofsky",
+        "id": 7133040,
+        "node_id": "MDQ6VXNlcjcxMzMwNDA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/7133040?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ryanofsky",
+        "html_url": "https://github.com/ryanofsky",
+        "followers_url": "https://api.github.com/users/ryanofsky/followers",
+        "following_url": "https://api.github.com/users/ryanofsky/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/ryanofsky/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/ryanofsky/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/ryanofsky/subscriptions",
+        "organizations_url": "https://api.github.com/users/ryanofsky/orgs",
+        "repos_url": "https://api.github.com/users/ryanofsky/repos",
+        "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/835#issuecomment-2350230453",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/835"
     }
   ],
