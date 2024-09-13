@@ -95,7 +95,7 @@
       "updated_at": "2024-09-13T10:28:44Z"
     },
     "created_at": "2024-09-12T22:01:32Z",
-    "updated_at": "2024-09-13T17:00:20Z",
+    "updated_at": "2024-09-13T20:56:43Z",
     "closed_at": "2024-09-13T10:28:44Z",
     "mergeable_state": "unknown",
     "merged_at": "2024-09-13T10:28:44Z",
@@ -334,7 +334,7 @@
         "forks_count": 259,
         "stargazers_count": 590,
         "watchers_count": 590,
-        "size": 166822,
+        "size": 166841,
         "default_branch": "master",
         "open_issues_count": 151,
         "is_template": false,
@@ -347,9 +347,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-09-13T16:00:14Z",
+        "pushed_at": "2024-09-13T20:12:26Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-09-13T16:00:17Z",
+        "updated_at": "2024-09-13T20:12:29Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -379,7 +379,7 @@
     "changed_files": 2,
     "commits": 1,
     "review_comments": 0,
-    "comments": 4
+    "comments": 5
   },
   "events": [
     {
@@ -1158,6 +1158,60 @@
         "site_admin": false
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/835#issuecomment-2349438972",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/835"
+    },
+    {
+      "event": "commented",
+      "id": 2350111993,
+      "node_id": "IC_kwDOEEET9c6ME9z5",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2350111993",
+      "actor": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-09-13T20:32:27Z",
+      "updated_at": "2024-09-13T20:56:43Z",
+      "author_association": "MEMBER",
+      "body": "> This seems like a workable fix, but I think it it is not ideal. The underlying problem here is that https://github.com/bitcoin/bitcoin/pull/30659 moved NotifyUnload from FlushAndDeleteWallet to RemoveWallet, so now instead of NotifyUnload guaranteed being called once, it can now be called multiple times, but the GUI code assumes it is only called once and double deletes the wallet model and crashes.\r\n\r\nAs `RemoveWallet` erases the wallet from the context's wallets vector (locking the context's mutex) prior to calling `NotifyUnload`, the only way it could be called twice is if we re-add the wallet in-between the two `RemoveWallet` calls. Which shouldn't be possible anywhere.\r\n\r\n> Fix makes GUI wallet close sequence potentially slower and less reliable. Before this change, closing wallet in the GUI would remove the GUI immediately, but now it waits for a signal from the wallet before destroying the GUI. It's not a big deal, but this approach is more fragile and potentially slower if wallet code is running in a separate process.\r\n\r\nI'm not so agree here. I think the GUI should call the close method and wait asynchronously until the wallet's backend emit the closure event prior to disconnecting the views (ideally with a progress dialog saying something like \"Closing wallet..\" and disallowing the specific wallet usage). This is because the closing procedure could also fail and leave the wallet loaded without GUI access.\r\nAnd for me, this even make more sense in a multiprocess world where every interface call would be better to handle it asynchronously due to the potentially longer wait time (we don't want to freeze the main GUI thread) -- not all with extra backend events as in this case, but waiting async for the response --.",
+      "user": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/835#issuecomment-2350111993",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/835"
     }
   ],
