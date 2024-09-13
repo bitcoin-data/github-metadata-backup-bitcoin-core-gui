@@ -38,7 +38,7 @@
       "type": "User",
       "site_admin": false
     },
-    "body": "The crash occurs because `WalletController::removeAndDeleteWallet` is called twice for the\r\nsame wallet model: first in the GUI's button connected function `WalletController::closeWallet`,\r\nand then again when the backend emits the `WalletModel::unload` signal.\r\n\r\nThis causes the issue because `removeAndDeleteWallet` inlines an `erase(std::remove())`.\r\nSo, if `std::remove` returns an iterator to the end (indicating the element wasn't found\r\nbecause it was already erased), the subsequent call to `erase` leads to an undefined behavior.\r\n\r\nTest Notes:\r\nTry closing any wallet using the toolbar button in the GUI. It will crash in master, but not here.",
+    "body": "The crash occurs because `WalletController::removeAndDeleteWallet` is called twice for the\r\nsame wallet model: first in the GUI's button connected function `WalletController::closeWallet`,\r\nand then again when the backend emits the `WalletModel::unload` signal.\r\n\r\nThis causes the issue because `removeAndDeleteWallet` inlines an `erase(std::remove())`.\r\nSo, if `std::remove` returns an iterator to the end (indicating the element wasn't found\r\nbecause it was already erased), the subsequent call to `erase` leads to an undefined behavior.\r\n\r\nTest Notes:\r\nTry closing any wallet using the toolbar button in the GUI. It will crash in master, but not here.\r\n\r\nFixes https://github.com/bitcoin/bitcoin/issues/30887.",
     "labels": [
       {
         "id": 2140649117,
@@ -104,7 +104,7 @@
       "updated_at": "2024-09-12T22:02:36Z"
     },
     "created_at": "2024-09-12T22:01:32Z",
-    "updated_at": "2024-09-13T08:52:33Z",
+    "updated_at": "2024-09-13T09:11:48Z",
     "mergeable": true,
     "mergeable_state": "clean",
     "merge_commit_sha": "3731c8620b4ffe1748dd7cfa8998c26549aa3767",
@@ -749,6 +749,42 @@
         "name": "Wallet",
         "color": "08a781"
       }
+    },
+    {
+      "event": "reviewed",
+      "id": 2302553051,
+      "node_id": "PRR_kwDOEEET9c6JPivb",
+      "url": null,
+      "actor": null,
+      "commit_id": "a965f2bc07a3588f8c2b8d6a542961562e3f5d0e",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "CONTRIBUTOR",
+      "body": "tACK a965f2bc07a3588f8c2b8d6a542961562e3f5d0e\r\n\r\nTested on Linux, I've reproduced the segfault on both \"Close Walllet\" and \"Close All Wallets\" actions from the File menu items and this PR fixes it and related features work as expected (eg closing a wallet will remove it from the top right combo when multi wallets are loaded).",
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/835#pullrequestreview-2302553051",
+      "submitted_at": "2024-09-13T09:02:35Z",
+      "state": "APPROVED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/835"
     }
   ],
   "comments": []
