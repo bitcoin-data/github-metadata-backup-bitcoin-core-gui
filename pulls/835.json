@@ -95,7 +95,7 @@
       "updated_at": "2024-09-13T10:28:44Z"
     },
     "created_at": "2024-09-12T22:01:32Z",
-    "updated_at": "2024-09-13T21:12:48Z",
+    "updated_at": "2024-09-14T11:32:43Z",
     "closed_at": "2024-09-13T10:28:44Z",
     "mergeable_state": "unknown",
     "merged_at": "2024-09-13T10:28:44Z",
@@ -334,7 +334,7 @@
         "forks_count": 259,
         "stargazers_count": 590,
         "watchers_count": 590,
-        "size": 166841,
+        "size": 166921,
         "default_branch": "master",
         "open_issues_count": 151,
         "is_template": false,
@@ -379,7 +379,7 @@
     "changed_files": 2,
     "commits": 1,
     "review_comments": 0,
-    "comments": 6
+    "comments": 7
   },
   "events": [
     {
@@ -1266,6 +1266,60 @@
         "site_admin": false
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/835#issuecomment-2350230453",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/835"
+    },
+    {
+      "event": "commented",
+      "id": 2350959839,
+      "node_id": "IC_kwDOEEET9c6MIMzf",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2350959839",
+      "actor": {
+        "login": "ryanofsky",
+        "id": 7133040,
+        "node_id": "MDQ6VXNlcjcxMzMwNDA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/7133040?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ryanofsky",
+        "html_url": "https://github.com/ryanofsky",
+        "followers_url": "https://api.github.com/users/ryanofsky/followers",
+        "following_url": "https://api.github.com/users/ryanofsky/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/ryanofsky/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/ryanofsky/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/ryanofsky/subscriptions",
+        "organizations_url": "https://api.github.com/users/ryanofsky/orgs",
+        "repos_url": "https://api.github.com/users/ryanofsky/repos",
+        "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-09-14T11:32:07Z",
+      "updated_at": "2024-09-14T11:32:43Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "One way to test difference between the current fix and suggested fix is to delay the notification:\r\n\r\n```diff\r\n--- a/src/wallet/wallet.cpp\r\n+++ b/src/wallet/wallet.cpp\r\n@@ -174,7 +174,10 @@ bool RemoveWallet(WalletContext& context, const std::shared_ptr<CWallet>& wallet\r\n         context.wallets.erase(i);\r\n     }\r\n     // Notify unload so that upper layers release the shared pointer.\r\n-    wallet->NotifyUnload();\r\n+    std::thread([wallet]() {\r\n+        std::this_thread::sleep_for(std::chrono::seconds(5));\r\n+        wallet->NotifyUnload();\r\n+    }).detach();\r\n \r\n     // Write the wallet setting\r\n     UpdateWalletSetting(chain, name, load_on_start, warnings);\r\n```\r\n\r\nTesting this with the current fix, the wallet GUI stays visible for 5 seconds after closing the wallet, because it is waiting for the delayed notification. By contrast with original gui code and suggested fix:\r\n\r\n<details><summary>diff</summary>\r\n<p>\r\n\r\n```diff\r\n--- a/src/qt/walletcontroller.cpp\r\n+++ b/src/qt/walletcontroller.cpp\r\n@@ -149,7 +149,7 @@ WalletModel* WalletController::getOrCreateWallet(std::unique_ptr<interfaces::Wal\r\n     const bool called = QMetaObject::invokeMethod(wallet_model, \"startPollBalance\");\r\n     assert(called);\r\n \r\n-    connect(wallet_model, &WalletModel::unload, this, [this, wallet_model] {\r\n+    connect(wallet_model, &WalletModel::unload, wallet_model, [this, wallet_model] {\r\n         // Defer removeAndDeleteWallet when no modal widget is actively waiting for an action.\r\n         // TODO: remove this workaround by removing usage of QDialog::exec.\r\n         QWidget* active_dialog = QApplication::activeModalWidget();\r\n```\r\n</p>\r\n</details>\r\n\r\nclosing the wallet in the GUI doesn't cause a 5 second wait, because when the wallet is closed from the GUI it just closes without waiting for a notification. The notification is only needed when wallet is unloaded externally by an RPC, not when the GUI itself unloads the wallet.\r\n\r\nIt is true as suggested https://github.com/bitcoin-core/gui/pull/835#issuecomment-2350111993 that it might be useful for the wallet to send a different notification when wallet unloading completes and wallet is fully closed, but this would actually need to be a different notification. It might be useful to rename the current notification from \"unload\" to \"remove\" to clarify that it is called from the `RemoveWallet` function and sent when wallet is removed from the list of opened wallets, not when it is unloaded, which could be at some later time.",
+      "user": {
+        "login": "ryanofsky",
+        "id": 7133040,
+        "node_id": "MDQ6VXNlcjcxMzMwNDA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/7133040?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ryanofsky",
+        "html_url": "https://github.com/ryanofsky",
+        "followers_url": "https://api.github.com/users/ryanofsky/followers",
+        "following_url": "https://api.github.com/users/ryanofsky/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/ryanofsky/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/ryanofsky/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/ryanofsky/subscriptions",
+        "organizations_url": "https://api.github.com/users/ryanofsky/orgs",
+        "repos_url": "https://api.github.com/users/ryanofsky/repos",
+        "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/835#issuecomment-2350959839",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/835"
     }
   ],
