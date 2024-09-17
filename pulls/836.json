@@ -41,10 +41,10 @@
     "body": "Currently, setting up a proxy (whether SOCKS5 or Tor) with an IPv6 address works correctly via the command line or configuration file in both `bitcoind` and `bitcoin-qt` (also from the UI the ipv6 address gets saved properly in `settings.json`). However, the UI does not reflect this properly, which can create confusion. Since some ISPs and VPNs still experience issues with IPv6, users may mistakenly think there is a problem with Bitcoin Core, when in fact the proxy setup is functioning as expected.\r\n\r\nSo this PR:\r\n- Ensures that the proxy IP is displayed correctly in the UI when using an IPv6 address.\r\n- Fixes the reachable networks check-boxes so they accurately reflect the network configuration.\r\n\r\nNo functionality impact; changes only affect UI display.\r\n\r\n<details>\r\n<summary>Click her to see <b>before</b> and <b>after</b> screenshots.</summary>\r\n\r\n- Before:\r\n\r\n  ![image](https://github.com/user-attachments/assets/073d9022-3174-4eef-8e0c-8c1b73b17226)\r\n\r\n- Once the proxy address display was fixed, the reachable networks display was incorrect:\r\n\r\n  ![image](https://github.com/user-attachments/assets/2d064e40-7f1b-40ec-b514-d2f35988db60)\r\n\r\n- After:\r\n\r\n  ![image](https://github.com/user-attachments/assets/bd182131-4beb-4460-a889-3f576111dafb)\r\n\r\n- If `onlynet` is not specified:\r\n\r\n  ![image](https://github.com/user-attachments/assets/293e4e07-83e5-44ec-8ab3-df9d1f601a6f)\r\n\r\n  \r\n</details>\r\n\r\n---\r\n\r\n<details>\r\n<summary>Test instructions</summary>\r\n\r\n(Ubuntu 22.04)\r\n\r\n1. Start ssh service on localhost.\r\n\r\n   `ssh -D [::1]:1080 -f -C -q -N localhost`\r\n\r\n2. Check that the service is up and running.\r\n\r\n   ```\r\n   ps aux | grep ssh\r\n   pepe    2860289  0.0  0.0  20456  5576 ?        Ss   06:59   0:00 ssh -D [::1]:1080 -f -C -q -N localhost\r\n   ```\r\n\r\n3. Check with `bitcoind` if it works correctly.\r\n\r\n   `bitcoind -onlynet=ipv6 -proxy=[::1]:1080`\r\n   \r\n4. Check for established connections.\r\n\r\n   ```\r\n   netstat -natl |grep 1080\r\n   tcp6       0      0 ::1:1080                :::*                    LISTEN     \r\n   tcp6       0      0 ::1:47610               ::1:1080                ESTABLISHED\r\n   tcp6       0      0 ::1:1080                ::1:47610               ESTABLISHED\r\n   tcp6       0      0 ::1:1080                ::1:47606               TIME_WAIT    \r\n   ```\r\n\r\n   ```./build/src/bitcoin-cli getpeerinfo\r\n   [\r\n      {\r\n        \"id\": 0,\r\n        \"addr\": \"[2a01:4f9:4a:2a07::2]:8333\",\r\n        \"addrbind\": \"[::1]:47638\",\r\n        \"network\": \"ipv6\",\r\n   ...\r\n   ```\r\n\r\n   \r\n   \r\n\r\n5. Stop `bitcoind` and run `bitcoin-qt` adding the corresponding configuration in `settings.json`.\r\n\r\n    ```\r\n   {\r\n       \"onlynet\": \"ipv6\",\r\n       \"proxy\": \"[::1]:1080\",\r\n   }\r\n   ```\r\n   \r\n6. Open the Peers window to check available connections or run `getpeerinfo` on the rpc-console window.\r\n\r\n7. Same can be done for Tor setting up `tor` service (I'll add instructions later) and configuring on its default port 9050 and forcing `\"onlynet\": \"onion\"` to verify easily the net traffic.\r\n\r\n</details>\r\n\r\n---\r\n\r\nThanks @jarolrod and @vasild for your help on validating ipv6 was not broken.",
     "labels": [],
     "created_at": "2024-09-15T18:31:19Z",
-    "updated_at": "2024-09-16T00:40:08Z",
+    "updated_at": "2024-09-17T10:41:03Z",
     "mergeable": true,
     "mergeable_state": "clean",
-    "merge_commit_sha": "02433d1f975eb914edf032b5c42eeac950a21134",
+    "merge_commit_sha": "1836d5c4c96b24e19293a68f9f6f3baeb50f6b78",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -280,7 +280,7 @@
         "forks_count": 259,
         "stargazers_count": 591,
         "watchers_count": 591,
-        "size": 166921,
+        "size": 167277,
         "default_branch": "master",
         "open_issues_count": 152,
         "is_template": false,
@@ -293,9 +293,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-09-13T21:58:23Z",
+        "pushed_at": "2024-09-17T08:47:50Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-09-14T18:23:21Z",
+        "updated_at": "2024-09-17T08:47:53Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -324,7 +324,7 @@
     "deletions": 7,
     "changed_files": 2,
     "commits": 1,
-    "review_comments": 0,
+    "review_comments": 2,
     "comments": 2
   },
   "events": [
@@ -719,7 +719,148 @@
         "name": "CI failed",
         "color": "ededed"
       }
+    },
+    {
+      "event": "reviewed",
+      "id": 2309063950,
+      "node_id": "PRR_kwDOEEET9c6JoYUO",
+      "url": null,
+      "actor": null,
+      "commit_id": "ba58007588a3cd76bc663a67d88c6238a33ae926",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "CONTRIBUTOR",
+      "body": "The changes to `src/qt/optionsmodel.cpp` look ok to me.",
+      "user": {
+        "login": "vasild",
+        "id": 266751,
+        "node_id": "MDQ6VXNlcjI2Njc1MQ==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/266751?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/vasild",
+        "html_url": "https://github.com/vasild",
+        "followers_url": "https://api.github.com/users/vasild/followers",
+        "following_url": "https://api.github.com/users/vasild/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/vasild/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/vasild/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/vasild/subscriptions",
+        "organizations_url": "https://api.github.com/users/vasild/orgs",
+        "repos_url": "https://api.github.com/users/vasild/repos",
+        "events_url": "https://api.github.com/users/vasild/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/vasild/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/836#pullrequestreview-2309063950",
+      "submitted_at": "2024-09-17T10:16:22Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/836"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1762813848",
+      "pull_request_review_id": 2309063950,
+      "id": 1762813848,
+      "node_id": "PRRC_kwDOEEET9c5pEmeY",
+      "diff_hunk": "@@ -466,13 +466,13 @@ void OptionsDialog::updateDefaultProxyNets()\n     bool has_proxy;\n \n     has_proxy = model->node().getProxy(NET_IPV4, proxy);\n-    ui->proxyReachIPv4->setChecked(has_proxy && proxy.ToString() == proxyIpText);\n+    ui->proxyReachIPv4->setChecked((has_proxy && proxy.ToString() == proxyIpText) && g_reachable_nets.Contains(NET_IPV4));",
+      "path": "src/qt/optionsdialog.cpp",
+      "position": 5,
+      "original_position": 5,
+      "commit_id": "ba58007588a3cd76bc663a67d88c6238a33ae926",
+      "original_commit_id": "ba58007588a3cd76bc663a67d88c6238a33ae926",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "vasild",
+        "id": 266751,
+        "node_id": "MDQ6VXNlcjI2Njc1MQ==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/266751?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/vasild",
+        "html_url": "https://github.com/vasild",
+        "followers_url": "https://api.github.com/users/vasild/followers",
+        "following_url": "https://api.github.com/users/vasild/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/vasild/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/vasild/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/vasild/subscriptions",
+        "organizations_url": "https://api.github.com/users/vasild/orgs",
+        "repos_url": "https://api.github.com/users/vasild/repos",
+        "events_url": "https://api.github.com/users/vasild/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/vasild/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "I think that we are not supposed to access the global state from here, @hebasto?\r\n\r\nAlso, this change is mixing the \"reachable nets\" with the \"which network is accessed via which proxy\" which are two different things. Maybe drop this change altogether?\r\n\r\nSince we are here, I have been thinking that those text descriptions are confusing:\r\n\"Used for reaching peers via [ ] IPv4 [ ] IPv6 [ ] Tor\" \r\n\"Use separte SOCKS5 proxy to reach peers via Tor onion services\".\r\nIt is not that we reach peers **via** IPv4. We reach IPv4 peers via the proxy. IPv4 is the type of the peer in this context. Thus, I think this warrants a reword (here or in another PR):\r\n\r\n\"Used for reaching peers via [ ] IPv4 [ ] IPv6 [ ] Tor\" ->\r\n\"Used for reaching peers of type: [ ] IPv4/IPv6/CJDNS [ ] Tor\".\r\n(combine IPv4, IPv6 and CJDNS peers in one checkbox because we always have a single proxy for all those 3 networks, i.e. can't split it to have proxy1 for IPv4 and proxy2 for IPv6).\r\n\r\n\"Use separte SOCKS5 proxy to reach peers via Tor onion services\" ->\r\n\"Use separte SOCKS5 proxy to reach Tor peers\".",
+      "created_at": "2024-09-17T09:28:12Z",
+      "updated_at": "2024-09-17T10:16:22Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/836#discussion_r1762813848",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1762813848"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/836"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 469,
+      "original_line": 469,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1763010650",
+      "pull_request_review_id": 2309369439,
+      "id": 1763010650,
+      "node_id": "PRRC_kwDOEEET9c5pFWha",
+      "diff_hunk": "@@ -466,13 +466,13 @@ void OptionsDialog::updateDefaultProxyNets()\n     bool has_proxy;\n \n     has_proxy = model->node().getProxy(NET_IPV4, proxy);\n-    ui->proxyReachIPv4->setChecked(has_proxy && proxy.ToString() == proxyIpText);\n+    ui->proxyReachIPv4->setChecked((has_proxy && proxy.ToString() == proxyIpText) && g_reachable_nets.Contains(NET_IPV4));",
+      "path": "src/qt/optionsdialog.cpp",
+      "position": 5,
+      "original_position": 5,
+      "commit_id": "ba58007588a3cd76bc663a67d88c6238a33ae926",
+      "original_commit_id": "ba58007588a3cd76bc663a67d88c6238a33ae926",
+      "in_reply_to_id": 1762813848,
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "> Also, this change is mixing the \"reachable nets\" with the \"which network is accessed via which proxy\" which are two different things. Maybe drop this change altogether?\r\n\r\nI get it, that's correct, but also when `-onlynet` is specified, g_reachable_nets contains only the nets that are specified by each `-onlynet` option (ie so in this case `-onlynet=ipv6`, ipv4 peers won't be reached by the proxy): \r\n\r\nhttps://github.com/bitcoin-core/gui/blob/225718eda89d65a7041c33e1994d3bf7bd71bbdd/src/init.cpp#L1391-L1399\r\n\r\n> It is not that we reach peers via IPv4. We reach IPv4 peers via the proxy. \r\n\r\nI agree, happy to do it here or on a follow-up to get this merged quicker.\r\n\r\n\"Used for reaching peers of type: [ ] IPv4/IPv6/CJDNS [ ] Tor\".\r\n(combine IPv4, IPv6 and CJDNS peers in one checkbox because we always have a single proxy for all those 3 networks, i.e. can't split it to have proxy1 for IPv4 and proxy2 for IPv6).\r\n\r\nAlso when a separate SOCKS5 for Tor is set, the \"[ ] Tor\" should disappear from the proxy above.",
+      "created_at": "2024-09-17T10:41:03Z",
+      "updated_at": "2024-09-17T10:41:04Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/836#discussion_r1763010650",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1763010650"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/836"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 469,
+      "original_line": 469,
+      "side": "RIGHT"
+    }
+  ]
 }
