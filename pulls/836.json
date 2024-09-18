@@ -12,12 +12,12 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/836/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/836/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/ba58007588a3cd76bc663a67d88c6238a33ae926",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/a7d8de94adc3e94ea33d698c307a87ab775c3d20",
     "number": 836,
     "state": "open",
     "locked": false,
-    "maintainer_can_modify": true,
-    "title": "Fix both display issues for IPv6 proxy setup and reachable networks in Options Dialog  (UI only, no functionality impact)",
+    "maintainer_can_modify": false,
+    "title": "Fix display issues for IPv6 proxy setup in Options Dialog  (UI only, no functionality impact)",
     "user": {
       "login": "pablomartin4btc",
       "id": 110166421,
@@ -38,13 +38,13 @@
       "type": "User",
       "site_admin": false
     },
-    "body": "Currently, setting up a proxy (whether SOCKS5 or Tor) with an IPv6 address works correctly via the command line or configuration file in both `bitcoind` and `bitcoin-qt` (also from the UI the ipv6 address gets saved properly in `settings.json`). However, the UI does not reflect this properly, which can create confusion. Since some ISPs and VPNs still experience issues with IPv6, users may mistakenly think there is a problem with Bitcoin Core, when in fact the proxy setup is functioning as expected.\r\n\r\nSo this PR:\r\n- Ensures that the proxy IP is displayed correctly in the UI when using an IPv6 address.\r\n- Fixes the reachable networks check-boxes so they accurately reflect the network configuration.\r\n\r\nNo functionality impact; changes only affect UI display.\r\n\r\n<details>\r\n<summary>Click her to see <b>before</b> and <b>after</b> screenshots.</summary>\r\n\r\n- Before:\r\n\r\n  ![image](https://github.com/user-attachments/assets/073d9022-3174-4eef-8e0c-8c1b73b17226)\r\n\r\n- Once the proxy address display was fixed, the reachable networks display was incorrect:\r\n\r\n  ![image](https://github.com/user-attachments/assets/2d064e40-7f1b-40ec-b514-d2f35988db60)\r\n\r\n- After:\r\n\r\n  ![image](https://github.com/user-attachments/assets/bd182131-4beb-4460-a889-3f576111dafb)\r\n\r\n- If `onlynet` is not specified:\r\n\r\n  ![image](https://github.com/user-attachments/assets/293e4e07-83e5-44ec-8ab3-df9d1f601a6f)\r\n\r\n  \r\n</details>\r\n\r\n---\r\n\r\n<details>\r\n<summary>Test instructions</summary>\r\n\r\n(Ubuntu 22.04)\r\n\r\n1. Start ssh service on localhost.\r\n\r\n   `ssh -D [::1]:1080 -f -C -q -N localhost`\r\n\r\n2. Check that the service is up and running.\r\n\r\n   ```\r\n   ps aux | grep ssh\r\n   pepe    2860289  0.0  0.0  20456  5576 ?        Ss   06:59   0:00 ssh -D [::1]:1080 -f -C -q -N localhost\r\n   ```\r\n\r\n3. Check with `bitcoind` if it works correctly.\r\n\r\n   `bitcoind -onlynet=ipv6 -proxy=[::1]:1080`\r\n   \r\n4. Check for established connections.\r\n\r\n   ```\r\n   netstat -natl |grep 1080\r\n   tcp6       0      0 ::1:1080                :::*                    LISTEN     \r\n   tcp6       0      0 ::1:47610               ::1:1080                ESTABLISHED\r\n   tcp6       0      0 ::1:1080                ::1:47610               ESTABLISHED\r\n   tcp6       0      0 ::1:1080                ::1:47606               TIME_WAIT    \r\n   ```\r\n\r\n   ```./build/src/bitcoin-cli getpeerinfo\r\n   [\r\n      {\r\n        \"id\": 0,\r\n        \"addr\": \"[2a01:4f9:4a:2a07::2]:8333\",\r\n        \"addrbind\": \"[::1]:47638\",\r\n        \"network\": \"ipv6\",\r\n   ...\r\n   ```\r\n\r\n   \r\n   \r\n\r\n5. Stop `bitcoind` and run `bitcoin-qt` adding the corresponding configuration in `settings.json`.\r\n\r\n    ```\r\n   {\r\n       \"onlynet\": \"ipv6\",\r\n       \"proxy\": \"[::1]:1080\",\r\n   }\r\n   ```\r\n   \r\n6. Open the Peers window to check available connections or run `getpeerinfo` on the rpc-console window.\r\n\r\n7. Same can be done for Tor setting up `tor` service (I'll add instructions later) and configuring on its default port 9050 and forcing `\"onlynet\": \"onion\"` to verify easily the net traffic.\r\n\r\n</details>\r\n\r\n---\r\n\r\nThanks @jarolrod and @vasild for your help on validating ipv6 was not broken.",
+    "body": "Currently, setting up a proxy (whether SOCKS5 or Tor) with an IPv6 address works correctly via the command line or configuration file in both `bitcoind` and `bitcoin-qt` (also from the UI the ipv6 address gets saved properly in `settings.json`). However, the UI does not reflect this properly, which can create confusion. Since some ISPs and VPNs still experience issues with IPv6, users may mistakenly think there is a problem with Bitcoin Core, when in fact the proxy setup is functioning as expected.\r\n\r\nSo this PR ensures that the proxy IP is displayed correctly in the UI when using an IPv6 address.\r\n\r\nNo functionality impact; changes only affect UI display.\r\n\r\n<details>\r\n<summary>Click her to see <b>before</b> and <b>after</b> screenshots.</summary>\r\n\r\n- Before:\r\n\r\n  ![image](https://github.com/user-attachments/assets/073d9022-3174-4eef-8e0c-8c1b73b17226)\r\n\r\n- After:\r\n\r\n  ![image](https://github.com/user-attachments/assets/293e4e07-83e5-44ec-8ab3-df9d1f601a6f)\r\n\r\n  \r\n</details>\r\n\r\n---\r\n\r\n<details>\r\n<summary>Test instructions</summary>\r\n\r\n(Ubuntu 22.04)\r\n\r\n1. Start ssh service on localhost.\r\n\r\n   `ssh -D [::1]:1080 -f -C -q -N localhost`\r\n\r\n2. Check that the service is up and running.\r\n\r\n   ```\r\n   ps aux | grep ssh\r\n   pepe    2860289  0.0  0.0  20456  5576 ?        Ss   06:59   0:00 ssh -D [::1]:1080 -f -C -q -N localhost\r\n   ```\r\n\r\n3. Check with `bitcoind` if it works correctly.\r\n\r\n   `bitcoind -onlynet=ipv6 -proxy=[::1]:1080`\r\n   \r\n4. Check for established connections.\r\n\r\n   ```\r\n   netstat -natl |grep 1080\r\n   tcp6       0      0 ::1:1080                :::*                    LISTEN     \r\n   tcp6       0      0 ::1:47610               ::1:1080                ESTABLISHED\r\n   tcp6       0      0 ::1:1080                ::1:47610               ESTABLISHED\r\n   tcp6       0      0 ::1:1080                ::1:47606               TIME_WAIT    \r\n   ```\r\n\r\n   ```./build/src/bitcoin-cli getpeerinfo\r\n   [\r\n      {\r\n        \"id\": 0,\r\n        \"addr\": \"[2a01:4f9:4a:2a07::2]:8333\",\r\n        \"addrbind\": \"[::1]:47638\",\r\n        \"network\": \"ipv6\",\r\n   ...\r\n   ```\r\n\r\n   \r\n   \r\n\r\n5. Stop `bitcoind` and run `bitcoin-qt` adding the corresponding configuration in `settings.json`.\r\n\r\n    ```\r\n   {\r\n       \"onlynet\": \"ipv6\",\r\n       \"proxy\": \"[::1]:1080\",\r\n   }\r\n   ```\r\n   \r\n6. Open the Peers window to check available connections or run `getpeerinfo` on the rpc-console window.\r\n\r\n7. Same can be done for Tor setting up `tor` service (I'll add instructions later) and configuring on its default port 9050 and forcing `\"onlynet\": \"onion\"` to verify easily the net traffic.\r\n\r\n</details>\r\n\r\n---\r\n\r\nThanks @jarolrod and @vasild for your help on validating ipv6 was not broken.",
     "labels": [],
     "created_at": "2024-09-15T18:31:19Z",
-    "updated_at": "2024-09-17T10:41:03Z",
+    "updated_at": "2024-09-18T09:54:55Z",
     "mergeable": true,
-    "mergeable_state": "clean",
-    "merge_commit_sha": "1836d5c4c96b24e19293a68f9f6f3baeb50f6b78",
+    "mergeable_state": "unstable",
+    "merge_commit_sha": "259b70e9da0b83112286509a95d3e624720b50f6",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -52,7 +52,7 @@
     "head": {
       "label": "pablomartin4btc:gui-fix-ipv6-proxy-display",
       "ref": "gui-fix-ipv6-proxy-display",
-      "sha": "ba58007588a3cd76bc663a67d88c6238a33ae926",
+      "sha": "a7d8de94adc3e94ea33d698c307a87ab775c3d20",
       "user": {
         "login": "pablomartin4btc",
         "id": 110166421,
@@ -161,7 +161,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-09-15T22:29:19Z",
+        "pushed_at": "2024-09-18T09:52:39Z",
         "created_at": "2022-09-10T13:37:44Z",
         "updated_at": "2024-09-15T09:17:00Z",
         "license": {
@@ -184,7 +184,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "0c4ff18ee9ec91b424ad26d2643e42566aa45e40",
+      "sha": "69409bc6e55848cf959ed924bcc722997455d76f",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -280,7 +280,7 @@
         "forks_count": 259,
         "stargazers_count": 591,
         "watchers_count": 591,
-        "size": 167277,
+        "size": 167686,
         "default_branch": "master",
         "open_issues_count": 152,
         "is_template": false,
@@ -293,9 +293,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-09-17T08:47:50Z",
+        "pushed_at": "2024-09-18T09:17:32Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-09-17T08:47:53Z",
+        "updated_at": "2024-09-18T09:17:36Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -320,11 +320,11 @@
     },
     "author_association": "CONTRIBUTOR",
     "draft": false,
-    "additions": 11,
-    "deletions": 7,
-    "changed_files": 2,
+    "additions": 8,
+    "deletions": 4,
+    "changed_files": 1,
     "commits": 1,
-    "review_comments": 2,
+    "review_comments": 3,
     "comments": 2
   },
   "events": [
@@ -619,46 +619,6 @@
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/836"
     },
     {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGJhNTgwMDc1ODhhM2NkNzZiYzY2M2E2N2Q4OGM2MjM4YTMzYWU5MjY",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/ba58007588a3cd76bc663a67d88c6238a33ae926",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/ba58007588a3cd76bc663a67d88c6238a33ae926",
-      "tree": {
-        "sha": "5a3baab27ee8c47b59666834b93091dac12a0bb2",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/5a3baab27ee8c47b59666834b93091dac12a0bb2"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/0c4ff18ee9ec91b424ad26d2643e42566aa45e40",
-          "sha": "0c4ff18ee9ec91b424ad26d2643e42566aa45e40",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/0c4ff18ee9ec91b424ad26d2643e42566aa45e40"
-        }
-      ],
-      "message": "gui: Fix network details display in Options Dialog\n\n- Ensured that the proxy IP is displayed correctly in the UI when using an IPv6 address.\n\n- Fixed the checkboxes for reachable networks so they accurately reflect the network configuration.\n\nNo functionality impact; changes only affect UI display.",
-      "committer": {
-        "name": "pablomartin4btc",
-        "email": "pablomartin4btc@gmail.com",
-        "date": "2024-09-15T22:28:58Z"
-      },
-      "author": {
-        "name": "pablomartin4btc",
-        "email": "pablomartin4btc@gmail.com",
-        "date": "2024-09-15T17:17:35Z"
-      },
-      "sha": "ba58007588a3cd76bc663a67d88c6238a33ae926"
-    },
-    {
       "event": "head_ref_force_pushed",
       "id": 14264821751,
       "node_id": "HRFPE_lADOEEET9c6WoJ1KzwAAAANSP-f3",
@@ -755,6 +715,166 @@
       "submitted_at": "2024-09-17T10:16:22Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/836"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 14304745694,
+      "node_id": "HRFPE_lADOEEET9c6WoJ1KzwAAAANUoRje",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/14304745694",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-09-18T09:51:03Z"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 14304764649,
+      "node_id": "HRFPE_lADOEEET9c6WoJ1KzwAAAANUoWLp",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/14304764649",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-09-18T09:52:03Z"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGE3ZDhkZTk0YWRjM2U5NGVhMzNkNjk4YzMwN2E4N2FiNzc1YzNkMjA",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/a7d8de94adc3e94ea33d698c307a87ab775c3d20",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/a7d8de94adc3e94ea33d698c307a87ab775c3d20",
+      "tree": {
+        "sha": "43c3c7088fb8a826d682019ae7cb80dbcb8544c3",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/43c3c7088fb8a826d682019ae7cb80dbcb8544c3"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/0c4ff18ee9ec91b424ad26d2643e42566aa45e40",
+          "sha": "0c4ff18ee9ec91b424ad26d2643e42566aa45e40",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/0c4ff18ee9ec91b424ad26d2643e42566aa45e40"
+        }
+      ],
+      "message": "gui: Fix proxy details display in Options Dialog\n\n- Ensured that the proxy IP is displayed correctly in the UI when using an IPv6 address.\n\nNo functionality impact; changes only affect UI display.",
+      "committer": {
+        "name": "pablomartin4btc",
+        "email": "pablomartin4btc@gmail.com",
+        "date": "2024-09-18T09:52:31Z"
+      },
+      "author": {
+        "name": "pablomartin4btc",
+        "email": "pablomartin4btc@gmail.com",
+        "date": "2024-09-15T17:17:35Z"
+      },
+      "sha": "a7d8de94adc3e94ea33d698c307a87ab775c3d20"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 14304773933,
+      "node_id": "HRFPE_lADOEEET9c6WoJ1KzwAAAANUoYct",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/14304773933",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-09-18T09:52:40Z"
+    },
+    {
+      "event": "renamed",
+      "id": 14304811206,
+      "node_id": "RTE_lADOEEET9c6WoJ1KzwAAAANUohjG",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/14304811206",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-09-18T09:54:56Z",
+      "rename": {
+        "from": "Fix both display issues for IPv6 proxy setup and reachable networks in Options Dialog  (UI only, no functionality impact)",
+        "to": "Fix display issues for IPv6 proxy setup in Options Dialog  (UI only, no functionality impact)"
+      }
     }
   ],
   "comments": [
@@ -765,9 +885,9 @@
       "node_id": "PRRC_kwDOEEET9c5pEmeY",
       "diff_hunk": "@@ -466,13 +466,13 @@ void OptionsDialog::updateDefaultProxyNets()\n     bool has_proxy;\n \n     has_proxy = model->node().getProxy(NET_IPV4, proxy);\n-    ui->proxyReachIPv4->setChecked(has_proxy && proxy.ToString() == proxyIpText);\n+    ui->proxyReachIPv4->setChecked((has_proxy && proxy.ToString() == proxyIpText) && g_reachable_nets.Contains(NET_IPV4));",
       "path": "src/qt/optionsdialog.cpp",
-      "position": 5,
+      "position": null,
       "original_position": 5,
-      "commit_id": "ba58007588a3cd76bc663a67d88c6238a33ae926",
+      "commit_id": "a7d8de94adc3e94ea33d698c307a87ab775c3d20",
       "original_commit_id": "ba58007588a3cd76bc663a67d88c6238a33ae926",
       "in_reply_to_id": null,
       "user": {
@@ -806,7 +926,7 @@
       "start_line": null,
       "original_start_line": null,
       "start_side": null,
-      "line": 469,
+      "line": null,
       "original_line": 469,
       "side": "RIGHT"
     },
@@ -817,9 +937,9 @@
       "node_id": "PRRC_kwDOEEET9c5pFWha",
       "diff_hunk": "@@ -466,13 +466,13 @@ void OptionsDialog::updateDefaultProxyNets()\n     bool has_proxy;\n \n     has_proxy = model->node().getProxy(NET_IPV4, proxy);\n-    ui->proxyReachIPv4->setChecked(has_proxy && proxy.ToString() == proxyIpText);\n+    ui->proxyReachIPv4->setChecked((has_proxy && proxy.ToString() == proxyIpText) && g_reachable_nets.Contains(NET_IPV4));",
       "path": "src/qt/optionsdialog.cpp",
-      "position": 5,
+      "position": null,
       "original_position": 5,
-      "commit_id": "ba58007588a3cd76bc663a67d88c6238a33ae926",
+      "commit_id": "a7d8de94adc3e94ea33d698c307a87ab775c3d20",
       "original_commit_id": "ba58007588a3cd76bc663a67d88c6238a33ae926",
       "in_reply_to_id": 1762813848,
       "user": {
@@ -858,7 +978,59 @@
       "start_line": null,
       "original_start_line": null,
       "start_side": null,
-      "line": 469,
+      "line": null,
+      "original_line": 469,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1764753872",
+      "pull_request_review_id": 2312192555,
+      "id": 1764753872,
+      "node_id": "PRRC_kwDOEEET9c5pMAHQ",
+      "diff_hunk": "@@ -466,13 +466,13 @@ void OptionsDialog::updateDefaultProxyNets()\n     bool has_proxy;\n \n     has_proxy = model->node().getProxy(NET_IPV4, proxy);\n-    ui->proxyReachIPv4->setChecked(has_proxy && proxy.ToString() == proxyIpText);\n+    ui->proxyReachIPv4->setChecked((has_proxy && proxy.ToString() == proxyIpText) && g_reachable_nets.Contains(NET_IPV4));",
+      "path": "src/qt/optionsdialog.cpp",
+      "position": null,
+      "original_position": 5,
+      "commit_id": "a7d8de94adc3e94ea33d698c307a87ab775c3d20",
+      "original_commit_id": "ba58007588a3cd76bc663a67d88c6238a33ae926",
+      "in_reply_to_id": 1762813848,
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "I'll drop the changes on `src/qt/optionsdialog.cpp` as suggested by @vasild, since the approach is incorrect.",
+      "created_at": "2024-09-18T09:45:54Z",
+      "updated_at": "2024-09-18T09:45:54Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/836#discussion_r1764753872",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1764753872"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/836"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": null,
       "original_line": 469,
       "side": "RIGHT"
     }
