@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/836/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/836/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/a7d8de94adc3e94ea33d698c307a87ab775c3d20",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/fee4cba48472239f7a426db62f45c4b6af8e5ef2",
     "number": 836,
     "state": "open",
     "locked": false,
@@ -41,10 +41,10 @@
     "body": "Currently, setting up a proxy (whether SOCKS5 or Tor) with an IPv6 address works correctly via the command line or configuration file in both `bitcoind` and `bitcoin-qt` (also from the UI the ipv6 address gets saved properly in `settings.json`). However, the UI does not reflect this properly, which can create confusion. Since some ISPs and VPNs still experience issues with IPv6, users may mistakenly think there is a problem with Bitcoin Core, when in fact the proxy setup is functioning as expected.\r\n\r\nSo this PR ensures that the proxy IP is displayed correctly in the UI when using an IPv6 address.\r\n\r\nNo functionality impact; changes only affect UI display.\r\n\r\n<details>\r\n<summary>Click her to see <b>before</b> and <b>after</b> screenshots.</summary>\r\n\r\n- Before:\r\n\r\n  ![image](https://github.com/user-attachments/assets/073d9022-3174-4eef-8e0c-8c1b73b17226)\r\n\r\n- After:\r\n\r\n  ![image](https://github.com/user-attachments/assets/293e4e07-83e5-44ec-8ab3-df9d1f601a6f)\r\n\r\n  \r\n</details>\r\n\r\n---\r\n\r\n<details>\r\n<summary>Test instructions</summary>\r\n\r\n(Ubuntu 22.04)\r\n\r\n1. Start ssh service on localhost.\r\n\r\n   `ssh -D [::1]:1080 -f -C -q -N localhost`\r\n\r\n2. Check that the service is up and running.\r\n\r\n   ```\r\n   ps aux | grep ssh\r\n   pepe    2860289  0.0  0.0  20456  5576 ?        Ss   06:59   0:00 ssh -D [::1]:1080 -f -C -q -N localhost\r\n   ```\r\n\r\n3. Check with `bitcoind` if it works correctly.\r\n\r\n   `bitcoind -onlynet=ipv6 -proxy=[::1]:1080`\r\n   \r\n4. Check for established connections.\r\n\r\n   ```\r\n   netstat -natl |grep 1080\r\n   tcp6       0      0 ::1:1080                :::*                    LISTEN     \r\n   tcp6       0      0 ::1:47610               ::1:1080                ESTABLISHED\r\n   tcp6       0      0 ::1:1080                ::1:47610               ESTABLISHED\r\n   tcp6       0      0 ::1:1080                ::1:47606               TIME_WAIT    \r\n   ```\r\n\r\n   ```./build/src/bitcoin-cli getpeerinfo\r\n   [\r\n      {\r\n        \"id\": 0,\r\n        \"addr\": \"[2a01:4f9:4a:2a07::2]:8333\",\r\n        \"addrbind\": \"[::1]:47638\",\r\n        \"network\": \"ipv6\",\r\n   ...\r\n   ```\r\n\r\n   \r\n   \r\n\r\n5. Stop `bitcoind` and run `bitcoin-qt` adding the corresponding configuration in `settings.json`.\r\n\r\n    ```\r\n   {\r\n       \"onlynet\": \"ipv6\",\r\n       \"proxy\": \"[::1]:1080\",\r\n   }\r\n   ```\r\n   \r\n6. Open the Peers window to check available connections or run `getpeerinfo` on the rpc-console window.\r\n\r\n7. Same can be done for Tor setting up `tor` service (I'll add instructions later) and configuring on its default port 9050 and forcing `\"onlynet\": \"onion\"` to verify easily the net traffic.\r\n\r\n</details>\r\n\r\n---\r\n\r\nThanks jarolrod and vasild for your help on validating ipv6 was not broken.",
     "labels": [],
     "created_at": "2024-09-15T18:31:19Z",
-    "updated_at": "2024-09-19T07:13:12Z",
+    "updated_at": "2024-09-19T09:53:43Z",
     "mergeable": true,
-    "mergeable_state": "clean",
-    "merge_commit_sha": "868e18407644b6afc7af0818aaf6776310277293",
+    "mergeable_state": "unstable",
+    "merge_commit_sha": "49d74f8ab2177525dbddd45744ddd61776b5734f",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -52,7 +52,7 @@
     "head": {
       "label": "pablomartin4btc:gui-fix-ipv6-proxy-display",
       "ref": "gui-fix-ipv6-proxy-display",
-      "sha": "a7d8de94adc3e94ea33d698c307a87ab775c3d20",
+      "sha": "fee4cba48472239f7a426db62f45c4b6af8e5ef2",
       "user": {
         "login": "pablomartin4btc",
         "id": 110166421,
@@ -161,7 +161,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-09-18T09:52:39Z",
+        "pushed_at": "2024-09-19T09:52:51Z",
         "created_at": "2022-09-10T13:37:44Z",
         "updated_at": "2024-09-15T09:17:00Z",
         "license": {
@@ -184,7 +184,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "69409bc6e55848cf959ed924bcc722997455d76f",
+      "sha": "9ba56884f625a84dea96912bee51a16b8949c5ba",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -293,9 +293,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-09-18T17:44:06Z",
+        "pushed_at": "2024-09-19T09:42:14Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-09-19T04:09:43Z",
+        "updated_at": "2024-09-19T09:42:18Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -320,12 +320,12 @@
     },
     "author_association": "CONTRIBUTOR",
     "draft": false,
-    "additions": 8,
+    "additions": 9,
     "deletions": 4,
     "changed_files": 1,
     "commits": 1,
-    "review_comments": 4,
-    "comments": 2
+    "review_comments": 5,
+    "comments": 3
   },
   "events": [
     {
@@ -775,46 +775,6 @@
       "created_at": "2024-09-18T09:52:03Z"
     },
     {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGE3ZDhkZTk0YWRjM2U5NGVhMzNkNjk4YzMwN2E4N2FiNzc1YzNkMjA",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/a7d8de94adc3e94ea33d698c307a87ab775c3d20",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/a7d8de94adc3e94ea33d698c307a87ab775c3d20",
-      "tree": {
-        "sha": "43c3c7088fb8a826d682019ae7cb80dbcb8544c3",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/43c3c7088fb8a826d682019ae7cb80dbcb8544c3"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/0c4ff18ee9ec91b424ad26d2643e42566aa45e40",
-          "sha": "0c4ff18ee9ec91b424ad26d2643e42566aa45e40",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/0c4ff18ee9ec91b424ad26d2643e42566aa45e40"
-        }
-      ],
-      "message": "gui: Fix proxy details display in Options Dialog\n\n- Ensured that the proxy IP is displayed correctly in the UI when using an IPv6 address.\n\nNo functionality impact; changes only affect UI display.",
-      "committer": {
-        "name": "pablomartin4btc",
-        "email": "pablomartin4btc@gmail.com",
-        "date": "2024-09-18T09:52:31Z"
-      },
-      "author": {
-        "name": "pablomartin4btc",
-        "email": "pablomartin4btc@gmail.com",
-        "date": "2024-09-15T17:17:35Z"
-      },
-      "sha": "a7d8de94adc3e94ea33d698c307a87ab775c3d20"
-    },
-    {
       "event": "head_ref_force_pushed",
       "id": 14304773933,
       "node_id": "HRFPE_lADOEEET9c6WoJ1KzwAAAANUoYct",
@@ -969,6 +929,216 @@
       "submitted_at": "2024-09-19T07:13:09Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/836"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 14321223218,
+      "node_id": "HRFPE_lADOEEET9c6WoJ1KzwAAAANVnIYy",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/14321223218",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-09-19T09:52:17Z"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGZlZTRjYmE0ODQ3MjIzOWY3YTQyNmRiNjJmNDVjNGI2YWY4ZTVlZjI",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/fee4cba48472239f7a426db62f45c4b6af8e5ef2",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/fee4cba48472239f7a426db62f45c4b6af8e5ef2",
+      "tree": {
+        "sha": "be18bf961cd524f2e97f24bdad9466204b02a1f5",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/be18bf961cd524f2e97f24bdad9466204b02a1f5"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/0c4ff18ee9ec91b424ad26d2643e42566aa45e40",
+          "sha": "0c4ff18ee9ec91b424ad26d2643e42566aa45e40",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/0c4ff18ee9ec91b424ad26d2643e42566aa45e40"
+        }
+      ],
+      "message": "gui: Fix proxy details display in Options Dialog\n\n- Ensured that the proxy IP is displayed correctly in the UI when using an IPv6 address.\n\nNo functionality impact; changes only affect UI display.",
+      "committer": {
+        "name": "pablomartin4btc",
+        "email": "pablomartin4btc@gmail.com",
+        "date": "2024-09-19T09:52:44Z"
+      },
+      "author": {
+        "name": "pablomartin4btc",
+        "email": "pablomartin4btc@gmail.com",
+        "date": "2024-09-15T17:17:35Z"
+      },
+      "sha": "fee4cba48472239f7a426db62f45c4b6af8e5ef2"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 14321231704,
+      "node_id": "HRFPE_lADOEEET9c6WoJ1KzwAAAANVnKdY",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/14321231704",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-09-19T09:52:53Z"
+    },
+    {
+      "event": "commented",
+      "id": 2360536957,
+      "node_id": "IC_kwDOEEET9c6Msu99",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2360536957",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-09-19T09:53:42Z",
+      "updated_at": "2024-09-19T09:53:42Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "Updates:\r\n- Addressed @vasild's feedback.",
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/836#issuecomment-2360536957",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/836"
+    },
+    {
+      "event": "mentioned",
+      "id": 14321243909,
+      "node_id": "MEE_lADOEEET9c6WoJ1KzwAAAANVnNcF",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/14321243909",
+      "actor": {
+        "login": "vasild",
+        "id": 266751,
+        "node_id": "MDQ6VXNlcjI2Njc1MQ==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/266751?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/vasild",
+        "html_url": "https://github.com/vasild",
+        "followers_url": "https://api.github.com/users/vasild/followers",
+        "following_url": "https://api.github.com/users/vasild/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/vasild/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/vasild/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/vasild/subscriptions",
+        "organizations_url": "https://api.github.com/users/vasild/orgs",
+        "repos_url": "https://api.github.com/users/vasild/repos",
+        "events_url": "https://api.github.com/users/vasild/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/vasild/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-09-19T09:53:43Z"
+    },
+    {
+      "event": "subscribed",
+      "id": 14321243925,
+      "node_id": "SE_lADOEEET9c6WoJ1KzwAAAANVnNcV",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/14321243925",
+      "actor": {
+        "login": "vasild",
+        "id": 266751,
+        "node_id": "MDQ6VXNlcjI2Njc1MQ==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/266751?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/vasild",
+        "html_url": "https://github.com/vasild",
+        "followers_url": "https://api.github.com/users/vasild/followers",
+        "following_url": "https://api.github.com/users/vasild/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/vasild/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/vasild/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/vasild/subscriptions",
+        "organizations_url": "https://api.github.com/users/vasild/orgs",
+        "repos_url": "https://api.github.com/users/vasild/repos",
+        "events_url": "https://api.github.com/users/vasild/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/vasild/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-09-19T09:53:43Z"
     }
   ],
   "comments": [
@@ -981,7 +1151,7 @@
       "path": "src/qt/optionsdialog.cpp",
       "position": null,
       "original_position": 5,
-      "commit_id": "a7d8de94adc3e94ea33d698c307a87ab775c3d20",
+      "commit_id": "fee4cba48472239f7a426db62f45c4b6af8e5ef2",
       "original_commit_id": "ba58007588a3cd76bc663a67d88c6238a33ae926",
       "in_reply_to_id": null,
       "user": {
@@ -1033,7 +1203,7 @@
       "path": "src/qt/optionsdialog.cpp",
       "position": null,
       "original_position": 5,
-      "commit_id": "a7d8de94adc3e94ea33d698c307a87ab775c3d20",
+      "commit_id": "fee4cba48472239f7a426db62f45c4b6af8e5ef2",
       "original_commit_id": "ba58007588a3cd76bc663a67d88c6238a33ae926",
       "in_reply_to_id": 1762813848,
       "user": {
@@ -1085,7 +1255,7 @@
       "path": "src/qt/optionsdialog.cpp",
       "position": null,
       "original_position": 5,
-      "commit_id": "a7d8de94adc3e94ea33d698c307a87ab775c3d20",
+      "commit_id": "fee4cba48472239f7a426db62f45c4b6af8e5ef2",
       "original_commit_id": "ba58007588a3cd76bc663a67d88c6238a33ae926",
       "in_reply_to_id": 1762813848,
       "user": {
@@ -1135,9 +1305,9 @@
       "node_id": "PRRC_kwDOEEET9c5pR11p",
       "diff_hunk": "@@ -320,10 +320,14 @@ static ProxySetting ParseProxyString(const QString& proxy)\n     if (proxy.isEmpty()) {\n         return default_val;\n     }\n-    // contains IP at index 0 and port at index 1\n-    QStringList ip_port = GUIUtil::SplitSkipEmptyParts(proxy, \":\");\n-    if (ip_port.size() == 2) {\n-        return {true, ip_port.at(0), ip_port.at(1)};\n+    uint16_t port{0};\n+    std::string hostname;\n+    if (!SplitHostPort(proxy.toStdString(), port, hostname) || port != 0) {",
       "path": "src/qt/optionsmodel.cpp",
-      "position": 10,
+      "position": null,
       "original_position": 10,
-      "commit_id": "a7d8de94adc3e94ea33d698c307a87ab775c3d20",
+      "commit_id": "fee4cba48472239f7a426db62f45c4b6af8e5ef2",
       "original_commit_id": "a7d8de94adc3e94ea33d698c307a87ab775c3d20",
       "in_reply_to_id": null,
       "user": {
@@ -1176,7 +1346,59 @@
       "start_line": null,
       "original_start_line": null,
       "start_side": null,
-      "line": 325,
+      "line": null,
+      "original_line": 325,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1766515133",
+      "pull_request_review_id": 2314993029,
+      "id": 1766515133,
+      "node_id": "PRRC_kwDOEEET9c5pSuG9",
+      "diff_hunk": "@@ -320,10 +320,14 @@ static ProxySetting ParseProxyString(const QString& proxy)\n     if (proxy.isEmpty()) {\n         return default_val;\n     }\n-    // contains IP at index 0 and port at index 1\n-    QStringList ip_port = GUIUtil::SplitSkipEmptyParts(proxy, \":\");\n-    if (ip_port.size() == 2) {\n-        return {true, ip_port.at(0), ip_port.at(1)};\n+    uint16_t port{0};\n+    std::string hostname;\n+    if (!SplitHostPort(proxy.toStdString(), port, hostname) || port != 0) {",
+      "path": "src/qt/optionsmodel.cpp",
+      "position": null,
+      "original_position": 10,
+      "commit_id": "fee4cba48472239f7a426db62f45c4b6af8e5ef2",
+      "original_commit_id": "a7d8de94adc3e94ea33d698c307a87ab775c3d20",
+      "in_reply_to_id": 1766284649,
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "After playing with the function and the tests (`netbase_tests` - `TestSplitHost` - & `net_tests` - `addr.IsValid()`), what you propose looks more correct/ understandable to me as the use cases we were looking at were \"::1:1080\" (which passed to `SplitHostPort()` returns valid/ true and port 0) vs \"[::1]:1080\" (returning true and port 1080).\r\n\r\n> If there is a bug in SplitHostPort() that should be fixed separately.\r\n\r\nI think it's clear to me now that if you have multiple \":\" it's because it's an ipv6 address and in that case you need to use the brackets to separate it from the port as [ipv6]:port otherwise the split will be ignored and the function will return the whole thing as the hostname (check other cases in `TestSplitHost`). Perhaps we can add these 2 cases in the tests so there's no confusion in the future (but there are similar cases with different values).\r\n\r\nBOOST_CHECK(TestSplitHost(\"::1:1080\", \"::1:1080\", 0, true));\r\nBOOST_CHECK(TestSplitHost(\"[::1]:1080\", \"::1\", 1080, true));",
+      "created_at": "2024-09-19T09:40:00Z",
+      "updated_at": "2024-09-19T09:44:51Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/836#discussion_r1766515133",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1766515133"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/836"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": null,
       "original_line": 325,
       "side": "RIGHT"
     }
