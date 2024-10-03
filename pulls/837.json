@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/837/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/837/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/5be34bacf6d07fb73a0cedfb63a384968d538f3e",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/33657e1c958146312e4c68765a92871920401396",
     "number": 837,
     "state": "open",
     "locked": false,
@@ -38,8 +38,17 @@
       "type": "User",
       "site_admin": false
     },
-    "body": "This PR is a part of the transition to Qt 6.\r\n\r\nWhen building with Qt 6 in my dev branch, I encountered a linker error when configured with `-DENABLE_WALLET=OFF`:\r\n```\r\n$ cmake -B build -DENABLE_WALLET=OFF -DBUILD_GUI=ON\r\n$ cmake --build build -t bitcoin-qt\r\n<snip>\r\n[100%] Linking CXX executable bitcoin-qt\r\n/usr/bin/ld: libbitcoinqt.a(rpcconsole.cpp.o): in function `QtPrivate::MetaObjectForType<WalletModel const*, void>::metaObjectFunction(QtPrivate::QMetaTypeInterface const*)':\r\n/usr/include/x86_64-linux-gnu/qt6/QtCore/qmetatype.h:903:(.text._ZN9QtPrivate17MetaObjectForTypeIPK11WalletModelvE18metaObjectFunctionEPKNS_18QMetaTypeInterfaceE[_ZN9QtPrivate17MetaObjectForTypeIPK11WalletModelvE18metaObjectFunctionEPKNS_18QMetaTypeInterfaceE]+0x2b): undefined reference to `WalletModel::staticMetaObject'\r\n/usr/bin/ld: libbitcoinqt.a(rpcconsole.cpp.o): in function `QMetaTypeIdQObject<WalletModel const*, 8>::qt_metatype_id()':\r\n/usr/include/x86_64-linux-gnu/qt6/QtCore/qmetatype.h:1313:(.text._ZZN9QtPrivate16QMetaTypeForTypeIPK11WalletModelE17getLegacyRegisterEvENUlvE_4_FUNEv[_ZZN9QtPrivate16QMetaTypeForTypeIPK11WalletModelE17getLegacyRegisterEvENUlvE_4_FUNEv]+0x53): undefined reference to `WalletModel::staticMetaObject'\r\ncollect2: error: ld returned 1 exit status\r\ngmake[3]: *** [src/qt/CMakeFiles/bitcoin-qt.dir/build.make:154: src/qt/bitcoin-qt] Error 1\r\ngmake[2]: *** [CMakeFiles/Makefile2:2107: src/qt/CMakeFiles/bitcoin-qt.dir/all] Error 2\r\ngmake[1]: *** [CMakeFiles/Makefile2:2114: src/qt/CMakeFiles/bitcoin-qt.dir/rule] Error 2\r\ngmake: *** [Makefile:998: bitcoin-qt] Error 2\r\n```\r\n\r\nThis PR resolves the issue.",
+    "body": "Split from https://github.com/bitcoin/bitcoin/pull/30997.\r\n\r\nWhen building with Qt 6 in my dev branch, I encountered a linker error when configured with `-DENABLE_WALLET=OFF`:\r\n```\r\n$ cmake -B build -DENABLE_WALLET=OFF -DBUILD_GUI=ON\r\n$ cmake --build build -t bitcoin-qt\r\n<snip>\r\n[100%] Linking CXX executable bitcoin-qt\r\n/usr/bin/ld: libbitcoinqt.a(rpcconsole.cpp.o): in function `QtPrivate::MetaObjectForType<WalletModel const*, void>::metaObjectFunction(QtPrivate::QMetaTypeInterface const*)':\r\n/usr/include/x86_64-linux-gnu/qt6/QtCore/qmetatype.h:903:(.text._ZN9QtPrivate17MetaObjectForTypeIPK11WalletModelvE18metaObjectFunctionEPKNS_18QMetaTypeInterfaceE[_ZN9QtPrivate17MetaObjectForTypeIPK11WalletModelvE18metaObjectFunctionEPKNS_18QMetaTypeInterfaceE]+0x2b): undefined reference to `WalletModel::staticMetaObject'\r\n/usr/bin/ld: libbitcoinqt.a(rpcconsole.cpp.o): in function `QMetaTypeIdQObject<WalletModel const*, 8>::qt_metatype_id()':\r\n/usr/include/x86_64-linux-gnu/qt6/QtCore/qmetatype.h:1313:(.text._ZZN9QtPrivate16QMetaTypeForTypeIPK11WalletModelE17getLegacyRegisterEvENUlvE_4_FUNEv[_ZZN9QtPrivate16QMetaTypeForTypeIPK11WalletModelE17getLegacyRegisterEvENUlvE_4_FUNEv]+0x53): undefined reference to `WalletModel::staticMetaObject'\r\ncollect2: error: ld returned 1 exit status\r\ngmake[3]: *** [src/qt/CMakeFiles/bitcoin-qt.dir/build.make:154: src/qt/bitcoin-qt] Error 1\r\ngmake[2]: *** [CMakeFiles/Makefile2:2107: src/qt/CMakeFiles/bitcoin-qt.dir/all] Error 2\r\ngmake[1]: *** [CMakeFiles/Makefile2:2114: src/qt/CMakeFiles/bitcoin-qt.dir/rule] Error 2\r\ngmake: *** [Makefile:998: bitcoin-qt] Error 2\r\n```\r\n\r\nThis PR resolves the issue.",
     "labels": [
+      {
+        "id": 2927906211,
+        "node_id": "MDU6TGFiZWwyOTI3OTA2MjEx",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Wallet",
+        "name": "Wallet",
+        "description": "",
+        "color": "08a781",
+        "default": false
+      },
       {
         "id": 4029125820,
         "node_id": "LA_kwDOEEET9c7wJ5S8",
@@ -51,10 +60,10 @@
       }
     ],
     "created_at": "2024-09-18T17:38:24Z",
-    "updated_at": "2024-10-03T13:31:53Z",
+    "updated_at": "2024-10-03T15:41:01Z",
     "mergeable": true,
-    "mergeable_state": "clean",
-    "merge_commit_sha": "ebd01c9f64873665236a234eb524d0ffbc4e3743",
+    "mergeable_state": "unstable",
+    "merge_commit_sha": "82f5dc85ad28125a19e4b8e9af4a8719ae4a9f91",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -62,7 +71,7 @@
     "head": {
       "label": "hebasto:240918-wallet-header",
       "ref": "240918-wallet-header",
-      "sha": "5be34bacf6d07fb73a0cedfb63a384968d538f3e",
+      "sha": "33657e1c958146312e4c68765a92871920401396",
       "user": {
         "login": "hebasto",
         "id": 32963518,
@@ -171,9 +180,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-09-29T13:23:10Z",
+        "pushed_at": "2024-10-03T15:39:22Z",
         "created_at": "2020-06-18T12:20:51Z",
-        "updated_at": "2024-09-29T10:59:19Z",
+        "updated_at": "2024-10-03T15:37:02Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -194,7 +203,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "69409bc6e55848cf959ed924bcc722997455d76f",
+      "sha": "cfb59da4b3bb34afae467691a3e901f2b5a186f3",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -330,54 +339,14 @@
     },
     "author_association": "MEMBER",
     "draft": false,
-    "additions": 2,
-    "deletions": 0,
-    "changed_files": 1,
+    "additions": 36,
+    "deletions": 1,
+    "changed_files": 2,
     "commits": 1,
-    "review_comments": 2,
+    "review_comments": 3,
     "comments": 3
   },
   "events": [
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDViZTM0YmFjZjZkMDdmYjczYTBjZWRmYjYzYTM4NDk2OGQ1MzhmM2U",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/5be34bacf6d07fb73a0cedfb63a384968d538f3e",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/5be34bacf6d07fb73a0cedfb63a384968d538f3e",
-      "tree": {
-        "sha": "79f08a299f3f5e6beba91c94b26c2a4b6b41af9f",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/79f08a299f3f5e6beba91c94b26c2a4b6b41af9f"
-      },
-      "verification": {
-        "verified": true,
-        "reason": "valid",
-        "payload": "tree 79f08a299f3f5e6beba91c94b26c2a4b6b41af9f\nparent 69409bc6e55848cf959ed924bcc722997455d76f\nauthor Hennadii Stepanov <32963518+hebasto@users.noreply.github.com> 1726680833 +0100\ncommitter Hennadii Stepanov <32963518+hebasto@users.noreply.github.com> 1726680833 +0100\n\nqt: Fix linking when configured with `-DENABLE_WALLET=OFF`\n\nThis change is required for Qt 6, but it is meaningful on its own.\n",
-        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEE0dvyxLlvLev0wWZUQQEIES5+qB8FAmbrDwEACgkQQQEIES5+\nqB9jeA//ZD7mz1YeEAJB4oLD97NpEXO56oqzHecRTO+/S9SUmKUa8yfeZasutJfX\nvdjsx/gn1xiW+IfWvE4tzlYsLqNlTC9nMo2oIX2QbpiaxdA4OJ+32m/H2ENk28PQ\nk/AjLcnYZLAGUjiMr46bXO4ymULM50GB81O9g4KcaQYnU/X0cBRt+am9Z6oCd1DU\nTa1OvOx5LfNhM1OTk0rbhjmmThPifdekigtsKOfiqcl85SAtz73Z0ZmAgQK/0IER\n/osXt0c+lS02Qogd55EtX5A+zjz1EVrzvLiRigbbFEf2nlJLVzUOP3dtIukl6Zdi\nMeQNcZCZ8ZW9+S5ACHOHOHFSIHIfLhHuc5YLPZ0uT49aoUPq6iiXgs9fip7xzByx\n+qnchz9IQPSajRmH10qpp77I5612r4ZDZ6lw1U+Ufxp5hiNo6v4HGCk8NxgeeABZ\n8lL95RtUKHf4B+cSzKj8nEEBJ4gXr0t73oWuqPa3SovS43+uPV4hmXjP+7thmEWg\nIOl4ZYpLollGFBsjkpMDZ4OX+6/LiNE2zJVLRXFFRcgZzJBxCkTQHKkJtKDgOaiJ\n090Q3kXPUA6OESh9V9z7Pw2bh+2l+zxCtonHzORwyK/PBlEhqEznYXVB8HEDJ1Ul\nV+dSwbabNYlz7r2KQwHVtG2Nk4z7WvFh1d+9LIGZDqT3DTCmhko=\n=ydGe\n-----END PGP SIGNATURE-----"
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/69409bc6e55848cf959ed924bcc722997455d76f",
-          "sha": "69409bc6e55848cf959ed924bcc722997455d76f",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/69409bc6e55848cf959ed924bcc722997455d76f"
-        }
-      ],
-      "message": "qt: Fix linking when configured with `-DENABLE_WALLET=OFF`\n\nThis change is required for Qt 6, but it is meaningful on its own.",
-      "committer": {
-        "name": "Hennadii Stepanov",
-        "email": "32963518+hebasto@users.noreply.github.com",
-        "date": "2024-09-18T17:33:53Z"
-      },
-      "author": {
-        "name": "Hennadii Stepanov",
-        "email": "32963518+hebasto@users.noreply.github.com",
-        "date": "2024-09-18T17:33:53Z"
-      },
-      "sha": "5be34bacf6d07fb73a0cedfb63a384968d538f3e"
-    },
     {
       "event": "labeled",
       "id": 14311398425,
@@ -439,9 +408,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-09-18T17:38:27Z",
-      "updated_at": "2024-09-19T23:16:35Z",
+      "updated_at": "2024-10-03T15:39:21Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| ACK | [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/837#pullrequestreview-2316891331) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Stale ACK | [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/837#pullrequestreview-2316891331) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -676,6 +645,108 @@
         "from": "Fix linking when configured with `-DENABLE_WALLET=OFF` (Qt 6)",
         "to": "qt6: Fix linking when configured with `-DENABLE_WALLET=OFF`"
       }
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDMzNjU3ZTFjOTU4MTQ2MzEyZTRjNjg3NjVhOTI4NzE5MjA0MDEzOTY",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/33657e1c958146312e4c68765a92871920401396",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/33657e1c958146312e4c68765a92871920401396",
+      "tree": {
+        "sha": "18dc85b44e9efb99bb5cc921ee3de9f78751fbf8",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/18dc85b44e9efb99bb5cc921ee3de9f78751fbf8"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree 18dc85b44e9efb99bb5cc921ee3de9f78751fbf8\nparent cfb59da4b3bb34afae467691a3e901f2b5a186f3\nauthor Hennadii Stepanov <32963518+hebasto@users.noreply.github.com> 1727963083 +0100\ncommitter Hennadii Stepanov <32963518+hebasto@users.noreply.github.com> 1727969929 +0100\n\nqt: Avoid referencing `WalletModel` class when wallet is disabled\n\nThis change fixes link errors for Qt 6, but it is meaningful on its own.\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEE0dvyxLlvLev0wWZUQQEIES5+qB8FAmb+uokACgkQQQEIES5+\nqB+dlw/9HeT7o4f7JQM4eLoFQLpJ570yWe75ygI4ays11PoJIcMGuH0k1cyiIGqj\nwt3HWvfGSiFtj0iNiqil5B/a+lM40KWJ0ZNK4QOTZ7S1wlvL3O+jyyUd/gLwDb7L\nxM4ekAHlA7qP/ZoIAd0Oe0ZcXYqeV5KGOdDAAFnTPvfZBmXBn/UadmN/lBt3Owrr\ns1ZfJ1CKDEryAvHrsGnWaT2CrW97OwxanfVQTZzsBIo8CO6rsBMAHs4JzdRqBLUu\nxwQEvTcFh06XPAfkqU69EC1i/dgCLB4i1o+vI8GboRp/rD1r8jk/k+c8flQ9CklJ\n15sm1pUya8mZjOQpWHhRvK7mnNAphADjW+mgyY8xcSkGgmcWXSXNbRs4ES1u/Re5\nyOSrMjRE3q5s+Wcqd26SSqcRHz6KglM+PSYzJ3LDl+aMBy0oVfW6ePkghaRNjBYU\nAOM9/VVxvVisLXtjWAX3zrrR+/nWbWNCANdV5+SAp/kFPm5IK3WCcY6MaCBs0wG5\noOjqgyMZFDTZA9U/6XHJluBhKwJk/O+gh7NMLPtvC082B5ktsOadhvqUrOcU5P1A\ng/2VvtrQ7cWpOMAtzhjkneQQ09VcTtlV1Px6Bz/rWfWoRBpo7MzCIxAMaNeiRhoD\n2aYU3wJDZDa02JdyAOnAsiN/5EgmmM8lvxX8uL1Ljb1TGtykKbY=\n=N+aL\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/cfb59da4b3bb34afae467691a3e901f2b5a186f3",
+          "sha": "cfb59da4b3bb34afae467691a3e901f2b5a186f3",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/cfb59da4b3bb34afae467691a3e901f2b5a186f3"
+        }
+      ],
+      "message": "qt: Avoid referencing `WalletModel` class when wallet is disabled\n\nThis change fixes link errors for Qt 6, but it is meaningful on its own.",
+      "committer": {
+        "name": "Hennadii Stepanov",
+        "email": "32963518+hebasto@users.noreply.github.com",
+        "date": "2024-10-03T15:38:49Z"
+      },
+      "author": {
+        "name": "Hennadii Stepanov",
+        "email": "32963518+hebasto@users.noreply.github.com",
+        "date": "2024-10-03T13:44:43Z"
+      },
+      "sha": "33657e1c958146312e4c68765a92871920401396"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 14506554122,
+      "node_id": "HRFPE_lADOEEET9c6XDoLWzwAAAANgqHMK",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/14506554122",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-10-03T15:39:18Z"
+    },
+    {
+      "event": "labeled",
+      "id": 14506566081,
+      "node_id": "LE_lADOEEET9c6XDoLWzwAAAANgqKHB",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/14506566081",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-10-03T15:40:13Z",
+      "label": {
+        "name": "Wallet",
+        "color": "08a781"
+      }
     }
   ],
   "comments": [
@@ -688,7 +759,7 @@
       "path": "src/qt/rpcconsole.cpp",
       "position": 6,
       "original_position": 6,
-      "commit_id": "5be34bacf6d07fb73a0cedfb63a384968d538f3e",
+      "commit_id": "33657e1c958146312e4c68765a92871920401396",
       "original_commit_id": "5be34bacf6d07fb73a0cedfb63a384968d538f3e",
       "in_reply_to_id": null,
       "user": {
@@ -740,7 +811,7 @@
       "path": "src/qt/rpcconsole.cpp",
       "position": 6,
       "original_position": 6,
-      "commit_id": "5be34bacf6d07fb73a0cedfb63a384968d538f3e",
+      "commit_id": "33657e1c958146312e4c68765a92871920401396",
       "original_commit_id": "5be34bacf6d07fb73a0cedfb63a384968d538f3e",
       "in_reply_to_id": 1766029532,
       "user": {
@@ -771,6 +842,58 @@
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1767704977"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/837"
+        }
+      },
+      "start_line": 19,
+      "original_start_line": 19,
+      "start_side": "RIGHT",
+      "line": 21,
+      "original_line": 21,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1786455836",
+      "pull_request_review_id": 2345989656,
+      "id": 1786455836,
+      "node_id": "PRRC_kwDOEEET9c5qeycc",
+      "diff_hunk": "@@ -16,7 +16,9 @@\n #include <qt/guiutil.h>\n #include <qt/peertablesortproxy.h>\n #include <qt/platformstyle.h>\n+#ifdef ENABLE_WALLET\n #include <qt/walletmodel.h>\n+#endif // ENABLE_WALLET",
+      "path": "src/qt/rpcconsole.cpp",
+      "position": 6,
+      "original_position": 6,
+      "commit_id": "33657e1c958146312e4c68765a92871920401396",
+      "original_commit_id": "5be34bacf6d07fb73a0cedfb63a384968d538f3e",
+      "in_reply_to_id": 1766029532,
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "Reworked.",
+      "created_at": "2024-10-03T15:41:01Z",
+      "updated_at": "2024-10-03T15:41:01Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/837#discussion_r1786455836",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1786455836"
         },
         "pull_request": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/837"
