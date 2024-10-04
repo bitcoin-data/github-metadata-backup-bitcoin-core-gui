@@ -12,12 +12,12 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/841/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/841/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/3f34c04628f1cb0f59afb5176dae3a0e8d414d7d",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/770c3a93614dbe3668339f35b45e41b7e4659b7c",
     "number": 841,
     "state": "open",
     "locked": false,
     "maintainer_can_modify": true,
-    "title": "bugfix: Decouple WalletModel from RPCExecutor",
+    "title": "Decouple WalletModel from RPCExecutor",
     "user": {
       "login": "furszy",
       "id": 5377650,
@@ -39,12 +39,21 @@
       "site_admin": false
     },
     "body": "A more comprehensive fix for the issue described in #837.\r\n\r\nSince the `WalletModel` class is unavailable when compiling without wallet support\r\n`(-DENABLE_WALLET=0)`, the RPC executor class should not be coupled to it.\r\nThis decoupling ensures GUI compatibility with builds that omit wallet support.\r\n\r\nThis also drops an extra `#ifdef ENABLE_WALLET` block which is always good.",
-    "labels": [],
+    "labels": [
+      {
+        "id": 5353934559,
+        "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
+        "name": "CI failed",
+        "color": "ededed",
+        "default": false
+      }
+    ],
     "created_at": "2024-10-04T13:57:18Z",
-    "updated_at": "2024-10-04T14:49:30Z",
+    "updated_at": "2024-10-04T15:44:10Z",
     "mergeable": true,
     "mergeable_state": "unstable",
-    "merge_commit_sha": "a6d74dec8a5f811d0e81a8dae18e653962f1241b",
+    "merge_commit_sha": "31fd96c56154ac0a49692aa45bdd2c2d99657ca3",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -52,7 +61,7 @@
     "head": {
       "label": "furszy:2024_gui_rpconsole_walletmodel_dependency",
       "ref": "2024_gui_rpconsole_walletmodel_dependency",
-      "sha": "3f34c04628f1cb0f59afb5176dae3a0e8d414d7d",
+      "sha": "770c3a93614dbe3668339f35b45e41b7e4659b7c",
       "user": {
         "login": "furszy",
         "id": 5377650,
@@ -161,7 +170,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-10-04T13:55:41Z",
+        "pushed_at": "2024-10-04T15:37:26Z",
         "created_at": "2022-05-09T14:34:00Z",
         "updated_at": "2023-09-08T14:09:02Z",
         "license": {
@@ -325,49 +334,9 @@
     "changed_files": 2,
     "commits": 1,
     "review_comments": 0,
-    "comments": 2
+    "comments": 4
   },
   "events": [
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDNmMzRjMDQ2MjhmMWNiMGY1OWFmYjUxNzZkYWUzYTBlOGQ0MTRkN2Q",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/3f34c04628f1cb0f59afb5176dae3a0e8d414d7d",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/3f34c04628f1cb0f59afb5176dae3a0e8d414d7d",
-      "tree": {
-        "sha": "e9b2f72e5f7cc6eef999b880cd5547076cf0c8f7",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/e9b2f72e5f7cc6eef999b880cd5547076cf0c8f7"
-      },
-      "verification": {
-        "verified": true,
-        "reason": "valid",
-        "payload": "tree e9b2f72e5f7cc6eef999b880cd5547076cf0c8f7\nparent 51c698161b54402f9a8302c9a36f28a4db01fc4f\nauthor furszy <matiasfurszyfer@protonmail.com> 1728049707 -0300\ncommitter furszy <matiasfurszyfer@protonmail.com> 1728050111 -0300\n\ngui: bugfix, decouple WalletModel from RPCExecutor\n\nSince the `WalletModel` class is unavailable when compiling\nwithout wallet support `(-DENABLE_WALLET=0)`, the RPC executor\nclass should not be coupled to it. This decoupling ensures GUI\ncompatibility with builds that omit wallet support.\n",
-        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEEA++0fqwRHQpmlZfQXdI8zGhqpiMFAmb/878ACgkQXdI8zGhq\npiOG7xAAm/FIp2okiXwyfZLLhLuesxEN+sB03NY/ZC7cUhmur2tvC8D4Y1WZY6Xp\ndfbp8fyyv3dZwGWRkDlRDEMqo9b0qmUvcDyw3ICrQGEiZnX+t0B/JFuaF4iw5BlI\n+GC4K+MV/j5n5bYnCiX5/qRD26R90WFLQhbQ9frORp+D08/8rX0HWKkL/P5I7cuf\n3z4CBEg4RBkfX3mggDDrXaRoPQwfXVG0l6Ljlf6oXL7NAHQdt/wabI23qKvCD6IB\nMEktcmga48cPK+ZIhHry20mkxrWRRJ3edNKjq99ciKgSdaPb2FLOPgTiJeMQXV4C\nSyQEaP2dnQdcOian1OSWucY6gZVuWD3008/v8XnlWcrUuVb3W8PArCAkVnooFsbD\nJCLd8NDD9T36IlkN8nIuryuvvlwjr5HGQ4bfmv8PD+VGAQFWPgHlMuq9H8KKz7LT\nS+3fzzlN2vNim9fiH/cpvQyUTyrLeXhsgWlLbxziGxTGPHzj/4fNPBz1GxAKIc/t\n2UGxXAPiYMFcggmc1afM39X36iwspCQ4aukVn7dPDvzj9ry6SpobSGW2ZMmdNjUN\nqz9+x6qWhET4MexHeEq1NkAm8mkDL08CZkRcp7iTH/XXc7ZQq2q/XeeNvkm1mdCN\ncyu+01yz8WODOMtO+EsoJmvPLiWj8f5lGwJwZnoZRT3864e4EmM=\n=nbNc\n-----END PGP SIGNATURE-----"
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/51c698161b54402f9a8302c9a36f28a4db01fc4f",
-          "sha": "51c698161b54402f9a8302c9a36f28a4db01fc4f",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/51c698161b54402f9a8302c9a36f28a4db01fc4f"
-        }
-      ],
-      "message": "gui: bugfix, decouple WalletModel from RPCExecutor\n\nSince the `WalletModel` class is unavailable when compiling\nwithout wallet support `(-DENABLE_WALLET=0)`, the RPC executor\nclass should not be coupled to it. This decoupling ensures GUI\ncompatibility with builds that omit wallet support.",
-      "committer": {
-        "name": "furszy",
-        "email": "matiasfurszyfer@protonmail.com",
-        "date": "2024-10-04T13:55:11Z"
-      },
-      "author": {
-        "name": "furszy",
-        "email": "matiasfurszyfer@protonmail.com",
-        "date": "2024-10-04T13:48:27Z"
-      },
-      "sha": "3f34c04628f1cb0f59afb5176dae3a0e8d414d7d"
-    },
     {
       "event": "commented",
       "id": 2393775482,
@@ -544,6 +513,307 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/841#issuecomment-2393888538",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/841"
+    },
+    {
+      "event": "labeled",
+      "id": 14520958043,
+      "node_id": "LE_lADOEEET9c6Y-PELzwAAAANhhDxb",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/14520958043",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-10-04T15:26:38Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
+      }
+    },
+    {
+      "event": "commented",
+      "id": 2393958953,
+      "node_id": "IC_kwDOEEET9c6OsOop",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2393958953",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-10-04T15:26:39Z",
+      "updated_at": "2024-10-04T15:26:39Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "<!--85328a0da195eb286784d51f73fa0af9-->\n🚧 At least one of the CI tasks failed.\n<sub>Debug: https://github.com/bitcoin-core/gui/runs/31084944010</sub>\n\n<details><summary>Hints</summary>\n\nTry to run the tests locally, according to the documentation. However, a CI failure may still\nhappen due to a number of reasons, for example:\n\n* Possibly due to a silent merge conflict (the changes in this pull request being\nincompatible with the current code in the target branch). If so, make sure to rebase on the latest\ncommit of the target branch.\n\n* A sanitizer issue, which can only be found by compiling with the sanitizer and running the\n  affected test.\n\n* An intermittent issue.\n\nLeave a comment here, if you need help tracking down a confusing failure.\n\n</details>\n",
+      "user": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/841#issuecomment-2393958953",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/841"
+    },
+    {
+      "event": "commented",
+      "id": 2393970280,
+      "node_id": "IC_kwDOEEET9c6OsRZo",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2393970280",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-10-04T15:32:58Z",
+      "updated_at": "2024-10-04T15:32:58Z",
+      "author_association": "MEMBER",
+      "body": "@furszy 3f34c04628f1cb0f59afb5176dae3a0e8d414d7d \"gui: bugfix, decouple WalletModel from RPCExecutor\"\r\n\r\nMaybe remove \"bugfix\" from the commit message, as there is no reproducible bug in the master branch?",
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/841#issuecomment-2393970280",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/841"
+    },
+    {
+      "event": "mentioned",
+      "id": 14521032195,
+      "node_id": "MEE_lADOEEET9c6Y-PELzwAAAANhhV4D",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/14521032195",
+      "actor": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-10-04T15:32:59Z"
+    },
+    {
+      "event": "subscribed",
+      "id": 14521032216,
+      "node_id": "SE_lADOEEET9c6Y-PELzwAAAANhhV4Y",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/14521032216",
+      "actor": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-10-04T15:32:59Z"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDc3MGMzYTkzNjE0ZGJlMzY2ODMzOWYzNWI0NWU0MWI3ZTQ2NTliN2M",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/770c3a93614dbe3668339f35b45e41b7e4659b7c",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/770c3a93614dbe3668339f35b45e41b7e4659b7c",
+      "tree": {
+        "sha": "e9b2f72e5f7cc6eef999b880cd5547076cf0c8f7",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/e9b2f72e5f7cc6eef999b880cd5547076cf0c8f7"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree e9b2f72e5f7cc6eef999b880cd5547076cf0c8f7\nparent 51c698161b54402f9a8302c9a36f28a4db01fc4f\nauthor furszy <matiasfurszyfer@protonmail.com> 1728049707 -0300\ncommitter furszy <matiasfurszyfer@protonmail.com> 1728056240 -0300\n\ngui: decouple WalletModel from RPCExecutor\n\nSince the `WalletModel` class is unavailable when compiling\nwithout wallet support `(-DENABLE_WALLET=0)`, the RPC executor\nclass should not be coupled to it. This decoupling ensures GUI\ncompatibility with builds that omit wallet support.\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEEA++0fqwRHQpmlZfQXdI8zGhqpiMFAmcAC7AACgkQXdI8zGhq\npiOqqw/9HVBvCrtotlW2w7yy0pyRoKywHX6Ovkr1nBvgeL3LzPwyzA5WOubw2swJ\nfaqehofI1A8zPyhugBw3EOb5GOPZdVxicTN0JUqXK+hLc87Bhrc1gdF2LaVNzqs9\n7ib8ON4By60gK3C20Td0co7nG9FWyepPawXrVZS1sEciaQSQSrlaaVHbPUg6PXVA\nWgmHi+Fznj09l40AWkRYY/tOgFS7WtFpRHzAehMb+0M1dfwKVfPt6XsZtbYL3t1P\nntTc8rwCqh0xaXBvx/kobYsNwXX0lt/4PhfT1H7E9Td//u4KA4bRM3Y8SeCXOdZb\n3CyhJ9sRW7Pv6SHsOsi97VsIQ6cHoL9fniSbhWyITJb9cRN6V8cEPkb7hp4bgXQy\nESy+fLs5qAO6LUh0TT1TUECyYViyRCNJ+6b/UiHTuv7dbHmgbWBb+QnG+3Y4UeT8\n8lTH7Xc0Ls/y74mD3QesemyuwifF5Y9okHDpcZFgInSJDInSXOAZ+Dw5ZxoQemeo\npNbg9gHbEpaEmWkeHhM0i+AbGXhzvOghjVPC+rke1PbIVYIDvlW6mDT2Dz0GFIPb\n3/6Y1SkGgqHREHbNxAAEwBTdXTr8jw0vtpwOXLG0zx/TncuN9e0Ll70R5SXcmM8p\nrg7Paperai8KIA+vVy/QJuln3+cl/jzerQDQF7H2xw1LNzg4s60=\n=A4Et\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/51c698161b54402f9a8302c9a36f28a4db01fc4f",
+          "sha": "51c698161b54402f9a8302c9a36f28a4db01fc4f",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/51c698161b54402f9a8302c9a36f28a4db01fc4f"
+        }
+      ],
+      "message": "gui: decouple WalletModel from RPCExecutor\n\nSince the `WalletModel` class is unavailable when compiling\nwithout wallet support `(-DENABLE_WALLET=0)`, the RPC executor\nclass should not be coupled to it. This decoupling ensures GUI\ncompatibility with builds that omit wallet support.",
+      "committer": {
+        "name": "furszy",
+        "email": "matiasfurszyfer@protonmail.com",
+        "date": "2024-10-04T15:37:20Z"
+      },
+      "author": {
+        "name": "furszy",
+        "email": "matiasfurszyfer@protonmail.com",
+        "date": "2024-10-04T13:48:27Z"
+      },
+      "sha": "770c3a93614dbe3668339f35b45e41b7e4659b7c"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 14521083531,
+      "node_id": "HRFPE_lADOEEET9c6Y-PELzwAAAANhhiaL",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/14521083531",
+      "actor": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-10-04T15:37:28Z"
+    },
+    {
+      "event": "renamed",
+      "id": 14521162639,
+      "node_id": "RTE_lADOEEET9c6Y-PELzwAAAANhh1uP",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/14521162639",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-10-04T15:44:10Z",
+      "rename": {
+        "from": "bugfix: Decouple WalletModel from RPCExecutor",
+        "to": "Decouple WalletModel from RPCExecutor"
+      }
     }
   ],
   "comments": []
