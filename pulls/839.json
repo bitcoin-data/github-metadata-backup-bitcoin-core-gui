@@ -60,7 +60,7 @@
       }
     ],
     "created_at": "2024-09-29T13:22:52Z",
-    "updated_at": "2024-10-04T09:08:02Z",
+    "updated_at": "2024-10-07T07:57:55Z",
     "closed_at": "2024-10-04T09:05:20Z",
     "mergeable_state": "unknown",
     "merged_at": "2024-10-04T09:05:19Z",
@@ -167,7 +167,7 @@
         "forks_count": 2,
         "stargazers_count": 5,
         "watchers_count": 5,
-        "size": 164552,
+        "size": 164716,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -180,9 +180,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-10-04T09:08:02Z",
+        "pushed_at": "2024-10-06T18:27:28Z",
         "created_at": "2020-06-18T12:20:51Z",
-        "updated_at": "2024-10-04T09:05:31Z",
+        "updated_at": "2024-10-06T18:27:32Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -299,7 +299,7 @@
         "forks_count": 261,
         "stargazers_count": 594,
         "watchers_count": 594,
-        "size": 163509,
+        "size": 163668,
         "default_branch": "master",
         "open_issues_count": 153,
         "is_template": false,
@@ -312,9 +312,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-10-04T09:05:18Z",
+        "pushed_at": "2024-10-06T18:27:20Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-10-04T09:05:22Z",
+        "updated_at": "2024-10-06T18:27:23Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -343,7 +343,7 @@
     "deletions": 7,
     "changed_files": 5,
     "commits": 2,
-    "review_comments": 3,
+    "review_comments": 4,
     "comments": 2
   },
   "events": [
@@ -1056,6 +1056,41 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-10-04T09:08:02Z"
+    },
+    {
+      "event": "reviewed",
+      "id": 2351189450,
+      "node_id": "PRR_kwDOEEET9c6MJE3K",
+      "url": null,
+      "actor": null,
+      "commit_id": "5625840c11db2065a1c8d8de3babb6466eda04d4",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "CONTRIBUTOR",
+      "user": {
+        "login": "maflcko",
+        "id": 6399679,
+        "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/839#pullrequestreview-2351189450",
+      "submitted_at": "2024-10-07T07:57:55Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/839"
     }
   ],
   "comments": [
@@ -1213,6 +1248,58 @@
       "start_side": null,
       "line": 133,
       "original_line": 133,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1789716060",
+      "pull_request_review_id": 2351189450,
+      "id": 1789716060,
+      "node_id": "PRRC_kwDOEEET9c5qrOZc",
+      "diff_hunk": "@@ -58,7 +58,7 @@ int main(int argc, char* argv[])\n     gArgs.ForceSetArg(\"-natpmp\", \"0\");\n \n     std::string error;\n-    if (!gArgs.ReadConfigFiles(error, true)) QWARN(error.c_str());\n+    if (!gArgs.ReadConfigFiles(error, true)) qWarning() << error.c_str();",
+      "path": "src/qt/test/test_main.cpp",
+      "position": 5,
+      "original_position": 5,
+      "commit_id": "5625840c11db2065a1c8d8de3babb6466eda04d4",
+      "original_commit_id": "5625840c11db2065a1c8d8de3babb6466eda04d4",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "maflcko",
+        "id": 6399679,
+        "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "body": "Is the `c_str()` still needed?",
+      "created_at": "2024-10-07T07:56:01Z",
+      "updated_at": "2024-10-07T07:57:55Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/839#discussion_r1789716060",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1789716060"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/839"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 61,
+      "original_line": 61,
       "side": "RIGHT"
     }
   ]
