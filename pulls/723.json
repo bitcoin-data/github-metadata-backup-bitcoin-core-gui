@@ -15,7 +15,7 @@
     "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/d6519a80eaa79371616053906723e74c6f06cc1a",
     "number": 723,
     "state": "closed",
-    "locked": false,
+    "locked": true,
     "maintainer_can_modify": false,
     "title": "Add warnings for non-active addresses in receive tab and address book",
     "user": {
@@ -60,7 +60,7 @@
       }
     ],
     "created_at": "2023-03-24T18:47:32Z",
-    "updated_at": "2023-10-12T14:51:01Z",
+    "updated_at": "2024-10-11T20:50:21Z",
     "closed_at": "2023-10-12T14:51:01Z",
     "mergeable": false,
     "mergeable_state": "dirty",
@@ -296,12 +296,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 279,
-        "stargazers_count": 510,
-        "watchers_count": 510,
-        "size": 152541,
+        "forks_count": 261,
+        "stargazers_count": 594,
+        "watchers_count": 594,
+        "size": 164130,
         "default_branch": "master",
-        "open_issues_count": 158,
+        "open_issues_count": 152,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -312,9 +312,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-10-12T10:00:18Z",
+        "pushed_at": "2024-10-11T12:46:45Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2023-10-06T07:53:38Z",
+        "updated_at": "2024-10-11T12:46:49Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -400,696 +400,6 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#issuecomment-1483261585",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/723"
-    },
-    {
-      "event": "cross-referenced",
-      "id": null,
-      "node_id": null,
-      "url": null,
-      "actor": {
-        "login": "DrahtBot",
-        "id": 39886733,
-        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
-        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/DrahtBot",
-        "html_url": "https://github.com/DrahtBot",
-        "followers_url": "https://api.github.com/users/DrahtBot/followers",
-        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
-        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
-        "repos_url": "https://api.github.com/users/DrahtBot/repos",
-        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": "2023-03-24T21:45:23Z",
-      "updated_at": "2023-03-24T21:45:23Z",
-      "source": {
-        "issue": {
-          "id": 1476703608,
-          "node_id": "PR_kwDOEEET9c5EWcpr",
-          "url": "https://api.github.com/repos/bitcoin-core/gui/issues/684",
-          "repository_url": "https://api.github.com/repos/bitcoin-core/gui",
-          "labels_url": "https://api.github.com/repos/bitcoin-core/gui/issues/684/labels%7B/name%7D",
-          "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/684/comments",
-          "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/684/events",
-          "html_url": "https://github.com/bitcoin-core/gui/pull/684",
-          "number": 684,
-          "state": "open",
-          "state_reason": null,
-          "title": "Improve 'Requested Payments History' Multiselect",
-          "body": "The \"Requested payments history\" list has somewhat broken functionality. You can only select contiguous rows. Sorting the list unexpectedly modifies any selection you made:\r\n\r\n_Initially sorted by date and multiple items selected:_\r\n\r\n<img width=\"425\" alt=\"image\" src=\"https://user-images.githubusercontent.com/116917595/205660046-eb7c83d4-2e23-4f09-a9df-270d42008e2a.png\">\r\n\r\n_Now sort by label ->_ \r\n\r\n<img width=\"429\" alt=\"image\" src=\"https://user-images.githubusercontent.com/116917595/205660133-948a94bd-63de-4f02-9499-f93433cbe48f.png\">\r\n\r\n\r\nThe context menu appears when multiple rows are selected despite the actions only affecting the first in the list:\r\n\r\n<img width=\"468\" alt=\"image\" src=\"https://user-images.githubusercontent.com/116917595/205660674-3dadd88c-0e31-4eab-b73a-a7b32cfd6f89.png\">\r\n\r\n\r\n\r\nThese issues are all corrected.\r\n\r\nFirst, a `QSortFilterProxyModel` is inserted to take care of sorting instead of sorting the model manually. (This is the same approach taken for all other sortable lists in the GUI.) This also preserves any selections the user had made prior to sorting. Second, the selection model is changed to `ExtendedSelection` to allow for non-contiguous multi-select. ~~Third, the context menu is disabled when multiple rows are selected, as none of the context menu options operate on multiple selected items.~~ Update: now the context menu operates on multiple rows. It will copy the data to the clipboard separated by newlines.\r\n\r\n<img width=\"527\" alt=\"image\" src=\"https://user-images.githubusercontent.com/116917595/205338278-54ef7826-163e-4800-813b-f60c4d2b1679.png\">\r\n",
-          "user": {
-            "login": "john-moffett",
-            "id": 116917595,
-            "node_id": "U_kgDOBvgFWw",
-            "avatar_url": "https://avatars.githubusercontent.com/u/116917595?v=4",
-            "gravatar_id": "",
-            "url": "https://api.github.com/users/john-moffett",
-            "html_url": "https://github.com/john-moffett",
-            "followers_url": "https://api.github.com/users/john-moffett/followers",
-            "following_url": "https://api.github.com/users/john-moffett/following%7B/other_user%7D",
-            "gists_url": "https://api.github.com/users/john-moffett/gists%7B/gist_id%7D",
-            "starred_url": "https://api.github.com/users/john-moffett/starred%7B/owner%7D%7B/repo%7D",
-            "subscriptions_url": "https://api.github.com/users/john-moffett/subscriptions",
-            "organizations_url": "https://api.github.com/users/john-moffett/orgs",
-            "repos_url": "https://api.github.com/users/john-moffett/repos",
-            "events_url": "https://api.github.com/users/john-moffett/events%7B/privacy%7D",
-            "received_events_url": "https://api.github.com/users/john-moffett/received_events",
-            "type": "User",
-            "site_admin": false
-          },
-          "labels": [
-            {
-              "id": 2964264316,
-              "node_id": "MDU6TGFiZWwyOTY0MjY0MzE2",
-              "url": "https://api.github.com/repos/bitcoin-core/gui/labels/UX",
-              "name": "UX",
-              "description": "All about \"how to get things done\"",
-              "color": "0052cc",
-              "default": false
-            }
-          ],
-          "assignees": [],
-          "author_association": "CONTRIBUTOR",
-          "locked": false,
-          "comments": 6,
-          "pull_request": {
-            "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/684",
-            "html_url": "https://github.com/bitcoin-core/gui/pull/684",
-            "diff_url": "https://github.com/bitcoin-core/gui/pull/684.diff",
-            "patch_url": "https://github.com/bitcoin-core/gui/pull/684.patch"
-          },
-          "created_at": "2022-12-05T14:30:50Z",
-          "updated_at": "2023-09-20T03:13:18Z"
-        },
-        "type": "issue"
-      }
-    },
-    {
-      "event": "cross-referenced",
-      "id": null,
-      "node_id": null,
-      "url": null,
-      "actor": {
-        "login": "DrahtBot",
-        "id": 39886733,
-        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
-        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/DrahtBot",
-        "html_url": "https://github.com/DrahtBot",
-        "followers_url": "https://api.github.com/users/DrahtBot/followers",
-        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
-        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
-        "repos_url": "https://api.github.com/users/DrahtBot/repos",
-        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": "2023-03-24T22:06:49Z",
-      "updated_at": "2023-03-24T22:06:49Z",
-      "source": {
-        "issue": {
-          "id": 987226916,
-          "node_id": "MDExOlB1bGxSZXF1ZXN0NzI2MzQyOTYy",
-          "url": "https://api.github.com/repos/bitcoin-core/gui/issues/417",
-          "repository_url": "https://api.github.com/repos/bitcoin-core/gui",
-          "labels_url": "https://api.github.com/repos/bitcoin-core/gui/issues/417/labels%7B/name%7D",
-          "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/417/comments",
-          "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/417/events",
-          "html_url": "https://github.com/bitcoin-core/gui/pull/417",
-          "number": 417,
-          "state": "closed",
-          "state_reason": null,
-          "title": "Ditch wallet model juggling",
-          "body": "Instantiate `WalletModel` in the main thread - avoids calling`setParent` and `moveToThread`.\r\n\r\nAlso ensures loading (fetching transactions, addresses, etc) still occurs in the background thread.",
-          "user": {
-            "login": "promag",
-            "id": 3534524,
-            "node_id": "MDQ6VXNlcjM1MzQ1MjQ=",
-            "avatar_url": "https://avatars.githubusercontent.com/u/3534524?v=4",
-            "gravatar_id": "",
-            "url": "https://api.github.com/users/promag",
-            "html_url": "https://github.com/promag",
-            "followers_url": "https://api.github.com/users/promag/followers",
-            "following_url": "https://api.github.com/users/promag/following%7B/other_user%7D",
-            "gists_url": "https://api.github.com/users/promag/gists%7B/gist_id%7D",
-            "starred_url": "https://api.github.com/users/promag/starred%7B/owner%7D%7B/repo%7D",
-            "subscriptions_url": "https://api.github.com/users/promag/subscriptions",
-            "organizations_url": "https://api.github.com/users/promag/orgs",
-            "repos_url": "https://api.github.com/users/promag/repos",
-            "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
-            "received_events_url": "https://api.github.com/users/promag/received_events",
-            "type": "User",
-            "site_admin": false
-          },
-          "labels": [
-            {
-              "id": 2145506980,
-              "node_id": "MDU6TGFiZWwyMTQ1NTA2OTgw",
-              "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Needs%20rebase",
-              "name": "Needs rebase",
-              "description": "",
-              "color": "cccccc",
-              "default": false
-            },
-            {
-              "id": 2335257565,
-              "node_id": "MDU6TGFiZWwyMzM1MjU3NTY1",
-              "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Up%20for%20grabs",
-              "name": "Up for grabs",
-              "description": "",
-              "color": "99a810",
-              "default": false
-            },
-            {
-              "id": 2927906211,
-              "node_id": "MDU6TGFiZWwyOTI3OTA2MjEx",
-              "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Wallet",
-              "name": "Wallet",
-              "description": "",
-              "color": "08a781",
-              "default": false
-            }
-          ],
-          "assignees": [],
-          "author_association": "CONTRIBUTOR",
-          "locked": false,
-          "comments": 14,
-          "pull_request": {
-            "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/417",
-            "html_url": "https://github.com/bitcoin-core/gui/pull/417",
-            "diff_url": "https://github.com/bitcoin-core/gui/pull/417.diff",
-            "patch_url": "https://github.com/bitcoin-core/gui/pull/417.patch"
-          },
-          "closed_at": "2023-09-22T17:46:18Z",
-          "created_at": "2021-09-02T22:41:48Z",
-          "updated_at": "2023-09-22T17:46:27Z"
-        },
-        "type": "issue"
-      }
-    },
-    {
-      "event": "cross-referenced",
-      "id": null,
-      "node_id": null,
-      "url": null,
-      "actor": {
-        "login": "DrahtBot",
-        "id": 39886733,
-        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
-        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/DrahtBot",
-        "html_url": "https://github.com/DrahtBot",
-        "followers_url": "https://api.github.com/users/DrahtBot/followers",
-        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
-        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
-        "repos_url": "https://api.github.com/users/DrahtBot/repos",
-        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": "2023-03-24T23:23:33Z",
-      "updated_at": "2023-03-24T23:23:33Z",
-      "source": {
-        "issue": {
-          "id": 1614263156,
-          "node_id": "PR_kwDOABII585LhNqA",
-          "url": "https://api.github.com/repos/bitcoin/bitcoin/issues/27224",
-          "repository_url": "https://api.github.com/repos/bitcoin/bitcoin",
-          "labels_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/27224/labels%7B/name%7D",
-          "comments_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/27224/comments",
-          "events_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/27224/events",
-          "html_url": "https://github.com/bitcoin/bitcoin/pull/27224",
-          "number": 27224,
-          "state": "closed",
-          "state_reason": null,
-          "title": "refactor: Remove CAddressBookData::destdata",
-          "body": "This is cleanup that doesn't change external behavior. Benefits of the cleanup are:\r\n\r\n- Removes awkward `StringMap` intermediate representation for wallet address metadata.\r\n- Simplifies `CWallet`, deals with used address and received request serialization in `walletdb.cpp` instead of higher level wallet code\r\n- Adds test coverage and documentation\r\n\r\nThis PR doesn't change externally observable behavior. Internally, the only change in behavior is that `EraseDestData` deletes rows directly from the database because they are no longer stored in memory. This is more direct and efficient because it uses a single lookup and scan instead of multiple lookups.\r\n\r\nMotivation for this cleanup is making changes like #18550, #18192, #13756 easier to reason about and less likely to result in unintended behavior and bugs\r\n\r\n---\r\n\r\nThis PR is a rebased copy of #18608. For some reason that PR is locked and couldn't be reopened or commented on.\r\n\r\nThis PR is an alternative to #27215 with differences described in https://github.com/bitcoin/bitcoin/pull/27215#pullrequestreview-1329028143\r\n",
-          "user": {
-            "login": "ryanofsky",
-            "id": 7133040,
-            "node_id": "MDQ6VXNlcjcxMzMwNDA=",
-            "avatar_url": "https://avatars.githubusercontent.com/u/7133040?v=4",
-            "gravatar_id": "",
-            "url": "https://api.github.com/users/ryanofsky",
-            "html_url": "https://github.com/ryanofsky",
-            "followers_url": "https://api.github.com/users/ryanofsky/followers",
-            "following_url": "https://api.github.com/users/ryanofsky/following%7B/other_user%7D",
-            "gists_url": "https://api.github.com/users/ryanofsky/gists%7B/gist_id%7D",
-            "starred_url": "https://api.github.com/users/ryanofsky/starred%7B/owner%7D%7B/repo%7D",
-            "subscriptions_url": "https://api.github.com/users/ryanofsky/subscriptions",
-            "organizations_url": "https://api.github.com/users/ryanofsky/orgs",
-            "repos_url": "https://api.github.com/users/ryanofsky/repos",
-            "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
-            "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
-            "type": "User",
-            "site_admin": false
-          },
-          "labels": [
-            {
-              "id": 135961,
-              "node_id": "MDU6TGFiZWwxMzU5NjE=",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Refactoring",
-              "name": "Refactoring",
-              "color": "E6F6D6",
-              "default": false
-            }
-          ],
-          "assignees": [],
-          "author_association": "CONTRIBUTOR",
-          "locked": false,
-          "comments": 6,
-          "pull_request": {
-            "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/27224",
-            "html_url": "https://github.com/bitcoin/bitcoin/pull/27224",
-            "diff_url": "https://github.com/bitcoin/bitcoin/pull/27224.diff",
-            "patch_url": "https://github.com/bitcoin/bitcoin/pull/27224.patch"
-          },
-          "closed_at": "2023-05-01T12:17:51Z",
-          "created_at": "2023-03-07T21:51:45Z",
-          "updated_at": "2023-05-01T17:17:42Z"
-        },
-        "type": "issue"
-      }
-    },
-    {
-      "event": "cross-referenced",
-      "id": null,
-      "node_id": null,
-      "url": null,
-      "actor": {
-        "login": "DrahtBot",
-        "id": 39886733,
-        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
-        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/DrahtBot",
-        "html_url": "https://github.com/DrahtBot",
-        "followers_url": "https://api.github.com/users/DrahtBot/followers",
-        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
-        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
-        "repos_url": "https://api.github.com/users/DrahtBot/repos",
-        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": "2023-03-24T23:25:29Z",
-      "updated_at": "2023-03-24T23:25:29Z",
-      "source": {
-        "issue": {
-          "id": 1612315619,
-          "node_id": "PR_kwDOABII585LaolD",
-          "url": "https://api.github.com/repos/bitcoin/bitcoin/issues/27217",
-          "repository_url": "https://api.github.com/repos/bitcoin/bitcoin",
-          "labels_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/27217/labels%7B/name%7D",
-          "comments_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/27217/comments",
-          "events_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/27217/events",
-          "html_url": "https://github.com/bitcoin/bitcoin/pull/27217",
-          "number": 27217,
-          "state": "closed",
-          "state_reason": null,
-          "title": "wallet: Replace use of purpose strings with an enum",
-          "body": "Instead of storing and passing around fixed strings for the purpose of an address, use an enum.",
-          "user": {
-            "login": "achow101",
-            "id": 3782274,
-            "node_id": "MDQ6VXNlcjM3ODIyNzQ=",
-            "avatar_url": "https://avatars.githubusercontent.com/u/3782274?v=4",
-            "gravatar_id": "",
-            "url": "https://api.github.com/users/achow101",
-            "html_url": "https://github.com/achow101",
-            "followers_url": "https://api.github.com/users/achow101/followers",
-            "following_url": "https://api.github.com/users/achow101/following%7B/other_user%7D",
-            "gists_url": "https://api.github.com/users/achow101/gists%7B/gist_id%7D",
-            "starred_url": "https://api.github.com/users/achow101/starred%7B/owner%7D%7B/repo%7D",
-            "subscriptions_url": "https://api.github.com/users/achow101/subscriptions",
-            "organizations_url": "https://api.github.com/users/achow101/orgs",
-            "repos_url": "https://api.github.com/users/achow101/repos",
-            "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
-            "received_events_url": "https://api.github.com/users/achow101/received_events",
-            "type": "User",
-            "site_admin": false
-          },
-          "labels": [
-            {
-              "id": 149424,
-              "node_id": "MDU6TGFiZWwxNDk0MjQ=",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Wallet",
-              "name": "Wallet",
-              "color": "08a781",
-              "default": false
-            }
-          ],
-          "assignees": [],
-          "author_association": "MEMBER",
-          "locked": false,
-          "comments": 6,
-          "pull_request": {
-            "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/27217",
-            "html_url": "https://github.com/bitcoin/bitcoin/pull/27217",
-            "diff_url": "https://github.com/bitcoin/bitcoin/pull/27217.diff",
-            "patch_url": "https://github.com/bitcoin/bitcoin/pull/27217.patch"
-          },
-          "closed_at": "2023-04-12T09:31:28Z",
-          "created_at": "2023-03-06T22:28:58Z",
-          "updated_at": "2023-04-13T11:05:04Z"
-        },
-        "type": "issue"
-      }
-    },
-    {
-      "event": "cross-referenced",
-      "id": null,
-      "node_id": null,
-      "url": null,
-      "actor": {
-        "login": "DrahtBot",
-        "id": 39886733,
-        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
-        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/DrahtBot",
-        "html_url": "https://github.com/DrahtBot",
-        "followers_url": "https://api.github.com/users/DrahtBot/followers",
-        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
-        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
-        "repos_url": "https://api.github.com/users/DrahtBot/repos",
-        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": "2023-03-25T03:39:48Z",
-      "updated_at": "2023-03-25T03:39:48Z",
-      "source": {
-        "issue": {
-          "id": 1306015823,
-          "node_id": "PR_kwDOABII5847eEyL",
-          "url": "https://api.github.com/repos/bitcoin/bitcoin/issues/25620",
-          "repository_url": "https://api.github.com/repos/bitcoin/bitcoin",
-          "labels_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/25620/labels%7B/name%7D",
-          "comments_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/25620/comments",
-          "events_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/25620/events",
-          "html_url": "https://github.com/bitcoin/bitcoin/pull/25620",
-          "number": 25620,
-          "state": "closed",
-          "state_reason": null,
-          "title": "wallet: Introduce AddressBookManager",
-          "body": "Finishing the encapsulation work started in #25337. Please review https://github.com/bitcoin/bitcoin/pull/26836 first.\r\n\r\n#### Context\r\n\r\nWe are currently using the address book for different purposes and features in the wallet such us:\r\n\r\n1) Store and retrieve own receive addresses with a label.\r\n2) Store and retrieve external addresses with a label.\r\n3) Store and retrieve payment requests.\r\n4) Mark addresses/destinations as 'used' if they appear on the blockchain (part of the “avoid re-use” feature).\r\n5) Know whether an output is a change or not based on the encoded script.\r\n\r\nSome of these points aren’t well known by many because this code has been spread and obfuscated across the wallet’s sources. (and created in a Frankenstein style).\r\n\r\n#### PR Goals\r\n\r\nEncapsulate the address book functionalities into its own `AddressBookManager` class, so we are able to distinguish properly the address book responsibilities and capabilities.\r\n\r\nBe able to decouple the address book dependency on the wallet’s main mutex (up to a certain point, because we are still using the same db connection).\r\n\r\nClean up the wallet sources further.\r\n\r\nBe able to unit/fuzz test the address book manager implementation isolated from the wallet flows.\r\n\r\nAnd create a new class that can be easily upgraded/replaced, and even different implementations can be used in parallel in different local wallets, by just providing a different manager instance to the wallet in the constructor.\r\n\r\n#### Next steps\r\n\r\nAfter this PR, will be working on improve the ‘change output’ flow which, at least for now, is strictly connected to this process (goal will be to remove the strict dependency).\r\n\r\n#### Pending work (still under WIP, almost there)\r\n\r\n* [ ] Add manager class description.\r\n* [ ] Clean CAddressBookData.\r\n* [ ] Cover the class with unit tests.\r\n* [ ] Double-check commits order.\r\n* [ ] Add addrbook purposes enum.\r\n* [ ] Make cs_addrbook RecursiveMutex a Mutex?\r\n",
-          "user": {
-            "login": "furszy",
-            "id": 5377650,
-            "node_id": "MDQ6VXNlcjUzNzc2NTA=",
-            "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
-            "gravatar_id": "",
-            "url": "https://api.github.com/users/furszy",
-            "html_url": "https://github.com/furszy",
-            "followers_url": "https://api.github.com/users/furszy/followers",
-            "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
-            "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
-            "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
-            "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
-            "organizations_url": "https://api.github.com/users/furszy/orgs",
-            "repos_url": "https://api.github.com/users/furszy/repos",
-            "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
-            "received_events_url": "https://api.github.com/users/furszy/received_events",
-            "type": "User",
-            "site_admin": false
-          },
-          "labels": [
-            {
-              "id": 149424,
-              "node_id": "MDU6TGFiZWwxNDk0MjQ=",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Wallet",
-              "name": "Wallet",
-              "color": "08a781",
-              "default": false
-            },
-            {
-              "id": 955867938,
-              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
-              "name": "Needs rebase",
-              "description": "",
-              "color": "cccccc",
-              "default": false
-            }
-          ],
-          "assignees": [],
-          "author_association": "MEMBER",
-          "locked": false,
-          "comments": 12,
-          "pull_request": {
-            "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/25620",
-            "html_url": "https://github.com/bitcoin/bitcoin/pull/25620",
-            "diff_url": "https://github.com/bitcoin/bitcoin/pull/25620.diff",
-            "patch_url": "https://github.com/bitcoin/bitcoin/pull/25620.patch"
-          },
-          "closed_at": "2023-09-20T17:33:59Z",
-          "created_at": "2022-07-15T13:06:04Z",
-          "updated_at": "2023-09-20T17:34:15Z"
-        },
-        "type": "issue"
-      }
-    },
-    {
-      "event": "cross-referenced",
-      "id": null,
-      "node_id": null,
-      "url": null,
-      "actor": {
-        "login": "DrahtBot",
-        "id": 39886733,
-        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
-        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/DrahtBot",
-        "html_url": "https://github.com/DrahtBot",
-        "followers_url": "https://api.github.com/users/DrahtBot/followers",
-        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
-        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
-        "repos_url": "https://api.github.com/users/DrahtBot/repos",
-        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": "2023-03-25T05:17:21Z",
-      "updated_at": "2023-03-25T05:17:21Z",
-      "source": {
-        "issue": {
-          "id": 782505298,
-          "node_id": "MDExOlB1bGxSZXF1ZXN0NTUyMDQ5MjI1",
-          "url": "https://api.github.com/repos/bitcoin/bitcoin/issues/20892",
-          "repository_url": "https://api.github.com/repos/bitcoin/bitcoin",
-          "labels_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/20892/labels%7B/name%7D",
-          "comments_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/20892/comments",
-          "events_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/20892/events",
-          "html_url": "https://github.com/bitcoin/bitcoin/pull/20892",
-          "number": 20892,
-          "state": "closed",
-          "state_reason": null,
-          "title": "tests: Run both descriptor and legacy tests within a single test invocation",
-          "body": "Instead of having the tests only do one type or the other, depending on command line arguments, these tests should be running with both types of wallets. Any test that calls `add_wallet_options` will be run for each wallet type that it specifies a wallet option for if none are give in the command line. If a particular wallet is specified with `--legacy-wallet` or `--descriptors`, the options are still respected.",
-          "user": {
-            "login": "achow101",
-            "id": 3782274,
-            "node_id": "MDQ6VXNlcjM3ODIyNzQ=",
-            "avatar_url": "https://avatars.githubusercontent.com/u/3782274?v=4",
-            "gravatar_id": "",
-            "url": "https://api.github.com/users/achow101",
-            "html_url": "https://github.com/achow101",
-            "followers_url": "https://api.github.com/users/achow101/followers",
-            "following_url": "https://api.github.com/users/achow101/following%7B/other_user%7D",
-            "gists_url": "https://api.github.com/users/achow101/gists%7B/gist_id%7D",
-            "starred_url": "https://api.github.com/users/achow101/starred%7B/owner%7D%7B/repo%7D",
-            "subscriptions_url": "https://api.github.com/users/achow101/subscriptions",
-            "organizations_url": "https://api.github.com/users/achow101/orgs",
-            "repos_url": "https://api.github.com/users/achow101/repos",
-            "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
-            "received_events_url": "https://api.github.com/users/achow101/received_events",
-            "type": "User",
-            "site_admin": false
-          },
-          "labels": [
-            {
-              "id": 62963516,
-              "node_id": "MDU6TGFiZWw2Mjk2MzUxNg==",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Tests",
-              "name": "Tests",
-              "color": "d4c5f9",
-              "default": false
-            },
-            {
-              "id": 955867938,
-              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
-              "name": "Needs rebase",
-              "description": "",
-              "color": "cccccc",
-              "default": false
-            }
-          ],
-          "assignees": [],
-          "author_association": "MEMBER",
-          "locked": false,
-          "comments": 20,
-          "pull_request": {
-            "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/20892",
-            "html_url": "https://github.com/bitcoin/bitcoin/pull/20892",
-            "diff_url": "https://github.com/bitcoin/bitcoin/pull/20892.diff",
-            "patch_url": "https://github.com/bitcoin/bitcoin/pull/20892.patch"
-          },
-          "closed_at": "2023-10-05T19:56:01Z",
-          "created_at": "2021-01-09T03:50:55Z",
-          "updated_at": "2023-10-05T19:56:01Z"
-        },
-        "type": "issue"
-      }
-    },
-    {
-      "event": "cross-referenced",
-      "id": null,
-      "node_id": null,
-      "url": null,
-      "actor": {
-        "login": "DrahtBot",
-        "id": 39886733,
-        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
-        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/DrahtBot",
-        "html_url": "https://github.com/DrahtBot",
-        "followers_url": "https://api.github.com/users/DrahtBot/followers",
-        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
-        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
-        "repos_url": "https://api.github.com/users/DrahtBot/repos",
-        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": "2023-03-25T05:35:50Z",
-      "updated_at": "2023-03-25T05:35:50Z",
-      "source": {
-        "issue": {
-          "id": 217385623,
-          "node_id": "MDExOlB1bGxSZXF1ZXN0MTEyODQ2NDMx",
-          "url": "https://api.github.com/repos/bitcoin/bitcoin/issues/10102",
-          "repository_url": "https://api.github.com/repos/bitcoin/bitcoin",
-          "labels_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/10102/labels%7B/name%7D",
-          "comments_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/10102/comments",
-          "events_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/10102/events",
-          "html_url": "https://github.com/bitcoin/bitcoin/pull/10102",
-          "number": 10102,
-          "state": "open",
-          "state_reason": null,
-          "title": "Multiprocess bitcoin",
-          "body": "This PR is part of the [process separation project](https://github.com/bitcoin/bitcoin/projects/10).\r\n\r\n---\r\n\r\nThis PR adds an `--enable-multiprocess` configure option which builds new `bitcoin-node`, `bitcoin-wallet`, and `bitcoin-gui` executables with relevant functionality isolated into different processes. See [doc/design/multiprocess.md](https://github.com/ryanofsky/bitcoin/tree/pr/ipc/doc/design/multiprocess.md) for usage details and future plans.\r\n\r\nThe change is implemented by adding a new [`Init`](https://github.com/ryanofsky/bitcoin/blob/pr/ipc/src/interfaces/init.h) interface that spawns new wallet and node subprocesses that can be controlled over a [socketpair](http://man7.org/linux/man-pages/man2/socketpair.2.html) by calling [`Node`](https://github.com/ryanofsky/bitcoin/blob/pr/ipc/src/interfaces/node.h), [`Wallet`](https://github.com/ryanofsky/bitcoin/blob/pr/ipc/src/interfaces/wallet.h), and [`ChainClient`](https://github.com/ryanofsky/bitcoin/blob/pr/ipc/src/interfaces/chain.h) methods. When running with split processes, you can see the IPC messages going back and forth in `-debug=1` output. Followup PR's #19460 and #19461 add `-ipcbind` and `-ipcconnect` options that allow more flexibility in how processes are connected.\r\n\r\nThe IPC protocol used is Cap'n Proto, but this could be swapped out for another protocol. Cap'n Proto types and libraries are only accessed in the [src/ipc/capnp/](https://github.com/ryanofsky/bitcoin/tree/pr/ipc/src/ipc/capnp) directory, and not in any public headers or other parts of bitcoin code.\r\n\r\n---\r\n\r\nSlides from a presentation describing this change are available on [google drive](https://docs.google.com/presentation/d/1AeJ-7gD-dItUgs5yH-HoEzLvXaEWe_2ZiGUUxYIXcws/edit). Demo code used in the presentation was from an older version this PR (tag [ipc.21](https://github.com/ryanofsky/bitcoin/releases/tag/pr%2Fipc.21), [commits](https://github.com/ryanofsky/bitcoin/compare/master...pr/ipc.21)).\r\n",
-          "user": {
-            "login": "ryanofsky",
-            "id": 7133040,
-            "node_id": "MDQ6VXNlcjcxMzMwNDA=",
-            "avatar_url": "https://avatars.githubusercontent.com/u/7133040?v=4",
-            "gravatar_id": "",
-            "url": "https://api.github.com/users/ryanofsky",
-            "html_url": "https://github.com/ryanofsky",
-            "followers_url": "https://api.github.com/users/ryanofsky/followers",
-            "following_url": "https://api.github.com/users/ryanofsky/following%7B/other_user%7D",
-            "gists_url": "https://api.github.com/users/ryanofsky/gists%7B/gist_id%7D",
-            "starred_url": "https://api.github.com/users/ryanofsky/starred%7B/owner%7D%7B/repo%7D",
-            "subscriptions_url": "https://api.github.com/users/ryanofsky/subscriptions",
-            "organizations_url": "https://api.github.com/users/ryanofsky/orgs",
-            "repos_url": "https://api.github.com/users/ryanofsky/repos",
-            "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
-            "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
-            "type": "User",
-            "site_admin": false
-          },
-          "labels": [
-            {
-              "id": 135946,
-              "node_id": "MDU6TGFiZWwxMzU5NDY=",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/GUI",
-              "name": "GUI",
-              "color": "02d7e1",
-              "default": false
-            },
-            {
-              "id": 98279177,
-              "node_id": "MDU6TGFiZWw5ODI3OTE3Nw==",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/RPC/REST/ZMQ",
-              "name": "RPC/REST/ZMQ",
-              "color": "0052cc",
-              "default": false
-            },
-            {
-              "id": 955867938,
-              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
-              "name": "Needs rebase",
-              "description": "",
-              "color": "cccccc",
-              "default": false
-            }
-          ],
-          "assignees": [],
-          "author_association": "CONTRIBUTOR",
-          "locked": false,
-          "comments": 82,
-          "pull_request": {
-            "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/10102",
-            "html_url": "https://github.com/bitcoin/bitcoin/pull/10102",
-            "diff_url": "https://github.com/bitcoin/bitcoin/pull/10102.diff",
-            "patch_url": "https://github.com/bitcoin/bitcoin/pull/10102.patch"
-          },
-          "created_at": "2017-03-27T21:48:26Z",
-          "updated_at": "2023-10-02T11:16:53Z"
-        },
-        "type": "issue"
-      }
     },
     {
       "event": "labeled",
@@ -1311,7 +621,7 @@
       "commit_id": "e4e7466c8621ddb5c6dd7434a34764eabe065208",
       "commit_url": null,
       "created_at": null,
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "Quick GitHub review, will swing back and build/test.\r\n\r\nA couple thoughts:\r\n\r\n- `GetWarnings` is already the name of a method in `src/warnings`; perhaps use a slightly different name.\r\n- Watch out for missing brackets in conditionals as mentioned in the developer notes; we require brackets with conditionals over one line due to CVE-2014-1266 (the Apple \"goto fail\" vulnerability, see also https://dwheeler.com/essays/apple-goto-fail).\r\n- Consider notating pure/getter-like or need-to-check-returned-value methods with `[[nodiscard]]`. As written recently here in the repo by martinus, a [[nodiscard]] attribute is most useful in two cases:\r\n    - if a function has no effects beyond returning a certain result, i.e. is pure. If the result is not used, the call is certainly useless.\r\n    - if the return value must be checked, e.g. for a C-like interface that returns error codes instead of throwing.\r\n",
       "user": {
         "login": "jonatack",
@@ -1337,205 +647,6 @@
       "submitted_at": "2023-04-04T20:38:19Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/723"
-    },
-    {
-      "event": "cross-referenced",
-      "id": null,
-      "node_id": null,
-      "url": null,
-      "actor": {
-        "login": "DrahtBot",
-        "id": 39886733,
-        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
-        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/DrahtBot",
-        "html_url": "https://github.com/DrahtBot",
-        "followers_url": "https://api.github.com/users/DrahtBot/followers",
-        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
-        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
-        "repos_url": "https://api.github.com/users/DrahtBot/repos",
-        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": "2023-04-05T06:53:12Z",
-      "updated_at": "2023-04-05T06:53:12Z",
-      "source": {
-        "issue": {
-          "id": 1522557576,
-          "node_id": "PR_kwDOABII585G0Yzm",
-          "url": "https://api.github.com/repos/bitcoin/bitcoin/issues/26836",
-          "repository_url": "https://api.github.com/repos/bitcoin/bitcoin",
-          "labels_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/26836/labels%7B/name%7D",
-          "comments_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/26836/comments",
-          "events_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/26836/events",
-          "html_url": "https://github.com/bitcoin/bitcoin/pull/26836",
-          "number": 26836,
-          "state": "open",
-          "state_reason": null,
-          "title": "wallet: simplify addressbook migration process",
-          "body": "Decoupled the initial commits from #25620 and went further over few other points.\r\n\r\n1) Finish [#25337](https://github.com/bitcoin/bitcoin/pull/25337) goal of encapsulating the addressbook code into the wallet class.\r\n2) Code improvements to `CWallet::DelAddressBook` and `Wallet::SetAddrBookWithDB` methods.\r\n3) DB batch operations and flow simplification for the address book migration process.\r\n4) Expanded coverage for address book migration process.\r\n\r\nThis will also allow decoupling the address book dependency on the wallet’s main mutex for reading. RPC commands such `getaddressbylabel` and similars will be able to run `cs_wallet` lock free.",
-          "user": {
-            "login": "furszy",
-            "id": 5377650,
-            "node_id": "MDQ6VXNlcjUzNzc2NTA=",
-            "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
-            "gravatar_id": "",
-            "url": "https://api.github.com/users/furszy",
-            "html_url": "https://github.com/furszy",
-            "followers_url": "https://api.github.com/users/furszy/followers",
-            "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
-            "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
-            "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
-            "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
-            "organizations_url": "https://api.github.com/users/furszy/orgs",
-            "repos_url": "https://api.github.com/users/furszy/repos",
-            "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
-            "received_events_url": "https://api.github.com/users/furszy/received_events",
-            "type": "User",
-            "site_admin": false
-          },
-          "labels": [
-            {
-              "id": 149424,
-              "node_id": "MDU6TGFiZWwxNDk0MjQ=",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Wallet",
-              "name": "Wallet",
-              "color": "08a781",
-              "default": false
-            },
-            {
-              "id": 955867938,
-              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
-              "name": "Needs rebase",
-              "description": "",
-              "color": "cccccc",
-              "default": false
-            }
-          ],
-          "assignees": [],
-          "author_association": "MEMBER",
-          "locked": false,
-          "comments": 9,
-          "pull_request": {
-            "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/26836",
-            "html_url": "https://github.com/bitcoin/bitcoin/pull/26836",
-            "diff_url": "https://github.com/bitcoin/bitcoin/pull/26836.diff",
-            "patch_url": "https://github.com/bitcoin/bitcoin/pull/26836.patch"
-          },
-          "created_at": "2023-01-06T13:05:27Z",
-          "updated_at": "2023-09-20T16:18:21Z"
-        },
-        "type": "issue"
-      }
-    },
-    {
-      "event": "cross-referenced",
-      "id": null,
-      "node_id": null,
-      "url": null,
-      "actor": {
-        "login": "pinheadmz",
-        "id": 2084648,
-        "node_id": "MDQ6VXNlcjIwODQ2NDg=",
-        "avatar_url": "https://avatars.githubusercontent.com/u/2084648?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/pinheadmz",
-        "html_url": "https://github.com/pinheadmz",
-        "followers_url": "https://api.github.com/users/pinheadmz/followers",
-        "following_url": "https://api.github.com/users/pinheadmz/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/pinheadmz/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/pinheadmz/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/pinheadmz/subscriptions",
-        "organizations_url": "https://api.github.com/users/pinheadmz/orgs",
-        "repos_url": "https://api.github.com/users/pinheadmz/repos",
-        "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": "2023-04-05T16:01:20Z",
-      "updated_at": "2023-04-05T16:01:20Z",
-      "source": {
-        "issue": {
-          "id": 1612242532,
-          "node_id": "PR_kwDOABII585LaYwx",
-          "url": "https://api.github.com/repos/bitcoin/bitcoin/issues/27216",
-          "repository_url": "https://api.github.com/repos/bitcoin/bitcoin",
-          "labels_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/27216/labels%7B/name%7D",
-          "comments_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/27216/comments",
-          "events_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/27216/events",
-          "html_url": "https://github.com/bitcoin/bitcoin/pull/27216",
-          "number": 27216,
-          "state": "closed",
-          "state_reason": null,
-          "title": "wallet: Add wallet method to detect if a key is \"active\"",
-          "body": "This is a first step towards closing https://github.com/bitcoin/bitcoin/issues/3314 by implementing functions in Wallet and ScriptPubKeyMan that determine if a key is \"active\" meaning \"derived from a currently active scriptpubkey manager.\" \r\n\r\nA key is NOT \"active\" if:\r\n- It was imported using an `import{privkey, address, pubkey}` rpc\r\n- It was derived before the wallet was encrypted (which replaces the active SPKM(s))\r\n\r\nUsers should be informed that these keys may be compromised:\r\n- Some other wallet generated the private key and may still have a copy\r\n- The private key was stored on disk unencrypted\r\n\r\nThis PR adds a new field `isactive` to rpc `getaddressinfo`, follow-up work will be adding this to the GUI address book as well, [something like this](https://github.com/bitcoin/bitcoin/issues/3314#issuecomment-81567665). The original issue also recommends sweeping all value from keys in this category, I think that feature can be discussed in the future as a follow-up.\r\n\r\nThis PR also patches `PKDescriptor` from https://github.com/bitcoin/bitcoin/pull/22051 where matching public keys were not returned.\r\n\r\nFollow-up PR for the GUI: https://github.com/bitcoin-core/gui/pull/723",
-          "user": {
-            "login": "pinheadmz",
-            "id": 2084648,
-            "node_id": "MDQ6VXNlcjIwODQ2NDg=",
-            "avatar_url": "https://avatars.githubusercontent.com/u/2084648?v=4",
-            "gravatar_id": "",
-            "url": "https://api.github.com/users/pinheadmz",
-            "html_url": "https://github.com/pinheadmz",
-            "followers_url": "https://api.github.com/users/pinheadmz/followers",
-            "following_url": "https://api.github.com/users/pinheadmz/following%7B/other_user%7D",
-            "gists_url": "https://api.github.com/users/pinheadmz/gists%7B/gist_id%7D",
-            "starred_url": "https://api.github.com/users/pinheadmz/starred%7B/owner%7D%7B/repo%7D",
-            "subscriptions_url": "https://api.github.com/users/pinheadmz/subscriptions",
-            "organizations_url": "https://api.github.com/users/pinheadmz/orgs",
-            "repos_url": "https://api.github.com/users/pinheadmz/repos",
-            "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
-            "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
-            "type": "User",
-            "site_admin": false
-          },
-          "labels": [
-            {
-              "id": 149424,
-              "node_id": "MDU6TGFiZWwxNDk0MjQ=",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Wallet",
-              "name": "Wallet",
-              "color": "08a781",
-              "default": false
-            },
-            {
-              "id": 955867938,
-              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
-              "name": "Needs rebase",
-              "description": "",
-              "color": "cccccc",
-              "default": false
-            }
-          ],
-          "assignees": [],
-          "author_association": "MEMBER",
-          "locked": false,
-          "comments": 16,
-          "pull_request": {
-            "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/27216",
-            "html_url": "https://github.com/bitcoin/bitcoin/pull/27216",
-            "diff_url": "https://github.com/bitcoin/bitcoin/pull/27216.diff",
-            "patch_url": "https://github.com/bitcoin/bitcoin/pull/27216.patch"
-          },
-          "closed_at": "2023-10-12T14:50:36Z",
-          "created_at": "2023-03-06T21:36:57Z",
-          "updated_at": "2023-10-12T14:50:36Z"
-        },
-        "type": "issue"
-      }
     },
     {
       "event": "head_ref_force_pushed",
@@ -1966,88 +1077,6 @@
       "label": {
         "name": "Needs rebase",
         "color": "cccccc"
-      }
-    },
-    {
-      "event": "cross-referenced",
-      "id": null,
-      "node_id": null,
-      "url": null,
-      "actor": {
-        "login": "DrahtBot",
-        "id": 39886733,
-        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
-        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/DrahtBot",
-        "html_url": "https://github.com/DrahtBot",
-        "followers_url": "https://api.github.com/users/DrahtBot/followers",
-        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
-        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
-        "repos_url": "https://api.github.com/users/DrahtBot/repos",
-        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": "2023-04-13T04:15:39Z",
-      "updated_at": "2023-04-13T04:15:39Z",
-      "source": {
-        "issue": {
-          "id": 1500679579,
-          "node_id": "PR_kwDOABII585Fqm2I",
-          "url": "https://api.github.com/repos/bitcoin/bitcoin/issues/26715",
-          "repository_url": "https://api.github.com/repos/bitcoin/bitcoin",
-          "labels_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/26715/labels%7B/name%7D",
-          "comments_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/26715/comments",
-          "events_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/26715/events",
-          "html_url": "https://github.com/bitcoin/bitcoin/pull/26715",
-          "number": 26715,
-          "state": "closed",
-          "state_reason": null,
-          "title": "Introduce `MockableDatabase` for wallet unit tests",
-          "body": "For the wallet's unit tests, we currently use either `DummyDatabase` or memory-only versions of either BDB or SQLite. The tests that use `DummyDatabase` just need a `WalletDatabase` so that the `CWallet` can be constructed, while the tests using the memory-only databases just need a backing data store. There is also a `FailDatabase` that is similar to `DummyDatabase` except it fails be default or can have a configured return value. Having all of these different database types can make it difficult to write tests, particularly tests that work when either BDB or SQLite is disabled.\r\n\r\nThis PR unifies all of these different unit test database classes into a single `MockableDatabase`. Like `DummyDatabase`, most functions do nothing and just return true. Like `FailDatabase`, the return value of some functions can be configured on the fly to test various failure cases. Like the memory-only databases, records can actually be written to the `MockableDatabase` and be retrieved later, but all of this is still held in memory. Using `MockableDatabase` completely removes the need for having BDB or SQLite backed wallets in the unit tests for the tests that are not actually testing specific database behaviors.\r\n\r\nBecause `MockableDatabase`s can be created by each unit test, we can also control what records are stored in the database. Records can be added and removed externally from the typical database modification functions. This will give us greater ability to test failure conditions, particularly those involving corrupted records.\r\n\r\nPossible alternative to #26644",
-          "user": {
-            "login": "achow101",
-            "id": 3782274,
-            "node_id": "MDQ6VXNlcjM3ODIyNzQ=",
-            "avatar_url": "https://avatars.githubusercontent.com/u/3782274?v=4",
-            "gravatar_id": "",
-            "url": "https://api.github.com/users/achow101",
-            "html_url": "https://github.com/achow101",
-            "followers_url": "https://api.github.com/users/achow101/followers",
-            "following_url": "https://api.github.com/users/achow101/following%7B/other_user%7D",
-            "gists_url": "https://api.github.com/users/achow101/gists%7B/gist_id%7D",
-            "starred_url": "https://api.github.com/users/achow101/starred%7B/owner%7D%7B/repo%7D",
-            "subscriptions_url": "https://api.github.com/users/achow101/subscriptions",
-            "organizations_url": "https://api.github.com/users/achow101/orgs",
-            "repos_url": "https://api.github.com/users/achow101/repos",
-            "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
-            "received_events_url": "https://api.github.com/users/achow101/received_events",
-            "type": "User",
-            "site_admin": false
-          },
-          "labels": [],
-          "assignees": [],
-          "author_association": "MEMBER",
-          "locked": false,
-          "comments": 3,
-          "pull_request": {
-            "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/26715",
-            "html_url": "https://github.com/bitcoin/bitcoin/pull/26715",
-            "diff_url": "https://github.com/bitcoin/bitcoin/pull/26715.diff",
-            "patch_url": "https://github.com/bitcoin/bitcoin/pull/26715.patch"
-          },
-          "closed_at": "2023-05-15T10:39:57Z",
-          "created_at": "2022-12-16T18:28:23Z",
-          "updated_at": "2023-05-16T15:56:24Z"
-        },
-        "type": "issue"
       }
     },
     {
@@ -2603,230 +1632,6 @@
       }
     },
     {
-      "event": "cross-referenced",
-      "id": null,
-      "node_id": null,
-      "url": null,
-      "actor": {
-        "login": "DrahtBot",
-        "id": 39886733,
-        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
-        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/DrahtBot",
-        "html_url": "https://github.com/DrahtBot",
-        "followers_url": "https://api.github.com/users/DrahtBot/followers",
-        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
-        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
-        "repos_url": "https://api.github.com/users/DrahtBot/repos",
-        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": "2023-05-03T04:31:28Z",
-      "updated_at": "2023-05-03T04:31:28Z",
-      "source": {
-        "issue": {
-          "id": 652543635,
-          "node_id": "MDExOlB1bGxSZXF1ZXN0NDQ1NTkyMDUz",
-          "url": "https://api.github.com/repos/bitcoin/bitcoin/issues/19460",
-          "repository_url": "https://api.github.com/repos/bitcoin/bitcoin",
-          "labels_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/19460/labels%7B/name%7D",
-          "comments_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/19460/comments",
-          "events_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/19460/events",
-          "html_url": "https://github.com/bitcoin/bitcoin/pull/19460",
-          "number": 19460,
-          "state": "open",
-          "state_reason": null,
-          "title": "multiprocess: Add bitcoin-wallet -ipcconnect option",
-          "body": "This PR is part of the [process separation project](https://github.com/bitcoin/bitcoin/projects/10).\r\n\r\n---\r\n\r\n**This is based on #10102.** The non-base commits are:\r\n\r\n- [`bbefbd3c199b` multiprocess: Add -ipcconnect and -ipcbind options](https://github.com/bitcoin/bitcoin/pull/19460/commits/bbefbd3c199b189188d6427b4564b17477c6d50e)\r\n\r\n---\r\n\r\nBuilding on #10102, this adds an `-ipcconnect` option to `bitcoin-wallet` and an `-ipcbind` option to `bitcoin-node` (both enabled by default in multiprocess builds) so bitcoin node will listen on a `<datadir>/sockets/node.sock` unix socket, and `bitcoin-wallet` will connect to it.\r\n\r\nThe idea is that `bitcoin-wallet` can be extended in the future to have some online functionality. For example, there could be a `bitcoin-wallet sync` command that will update balances and sync latest transactions to an unloaded wallet, or a `bitcoin-wallet serve` subcommand that loads a wallet and serves RPC requests, or a `bitcoin-wallet shell` subcommand that allows running RPC methods interactively like the GUI console, or just general support for `bitcoin-wallet <rpc method> <rpc params>` invocations suggested https://github.com/bitcoin/bitcoin/pull/13926#issuecomment-455187379.\r\n\r\nThis PR is small and doesn't do much. The only visible change is that `bitcoin-wallet` now checks whether a node socket exists on startup and prints \"Connected to IPC address\" if it can connect it it.\r\n\r\nThe default `bitcoin-wallet` connect option is `-ipcconnect=auto`, which connects if possible as described above, and proceeds offline if not possible. Other supported options are `-noipcconnect` to disable ipc, `-ipcconnect` to require a connection and fail if it can't be established, and `-ipcconnect=unix:<socket>` to require a connection and use a custom socket path.\r\n\r\nThese changes require multiprocess support and this PR has no effect unless bitcoin is configured with `--enable-multiprocess` as described in [doc/multiprocess.md](https://github.com/bitcoin/bitcoin/blob/master/doc/multiprocess.md)\r\n",
-          "user": {
-            "login": "ryanofsky",
-            "id": 7133040,
-            "node_id": "MDQ6VXNlcjcxMzMwNDA=",
-            "avatar_url": "https://avatars.githubusercontent.com/u/7133040?v=4",
-            "gravatar_id": "",
-            "url": "https://api.github.com/users/ryanofsky",
-            "html_url": "https://github.com/ryanofsky",
-            "followers_url": "https://api.github.com/users/ryanofsky/followers",
-            "following_url": "https://api.github.com/users/ryanofsky/following%7B/other_user%7D",
-            "gists_url": "https://api.github.com/users/ryanofsky/gists%7B/gist_id%7D",
-            "starred_url": "https://api.github.com/users/ryanofsky/starred%7B/owner%7D%7B/repo%7D",
-            "subscriptions_url": "https://api.github.com/users/ryanofsky/subscriptions",
-            "organizations_url": "https://api.github.com/users/ryanofsky/orgs",
-            "repos_url": "https://api.github.com/users/ryanofsky/repos",
-            "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
-            "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
-            "type": "User",
-            "site_admin": false
-          },
-          "labels": [
-            {
-              "id": 149424,
-              "node_id": "MDU6TGFiZWwxNDk0MjQ=",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Wallet",
-              "name": "Wallet",
-              "color": "08a781",
-              "default": false
-            },
-            {
-              "id": 61889416,
-              "node_id": "MDU6TGFiZWw2MTg4OTQxNg==",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Build%20system",
-              "name": "Build system",
-              "color": "5319e7",
-              "default": false
-            },
-            {
-              "id": 241832923,
-              "node_id": "MDU6TGFiZWwyNDE4MzI5MjM=",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Utils/log/libs",
-              "name": "Utils/log/libs",
-              "description": "",
-              "color": "5319e7",
-              "default": false
-            },
-            {
-              "id": 955867938,
-              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
-              "name": "Needs rebase",
-              "description": "",
-              "color": "cccccc",
-              "default": false
-            }
-          ],
-          "assignees": [],
-          "author_association": "CONTRIBUTOR",
-          "locked": false,
-          "comments": 6,
-          "pull_request": {
-            "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/19460",
-            "html_url": "https://github.com/bitcoin/bitcoin/pull/19460",
-            "diff_url": "https://github.com/bitcoin/bitcoin/pull/19460.diff",
-            "patch_url": "https://github.com/bitcoin/bitcoin/pull/19460.patch"
-          },
-          "created_at": "2020-07-07T18:53:19Z",
-          "updated_at": "2023-09-20T16:09:31Z"
-        },
-        "type": "issue"
-      }
-    },
-    {
-      "event": "cross-referenced",
-      "id": null,
-      "node_id": null,
-      "url": null,
-      "actor": {
-        "login": "DrahtBot",
-        "id": 39886733,
-        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
-        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/DrahtBot",
-        "html_url": "https://github.com/DrahtBot",
-        "followers_url": "https://api.github.com/users/DrahtBot/followers",
-        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
-        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
-        "repos_url": "https://api.github.com/users/DrahtBot/repos",
-        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": "2023-05-04T05:47:05Z",
-      "updated_at": "2023-05-04T05:47:05Z",
-      "source": {
-        "issue": {
-          "id": 652547610,
-          "node_id": "MDExOlB1bGxSZXF1ZXN0NDQ1NTk1Mjk3",
-          "url": "https://api.github.com/repos/bitcoin/bitcoin/issues/19461",
-          "repository_url": "https://api.github.com/repos/bitcoin/bitcoin",
-          "labels_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/19461/labels%7B/name%7D",
-          "comments_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/19461/comments",
-          "events_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/19461/events",
-          "html_url": "https://github.com/bitcoin/bitcoin/pull/19461",
-          "number": 19461,
-          "state": "open",
-          "state_reason": null,
-          "title": "multiprocess: Add bitcoin-gui -ipcconnect option",
-          "body": "This PR is part of the [process separation project](https://github.com/bitcoin/bitcoin/projects/10).\r\n\r\n---\r\n\r\n**This is based on #10102 + #19460.** The non-base commits are:\r\n\r\n- [`5f91aa3d8b47` multiprocess: Add bitcoin-gui -ipcconnect option](https://github.com/bitcoin/bitcoin/pull/19461/commits/5f91aa3d8b47cee97e625c3b5689a37dbd941eff)\r\n\r\n---\r\n\r\nBuilding on #10102, this adds an `-ipcconnect` option to `bitcoin-gui` that connects the GUI to an existing `bitcoin-node` process already running in the background instead of spawning a new `bitcoin-node` process. This allows the GUI to be started and stopped independently of the node. By default with this change, `bitcoin-gui` will check if a `<datadir>/sockets/node.sock` socket exists and try to connect to that. If that doesn't work, it will spawn a new node process and start up the same way it did before this PR.\r\n\r\nThe default `bitcoin-gui` connect option is `-ipcconnect=auto`, which tries to connect if possible as described above, and spawns a new `bitcoin-node` process if not possible. Other supported options are `-noipcconnect` to never connect to an existing node and always spawn a new one, `-ipcconnect` to require a connection and fail if it can't be established, and `-ipcconnect=unix:<socket>` to require a connection and use a custom socket path.\r\n\r\nWith this PR, basic functionality works and gui instances can connect and disconnect from a running node. But there are rough edges: If a gui process doesn't shut down cleanly, the node can see unhandled IpcExceptions, and if node command line options are passed to `bitcoin-gui` and `bitcoin-gui` connects to an exiting bitcoin-node process instead of spawning a new one, the node options will be silently ignored. \r\n\r\nThese changes require multiprocess support and this PR has no effect unless bitcoin is configured with `--enable-multiprocess` as described in [doc/multiprocess.md](https://github.com/bitcoin/bitcoin/blob/master/doc/multiprocess.md)",
-          "user": {
-            "login": "ryanofsky",
-            "id": 7133040,
-            "node_id": "MDQ6VXNlcjcxMzMwNDA=",
-            "avatar_url": "https://avatars.githubusercontent.com/u/7133040?v=4",
-            "gravatar_id": "",
-            "url": "https://api.github.com/users/ryanofsky",
-            "html_url": "https://github.com/ryanofsky",
-            "followers_url": "https://api.github.com/users/ryanofsky/followers",
-            "following_url": "https://api.github.com/users/ryanofsky/following%7B/other_user%7D",
-            "gists_url": "https://api.github.com/users/ryanofsky/gists%7B/gist_id%7D",
-            "starred_url": "https://api.github.com/users/ryanofsky/starred%7B/owner%7D%7B/repo%7D",
-            "subscriptions_url": "https://api.github.com/users/ryanofsky/subscriptions",
-            "organizations_url": "https://api.github.com/users/ryanofsky/orgs",
-            "repos_url": "https://api.github.com/users/ryanofsky/repos",
-            "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
-            "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
-            "type": "User",
-            "site_admin": false
-          },
-          "labels": [
-            {
-              "id": 135946,
-              "node_id": "MDU6TGFiZWwxMzU5NDY=",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/GUI",
-              "name": "GUI",
-              "color": "02d7e1",
-              "default": false
-            },
-            {
-              "id": 241832923,
-              "node_id": "MDU6TGFiZWwyNDE4MzI5MjM=",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Utils/log/libs",
-              "name": "Utils/log/libs",
-              "description": "",
-              "color": "5319e7",
-              "default": false
-            },
-            {
-              "id": 955867938,
-              "node_id": "MDU6TGFiZWw5NTU4Njc5Mzg=",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Needs%20rebase",
-              "name": "Needs rebase",
-              "description": "",
-              "color": "cccccc",
-              "default": false
-            }
-          ],
-          "assignees": [],
-          "author_association": "CONTRIBUTOR",
-          "locked": false,
-          "comments": 10,
-          "pull_request": {
-            "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/19461",
-            "html_url": "https://github.com/bitcoin/bitcoin/pull/19461",
-            "diff_url": "https://github.com/bitcoin/bitcoin/pull/19461.diff",
-            "patch_url": "https://github.com/bitcoin/bitcoin/pull/19461.patch"
-          },
-          "created_at": "2020-07-07T19:00:11Z",
-          "updated_at": "2023-09-20T16:09:41Z"
-        },
-        "type": "issue"
-      }
-    },
-    {
       "event": "labeled",
       "id": 9245630587,
       "node_id": "LE_lADOEEET9c5hvogxzwAAAAInFSB7",
@@ -3168,6 +1973,35 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2023-10-12T14:51:01Z"
+    },
+    {
+      "event": "locked",
+      "id": 14613980184,
+      "node_id": "LOE_lADOEEET9c5hvogxzwAAAANnD6QY",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/14613980184",
+      "actor": {
+        "login": "bitcoin-core",
+        "id": 13464320,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjEzNDY0MzIw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/13464320?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/bitcoin-core",
+        "html_url": "https://github.com/bitcoin-core",
+        "followers_url": "https://api.github.com/users/bitcoin-core/followers",
+        "following_url": "https://api.github.com/users/bitcoin-core/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/bitcoin-core/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/bitcoin-core/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/bitcoin-core/subscriptions",
+        "organizations_url": "https://api.github.com/users/bitcoin-core/orgs",
+        "repos_url": "https://api.github.com/users/bitcoin-core/repos",
+        "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
+        "type": "Organization",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-10-11T20:50:21Z"
     }
   ],
   "comments": [
@@ -3207,7 +2041,7 @@
       "created_at": "2023-04-04T20:09:16Z",
       "updated_at": "2023-04-04T20:38:19Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#discussion_r1157712788",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1157712788"
@@ -3259,7 +2093,7 @@
       "created_at": "2023-04-04T20:10:09Z",
       "updated_at": "2023-04-04T20:38:19Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#discussion_r1157713587",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1157713587"
@@ -3311,7 +2145,7 @@
       "created_at": "2023-04-04T20:11:21Z",
       "updated_at": "2023-04-04T20:38:19Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#discussion_r1157714528",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1157714528"
@@ -3363,7 +2197,7 @@
       "created_at": "2023-04-04T20:12:15Z",
       "updated_at": "2023-04-04T20:38:19Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#discussion_r1157715369",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1157715369"
@@ -3415,7 +2249,7 @@
       "created_at": "2023-04-04T20:13:14Z",
       "updated_at": "2023-04-04T20:38:19Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#discussion_r1157716418",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1157716418"
@@ -3467,7 +2301,7 @@
       "created_at": "2023-04-04T20:14:09Z",
       "updated_at": "2023-04-04T20:38:19Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#discussion_r1157717210",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1157717210"
@@ -3519,7 +2353,7 @@
       "created_at": "2023-04-04T20:16:14Z",
       "updated_at": "2023-04-04T20:38:19Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#discussion_r1157718871",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1157718871"
@@ -3571,7 +2405,7 @@
       "created_at": "2023-04-04T20:17:32Z",
       "updated_at": "2023-04-04T20:38:19Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#discussion_r1157719967",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1157719967"
@@ -3623,7 +2457,7 @@
       "created_at": "2023-04-04T20:19:03Z",
       "updated_at": "2023-04-04T20:38:19Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#discussion_r1157721419",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1157721419"
@@ -3675,7 +2509,7 @@
       "created_at": "2023-04-04T20:19:10Z",
       "updated_at": "2023-04-04T20:38:19Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#discussion_r1157721554",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1157721554"
@@ -3727,7 +2561,7 @@
       "created_at": "2023-04-04T20:20:48Z",
       "updated_at": "2023-04-04T20:38:19Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#discussion_r1157722990",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1157722990"
@@ -3779,7 +2613,7 @@
       "created_at": "2023-04-04T20:22:20Z",
       "updated_at": "2023-04-04T20:38:19Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#discussion_r1157724257",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1157724257"
@@ -3831,7 +2665,7 @@
       "created_at": "2023-04-04T20:26:52Z",
       "updated_at": "2023-04-04T21:02:14Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#discussion_r1157728831",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1157728831"
@@ -3883,7 +2717,7 @@
       "created_at": "2023-04-04T20:28:06Z",
       "updated_at": "2023-04-04T20:38:19Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#discussion_r1157730224",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1157730224"
@@ -3935,7 +2769,7 @@
       "created_at": "2023-04-04T20:42:51Z",
       "updated_at": "2023-04-04T20:42:51Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#discussion_r1157742775",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1157742775"
