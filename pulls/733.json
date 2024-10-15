@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/733/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/733/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/3e08c9036a4d78ed4ff31e493d66f9a98ddcaebe",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/b48a95a79f65947c2c60eea55411aceca90bad69",
     "number": 733,
     "state": "open",
     "locked": false,
@@ -68,10 +68,10 @@
       }
     ],
     "created_at": "2023-05-21T06:32:50Z",
-    "updated_at": "2024-10-14T21:40:10Z",
+    "updated_at": "2024-10-15T01:43:21Z",
     "mergeable": true,
     "mergeable_state": "unstable",
-    "merge_commit_sha": "1467336fc80db03dbf520e89117ab7ec0d5dcf36",
+    "merge_commit_sha": "bc241f4f5ace31e04cdce34b74f59c6b8dc2a09f",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -79,7 +79,7 @@
     "head": {
       "label": "denavila:deniability",
       "ref": "deniability",
-      "sha": "3e08c9036a4d78ed4ff31e493d66f9a98ddcaebe",
+      "sha": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "user": {
         "login": "denavila",
         "id": 123340139,
@@ -175,7 +175,7 @@
         "forks_count": 1,
         "stargazers_count": 1,
         "watchers_count": 1,
-        "size": 166393,
+        "size": 164242,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -188,7 +188,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-10-14T21:14:01Z",
+        "pushed_at": "2024-10-15T01:43:19Z",
         "created_at": "2023-05-21T04:12:26Z",
         "updated_at": "2024-04-29T02:47:56Z",
         "license": {
@@ -347,7 +347,7 @@
     },
     "author_association": "NONE",
     "draft": true,
-    "additions": 3010,
+    "additions": 3012,
     "deletions": 7,
     "changed_files": 23,
     "commits": 2,
@@ -4965,46 +4965,6 @@
       "sha": "c5ea2c6fdb661da3e984b19a457f1175f3f12fa5"
     },
     {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDNlMDhjOTAzNmE0ZDc4ZWQ0ZmYzMWU0OTNkNjZmOWE5OGRkY2FlYmU",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/3e08c9036a4d78ed4ff31e493d66f9a98ddcaebe",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/3e08c9036a4d78ed4ff31e493d66f9a98ddcaebe",
-      "tree": {
-        "sha": "447899c2c317bd6d8bb4881bf4916bc88406f56d",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/447899c2c317bd6d8bb4881bf4916bc88406f56d"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/c5ea2c6fdb661da3e984b19a457f1175f3f12fa5",
-          "sha": "c5ea2c6fdb661da3e984b19a457f1175f3f12fa5",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/c5ea2c6fdb661da3e984b19a457f1175f3f12fa5"
-        }
-      ],
-      "message": "Deniability - a tool to automatically improve coin ownership privacy\n\nThis new feature is an implementation of the ideas in Paul Sztorc's blog post \"Deniability - Unilateral Transaction Meta-Privacy\"(https://www.truthcoin.info/blog/deniability/).\n\nIn short, the idea is to periodically split coins and send them to yourself, making it look like a common \"spend\" transaction, such that blockchain ownership analysis becomes more difficult, and thus improving the user's privacy.\n\nThis is the GUI portion of the PR (bitcoin-core/gui). The core functionality PR is in the main repo (bitcoin/bitcoin).\n\nThis PR implements an additional \"Deniability\" wallet view. The majority of the GUI code is in a new deniabilitydialog.cpp/h source files containing a new DeniabilityDialog class, hooked up via the WalletView class. \n\nOn startup and on notable events (new blocks, new transactions, etc), we evaluate the privacy of all coins in the wallet, and we build a \"deniabilization\" candidate list. UTXOs that share the same destination address are grouped together into a single candidate (see DeniabilityDialog::updateCoins and DeniabilityDialog::updateCoinTable).\n\nWe inspect the blockchain data to find out if we have performed \"deniabilization\" transactions already, and we count how many \"cycles\" (self-sends) have been performed for each coin (see DeniabilityDialog::calculateDeniabilizationStats).\nSince we infer the state entirely from the blockchain data, even if the wallet is restored from a seed phrase, the state would not be lost. This also means that if the user has performed manual self-sends that have improved the ownership privacy, they will be counted too.\n\nThe user can initiate the \"deniabillization\" process by pressing a Start button (DeniabilityDialog::startDeniabilization). The process periodically perform a \"deniabilization\" cycle (DeniabilityDialog::deniabilizeProc). Each such cycle goes as follows:\nA coin is selected form the candidate list. The more a coin is \"deniabilized\", the less likely it is to be selected. Smaller coins are also less likely to be selected.\nIf a coin is selected, we prepare and broadcast a transaction, which splits the coin into a pair of new wallet addresses (DeniabilityDialog::deniabilizeCoin). \n\nThe user can control this process via a Frequency selector and a Budget spinner, which respectively determine how often to perform the cycle and how much total BTC to spend on transaction fees.\n\nIf Bitcoin Core is left running continuously, the cycles would be performed at the selected frequency (with some randomization). If Bitcoin Core is shutdown, the \"deniabilization\" process will resume at the next restart, and if more time has elapsed than the selected frequency, it will perform a single cycle. We deliberately don't \"catch up\" all missed cycles, since that would expose the process to blockchain analysis.\nThe state is saved and restored via QSettings (DeniabilityDialog::loadSettings and DeniabilityDialog::saveSettings).\n\nWe monitor each broadcasted transaction and we automatically attempt a fee bump if the transaction is still in the memory pool since the previous cycle (DeniabilityDialog::bumpDeniabilizationTx).\nWe don't issue any other deniabilization transactions until the previous transaction is confirmed (or abandoned/dropped).\n\nThe process ends when the budget is exhausted or if there's no candidates left. The user can also stop the process manually by pressing a Stop button (DeniabilityDialog::stopDeniabilization).\n\nExternal signers are supported in a \"best effort\" way - since the user needs to manually sign, we postpone the processing till the external signer is connected and use some additional UI to get the user's attention to sign (see the codepath predicated on hasExternalSigner). This is not ideal, so I'm looking for some ideas if we can improve this in some way.\n\nWatch-only wallets are partially supported, where we display the candidate list, but we don't allow any processing (since we don't have the private keys to issue transactions).\n\nI've tested all this functionality on regtest, testnet, signet and mainnet. I've also added some unit tests (under WalletTests) to exercise the main GUI functionality.\n\nThis is my first change and PR for Bitcoin Core, and I tried as much as possible to validate everything against the guidelines and documentation and to follow the patterns in the existing code, but I'm sure there are things I missed, so I'm looking forward to your feedback.\nIn particular things I'm not very sure about - the save/restore of state via QSettings makes me a bit nervous as we store some wallet specific data there which I put some effort to validate on load, however keying the settings based on wallet name is not ideal, so I'd like to improve this somehow - either by storing the settings based on some wallet identity signature, or by storing the state in the wallet database (however that doesn't seem accessible via the interfaces::Wallet API).\nPlease let me know your thoughts and suggestions.\n\n-----\nRefactored the coin update to explicitly match utxos by scriptPubKey and not rely on the ListCoin destination grouping.\n\n-----\nFixed linter error about bitcoin-config.h not being included.\n-----\nPost-rebase fixes for cmake build.\n-----\nRefactored deprecated hex from string conversions.",
-      "committer": {
-        "name": "denavila",
-        "email": "denny_avila@tuta.io",
-        "date": "2024-10-14T21:13:47Z"
-      },
-      "author": {
-        "name": "denavila",
-        "email": "denny_avila@tuta.io",
-        "date": "2023-10-20T23:51:29Z"
-      },
-      "sha": "3e08c9036a4d78ed4ff31e493d66f9a98ddcaebe"
-    },
-    {
       "event": "head_ref_force_pushed",
       "id": 14646424088,
       "node_id": "HRFPE_lADOEEET9c5mbIhxzwAAAANo_rIY",
@@ -5144,6 +5104,75 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-10-14T21:40:10Z"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGI0OGE5NWE3OWY2NTk0N2MyYzYwZWVhNTU0MTFhY2VjYTkwYmFkNjk",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/b48a95a79f65947c2c60eea55411aceca90bad69",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/b48a95a79f65947c2c60eea55411aceca90bad69",
+      "tree": {
+        "sha": "2a7ac9512448b78588e3012572db94764114e069",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/2a7ac9512448b78588e3012572db94764114e069"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/c5ea2c6fdb661da3e984b19a457f1175f3f12fa5",
+          "sha": "c5ea2c6fdb661da3e984b19a457f1175f3f12fa5",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/c5ea2c6fdb661da3e984b19a457f1175f3f12fa5"
+        }
+      ],
+      "message": "Deniability - a tool to automatically improve coin ownership privacy\n\nThis new feature is an implementation of the ideas in Paul Sztorc's blog post \"Deniability - Unilateral Transaction Meta-Privacy\"(https://www.truthcoin.info/blog/deniability/).\n\nIn short, the idea is to periodically split coins and send them to yourself, making it look like a common \"spend\" transaction, such that blockchain ownership analysis becomes more difficult, and thus improving the user's privacy.\n\nThis is the GUI portion of the PR (bitcoin-core/gui). The core functionality PR is in the main repo (bitcoin/bitcoin).\n\nThis PR implements an additional \"Deniability\" wallet view. The majority of the GUI code is in a new deniabilitydialog.cpp/h source files containing a new DeniabilityDialog class, hooked up via the WalletView class. \n\nOn startup and on notable events (new blocks, new transactions, etc), we evaluate the privacy of all coins in the wallet, and we build a \"deniabilization\" candidate list. UTXOs that share the same destination address are grouped together into a single candidate (see DeniabilityDialog::updateCoins and DeniabilityDialog::updateCoinTable).\n\nWe inspect the blockchain data to find out if we have performed \"deniabilization\" transactions already, and we count how many \"cycles\" (self-sends) have been performed for each coin (see DeniabilityDialog::calculateDeniabilizationStats).\nSince we infer the state entirely from the blockchain data, even if the wallet is restored from a seed phrase, the state would not be lost. This also means that if the user has performed manual self-sends that have improved the ownership privacy, they will be counted too.\n\nThe user can initiate the \"deniabillization\" process by pressing a Start button (DeniabilityDialog::startDeniabilization). The process periodically perform a \"deniabilization\" cycle (DeniabilityDialog::deniabilizeProc). Each such cycle goes as follows:\nA coin is selected form the candidate list. The more a coin is \"deniabilized\", the less likely it is to be selected. Smaller coins are also less likely to be selected.\nIf a coin is selected, we prepare and broadcast a transaction, which splits the coin into a pair of new wallet addresses (DeniabilityDialog::deniabilizeCoin). \n\nThe user can control this process via a Frequency selector and a Budget spinner, which respectively determine how often to perform the cycle and how much total BTC to spend on transaction fees.\n\nIf Bitcoin Core is left running continuously, the cycles would be performed at the selected frequency (with some randomization). If Bitcoin Core is shutdown, the \"deniabilization\" process will resume at the next restart, and if more time has elapsed than the selected frequency, it will perform a single cycle. We deliberately don't \"catch up\" all missed cycles, since that would expose the process to blockchain analysis.\nThe state is saved and restored via QSettings (DeniabilityDialog::loadSettings and DeniabilityDialog::saveSettings).\n\nWe monitor each broadcasted transaction and we automatically attempt a fee bump if the transaction is still in the memory pool since the previous cycle (DeniabilityDialog::bumpDeniabilizationTx).\nWe don't issue any other deniabilization transactions until the previous transaction is confirmed (or abandoned/dropped).\n\nThe process ends when the budget is exhausted or if there's no candidates left. The user can also stop the process manually by pressing a Stop button (DeniabilityDialog::stopDeniabilization).\n\nExternal signers are supported in a \"best effort\" way - since the user needs to manually sign, we postpone the processing till the external signer is connected and use some additional UI to get the user's attention to sign (see the codepath predicated on hasExternalSigner). This is not ideal, so I'm looking for some ideas if we can improve this in some way.\n\nWatch-only wallets are partially supported, where we display the candidate list, but we don't allow any processing (since we don't have the private keys to issue transactions).\n\nI've tested all this functionality on regtest, testnet, signet and mainnet. I've also added some unit tests (under WalletTests) to exercise the main GUI functionality.\n\nThis is my first change and PR for Bitcoin Core, and I tried as much as possible to validate everything against the guidelines and documentation and to follow the patterns in the existing code, but I'm sure there are things I missed, so I'm looking forward to your feedback.\nIn particular things I'm not very sure about - the save/restore of state via QSettings makes me a bit nervous as we store some wallet specific data there which I put some effort to validate on load, however keying the settings based on wallet name is not ideal, so I'd like to improve this somehow - either by storing the settings based on some wallet identity signature, or by storing the state in the wallet database (however that doesn't seem accessible via the interfaces::Wallet API).\nPlease let me know your thoughts and suggestions.\n\n-----\nRefactored the coin update to explicitly match utxos by scriptPubKey and not rely on the ListCoin destination grouping.\n\n-----\nFixed linter error about bitcoin-config.h not being included.\n-----\nPost-rebase fixes for cmake build.\n-----\nRefactored deprecated hex from string conversions.",
+      "committer": {
+        "name": "denavila",
+        "email": "denny_avila@tuta.io",
+        "date": "2024-10-15T01:43:07Z"
+      },
+      "author": {
+        "name": "denavila",
+        "email": "denny_avila@tuta.io",
+        "date": "2023-10-20T23:51:29Z"
+      },
+      "sha": "b48a95a79f65947c2c60eea55411aceca90bad69"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 14649235924,
+      "node_id": "HRFPE_lADOEEET9c5mbIhxzwAAAANpKZnU",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/14649235924",
+      "actor": {
+        "login": "denavila",
+        "id": 123340139,
+        "node_id": "U_kgDOB1oFaw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/123340139?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/denavila",
+        "html_url": "https://github.com/denavila",
+        "followers_url": "https://api.github.com/users/denavila/followers",
+        "following_url": "https://api.github.com/users/denavila/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/denavila/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/denavila/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/denavila/subscriptions",
+        "organizations_url": "https://api.github.com/users/denavila/orgs",
+        "repos_url": "https://api.github.com/users/denavila/repos",
+        "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/denavila/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-10-15T01:43:21Z"
     }
   ],
   "comments": [
@@ -5156,7 +5185,7 @@
       "path": "src/qt/test/wallettests.cpp",
       "position": 240,
       "original_position": 240,
-      "commit_id": "3e08c9036a4d78ed4ff31e493d66f9a98ddcaebe",
+      "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "16d50b3699232bfe48b21057e6175ab12417ebe3",
       "in_reply_to_id": null,
       "user": {
@@ -5208,7 +5237,7 @@
       "path": "src/wallet/feebumper.cpp",
       "position": 4,
       "original_position": 4,
-      "commit_id": "3e08c9036a4d78ed4ff31e493d66f9a98ddcaebe",
+      "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "16d50b3699232bfe48b21057e6175ab12417ebe3",
       "in_reply_to_id": null,
       "user": {
@@ -5260,7 +5289,7 @@
       "path": "src/wallet/spend.cpp",
       "position": 271,
       "original_position": 232,
-      "commit_id": "3e08c9036a4d78ed4ff31e493d66f9a98ddcaebe",
+      "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "16d50b3699232bfe48b21057e6175ab12417ebe3",
       "in_reply_to_id": null,
       "user": {
@@ -5312,7 +5341,7 @@
       "path": "src/wallet/spend.cpp",
       "position": null,
       "original_position": 345,
-      "commit_id": "3e08c9036a4d78ed4ff31e493d66f9a98ddcaebe",
+      "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "16d50b3699232bfe48b21057e6175ab12417ebe3",
       "in_reply_to_id": null,
       "user": {
@@ -5364,7 +5393,7 @@
       "path": "src/wallet/spend.cpp",
       "position": 271,
       "original_position": 232,
-      "commit_id": "3e08c9036a4d78ed4ff31e493d66f9a98ddcaebe",
+      "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "16d50b3699232bfe48b21057e6175ab12417ebe3",
       "in_reply_to_id": 1373616084,
       "user": {
@@ -5416,7 +5445,7 @@
       "path": "src/wallet/feebumper.cpp",
       "position": 4,
       "original_position": 4,
-      "commit_id": "3e08c9036a4d78ed4ff31e493d66f9a98ddcaebe",
+      "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "16d50b3699232bfe48b21057e6175ab12417ebe3",
       "in_reply_to_id": 1373610526,
       "user": {
@@ -5468,7 +5497,7 @@
       "path": "src/qt/test/wallettests.cpp",
       "position": 240,
       "original_position": 240,
-      "commit_id": "3e08c9036a4d78ed4ff31e493d66f9a98ddcaebe",
+      "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "16d50b3699232bfe48b21057e6175ab12417ebe3",
       "in_reply_to_id": 1373600315,
       "user": {
@@ -5520,7 +5549,7 @@
       "path": "src/wallet/spend.cpp",
       "position": null,
       "original_position": 345,
-      "commit_id": "3e08c9036a4d78ed4ff31e493d66f9a98ddcaebe",
+      "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "16d50b3699232bfe48b21057e6175ab12417ebe3",
       "in_reply_to_id": 1373617709,
       "user": {
@@ -5572,7 +5601,7 @@
       "path": "src/wallet/spend.cpp",
       "position": 271,
       "original_position": 232,
-      "commit_id": "3e08c9036a4d78ed4ff31e493d66f9a98ddcaebe",
+      "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "16d50b3699232bfe48b21057e6175ab12417ebe3",
       "in_reply_to_id": 1373616084,
       "user": {
@@ -5624,7 +5653,7 @@
       "path": "src/wallet/spend.cpp",
       "position": 8,
       "original_position": 5,
-      "commit_id": "3e08c9036a4d78ed4ff31e493d66f9a98ddcaebe",
+      "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
       "in_reply_to_id": null,
       "user": {
@@ -5676,7 +5705,7 @@
       "path": "src/wallet/spend.cpp",
       "position": null,
       "original_position": 21,
-      "commit_id": "3e08c9036a4d78ed4ff31e493d66f9a98ddcaebe",
+      "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
       "in_reply_to_id": null,
       "user": {
@@ -5728,7 +5757,7 @@
       "path": "src/wallet/spend.cpp",
       "position": null,
       "original_position": 83,
-      "commit_id": "3e08c9036a4d78ed4ff31e493d66f9a98ddcaebe",
+      "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
       "in_reply_to_id": null,
       "user": {
@@ -5780,7 +5809,7 @@
       "path": "src/wallet/spend.cpp",
       "position": null,
       "original_position": 345,
-      "commit_id": "3e08c9036a4d78ed4ff31e493d66f9a98ddcaebe",
+      "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "16d50b3699232bfe48b21057e6175ab12417ebe3",
       "in_reply_to_id": 1373617709,
       "user": {
@@ -5832,7 +5861,7 @@
       "path": "src/wallet/spend.cpp",
       "position": 8,
       "original_position": 5,
-      "commit_id": "3e08c9036a4d78ed4ff31e493d66f9a98ddcaebe",
+      "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
       "in_reply_to_id": 1375450500,
       "user": {
@@ -5884,7 +5913,7 @@
       "path": "src/wallet/spend.cpp",
       "position": null,
       "original_position": 21,
-      "commit_id": "3e08c9036a4d78ed4ff31e493d66f9a98ddcaebe",
+      "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
       "in_reply_to_id": 1375450923,
       "user": {
@@ -5936,7 +5965,7 @@
       "path": "src/wallet/spend.cpp",
       "position": null,
       "original_position": 83,
-      "commit_id": "3e08c9036a4d78ed4ff31e493d66f9a98ddcaebe",
+      "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
       "in_reply_to_id": 1375451033,
       "user": {
@@ -5988,7 +6017,7 @@
       "path": "src/wallet/spend.cpp",
       "position": null,
       "original_position": 83,
-      "commit_id": "3e08c9036a4d78ed4ff31e493d66f9a98ddcaebe",
+      "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
       "in_reply_to_id": 1375451033,
       "user": {
@@ -6040,7 +6069,7 @@
       "path": "src/wallet/spend.cpp",
       "position": null,
       "original_position": 21,
-      "commit_id": "3e08c9036a4d78ed4ff31e493d66f9a98ddcaebe",
+      "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
       "in_reply_to_id": 1375450923,
       "user": {
@@ -6092,7 +6121,7 @@
       "path": "src/wallet/spend.cpp",
       "position": 8,
       "original_position": 5,
-      "commit_id": "3e08c9036a4d78ed4ff31e493d66f9a98ddcaebe",
+      "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
       "in_reply_to_id": 1375450500,
       "user": {
