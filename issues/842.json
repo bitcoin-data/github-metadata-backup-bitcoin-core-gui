@@ -1,0 +1,132 @@
+{
+  "type": "issue",
+  "issue": {
+    "id": 2594297707,
+    "node_id": "I_kwDOEEET9c6aoddr",
+    "url": "https://api.github.com/repos/bitcoin-core/gui/issues/842",
+    "repository_url": "https://api.github.com/repos/bitcoin-core/gui",
+    "labels_url": "https://api.github.com/repos/bitcoin-core/gui/issues/842/labels%7B/name%7D",
+    "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/842/comments",
+    "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/842/events",
+    "html_url": "https://github.com/bitcoin-core/gui/issues/842",
+    "number": 842,
+    "state": "open",
+    "state_reason": null,
+    "title": "How to compile the GUI on opensuse tumbleweed with cmake?",
+    "body": "Looks like this broke after the cmake migration.\r\n\r\nSteps to reproduce on a fresh `podman run -it --rm 'registry.opensuse.org/opensuse/tumbleweed:latest'`:\r\n\r\n`zypper in -y awk qrencode libevent-devel boost-devel sqlite3-devel libqt5-qttools-devel libqt5-qtbase-devel libdb-4_8-devel      find bison gcc-c++ libtool make autoconf automake python3 clang llvm lbzip2 patch xz      curl wget htop git vim ccache  && git clone https://github.com/bitcoin/bitcoin.git  --depth=1  ./b-c && cd b-c && cmake -B ./bld -DBUILD_BENCH=ON -DBUILD_FUZZ_BINARY=ON -DWERROR=ON -DBUILD_GUI=ON -DWITH_QRENCODE=OFF -DWITH_CCACHE=ON -DWITH_NATPMP=ON`\r\n\r\nOutput:\r\n\r\n```\r\nConfigure summary\r\n=================\r\nExecutables:\r\n  bitcoind ............................ ON\r\n  bitcoin-node (multiprocess) ......... OFF\r\n  bitcoin-qt (GUI) .................... ON\r\n  bitcoin-gui (GUI, multiprocess) ..... OFF\r\n  bitcoin-cli ......................... ON\r\n  bitcoin-tx .......................... ON\r\n  bitcoin-util ........................ ON\r\n  bitcoin-wallet ...................... ON\r\n  bitcoin-chainstate (experimental) ... OFF\r\n  libbitcoinkernel (experimental) ..... OFF\r\nOptional features:\r\n  wallet support ...................... ON\r\n   - descriptor wallets (SQLite) ...... ON\r\n   - legacy wallets (Berkeley DB) ..... OFF\r\n  external signer ..................... ON\r\n  port mapping using UPnP ............. OFF\r\n  ZeroMQ .............................. OFF\r\n  USDT tracing ........................ OFF\r\n  QR code (GUI) ....................... OFF\r\n  DBus (GUI, Linux only) .............. ON\r\nTests:\r\n  test_bitcoin ........................ ON\r\n  test_bitcoin-qt ..................... ON\r\n  bench_bitcoin ....................... ON\r\n  fuzz binary ......................... ON\r\n\r\nCross compiling ....................... FALSE\r\nC++ compiler .......................... GNU 14.2.1, /usr/bin/c++\r\nCMAKE_BUILD_TYPE ...................... RelWithDebInfo\r\nPreprocessor defined macros ........... \r\nC++ compiler flags .................... -O2 -g -std=c++20 -fPIC -fdebug-prefix-map=/b-c=. -fmacro-prefix-map=/b-c=. -fno-extended-identifiers -fstack-reuse=none -Werror -Wall -Wextra -Wformat -Wformat-security -Wvla -Wredundant-decls -Wdate-time -Wduplicated-branches -Wduplicated-cond -Wlogical-op -Woverloaded-virtual -Wsuggest-override -Wimplicit-fallthrough -Wunreachable-code -Wundef -Wno-unused-parameter -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3 -Wstack-protector -fstack-protector-all -fcf-protection=full -fstack-clash-protection\r\nLinker flags .......................... -O2 -g -fstack-reuse=none -fstack-protector-all -fcf-protection=full -fstack-clash-protection -Wl,-z,relro -Wl,-z,now -Wl,-z,separate-code -fPIE -pie\r\n\r\nNOTE: The summary above may not exactly match the final applied build flags\r\n      if any additional CMAKE_* or environment variables have been modified.\r\n      To see the exact flags applied, build with the --verbose option.\r\n\r\nAttempt to harden executables ......... ON\r\nTreat compiler warnings as errors ..... ON\r\nUse ccache for compiling .............. ON\r\n\r\n\r\n-- Configuring done (50.1s)\r\nCMake Error at src/qt/test/CMakeLists.txt:36 (add_custom_command):\r\n  Error evaluating generator expression:\r\n\r\n    $<TARGET_PROPERTY:Qt5::QMinimalIntegrationPlugin,LOCATION_$<UPPER_CASE:$<CONFIG>>>\r\n\r\n  Target \"Qt5::QMinimalIntegrationPlugin\" not found.\r\n\r\n\r\nCMake Error at src/qt/test/CMakeLists.txt:36 (add_custom_command):\r\n  Error evaluating generator expression:\r\n\r\n    $<TARGET_PROPERTY:Qt5::QMinimalIntegrationPlugin,LOCATION_$<UPPER_CASE:$<CONFIG>>>\r\n\r\n  Target \"Qt5::QMinimalIntegrationPlugin\" not found.\r\n\r\n\r\nCMake Error at src/qt/test/CMakeLists.txt:36 (add_custom_command):\r\n  Error evaluating generator expression:\r\n\r\n    $<TARGET_PROPERTY:Qt5::QMinimalIntegrationPlugin,LOCATION_$<UPPER_CASE:$<CONFIG>>>\r\n\r\n  Target \"Qt5::QMinimalIntegrationPlugin\" not found.\r\n\r\n\r\n-- Generating done (0.9s)\r\nCMake Warning:\r\n  Manually-specified variables were not used by the project:\r\n\r\n    WITH_NATPMP\r\n\r\n\r\nCMake Generate step failed.  Build files cannot be regenerated correctly.\r\n",
+    "user": {
+      "login": "maflcko",
+      "id": 6399679,
+      "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/maflcko",
+      "html_url": "https://github.com/maflcko",
+      "followers_url": "https://api.github.com/users/maflcko/followers",
+      "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+      "organizations_url": "https://api.github.com/users/maflcko/orgs",
+      "repos_url": "https://api.github.com/users/maflcko/repos",
+      "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/maflcko/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 2140649117,
+        "node_id": "MDU6TGFiZWwyMTQwNjQ5MTE3",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Bug",
+        "name": "Bug",
+        "description": "Something isn't working",
+        "color": "d73a4a",
+        "default": false
+      },
+      {
+        "id": 2793865191,
+        "node_id": "MDU6TGFiZWwyNzkzODY1MTkx",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Linux",
+        "name": "Linux",
+        "description": "",
+        "color": "b60205",
+        "default": false
+      }
+    ],
+    "assignees": [],
+    "author_association": "CONTRIBUTOR",
+    "locked": false,
+    "comments": 0,
+    "created_at": "2024-10-17T10:26:57Z",
+    "updated_at": "2024-10-17T10:27:23Z"
+  },
+  "events": [
+    {
+      "event": "labeled",
+      "id": 14696768496,
+      "node_id": "LE_lADOEEET9c6aoddrzwAAAANr_uPw",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/14696768496",
+      "actor": {
+        "login": "maflcko",
+        "id": 6399679,
+        "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-10-17T10:27:07Z",
+      "label": {
+        "name": "Bug",
+        "color": "d73a4a"
+      }
+    },
+    {
+      "event": "labeled",
+      "id": 14696771905,
+      "node_id": "LE_lADOEEET9c6aoddrzwAAAANr_vFB",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/14696771905",
+      "actor": {
+        "login": "maflcko",
+        "id": 6399679,
+        "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-10-17T10:27:23Z",
+      "label": {
+        "name": "Linux",
+        "color": "b60205"
+      }
+    }
+  ]
+}
