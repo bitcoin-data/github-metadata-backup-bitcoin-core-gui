@@ -37,104 +37,13 @@
     "labels": [],
     "assignees": [],
     "author_association": "CONTRIBUTOR",
-    "locked": false,
+    "locked": true,
     "comments": 0,
     "closed_at": "2023-10-25T12:13:22Z",
     "created_at": "2023-06-29T16:37:16Z",
-    "updated_at": "2023-10-25T12:13:22Z"
+    "updated_at": "2024-10-24T20:53:13Z"
   },
   "events": [
-    {
-      "event": "cross-referenced",
-      "id": null,
-      "node_id": null,
-      "url": null,
-      "actor": {
-        "login": "john-moffett",
-        "id": 116917595,
-        "node_id": "U_kgDOBvgFWw",
-        "avatar_url": "https://avatars.githubusercontent.com/u/116917595?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/john-moffett",
-        "html_url": "https://github.com/john-moffett",
-        "followers_url": "https://api.github.com/users/john-moffett/followers",
-        "following_url": "https://api.github.com/users/john-moffett/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/john-moffett/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/john-moffett/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/john-moffett/subscriptions",
-        "organizations_url": "https://api.github.com/users/john-moffett/orgs",
-        "repos_url": "https://api.github.com/users/john-moffett/repos",
-        "events_url": "https://api.github.com/users/john-moffett/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/john-moffett/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": "2023-06-29T16:37:50Z",
-      "updated_at": "2023-06-29T16:37:50Z",
-      "source": {
-        "issue": {
-          "id": 1781175990,
-          "node_id": "PR_kwDOEEET9c5UQqbY",
-          "url": "https://api.github.com/repos/bitcoin-core/gui/issues/742",
-          "repository_url": "https://api.github.com/repos/bitcoin-core/gui",
-          "labels_url": "https://api.github.com/repos/bitcoin-core/gui/issues/742/labels%7B/name%7D",
-          "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/742/comments",
-          "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/742/events",
-          "html_url": "https://github.com/bitcoin-core/gui/pull/742",
-          "number": 742,
-          "state": "closed",
-          "state_reason": null,
-          "title": "Exit and show error if unrecognized command line args are present",
-          "body": "Fixes https://github.com/bitcoin-core/gui/issues/741 \r\n\r\nStarting bitcoin-qt with non-hyphen (\"-\") arguments causes it to silently ignore any later valid options. For instance, invoking `bitcoin-qt -server=1 foo -regtest` on a fresh install will run `mainnet` instead of `regtest`.\r\n\r\nThis change makes the client exit with an error message if any such \"loose\" arguments are encountered. This mirrors how `bitcoind` handles it:\r\n\r\nhttps://github.com/bitcoin/bitcoin/blob/c6287faae4c0e705a9258a340dfcf548906f12af/src/bitcoind.cpp#L127-L132\r\n\r\nHowever, BIP-21 `bitcoin:` payment URIs are still allowed, but only if they're not followed by any additional options.\r\n\r\n",
-          "user": {
-            "login": "john-moffett",
-            "id": 116917595,
-            "node_id": "U_kgDOBvgFWw",
-            "avatar_url": "https://avatars.githubusercontent.com/u/116917595?v=4",
-            "gravatar_id": "",
-            "url": "https://api.github.com/users/john-moffett",
-            "html_url": "https://github.com/john-moffett",
-            "followers_url": "https://api.github.com/users/john-moffett/followers",
-            "following_url": "https://api.github.com/users/john-moffett/following%7B/other_user%7D",
-            "gists_url": "https://api.github.com/users/john-moffett/gists%7B/gist_id%7D",
-            "starred_url": "https://api.github.com/users/john-moffett/starred%7B/owner%7D%7B/repo%7D",
-            "subscriptions_url": "https://api.github.com/users/john-moffett/subscriptions",
-            "organizations_url": "https://api.github.com/users/john-moffett/orgs",
-            "repos_url": "https://api.github.com/users/john-moffett/repos",
-            "events_url": "https://api.github.com/users/john-moffett/events%7B/privacy%7D",
-            "received_events_url": "https://api.github.com/users/john-moffett/received_events",
-            "type": "User",
-            "site_admin": false
-          },
-          "labels": [
-            {
-              "id": 5353934559,
-              "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
-              "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
-              "name": "CI failed",
-              "color": "ededed",
-              "default": false
-            }
-          ],
-          "assignees": [],
-          "author_association": "CONTRIBUTOR",
-          "locked": false,
-          "comments": 10,
-          "pull_request": {
-            "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/742",
-            "html_url": "https://github.com/bitcoin-core/gui/pull/742",
-            "diff_url": "https://github.com/bitcoin-core/gui/pull/742.diff",
-            "patch_url": "https://github.com/bitcoin-core/gui/pull/742.patch"
-          },
-          "closed_at": "2023-10-25T12:13:23Z",
-          "created_at": "2023-06-29T16:37:50Z",
-          "updated_at": "2023-10-25T12:13:24Z"
-        },
-        "type": "issue"
-      }
-    },
     {
       "event": "renamed",
       "id": 9679442128,
@@ -196,6 +105,64 @@
       "commit_id": "afa081a39bde77d3959aa35b6e6c75a2fe988d68",
       "commit_url": "https://api.github.com/repos/bitcoin/bitcoin/commits/afa081a39bde77d3959aa35b6e6c75a2fe988d68",
       "created_at": "2023-10-25T12:13:23Z"
+    },
+    {
+      "event": "referenced",
+      "id": 11608142901,
+      "node_id": "REFE_lADOEEET9c5qKpJ1zwAAAAKz5jQ1",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/11608142901",
+      "actor": {
+        "login": "Julio-Rats",
+        "id": 25793444,
+        "node_id": "MDQ6VXNlcjI1NzkzNDQ0",
+        "avatar_url": "https://avatars.githubusercontent.com/u/25793444?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Julio-Rats",
+        "html_url": "https://github.com/Julio-Rats",
+        "followers_url": "https://api.github.com/users/Julio-Rats/followers",
+        "following_url": "https://api.github.com/users/Julio-Rats/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/Julio-Rats/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/Julio-Rats/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/Julio-Rats/subscriptions",
+        "organizations_url": "https://api.github.com/users/Julio-Rats/orgs",
+        "repos_url": "https://api.github.com/users/Julio-Rats/repos",
+        "events_url": "https://api.github.com/users/Julio-Rats/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/Julio-Rats/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": "afa081a39bde77d3959aa35b6e6c75a2fe988d68",
+      "commit_url": "https://api.github.com/repos/Julio-Rats/bitcoin/commits/afa081a39bde77d3959aa35b6e6c75a2fe988d68",
+      "created_at": "2024-01-26T11:53:18Z"
+    },
+    {
+      "event": "locked",
+      "id": 14858667630,
+      "node_id": "LOE_lADOEEET9c5qKpJ1zwAAAAN1pUZu",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/14858667630",
+      "actor": {
+        "login": "bitcoin-core",
+        "id": 13464320,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjEzNDY0MzIw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/13464320?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/bitcoin-core",
+        "html_url": "https://github.com/bitcoin-core",
+        "followers_url": "https://api.github.com/users/bitcoin-core/followers",
+        "following_url": "https://api.github.com/users/bitcoin-core/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/bitcoin-core/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/bitcoin-core/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/bitcoin-core/subscriptions",
+        "organizations_url": "https://api.github.com/users/bitcoin-core/orgs",
+        "repos_url": "https://api.github.com/users/bitcoin-core/repos",
+        "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
+        "type": "Organization",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-10-24T20:53:13Z"
     }
   ]
 }
