@@ -39,12 +39,21 @@
       "site_admin": false
     },
     "body": "It fixes https://github.com/bitcoin-core/gui/issues/761.\r\n\r\nAbout logo icon is updated now with the correct colour indicating the chain type of the QT instance that user is running (as the splash screen), plus the title of the about window also is updated with the chain type string as in the main window.\r\n<details>\r\n<summary>Before PR changes screenshot</summary>\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/63945955-2e29-4dc9-8a2e-2a5567983e9b)\r\n</details>\r\n\r\n<details>\r\n<summary>After PR changes screenshot</summary>\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/b6ce187f-ca81-4c4b-b2f6-a2e3b15e6010)\r\n</details>\r\n\r\n<details>\r\n<summary>Current splash screen screenshot</summary>\r\n(this hasn't been touched, just to show consistency with this PR changes)\r\n\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/2a1c329b-baa6-4603-bf20-dac2746682f4)\r\n</details>\r\n\r\nTested it also with:\r\n- mainnet (no command line args after `bitcoin-qt` or `bitcoin-qt -chain=main`), \r\n- `-regtest` and \r\n- `-testnet`.",
-    "labels": [],
+    "labels": [
+      {
+        "id": 2145506980,
+        "node_id": "MDU6TGFiZWwyMTQ1NTA2OTgw",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Needs%20rebase",
+        "name": "Needs rebase",
+        "description": "",
+        "color": "cccccc",
+        "default": false
+      }
+    ],
     "created_at": "2023-09-25T00:03:25Z",
-    "updated_at": "2024-10-25T01:04:19Z",
-    "mergeable": true,
-    "mergeable_state": "clean",
-    "merge_commit_sha": "dd78ce028c69162d8f582411391115c1b58fd1e5",
+    "updated_at": "2024-10-28T17:50:32Z",
+    "mergeable": false,
+    "mergeable_state": "dirty",
     "assignees": [],
     "requested_reviewers": [
       {
@@ -69,7 +78,7 @@
       }
     ],
     "requested_teams": [],
-    "rebaseable": true,
+    "rebaseable": false,
     "head": {
       "label": "pablomartin4btc:gui-update-about-logo-icon",
       "ref": "gui-update-about-logo-icon",
@@ -298,10 +307,10 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 261,
-        "stargazers_count": 598,
-        "watchers_count": 598,
-        "size": 164793,
+        "forks_count": 262,
+        "stargazers_count": 599,
+        "watchers_count": 599,
+        "size": 165245,
         "default_branch": "master",
         "open_issues_count": 151,
         "is_template": false,
@@ -314,9 +323,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-10-24T22:08:19Z",
+        "pushed_at": "2024-10-28T16:32:26Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-10-24T22:08:22Z",
+        "updated_at": "2024-10-28T16:32:30Z",
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -346,7 +355,7 @@
     "changed_files": 4,
     "commits": 1,
     "review_comments": 12,
-    "comments": 13
+    "comments": 14
   },
   "events": [
     {
@@ -3072,6 +3081,93 @@
       "label": {
         "name": "CI failed",
         "color": "ededed"
+      }
+    },
+    {
+      "event": "commented",
+      "id": 2442250007,
+      "node_id": "IC_kwDOEEET9c6RkccX",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2442250007",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-10-28T17:50:31Z",
+      "updated_at": "2024-10-28T17:50:31Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "<!--cf906140f33d8803c4a75a2196329ecb-->\n🐙 This pull request conflicts with the target branch and [needs rebase](https://github.com/bitcoin-core/gui/blob/master/CONTRIBUTING.md#rebasing-changes).\n",
+      "user": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/762#issuecomment-2442250007",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/762"
+    },
+    {
+      "event": "labeled",
+      "id": 14967039755,
+      "node_id": "LE_lADOEEET9c5x3tTozwAAAAN8GucL",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/14967039755",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2024-10-28T17:50:31Z",
+      "label": {
+        "name": "Needs rebase",
+        "color": "cccccc"
       }
     }
   ],
