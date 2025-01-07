@@ -36,19 +36,18 @@
       "events_url": "https://api.github.com/users/mjdietzx/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/mjdietzx/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "patch_url": null
     },
     "body": "Prior to this commit, when a psbt requiring multiple signers is signed via gui the dialogue is vague/confusing. Whether the signer successfully partially signs the psbt or not the same warning is displayed \"Could not sign any more inputs.\" After signing the tx, the only way for the user to know if their action had any effect is to inspect the psbt (unless it was the last signature that completed the psbt, in which case there is a success dialoge).\r\n\r\nNow we indicate when a psbt has been partially signed, and show how many partial signatures the psbt has in the transaction description.\r\n\r\nHere is what a \"daisy chain\" signing flow for a 4-of-4 multisig looks like via gui. Same as in bitcoin core's functional test [wallet_multisig_descriptor_psbt](https://github.com/bitcoin/bitcoin/blob/d367a4e36f7357c4ebd018e8e1c9c5071db2e1c2/test/functional/wallet_multisig_descriptor_psbt.py#L140-L147)\r\n\r\nFirst signer: \r\n![image](https://github.com/user-attachments/assets/61734da1-b962-41d6-9fd2-c41b7d89708b)\r\n\r\nSecond signer: \r\n![image](https://github.com/user-attachments/assets/fe080f7a-0f55-4ce1-a9dd-87c3ee76517d)\r\n\r\nThird signer: \r\n![image](https://github.com/user-attachments/assets/caaac83e-78f6-4d43-a0df-498d074c82c8)\r\n\r\nFourth and final signer (psbt is complete and can be broadcasted): \r\n![image](https://github.com/user-attachments/assets/36eea1de-6fa9-4668-9162-c87fade2044b)\r\n\r\nBefore this commit, the first-third signers would just see this after signing. It is at best confusing because it is the same warning a signer would see if they were not in the multisig and no signature was added to the psbt:\r\n![image](https://github.com/user-attachments/assets/16f08359-4d6a-4e4c-9807-9f5ebf8a24c6)\r\n",
     "labels": [],
     "created_at": "2024-07-30T21:21:06Z",
-    "updated_at": "2024-08-20T10:15:32Z",
-    "mergeable": true,
-    "mergeable_state": "clean",
-    "merge_commit_sha": "e7ce471edaaa5621aa4531bb7d922dfc49450ec9",
+    "updated_at": "2025-01-07T00:31:32Z",
+    "mergeable_state": "unknown",
+    "merge_commit_sha": "a0f217202486b9c388901f08a51d32a30f15682a",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
-    "rebaseable": true,
     "head": {
       "label": "mjdietzx:sign_multisig_psbts_better_dialog",
       "ref": "sign_multisig_psbts_better_dialog",
@@ -71,7 +70,8 @@
         "events_url": "https://api.github.com/users/mjdietzx/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/mjdietzx/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "repo": {
         "id": 316591954,
@@ -96,7 +96,8 @@
           "events_url": "https://api.github.com/users/mjdietzx/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/mjdietzx/received_events",
           "type": "User",
-          "site_admin": false
+          "site_admin": false,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/mjdietzx/gui",
@@ -163,6 +164,7 @@
         "pushed_at": "2024-07-31T01:13:13Z",
         "created_at": "2020-11-27T20:15:03Z",
         "updated_at": "2020-11-27T20:15:04Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -202,7 +204,8 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "repo": {
         "id": 272700405,
@@ -227,7 +230,8 @@
           "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
-          "site_admin": false
+          "site_admin": false,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/bitcoin-core/gui",
@@ -276,12 +280,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 257,
-        "stargazers_count": 579,
-        "watchers_count": 579,
-        "size": 162930,
+        "forks_count": 273,
+        "stargazers_count": 619,
+        "watchers_count": 619,
+        "size": 167888,
         "default_branch": "master",
-        "open_issues_count": 151,
+        "open_issues_count": 155,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -292,9 +296,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-08-19T19:15:29Z",
+        "pushed_at": "2025-01-06T23:53:07Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-08-19T19:15:33Z",
+        "updated_at": "2025-01-06T23:53:10Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -350,14 +355,15 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-07-30T21:21:09Z",
-      "updated_at": "2024-08-20T10:15:32Z",
+      "updated_at": "2025-01-07T00:31:32Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/832#pullrequestreview-2210599733), [BrandonOdiwuor](https://github.com/bitcoin-core/gui/pull/832#pullrequestreview-2247585717) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/832#pullrequestreview-2210599733), [BrandonOdiwuor](https://github.com/bitcoin-core/gui/pull/832#pullrequestreview-2247585717) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#850](https://github.com/bitcoin-core/gui/pull/850) (gui, psbt: Use SIGHASH_DEFAULT when signing PSBTs by achow101)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -376,7 +382,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/832#issuecomment-2259233184",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/832"
@@ -404,7 +411,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -437,7 +445,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -463,7 +472,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/832#issuecomment-2259428854",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/832"
@@ -531,10 +541,11 @@
         "events_url": "https://api.github.com/users/mjdietzx/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/mjdietzx/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "8aec372053706c134999562367b2b656d9bed4fc",
+      "commit_url": "https://api.github.com/repos/mjdietzx/gui/commits/8aec372053706c134999562367b2b656d9bed4fc",
       "created_at": "2024-07-31T01:13:14Z"
     },
     {
@@ -560,7 +571,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -593,7 +605,8 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -626,7 +639,8 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -652,7 +666,8 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/832#issuecomment-2259861057",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/832"
@@ -680,7 +695,8 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -709,7 +725,8 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -738,7 +755,8 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -767,7 +785,8 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -802,7 +821,8 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/832#pullrequestreview-2210599733",
       "submitted_at": "2024-07-31T16:32:52Z",
@@ -832,7 +852,8 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -858,7 +879,8 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/832#issuecomment-2260948149",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/832"
@@ -886,7 +908,8 @@
         "events_url": "https://api.github.com/users/mjdietzx/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/mjdietzx/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -912,7 +935,8 @@
         "events_url": "https://api.github.com/users/mjdietzx/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/mjdietzx/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/832#issuecomment-2260977081",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/832"
@@ -946,7 +970,8 @@
         "events_url": "https://api.github.com/users/BrandonOdiwuor/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/BrandonOdiwuor/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/832#pullrequestreview-2247585717",
       "submitted_at": "2024-08-20T10:15:29Z",
@@ -985,7 +1010,8 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "optional nit (IMO makes it more clear that includes the just added partial signature):\r\n```suggestion\r\n            tx_description.append(tr(\"Each input now has %1 partial signatures.\").arg(QString::number(num_partial_sigs)));\r\n```",
       "created_at": "2024-07-31T16:10:31Z",
@@ -1037,7 +1063,8 @@
         "events_url": "https://api.github.com/users/mjdietzx/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/mjdietzx/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "Before you sign, if there are already partial sigs on a psbt, this text will show that. For example, 3rd signer in a multisig:\r\n- before signing `tx_description` tells them there are already 2 partial sigs\r\n- they sign and see they have successfully added a partial signature. `tx_description` now tells them there are 3 partial sigs\r\n- if they were to try to sign again, then they'd see the warning \"Could not sign any more inputs.\" at the top of dialog, but `tx_description` would still show there are 3 psbts\r\n\r\nTherefore I think `now` should not be added",
       "created_at": "2024-07-31T16:49:55Z",
@@ -1089,7 +1116,8 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "Ok, thanks.",
       "created_at": "2024-07-31T16:55:33Z",
