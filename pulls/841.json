@@ -40,12 +40,21 @@
       "patch_url": null
     },
     "body": "A more comprehensive fix for the issue described in #837.\r\n\r\nSince the `WalletModel` class is unavailable when compiling without wallet support\r\n`(-DENABLE_WALLET=0)`, the RPC executor class should not be coupled to it.\r\nThis decoupling ensures GUI compatibility with builds that omit wallet support.\r\n\r\nThis also drops an extra `#ifdef ENABLE_WALLET` block which is always good.",
-    "labels": [],
+    "labels": [
+      {
+        "id": 5353934559,
+        "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
+        "name": "CI failed",
+        "color": "ededed",
+        "default": false
+      }
+    ],
     "created_at": "2024-10-04T13:57:18Z",
-    "updated_at": "2025-01-13T22:16:50Z",
+    "updated_at": "2025-01-16T15:46:25Z",
     "mergeable": true,
-    "mergeable_state": "clean",
-    "merge_commit_sha": "c712762c950fbe4f9cbedbb69d84144e9e68e1e0",
+    "mergeable_state": "unstable",
+    "merge_commit_sha": "125ce1c46b764418b288dd4ac0a8ab99d1e7936a",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -283,10 +292,10 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 273,
+        "forks_count": 274,
         "stargazers_count": 621,
         "watchers_count": 621,
-        "size": 168094,
+        "size": 168361,
         "default_branch": "master",
         "open_issues_count": 155,
         "is_template": false,
@@ -299,9 +308,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-01-10T15:30:06Z",
+        "pushed_at": "2025-01-16T15:05:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2025-01-12T12:00:24Z",
+        "updated_at": "2025-01-16T15:05:08Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -1114,6 +1123,40 @@
       "submitted_at": "2024-11-19T07:24:08Z",
       "state": "APPROVED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/841"
+    },
+    {
+      "event": "labeled",
+      "id": 15963830207,
+      "node_id": "LE_lADOEEET9c6Y-PELzwAAAAO3hLe_",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/15963830207",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-01-16T15:46:25Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
+      }
     }
   ],
   "comments": [
