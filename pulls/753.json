@@ -51,7 +51,7 @@
       }
     ],
     "created_at": "2023-09-10T05:32:46Z",
-    "updated_at": "2025-01-17T16:58:01Z",
+    "updated_at": "2025-01-17T17:03:48Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merge_commit_sha": "16df0f33e886a7254a90c67eab2332a99d6f8b0b",
@@ -341,7 +341,7 @@
     "changed_files": 11,
     "commits": 5,
     "review_comments": 2,
-    "comments": 11
+    "comments": 12
   },
   "events": [
     {
@@ -2456,6 +2456,62 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2025-01-17T16:58:01Z"
+    },
+    {
+      "event": "commented",
+      "id": 2598800192,
+      "node_id": "IC_kwDOEEET9c6a5otA",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2598800192",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-01-17T17:03:47Z",
+      "updated_at": "2025-01-17T17:03:47Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "<details>\r\n<summary><B>Drafted</B> while solving the nested filter logic that immediately after rebasing <code>clang-tidy-19</code> was complaining about.</summary>\r\n\r\n```\r\n[14:05:17.184] [623/666][21.4s] clang-tidy-19 -p=/ci_container_base/ci/scratch/build-x86_64-pc-linux-gnu -quiet -load=/tidy-build/libbitcoin-tidy.so /ci_container_base/src/qt/addressbookpage.cpp\r\n[14:05:17.184] /ci_container_base/src/qt/addressbookpage.cpp:30:5: error: function 'AddressBookSortFilterProxyModel' is within a recursive call chain [misc-no-recursion,-warnings-as-errors]\r\n[14:05:17.184]    30 |     AddressBookSortFilterProxyModel(const QString& type, QObject* parent, bool enableNestedFilter)\r\n[14:05:17.184]       |     ^\r\n[14:05:17.184] /ci_container_base/src/qt/addressbookpage.cpp:30:5: note: example recursive call chain, starting from function 'AddressBookSortFilterProxyModel'\r\n[14:05:17.184] /ci_container_base/src/qt/addressbookpage.cpp:40:46: note: Frame #1: function 'AddressBookSortFilterProxyModel' calls function 'AddressBookSortFilterProxyModel' here:\r\n[14:05:17.184]    40 |             nextedFilterProxyModel.reset(new AddressBookSortFilterProxyModel(type, this, false));\r\n[14:05:17.186] ^^^ ⚠️ Failure generated from clang-tidy\r\n[14:05:17.186] + echo '^^^ ⚠️ Failure generated from clang-tidy'\r\n[14:05:17.186] + false\r\n��������\r\n\r\n```\r\n\r\n</details>\r\n",
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/753#issuecomment-2598800192",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/753"
     }
   ],
   "comments": [
