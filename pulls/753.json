@@ -40,20 +40,11 @@
       "patch_url": null
     },
     "body": "This PR fixes #646 and introduces some enhancements to the Address Book functionality.\r\n\r\nA new \"Address Type\" column has been added to the address book table page, only visible for the \"Receiving address\" tab. Users can employ an also new added combo box at the bottom of the page to filter address by their type, this filtering can be combined with the current search line text box.\r\nWhen the export feature is used, this new field will be included.\r\n\r\n![Peek 2023-09-10 19-25](https://github.com/bitcoin-core/gui/assets/110166421/24c674a2-417e-4309-8fb3-8c099a562cc1)\r\n\r\nAs highlighted with the performed manual testing shown in the image above:\r\n- address type combo box has been reused from receive coins dialog, but each widget container can specify different tool-tips for their items;\r\n- \"Sending address\" tab doesn't display the new column, combo box or its label, and the search text specify only the fields to be filtered out;\r\n-  \"Receiving address\" tab display the new added widgets, filter works fine in combination of either text, combo item selection or combination of both, tool-tip texts differs from the ones on the receive coins dialog where the address can be created specifying their types.\r\n\r\nTested in `mainnet` and all test networks.\r\n\r\nFor code reviewers, please check the commit messages for a detailed breakdown.\r\n",
-    "labels": [
-      {
-        "id": 5353934559,
-        "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
-        "name": "CI failed",
-        "color": "ededed",
-        "default": false
-      }
-    ],
+    "labels": [],
     "created_at": "2023-09-10T05:32:46Z",
-    "updated_at": "2025-01-30T20:51:54Z",
+    "updated_at": "2025-01-30T22:21:44Z",
     "mergeable": true,
-    "mergeable_state": "unstable",
+    "mergeable_state": "clean",
     "merge_commit_sha": "878d96b47115629d64d0b505a36c1ba18100ab12",
     "assignees": [],
     "requested_reviewers": [],
@@ -160,7 +151,7 @@
         "forks_count": 0,
         "stargazers_count": 1,
         "watchers_count": 1,
-        "size": 168448,
+        "size": 168718,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -2542,6 +2533,40 @@
       "commit_id": "e4a3d5e2cc2f020fe4c9ff23d146b1c1f0e8ec7b",
       "commit_url": "https://api.github.com/repos/pablomartin4btc/bitcoin-core-gui/commits/e4a3d5e2cc2f020fe4c9ff23d146b1c1f0e8ec7b",
       "created_at": "2025-01-30T20:51:54Z"
+    },
+    {
+      "event": "unlabeled",
+      "id": 16130782927,
+      "node_id": "UNLE_lADOEEET9c5wl74TzwAAAAPBeDbP",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/16130782927",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-01-30T22:21:44Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
+      }
     }
   ],
   "comments": [
