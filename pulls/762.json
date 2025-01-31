@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/762/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/762/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/55568608517bb93a75a311e818ddabdfdbbead84",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/036f070e3b775cb6c1e3abac11212609e5e7979c",
     "number": 762,
     "state": "open",
     "locked": false,
@@ -52,9 +52,10 @@
       }
     ],
     "created_at": "2023-09-25T00:03:25Z",
-    "updated_at": "2025-01-25T00:23:36Z",
-    "mergeable": false,
-    "mergeable_state": "dirty",
+    "updated_at": "2025-01-31T13:19:52Z",
+    "mergeable": true,
+    "mergeable_state": "unstable",
+    "merge_commit_sha": "f87dce3925b74c197e1f134d79a54bdd79eda853",
     "assignees": [],
     "requested_reviewers": [
       {
@@ -80,11 +81,11 @@
       }
     ],
     "requested_teams": [],
-    "rebaseable": false,
+    "rebaseable": true,
     "head": {
       "label": "pablomartin4btc:gui-update-about-logo-icon",
       "ref": "gui-update-about-logo-icon",
-      "sha": "55568608517bb93a75a311e818ddabdfdbbead84",
+      "sha": "036f070e3b775cb6c1e3abac11212609e5e7979c",
       "user": {
         "login": "pablomartin4btc",
         "id": 110166421,
@@ -182,7 +183,7 @@
         "forks_count": 0,
         "stargazers_count": 1,
         "watchers_count": 1,
-        "size": 168448,
+        "size": 169383,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -195,9 +196,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-01-16T20:29:00Z",
+        "pushed_at": "2025-01-31T13:19:50Z",
         "created_at": "2022-09-10T13:37:44Z",
-        "updated_at": "2025-01-16T16:41:15Z",
+        "updated_at": "2025-01-31T03:09:56Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -219,7 +220,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "6d546336e800f7b8990fececab6bc08413f28690",
+      "sha": "8fa10edcd1706a1f0dc9d8c3adbc8efa3c7755bf",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -315,9 +316,9 @@
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
         "forks_count": 276,
-        "stargazers_count": 625,
-        "watchers_count": 625,
-        "size": 169131,
+        "stargazers_count": 626,
+        "watchers_count": 626,
+        "size": 169343,
         "default_branch": "master",
         "open_issues_count": 155,
         "is_template": false,
@@ -330,9 +331,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-01-24T23:33:22Z",
+        "pushed_at": "2025-01-31T00:34:20Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2025-01-24T23:33:25Z",
+        "updated_at": "2025-01-31T00:34:24Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -2972,46 +2973,6 @@
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/762"
     },
     {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDU1NTY4NjA4NTE3YmI5M2E3NWEzMTFlODE4ZGRhYmRmZGJiZWFkODQ",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/55568608517bb93a75a311e818ddabdfdbbead84",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/55568608517bb93a75a311e818ddabdfdbbead84",
-      "tree": {
-        "sha": "bf6fc050924ce4eeca1a407f7d24d06d33b50c55",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/bf6fc050924ce4eeca1a407f7d24d06d33b50c55"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/dcfbf3c2107c3cb9d343ebfa0eee78278dea8d66",
-          "sha": "dcfbf3c2107c3cb9d343ebfa0eee78278dea8d66",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/dcfbf3c2107c3cb9d343ebfa0eee78278dea8d66"
-        }
-      ],
-      "message": "gui: Update about logo icon to denote chain type\n\nAdding the networkStyle parameter to the HelpMessageDialog\ncreator on utilitydialog, updating all calls where its instance\nis being created from bitcoingui.cpp. In the object itself,\nuse this new parameter object to build the about window title and\nset the icon of the about logo widget.\n\nAlso, set th correct chain type icon at the very beginning of\nGuiMain() where command line arguments were validated and most of\nthe app settings were not initialised yet.",
-      "committer": {
-        "name": "pablomartin4btc",
-        "email": "pablomartin4btc@gmail.com",
-        "date": "2024-08-25T18:58:47Z"
-      },
-      "author": {
-        "name": "pablomartin4btc",
-        "email": "pablomartin4btc@gmail.com",
-        "date": "2023-09-24T23:44:38Z"
-      },
-      "sha": "55568608517bb93a75a311e818ddabdfdbbead84"
-    },
-    {
       "event": "head_ref_force_pushed",
       "id": 14005068924,
       "node_id": "HRFPE_lADOEEET9c5x3tTozwAAAANCxGR8",
@@ -3336,6 +3297,76 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/762#issuecomment-2613646072",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/762"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDAzNmYwNzBlM2I3NzVjYjZjMWUzYWJhYzExMjEyNjA5ZTVlNzk3OWM",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/036f070e3b775cb6c1e3abac11212609e5e7979c",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/036f070e3b775cb6c1e3abac11212609e5e7979c",
+      "tree": {
+        "sha": "da3f94354ce1dae94369432020b1f1abcacf65fe",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/da3f94354ce1dae94369432020b1f1abcacf65fe"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/8fa10edcd1706a1f0dc9d8c3adbc8efa3c7755bf",
+          "sha": "8fa10edcd1706a1f0dc9d8c3adbc8efa3c7755bf",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/8fa10edcd1706a1f0dc9d8c3adbc8efa3c7755bf"
+        }
+      ],
+      "message": "gui: Update about logo icon to denote chain type\n\nAdding the networkStyle parameter to the HelpMessageDialog\ncreator on utilitydialog, updating all calls where its instance\nis being created from bitcoingui.cpp. In the object itself,\nuse this new parameter object to build the about window title and\nset the icon of the about logo widget.\n\nAlso, set th correct chain type icon at the very beginning of\nGuiMain() where command line arguments were validated and most of\nthe app settings were not initialised yet.",
+      "committer": {
+        "name": "pablomartin4btc",
+        "email": "pablomartin4btc@gmail.com",
+        "date": "2025-01-31T13:19:14Z"
+      },
+      "author": {
+        "name": "pablomartin4btc",
+        "email": "pablomartin4btc@gmail.com",
+        "date": "2023-09-24T23:44:38Z"
+      },
+      "sha": "036f070e3b775cb6c1e3abac11212609e5e7979c"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 16140339968,
+      "node_id": "HRFPE_lADOEEET9c5x3tTozwAAAAPCCgsA",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/16140339968",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": "036f070e3b775cb6c1e3abac11212609e5e7979c",
+      "commit_url": "https://api.github.com/repos/pablomartin4btc/bitcoin-core-gui/commits/036f070e3b775cb6c1e3abac11212609e5e7979c",
+      "created_at": "2025-01-31T13:19:52Z"
     }
   ],
   "comments": [
@@ -3348,7 +3379,7 @@
       "path": "src/qt/utilitydialog.cpp",
       "position": null,
       "original_position": 36,
-      "commit_id": "55568608517bb93a75a311e818ddabdfdbbead84",
+      "commit_id": "036f070e3b775cb6c1e3abac11212609e5e7979c",
       "original_commit_id": "30c235b2e6fd9b7e3634d795cedc171d4d8d0e27",
       "in_reply_to_id": null,
       "user": {
@@ -3401,7 +3432,7 @@
       "path": "src/qt/utilitydialog.cpp",
       "position": null,
       "original_position": 36,
-      "commit_id": "55568608517bb93a75a311e818ddabdfdbbead84",
+      "commit_id": "036f070e3b775cb6c1e3abac11212609e5e7979c",
       "original_commit_id": "30c235b2e6fd9b7e3634d795cedc171d4d8d0e27",
       "in_reply_to_id": 1347478375,
       "user": {
@@ -3454,7 +3485,7 @@
       "path": "src/qt/utilitydialog.cpp",
       "position": null,
       "original_position": 42,
-      "commit_id": "55568608517bb93a75a311e818ddabdfdbbead84",
+      "commit_id": "036f070e3b775cb6c1e3abac11212609e5e7979c",
       "original_commit_id": "30c235b2e6fd9b7e3634d795cedc171d4d8d0e27",
       "in_reply_to_id": null,
       "user": {
@@ -3507,7 +3538,7 @@
       "path": "src/qt/utilitydialog.cpp",
       "position": null,
       "original_position": 42,
-      "commit_id": "55568608517bb93a75a311e818ddabdfdbbead84",
+      "commit_id": "036f070e3b775cb6c1e3abac11212609e5e7979c",
       "original_commit_id": "30c235b2e6fd9b7e3634d795cedc171d4d8d0e27",
       "in_reply_to_id": 1437190084,
       "user": {
@@ -3560,7 +3591,7 @@
       "path": "src/qt/utilitydialog.h",
       "position": null,
       "original_position": 23,
-      "commit_id": "55568608517bb93a75a311e818ddabdfdbbead84",
+      "commit_id": "036f070e3b775cb6c1e3abac11212609e5e7979c",
       "original_commit_id": "30c235b2e6fd9b7e3634d795cedc171d4d8d0e27",
       "in_reply_to_id": null,
       "user": {
@@ -3613,7 +3644,7 @@
       "path": "src/qt/utilitydialog.h",
       "position": null,
       "original_position": 23,
-      "commit_id": "55568608517bb93a75a311e818ddabdfdbbead84",
+      "commit_id": "036f070e3b775cb6c1e3abac11212609e5e7979c",
       "original_commit_id": "30c235b2e6fd9b7e3634d795cedc171d4d8d0e27",
       "in_reply_to_id": 1602056777,
       "user": {
@@ -3666,7 +3697,7 @@
       "path": "src/qt/utilitydialog.h",
       "position": null,
       "original_position": 23,
-      "commit_id": "55568608517bb93a75a311e818ddabdfdbbead84",
+      "commit_id": "036f070e3b775cb6c1e3abac11212609e5e7979c",
       "original_commit_id": "30c235b2e6fd9b7e3634d795cedc171d4d8d0e27",
       "in_reply_to_id": 1602056777,
       "user": {
@@ -3719,7 +3750,7 @@
       "path": "src/qt/utilitydialog.cpp",
       "position": null,
       "original_position": 42,
-      "commit_id": "55568608517bb93a75a311e818ddabdfdbbead84",
+      "commit_id": "036f070e3b775cb6c1e3abac11212609e5e7979c",
       "original_commit_id": "30c235b2e6fd9b7e3634d795cedc171d4d8d0e27",
       "in_reply_to_id": 1437190084,
       "user": {
@@ -3772,7 +3803,7 @@
       "path": "src/qt/utilitydialog.cpp",
       "position": null,
       "original_position": 17,
-      "commit_id": "55568608517bb93a75a311e818ddabdfdbbead84",
+      "commit_id": "036f070e3b775cb6c1e3abac11212609e5e7979c",
       "original_commit_id": "577d500cb1ac4122fba3202c289454dcbe31a194",
       "in_reply_to_id": null,
       "user": {
@@ -3825,7 +3856,7 @@
       "path": "src/qt/utilitydialog.cpp",
       "position": null,
       "original_position": 39,
-      "commit_id": "55568608517bb93a75a311e818ddabdfdbbead84",
+      "commit_id": "036f070e3b775cb6c1e3abac11212609e5e7979c",
       "original_commit_id": "577d500cb1ac4122fba3202c289454dcbe31a194",
       "in_reply_to_id": null,
       "user": {
@@ -3878,7 +3909,7 @@
       "path": "src/qt/utilitydialog.cpp",
       "position": null,
       "original_position": 39,
-      "commit_id": "55568608517bb93a75a311e818ddabdfdbbead84",
+      "commit_id": "036f070e3b775cb6c1e3abac11212609e5e7979c",
       "original_commit_id": "577d500cb1ac4122fba3202c289454dcbe31a194",
       "in_reply_to_id": 1704312279,
       "user": {
@@ -3931,7 +3962,7 @@
       "path": "src/qt/utilitydialog.cpp",
       "position": null,
       "original_position": 17,
-      "commit_id": "55568608517bb93a75a311e818ddabdfdbbead84",
+      "commit_id": "036f070e3b775cb6c1e3abac11212609e5e7979c",
       "original_commit_id": "577d500cb1ac4122fba3202c289454dcbe31a194",
       "in_reply_to_id": 1704284662,
       "user": {
