@@ -15,7 +15,7 @@
     "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/b2e531e70a88f5c9e1c055ae7341520a3128e15d",
     "number": 780,
     "state": "closed",
-    "locked": false,
+    "locked": true,
     "maintainer_can_modify": false,
     "title": "Fix: Ensure 'Transaction View' remains disabled if no wallet is selected",
     "user": {
@@ -36,7 +36,8 @@
       "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "patch_url": null
     },
     "body": "This PR addresses an issue where, with no wallet selected, ticking on \"Settings -> Mask values\" checkbox twice enables the transaction tab when the checkbox is unticked. \r\n\r\n<details>\r\n<summary>Current behavior display on master</summary>\r\n\r\n![Peek 2023-12-06 19-18](https://github.com/bitcoin-core/gui/assets/110166421/6ca4eab6-5ef0-44c1-971c-89b8bc7f0283)\r\n\r\n</details>\r\n\r\n<details>\r\n<summary>Correction display from this branch</summary>\r\n\r\n![Peek 2023-12-07 13-07](https://github.com/bitcoin-core/gui/assets/110166421/1c78f2aa-1cf7-4d63-b4ce-c034877b4832)\r\n\r\n</details>\r\n\r\nNote for maintaners: this PR should be backported to both 25.x and 26.x.\r\n\r\n\r\n---\r\n\r\nOriginally this PR was disabling the \"Mask Values\" checkbox when no wallet was selected but since a reviewer pointed out that a user might want to open a wallet already on \"privacy mode\" I rolled that change out. \r\n\r\n<details>\r\n<summary>Original correction  display disabling \"Mask Values\" </summary>\r\n\r\n![Peek 2023-12-06 19-11](https://github.com/bitcoin-core/gui/assets/110166421/66fdf023-998a-434d-a5bd-1a3d848fb751)\r\n\r\n</details>",
     "labels": [
@@ -50,10 +51,31 @@
       }
     ],
     "created_at": "2023-12-07T05:10:34Z",
-    "updated_at": "2024-02-11T22:48:25Z",
+    "updated_at": "2025-02-10T07:30:51Z",
     "closed_at": "2024-02-11T22:48:25Z",
     "mergeable_state": "unknown",
     "merged_at": "2024-02-11T22:48:25Z",
+    "merged_by": {
+      "login": "hebasto",
+      "id": 32963518,
+      "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hebasto",
+      "html_url": "https://github.com/hebasto",
+      "followers_url": "https://api.github.com/users/hebasto/followers",
+      "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+      "organizations_url": "https://api.github.com/users/hebasto/orgs",
+      "repos_url": "https://api.github.com/users/hebasto/repos",
+      "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/hebasto/received_events",
+      "type": "User",
+      "site_admin": false,
+      "patch_url": null
+    },
     "merge_commit_sha": "6868474555207ab2dc636b1c1fd8408a160545fb",
     "assignees": [],
     "requested_reviewers": [
@@ -75,7 +97,8 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       {
         "login": "BrandonOdiwuor",
@@ -95,7 +118,8 @@
         "events_url": "https://api.github.com/users/BrandonOdiwuor/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/BrandonOdiwuor/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       }
     ],
     "requested_teams": [],
@@ -121,7 +145,8 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "repo": {
         "id": 535008896,
@@ -146,7 +171,8 @@
           "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
           "type": "User",
-          "site_admin": false
+          "site_admin": false,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/pablomartin4btc/bitcoin-core-gui",
@@ -196,9 +222,9 @@
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
         "forks_count": 0,
-        "stargazers_count": 0,
-        "watchers_count": 0,
-        "size": 153070,
+        "stargazers_count": 1,
+        "watchers_count": 1,
+        "size": 169388,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -211,9 +237,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-01-29T18:53:20Z",
+        "pushed_at": "2025-01-31T13:19:50Z",
         "created_at": "2022-09-10T13:37:44Z",
-        "updated_at": "2022-12-30T18:34:57Z",
+        "updated_at": "2025-01-31T03:09:56Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -253,7 +280,8 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "repo": {
         "id": 272700405,
@@ -278,7 +306,8 @@
           "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
-          "site_admin": false
+          "site_admin": false,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/bitcoin-core/gui",
@@ -327,12 +356,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 293,
-        "stargazers_count": 537,
-        "watchers_count": 537,
-        "size": 155726,
+        "forks_count": 280,
+        "stargazers_count": 628,
+        "watchers_count": 628,
+        "size": 169171,
         "default_branch": "master",
-        "open_issues_count": 162,
+        "open_issues_count": 152,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -343,9 +372,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-02-11T22:48:24Z",
+        "pushed_at": "2025-02-07T16:30:32Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-02-11T16:53:01Z",
+        "updated_at": "2025-02-07T22:47:38Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -401,7 +431,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -427,7 +458,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/780#issuecomment-1844445334",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/780"
@@ -461,7 +493,8 @@
         "events_url": "https://api.github.com/users/MarnixCroes/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/MarnixCroes/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/780#pullrequestreview-1769626322",
       "submitted_at": "2023-12-07T09:22:47Z",
@@ -491,7 +524,8 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -517,7 +551,8 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/780#issuecomment-1845584174",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/780"
@@ -585,10 +620,11 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "b2e531e70a88f5c9e1c055ae7341520a3128e15d",
+      "commit_url": "https://api.github.com/repos/pablomartin4btc/bitcoin-core-gui/commits/b2e531e70a88f5c9e1c055ae7341520a3128e15d",
       "created_at": "2023-12-07T15:52:20Z"
     },
     {
@@ -614,7 +650,8 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -647,7 +684,8 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -673,7 +711,8 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/780#issuecomment-1845700681",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/780"
@@ -707,7 +746,8 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/780#pullrequestreview-1785495190",
       "submitted_at": "2023-12-17T18:48:00Z",
@@ -737,7 +777,8 @@
         "events_url": "https://api.github.com/users/MarnixCroes/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/MarnixCroes/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -763,7 +804,8 @@
         "events_url": "https://api.github.com/users/MarnixCroes/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/MarnixCroes/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/780#issuecomment-1861782254",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/780"
@@ -791,7 +833,8 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -820,7 +863,8 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -849,7 +893,8 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -875,7 +920,8 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/780#issuecomment-1861954800",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/780"
@@ -889,7 +935,7 @@
       "commit_id": "b2e531e70a88f5c9e1c055ae7341520a3128e15d",
       "commit_url": null,
       "created_at": null,
-      "author_association": "NONE",
+      "author_association": "CONTRIBUTOR",
       "body": "Tested ACK https://github.com/bitcoin-core/gui/pull/780/commits/b2e531e70a88f5c9e1c055ae7341520a3128e15d\r\n\r\n![Screen Recording 2023-12-22 at 18 24 11](https://github.com/bitcoin-core/gui/assets/19962151/0d60ca21-54bf-4a30-9814-bcc2be997275)\r\n\r\n",
       "user": {
         "login": "alfonsoromanz",
@@ -909,7 +955,8 @@
         "events_url": "https://api.github.com/users/alfonsoromanz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/alfonsoromanz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/780#pullrequestreview-1795194240",
       "submitted_at": "2023-12-22T21:27:40Z",
@@ -939,7 +986,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -962,7 +1010,8 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "review_requester": {
         "login": "DrahtBot",
@@ -982,7 +1031,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       }
     },
     {
@@ -1008,7 +1058,8 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1034,7 +1085,8 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/780#issuecomment-1871174218",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/780"
@@ -1062,7 +1114,8 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1091,7 +1144,8 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1120,7 +1174,8 @@
         "events_url": "https://api.github.com/users/alfonsoromanz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/alfonsoromanz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1149,7 +1204,8 @@
         "events_url": "https://api.github.com/users/alfonsoromanz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/alfonsoromanz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1178,7 +1234,8 @@
         "events_url": "https://api.github.com/users/MarnixCroes/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/MarnixCroes/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1207,7 +1264,8 @@
         "events_url": "https://api.github.com/users/MarnixCroes/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/MarnixCroes/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1242,7 +1300,8 @@
         "events_url": "https://api.github.com/users/BrandonOdiwuor/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/BrandonOdiwuor/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/780#pullrequestreview-1798105922",
       "submitted_at": "2023-12-28T13:44:21Z",
@@ -1272,7 +1331,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1311,7 +1371,8 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/780#pullrequestreview-1874449645",
       "submitted_at": "2024-02-11T22:44:13Z",
@@ -1341,7 +1402,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1364,7 +1426,8 @@
         "events_url": "https://api.github.com/users/BrandonOdiwuor/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/BrandonOdiwuor/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "review_requester": {
         "login": "DrahtBot",
@@ -1384,7 +1447,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       }
     },
     {
@@ -1410,7 +1474,8 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": "6868474555207ab2dc636b1c1fd8408a160545fb",
       "commit_url": "https://api.github.com/repos/bitcoin-core/gui/commits/6868474555207ab2dc636b1c1fd8408a160545fb",
@@ -1439,11 +1504,42 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-02-11T22:48:25Z"
+    },
+    {
+      "event": "locked",
+      "id": 16242612692,
+      "node_id": "LOE_lADOEEET9c54_gq4zwAAAAPIIpnU",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/16242612692",
+      "actor": {
+        "login": "bitcoin-core",
+        "id": 13464320,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjEzNDY0MzIw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/13464320?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/bitcoin-core",
+        "html_url": "https://github.com/bitcoin-core",
+        "followers_url": "https://api.github.com/users/bitcoin-core/followers",
+        "following_url": "https://api.github.com/users/bitcoin-core/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/bitcoin-core/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/bitcoin-core/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/bitcoin-core/subscriptions",
+        "organizations_url": "https://api.github.com/users/bitcoin-core/orgs",
+        "repos_url": "https://api.github.com/users/bitcoin-core/repos",
+        "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
+        "type": "Organization",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-02-10T07:30:51Z"
     }
   ],
   "comments": []
