@@ -1,0 +1,92 @@
+{
+  "type": "issue",
+  "issue": {
+    "id": 2852577132,
+    "node_id": "I_kwDOEEET9c6qBt9s",
+    "url": "https://api.github.com/repos/bitcoin-core/gui/issues/853",
+    "repository_url": "https://api.github.com/repos/bitcoin-core/gui",
+    "labels_url": "https://api.github.com/repos/bitcoin-core/gui/issues/853/labels%7B/name%7D",
+    "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/853/comments",
+    "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/853/events",
+    "html_url": "https://github.com/bitcoin-core/gui/issues/853",
+    "number": 853,
+    "state": "open",
+    "state_reason": null,
+    "title": "Wallet/transaction notifications: Only a single notification is displayed",
+    "body": "There are actually multiple issues here, at least:\n1. `WalletView::processNewTransaction` only looks at the first of a batch of inserted rows.\n2. `QSystemTrayIcon`'s X11 implementation (`QBalloonTip`, internal-only) only allows a single notification, destroying the previous when a new one is shown\n3. Showing possibly hundreds of notifications would be terrible UX\n\nIt seems like the GUI should queue notifications at the same \"instant\" (eg, a new block), and if there's multiple send a summary of them all (number of transactions, total sent, total received/mined). This may require some refactoring work, as notifications currently follow the TransactionTableModel insertion slots.",
+    "user": {
+      "login": "luke-jr",
+      "id": 1095675,
+      "node_id": "MDQ6VXNlcjEwOTU2NzU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1095675?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/luke-jr",
+      "html_url": "https://github.com/luke-jr",
+      "followers_url": "https://api.github.com/users/luke-jr/followers",
+      "following_url": "https://api.github.com/users/luke-jr/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/luke-jr/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/luke-jr/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/luke-jr/subscriptions",
+      "organizations_url": "https://api.github.com/users/luke-jr/orgs",
+      "repos_url": "https://api.github.com/users/luke-jr/repos",
+      "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/luke-jr/received_events",
+      "type": "User",
+      "site_admin": false,
+      "patch_url": null
+    },
+    "labels": [
+      {
+        "id": 2140649117,
+        "node_id": "MDU6TGFiZWwyMTQwNjQ5MTE3",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Bug",
+        "name": "Bug",
+        "description": "Something isn't working",
+        "color": "d73a4a",
+        "default": false
+      }
+    ],
+    "assignees": [],
+    "author_association": "MEMBER",
+    "locked": false,
+    "comments": 0,
+    "created_at": "2025-02-14T03:25:26Z",
+    "updated_at": "2025-02-14T03:25:26Z"
+  },
+  "events": [
+    {
+      "event": "labeled",
+      "id": 16305473007,
+      "node_id": "LE_lADOEEET9c6qBt9szwAAAAPL4cXv",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/16305473007",
+      "actor": {
+        "login": "luke-jr",
+        "id": 1095675,
+        "node_id": "MDQ6VXNlcjEwOTU2NzU=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1095675?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/luke-jr",
+        "html_url": "https://github.com/luke-jr",
+        "followers_url": "https://api.github.com/users/luke-jr/followers",
+        "following_url": "https://api.github.com/users/luke-jr/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/luke-jr/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/luke-jr/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/luke-jr/subscriptions",
+        "organizations_url": "https://api.github.com/users/luke-jr/orgs",
+        "repos_url": "https://api.github.com/users/luke-jr/repos",
+        "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/luke-jr/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-02-14T03:25:26Z",
+      "label": {
+        "name": "Bug",
+        "color": "d73a4a"
+      }
+    }
+  ]
+}
