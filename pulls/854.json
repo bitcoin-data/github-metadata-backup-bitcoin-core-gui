@@ -40,13 +40,22 @@
       "patch_url": null
     },
     "body": "This PR follows our [Release Process](https://github.com/bitcoin/bitcoin/blob/864386a7444fb5cf16613956ce8bf335f51b67d5/doc/release-process.md) and implements the [\"Translation string freeze\"](https://github.com/bitcoin/bitcoin/issues/31029) step.\r\n\r\nSteps to reproduce the diff on Ubuntu:\r\n```\r\n$ cmake --preset dev-mode -DWITH_USDT=OFF -DWITH_MULTIPROCESS=OFF\r\n$ cmake --build build_dev_mode --target translate\r\n```\r\n\r\nAt the moment, the multiprocess-specific code does not introduce any new translatable strings. Therefore, there is no need to build depends with `MULTIPROCESS=1` to review this PR.",
-    "labels": [],
+    "labels": [
+      {
+        "id": 5353934559,
+        "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
+        "name": "CI failed",
+        "color": "ededed",
+        "default": false
+      }
+    ],
     "created_at": "2025-02-20T17:10:43Z",
-    "updated_at": "2025-02-20T18:20:41Z",
+    "updated_at": "2025-02-20T20:15:31Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
-    "merge_commit_sha": "85ee18b4f744e727888bc9f694377b267affffe5",
+    "merge_commit_sha": "6a649ff179637f5a576c5e7a980f144f3a39ce4a",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -287,7 +296,7 @@
         "forks_count": 283,
         "stargazers_count": 629,
         "watchers_count": 629,
-        "size": 170243,
+        "size": 170268,
         "default_branch": "master",
         "open_issues_count": 154,
         "is_template": false,
@@ -300,9 +309,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-02-20T18:42:23Z",
+        "pushed_at": "2025-02-20T20:07:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2025-02-20T18:42:27Z",
+        "updated_at": "2025-02-20T20:07:10Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -921,6 +930,40 @@
       "submitted_at": "2025-02-20T18:20:38Z",
       "state": "APPROVED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/854"
+    },
+    {
+      "event": "labeled",
+      "id": 16388663900,
+      "node_id": "LE_lADOEEET9c6q38X1zwAAAAPQ1ypc",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/16388663900",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-02-20T20:15:30Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
+      }
     }
   ],
   "comments": []
