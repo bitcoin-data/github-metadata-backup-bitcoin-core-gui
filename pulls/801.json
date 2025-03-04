@@ -15,7 +15,7 @@
     "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/b7aa717cdd3f6af266c244fec6d775e917cf8d0c",
     "number": 801,
     "state": "closed",
-    "locked": false,
+    "locked": true,
     "maintainer_can_modify": false,
     "title": "Fix nullptr clientModel access during shutdown",
     "user": {
@@ -36,7 +36,8 @@
       "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/furszy/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "patch_url": null
     },
     "body": "Fixing #800.\r\n\r\nDuring shutdown, already queue events dispatched from the backend such\r\n'numConnectionsChanged' and 0networkActiveChanged' could try to access\r\nthe clientModel object, which might not exist because we manually delete\r\nit inside 'BitcoinApplication::requestShutdown()'.\r\n\r\nThis happen because boost does not clears the queued events when they arise\r\nconcurrently with the signal disconnection (see https://www.boost.org/doc/libs/1_55_0/doc/html/signals2/thread-safety.html).\r\nFrom the docs:\r\n1) \"Note that since we unlock the connection's mutex before executing its associated slot, it is possible a slot will still be executing after it has been disconnected by a [connection::disconnect](https://www.boost.org/doc/libs/1_55_0/doc/html/boost/signals2/connection.html#idp89761576-bb)(), if the disconnect was called concurrently with signal invocation.\"\r\n2)  \"The fact that concurrent signal invocations use the same combiner object means you need to insure any custom combiner you write is thread-safe\" \r\n\r\nSo, we need to guard `clientModel` before accessing it at the handler side.",
     "labels": [],
@@ -47,7 +48,7 @@
       "id": 10563267,
       "node_id": "MI_kwDOEEET9c4AoS7D",
       "number": 12,
-      "state": "open",
+      "state": "closed",
       "title": "27.0",
       "description": "",
       "creator": {
@@ -68,18 +69,42 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "open_issues": 0,
       "closed_issues": 4,
       "created_at": "2024-02-15T11:10:17Z",
-      "updated_at": "2024-03-04T10:17:16Z"
+      "updated_at": "2024-07-29T09:39:01Z",
+      "closed_at": "2024-07-29T09:39:01Z"
     },
     "created_at": "2024-02-28T13:12:06Z",
-    "updated_at": "2024-03-04T12:18:38Z",
+    "updated_at": "2025-03-04T07:35:59Z",
     "closed_at": "2024-03-04T10:16:00Z",
     "mergeable_state": "unknown",
+    "merged": true,
     "merged_at": "2024-03-04T10:16:00Z",
+    "merged_by": {
+      "login": "hebasto",
+      "id": 32963518,
+      "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hebasto",
+      "html_url": "https://github.com/hebasto",
+      "followers_url": "https://api.github.com/users/hebasto/followers",
+      "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+      "organizations_url": "https://api.github.com/users/hebasto/orgs",
+      "repos_url": "https://api.github.com/users/hebasto/repos",
+      "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/hebasto/received_events",
+      "type": "User",
+      "site_admin": false,
+      "patch_url": null
+    },
     "merge_commit_sha": "776d48dd5606747eb947a07acfa2ec67d9424602",
     "assignees": [],
     "requested_reviewers": [],
@@ -106,7 +131,8 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "repo": {
         "id": 490320067,
@@ -131,7 +157,8 @@
           "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/furszy/received_events",
           "type": "User",
-          "site_admin": false
+          "site_admin": false,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/furszy/bitcoin-gui",
@@ -183,7 +210,7 @@
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 152201,
+        "size": 163552,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -196,9 +223,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-03-04T12:18:38Z",
+        "pushed_at": "2024-10-04T19:58:58Z",
         "created_at": "2022-05-09T14:34:00Z",
         "updated_at": "2023-09-08T14:09:02Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -238,7 +266,8 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "repo": {
         "id": 272700405,
@@ -263,7 +292,8 @@
           "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
-          "site_admin": false
+          "site_admin": false,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/bitcoin-core/gui",
@@ -312,12 +342,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 242,
-        "stargazers_count": 543,
-        "watchers_count": 543,
-        "size": 152907,
+        "forks_count": 284,
+        "stargazers_count": 630,
+        "watchers_count": 630,
+        "size": 165139,
         "default_branch": "master",
-        "open_issues_count": 158,
+        "open_issues_count": 150,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -328,9 +358,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-03-04T11:59:02Z",
+        "pushed_at": "2025-03-04T00:40:45Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-03-03T21:05:53Z",
+        "updated_at": "2025-03-04T00:40:49Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -386,7 +417,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -412,121 +444,11 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/801#issuecomment-1968956388",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/801"
-    },
-    {
-      "event": "cross-referenced",
-      "id": null,
-      "node_id": null,
-      "url": null,
-      "actor": {
-        "login": "furszy",
-        "id": 5377650,
-        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
-        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/furszy",
-        "html_url": "https://github.com/furszy",
-        "followers_url": "https://api.github.com/users/furszy/followers",
-        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
-        "organizations_url": "https://api.github.com/users/furszy/orgs",
-        "repos_url": "https://api.github.com/users/furszy/repos",
-        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/furszy/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": "2024-02-28T13:12:26Z",
-      "updated_at": "2024-02-28T13:12:26Z",
-      "source": {
-        "issue": {
-          "id": 2158373584,
-          "node_id": "I_kwDOEEET9c6ApirQ",
-          "url": "https://api.github.com/repos/bitcoin-core/gui/issues/800",
-          "repository_url": "https://api.github.com/repos/bitcoin-core/gui",
-          "labels_url": "https://api.github.com/repos/bitcoin-core/gui/issues/800/labels%7B/name%7D",
-          "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/800/comments",
-          "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/800/events",
-          "html_url": "https://github.com/bitcoin-core/gui/issues/800",
-          "number": 800,
-          "state": "closed",
-          "state_reason": "completed",
-          "title": "Segfault in qt/clientmodel.cpp:92 on every shutdown",
-          "body": "### Is there an existing issue for this?\n\n- [X] I have searched the existing issues\n\n### Current behaviour\n\nOn shutdown, I get a crash in `return m_node.getNodeCount(connections);`\n\n### Expected behaviour\n\nNo crash\n\n### Steps to reproduce\n\n* Shutdown Bitcoin Core\n\n### Relevant log output\n\n_No response_\n\n### How did you obtain Bitcoin Core\n\nCompiled from source\n\n### What version of Bitcoin Core are you using?\n\nmaster\n\n### Operating system and version\n\nubuntu\n\n### Machine specifications\n\n_No response_",
-          "user": {
-            "login": "maflcko",
-            "id": 6399679,
-            "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
-            "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
-            "gravatar_id": "",
-            "url": "https://api.github.com/users/maflcko",
-            "html_url": "https://github.com/maflcko",
-            "followers_url": "https://api.github.com/users/maflcko/followers",
-            "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
-            "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
-            "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
-            "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
-            "organizations_url": "https://api.github.com/users/maflcko/orgs",
-            "repos_url": "https://api.github.com/users/maflcko/repos",
-            "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
-            "received_events_url": "https://api.github.com/users/maflcko/received_events",
-            "type": "User",
-            "site_admin": false
-          },
-          "labels": [],
-          "assignees": [],
-          "author_association": "CONTRIBUTOR",
-          "milestone": {
-            "url": "https://api.github.com/repos/bitcoin-core/gui/milestones/12",
-            "html_url": "https://github.com/bitcoin-core/gui/milestone/12",
-            "labels_url": "https://api.github.com/repos/bitcoin-core/gui/milestones/12/labels",
-            "id": 10563267,
-            "node_id": "MI_kwDOEEET9c4AoS7D",
-            "number": 12,
-            "state": "open",
-            "title": "27.0",
-            "description": "",
-            "creator": {
-              "login": "hebasto",
-              "id": 32963518,
-              "node_id": "MDQ6VXNlcjMyOTYzNTE4",
-              "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
-              "gravatar_id": "",
-              "url": "https://api.github.com/users/hebasto",
-              "html_url": "https://github.com/hebasto",
-              "followers_url": "https://api.github.com/users/hebasto/followers",
-              "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
-              "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
-              "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
-              "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
-              "organizations_url": "https://api.github.com/users/hebasto/orgs",
-              "repos_url": "https://api.github.com/users/hebasto/repos",
-              "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
-              "received_events_url": "https://api.github.com/users/hebasto/received_events",
-              "type": "User",
-              "site_admin": false
-            },
-            "open_issues": 0,
-            "closed_issues": 4,
-            "created_at": "2024-02-15T11:10:17Z",
-            "updated_at": "2024-03-04T10:17:16Z"
-          },
-          "locked": false,
-          "comments": 5,
-          "closed_at": "2024-03-04T10:17:16Z",
-          "created_at": "2024-02-28T08:20:29Z",
-          "updated_at": "2024-03-04T10:17:16Z"
-        },
-        "type": "issue"
-      }
     },
     {
       "event": "reviewed",
@@ -556,7 +478,8 @@
         "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/801#pullrequestreview-1906265175",
       "submitted_at": "2024-02-28T13:25:09Z",
@@ -586,10 +509,11 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "cc337f86ab566f68fe51daebda662f697be02153",
+      "commit_url": "https://api.github.com/repos/furszy/bitcoin-gui/commits/cc337f86ab566f68fe51daebda662f697be02153",
       "created_at": "2024-02-28T13:48:33Z"
     },
     {
@@ -615,10 +539,11 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "4b47c785e0adfb946b9874fb7d6c76e68471868b",
+      "commit_url": "https://api.github.com/repos/furszy/bitcoin-gui/commits/4b47c785e0adfb946b9874fb7d6c76e68471868b",
       "created_at": "2024-02-28T13:49:23Z"
     },
     {
@@ -684,10 +609,11 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "f357578badc12f7816b56af8486caadba90a534b",
+      "commit_url": "https://api.github.com/repos/furszy/bitcoin-gui/commits/f357578badc12f7816b56af8486caadba90a534b",
       "created_at": "2024-02-28T20:59:03Z"
     },
     {
@@ -713,7 +639,8 @@
         "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -739,7 +666,8 @@
         "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/801#issuecomment-1970628802",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/801"
@@ -767,7 +695,8 @@
         "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -799,7 +728,8 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -825,7 +755,8 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/801#issuecomment-1971395733",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/801"
@@ -853,7 +784,8 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -882,7 +814,8 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -917,7 +850,8 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/801#pullrequestreview-1909329318",
       "submitted_at": "2024-02-29T16:23:49Z",
@@ -987,10 +921,11 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "b7aa717cdd3f6af266c244fec6d775e917cf8d0c",
+      "commit_url": "https://api.github.com/repos/furszy/bitcoin-gui/commits/b7aa717cdd3f6af266c244fec6d775e917cf8d0c",
       "created_at": "2024-02-29T17:41:04Z"
     },
     {
@@ -1022,7 +957,8 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/801#pullrequestreview-1911197997",
       "submitted_at": "2024-03-01T13:35:24Z",
@@ -1052,7 +988,8 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": "776d48dd5606747eb947a07acfa2ec67d9424602",
       "commit_url": "https://api.github.com/repos/bitcoin-core/gui/commits/776d48dd5606747eb947a07acfa2ec67d9424602",
@@ -1081,7 +1018,8 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1110,11 +1048,72 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-03-04T12:18:38Z"
+    },
+    {
+      "event": "referenced",
+      "id": 16400904869,
+      "node_id": "REFE_lADOEEET9c6ArteDzwAAAAPRkfKl",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/16400904869",
+      "actor": {
+        "login": "Fabcien",
+        "id": 44533924,
+        "node_id": "MDQ6VXNlcjQ0NTMzOTI0",
+        "avatar_url": "https://avatars.githubusercontent.com/u/44533924?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Fabcien",
+        "html_url": "https://github.com/Fabcien",
+        "followers_url": "https://api.github.com/users/Fabcien/followers",
+        "following_url": "https://api.github.com/users/Fabcien/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/Fabcien/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/Fabcien/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/Fabcien/subscriptions",
+        "organizations_url": "https://api.github.com/users/Fabcien/orgs",
+        "repos_url": "https://api.github.com/users/Fabcien/repos",
+        "events_url": "https://api.github.com/users/Fabcien/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/Fabcien/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": "2f1230a536106a4648895a12e530b3769c3746a9",
+      "commit_url": "https://api.github.com/repos/Bitcoin-ABC/bitcoin-abc/commits/2f1230a536106a4648895a12e530b3769c3746a9",
+      "created_at": "2025-02-21T14:00:56Z"
+    },
+    {
+      "event": "locked",
+      "id": 16549749035,
+      "node_id": "LOE_lADOEEET9c6ArteDzwAAAAPacSEr",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/16549749035",
+      "actor": {
+        "login": "bitcoin-core",
+        "id": 13464320,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjEzNDY0MzIw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/13464320?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/bitcoin-core",
+        "html_url": "https://github.com/bitcoin-core",
+        "followers_url": "https://api.github.com/users/bitcoin-core/followers",
+        "following_url": "https://api.github.com/users/bitcoin-core/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/bitcoin-core/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/bitcoin-core/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/bitcoin-core/subscriptions",
+        "organizations_url": "https://api.github.com/users/bitcoin-core/orgs",
+        "repos_url": "https://api.github.com/users/bitcoin-core/repos",
+        "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
+        "type": "Organization",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-03-04T07:35:59Z"
     }
   ],
   "comments": [
@@ -1148,7 +1147,8 @@
         "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "Not sure, this could still race, since there is no lock, so clientModel may still be deleted after this statement?",
       "created_at": "2024-02-28T13:25:09Z",
@@ -1200,7 +1200,8 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "> Not sure, this could still race, since there is no lock, so clientModel may still be deleted after this statement?\r\n\r\nCheck it now.\r\n`BitcoinApplication::requestShutdown()` sets the main window (`BitcoinGUI`) `clientModel` to nullptr without clearing the subscribed signals (this is the `window->setClientModel(nullptr)` line), which leaves an open window where the signal handlers are still active but the main window client model is nullptr. So, by unsubscribing the signals prior to the `setClientModel(nullptr)` call, we avoid any concurrent event happening in-between the main window nullptr client model and the final clientModel destruction at the end of `BitcoinApplication::requestShutdown()` (which was the one destructing the event handlers).",
       "created_at": "2024-02-28T13:57:02Z",
@@ -1252,7 +1253,8 @@
         "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "What about events that are already running? Does the destructor ensure they are flushed/discarded, or will it just disconnect?",
       "created_at": "2024-02-28T14:00:48Z",
@@ -1304,7 +1306,8 @@
         "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "> What about events that are already running? Does the destructor ensure they are flushed/discarded, or will it just disconnect?\r\n\r\nI haven't looked in detail, but it seems like in principle, if any boost signal events are currently running, and they send asynchronous Q_EMIT qt signals that are run in the GUI event loop thread, there should not be a problem. That is assuming this method is always running the GUI event loop thread, and the code deleting clientModel is also running in the GUI event loop thread.",
       "created_at": "2024-02-28T16:49:36Z",
@@ -1356,7 +1359,8 @@
         "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "Ok, but then it means this check in this line could be removed?\r\n\r\n",
       "created_at": "2024-02-28T16:54:00Z",
@@ -1408,7 +1412,8 @@
         "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "> Ok, but then it means this check in this line could be removed?\r\n\r\nI think not if the events are queued, but again I'm not too sure.",
       "created_at": "2024-02-28T16:58:15Z",
@@ -1460,7 +1465,8 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "A bit late but here again. Sorry, life called.\r\n\r\n> it means this check in this line could be removed?\r\n\r\nNot really. While `requestShutdown()` is being executed, no other task can be processed in the main thread but new tasks can be enqueued to be executed by the main thread after it. So, any event coming from the backend while  `requestShutdown()` is running (prior to the `unsubscribeFromCoreSignals` call) will be executed right after it finishes it.\r\nSo.. this means that we also need to guard `RPCConsole::updateNetworkState()` function for a nullptr `clientModel`. The same segfault could arise there too.\r\n\r\n> I think not if the events are queued, but again I'm not too sure.\r\n\r\nYes. Both events are running on the main thread. The diff is on who enqueues them: the quit action is appended by the main thread (when we press the quit button) and the \"network active change\" is enqueued by the backend thread, when the RPC changes the value.\r\n\r\n--------------\r\n\r\nThat being said, it is all theoretical. Let me do some tests.",
       "created_at": "2024-02-28T17:48:45Z",
@@ -1512,7 +1518,8 @@
         "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "> > I think not if the events are queued, but again I'm not too sure.\r\n> \r\n> Yes. Both events are running on the main thread. The diff is on who enqueues them: the quit action is appended by the main thread (when we press the quit button) and the \"network active change\" is enqueued by the backend thread, when the RPC changes the value.\r\n\r\nThanks for clarifying. Indeed, if the events all run on a single thread (haven't checked this), this fix should be correct.\r\n\r\nI guess I was confusing myself with the second commit.",
       "created_at": "2024-02-29T08:17:24Z",
@@ -1564,7 +1571,8 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "> if the events all run on a single thread (haven't checked this), this fix should be correct.\r\n\r\nYeah. As far as I have tested, they are running on the main thread. But, this doesn't mean that the code will always act in the same way.. we are using the default qt `connection()` function, which provides `Qt::ConnectionType = Qt::AutoConnection`, which per https://doc.qt.io/qt-6/qt.html#ConnectionType-enum it might use `Qt::DirectConnection`,  which executes the task on the signalling thread.\r\nTo solve this, we could force the main thread execution by changing the slot connection side but, as I haven't been able to trigger the segfault after the fix, will leave this investigation for a follow-up.",
       "created_at": "2024-02-29T17:49:32Z",
