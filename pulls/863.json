@@ -52,7 +52,7 @@
       }
     ],
     "created_at": "2025-04-02T19:54:03Z",
-    "updated_at": "2025-04-02T21:34:04Z",
+    "updated_at": "2025-04-02T22:34:23Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
@@ -621,9 +621,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2025-04-02T21:34:00Z",
-      "updated_at": "2025-04-02T21:34:00Z",
+      "updated_at": "2025-04-02T22:34:23Z",
       "author_association": "CONTRIBUTOR",
-      "body": "crACK https://github.com/bitcoin-core/gui/pull/863/commits/3aa58bea8e703e33a1eb8e2f9fdf887aca8d03c1\r\n\r\nNice cleanup, doesn't change any behavior, just drops workaround code for versions of QT < 6.2.\r\n\r\n-----\r\n\r\nLeft an insignificant nit about use of deprecated `QLabel::pixmap(Qt::ReturnByValue())`, but this can be addressed in a follow up (or here, if the author prefers) with the other place it appears.\r\n\r\n<details> \r\n\r\n<summary>\r\n\r\n (https://github.com/davidgumberg/gui/commit/ca5390f9b0af348e8f4ea0cf2149716c0b77bd8f)\r\n </summary>\r\n \r\n```diff\r\ndiff --git a/src/qt/guiutil.cpp b/src/qt/guiutil.cpp\r\n@@ -959,7 +959,7 @@ QDateTime StartOfDay(const QDate& date)\r\n bool HasPixmap(const QLabel* label)\r\n {\r\n-    return !label->pixmap(Qt::ReturnByValue).isNull();\r\n+    return !label->pixmap().isNull();\r\n }\r\n\r\ndiff --git a/src/qt/qrimagewidget.cpp b/src/qt/qrimagewidget.cpp\r\n@@ -96,7 +96,7 @@ QImage QRImageWidget::exportImage()\r\n         return QImage();\r\n     }\r\n-    return this->pixmap(Qt::ReturnByValue).toImage();\r\n+    return this->pixmap().toImage();\r\n }\r\n ```",
+      "body": "crACK https://github.com/bitcoin-core/gui/pull/863/commits/3aa58bea8e703e33a1eb8e2f9fdf887aca8d03c1\r\n\r\nNice cleanup, doesn't change any behavior, mostly drops workaround code for versions of QT < 6.2.\r\n\r\n-----\r\n\r\nLeft an insignificant nit about use of deprecated `QLabel::pixmap(Qt::ReturnByValue())`, but this can be addressed in a follow up (or here, if the author prefers) with the other place it appears.\r\n\r\n<details> \r\n\r\n<summary>\r\n\r\n (https://github.com/davidgumberg/gui/commit/ca5390f9b0af348e8f4ea0cf2149716c0b77bd8f)\r\n </summary>\r\n \r\n```diff\r\ndiff --git a/src/qt/guiutil.cpp b/src/qt/guiutil.cpp\r\n@@ -959,7 +959,7 @@ QDateTime StartOfDay(const QDate& date)\r\n bool HasPixmap(const QLabel* label)\r\n {\r\n-    return !label->pixmap(Qt::ReturnByValue).isNull();\r\n+    return !label->pixmap().isNull();\r\n }\r\n\r\ndiff --git a/src/qt/qrimagewidget.cpp b/src/qt/qrimagewidget.cpp\r\n@@ -96,7 +96,7 @@ QImage QRImageWidget::exportImage()\r\n         return QImage();\r\n     }\r\n-    return this->pixmap(Qt::ReturnByValue).toImage();\r\n+    return this->pixmap().toImage();\r\n }\r\n ```",
       "user": {
         "login": "davidgumberg",
         "id": 2257631,
@@ -683,9 +683,9 @@
         "site_admin": false,
         "patch_url": null
       },
-      "body": "Micro-Nit:\r\n\r\nAs far as I understand this is deprecated in favor of `QLabel::pixmap()` at least as early as QT 6.2 (https://doc.qt.io/archives/qt-6.2/qlabel-obsolete.html#pixmap) and was marked `obsolete` in 6.0 (https://doc.qt.io/archives/qt-6.0/qlabel-obsolete.html#pixmap)\r\n\r\nPreviously, it was recommended to use `QLabel::pixmap(Qt::ReturnByValue())` to maintain compatibility with old code, since previously `QLabel::pixmap()` returned a pixmap by pointer. (https://doc.qt.io/qt-5/qlabel.html#pixmap-prop)\r\n\r\n\r\n```suggestion\r\n    return this->pixmap().toImage();\r\n```",
+      "body": "Micro-Nit:\r\n\r\nAs far as I understand this is deprecated in favor of `QLabel::pixmap()` at least as early as QT 6.2 (https://doc.qt.io/archives/qt-6.2/qlabel-obsolete.html#pixmap) and was marked `obsolete` in 6.0 (https://doc.qt.io/archives/qt-6.0/qlabel-obsolete.html#pixmap)\r\n\r\nPreviously, it was recommended to use `QLabel::pixmap(Qt::ReturnByValue)` to maintain compatibility with old code, since previously `QLabel::pixmap()` returned a pixmap by pointer. (https://doc.qt.io/qt-5/qlabel.html#pixmap-prop)\r\n\r\n\r\n```suggestion\r\n    return this->pixmap().toImage();\r\n```",
       "created_at": "2025-04-02T20:50:48Z",
-      "updated_at": "2025-04-02T21:00:33Z",
+      "updated_at": "2025-04-02T22:34:57Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/863#discussion_r2025577276",
       "author_association": "CONTRIBUTOR",
       "_links": {
