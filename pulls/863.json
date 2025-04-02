@@ -52,7 +52,7 @@
       }
     ],
     "created_at": "2025-04-02T19:54:03Z",
-    "updated_at": "2025-04-02T19:54:07Z",
+    "updated_at": "2025-04-02T20:50:48Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
@@ -162,7 +162,7 @@
         "forks_count": 2,
         "stargazers_count": 5,
         "watchers_count": 5,
-        "size": 168811,
+        "size": 170477,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -342,7 +342,7 @@
     "deletions": 85,
     "changed_files": 10,
     "commits": 3,
-    "review_comments": 0,
+    "review_comments": 1,
     "comments": 1
   },
   "events": [
@@ -555,7 +555,97 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/863#issuecomment-2773581800",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/863"
+    },
+    {
+      "event": "reviewed",
+      "id": 2737549785,
+      "node_id": "PRR_kwDOEEET9c6jK7HZ",
+      "url": null,
+      "actor": null,
+      "commit_id": "d1ec6db24934b9cb0f2f51609b83406d577eb69f",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "CONTRIBUTOR",
+      "user": {
+        "login": "davidgumberg",
+        "id": 2257631,
+        "node_id": "MDQ6VXNlcjIyNTc2MzE=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/2257631?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/davidgumberg",
+        "html_url": "https://github.com/davidgumberg",
+        "followers_url": "https://api.github.com/users/davidgumberg/followers",
+        "following_url": "https://api.github.com/users/davidgumberg/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/davidgumberg/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/davidgumberg/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/davidgumberg/subscriptions",
+        "organizations_url": "https://api.github.com/users/davidgumberg/orgs",
+        "repos_url": "https://api.github.com/users/davidgumberg/repos",
+        "events_url": "https://api.github.com/users/davidgumberg/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/davidgumberg/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/863#pullrequestreview-2737549785",
+      "submitted_at": "2025-04-02T20:50:48Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/863"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2025577276",
+      "pull_request_review_id": 2737549785,
+      "id": 2025577276,
+      "node_id": "PRRC_kwDOEEET9c54u9s8",
+      "diff_hunk": "@@ -92,7 +92,11 @@ bool QRImageWidget::setQR(const QString& data, const QString& text)\n \n QImage QRImageWidget::exportImage()\n {\n-    return GUIUtil::GetImage(this);\n+    if (!GUIUtil::HasPixmap(this)) {\n+        return QImage();\n+    }\n+\n+    return this->pixmap(Qt::ReturnByValue).toImage();",
+      "path": "src/qt/qrimagewidget.cpp",
+      "position": 9,
+      "original_position": 9,
+      "commit_id": "3aa58bea8e703e33a1eb8e2f9fdf887aca8d03c1",
+      "original_commit_id": "d1ec6db24934b9cb0f2f51609b83406d577eb69f",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "davidgumberg",
+        "id": 2257631,
+        "node_id": "MDQ6VXNlcjIyNTc2MzE=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/2257631?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/davidgumberg",
+        "html_url": "https://github.com/davidgumberg",
+        "followers_url": "https://api.github.com/users/davidgumberg/followers",
+        "following_url": "https://api.github.com/users/davidgumberg/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/davidgumberg/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/davidgumberg/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/davidgumberg/subscriptions",
+        "organizations_url": "https://api.github.com/users/davidgumberg/orgs",
+        "repos_url": "https://api.github.com/users/davidgumberg/repos",
+        "events_url": "https://api.github.com/users/davidgumberg/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/davidgumberg/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "body": "Micro-Nit:\r\n\r\nAs far as I understand this is deprecated in favor of `QLabel::pixmap()` after QT 6.6 (https://doc.qt.io/qt-6/qlabel-obsolete.html)\r\n\r\n```suggestion\r\n    return this->pixmap().toImage();\r\n```",
+      "created_at": "2025-04-02T20:50:48Z",
+      "updated_at": "2025-04-02T20:51:46Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/863#discussion_r2025577276",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2025577276"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/863"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 99,
+      "original_line": 99,
+      "side": "RIGHT"
+    }
+  ]
 }
