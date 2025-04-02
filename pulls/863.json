@@ -52,7 +52,7 @@
       }
     ],
     "created_at": "2025-04-02T19:54:03Z",
-    "updated_at": "2025-04-02T20:50:48Z",
+    "updated_at": "2025-04-02T21:34:04Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
@@ -294,7 +294,7 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 291,
+        "forks_count": 292,
         "stargazers_count": 636,
         "watchers_count": 636,
         "size": 169407,
@@ -343,7 +343,7 @@
     "changed_files": 10,
     "commits": 3,
     "review_comments": 1,
-    "comments": 1
+    "comments": 2
   },
   "events": [
     {
@@ -529,9 +529,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2025-04-02T19:54:06Z",
-      "updated_at": "2025-04-02T19:54:06Z",
+      "updated_at": "2025-04-02T21:34:03Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\nA summary of reviews will appear here.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| ACK | [davidgumberg](https://github.com/bitcoin-core/gui/pull/863#issuecomment-2773791602) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -591,6 +591,62 @@
       "submitted_at": "2025-04-02T20:50:48Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/863"
+    },
+    {
+      "event": "commented",
+      "id": 2773791602,
+      "node_id": "IC_kwDOEEET9c6lVLNy",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2773791602",
+      "actor": {
+        "login": "davidgumberg",
+        "id": 2257631,
+        "node_id": "MDQ6VXNlcjIyNTc2MzE=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/2257631?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/davidgumberg",
+        "html_url": "https://github.com/davidgumberg",
+        "followers_url": "https://api.github.com/users/davidgumberg/followers",
+        "following_url": "https://api.github.com/users/davidgumberg/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/davidgumberg/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/davidgumberg/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/davidgumberg/subscriptions",
+        "organizations_url": "https://api.github.com/users/davidgumberg/orgs",
+        "repos_url": "https://api.github.com/users/davidgumberg/repos",
+        "events_url": "https://api.github.com/users/davidgumberg/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/davidgumberg/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-04-02T21:34:00Z",
+      "updated_at": "2025-04-02T21:34:00Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "crACK https://github.com/bitcoin-core/gui/pull/863/commits/3aa58bea8e703e33a1eb8e2f9fdf887aca8d03c1\r\n\r\nNice cleanup, doesn't change any behavior, just drops workaround code for versions of QT < 6.2.\r\n\r\n-----\r\n\r\nLeft an insignificant nit about use of deprecated `QLabel::pixmap(Qt::ReturnByValue())`, but this can be addressed in a follow up (or here, if the author prefers) with the other place it appears.\r\n\r\n<details> \r\n\r\n<summary>\r\n\r\n (https://github.com/davidgumberg/gui/commit/ca5390f9b0af348e8f4ea0cf2149716c0b77bd8f)\r\n </summary>\r\n \r\n```diff\r\ndiff --git a/src/qt/guiutil.cpp b/src/qt/guiutil.cpp\r\n@@ -959,7 +959,7 @@ QDateTime StartOfDay(const QDate& date)\r\n bool HasPixmap(const QLabel* label)\r\n {\r\n-    return !label->pixmap(Qt::ReturnByValue).isNull();\r\n+    return !label->pixmap().isNull();\r\n }\r\n\r\ndiff --git a/src/qt/qrimagewidget.cpp b/src/qt/qrimagewidget.cpp\r\n@@ -96,7 +96,7 @@ QImage QRImageWidget::exportImage()\r\n         return QImage();\r\n     }\r\n-    return this->pixmap(Qt::ReturnByValue).toImage();\r\n+    return this->pixmap().toImage();\r\n }\r\n ```",
+      "user": {
+        "login": "davidgumberg",
+        "id": 2257631,
+        "node_id": "MDQ6VXNlcjIyNTc2MzE=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/2257631?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/davidgumberg",
+        "html_url": "https://github.com/davidgumberg",
+        "followers_url": "https://api.github.com/users/davidgumberg/followers",
+        "following_url": "https://api.github.com/users/davidgumberg/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/davidgumberg/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/davidgumberg/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/davidgumberg/subscriptions",
+        "organizations_url": "https://api.github.com/users/davidgumberg/orgs",
+        "repos_url": "https://api.github.com/users/davidgumberg/repos",
+        "events_url": "https://api.github.com/users/davidgumberg/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/davidgumberg/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/863#issuecomment-2773791602",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/863"
     }
   ],
   "comments": [
@@ -627,9 +683,9 @@
         "site_admin": false,
         "patch_url": null
       },
-      "body": "Micro-Nit:\r\n\r\nAs far as I understand this is deprecated in favor of `QLabel::pixmap()` after QT 6.6 (https://doc.qt.io/qt-6/qlabel-obsolete.html)\r\n\r\n```suggestion\r\n    return this->pixmap().toImage();\r\n```",
+      "body": "Micro-Nit:\r\n\r\nAs far as I understand this is deprecated in favor of `QLabel::pixmap()` at least as early as QT 6.2 (https://doc.qt.io/archives/qt-6.2/qlabel-obsolete.html#pixmap) and was marked `obsolete` in 6.0 (https://doc.qt.io/archives/qt-6.0/qlabel-obsolete.html#pixmap)\r\n\r\nPreviously, it was recommended to use `QLabel::pixmap(Qt::ReturnByValue())` to maintain compatibility with old code, since previously `QLabel::pixmap()` returned a pixmap by pointer. (https://doc.qt.io/qt-5/qlabel.html#pixmap-prop)\r\n\r\n\r\n```suggestion\r\n    return this->pixmap().toImage();\r\n```",
       "created_at": "2025-04-02T20:50:48Z",
-      "updated_at": "2025-04-02T20:51:46Z",
+      "updated_at": "2025-04-02T21:00:33Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/863#discussion_r2025577276",
       "author_association": "CONTRIBUTOR",
       "_links": {
