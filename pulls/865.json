@@ -12,11 +12,11 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/865/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/865/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/233579c8ffd154b2ae77a15b1fb83387f0bd3495",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/10292b35973ed0436415b3dec41621278945492b",
     "number": 865,
-    "state": "open",
+    "state": "closed",
     "locked": false,
-    "maintainer_can_modify": true,
+    "maintainer_can_modify": false,
     "title": "qt: Improve TrafficGraphWidget functionality",
     "user": {
       "login": "rebroad",
@@ -40,21 +40,31 @@
       "patch_url": null
     },
     "body": "This PR includes several improvements to the TrafficGraphWidget:\r\n\r\n1. Enhanced traffic graph visualization with improved scaling and tooltips\r\n2. Added persistence for traffic data between sessions\r\n3. Improved time handling with new utility functions\r\n4. Added support for multiple time ranges with smooth transitions\r\n5. Updated deprecated Qt5 mouse event methods for Qt6 compatibility\r\n\r\nKey improvements:\r\n- Added tooltips showing detailed traffic information when hovering over data points\r\n- Implemented data persistence to maintain traffic history between application restarts\r\n- Added new utility functions for time formatting and millisecond precision\r\n- Improved graph scaling with logarithmic option for better visualization of varying traffic levels\r\n- Updated mouse event handling to use modern Qt6 APIs\r\n- Added support for multiple time ranges (5min to 28 days) with smooth transitions\r\n- Improved data accuracy with better timestamp handling\r\n\r\nThis is a rebase of #559 for the latest core/master, with significant improvements to the traffic graph widget's functionality and user experience.",
-    "labels": [],
+    "labels": [
+      {
+        "id": 5353934559,
+        "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
+        "name": "CI failed",
+        "color": "ededed",
+        "default": false
+      }
+    ],
     "created_at": "2025-04-09T21:53:23Z",
-    "updated_at": "2025-04-09T21:53:28Z",
+    "updated_at": "2025-04-09T22:26:18Z",
+    "closed_at": "2025-04-09T22:17:54Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
-    "merge_commit_sha": "6b260715f93298d0cd35ddd1a595d9f8536a82e4",
+    "merge_commit_sha": "89d3f910c602ee98bad5b3f8a3ee69c2df483311",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
-    "rebaseable": true,
+    "rebaseable": false,
     "head": {
       "label": "rebroad:trafficgraphwidget-rebased",
       "ref": "trafficgraphwidget-rebased",
-      "sha": "233579c8ffd154b2ae77a15b1fb83387f0bd3495",
+      "sha": "10292b35973ed0436415b3dec41621278945492b",
       "user": {
         "login": "rebroad",
         "id": 1530283,
@@ -152,7 +162,7 @@
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 145752,
+        "size": 171109,
         "default_branch": "master",
         "open_issues_count": 1,
         "is_template": false,
@@ -165,7 +175,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-04-09T21:50:14Z",
+        "pushed_at": "2025-04-09T22:24:47Z",
         "created_at": "2021-04-29T17:49:03Z",
         "updated_at": "2025-04-09T21:51:38Z",
         "allow_forking": true,
@@ -289,7 +299,7 @@
         "watchers_count": 639,
         "size": 169973,
         "default_branch": "master",
-        "open_issues_count": 153,
+        "open_issues_count": 152,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -328,12 +338,12 @@
     },
     "author_association": "CONTRIBUTOR",
     "draft": false,
-    "additions": 730,
-    "deletions": 127,
+    "additions": 727,
+    "deletions": 126,
     "changed_files": 13,
     "commits": 5,
     "review_comments": 0,
-    "comments": 1
+    "comments": 2
   },
   "events": [
     {
@@ -497,46 +507,6 @@
       "sha": "24a898dba38c6618ee6e6a5def72cb16f12ceb0f"
     },
     {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDIzMzU3OWM4ZmZkMTU0YjJhZTc3YTE1YjFmYjgzMzg3ZjBiZDM0OTU",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/233579c8ffd154b2ae77a15b1fb83387f0bd3495",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/233579c8ffd154b2ae77a15b1fb83387f0bd3495",
-      "tree": {
-        "sha": "3523f5461399c947d6a7f4f10bc90039e8bf5f7e",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/3523f5461399c947d6a7f4f10bc90039e8bf5f7e"
-      },
-      "verification": {
-        "verified": true,
-        "reason": "valid",
-        "payload": "tree 3523f5461399c947d6a7f4f10bc90039e8bf5f7e\nparent 24a898dba38c6618ee6e6a5def72cb16f12ceb0f\nauthor R E Broadley <rebroad@users.noreply.github.com> 1743596478 +0100\ncommitter R E Broadley <rebroad@users.noreply.github.com> 1744234514 +0100\n\nqt: Enhance TrafficGraphWidget with multi-timeframe support and data persistence\n\nThis commit significantly improves the network traffic graph widget with:\n\n1. Multiple timeframe support - View traffic data across different time\n   periods (5 minutes to 28 days) using an enhanced slider interface\n\n2. Traffic data persistence - Save and restore traffic information\n   between sessions, preserving historical traffic patterns\n\n3. Interactive visualization features:\n   - Logarithmic scale toggle (mouse click) for better visualization of\n     varying traffic volumes\n   - Interactive tooltips showing detailed traffic information at specific points\n   - Yellow highlight indicators for selected data points\n\n4. Smooth transitions between different time ranges with animated scaling\n\nThese improvements allow users to better monitor and analyze network\ntraffic patterns over time, which is especially useful for debugging\nconnectivity issues or understanding network behavior under different\nconditions.\n\nThe implementation includes proper thread-safety considerations and\nhandles edge cases like time jumps or missing data appropriately.\n",
-        "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAAhcAAAAHc3NoLXJzYQAAAAMBAAEAAAIBALGzuFIa4Gt9ezAsAwlYuz\nZ8PNnm1O+IVjT2zImuutAXIp/TUKNCcX7lQLXITxU6Pr5buUYW+gq6W7v7/5A9dM7GRLYY\nRRB/Fm5eVX+ql9nQiZHEj5mJaTK/1cuVP9ZVYA8xIkhy/fRdBwEgsdiR+17hC1nOgzf5Dx\nsHsLX5I49U+DiOWsZwndpEH1lg5VqfGJkHhOOX93/+j+pDgOkXE25moUmDT1KujP47cRCR\nmK9Gt2eQhalmIh4sB7+YgHzOgMybneLZz793NumsAEd7wP2YXiXfqFisJGCFawsal0lISM\ncMvBPetyquJZhznQZsTnsgKAKFdyAhuLeAmVf383dLjpXPHgeDpeYEYrITnALDJa3W+5Dz\nZhbLaLNoLlIP4KUs1IF/QznJSzKboxniPMN9djWTCsyZSOGoCJ76N9Iz5ovd1WbA6cloMe\nGmZV3W4ljPY4QuBnkhjF7la+9IwOPfsGWGY7BaB7jcOfeb7tJ6dwrdZKWH4K4ZD1yhHcfq\nOfCmauZUnxtsiQ+BuRAaxOJ4fXVa4d0ADp0VwL35HXVxR3SLOcgLduN2ZW4tGXwmp16Nyi\n1lky/ZvWgnKpwYMGkL/FzBob4uKKIfeze+juialkylmgBjrf3YASPt7fJRcEG1FOzVLf5z\nWwC0+7eFr02gSkp4FORIFSDKdsBS8W/hAAAAA2dpdAAAAAAAAAAGc2hhNTEyAAACFAAAAA\nxyc2Etc2hhMi01MTIAAAIAS4hmD49Gs4GtBZNcTxv/fTJq8rDGbCEIvPBZ4Ym0TOoZvU3s\nhrWkZPo6y5ZrwOY4V+cQyj5/CdvLLYrds/nxsa5769NiFOmx2u6oyK8zSUcWCqQEfN/SSl\n8OZ19F3OnaU7OemuUcy34iAajUgYSmSjDRd19BkuNyw4to6Un1PnbEw7x9yIZP7KAwFpMo\nKZUuF20JMIn6sDd6PMVsj+q2CASZgRslpblPkl6g/HoDHpiDWfsOS3OlHVTg5BYSloYbOU\n3GPRSM/LEi5W0q6wzyZaYGnVs2CiQ7kCo7+x5HuKFRvKts/wvpJjDqvWkk8Ye1c8jixLK+\n7kij6wRxa6ifNY2zECsUwfIAudHqDEokaQv7NcFttf1N8tyiUJxI9mpEwu4orvDTxvvT3T\nzubj+MkQW3EOFWtm7iR2vkcLMA/HYkZh9E6PfxRSQiqGJ2VOqVQoCvT/N4Qv+n3watZrsq\nu5+jARrkfZBfA1k3hNgljEpkMQ5y0oxWwCKvKaE5wHRkmSWn8hg+UVdkcMI15dK5xdq1pJ\n+jT7l/VSQvjWFwnsP3U3XEtTmyefho9UFMsJCphleRzM7oXGje/3c0ovfvxL5cBF7qFAJN\nOENAOS9DIao7TLuZkDNtHMvCLCQTSOIgE5/5y+2g9E/+DwWRp7791EpslNlHe6W2HbPwYI\nJ95AI=\n-----END SSH SIGNATURE-----"
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/24a898dba38c6618ee6e6a5def72cb16f12ceb0f",
-          "sha": "24a898dba38c6618ee6e6a5def72cb16f12ceb0f",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/24a898dba38c6618ee6e6a5def72cb16f12ceb0f"
-        }
-      ],
-      "message": "qt: Enhance TrafficGraphWidget with multi-timeframe support and data persistence\n\nThis commit significantly improves the network traffic graph widget with:\n\n1. Multiple timeframe support - View traffic data across different time\n   periods (5 minutes to 28 days) using an enhanced slider interface\n\n2. Traffic data persistence - Save and restore traffic information\n   between sessions, preserving historical traffic patterns\n\n3. Interactive visualization features:\n   - Logarithmic scale toggle (mouse click) for better visualization of\n     varying traffic volumes\n   - Interactive tooltips showing detailed traffic information at specific points\n   - Yellow highlight indicators for selected data points\n\n4. Smooth transitions between different time ranges with animated scaling\n\nThese improvements allow users to better monitor and analyze network\ntraffic patterns over time, which is especially useful for debugging\nconnectivity issues or understanding network behavior under different\nconditions.\n\nThe implementation includes proper thread-safety considerations and\nhandles edge cases like time jumps or missing data appropriately.",
-      "committer": {
-        "name": "R E Broadley",
-        "email": "rebroad@users.noreply.github.com",
-        "date": "2025-04-09T21:35:14Z"
-      },
-      "author": {
-        "name": "R E Broadley",
-        "email": "rebroad@users.noreply.github.com",
-        "date": "2025-04-02T12:21:18Z"
-      },
-      "sha": "233579c8ffd154b2ae77a15b1fb83387f0bd3495"
-    },
-    {
       "event": "commented",
       "id": 2791073113,
       "node_id": "IC_kwDOEEET9c6mXGVZ",
@@ -565,9 +535,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2025-04-09T21:53:27Z",
-      "updated_at": "2025-04-09T21:53:27Z",
+      "updated_at": "2025-04-09T22:26:17Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\nA summary of reviews will appear here.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\nA summary of reviews will appear here.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#bitcoin/bitcoin/32061](https://github.com/bitcoin/bitcoin/pull/32061) (Replace libevent with our own HTTP and socket-handling implementation by pinheadmz)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -591,6 +561,196 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/865#issuecomment-2791073113",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/865"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDEwMjkyYjM1OTczZWQwNDM2NDE1YjNkZWM0MTYyMTI3ODk0NTQ5MmI",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/10292b35973ed0436415b3dec41621278945492b",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/10292b35973ed0436415b3dec41621278945492b",
+      "tree": {
+        "sha": "18c1b7ca91a9a958f23d579f17c9c0d647746069",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/18c1b7ca91a9a958f23d579f17c9c0d647746069"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree 18c1b7ca91a9a958f23d579f17c9c0d647746069\nparent 24a898dba38c6618ee6e6a5def72cb16f12ceb0f\nauthor R E Broadley <rebroad@users.noreply.github.com> 1743596478 +0100\ncommitter R E Broadley <rebroad@users.noreply.github.com> 1744236033 +0100\n\nqt: Enhance TrafficGraphWidget with multi-timeframe support and data persistence\n\nThis commit significantly improves the network traffic graph widget with:\n\n1. Multiple timeframe support - View traffic data across different time\n   periods (5 minutes to 28 days) using an enhanced slider interface\n\n2. Traffic data persistence - Save and restore traffic information\n   between sessions, preserving historical traffic patterns\n\n3. Interactive visualization features:\n   - Logarithmic scale toggle (mouse click) for better visualization of\n     varying traffic volumes\n   - Interactive tooltips showing detailed traffic information at specific points\n   - Yellow highlight indicators for selected data points\n\n4. Smooth transitions between different time ranges with animated scaling\n\nThese improvements allow users to better monitor and analyze network\ntraffic patterns over time, which is especially useful for debugging\nconnectivity issues or understanding network behavior under different\nconditions.\n\nThe implementation includes proper thread-safety considerations and\nhandles edge cases like time jumps or missing data appropriately.\n",
+        "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAAhcAAAAHc3NoLXJzYQAAAAMBAAEAAAIBALGzuFIa4Gt9ezAsAwlYuz\nZ8PNnm1O+IVjT2zImuutAXIp/TUKNCcX7lQLXITxU6Pr5buUYW+gq6W7v7/5A9dM7GRLYY\nRRB/Fm5eVX+ql9nQiZHEj5mJaTK/1cuVP9ZVYA8xIkhy/fRdBwEgsdiR+17hC1nOgzf5Dx\nsHsLX5I49U+DiOWsZwndpEH1lg5VqfGJkHhOOX93/+j+pDgOkXE25moUmDT1KujP47cRCR\nmK9Gt2eQhalmIh4sB7+YgHzOgMybneLZz793NumsAEd7wP2YXiXfqFisJGCFawsal0lISM\ncMvBPetyquJZhznQZsTnsgKAKFdyAhuLeAmVf383dLjpXPHgeDpeYEYrITnALDJa3W+5Dz\nZhbLaLNoLlIP4KUs1IF/QznJSzKboxniPMN9djWTCsyZSOGoCJ76N9Iz5ovd1WbA6cloMe\nGmZV3W4ljPY4QuBnkhjF7la+9IwOPfsGWGY7BaB7jcOfeb7tJ6dwrdZKWH4K4ZD1yhHcfq\nOfCmauZUnxtsiQ+BuRAaxOJ4fXVa4d0ADp0VwL35HXVxR3SLOcgLduN2ZW4tGXwmp16Nyi\n1lky/ZvWgnKpwYMGkL/FzBob4uKKIfeze+juialkylmgBjrf3YASPt7fJRcEG1FOzVLf5z\nWwC0+7eFr02gSkp4FORIFSDKdsBS8W/hAAAAA2dpdAAAAAAAAAAGc2hhNTEyAAACFAAAAA\nxyc2Etc2hhMi01MTIAAAIAHzk+iLN1briP5WF6pivw7OdmyTLvmeKeMVy4Xf7Ly0YQ8+NG\nBcbDW09Eq0tYlqf28pk0smREmwQx6/+Ii9TuxgoYXOwt9USAKpSpisrNME/pZ3ZPl6GkWZ\nMYQhrdQt4QTxVbSTNe1al6JZ2Bcb0+Xp5rCvfXyu9FlMxQxVQAwi04LDMgoZxgMyFF2ANp\nUTDa1DPd0Ppzje7BKhHar1KFSn6JPb2ZvDmfJXEaInn6YBDu/aMU1ANZTLCDxHfmCeeFH5\nUCE2R4VXMVMsstto1PiVq63YPz5/HIeFm0jvEzhDTpsOHosia3Kj/yWmmJlk3ZWT9tewSR\n47DQC7fW9E5O5BHzoo2GFq22Y2AtpAMCBG3L5/Lxc3A7cI/DtZWZg/a9Yl0Oj8LT1M6nI0\nbHlsqQqBvx5F0od23H9b1msHlrqFWejZCLDtAO0wRIUay1/5B9bCzZHq7FlOIsbp00efGd\nyRYeTK5HOKThdWci0QUBORQXalBG6da9u1Lpi49Ckt8s6WGMYF83640rgJIj9eiqkxoYbU\nb6MJ4w3Ts817gLzEgNBU0PzHxaCaKvHCc0VbysdHr7gOLkUGotR2Z0KnzfxgBZd9hKd4EL\nq3oLqMWfvgngC1lCFio24FjXkj0g7d8o2zuxphSvJzAxoTzBYkHieVbg15c5RQmHEXHCw0\nNoFoM=\n-----END SSH SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/24a898dba38c6618ee6e6a5def72cb16f12ceb0f",
+          "sha": "24a898dba38c6618ee6e6a5def72cb16f12ceb0f",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/24a898dba38c6618ee6e6a5def72cb16f12ceb0f"
+        }
+      ],
+      "message": "qt: Enhance TrafficGraphWidget with multi-timeframe support and data persistence\n\nThis commit significantly improves the network traffic graph widget with:\n\n1. Multiple timeframe support - View traffic data across different time\n   periods (5 minutes to 28 days) using an enhanced slider interface\n\n2. Traffic data persistence - Save and restore traffic information\n   between sessions, preserving historical traffic patterns\n\n3. Interactive visualization features:\n   - Logarithmic scale toggle (mouse click) for better visualization of\n     varying traffic volumes\n   - Interactive tooltips showing detailed traffic information at specific points\n   - Yellow highlight indicators for selected data points\n\n4. Smooth transitions between different time ranges with animated scaling\n\nThese improvements allow users to better monitor and analyze network\ntraffic patterns over time, which is especially useful for debugging\nconnectivity issues or understanding network behavior under different\nconditions.\n\nThe implementation includes proper thread-safety considerations and\nhandles edge cases like time jumps or missing data appropriately.",
+      "committer": {
+        "name": "R E Broadley",
+        "email": "rebroad@users.noreply.github.com",
+        "date": "2025-04-09T22:00:33Z"
+      },
+      "author": {
+        "name": "R E Broadley",
+        "email": "rebroad@users.noreply.github.com",
+        "date": "2025-04-02T12:21:18Z"
+      },
+      "sha": "10292b35973ed0436415b3dec41621278945492b"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 17196629711,
+      "node_id": "HRFPE_lADOEEET9c6x3AVVzwAAAAQA_77P",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/17196629711",
+      "actor": {
+        "login": "rebroad",
+        "id": 1530283,
+        "node_id": "MDQ6VXNlcjE1MzAyODM=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1530283?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rebroad",
+        "html_url": "https://github.com/rebroad",
+        "followers_url": "https://api.github.com/users/rebroad/followers",
+        "following_url": "https://api.github.com/users/rebroad/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/rebroad/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/rebroad/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/rebroad/subscriptions",
+        "organizations_url": "https://api.github.com/users/rebroad/orgs",
+        "repos_url": "https://api.github.com/users/rebroad/repos",
+        "events_url": "https://api.github.com/users/rebroad/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/rebroad/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": "10292b35973ed0436415b3dec41621278945492b",
+      "commit_url": "https://api.github.com/repos/rebroad/gui/commits/10292b35973ed0436415b3dec41621278945492b",
+      "created_at": "2025-04-09T22:07:21Z"
+    },
+    {
+      "event": "labeled",
+      "id": 17196630281,
+      "node_id": "LE_lADOEEET9c6x3AVVzwAAAAQA_8EJ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/17196630281",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-04-09T22:07:24Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
+      }
+    },
+    {
+      "event": "commented",
+      "id": 2791092565,
+      "node_id": "IC_kwDOEEET9c6mXLFV",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2791092565",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-04-09T22:07:25Z",
+      "updated_at": "2025-04-09T22:07:25Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "<!--85328a0da195eb286784d51f73fa0af9-->\n🚧 At least one of the CI tasks failed.\n<sub>Debug: https://github.com/bitcoin-core/gui/runs/40284363440</sub>\n\n<details><summary>Hints</summary>\n\nTry to run the tests locally, according to the documentation. However, a CI failure may still\nhappen due to a number of reasons, for example:\n\n* Possibly due to a silent merge conflict (the changes in this pull request being\nincompatible with the current code in the target branch). If so, make sure to rebase on the latest\ncommit of the target branch.\n\n* A sanitizer issue, which can only be found by compiling with the sanitizer and running the\n  affected test.\n\n* An intermittent issue.\n\nLeave a comment here, if you need help tracking down a confusing failure.\n\n</details>\n",
+      "user": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/865#issuecomment-2791092565",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/865"
+    },
+    {
+      "event": "closed",
+      "id": 17196710517,
+      "node_id": "CE_lADOEEET9c6x3AVVzwAAAAQBAPp1",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/17196710517",
+      "actor": {
+        "login": "rebroad",
+        "id": 1530283,
+        "node_id": "MDQ6VXNlcjE1MzAyODM=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1530283?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rebroad",
+        "html_url": "https://github.com/rebroad",
+        "followers_url": "https://api.github.com/users/rebroad/followers",
+        "following_url": "https://api.github.com/users/rebroad/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/rebroad/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/rebroad/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/rebroad/subscriptions",
+        "organizations_url": "https://api.github.com/users/rebroad/orgs",
+        "repos_url": "https://api.github.com/users/rebroad/repos",
+        "events_url": "https://api.github.com/users/rebroad/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/rebroad/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-04-09T22:17:54Z"
     }
   ],
   "comments": []
