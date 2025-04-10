@@ -39,10 +39,10 @@
       "site_admin": false,
       "patch_url": null
     },
-    "body": "This PR includes several improvements to the TrafficGraphWidget:\r\n\r\n1. Enhanced traffic graph visualization with improved scaling and tooltips\r\n2. Added persistence for traffic data between sessions\r\n3. Improved time handling with new utility functions\r\n4. Added support for multiple time ranges with smooth transitions\r\n5. Updated deprecated Qt5 mouse event methods for Qt6 compatibility\r\n\r\nKey improvements:\r\n- Added tooltips showing detailed traffic information when hovering over data points\r\n- Implemented data persistence to maintain traffic history between application restarts\r\n- Added new utility functions for time formatting and millisecond precision\r\n- Improved graph scaling with logarithmic option for better visualization of varying traffic levels\r\n- Updated mouse event handling to use modern Qt6 APIs\r\n- Added support for multiple time ranges (5min to 28 days) with smooth transitions\r\n- Improved data accuracy with better timestamp handling\r\n\r\nThis is a rebase of #559 for the latest core/master, with significant improvements to the traffic graph widget's functionality and user experience.",
+    "body": "This pull request brings substantial enhancements to the `TrafficGraphWidget`, making it far more useful, flexible, and user-friendly.\r\n\r\n### Key Improvements:\r\n1. **Enhanced visualization** – improved scaling (including logarithmic option) and new tooltips showing detailed traffic data on hover.\r\n2. **Persistent traffic data** – traffic history is now preserved between sessions, eliminating the need to start from scratch each time.\r\n3. **Flexible time ranges** – support added for smooth transitions between multiple sample ranges (from 5 minutes to 28 days).\r\n4. **Improved time handling** – new utility functions provide better timestamp accuracy and millisecond precision.\r\n5. **Qt6 compatibility** – deprecated Qt5 mouse event methods updated for modern Qt6 APIs.\r\n\r\n### Why this matters:\r\nWithout these improvements, the `TrafficGraphWidget` loses all historical data every time the sample range is changed. This severely limits its usefulness in real-world usage, as most users are likely to stick to just one fixed time range to avoid losing data. This update solves that issue by persisting traffic data across time range changes, allowing users to freely zoom in for short-term analysis or zoom out to view long-term trends—**without data loss**.\r\n\r\nAdditionally, this version supports using the **left and right arrow keys** to switch seamlessly between time ranges, making navigation even easier.\r\n\r\nI've included a video in the PR description showcasing the updated traffic graph in action, so you can see the improvements for yourself.\r\n\r\nThis PR is a rebased and significantly improved version of #559, targeting the latest `core/master`.\r\n\r\n\r\nhttps://github.com/user-attachments/assets/775c9e12-3722-4d43-8eb5-a832589eb13d\r\n\r\n",
     "labels": [],
     "created_at": "2025-04-09T23:00:18Z",
-    "updated_at": "2025-04-10T20:43:20Z",
+    "updated_at": "2025-04-10T21:37:36Z",
     "mergeable": true,
     "mergeable_state": "clean",
     "merged": false,
@@ -327,7 +327,7 @@
       }
     },
     "author_association": "CONTRIBUTOR",
-    "draft": true,
+    "draft": false,
     "additions": 727,
     "deletions": 126,
     "changed_files": 13,
@@ -745,6 +745,36 @@
         "name": "CI failed",
         "color": "ededed"
       }
+    },
+    {
+      "event": "ready_for_review",
+      "id": 17214055326,
+      "node_id": "RFRE_lADOEEET9c6x3UOBzwAAAAQCCaOe",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/17214055326",
+      "actor": {
+        "login": "rebroad",
+        "id": 1530283,
+        "node_id": "MDQ6VXNlcjE1MzAyODM=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1530283?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rebroad",
+        "html_url": "https://github.com/rebroad",
+        "followers_url": "https://api.github.com/users/rebroad/followers",
+        "following_url": "https://api.github.com/users/rebroad/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/rebroad/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/rebroad/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/rebroad/subscriptions",
+        "organizations_url": "https://api.github.com/users/rebroad/orgs",
+        "repos_url": "https://api.github.com/users/rebroad/repos",
+        "events_url": "https://api.github.com/users/rebroad/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/rebroad/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-04-10T21:35:12Z"
     }
   ],
   "comments": []
