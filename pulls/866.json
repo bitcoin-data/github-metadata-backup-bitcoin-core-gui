@@ -17,7 +17,7 @@
     "state": "open",
     "locked": false,
     "maintainer_can_modify": true,
-    "title": "qt: Improve TrafficGraphWidget functionality",
+    "title": "qt: Enhanced Traffic Graph Widget with Multi-timeframe Support and Data Persistence",
     "user": {
       "login": "rebroad",
       "id": 1530283,
@@ -39,10 +39,10 @@
       "site_admin": false,
       "patch_url": null
     },
-    "body": "This pull request brings substantial enhancements to the `TrafficGraphWidget`, making it far more useful, flexible, and user-friendly.\r\n\r\n### Key Improvements:\r\n1. **Enhanced visualization** – improved scaling (including logarithmic option) and new tooltips showing detailed traffic data on hover.\r\n2. **Persistent traffic data** – traffic history is now preserved between sessions, eliminating the need to start from scratch each time.\r\n3. **Flexible time ranges** – support added for smooth transitions between multiple sample ranges (from 5 minutes to 28 days).\r\n4. **Improved time handling** – new utility functions provide better timestamp accuracy and millisecond precision.\r\n5. **Qt6 compatibility** – deprecated Qt5 mouse event methods updated for modern Qt6 APIs.\r\n\r\n### Why this matters:\r\nWithout these improvements, the `TrafficGraphWidget` loses all historical data every time the sample range is changed. This severely limits its usefulness in real-world usage, as most users are likely to stick to just one fixed time range to avoid losing data. This update solves that issue by persisting traffic data across time range changes, allowing users to freely zoom in for short-term analysis or zoom out to view long-term trends—**without data loss**.\r\n\r\nAdditionally, this version supports using the **left and right arrow keys** to switch seamlessly between time ranges, making navigation even easier.\r\n\r\nI've included a video in the PR description showcasing the updated traffic graph in action, so you can see the improvements for yourself.\r\n\r\nThis PR is a rebased and significantly improved version of #559, targeting the latest `core/master`.\r\n\r\n\r\nhttps://github.com/user-attachments/assets/775c9e12-3722-4d43-8eb5-a832589eb13d\r\n\r\n",
+    "body": "This PR improves the network traffic graph widget in the Debug window to provide:\r\n1. Multiple time range options (from 5 minutes to 28 days)\r\n2. Data persistence between sessions\r\n3. Interactive visualization features including tooltips and logarithmic scaling\r\n\r\n## Motivation\r\nThe existing network traffic graph has limited utility with its fixed time range and lack of historical data preservation. This enhancement allows users to:\r\n- Analyze network traffic patterns over different timeframes\r\n- Preserve historical traffic data between session restarts\r\n- Interact with the graph to get specific data points\r\n- Better visualize varying traffic volumes with logarithmic scaling\r\n\r\nThese improvements are valuable for:\r\n- Network debugging and troubleshooting\r\n- Understanding Bitcoin Core's network behaviour\r\n- Monitoring traffic patterns for optimization\r\n- Research purposes\r\n\r\n## Implementation\r\nThe implementation preserves all existing functionality while adding new features:\r\n- Added a pre-configured timeframe selection (13 different timeframes)\r\n- Implemented traffic data serialization and deserialization\r\n- Enhanced the visualization with interactive features\r\n- Improved tooltip information with precise timestamps and traffic rates\r\n\r\nSupporting changes:\r\n- Added formatBytesps function for a prettier display of traffic rates\r\n- Added FormatISO8601Time for better time display\r\n- Added setTotalBytes functionality to restore network statistics properly\r\n\r\n## Testing\r\nTested on Linux with various network conditions. The new functionality can be exercised by:\r\n1. Using the slider (or arrow keys) to select different time ranges\r\n2. Restarting the application to verify data persistence\r\n3. Clicking on the graph to toggle between linear and logarithmic scales\r\n4. Hovering over data points to view detailed information\r\n\r\n## Documentation\r\nThe changes are mostly self-documenting through the UI and are constrained to the Qt interface without affecting core functionality.\r\n\r\n## Compatibility\r\nThis PR maintains compatibility with existing functionality. The data persistence file uses proper serialization versioning to allow for future format changes if needed. ",
     "labels": [],
     "created_at": "2025-04-09T23:00:18Z",
-    "updated_at": "2025-04-10T21:37:36Z",
+    "updated_at": "2025-04-11T09:36:47Z",
     "mergeable": true,
     "mergeable_state": "clean",
     "merged": false,
@@ -775,6 +775,40 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2025-04-10T21:35:12Z"
+    },
+    {
+      "event": "renamed",
+      "id": 17220690779,
+      "node_id": "RTE_lADOEEET9c6x3UOBzwAAAAQCbuNb",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/17220690779",
+      "actor": {
+        "login": "rebroad",
+        "id": 1530283,
+        "node_id": "MDQ6VXNlcjE1MzAyODM=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1530283?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rebroad",
+        "html_url": "https://github.com/rebroad",
+        "followers_url": "https://api.github.com/users/rebroad/followers",
+        "following_url": "https://api.github.com/users/rebroad/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/rebroad/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/rebroad/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/rebroad/subscriptions",
+        "organizations_url": "https://api.github.com/users/rebroad/orgs",
+        "repos_url": "https://api.github.com/users/rebroad/repos",
+        "events_url": "https://api.github.com/users/rebroad/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/rebroad/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-04-11T09:33:23Z",
+      "rename": {
+        "from": "qt: Improve TrafficGraphWidget functionality",
+        "to": "qt: Enhanced Traffic Graph Widget with Multi-timeframe Support and Data Persistence"
+      }
     }
   ],
   "comments": []
