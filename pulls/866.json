@@ -42,7 +42,7 @@
     "body": "This PR improves the network traffic graph widget in the Debug window to provide:\r\n1. Multiple time range options (from 5 minutes to 28 days)\r\n2. Data persistence between sessions\r\n3. Interactive visualization features including tooltips and logarithmic scaling\r\n\r\n## Motivation\r\nThe existing network traffic graph has limited utility with its fixed time range and lack of historical data preservation. This enhancement allows users to:\r\n- Analyze network traffic patterns over different timeframes\r\n- Preserve historical traffic data between session restarts\r\n- Interact with the graph to get specific data points\r\n- Better visualize varying traffic volumes with logarithmic scaling\r\n\r\nThese improvements are valuable for:\r\n- Network debugging and troubleshooting\r\n- Understanding Bitcoin Core's network behaviour\r\n- Monitoring traffic patterns for optimization\r\n- Research purposes\r\n\r\n## Implementation\r\nThe implementation preserves all existing functionality while adding new features:\r\n- Added a pre-configured timeframe selection (13 different timeframes)\r\n- Implemented traffic data serialization and deserialization\r\n- Enhanced the visualization with interactive features\r\n- Improved tooltip information with precise timestamps and traffic rates\r\n\r\nSupporting changes:\r\n- Added formatBytesps function for a prettier display of traffic rates\r\n- Added FormatISO8601Time for better time display\r\n- Added setTotalBytes functionality to restore network statistics properly\r\n\r\n## Testing\r\nTested on Linux with various network conditions. The new functionality can be exercised by:\r\n1. Using the slider (or arrow keys) to select different time ranges\r\n2. Restarting the application to verify data persistence\r\n3. Clicking on the graph to toggle between linear and logarithmic scales\r\n4. Hovering over data points to view detailed information\r\n\r\n## Documentation\r\nThe changes are mostly self-documenting through the UI and are constrained to the Qt interface without affecting core functionality.\r\n\r\n## Compatibility\r\nThis PR maintains compatibility with existing functionality. The data persistence file uses proper serialization versioning to allow for future format changes if needed. ",
     "labels": [],
     "created_at": "2025-04-09T23:00:18Z",
-    "updated_at": "2025-04-14T22:14:15Z",
+    "updated_at": "2025-04-15T22:59:07Z",
     "mergeable": true,
     "mergeable_state": "clean",
     "merged": false,
@@ -332,7 +332,7 @@
     "deletions": 126,
     "changed_files": 13,
     "commits": 5,
-    "review_comments": 4,
+    "review_comments": 7,
     "comments": 2
   },
   "events": [
@@ -1060,6 +1060,165 @@
       "line": 78,
       "original_line": 78,
       "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2045670626",
+      "pull_request_review_id": 2770123677,
+      "id": 2045670626,
+      "node_id": "PRRC_kwDOEEET9c557nTi",
+      "diff_hunk": "@@ -75,6 +75,13 @@ void MockableSteadyClock::ClearMockTime()\n \n int64_t GetTime() { return GetTime<std::chrono::seconds>().count(); }\n \n+int64_t GetTimeMillis()",
+      "path": "src/util/time.cpp",
+      "position": 4,
+      "original_position": 4,
+      "commit_id": "31b1ffc0ffbf5dfdb9f165a1af3e934384a596c2",
+      "original_commit_id": "31b1ffc0ffbf5dfdb9f165a1af3e934384a596c2",
+      "in_reply_to_id": 2043027531,
+      "user": {
+        "login": "rebroad",
+        "id": 1530283,
+        "node_id": "MDQ6VXNlcjE1MzAyODM=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1530283?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rebroad",
+        "html_url": "https://github.com/rebroad",
+        "followers_url": "https://api.github.com/users/rebroad/followers",
+        "following_url": "https://api.github.com/users/rebroad/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/rebroad/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/rebroad/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/rebroad/subscriptions",
+        "organizations_url": "https://api.github.com/users/rebroad/orgs",
+        "repos_url": "https://api.github.com/users/rebroad/repos",
+        "events_url": "https://api.github.com/users/rebroad/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/rebroad/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "body": "yes, I'm going to remove this, will push an update shortly",
+      "created_at": "2025-04-15T22:56:12Z",
+      "updated_at": "2025-04-15T22:56:13Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/866#discussion_r2045670626",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2045670626"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/866"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 78,
+      "original_line": 78,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2045671489",
+      "pull_request_review_id": 2770125143,
+      "id": 2045671489,
+      "node_id": "PRRC_kwDOEEET9c557nhB",
+      "diff_hunk": "@@ -578,7 +576,7 @@ RPCConsole::RPCConsole(interfaces::Node& node, const PlatformStyle *_platformSty\n     // based timer interface\n     m_node.rpcSetTimerInterfaceIfUnset(rpcTimerInterface);\n \n-    setTrafficGraphRange(INITIAL_TRAFFIC_GRAPH_MINS);",
+      "path": "src/qt/rpcconsole.cpp",
+      "position": 20,
+      "original_position": 20,
+      "commit_id": "31b1ffc0ffbf5dfdb9f165a1af3e934384a596c2",
+      "original_commit_id": "31b1ffc0ffbf5dfdb9f165a1af3e934384a596c2",
+      "in_reply_to_id": 2043022061,
+      "user": {
+        "login": "rebroad",
+        "id": 1530283,
+        "node_id": "MDQ6VXNlcjE1MzAyODM=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1530283?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rebroad",
+        "html_url": "https://github.com/rebroad",
+        "followers_url": "https://api.github.com/users/rebroad/followers",
+        "following_url": "https://api.github.com/users/rebroad/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/rebroad/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/rebroad/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/rebroad/subscriptions",
+        "organizations_url": "https://api.github.com/users/rebroad/orgs",
+        "repos_url": "https://api.github.com/users/rebroad/repos",
+        "events_url": "https://api.github.com/users/rebroad/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/rebroad/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "body": "because it isn't needed - on startup it \"defaults\" to the first non-full range",
+      "created_at": "2025-04-15T22:57:16Z",
+      "updated_at": "2025-04-15T22:57:16Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/866#discussion_r2045671489",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2045671489"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/866"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 581,
+      "original_line": 581,
+      "side": "LEFT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2045673359",
+      "pull_request_review_id": 2770128400,
+      "id": 2045673359,
+      "node_id": "PRRC_kwDOEEET9c557n-P",
+      "diff_hunk": "@@ -694,16 +703,6 @@\n              </property>\n             </widget>\n            </item>\n-           <item>\n-            <widget class=\"QPushButton\" name=\"btnClearTrafficGraph\">",
+      "path": "src/qt/forms/debugwindow.ui",
+      "position": 39,
+      "original_position": 39,
+      "commit_id": "31b1ffc0ffbf5dfdb9f165a1af3e934384a596c2",
+      "original_commit_id": "31b1ffc0ffbf5dfdb9f165a1af3e934384a596c2",
+      "in_reply_to_id": 2043021214,
+      "user": {
+        "login": "rebroad",
+        "id": 1530283,
+        "node_id": "MDQ6VXNlcjE1MzAyODM=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1530283?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rebroad",
+        "html_url": "https://github.com/rebroad",
+        "followers_url": "https://api.github.com/users/rebroad/followers",
+        "following_url": "https://api.github.com/users/rebroad/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/rebroad/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/rebroad/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/rebroad/subscriptions",
+        "organizations_url": "https://api.github.com/users/rebroad/orgs",
+        "repos_url": "https://api.github.com/users/rebroad/repos",
+        "events_url": "https://api.github.com/users/rebroad/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/rebroad/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "body": "The user can effectively remove the data by deleting the .dat file - is there any basis for being able to do this while the client is running?",
+      "created_at": "2025-04-15T22:59:07Z",
+      "updated_at": "2025-04-15T22:59:07Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/866#discussion_r2045673359",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2045673359"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/866"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 698,
+      "original_line": 698,
+      "side": "LEFT"
     }
   ]
 }
