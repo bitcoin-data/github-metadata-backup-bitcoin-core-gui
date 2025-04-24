@@ -17,7 +17,7 @@
     "state": "open",
     "locked": false,
     "maintainer_can_modify": true,
-    "title": "qt: Enhanced Traffic Graph Widget with Multi-timeframe Support and Data Persistence",
+    "title": "Enhanced Traffic Graph Widget with Multi-timeframe Support and Data Persistence",
     "user": {
       "login": "rebroad",
       "id": 1530283,
@@ -40,13 +40,23 @@
       "patch_url": null
     },
     "body": "This PR improves the network traffic graph widget in the Debug window to provide:\r\n1. Multiple time range options (from 5 minutes to 28 days)\r\n2. Data persistence between sessions\r\n3. Interactive visualization features including tooltips and logarithmic scaling\r\n\r\n## Motivation\r\nThe existing network traffic graph has limited utility with its fixed time range and lack of historical data preservation. This enhancement allows users to:\r\n- Analyze network traffic patterns over different timeframes\r\n- Preserve historical traffic data between session restarts\r\n- Interact with the graph to get specific data points\r\n- Better visualize varying traffic volumes with logarithmic scaling\r\n\r\nThese improvements are valuable for:\r\n- Network debugging and troubleshooting\r\n- Understanding Bitcoin Core's network behaviour\r\n- Monitoring traffic patterns for optimization\r\n- Research purposes\r\n\r\n## Implementation\r\nThe implementation preserves all existing functionality while adding new features:\r\n- Added a pre-configured timeframe selection (13 different timeframes)\r\n- Implemented traffic data serialization and deserialization\r\n- Enhanced the visualization with interactive features\r\n- Improved tooltip information with precise timestamps and traffic rates\r\n\r\nSupporting changes:\r\n- Added formatBytesps function for a prettier display of traffic rates\r\n- Added FormatISO8601Time for better time display\r\n- Added setTotalBytes functionality to restore network statistics properly\r\n\r\n## Testing\r\nTested on Linux with various network conditions. The new functionality can be exercised by:\r\n1. Using the slider (or arrow keys) to select different time ranges\r\n2. Restarting the application to verify data persistence\r\n3. Clicking on the graph to toggle between linear and logarithmic scales\r\n4. Hovering over data points to view detailed information\r\n\r\n## Documentation\r\nThe changes are mostly self-documenting through the UI and are constrained to the Qt interface without affecting core functionality.\r\n\r\n## Compatibility\r\nThis PR maintains compatibility with existing functionality. The data persistence file uses proper serialization versioning to allow for future format changes if needed. ",
-    "labels": [],
+    "labels": [
+      {
+        "id": 2147693884,
+        "node_id": "MDU6TGFiZWwyMTQ3NjkzODg0",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Feature",
+        "name": "Feature",
+        "description": "",
+        "color": "8fe567",
+        "default": false
+      }
+    ],
     "created_at": "2025-04-09T23:00:18Z",
-    "updated_at": "2025-04-17T06:32:27Z",
+    "updated_at": "2025-04-24T13:28:58Z",
     "mergeable": true,
     "mergeable_state": "clean",
     "merged": false,
-    "merge_commit_sha": "d6853903e2f2ad08a5246ba5be467d376d19d2c4",
+    "merge_commit_sha": "36bac0e22334a693678acd3e1c82313d263d903f",
     "assignees": [],
     "requested_reviewers": [
       {
@@ -306,12 +316,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 293,
-        "stargazers_count": 640,
-        "watchers_count": 640,
-        "size": 170304,
+        "forks_count": 294,
+        "stargazers_count": 645,
+        "watchers_count": 645,
+        "size": 169956,
         "default_branch": "master",
-        "open_issues_count": 153,
+        "open_issues_count": 155,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -322,9 +332,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-04-16T23:26:22Z",
+        "pushed_at": "2025-04-24T10:03:09Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2025-04-16T23:26:25Z",
+        "updated_at": "2025-04-24T10:03:13Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -986,6 +996,74 @@
       "commit_id": "ab7bbd062f5b3de25cf4f79335c890e12f079f35",
       "commit_url": "https://api.github.com/repos/rebroad/gui/commits/ab7bbd062f5b3de25cf4f79335c890e12f079f35",
       "created_at": "2025-04-16T21:37:27Z"
+    },
+    {
+      "event": "renamed",
+      "id": 17390614316,
+      "node_id": "RTE_lADOEEET9c6x3UOBzwAAAAQMj7cs",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/17390614316",
+      "actor": {
+        "login": "laanwj",
+        "id": 126646,
+        "node_id": "MDQ6VXNlcjEyNjY0Ng==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/126646?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/laanwj",
+        "html_url": "https://github.com/laanwj",
+        "followers_url": "https://api.github.com/users/laanwj/followers",
+        "following_url": "https://api.github.com/users/laanwj/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/laanwj/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/laanwj/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/laanwj/subscriptions",
+        "organizations_url": "https://api.github.com/users/laanwj/orgs",
+        "repos_url": "https://api.github.com/users/laanwj/repos",
+        "events_url": "https://api.github.com/users/laanwj/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/laanwj/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-04-24T13:28:26Z",
+      "rename": {
+        "from": "qt: Enhanced Traffic Graph Widget with Multi-timeframe Support and Data Persistence",
+        "to": "Enhanced Traffic Graph Widget with Multi-timeframe Support and Data Persistence"
+      }
+    },
+    {
+      "event": "labeled",
+      "id": 17390624082,
+      "node_id": "LE_lADOEEET9c6x3UOBzwAAAAQMj91S",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/17390624082",
+      "actor": {
+        "login": "laanwj",
+        "id": 126646,
+        "node_id": "MDQ6VXNlcjEyNjY0Ng==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/126646?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/laanwj",
+        "html_url": "https://github.com/laanwj",
+        "followers_url": "https://api.github.com/users/laanwj/followers",
+        "following_url": "https://api.github.com/users/laanwj/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/laanwj/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/laanwj/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/laanwj/subscriptions",
+        "organizations_url": "https://api.github.com/users/laanwj/orgs",
+        "repos_url": "https://api.github.com/users/laanwj/repos",
+        "events_url": "https://api.github.com/users/laanwj/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/laanwj/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-04-24T13:28:58Z",
+      "label": {
+        "name": "Feature",
+        "color": "8fe567"
+      }
     }
   ],
   "comments": [
