@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/864/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/864/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/0ee5376fb302ebb21fb6192ed708800ee8035eb5",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/71656bdfaa6bfe08ce9651246a3ef606f923351b",
     "number": 864,
     "state": "open",
     "locked": false,
@@ -42,11 +42,11 @@
     "body": "Aiming to fix #862.\r\n\r\nThe crash stems from the order of the shutdown procedure:\r\nWe first unset the client model, then destroy the wallet controller—but we leave\r\nthe internal wallet models (`m_wallets`) untouched for a brief period. As a result,\r\nthere’s a point in time where views still have connected signals and access to\r\nwallet models that are not connected to any wallet controller.\r\nNow.. since the `clientModel` is only replaced with nullptr locally and not destroyed\r\nyet, signals like `numBlocksChanged` can still emit. Thus, when wallet views receive\r\nthem, they see a non-null wallet model ptr, and proceed to call backend functions\r\nfrom a model that is being torn down.\r\n\r\nThe solution to this issue is to disconnect signals from the previous `clientModel`\r\n(if exists) as soon as a new client model is set.",
     "labels": [],
     "created_at": "2025-04-07T15:49:11Z",
-    "updated_at": "2025-04-24T18:23:45Z",
+    "updated_at": "2025-04-24T19:59:36Z",
     "mergeable": true,
-    "mergeable_state": "clean",
+    "mergeable_state": "unstable",
     "merged": false,
-    "merge_commit_sha": "d739aa61163dff8adb66e823783a0887ed5a0a4f",
+    "merge_commit_sha": "6f39b755e6612b4e43bcacac0e614b5b0746993f",
     "assignees": [],
     "requested_reviewers": [
       {
@@ -76,7 +76,7 @@
     "head": {
       "label": "furszy:2025_gui_fix_crash_numBlocksChanged",
       "ref": "2025_gui_fix_crash_numBlocksChanged",
-      "sha": "0ee5376fb302ebb21fb6192ed708800ee8035eb5",
+      "sha": "71656bdfaa6bfe08ce9651246a3ef606f923351b",
       "user": {
         "login": "furszy",
         "id": 5377650,
@@ -187,7 +187,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-04-24T14:36:47Z",
+        "pushed_at": "2025-04-24T19:33:59Z",
         "created_at": "2022-05-09T14:34:00Z",
         "updated_at": "2023-09-08T14:09:02Z",
         "allow_forking": true,
@@ -350,12 +350,12 @@
     },
     "author_association": "MEMBER",
     "draft": false,
-    "additions": 6,
-    "deletions": 1,
+    "additions": 4,
+    "deletions": 0,
     "changed_files": 1,
     "commits": 1,
     "review_comments": 0,
-    "comments": 9
+    "comments": 12
   },
   "events": [
     {
@@ -387,9 +387,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2025-04-07T15:49:14Z",
-      "updated_at": "2025-04-24T14:46:27Z",
+      "updated_at": "2025-04-24T19:34:11Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| ACK | [laanwj](https://github.com/bitcoin-core/gui/pull/864#pullrequestreview-2791496832) |\n| Stale ACK | [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/864#pullrequestreview-2764954854) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--5faf32d7da4f0f540f40219e4f7537a3-->",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Stale ACK | [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/864#pullrequestreview-2764954854), [laanwj](https://github.com/bitcoin-core/gui/pull/864#pullrequestreview-2791496832) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--5faf32d7da4f0f540f40219e4f7537a3-->",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -807,46 +807,6 @@
       }
     },
     {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDBlZTUzNzZmYjMwMmViYjIxZmI2MTkyZWQ3MDg4MDBlZTgwMzVlYjU",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/0ee5376fb302ebb21fb6192ed708800ee8035eb5",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/0ee5376fb302ebb21fb6192ed708800ee8035eb5",
-      "tree": {
-        "sha": "7295c445314ed64a48c2f08b67dbe807759ac543",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/7295c445314ed64a48c2f08b67dbe807759ac543"
-      },
-      "verification": {
-        "verified": true,
-        "reason": "valid",
-        "payload": "tree 7295c445314ed64a48c2f08b67dbe807759ac543\nparent 0dc74c92c0650a171e1c6f5bea1c15e13584e799\nauthor furszy <matiasfurszyfer@protonmail.com> 1744040328 -0400\ncommitter furszy <matiasfurszyfer@protonmail.com> 1745505384 -0400\n\ngui: crash fix, disconnect numBlocksChanged() signal during shutdown\n\nThe crash stems from the order of the shutdown procedure:\nWe first unset the client model, then destroy the wallet controller—but we leave\nthe internal wallet models ('m_wallets') untouched for a brief period. As a result,\nthere’s a point in time where views still have connected signals and access to\nwallet models that are not connected to any wallet controller.\nNow.. since the clientModel is only replaced with nullptr locally and not destroyed\nyet, signals like numBlocksChanged can still emit. Thus, when wallet views receive\nthem, they see a non-null wallet model ptr, and proceed to call backend functions\nfrom a model that is being torn down.\n\nThe solution to this issue is to disconnect signals from the previous clientModel\n(if exists) as soon as a new client model is set.\n",
-        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEEA++0fqwRHQpmlZfQXdI8zGhqpiMFAmgKTGgACgkQXdI8zGhq\npiNTSQ//Sjpv5+kOVqFrPcYgKKi72z5WZgbkqLPYspTmONWZPqqGPaVIFEOY9nqS\ng4/Nu5G71POLHWOblHBMTsH7FOo4wmJ73wlhLeNerK2dHxYICGQiZPSd8CeaXH/c\nZCNRx1teq6WVekz3kJp6/07n3IKvntQ9S1FO2FMTjSaOLT0eqZkMG76goiZPFVB+\nbYR2EYmDJjQysbKBdsHCsxvaNgghlwU8MHP3gDCS7ql7e2HwD71IYLhzV7KHOb+H\n+NqQ3Cch1tAkrAVvqcqcXZTE/aMY3J7KAPPuZks/fKJ7k8kIWdTX2//qnCIs4wSF\nLvYzJfIf/n7XC3itztvZ9xvvY+Siyf+eVAtZ1kyE5Do0Z3QthaqLwQSwhpaQUJ8k\nN3qBvkkebZs7L11I54GdZfEol7xL+EZ3HFzz0kWQepbS8nz7KhY+GShc5XmnL5AD\no+Yot7aHmKEPFuh2+qLeiMmnKVco4R3WlXdZMrph5OX6tTcq+9E42U0dZs86teGz\nEaFSrS0hJF+vLQLhTT2IsuMOA9M3Xrh3Uk28FdVP0pRryoU//J9awcWF/iUbrScS\nigblR56ci9nrdqEXGk2iGNRJK9O4bIR09qYW66+ny8/uArYJEjU69pkSpfagqnBe\nl6OeHmKFvbU69IMdd+Gxuv8ERmGbBeBaS1g0/c+Kp/Zqw08qDmE=\n=us/5\n-----END PGP SIGNATURE-----"
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/0dc74c92c0650a171e1c6f5bea1c15e13584e799",
-          "sha": "0dc74c92c0650a171e1c6f5bea1c15e13584e799",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/0dc74c92c0650a171e1c6f5bea1c15e13584e799"
-        }
-      ],
-      "message": "gui: crash fix, disconnect numBlocksChanged() signal during shutdown\n\nThe crash stems from the order of the shutdown procedure:\nWe first unset the client model, then destroy the wallet controller—but we leave\nthe internal wallet models ('m_wallets') untouched for a brief period. As a result,\nthere’s a point in time where views still have connected signals and access to\nwallet models that are not connected to any wallet controller.\nNow.. since the clientModel is only replaced with nullptr locally and not destroyed\nyet, signals like numBlocksChanged can still emit. Thus, when wallet views receive\nthem, they see a non-null wallet model ptr, and proceed to call backend functions\nfrom a model that is being torn down.\n\nThe solution to this issue is to disconnect signals from the previous clientModel\n(if exists) as soon as a new client model is set.",
-      "committer": {
-        "name": "furszy",
-        "email": "matiasfurszyfer@protonmail.com",
-        "date": "2025-04-24T14:36:24Z"
-      },
-      "author": {
-        "name": "furszy",
-        "email": "matiasfurszyfer@protonmail.com",
-        "date": "2025-04-07T15:38:48Z"
-      },
-      "sha": "0ee5376fb302ebb21fb6192ed708800ee8035eb5"
-    },
-    {
       "event": "head_ref_force_pushed",
       "id": 17391898866,
       "node_id": "HRFPE_lADOEEET9c6xdfqDzwAAAAQMo1Dy",
@@ -1207,6 +1167,244 @@
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/864#issuecomment-2828513340",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/864"
+    },
+    {
+      "event": "commented",
+      "id": 2828595545,
+      "node_id": "IC_kwDOEEET9c6omPFZ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2828595545",
+      "actor": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-04-24T19:00:30Z",
+      "updated_at": "2025-04-24T19:01:42Z",
+      "author_association": "MEMBER",
+      "body": "> > Hmm, I should check, but I have the hunch that events already queued are still delivered after disconnection. Which, if that is the case, the previous clientModel check would work better.\r\n> \r\n> It's worth checking but imo it's unlikely it works that way. The signals are queued, but if no handler is connected, they sould just be dropped (next time the event loop runs).\r\n\r\nIt seems to be the case: https://stackoverflow.com/questions/2532341/problem-with-qtqueuedconnection-signal-delivered-after-disconnect\r\n\r\nSo.. it seems that reverting to the null clientModel check is the simplest fix path.\r\nWe could discuss the general solution of closing all wallets before destroying the wallet controller in another PR too (if/when we ever want to do that). Agree?",
+      "user": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/864#issuecomment-2828595545",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/864"
+    },
+    {
+      "event": "commented",
+      "id": 2828606810,
+      "node_id": "IC_kwDOEEET9c6omR1a",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2828606810",
+      "actor": {
+        "login": "laanwj",
+        "id": 126646,
+        "node_id": "MDQ6VXNlcjEyNjY0Ng==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/126646?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/laanwj",
+        "html_url": "https://github.com/laanwj",
+        "followers_url": "https://api.github.com/users/laanwj/followers",
+        "following_url": "https://api.github.com/users/laanwj/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/laanwj/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/laanwj/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/laanwj/subscriptions",
+        "organizations_url": "https://api.github.com/users/laanwj/orgs",
+        "repos_url": "https://api.github.com/users/laanwj/repos",
+        "events_url": "https://api.github.com/users/laanwj/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/laanwj/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-04-24T19:05:48Z",
+      "updated_at": "2025-04-24T19:59:35Z",
+      "author_association": "MEMBER",
+      "body": "Okay, that's really awful (doubt this is the only such case), but yes, better to revert to previous solution then.\r\n(to be clear, i'm just disappointed in how Qt handles this, don't have any better proposal right now)",
+      "user": {
+        "login": "laanwj",
+        "id": 126646,
+        "node_id": "MDQ6VXNlcjEyNjY0Ng==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/126646?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/laanwj",
+        "html_url": "https://github.com/laanwj",
+        "followers_url": "https://api.github.com/users/laanwj/followers",
+        "following_url": "https://api.github.com/users/laanwj/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/laanwj/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/laanwj/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/laanwj/subscriptions",
+        "organizations_url": "https://api.github.com/users/laanwj/orgs",
+        "repos_url": "https://api.github.com/users/laanwj/repos",
+        "events_url": "https://api.github.com/users/laanwj/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/laanwj/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/864#issuecomment-2828606810",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/864"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDcxNjU2YmRmYWE2YmZlMDhjZTk2NTEyNDZhM2VmNjA2ZjkyMzM1MWI",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/71656bdfaa6bfe08ce9651246a3ef606f923351b",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/71656bdfaa6bfe08ce9651246a3ef606f923351b",
+      "tree": {
+        "sha": "2f9edf26ce88c8d0e5c0782804a046df0315ebce",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/2f9edf26ce88c8d0e5c0782804a046df0315ebce"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree 2f9edf26ce88c8d0e5c0782804a046df0315ebce\nparent 0dc74c92c0650a171e1c6f5bea1c15e13584e799\nauthor furszy <matiasfurszyfer@protonmail.com> 1744040328 -0400\ncommitter furszy <matiasfurszyfer@protonmail.com> 1745523180 -0400\n\ngui: crash fix, disconnect numBlocksChanged() signal during shutdown\n\nThe crash stems from the order of the shutdown procedure:\nWe first unset the client model, then destroy the wallet controller—but we leave\nthe internal wallet models ('m_wallets') untouched for a brief period. As a result,\nthere’s a point in time where views still have connected signals and access to\nwallet models that are not connected to any wallet controller.\nNow.. since the clientModel is only replaced with nullptr locally and not destroyed\nyet, signals like numBlocksChanged can still emit. Thus, when wallet views receive\nthem, they see a non-null wallet model ptr, and proceed to call backend functions\nfrom a model that is being torn down.\n\nAs the shutdown procedure begins by unsetting clientModel from all views. It’s safe\nto ignore events when clientModel is nullptr.\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEEA++0fqwRHQpmlZfQXdI8zGhqpiMFAmgKkewACgkQXdI8zGhq\npiNK6g//Uvi/PBEV0IkxUI1IVm8JnjHErEnbLwJygxKGetMngPiptmKkiblyieHe\nJGCop0RCBt7ArsroXxOY9ZXR9IrI37d2HdNDWwpbstN5jcxUXzjMB+KkA0eFfSvb\nRRue5CTgE/gb0g6PRichfiYUQWoEiwiKFFeaAxY20avoAsKnbJekdomFOHiH0I7B\nwlOH7CBuTn+j+sZXEcnaTtNC/AO2Cj0i/VxZcphaG/9a+5FmKvDyZJ0TZCq+2e6R\nO5WWZiGz8Mw/AkDBFZq6cv7HypRaxkEZbl61Z83lXnJH3x9FXoCo461GcCWMG/HU\n8OahRu+NgP6s6lSU/ZmTpICJASfQFmkveO107V0dYrmzLLMLYxB0M5r27Ih2duy4\n34pNnHUVB+hUql8ay91FFL00HJeo7SPrP9/xxzZietY82dDGyZjU2EmtSTjIM77c\nqdmUBk1SkAbRqxoGdmG0z/wF6hO41UQHc+IPcm4Oh7FJlBWbpq08EZKnSyp37SKQ\nON+ICJ1jOVOAGdhieNcYVZh022wMU83mc7AjM28I6TVknTog7UOWgaBGz0xUm4Zc\n3fU2YTaloaynoNZO3G94SndtefWG5lj5emAE9xP9nWbrwRZneicPYIldf6Nui/GI\npOspPPg3cIZUBRSPgqvjwCJsuVPaHl68P5BpOB9NrpklBTDhzNY=\n=Q4Xh\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/0dc74c92c0650a171e1c6f5bea1c15e13584e799",
+          "sha": "0dc74c92c0650a171e1c6f5bea1c15e13584e799",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/0dc74c92c0650a171e1c6f5bea1c15e13584e799"
+        }
+      ],
+      "message": "gui: crash fix, disconnect numBlocksChanged() signal during shutdown\n\nThe crash stems from the order of the shutdown procedure:\nWe first unset the client model, then destroy the wallet controller—but we leave\nthe internal wallet models ('m_wallets') untouched for a brief period. As a result,\nthere’s a point in time where views still have connected signals and access to\nwallet models that are not connected to any wallet controller.\nNow.. since the clientModel is only replaced with nullptr locally and not destroyed\nyet, signals like numBlocksChanged can still emit. Thus, when wallet views receive\nthem, they see a non-null wallet model ptr, and proceed to call backend functions\nfrom a model that is being torn down.\n\nAs the shutdown procedure begins by unsetting clientModel from all views. It’s safe\nto ignore events when clientModel is nullptr.",
+      "committer": {
+        "name": "furszy",
+        "email": "matiasfurszyfer@protonmail.com",
+        "date": "2025-04-24T19:33:00Z"
+      },
+      "author": {
+        "name": "furszy",
+        "email": "matiasfurszyfer@protonmail.com",
+        "date": "2025-04-07T15:38:48Z"
+      },
+      "sha": "71656bdfaa6bfe08ce9651246a3ef606f923351b"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 17396246467,
+      "node_id": "HRFPE_lADOEEET9c6xdfqDzwAAAAQM5afD",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/17396246467",
+      "actor": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": "71656bdfaa6bfe08ce9651246a3ef606f923351b",
+      "commit_url": "https://api.github.com/repos/furszy/bitcoin-gui/commits/71656bdfaa6bfe08ce9651246a3ef606f923351b",
+      "created_at": "2025-04-24T19:34:01Z"
+    },
+    {
+      "event": "commented",
+      "id": 2828678405,
+      "node_id": "IC_kwDOEEET9c6omjUF",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2828678405",
+      "actor": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-04-24T19:40:06Z",
+      "updated_at": "2025-04-24T19:41:14Z",
+      "author_association": "MEMBER",
+      "body": "Updated. Back into the `clientModel` nullptr check approach.\r\n\r\n> (doubt this is the only such case)\r\n\r\nFor sure. We could create a global connection function that checks if the app is tearing down before processing the event too. Still, I think I'd rather rework the shutdown process than go that route. Yet, not something for this PR anyway.",
+      "user": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/864#issuecomment-2828678405",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/864"
     }
   ],
