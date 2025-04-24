@@ -42,9 +42,9 @@
     "body": "Aiming to fix #862.\r\n\r\nThe crash stems from the order of the shutdown procedure:\r\nWe first unset the client model, then destroy the wallet controller—but we leave\r\nthe internal wallet models (`m_wallets`) untouched for a brief period. As a result,\r\nthere’s a point in time where views still have connected signals and access to\r\nwallet models that are not connected to any wallet controller.\r\nNow.. since the `clientModel` is only replaced with nullptr locally and not destroyed\r\nyet, signals like `numBlocksChanged` can still emit. Thus, when wallet views receive\r\nthem, they see a non-null wallet model ptr, and proceed to call backend functions\r\nfrom a model that is being torn down.\r\n\r\nThe solution to this issue is to disconnect signals from the previous `clientModel`\r\n(if exists) as soon as a new client model is set.",
     "labels": [],
     "created_at": "2025-04-07T15:49:11Z",
-    "updated_at": "2025-04-24T16:59:03Z",
+    "updated_at": "2025-04-24T17:19:04Z",
     "mergeable": true,
-    "mergeable_state": "unstable",
+    "mergeable_state": "clean",
     "merged": false,
     "merge_commit_sha": "d739aa61163dff8adb66e823783a0887ed5a0a4f",
     "assignees": [],
@@ -355,7 +355,7 @@
     "changed_files": 1,
     "commits": 1,
     "review_comments": 0,
-    "comments": 6
+    "comments": 7
   },
   "events": [
     {
@@ -1039,6 +1039,62 @@
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/864#issuecomment-2828280254",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/864"
+    },
+    {
+      "event": "commented",
+      "id": 2828299385,
+      "node_id": "IC_kwDOEEET9c6olGx5",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2828299385",
+      "actor": {
+        "login": "laanwj",
+        "id": 126646,
+        "node_id": "MDQ6VXNlcjEyNjY0Ng==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/126646?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/laanwj",
+        "html_url": "https://github.com/laanwj",
+        "followers_url": "https://api.github.com/users/laanwj/followers",
+        "following_url": "https://api.github.com/users/laanwj/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/laanwj/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/laanwj/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/laanwj/subscriptions",
+        "organizations_url": "https://api.github.com/users/laanwj/orgs",
+        "repos_url": "https://api.github.com/users/laanwj/repos",
+        "events_url": "https://api.github.com/users/laanwj/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/laanwj/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-04-24T17:05:37Z",
+      "updated_at": "2025-04-24T17:19:03Z",
+      "author_association": "MEMBER",
+      "body": "That's really strange. Is there some thread race maybe?\r\n\r\nDoes the old solution (to check clientModel in the callback) work better?",
+      "user": {
+        "login": "laanwj",
+        "id": 126646,
+        "node_id": "MDQ6VXNlcjEyNjY0Ng==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/126646?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/laanwj",
+        "html_url": "https://github.com/laanwj",
+        "followers_url": "https://api.github.com/users/laanwj/followers",
+        "following_url": "https://api.github.com/users/laanwj/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/laanwj/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/laanwj/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/laanwj/subscriptions",
+        "organizations_url": "https://api.github.com/users/laanwj/orgs",
+        "repos_url": "https://api.github.com/users/laanwj/repos",
+        "events_url": "https://api.github.com/users/laanwj/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/laanwj/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/864#issuecomment-2828299385",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/864"
     }
   ],
