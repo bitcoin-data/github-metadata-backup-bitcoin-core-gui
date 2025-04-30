@@ -39,9 +39,9 @@
     "assignees": [],
     "author_association": "CONTRIBUTOR",
     "locked": false,
-    "comments": 13,
+    "comments": 14,
     "created_at": "2025-04-22T05:34:16Z",
-    "updated_at": "2025-04-29T22:10:15Z"
+    "updated_at": "2025-04-29T23:22:05Z"
   },
   "events": [
     {
@@ -1041,6 +1041,62 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2025-04-29T22:10:15Z"
+    },
+    {
+      "event": "commented",
+      "id": 2840446554,
+      "node_id": "IC_kwDOEEET9c6pTcZa",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2840446554",
+      "actor": {
+        "login": "thesamesam",
+        "id": 11667869,
+        "node_id": "MDQ6VXNlcjExNjY3ODY5",
+        "avatar_url": "https://avatars.githubusercontent.com/u/11667869?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/thesamesam",
+        "html_url": "https://github.com/thesamesam",
+        "followers_url": "https://api.github.com/users/thesamesam/followers",
+        "following_url": "https://api.github.com/users/thesamesam/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/thesamesam/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/thesamesam/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/thesamesam/subscriptions",
+        "organizations_url": "https://api.github.com/users/thesamesam/orgs",
+        "repos_url": "https://api.github.com/users/thesamesam/repos",
+        "events_url": "https://api.github.com/users/thesamesam/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/thesamesam/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-04-29T23:22:05Z",
+      "updated_at": "2025-04-29T23:22:05Z",
+      "author_association": "NONE",
+      "body": "> This approach appears suitable for Gentoo's Qt packages as well [...]\n\nYes, this is the conclusion I reached as well. The original Qt commit adding the improved version didn't have it optional, and I saw it referenced in headers which made me think the feature detection had enabled it -- but it only detected it, didn't enable it unless passed explicitly, as a followup Qt commit (a while later) disabled it until newer Binutils is widely adopted, I think.\n\nAnyway, you're absolutely right, and it's indeed a fix for us: we're adopting the no-direct-extern-access Qt option which fixes reduce-relocations.\n\nI think the fix you mention is right for the reduce-relocations case, though (just that we in Gentoo, and anyone else using reduce-relocations, are best off using that newer feature on top to avoid hitting issues like this). Thank you!",
+      "user": {
+        "login": "thesamesam",
+        "id": 11667869,
+        "node_id": "MDQ6VXNlcjExNjY3ODY5",
+        "avatar_url": "https://avatars.githubusercontent.com/u/11667869?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/thesamesam",
+        "html_url": "https://github.com/thesamesam",
+        "followers_url": "https://api.github.com/users/thesamesam/followers",
+        "following_url": "https://api.github.com/users/thesamesam/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/thesamesam/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/thesamesam/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/thesamesam/subscriptions",
+        "organizations_url": "https://api.github.com/users/thesamesam/orgs",
+        "repos_url": "https://api.github.com/users/thesamesam/repos",
+        "events_url": "https://api.github.com/users/thesamesam/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/thesamesam/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/issues/867#issuecomment-2840446554",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/867"
     }
   ]
 }
