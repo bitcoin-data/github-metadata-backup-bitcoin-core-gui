@@ -10,8 +10,8 @@
     "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/630/events",
     "html_url": "https://github.com/bitcoin-core/gui/issues/630",
     "number": 630,
-    "state": "open",
-    "state_reason": null,
+    "state": "closed",
+    "state_reason": "completed",
     "title": "Unit tests incompatible with `qt5ct` or `qt5-style-plugins`",
     "body": "I installed `qt5ct` and `qt5-style-plugins` to change the Bitcoin Core theme (master branch) on Ubuntu 21.10.\r\nIf I change Ubuntu to dark mode, Bitcoin Core does not change. So most of the answers in [this reddit post](https://www.reddit.com/r/Ubuntu/comments/qbam6e/why_isnt_dark_theme_working_on_all_application/) suggest installing `qt5ct` and `qt5-style-plugins` and it worked.\r\n\r\nI was able to successfully compile and run the executable (including changing the theme), but running `make check` failed without a detailed error:\r\n\r\n```\r\n../build-aux/test-driver: line 112:  5085 Aborted                 (core dumped) \"$@\" >> \"$log_file\" 2>&1\r\nFAIL: qt/test/test_bitcoin-qt\r\n```\r\n\r\nAnd in the `src/test-suite.log` file:\r\n\r\n```\r\n(gdb) === End of stack trace ===\r\nQFATAL : AppTests::appTests() Received signal 11\r\n         Function time: 315ms Total time: 315ms\r\nFAIL!  : AppTests::appTests() Received a fatal error.\r\n   Loc: [Unknown file(0)]\r\nTotals: 1 passed, 1 failed, 0 skipped, 0 blacklisted, 581ms\r\n********* Finished testing of AppTests *********\r\nFAIL qt/test/test_bitcoin-qt (exit status: 134)\r\n```\r\nIt's certainly not a critical error but I thought it best to report it anyway.\r\n\r\n\r\n\r\n",
     "user": {
@@ -32,15 +32,38 @@
       "events_url": "https://api.github.com/users/w0xlt/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/w0xlt/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "patch_url": null
     },
     "labels": [],
     "assignees": [],
     "author_association": "CONTRIBUTOR",
     "locked": false,
-    "comments": 2,
+    "comments": 3,
+    "closed_at": "2025-05-17T10:02:24Z",
+    "closed_by": {
+      "login": "hebasto",
+      "id": 32963518,
+      "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hebasto",
+      "html_url": "https://github.com/hebasto",
+      "followers_url": "https://api.github.com/users/hebasto/followers",
+      "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+      "organizations_url": "https://api.github.com/users/hebasto/orgs",
+      "repos_url": "https://api.github.com/users/hebasto/repos",
+      "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/hebasto/received_events",
+      "type": "User",
+      "site_admin": false,
+      "patch_url": null
+    },
     "created_at": "2022-07-14T18:00:29Z",
-    "updated_at": "2022-07-15T17:57:19Z"
+    "updated_at": "2025-05-17T10:02:24Z"
   },
   "events": [
     {
@@ -66,7 +89,8 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -92,7 +116,8 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/issues/630#issuecomment-1184764389",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/630"
@@ -120,7 +145,8 @@
         "events_url": "https://api.github.com/users/w0xlt/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/w0xlt/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -146,10 +172,97 @@
         "events_url": "https://api.github.com/users/w0xlt/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/w0xlt/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/issues/630#issuecomment-1185773029",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/630"
+    },
+    {
+      "event": "commented",
+      "id": 2888264275,
+      "node_id": "IC_kwDOEEET9c6sJ2pT",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2888264275",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-05-17T10:02:21Z",
+      "updated_at": "2025-05-17T10:02:21Z",
+      "author_association": "MEMBER",
+      "body": "Closing due to recent upgrade to Qt 6.\n\nFeel free to reopen with updated details.",
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/issues/630#issuecomment-2888264275",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/630"
+    },
+    {
+      "event": "closed",
+      "id": 17698521448,
+      "node_id": "CE_lADOEEET9c5NypKAzwAAAAQe6gFo",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/17698521448",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-05-17T10:02:24Z"
     }
   ]
 }
