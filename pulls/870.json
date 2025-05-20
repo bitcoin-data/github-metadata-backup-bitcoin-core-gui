@@ -40,19 +40,9 @@
       "patch_url": null
     },
     "body": "based on the QML PR [424](https://github.com/bitcoin-core/gui-qml/pull/424). For evaluation purposes only!\r\n\r\n# GUI Integration for UTXO Snapshot Loading\r\n\r\n## Overview\r\nThis PR adds initial GUI support for loading a UTXO snapshot, building on Bitcoin Core's `assumeutxo` infrastructure.\r\n\r\n## What This PR Does\r\n\r\n1. Adds a basic GUI interface for loading UTXO snapshots via the Options Dialog panel\r\n2. Provides visual confirmation of snapshot activation\r\n3. Adds a snapshot progress notification bar accessible via a handler\r\n\r\n## Implementation Details\r\n\r\n### Core Components Modified\r\n\r\n1. **Node Interface** (`src/node/interfaces.cpp`)\r\n- Implements `snapshotLoad()` based on the [`loadtxoutset`](https://github.com/bitcoin/bitcoin/blob/14b8dfb2bd5e2ca2b7c0c9a7f7d50e1e60adf75c/src/rpc/blockchain.cpp#L3227) RPC\r\n\r\n2. **QT Integration** (`src/qt/optionsdialog.cpp`)\r\n- Manages snapshot loading state and progress\r\n- makes use of a worker class to manage snapshot metadata (src/qt/snapshotmodel.cpp)\r\n- Provides progress updates via a progress bar\r\n\r\n### Key Design Decisions\r\n\r\n2. **Extensibility**\r\n- Interface designed to accommodate future `assumeutxo` changes\r\n- Error handling framework in place\r\n\r\n## Testing Instructions\r\n\r\n1. Build\r\n2. Launch Bitcoin Core GUI (bitcoin-qt)\r\n3. Navigate to Settings -> Options\r\n4. Click `Load Snapshot` button\r\n5. Follow pop-up instructions\r\n6. Test with sample snapshot:\r\n\r\nhttps://bitcoin-snapshots.jaonoctus.dev/ (No affiliation with the maintainer of this site. As always \"Don't trust! Verify!\")\r\n\r\n<details>\r\n  <summary> POC Ubuntu Screenshots `signet`</summary>\r\n\r\n \r\n![Screenshot 2025-04-28 100528](https://github.com/user-attachments/assets/0d66a076-c4a2-46e5-8796-e0b9f6db79f7)\r\nLaunch bitcoin-qt on `signet`\r\n![Screenshot 2025-04-28 100541](https://github.com/user-attachments/assets/a6df2934-a1fc-4890-817f-02059ecb1607)\r\nNavigate to Settings -> Options\r\n![Screenshot 2025-04-28 100559](https://github.com/user-attachments/assets/1d5951d8-6c00-4596-87c4-b64fff0a8c8d)\r\nClick the \"Load Snapshot...\" button\r\n![Select_file](https://github.com/user-attachments/assets/0873c71f-4a38-41eb-bd00-2a09868044fe)\r\nNavigate to where your snapshot file is. The snapshot was downloaded from [here]( https://bitcoin-snapshots.jaonoctus.dev/)\r\n![Screenshot 2025-04-28 100735](https://github.com/user-attachments/assets/ea0272f1-5769-4ac1-a30d-f4d6779d7426)\r\nClick \"Yes\"\r\n![Screenshot 2025-04-28 100950](https://github.com/user-attachments/assets/01dbb48d-33b2-4629-a67d-69f1cd11168f)\r\nWait for the snapshot to load and for this pop-up to appear and click \"Ok\"\r\n![Screenshot 2025-04-28 101743](https://github.com/user-attachments/assets/dabc9f43-3537-4782-a992-2948fbadd1ea)\r\nVerify the \"chain_snapshot\" directory is present in your `datadir`\r\n\r\n</details>\r\n\r\n### Expected Behavior\r\n- File selection dialog works\r\n- Success/failure state properly displayed\r\n- Node becomes usable while background validation continues\r\n\r\n## Notes for Reviewers\r\n\r\n- This is a POC so all feedback is welcomed\r\n- I am not a designer so please feel free to chime in if there's a more elegant way to achieve this\r\n\r\nThis is a work in progress - feedback welcome on the approach and implementation details.",
-    "labels": [
-      {
-        "id": 2145506980,
-        "node_id": "MDU6TGFiZWwyMTQ1NTA2OTgw",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Needs%20rebase",
-        "name": "Needs rebase",
-        "description": "",
-        "color": "cccccc",
-        "default": false
-      }
-    ],
+    "labels": [],
     "created_at": "2025-04-30T15:19:08Z",
-    "updated_at": "2025-05-20T17:38:00Z",
+    "updated_at": "2025-05-20T18:39:19Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
@@ -162,7 +152,7 @@
         "forks_count": 0,
         "stargazers_count": 1,
         "watchers_count": 1,
-        "size": 170098,
+        "size": 171869,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -295,8 +285,8 @@
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
         "forks_count": 299,
-        "stargazers_count": 650,
-        "watchers_count": 650,
+        "stargazers_count": 651,
+        "watchers_count": 651,
         "size": 171732,
         "default_branch": "master",
         "open_issues_count": 151,
@@ -312,7 +302,7 @@
         "visibility": "public",
         "pushed_at": "2025-05-20T14:55:44Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2025-05-20T14:55:55Z",
+        "updated_at": "2025-05-20T18:29:19Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -343,7 +333,7 @@
     "changed_files": 31,
     "commits": 3,
     "review_comments": 0,
-    "comments": 6
+    "comments": 5
   },
   "events": [
     {
@@ -721,62 +711,6 @@
       }
     },
     {
-      "event": "commented",
-      "id": 2893646818,
-      "node_id": "IC_kwDOEEET9c6seYvi",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2893646818",
-      "actor": {
-        "login": "DrahtBot",
-        "id": 39886733,
-        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
-        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/DrahtBot",
-        "html_url": "https://github.com/DrahtBot",
-        "followers_url": "https://api.github.com/users/DrahtBot/followers",
-        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
-        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
-        "repos_url": "https://api.github.com/users/DrahtBot/repos",
-        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
-        "type": "User",
-        "site_admin": false,
-        "patch_url": null
-      },
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": "2025-05-20T09:32:11Z",
-      "updated_at": "2025-05-20T09:32:11Z",
-      "author_association": "CONTRIBUTOR",
-      "body": "<!--cf906140f33d8803c4a75a2196329ecb-->\n🐙 This pull request conflicts with the target branch and [needs rebase](https://github.com/bitcoin-core/gui/blob/master/CONTRIBUTING.md#rebasing-changes).\n",
-      "user": {
-        "login": "DrahtBot",
-        "id": 39886733,
-        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
-        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/DrahtBot",
-        "html_url": "https://github.com/DrahtBot",
-        "followers_url": "https://api.github.com/users/DrahtBot/followers",
-        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
-        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
-        "repos_url": "https://api.github.com/users/DrahtBot/repos",
-        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
-        "type": "User",
-        "site_admin": false,
-        "patch_url": null
-      },
-      "html_url": "https://github.com/bitcoin-core/gui/pull/870#issuecomment-2893646818",
-      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/870"
-    },
-    {
       "event": "committed",
       "id": null,
       "node_id": "C_kwDOEEET9doAKGZmMDA2MGMzYmVmY2ZiNTk3MmFlZGZlNGQ4YjViZTZhNTdkYjEzODU",
@@ -930,6 +864,40 @@
       "commit_id": "25bfc724076ace4af4e299e70290515565b7edbc",
       "commit_url": "https://api.github.com/repos/D33r-Gee/bitcoin-gui/commits/25bfc724076ace4af4e299e70290515565b7edbc",
       "created_at": "2025-05-20T17:37:19Z"
+    },
+    {
+      "event": "unlabeled",
+      "id": 17739910079,
+      "node_id": "UNLE_lADOEEET9c60su9xzwAAAAQhYYu_",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/17739910079",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-05-20T18:39:17Z",
+      "label": {
+        "name": "Needs rebase",
+        "color": "cccccc"
+      }
     }
   ],
   "comments": []
