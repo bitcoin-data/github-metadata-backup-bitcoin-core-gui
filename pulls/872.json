@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/872/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/872/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/fe863d180b0181f370348fccd62e37734a5800a9",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/6b252fe5d0c989e9461ba65b5e28a8186ea42f03",
     "number": 872,
     "state": "open",
     "locked": false,
@@ -52,18 +52,19 @@
       }
     ],
     "created_at": "2025-05-13T23:31:01Z",
-    "updated_at": "2025-05-21T14:07:58Z",
-    "mergeable": false,
-    "mergeable_state": "dirty",
+    "updated_at": "2025-05-21T17:56:04Z",
+    "mergeable": true,
+    "mergeable_state": "unstable",
     "merged": false,
+    "merge_commit_sha": "534a40dcdd151d7040987058d5ca8dfd90b81d4a",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
-    "rebaseable": false,
+    "rebaseable": true,
     "head": {
       "label": "achow101:export-watchonly-wallet-gui",
       "ref": "export-watchonly-wallet-gui",
-      "sha": "fe863d180b0181f370348fccd62e37734a5800a9",
+      "sha": "6b252fe5d0c989e9461ba65b5e28a8186ea42f03",
       "user": {
         "login": "achow101",
         "id": 3782274,
@@ -173,7 +174,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-05-20T00:56:18Z",
+        "pushed_at": "2025-05-21T17:54:32Z",
         "created_at": "2020-11-12T20:04:24Z",
         "updated_at": "2024-12-03T23:11:12Z",
         "allow_forking": true,
@@ -197,7 +198,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "33f8f8ae4cedda2515c9d6123213c528bb82b7ee",
+      "sha": "87ec923d3a7af7b30613174b41c6fb11671df466",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -336,10 +337,10 @@
     },
     "author_association": "MEMBER",
     "draft": true,
-    "additions": 720,
-    "deletions": 124,
-    "changed_files": 27,
-    "commits": 14,
+    "additions": 658,
+    "deletions": 49,
+    "changed_files": 16,
+    "commits": 13,
     "review_comments": 0,
     "comments": 2
   },
@@ -373,9 +374,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2025-05-13T23:31:31Z",
-      "updated_at": "2025-05-20T01:33:31Z",
+      "updated_at": "2025-05-21T17:56:04Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\nA summary of reviews will appear here.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#bitcoin/bitcoin/32523](https://github.com/bitcoin/bitcoin/pull/32523) (wallet: Remove watchonly behavior and isminetypes by achow101)\n* [#bitcoin/bitcoin/32481](https://github.com/bitcoin/bitcoin/pull/32481) (wallet, refactor: Remove Legacy wallet unused warnings and errors by pablomartin4btc)\n* [#bitcoin/bitcoin/32475](https://github.com/bitcoin/bitcoin/pull/32475) (wallet: Use `util::Error` throughout `AddWalletDescriptor` instead of returning `nullptr` for some errors by achow101)\n* [#bitcoin/bitcoin/32471](https://github.com/bitcoin/bitcoin/pull/32471) (wallet/rpc: fix listdescriptors RPC fails to return descriptors with private key information when wallet contains descriptors missing any key by Eunovo)\n* [#bitcoin/bitcoin/31244](https://github.com/bitcoin/bitcoin/pull/31244) (descriptors: MuSig2 by achow101)\n* [#bitcoin/bitcoin/29675](https://github.com/bitcoin/bitcoin/pull/29675) (wallet: Be able to receive and spend inputs involving MuSig2 aggregate keys by achow101)\n* [#bitcoin/bitcoin/29136](https://github.com/bitcoin/bitcoin/pull/29136) (wallet: `addhdkey` RPC to add just keys to wallets via new `unused(KEY)` descriptor by achow101)\n* [#bitcoin/bitcoin/28333](https://github.com/bitcoin/bitcoin/pull/28333) (wallet: Construct ScriptPubKeyMans with all data rather than loaded progressively by achow101)\n* [#bitcoin/bitcoin/27865](https://github.com/bitcoin/bitcoin/pull/27865) (wallet: Track no-longer-spendable TXOs separately by achow101)\n* [#bitcoin/bitcoin/27286](https://github.com/bitcoin/bitcoin/pull/27286) (wallet: Keep track of the wallet's own transaction outputs in memory by achow101)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n<!--5faf32d7da4f0f540f40219e4f7537a3-->\n### LLM Linter (✨ experimental)\n\nPossible typos and grammar issues:\n\n- bool to track whether this locked coin is persisted to disk. -> Boolean indicating whether this locked coin is persisted to disk. [grammatical error/sentence fragment]\n\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\nA summary of reviews will appear here.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#bitcoin/bitcoin/32523](https://github.com/bitcoin/bitcoin/pull/32523) (wallet: Remove watchonly behavior and isminetypes by achow101)\n* [#bitcoin/bitcoin/32481](https://github.com/bitcoin/bitcoin/pull/32481) (wallet, refactor: Remove Legacy wallet unused warnings and errors by pablomartin4btc)\n* [#bitcoin/bitcoin/32475](https://github.com/bitcoin/bitcoin/pull/32475) (wallet: Use `util::Error` throughout `AddWalletDescriptor` instead of returning `nullptr` for some errors by achow101)\n* [#bitcoin/bitcoin/32471](https://github.com/bitcoin/bitcoin/pull/32471) (wallet/rpc: fix listdescriptors RPC fails to return descriptors with private key information when wallet contains descriptors missing any key by Eunovo)\n* [#bitcoin/bitcoin/31244](https://github.com/bitcoin/bitcoin/pull/31244) (descriptors: MuSig2 by achow101)\n* [#bitcoin/bitcoin/29675](https://github.com/bitcoin/bitcoin/pull/29675) (wallet: Be able to receive and spend inputs involving MuSig2 aggregate keys by achow101)\n* [#bitcoin/bitcoin/29136](https://github.com/bitcoin/bitcoin/pull/29136) (wallet: `addhdkey` RPC to add just keys to wallets via new `unused(KEY)` descriptor by achow101)\n* [#bitcoin/bitcoin/28333](https://github.com/bitcoin/bitcoin/pull/28333) (wallet: Construct ScriptPubKeyMans with all data rather than loaded progressively by achow101)\n* [#bitcoin/bitcoin/27865](https://github.com/bitcoin/bitcoin/pull/27865) (wallet: Track no-longer-spendable TXOs separately by achow101)\n* [#bitcoin/bitcoin/27286](https://github.com/bitcoin/bitcoin/pull/27286) (wallet: Keep track of the wallet's own transaction outputs in memory by achow101)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n<!--5faf32d7da4f0f540f40219e4f7537a3-->",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -601,566 +602,6 @@
       }
     },
     {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGU1ODRhOGIyYWUyMzdiYjA0YTVhZjFiZTVjNjA5YjMzYmI3Y2ZmZmM",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/e584a8b2ae237bb04a5af1be5c609b33bb7cfffc",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/e584a8b2ae237bb04a5af1be5c609b33bb7cfffc",
-      "tree": {
-        "sha": "424d293b1047c918ef0fa066f2c6360fb4613ea9",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/424d293b1047c918ef0fa066f2c6360fb4613ea9"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/33f8f8ae4cedda2515c9d6123213c528bb82b7ee",
-          "sha": "33f8f8ae4cedda2515c9d6123213c528bb82b7ee",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/33f8f8ae4cedda2515c9d6123213c528bb82b7ee"
-        }
-      ],
-      "message": "wallet: Use util::Error throughout AddWalletDescriptor\n\n32023 changed AddWalletDescriptor to return util::Error, but did not\nchange all of the failure cases to do so. This may result in some\ncallers continuing when there was actually an error. Unify all of the\nfailure cases to use util::Error so that all callers handle\nAddWalletDescriptor errors in the same way.\n\nThe encapsulated return type is changed from ScriptPubKeyMan* to\nstd::reference_wrapper<DescriptorScriptPubKeyMan>. This avoids having a\nvalue that can be interpreted as a bool, and also removes the need to\nconstantly dynamic_cast the returned value. The only kind of\nScriptPubKeyMan that can come out of AddWalletDescriptor is a\nDescriptorScriptPubKeyMan anyways.",
-      "committer": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-20T00:54:29Z"
-      },
-      "author": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-13T00:43:08Z"
-      },
-      "sha": "e584a8b2ae237bb04a5af1be5c609b33bb7cfffc"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDU5YzlkM2JiMTVhYzc5MmJhODlkNGM4MjlmOGNmMWRjNWU4YzgzZmY",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/59c9d3bb15ac792ba89d4c829f8cf1dc5e8c83ff",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/59c9d3bb15ac792ba89d4c829f8cf1dc5e8c83ff",
-      "tree": {
-        "sha": "206fb3cc9b36691461d93faf5fa6699f452a3280",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/206fb3cc9b36691461d93faf5fa6699f452a3280"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/e584a8b2ae237bb04a5af1be5c609b33bb7cfffc",
-          "sha": "e584a8b2ae237bb04a5af1be5c609b33bb7cfffc",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/e584a8b2ae237bb04a5af1be5c609b33bb7cfffc"
-        }
-      ],
-      "message": "wallet: Track whether a locked coin is persisted",
-      "committer": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-20T00:54:29Z"
-      },
-      "author": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-12T20:29:50Z"
-      },
-      "sha": "59c9d3bb15ac792ba89d4c829f8cf1dc5e8c83ff"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDI0YTZhODljZjg1ODU5MDA2MjEyZjViMmRlMjUyNjI0ZGE3OWUwMWY",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/24a6a89cf85859006212f5b2de252624da79e01f",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/24a6a89cf85859006212f5b2de252624da79e01f",
-      "tree": {
-        "sha": "1ae37b617cd2d6787ec0ce7043b3d79235a244a4",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/1ae37b617cd2d6787ec0ce7043b3d79235a244a4"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/59c9d3bb15ac792ba89d4c829f8cf1dc5e8c83ff",
-          "sha": "59c9d3bb15ac792ba89d4c829f8cf1dc5e8c83ff",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/59c9d3bb15ac792ba89d4c829f8cf1dc5e8c83ff"
-        }
-      ],
-      "message": "wallet, rpc: Push the normalized parent descriptor\n\nInstead of prividing the descriptor string as stored in the db, use the\nnormalized descriptor as is done for getaddressinfo's parent_desc field.",
-      "committer": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-20T00:54:29Z"
-      },
-      "author": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-12T23:19:31Z"
-      },
-      "sha": "24a6a89cf85859006212f5b2de252624da79e01f"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDcyMGE1YjExZDFlY2RjNTkxMTY2MmMwNGZkMTk3OGNmODIwN2IzZWY",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/720a5b11d1ecdc5911662c04fd1978cf8207b3ef",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/720a5b11d1ecdc5911662c04fd1978cf8207b3ef",
-      "tree": {
-        "sha": "bbbf23a9b845e3dbfc833470986801f79362b56a",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/bbbf23a9b845e3dbfc833470986801f79362b56a"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/24a6a89cf85859006212f5b2de252624da79e01f",
-          "sha": "24a6a89cf85859006212f5b2de252624da79e01f",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/24a6a89cf85859006212f5b2de252624da79e01f"
-        }
-      ],
-      "message": "wallet: Add GetWalletFlags",
-      "committer": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-20T00:54:29Z"
-      },
-      "author": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-12T21:00:28Z"
-      },
-      "sha": "720a5b11d1ecdc5911662c04fd1978cf8207b3ef"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGQ1MzRiMzY3NzdhMjBlZGNhOWRlMjY5ODAyYTZhMTUyNjRhMDRlNWY",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/d534b36777a20edca9de269802a6a15264a04e5f",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/d534b36777a20edca9de269802a6a15264a04e5f",
-      "tree": {
-        "sha": "d684130ae7f1aba6b4a5960d0bda6174c7ac37af",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/d684130ae7f1aba6b4a5960d0bda6174c7ac37af"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/720a5b11d1ecdc5911662c04fd1978cf8207b3ef",
-          "sha": "720a5b11d1ecdc5911662c04fd1978cf8207b3ef",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/720a5b11d1ecdc5911662c04fd1978cf8207b3ef"
-        }
-      ],
-      "message": "descriptor: Add CanSelfExpand()\n\nCanSelfExpand() reports whether a descriptor can be expanded without\nneeding any caches or private keys to be provided by the caller of\nExpand().",
-      "committer": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-20T00:54:29Z"
-      },
-      "author": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-12T22:41:53Z"
-      },
-      "sha": "d534b36777a20edca9de269802a6a15264a04e5f"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDcxMWM3OGM5Y2IxMjU2MjQ2OTBhYzkxYmQ5YzFmOTc1OTk2ZjFkNjc",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/711c78c9cb125624690ac91bd9c1f975996f1d67",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/711c78c9cb125624690ac91bd9c1f975996f1d67",
-      "tree": {
-        "sha": "3bb5471a833424b5bc2d55ec6f4c018f82588388",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/3bb5471a833424b5bc2d55ec6f4c018f82588388"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/d534b36777a20edca9de269802a6a15264a04e5f",
-          "sha": "d534b36777a20edca9de269802a6a15264a04e5f",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/d534b36777a20edca9de269802a6a15264a04e5f"
-        }
-      ],
-      "message": "wallet: Use Descriptor::CanSelfExpand() in CanGetAddresses()\n\nIf a descriptor does not need any caches or private keys in order to\nexpand, then CanGetAddresses() should return true for that descriptor.",
-      "committer": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-20T00:54:29Z"
-      },
-      "author": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-12T22:42:51Z"
-      },
-      "sha": "711c78c9cb125624690ac91bd9c1f975996f1d67"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDhlNjE3OWQ2Y2U2ZTNlNDQzMGU2YWY2NTEzMTE5ZmU5Y2FkYzc3NTE",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/8e6179d6ce6e3e4430e6af6513119fe9cadc7751",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/8e6179d6ce6e3e4430e6af6513119fe9cadc7751",
-      "tree": {
-        "sha": "7627fa1609573c18e7a95b768b5dbfefc09a9ef4",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/7627fa1609573c18e7a95b768b5dbfefc09a9ef4"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/711c78c9cb125624690ac91bd9c1f975996f1d67",
-          "sha": "711c78c9cb125624690ac91bd9c1f975996f1d67",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/711c78c9cb125624690ac91bd9c1f975996f1d67"
-        }
-      ],
-      "message": "wallet: Set upgraded descriptor cache flag for newly created wallets\n\nNew wallets always have these upgraded. As a belt-and-suspenders, do the\nupgrade as well, but it should not be necessary.\n\nNote that while WalletBatch::LoadWallet also does the upgrade, because\nnewly created wallets do not have the descriptor flag set yet, the\nupgrade does not run and set the flag.",
-      "committer": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-20T00:54:29Z"
-      },
-      "author": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-13T21:33:45Z"
-      },
-      "sha": "8e6179d6ce6e3e4430e6af6513119fe9cadc7751"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDk1NjFiOGUwYmJmMGIxZDQ4NDQ1ZDVmNmI1ZmM1YWU2OTA0Y2JiNTk",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/9561b8e0bbf0b1d48445d5f6b5fc5ae6904cbb59",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/9561b8e0bbf0b1d48445d5f6b5fc5ae6904cbb59",
-      "tree": {
-        "sha": "1959d3e5f691e876ee4073cd52058539a5ba0283",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/1959d3e5f691e876ee4073cd52058539a5ba0283"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/8e6179d6ce6e3e4430e6af6513119fe9cadc7751",
-          "sha": "8e6179d6ce6e3e4430e6af6513119fe9cadc7751",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/8e6179d6ce6e3e4430e6af6513119fe9cadc7751"
-        }
-      ],
-      "message": "wallet: Write new descriptor's cache in AddWalletDescriptor\n\nIf a new WalletDescriptor is provided to us with a cache, write the\ncache to disk as well.",
-      "committer": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-20T00:54:29Z"
-      },
-      "author": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-13T21:36:04Z"
-      },
-      "sha": "9561b8e0bbf0b1d48445d5f6b5fc5ae6904cbb59"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGY4NDgxNzczYTNkNTEwMzA5M2UxNjk5YWQxYjNhZDM1NjVjZjVlZWQ",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/f8481773a3d5103093e1699ad1b3ad3565cf5eed",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/f8481773a3d5103093e1699ad1b3ad3565cf5eed",
-      "tree": {
-        "sha": "c0882bb75ceeb0dd07e76987aa0313be088dc8ac",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/c0882bb75ceeb0dd07e76987aa0313be088dc8ac"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/9561b8e0bbf0b1d48445d5f6b5fc5ae6904cbb59",
-          "sha": "9561b8e0bbf0b1d48445d5f6b5fc5ae6904cbb59",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/9561b8e0bbf0b1d48445d5f6b5fc5ae6904cbb59"
-        }
-      ],
-      "message": "walletdb: Log additional exception error messages for corrupted wallets",
-      "committer": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-20T00:54:29Z"
-      },
-      "author": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-13T21:39:01Z"
-      },
-      "sha": "f8481773a3d5103093e1699ad1b3ad3565cf5eed"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDNiMTExOTBhMjEwNTVkYTJjMDEzZDhiNDExY2ZlMmQ5NzI0MDQ4MzM",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/3b11190a21055da2c013d8b411cfe2d972404833",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/3b11190a21055da2c013d8b411cfe2d972404833",
-      "tree": {
-        "sha": "81fc27f075586117893335c10e439beec8580ee5",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/81fc27f075586117893335c10e439beec8580ee5"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/f8481773a3d5103093e1699ad1b3ad3565cf5eed",
-          "sha": "f8481773a3d5103093e1699ad1b3ad3565cf5eed",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/f8481773a3d5103093e1699ad1b3ad3565cf5eed"
-        }
-      ],
-      "message": "wallet: Move listdescriptors retrieving from RPC to CWallet\n\nWhen listdescriptors retrieves the descriptors from the wallet, instead\nof having this logic in the RPC, move it into CWallet itself. This\nwill enable other functions to get the descriptors in an exportable\nform.",
-      "committer": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-20T00:54:43Z"
-      },
-      "author": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-12T19:35:53Z"
-      },
-      "sha": "3b11190a21055da2c013d8b411cfe2d972404833"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGViODU5OTZlMzU2ZWU2ZDI0MzM2ZTNkZjdlY2JmYzdiNWUwOGQ0ODY",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/eb85996e356ee6d24336e3df7ecbfc7b5e08d486",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/eb85996e356ee6d24336e3df7ecbfc7b5e08d486",
-      "tree": {
-        "sha": "c1002a459436f547c39f90b005f1d1f805f73943",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/c1002a459436f547c39f90b005f1d1f805f73943"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/3b11190a21055da2c013d8b411cfe2d972404833",
-          "sha": "3b11190a21055da2c013d8b411cfe2d972404833",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/3b11190a21055da2c013d8b411cfe2d972404833"
-        }
-      ],
-      "message": "wallet: Add CWallet::ExportWatchOnly\n\nExportWatchOnly produces a watchonly wallet file from a CWallet. This\ncan be restored onto another instance of Bitcoin Core to allow that\ninstance to watch the same descriptors, and also have all of the same\ninitial address book and transactions.",
-      "committer": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-20T00:54:43Z"
-      },
-      "author": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-12T20:39:26Z"
-      },
-      "sha": "eb85996e356ee6d24336e3df7ecbfc7b5e08d486"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGQ0OWZlNjAyOTA1MzM5MTY2ZjE0ODY1OTM5NWJkMjM0ZGY3NWU2ZDk",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/d49fe602905339166f148659395bd234df75e6d9",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/d49fe602905339166f148659395bd234df75e6d9",
-      "tree": {
-        "sha": "f41b62342bc520c70604c258eae3db9d2acfb3d4",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/f41b62342bc520c70604c258eae3db9d2acfb3d4"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/eb85996e356ee6d24336e3df7ecbfc7b5e08d486",
-          "sha": "eb85996e356ee6d24336e3df7ecbfc7b5e08d486",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/eb85996e356ee6d24336e3df7ecbfc7b5e08d486"
-        }
-      ],
-      "message": "wallet, rpc: Add exportwatchonlywallet RPC",
-      "committer": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-20T00:54:43Z"
-      },
-      "author": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-12T21:16:28Z"
-      },
-      "sha": "d49fe602905339166f148659395bd234df75e6d9"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGQ0MTA1OWIzZjZlMzhhODBlNGIyMGVmZmQ2ZDY0ZDE0N2MyNjFhZTE",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/d41059b3f6e38a80e4b20effd6d64d147c261ae1",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/d41059b3f6e38a80e4b20effd6d64d147c261ae1",
-      "tree": {
-        "sha": "c5e5a224559d5a07336a880381e23b93b95ddd67",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/c5e5a224559d5a07336a880381e23b93b95ddd67"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/d49fe602905339166f148659395bd234df75e6d9",
-          "sha": "d49fe602905339166f148659395bd234df75e6d9",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/d49fe602905339166f148659395bd234df75e6d9"
-        }
-      ],
-      "message": "test: Test for exportwatchonlywallet",
-      "committer": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-20T00:54:43Z"
-      },
-      "author": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-12T22:45:11Z"
-      },
-      "sha": "d41059b3f6e38a80e4b20effd6d64d147c261ae1"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGZlODYzZDE4MGIwMTgxZjM3MDM0OGZjY2Q2MmUzNzczNGE1ODAwYTk",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/fe863d180b0181f370348fccd62e37734a5800a9",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/fe863d180b0181f370348fccd62e37734a5800a9",
-      "tree": {
-        "sha": "02e8c91b4aa8f5b3dacb489017f1e5ca0fb3e411",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/02e8c91b4aa8f5b3dacb489017f1e5ca0fb3e411"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/d41059b3f6e38a80e4b20effd6d64d147c261ae1",
-          "sha": "d41059b3f6e38a80e4b20effd6d64d147c261ae1",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/d41059b3f6e38a80e4b20effd6d64d147c261ae1"
-        }
-      ],
-      "message": "gui: Menu action for exporting a watchonly wallet",
-      "committer": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-20T00:56:13Z"
-      },
-      "author": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-13T23:26:18Z"
-      },
-      "sha": "fe863d180b0181f370348fccd62e37734a5800a9"
-    },
-    {
       "event": "head_ref_force_pushed",
       "id": 17723990294,
       "node_id": "HRFPE_lADOEEET9c62edljzwAAAAQgbqEW",
@@ -1347,6 +788,556 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/872#issuecomment-2898107040",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/872"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDEyOWZkZjdiOWI3ZjUyZGM2ZTQxZjM1NjJmZDlkODYwMWY3NTc5MmM",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/129fdf7b9b7f52dc6e41f3562fd9d8601f75792c",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/129fdf7b9b7f52dc6e41f3562fd9d8601f75792c",
+      "tree": {
+        "sha": "32aa8f73c345b4de0478f0cb4aab02ede4282691",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/32aa8f73c345b4de0478f0cb4aab02ede4282691"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/87ec923d3a7af7b30613174b41c6fb11671df466",
+          "sha": "87ec923d3a7af7b30613174b41c6fb11671df466",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/87ec923d3a7af7b30613174b41c6fb11671df466"
+        }
+      ],
+      "message": "wallet: Track whether a locked coin is persisted",
+      "committer": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-21T17:40:57Z"
+      },
+      "author": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-12T20:29:50Z"
+      },
+      "sha": "129fdf7b9b7f52dc6e41f3562fd9d8601f75792c"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGM2MWM4N2E0NTNjMWU1YzFhZDJmN2Q5YzViMGUwNGMyZDZkZjg3ZWM",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/c61c87a453c1e5c1ad2f7d9c5b0e04c2d6df87ec",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/c61c87a453c1e5c1ad2f7d9c5b0e04c2d6df87ec",
+      "tree": {
+        "sha": "aad518a2c25b500c9581bf5a05e4dfb79ce9a1ae",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/aad518a2c25b500c9581bf5a05e4dfb79ce9a1ae"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/129fdf7b9b7f52dc6e41f3562fd9d8601f75792c",
+          "sha": "129fdf7b9b7f52dc6e41f3562fd9d8601f75792c",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/129fdf7b9b7f52dc6e41f3562fd9d8601f75792c"
+        }
+      ],
+      "message": "wallet, rpc: Push the normalized parent descriptor\n\nInstead of prividing the descriptor string as stored in the db, use the\nnormalized descriptor as is done for getaddressinfo's parent_desc field.",
+      "committer": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-21T17:40:57Z"
+      },
+      "author": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-12T23:19:31Z"
+      },
+      "sha": "c61c87a453c1e5c1ad2f7d9c5b0e04c2d6df87ec"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDdmODA0ZmY5OGZjZDgwZTU2M2Q1NTFjYWNkMmUzNzBmYzhmNzExODg",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/7f804ff98fcd80e563d551cacd2e370fc8f71188",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/7f804ff98fcd80e563d551cacd2e370fc8f71188",
+      "tree": {
+        "sha": "58ef074ec076e02dbb1c5ad21cdb051c3a6ed5b9",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/58ef074ec076e02dbb1c5ad21cdb051c3a6ed5b9"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/c61c87a453c1e5c1ad2f7d9c5b0e04c2d6df87ec",
+          "sha": "c61c87a453c1e5c1ad2f7d9c5b0e04c2d6df87ec",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/c61c87a453c1e5c1ad2f7d9c5b0e04c2d6df87ec"
+        }
+      ],
+      "message": "wallet: Add GetWalletFlags",
+      "committer": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-21T17:40:57Z"
+      },
+      "author": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-12T21:00:28Z"
+      },
+      "sha": "7f804ff98fcd80e563d551cacd2e370fc8f71188"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDYwMzlmNWVhYjMxMjM4MDFmNzA3YTQyMjViN2UyMDA0OWE3NDU1N2M",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/6039f5eab3123801f707a4225b7e20049a74557c",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/6039f5eab3123801f707a4225b7e20049a74557c",
+      "tree": {
+        "sha": "6f2a90ff173bcdc221ca06fdb37451c371ab7c6d",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/6f2a90ff173bcdc221ca06fdb37451c371ab7c6d"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/7f804ff98fcd80e563d551cacd2e370fc8f71188",
+          "sha": "7f804ff98fcd80e563d551cacd2e370fc8f71188",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/7f804ff98fcd80e563d551cacd2e370fc8f71188"
+        }
+      ],
+      "message": "descriptor: Add CanSelfExpand()\n\nCanSelfExpand() reports whether a descriptor can be expanded without\nneeding any caches or private keys to be provided by the caller of\nExpand().",
+      "committer": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-21T17:40:57Z"
+      },
+      "author": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-12T22:41:53Z"
+      },
+      "sha": "6039f5eab3123801f707a4225b7e20049a74557c"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDUyNTgzZDMyNjljYzc0N2ZmNThiNmQwYjhjMjEzYTFhYzUyMWFlYjM",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/52583d3269cc747ff58b6d0b8c213a1ac521aeb3",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/52583d3269cc747ff58b6d0b8c213a1ac521aeb3",
+      "tree": {
+        "sha": "0b01146ae7d3127eb544482c2ad9cd1d1822c9be",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/0b01146ae7d3127eb544482c2ad9cd1d1822c9be"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/6039f5eab3123801f707a4225b7e20049a74557c",
+          "sha": "6039f5eab3123801f707a4225b7e20049a74557c",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/6039f5eab3123801f707a4225b7e20049a74557c"
+        }
+      ],
+      "message": "wallet: Use Descriptor::CanSelfExpand() in CanGetAddresses()\n\nIf a descriptor does not need any caches or private keys in order to\nexpand, then CanGetAddresses() should return true for that descriptor.",
+      "committer": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-21T17:40:57Z"
+      },
+      "author": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-12T22:42:51Z"
+      },
+      "sha": "52583d3269cc747ff58b6d0b8c213a1ac521aeb3"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGI3YjZmMjEwZDU3MDc0ZjU1YWZiZTk4OGEzMjJlYThkYjI3MmJlNzU",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/b7b6f210d57074f55afbe988a322ea8db272be75",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/b7b6f210d57074f55afbe988a322ea8db272be75",
+      "tree": {
+        "sha": "e15e0244ec5d3a4db44b9c137b405b1cb9674e0e",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/e15e0244ec5d3a4db44b9c137b405b1cb9674e0e"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/52583d3269cc747ff58b6d0b8c213a1ac521aeb3",
+          "sha": "52583d3269cc747ff58b6d0b8c213a1ac521aeb3",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/52583d3269cc747ff58b6d0b8c213a1ac521aeb3"
+        }
+      ],
+      "message": "wallet: Set upgraded descriptor cache flag for newly created wallets\n\nNew wallets always have these upgraded. As a belt-and-suspenders, do the\nupgrade as well, but it should not be necessary.\n\nNote that while WalletBatch::LoadWallet also does the upgrade, because\nnewly created wallets do not have the descriptor flag set yet, the\nupgrade does not run and set the flag.",
+      "committer": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-21T17:40:57Z"
+      },
+      "author": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-13T21:33:45Z"
+      },
+      "sha": "b7b6f210d57074f55afbe988a322ea8db272be75"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDE3NzI1MTdmNWRkMzIyZDdmZDIxMTBiZmVlODJjZTYwZWZiY2NlMzg",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/1772517f5dd322d7fd2110bfee82ce60efbcce38",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/1772517f5dd322d7fd2110bfee82ce60efbcce38",
+      "tree": {
+        "sha": "bd62497186bc838257110c6cbc19f77a696e52db",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/bd62497186bc838257110c6cbc19f77a696e52db"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/b7b6f210d57074f55afbe988a322ea8db272be75",
+          "sha": "b7b6f210d57074f55afbe988a322ea8db272be75",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/b7b6f210d57074f55afbe988a322ea8db272be75"
+        }
+      ],
+      "message": "wallet: Write new descriptor's cache in AddWalletDescriptor\n\nIf a new WalletDescriptor is provided to us with a cache, write the\ncache to disk as well.",
+      "committer": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-21T17:40:57Z"
+      },
+      "author": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-13T21:36:04Z"
+      },
+      "sha": "1772517f5dd322d7fd2110bfee82ce60efbcce38"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGE4MGIzOTk2MTM2NmZmMTcxY2I3ZmFkNWE5NmE0MmMzOTc4MTQ3Yjg",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/a80b39961366ff171cb7fad5a96a42c3978147b8",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/a80b39961366ff171cb7fad5a96a42c3978147b8",
+      "tree": {
+        "sha": "7f6f5e6c0f04560289179608254451355d234074",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/7f6f5e6c0f04560289179608254451355d234074"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/1772517f5dd322d7fd2110bfee82ce60efbcce38",
+          "sha": "1772517f5dd322d7fd2110bfee82ce60efbcce38",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/1772517f5dd322d7fd2110bfee82ce60efbcce38"
+        }
+      ],
+      "message": "walletdb: Log additional exception error messages for corrupted wallets",
+      "committer": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-21T17:40:57Z"
+      },
+      "author": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-13T21:39:01Z"
+      },
+      "sha": "a80b39961366ff171cb7fad5a96a42c3978147b8"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGNiNDM2MzliYWJkYzk2MWZkYTViMGIyZTM0MjZmZTZkY2Q0YjdjYzY",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/cb43639babdc961fda5b0b2e3426fe6dcd4b7cc6",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/cb43639babdc961fda5b0b2e3426fe6dcd4b7cc6",
+      "tree": {
+        "sha": "a4872e5460ee876fa57a2066054b3f458cc8a9cd",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/a4872e5460ee876fa57a2066054b3f458cc8a9cd"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/a80b39961366ff171cb7fad5a96a42c3978147b8",
+          "sha": "a80b39961366ff171cb7fad5a96a42c3978147b8",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/a80b39961366ff171cb7fad5a96a42c3978147b8"
+        }
+      ],
+      "message": "wallet: Move listdescriptors retrieving from RPC to CWallet\n\nWhen listdescriptors retrieves the descriptors from the wallet, instead\nof having this logic in the RPC, move it into CWallet itself. This\nwill enable other functions to get the descriptors in an exportable\nform.",
+      "committer": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-21T17:40:57Z"
+      },
+      "author": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-12T19:35:53Z"
+      },
+      "sha": "cb43639babdc961fda5b0b2e3426fe6dcd4b7cc6"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDhlYWRjN2NjY2YwYzU1MWM4ZjdiNzU4OTQ5NTU4YzZlNzFiZTA3NWM",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/8eadc7cccf0c551c8f7b758949558c6e71be075c",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/8eadc7cccf0c551c8f7b758949558c6e71be075c",
+      "tree": {
+        "sha": "15739df1517db376b5758b8509100a1e2ebbcb10",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/15739df1517db376b5758b8509100a1e2ebbcb10"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/cb43639babdc961fda5b0b2e3426fe6dcd4b7cc6",
+          "sha": "cb43639babdc961fda5b0b2e3426fe6dcd4b7cc6",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/cb43639babdc961fda5b0b2e3426fe6dcd4b7cc6"
+        }
+      ],
+      "message": "wallet: Add CWallet::ExportWatchOnly\n\nExportWatchOnly produces a watchonly wallet file from a CWallet. This\ncan be restored onto another instance of Bitcoin Core to allow that\ninstance to watch the same descriptors, and also have all of the same\ninitial address book and transactions.",
+      "committer": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-21T17:40:57Z"
+      },
+      "author": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-12T20:39:26Z"
+      },
+      "sha": "8eadc7cccf0c551c8f7b758949558c6e71be075c"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGM4N2UwYjhjZTVjY2VhODI0N2RkNjFhOWNiYTUzMGNmMWFiZWZjY2U",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/c87e0b8ce5ccea8247dd61a9cba530cf1abefcce",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/c87e0b8ce5ccea8247dd61a9cba530cf1abefcce",
+      "tree": {
+        "sha": "c311b90409ec87ac9b448f9bd3e76467121a3499",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/c311b90409ec87ac9b448f9bd3e76467121a3499"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/8eadc7cccf0c551c8f7b758949558c6e71be075c",
+          "sha": "8eadc7cccf0c551c8f7b758949558c6e71be075c",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/8eadc7cccf0c551c8f7b758949558c6e71be075c"
+        }
+      ],
+      "message": "wallet, rpc: Add exportwatchonlywallet RPC",
+      "committer": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-21T17:40:57Z"
+      },
+      "author": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-12T21:16:28Z"
+      },
+      "sha": "c87e0b8ce5ccea8247dd61a9cba530cf1abefcce"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDFlYzAwNzM2MzZmZDA3NzQwYjg1NWVlYThhZDkyOGYzZTg3NTIzMmU",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/1ec0073636fd07740b855eea8ad928f3e875232e",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/1ec0073636fd07740b855eea8ad928f3e875232e",
+      "tree": {
+        "sha": "7479dd06c7a35ed4fd8316d5d44951d07b7ad1ed",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/7479dd06c7a35ed4fd8316d5d44951d07b7ad1ed"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/c87e0b8ce5ccea8247dd61a9cba530cf1abefcce",
+          "sha": "c87e0b8ce5ccea8247dd61a9cba530cf1abefcce",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/c87e0b8ce5ccea8247dd61a9cba530cf1abefcce"
+        }
+      ],
+      "message": "test: Test for exportwatchonlywallet",
+      "committer": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-21T17:40:57Z"
+      },
+      "author": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-12T22:45:11Z"
+      },
+      "sha": "1ec0073636fd07740b855eea8ad928f3e875232e"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDZiMjUyZmU1ZDBjOTg5ZTk0NjFiYTY1YjVlMjhhODE4NmVhNDJmMDM",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/6b252fe5d0c989e9461ba65b5e28a8186ea42f03",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/6b252fe5d0c989e9461ba65b5e28a8186ea42f03",
+      "tree": {
+        "sha": "c0e0e3fa429e4b867301678822336a179767ae12",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/c0e0e3fa429e4b867301678822336a179767ae12"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/1ec0073636fd07740b855eea8ad928f3e875232e",
+          "sha": "1ec0073636fd07740b855eea8ad928f3e875232e",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/1ec0073636fd07740b855eea8ad928f3e875232e"
+        }
+      ],
+      "message": "gui: Menu action for exporting a watchonly wallet",
+      "committer": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-21T17:41:25Z"
+      },
+      "author": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-13T23:26:18Z"
+      },
+      "sha": "6b252fe5d0c989e9461ba65b5e28a8186ea42f03"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 17758554549,
+      "node_id": "HRFPE_lADOEEET9c62edljzwAAAAQifgm1",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/17758554549",
+      "actor": {
+        "login": "achow101",
+        "id": 3782274,
+        "node_id": "MDQ6VXNlcjM3ODIyNzQ=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3782274?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/achow101",
+        "html_url": "https://github.com/achow101",
+        "followers_url": "https://api.github.com/users/achow101/followers",
+        "following_url": "https://api.github.com/users/achow101/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/achow101/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/achow101/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/achow101/subscriptions",
+        "organizations_url": "https://api.github.com/users/achow101/orgs",
+        "repos_url": "https://api.github.com/users/achow101/repos",
+        "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/achow101/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": "6b252fe5d0c989e9461ba65b5e28a8186ea42f03",
+      "commit_url": "https://api.github.com/repos/achow101/gui/commits/6b252fe5d0c989e9461ba65b5e28a8186ea42f03",
+      "created_at": "2025-05-21T17:54:33Z"
     }
   ],
   "comments": []
