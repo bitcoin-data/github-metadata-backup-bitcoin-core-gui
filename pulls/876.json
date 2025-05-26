@@ -42,7 +42,7 @@
     "body": "If an exception happens, including e.what() in the text passed to the dialog box, so that the user can see it.  This is in addition to any text from getWarnings() that might already be present, separated by newlines if so.\r\n\r\nThis will make it easier for users to find what went wrong and get the help they need, instead of having to tell the user to go back and dig through the debug.log file.\r\n",
     "labels": [],
     "created_at": "2025-05-26T08:48:05Z",
-    "updated_at": "2025-05-26T08:48:27Z",
+    "updated_at": "2025-05-26T13:43:27Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
@@ -151,7 +151,7 @@
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 172130,
+        "size": 172119,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -331,7 +331,7 @@
     "deletions": 2,
     "changed_files": 2,
     "commits": 1,
-    "review_comments": 0,
+    "review_comments": 2,
     "comments": 1
   },
   "events": [
@@ -430,7 +430,151 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/876#issuecomment-2908991479",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/876"
+    },
+    {
+      "event": "reviewed",
+      "id": 2868183402,
+      "node_id": "PRR_kwDOEEET9c6q9QFq",
+      "url": null,
+      "actor": null,
+      "commit_id": "36557c9a172c7d20ef0fc6b56d08bdd1f64e21fa",
+      "commit_url": null,
+      "created_at": null,
+      "author_association": "MEMBER",
+      "body": "> If an exception happens, including e.what() in the text passed to the dialog\r\nbox, so that the user can see it.  This is in addition to any text from\r\ngetWarnings() that might already be present, separated by newlines if so.\r\n\r\nHave you verified that we won't output the same error message twice?",
+      "user": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/876#pullrequestreview-2868183402",
+      "submitted_at": "2025-05-26T13:43:27Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/876"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2107175290",
+      "pull_request_review_id": 2868183402,
+      "id": 2107175290,
+      "node_id": "PRRC_kwDOEEET9c59mPF6",
+      "diff_hunk": "@@ -34,7 +35,15 @@ InitExecutor::~InitExecutor()\n void InitExecutor::handleRunawayException(const std::exception* e)\n {\n     PrintExceptionContinue(e, \"Runaway exception\");\n-    Q_EMIT runawayException(QString::fromStdString(m_node.getWarnings().translated));\n+    std::string message = m_node.getWarnings().translated;\n+    if (e) {\n+        std::string what = e->what();",
+      "path": "src/qt/initexecutor.cpp",
+      "position": 15,
+      "original_position": 15,
+      "commit_id": "36557c9a172c7d20ef0fc6b56d08bdd1f64e21fa",
+      "original_commit_id": "36557c9a172c7d20ef0fc6b56d08bdd1f64e21fa",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "body": "`const std::string&`",
+      "created_at": "2025-05-26T11:52:27Z",
+      "updated_at": "2025-05-26T13:43:27Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/876#discussion_r2107175290",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2107175290"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/876"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 40,
+      "original_line": 40,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2107175788",
+      "pull_request_review_id": 2868183402,
+      "id": 2107175788,
+      "node_id": "PRRC_kwDOEEET9c59mPNs",
+      "diff_hunk": "@@ -680,7 +681,13 @@ int GuiMain(int argc, char* argv[])\n         }\n     } catch (const std::exception& e) {\n         PrintExceptionContinue(&e, \"Runaway exception\");\n-        app.handleRunawayException(QString::fromStdString(app.node().getWarnings().translated));\n+        std::string message = app.node().getWarnings().translated;\n+        std::string what = e.what();",
+      "path": "src/qt/bitcoin.cpp",
+      "position": 14,
+      "original_position": 14,
+      "commit_id": "36557c9a172c7d20ef0fc6b56d08bdd1f64e21fa",
+      "original_commit_id": "36557c9a172c7d20ef0fc6b56d08bdd1f64e21fa",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "body": "const std::string&",
+      "created_at": "2025-05-26T11:52:47Z",
+      "updated_at": "2025-05-26T13:43:27Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/876#discussion_r2107175788",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2107175788"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/876"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 685,
+      "original_line": 685,
+      "side": "RIGHT"
+    }
+  ]
 }
