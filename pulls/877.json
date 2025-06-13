@@ -40,13 +40,22 @@
       "patch_url": null
     },
     "body": "Some users will have a backup of their legacy wallet. These cannot be restored since the \"Restore Wallet\" action expects to be able to load the wallet after restoring, and this fails for legacy wallets now that they are deleted. Furthermore, the \"Migrate Wallet\" action only allows users to migrate wallets that are in the wallets directory, so such backups cannot be migrated from the GUI.\r\n\r\nThis PR resolves this issue by adding a menu item in the \"Migrate Wallet\" menu which allows users to select their backup file so that it will first be restored but not loaded, and then migrated.\r\n\r\nDepends on https://github.com/bitcoin/bitcoin/pull/32620",
-    "labels": [],
+    "labels": [
+      {
+        "id": 5353934559,
+        "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
+        "name": "CI failed",
+        "color": "ededed",
+        "default": false
+      }
+    ],
     "created_at": "2025-05-26T22:09:48Z",
-    "updated_at": "2025-06-05T13:34:12Z",
+    "updated_at": "2025-06-13T06:13:10Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
-    "merge_commit_sha": "57c4f1d0fb343153a3aaab768dd241c7722def13",
+    "merge_commit_sha": "6a4a12d65e6dbb89a558ef8abc87e417577a9648",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -283,10 +292,10 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 301,
-        "stargazers_count": 653,
-        "watchers_count": 653,
-        "size": 173106,
+        "forks_count": 304,
+        "stargazers_count": 654,
+        "watchers_count": 654,
+        "size": 171950,
         "default_branch": "master",
         "open_issues_count": 152,
         "is_template": false,
@@ -299,9 +308,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-06-05T08:54:14Z",
+        "pushed_at": "2025-06-12T23:01:28Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2025-06-05T08:54:15Z",
+        "updated_at": "2025-06-12T23:01:32Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -998,6 +1007,40 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/877#issuecomment-2944369692",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/877"
+    },
+    {
+      "event": "labeled",
+      "id": 18127517265,
+      "node_id": "LE_lADOEEET9c64Thj3zwAAAAQ4e_ZR",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/18127517265",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-06-13T06:13:09Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
+      }
     }
   ],
   "comments": []
