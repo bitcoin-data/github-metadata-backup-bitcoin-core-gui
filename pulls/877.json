@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/877/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/877/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/56407ca69e34778cfd0d054fbaa94ab0b28ffb6d",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/c02e8a376de441e5d0d3512c8496073ad28a4a26",
     "number": 877,
     "state": "open",
     "locked": false,
@@ -42,11 +42,11 @@
     "body": "Some users will have a backup of their legacy wallet. These cannot be restored since the \"Restore Wallet\" action expects to be able to load the wallet after restoring, and this fails for legacy wallets now that they are deleted. Furthermore, the \"Migrate Wallet\" action only allows users to migrate wallets that are in the wallets directory, so such backups cannot be migrated from the GUI.\r\n\r\nThis PR resolves this issue by adding a menu item in the \"Migrate Wallet\" menu which allows users to select their backup file so that it will first be restored but not loaded, and then migrated.\r\n\r\nDepends on https://github.com/bitcoin/bitcoin/pull/32620",
     "labels": [],
     "created_at": "2025-05-26T22:09:48Z",
-    "updated_at": "2025-06-20T19:55:04Z",
+    "updated_at": "2025-06-20T20:56:46Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
-    "merge_commit_sha": "0bfd1b912c5e07d13455f6682c1a7414259e4d64",
+    "merge_commit_sha": "3c6b03379d411ce01a5524c40e5699d033b60866",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -54,7 +54,7 @@
     "head": {
       "label": "achow101:gui-migrate-path",
       "ref": "gui-migrate-path",
-      "sha": "56407ca69e34778cfd0d054fbaa94ab0b28ffb6d",
+      "sha": "c02e8a376de441e5d0d3512c8496073ad28a4a26",
       "user": {
         "login": "achow101",
         "id": 3782274,
@@ -164,7 +164,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-06-04T23:56:50Z",
+        "pushed_at": "2025-06-20T20:56:36Z",
         "created_at": "2020-11-12T20:04:24Z",
         "updated_at": "2024-12-03T23:11:12Z",
         "allow_forking": true,
@@ -188,7 +188,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "f94167512dc9530a0508ca3f09be2fdcdadb0b64",
+      "sha": "482d2553764ef1fa3f9c06389b2e13a735d86eda",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -286,7 +286,7 @@
         "forks_count": 305,
         "stargazers_count": 655,
         "watchers_count": 655,
-        "size": 172419,
+        "size": 172439,
         "default_branch": "master",
         "open_issues_count": 152,
         "is_template": false,
@@ -326,13 +326,13 @@
       }
     },
     "author_association": "MEMBER",
-    "draft": true,
-    "additions": 97,
+    "draft": false,
+    "additions": 93,
     "deletions": 22,
     "changed_files": 5,
-    "commits": 5,
+    "commits": 4,
     "review_comments": 0,
-    "comments": 7
+    "comments": 8
   },
   "events": [
     {
@@ -364,9 +364,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2025-05-26T22:09:58Z",
-      "updated_at": "2025-06-20T19:55:04Z",
+      "updated_at": "2025-06-20T20:56:44Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| ACK | [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/877#pullrequestreview-2947156342) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#bitcoin/bitcoin/26022](https://github.com/bitcoin/bitcoin/pull/26022) (Add util::ResultPtr class by ryanofsky)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n<!--5faf32d7da4f0f540f40219e4f7537a3-->",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Stale ACK | [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/877#pullrequestreview-2947156342) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#bitcoin/bitcoin/26022](https://github.com/bitcoin/bitcoin/pull/26022) (Add util::ResultPtr class by ryanofsky)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n<!--5faf32d7da4f0f540f40219e4f7537a3-->",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -714,46 +714,6 @@
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/877"
     },
     {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDEzMGE5MjI5ODA3NzhiMjkzYjIyMTY5ZDVlNTY0OWFmZGUzYmEzM2I",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/130a922980778b293b22169d5e5649afde3ba33b",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/130a922980778b293b22169d5e5649afde3ba33b",
-      "tree": {
-        "sha": "75428b5d04e86ce8097ff0a30ed623e0d1717fff",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/75428b5d04e86ce8097ff0a30ed623e0d1717fff"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/f94167512dc9530a0508ca3f09be2fdcdadb0b64",
-          "sha": "f94167512dc9530a0508ca3f09be2fdcdadb0b64",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/f94167512dc9530a0508ca3f09be2fdcdadb0b64"
-        }
-      ],
-      "message": "wallet, interfaces: Use BERKELEY_RO in isEncrypted\n\nSince isEncrypted opens a file to search for a particular record, it\nneeds to use BERKELEY_RO when opening a legacy wallet.",
-      "committer": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-06-04T23:51:51Z"
-      },
-      "author": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-26T21:44:13Z"
-      },
-      "sha": "130a922980778b293b22169d5e5649afde3ba33b"
-    },
-    {
       "event": "head_ref_force_pushed",
       "id": 17990933861,
       "node_id": "HRFPE_lADOEEET9c64Thj3zwAAAAQwV91l",
@@ -782,166 +742,6 @@
       "commit_id": "56407ca69e34778cfd0d054fbaa94ab0b28ffb6d",
       "commit_url": "https://api.github.com/repos/achow101/gui/commits/56407ca69e34778cfd0d054fbaa94ab0b28ffb6d",
       "created_at": "2025-06-04T23:56:51Z"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGI4ZGE0ZmM1ZDE4NjM0MmZkYTk4NTE0ZGYwOWRhNmFhNDkyNzBlMzI",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/b8da4fc5d186342fda98514df09da6aa49270e32",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/b8da4fc5d186342fda98514df09da6aa49270e32",
-      "tree": {
-        "sha": "1510e5a4b9a48095c071343aa50bc9cdeafd67d2",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/1510e5a4b9a48095c071343aa50bc9cdeafd67d2"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/130a922980778b293b22169d5e5649afde3ba33b",
-          "sha": "130a922980778b293b22169d5e5649afde3ba33b",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/130a922980778b293b22169d5e5649afde3ba33b"
-        }
-      ],
-      "message": "wallet, interfaces, gui: Expose load_after_restore parameter\n\nRestoreWallet has a load_after_restore parameter, expose this to callers\nusing it through the wallet interface as well.",
-      "committer": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-06-04T23:57:34Z"
-      },
-      "author": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-26T21:43:34Z"
-      },
-      "sha": "b8da4fc5d186342fda98514df09da6aa49270e32"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDhkYjg5MGEyODVlYmM0ZTRkZDNiMDk3MDk2YWIyMDA0Y2ZlMTBiOWI",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/8db890a285ebc4e4dd3b097096ab2004cfe10b9b",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/8db890a285ebc4e4dd3b097096ab2004cfe10b9b",
-      "tree": {
-        "sha": "7db6c280d18989f3b94a52df47699639de0eaa0c",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/7db6c280d18989f3b94a52df47699639de0eaa0c"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/b8da4fc5d186342fda98514df09da6aa49270e32",
-          "sha": "b8da4fc5d186342fda98514df09da6aa49270e32",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/b8da4fc5d186342fda98514df09da6aa49270e32"
-        }
-      ],
-      "message": "gui: Move actual migration part of migrate() to its own function\n\nWe will need to use the same migration code in a later commit, so first\nmove it to a separate function.",
-      "committer": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-06-04T23:57:34Z"
-      },
-      "author": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-26T21:46:12Z"
-      },
-      "sha": "8db890a285ebc4e4dd3b097096ab2004cfe10b9b"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDJlNzg4ODFjZDllNGI1YzU3YWFjMTBiYmE5Y2UwODNhYzgxYzI2ZjE",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/2e78881cd9e4b5c57aac10bba9ce083ac81c26f1",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/2e78881cd9e4b5c57aac10bba9ce083ac81c26f1",
-      "tree": {
-        "sha": "9f77bcd02464a76bb62d0b40202f30ccd3c3176d",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/9f77bcd02464a76bb62d0b40202f30ccd3c3176d"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/8db890a285ebc4e4dd3b097096ab2004cfe10b9b",
-          "sha": "8db890a285ebc4e4dd3b097096ab2004cfe10b9b",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/8db890a285ebc4e4dd3b097096ab2004cfe10b9b"
-        }
-      ],
-      "message": "gui: Add restore_and_migrate function to restore then migrate a wallet\n\nrestore_and_migrate first restores a wallet file to the wallets\ndirectory in the expected layout, then it performs legacy to descriptor\nwallet migration on the restored wallet.",
-      "committer": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-06-04T23:57:34Z"
-      },
-      "author": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-26T21:47:03Z"
-      },
-      "sha": "2e78881cd9e4b5c57aac10bba9ce083ac81c26f1"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDU2NDA3Y2E2OWUzNDc3OGNmZDBkMDU0ZmJhYTk0YWIwYjI4ZmZiNmQ",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/56407ca69e34778cfd0d054fbaa94ab0b28ffb6d",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/56407ca69e34778cfd0d054fbaa94ab0b28ffb6d",
-      "tree": {
-        "sha": "eb811b04b4d4c1b98317333bbbe5a2300698cc50",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/eb811b04b4d4c1b98317333bbbe5a2300698cc50"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/2e78881cd9e4b5c57aac10bba9ce083ac81c26f1",
-          "sha": "2e78881cd9e4b5c57aac10bba9ce083ac81c26f1",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/2e78881cd9e4b5c57aac10bba9ce083ac81c26f1"
-        }
-      ],
-      "message": "gui: Add a menu item to restore then migrate a wallet file\n\nSome users will have backups of a legacy wallet which cannot be restored\ndue to being a legacy wallet, and therefore cannot be migrated from the\nGUI. This menu item allows such users to restore and migrate their\nwallets in a single action.",
-      "committer": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-06-04T23:57:34Z"
-      },
-      "author": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2025-05-26T21:47:47Z"
-      },
-      "sha": "56407ca69e34778cfd0d054fbaa94ab0b28ffb6d"
     },
     {
       "event": "commented",
@@ -1159,6 +959,282 @@
       "submitted_at": "2025-06-20T19:55:01Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/877"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDJhY2Y3NzM4MDBiNzkzYjU0NzQ1MGY1ZWQzNjBkNzgyMmJkZTQyMTU",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/2acf773800b793b547450f5ed360d7822bde4215",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/2acf773800b793b547450f5ed360d7822bde4215",
+      "tree": {
+        "sha": "9fca935218f8f6f00e423c50a5e98b6b3c8ed366",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/9fca935218f8f6f00e423c50a5e98b6b3c8ed366"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/482d2553764ef1fa3f9c06389b2e13a735d86eda",
+          "sha": "482d2553764ef1fa3f9c06389b2e13a735d86eda",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/482d2553764ef1fa3f9c06389b2e13a735d86eda"
+        }
+      ],
+      "message": "wallet, interfaces, gui: Expose load_after_restore parameter\n\nRestoreWallet has a load_after_restore parameter, expose this to callers\nusing it through the wallet interface as well.",
+      "committer": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-06-20T20:56:05Z"
+      },
+      "author": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-26T21:43:34Z"
+      },
+      "sha": "2acf773800b793b547450f5ed360d7822bde4215"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGMxM2YxZmJmZmI5NjVkMzI3MjMwMDg2MTU0NTBjZWQ1N2YwZmNlNmM",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/c13f1fbffb965d32723008615450ced57f0fce6c",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/c13f1fbffb965d32723008615450ced57f0fce6c",
+      "tree": {
+        "sha": "054355ca54d6c215ac4da12e743bf6322ca10328",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/054355ca54d6c215ac4da12e743bf6322ca10328"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/2acf773800b793b547450f5ed360d7822bde4215",
+          "sha": "2acf773800b793b547450f5ed360d7822bde4215",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/2acf773800b793b547450f5ed360d7822bde4215"
+        }
+      ],
+      "message": "gui: Move actual migration part of migrate() to its own function\n\nWe will need to use the same migration code in a later commit, so first\nmove it to a separate function.",
+      "committer": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-06-20T20:56:05Z"
+      },
+      "author": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-26T21:46:12Z"
+      },
+      "sha": "c13f1fbffb965d32723008615450ced57f0fce6c"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDExNGI1MmQ2MDVhZmE1YTlmNjljMjNkZGI3NTI3YzdjNzQ5ZTZiZjY",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/114b52d605afa5a9f69c23ddb7527c7c749e6bf6",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/114b52d605afa5a9f69c23ddb7527c7c749e6bf6",
+      "tree": {
+        "sha": "29acdb86b77614a1c2e87e0d859dd87b09ec254a",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/29acdb86b77614a1c2e87e0d859dd87b09ec254a"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/c13f1fbffb965d32723008615450ced57f0fce6c",
+          "sha": "c13f1fbffb965d32723008615450ced57f0fce6c",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/c13f1fbffb965d32723008615450ced57f0fce6c"
+        }
+      ],
+      "message": "gui: Add restore_and_migrate function to restore then migrate a wallet\n\nrestore_and_migrate first restores a wallet file to the wallets\ndirectory in the expected layout, then it performs legacy to descriptor\nwallet migration on the restored wallet.",
+      "committer": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-06-20T20:56:05Z"
+      },
+      "author": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-26T21:47:03Z"
+      },
+      "sha": "114b52d605afa5a9f69c23ddb7527c7c749e6bf6"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGMwMmU4YTM3NmRlNDQxZTVkMGQzNTEyYzg0OTYwNzNhZDI4YTRhMjY",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/c02e8a376de441e5d0d3512c8496073ad28a4a26",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/c02e8a376de441e5d0d3512c8496073ad28a4a26",
+      "tree": {
+        "sha": "b9f3b1bbfbaba37817086c0eb832507b0b794f4c",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/b9f3b1bbfbaba37817086c0eb832507b0b794f4c"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/114b52d605afa5a9f69c23ddb7527c7c749e6bf6",
+          "sha": "114b52d605afa5a9f69c23ddb7527c7c749e6bf6",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/114b52d605afa5a9f69c23ddb7527c7c749e6bf6"
+        }
+      ],
+      "message": "gui: Add a menu item to restore then migrate a wallet file\n\nSome users will have backups of a legacy wallet which cannot be restored\ndue to being a legacy wallet, and therefore cannot be migrated from the\nGUI. This menu item allows such users to restore and migrate their\nwallets in a single action.",
+      "committer": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-06-20T20:56:05Z"
+      },
+      "author": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2025-05-26T21:47:47Z"
+      },
+      "sha": "c02e8a376de441e5d0d3512c8496073ad28a4a26"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 18253558494,
+      "node_id": "HRFPE_lADOEEET9c64Thj3zwAAAAQ__zLe",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/18253558494",
+      "actor": {
+        "login": "achow101",
+        "id": 3782274,
+        "node_id": "MDQ6VXNlcjM3ODIyNzQ=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3782274?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/achow101",
+        "html_url": "https://github.com/achow101",
+        "followers_url": "https://api.github.com/users/achow101/followers",
+        "following_url": "https://api.github.com/users/achow101/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/achow101/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/achow101/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/achow101/subscriptions",
+        "organizations_url": "https://api.github.com/users/achow101/orgs",
+        "repos_url": "https://api.github.com/users/achow101/repos",
+        "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/achow101/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": "c02e8a376de441e5d0d3512c8496073ad28a4a26",
+      "commit_url": "https://api.github.com/repos/achow101/gui/commits/c02e8a376de441e5d0d3512c8496073ad28a4a26",
+      "created_at": "2025-06-20T20:56:37Z"
+    },
+    {
+      "event": "ready_for_review",
+      "id": 18253559133,
+      "node_id": "RFRE_lADOEEET9c64Thj3zwAAAAQ__zVd",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/18253559133",
+      "actor": {
+        "login": "achow101",
+        "id": 3782274,
+        "node_id": "MDQ6VXNlcjM3ODIyNzQ=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3782274?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/achow101",
+        "html_url": "https://github.com/achow101",
+        "followers_url": "https://api.github.com/users/achow101/followers",
+        "following_url": "https://api.github.com/users/achow101/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/achow101/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/achow101/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/achow101/subscriptions",
+        "organizations_url": "https://api.github.com/users/achow101/orgs",
+        "repos_url": "https://api.github.com/users/achow101/repos",
+        "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/achow101/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-06-20T20:56:41Z"
+    },
+    {
+      "event": "commented",
+      "id": 2992829157,
+      "node_id": "IC_kwDOEEET9c6yYvLl",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/2992829157",
+      "actor": {
+        "login": "achow101",
+        "id": 3782274,
+        "node_id": "MDQ6VXNlcjM3ODIyNzQ=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3782274?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/achow101",
+        "html_url": "https://github.com/achow101",
+        "followers_url": "https://api.github.com/users/achow101/followers",
+        "following_url": "https://api.github.com/users/achow101/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/achow101/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/achow101/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/achow101/subscriptions",
+        "organizations_url": "https://api.github.com/users/achow101/orgs",
+        "repos_url": "https://api.github.com/users/achow101/repos",
+        "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/achow101/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-06-20T20:56:46Z",
+      "updated_at": "2025-06-20T20:56:46Z",
+      "author_association": "MEMBER",
+      "body": "Rebased and ready for review",
+      "user": {
+        "login": "achow101",
+        "id": 3782274,
+        "node_id": "MDQ6VXNlcjM3ODIyNzQ=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3782274?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/achow101",
+        "html_url": "https://github.com/achow101",
+        "followers_url": "https://api.github.com/users/achow101/followers",
+        "following_url": "https://api.github.com/users/achow101/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/achow101/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/achow101/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/achow101/subscriptions",
+        "organizations_url": "https://api.github.com/users/achow101/orgs",
+        "repos_url": "https://api.github.com/users/achow101/repos",
+        "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/achow101/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/877#issuecomment-2992829157",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/877"
     }
   ],
   "comments": []
