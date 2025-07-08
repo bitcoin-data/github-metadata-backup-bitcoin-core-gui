@@ -42,6 +42,15 @@
     "body": "This PR improves the network traffic graph widget in the Debug window to provide:\r\n1. Multiple time range options (from 5 minutes to 28 days)\r\n2. Data persistence between sessions\r\n3. Interactive visualization features including tooltips and logarithmic scaling\r\n\r\n## Motivation\r\nThe existing network traffic graph has limited utility with its fixed time range and lack of historical data preservation. This enhancement allows users to:\r\n- Analyze network traffic patterns over different timeframes\r\n- Preserve historical traffic data between session restarts\r\n- Interact with the graph to get specific data points\r\n- Better visualize varying traffic volumes with logarithmic scaling\r\n\r\nThese improvements are valuable for:\r\n- Network debugging and troubleshooting\r\n- Understanding Bitcoin Core's network behaviour\r\n- Monitoring traffic patterns for optimization\r\n- Research purposes\r\n\r\n## Implementation\r\nThe implementation preserves all existing functionality while adding new features:\r\n- Added a pre-configured timeframe selection (13 different timeframes)\r\n- Implemented traffic data serialization and deserialization\r\n- Enhanced the visualization with interactive features\r\n- Improved tooltip information with precise timestamps and traffic rates\r\n\r\nSupporting changes:\r\n- Added formatBytesps function for a prettier display of traffic rates\r\n- Added FormatISO8601Time for better time display\r\n\r\n## Testing\r\nTested on Linux with various network conditions. The new functionality can be exercised by:\r\n1. Using the slider (or arrow keys) to select different time ranges\r\n2. Restarting the application to verify data persistence\r\n3. Clicking on the graph to toggle between linear and logarithmic scales\r\n4. Hovering over data points to view detailed information\r\n\r\n## Documentation\r\nThe changes are mostly self-documenting through the UI and are constrained to the Qt interface without affecting core functionality.\r\n\r\n## Compatibility\r\nThis PR maintains compatibility with existing functionality. The data persistence file uses proper serialization versioning to allow for future format changes if needed. ",
     "labels": [
       {
+        "id": 2145506980,
+        "node_id": "MDU6TGFiZWwyMTQ1NTA2OTgw",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Needs%20rebase",
+        "name": "Needs rebase",
+        "description": "",
+        "color": "cccccc",
+        "default": false
+      },
+      {
         "id": 2147693884,
         "node_id": "MDU6TGFiZWwyMTQ3NjkzODg0",
         "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Feature",
@@ -60,11 +69,10 @@
       }
     ],
     "created_at": "2025-04-09T23:00:18Z",
-    "updated_at": "2025-07-05T16:45:28Z",
-    "mergeable": true,
-    "mergeable_state": "unstable",
+    "updated_at": "2025-07-08T01:45:14Z",
+    "mergeable": false,
+    "mergeable_state": "dirty",
     "merged": false,
-    "merge_commit_sha": "b1a3bb94b4954123a358695dd68a28cc3d604d6c",
     "assignees": [],
     "requested_reviewers": [
       {
@@ -90,7 +98,7 @@
       }
     ],
     "requested_teams": [],
-    "rebaseable": true,
+    "rebaseable": false,
     "head": {
       "label": "rebroad:trafficgraphwidget-rebased",
       "ref": "trafficgraphwidget-rebased",
@@ -324,10 +332,10 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 307,
-        "stargazers_count": 659,
-        "watchers_count": 659,
-        "size": 173552,
+        "forks_count": 310,
+        "stargazers_count": 660,
+        "watchers_count": 660,
+        "size": 173766,
         "default_branch": "master",
         "open_issues_count": 152,
         "is_template": false,
@@ -340,9 +348,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-07-03T23:45:46Z",
+        "pushed_at": "2025-07-08T00:59:32Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2025-07-03T23:45:49Z",
+        "updated_at": "2025-07-08T00:59:36Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -373,7 +381,7 @@
     "changed_files": 9,
     "commits": 3,
     "review_comments": 9,
-    "comments": 9
+    "comments": 10
   },
   "events": [
     {
@@ -2497,6 +2505,96 @@
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/866#issuecomment-3039340126",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/866"
+    },
+    {
+      "event": "labeled",
+      "id": 18515679996,
+      "node_id": "LE_lADOEEET9c6x3UOBzwAAAARPntr8",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/18515679996",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-07-08T01:45:13Z",
+      "label": {
+        "name": "Needs rebase",
+        "color": "cccccc"
+      }
+    },
+    {
+      "event": "commented",
+      "id": 3047079323,
+      "node_id": "IC_kwDOEEET9c61nr2b",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/3047079323",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-07-08T01:45:14Z",
+      "updated_at": "2025-07-08T01:45:14Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "<!--cf906140f33d8803c4a75a2196329ecb-->\n🐙 This pull request conflicts with the target branch and [needs rebase](https://github.com/bitcoin-core/gui/blob/master/CONTRIBUTING.md#rebasing-changes).\n",
+      "user": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/866#issuecomment-3047079323",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/866"
     }
   ],
