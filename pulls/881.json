@@ -12,12 +12,12 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/881/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/881/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/dd392a64bb0608847f771f8b1f09c2fcae146923",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/4542412ae063903654fc1cd95f77889bae76d61c",
     "number": 881,
     "state": "open",
     "locked": false,
     "maintainer_can_modify": true,
-    "title": "refactor: Move `FreespaceChecker` class into its own module",
+    "title": "Move `FreespaceChecker` class into its own module",
     "user": {
       "login": "hebasto",
       "id": 32963518,
@@ -40,23 +40,13 @@
       "patch_url": null
     },
     "body": "For some reason, the MOC compiler in older versions of Qt 6 fails to parse `qt/intro.cpp`, as noted in [this comment](https://github.com/bitcoin/bitcoin/pull/32998#issuecomment-3082011233).\r\n\r\nThis PR proposes a move-only refactoring to simplify the source structure by eliminating the need for the inline `#include <qt/intro.moc>`, thereby effectively working around the issue.\r\n\r\nRequired for https://github.com/bitcoin/bitcoin/pull/32998.",
-    "labels": [
-      {
-        "id": 2145503632,
-        "node_id": "MDU6TGFiZWwyMTQ1NTAzNjMy",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Refactoring",
-        "name": "Refactoring",
-        "description": "",
-        "color": "ffc6ec",
-        "default": false
-      }
-    ],
+    "labels": [],
     "created_at": "2025-07-26T10:13:30Z",
-    "updated_at": "2025-07-29T05:17:04Z",
+    "updated_at": "2025-07-29T08:23:12Z",
     "mergeable": true,
-    "mergeable_state": "clean",
+    "mergeable_state": "unstable",
     "merged": false,
-    "merge_commit_sha": "53a6f02abe3c16ea29fdc811f33775db8dd23d26",
+    "merge_commit_sha": "66ac2b3c7183f1ce04b3465164f9b000122c1ac9",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -64,7 +54,7 @@
     "head": {
       "label": "hebasto:250726-intro",
       "ref": "250726-intro",
-      "sha": "dd392a64bb0608847f771f8b1f09c2fcae146923",
+      "sha": "4542412ae063903654fc1cd95f77889bae76d61c",
       "user": {
         "login": "hebasto",
         "id": 32963518,
@@ -175,7 +165,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-07-26T14:40:48Z",
+        "pushed_at": "2025-07-29T08:19:33Z",
         "created_at": "2020-06-18T12:20:51Z",
         "updated_at": "2025-07-26T09:57:48Z",
         "allow_forking": true,
@@ -199,7 +189,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "75a5c8258ec5309fe506438aa3815608430b53d6",
+      "sha": "321984705dbcc5982013c8cfb52389cf3f2e75f6",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -338,12 +328,12 @@
     },
     "author_association": "MEMBER",
     "draft": false,
-    "additions": 114,
-    "deletions": 84,
+    "additions": 117,
+    "deletions": 88,
     "changed_files": 5,
-    "commits": 1,
+    "commits": 2,
     "review_comments": 0,
-    "comments": 3
+    "comments": 4
   },
   "events": [
     {
@@ -409,9 +399,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2025-07-26T10:13:36Z",
-      "updated_at": "2025-07-29T05:17:04Z",
+      "updated_at": "2025-07-29T08:19:38Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| ACK | [ajtowns](https://github.com/bitcoin-core/gui/pull/881#issuecomment-3130725962) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--5faf32d7da4f0f540f40219e4f7537a3-->",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Stale ACK | [ajtowns](https://github.com/bitcoin-core/gui/pull/881#issuecomment-3130725962) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--5faf32d7da4f0f540f40219e4f7537a3-->",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -587,46 +577,6 @@
       "created_at": "2025-07-26T14:34:58Z"
     },
     {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGRkMzkyYTY0YmIwNjA4ODQ3Zjc3MWY4YjFmMDljMmZjYWUxNDY5MjM",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/dd392a64bb0608847f771f8b1f09c2fcae146923",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/dd392a64bb0608847f771f8b1f09c2fcae146923",
-      "tree": {
-        "sha": "be79b00536b99660317bf494854c0702b611127d",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/be79b00536b99660317bf494854c0702b611127d"
-      },
-      "verification": {
-        "verified": true,
-        "reason": "valid",
-        "payload": "tree be79b00536b99660317bf494854c0702b611127d\nparent 75a5c8258ec5309fe506438aa3815608430b53d6\nauthor Hennadii Stepanov <32963518+hebasto@users.noreply.github.com> 1752759626 +0100\ncommitter Hennadii Stepanov <32963518+hebasto@users.noreply.github.com> 1753540832 +0100\n\nqt, refactor: Move `FreespaceChecker` class into its own module\n",
-        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEE0dvyxLlvLev0wWZUQQEIES5+qB8FAmiE6OAACgkQQQEIES5+\nqB+fkg/+MNk/8bGtcrLJOjtz9UIY6QFFiytImosfa7wFx4bpwpFfxYVCp3yUZHDI\nbnZF5lME5b/EX7Wj6IXZlZi7JQZsYGaX894HUPEG31WCJhOBExTbcS/L+FyPC55M\nQ+XFVHSjN9oGYIIZJH3zu6xRGfXM4vD69qXT82t4SXxoMyejMJ+pYVzTIg9rq9YF\nYCc5YPRmXkHVzzf0CgaRQ7sy5odyPBBvgZ+rq0P2VWcFUAE45pXyIa/5poDUAU0j\nAooQCm8MeozdwkBg23h7hBu5yGkSirkOn8vTBer2uim13m98SxhZ+yrIjs7o/uws\nH6owNBEyZJcf2i8lZP7xq4sD4ZMSHXVV6ZjhiouRc8m1P/nDXSw1NjkZvcHcWR4I\ngQVxY0+RQTT1t9Q1zlBshX85yRvkjHBaWLH+/SzIPc8Au9g+hPwVf4fyqfQoCwz7\nZMNHDUDzTlxT1G5gD8Z8Q4YIVNo4zx+r1JJKaJwV4nqE9/ESzI3Nl7tJn1fv7ioU\nSOiE4Xbfi/+0Mo1bQ1jQ12bUeiERZww/cOdG7UrAIXTgfh44d6vn8/WG5JkhkB7I\nackG2axxiytq0vAluATHxNNDIQMdy5PzQs0UYQk9mWvVHWfBWmiXW6njsA2W/fTg\nPH+sF7WgeGFQYEkVKlHQZGSQaj9fJv52+l0Vnp892KPi/Mf04KI=\n=Q7cy\n-----END PGP SIGNATURE-----"
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/75a5c8258ec5309fe506438aa3815608430b53d6",
-          "sha": "75a5c8258ec5309fe506438aa3815608430b53d6",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/75a5c8258ec5309fe506438aa3815608430b53d6"
-        }
-      ],
-      "message": "qt, refactor: Move `FreespaceChecker` class into its own module",
-      "committer": {
-        "name": "Hennadii Stepanov",
-        "email": "32963518+hebasto@users.noreply.github.com",
-        "date": "2025-07-26T14:40:32Z"
-      },
-      "author": {
-        "name": "Hennadii Stepanov",
-        "email": "32963518+hebasto@users.noreply.github.com",
-        "date": "2025-07-17T13:40:26Z"
-      },
-      "sha": "dd392a64bb0608847f771f8b1f09c2fcae146923"
-    },
-    {
       "event": "head_ref_force_pushed",
       "id": 18833051748,
       "node_id": "HRFPE_lADOEEET9c7Coi1ozwAAAARiiZBk",
@@ -745,6 +695,300 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/881#issuecomment-3130725962",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/881"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDI1ODg0YmQ4OTY4NDI2MmI5NGUwOWM5OTA0YzE1NjBkNWJhODdkODY",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/25884bd89684262b94e09c9904c1560d5ba87d86",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/25884bd89684262b94e09c9904c1560d5ba87d86",
+      "tree": {
+        "sha": "61a4541a094244390010685196f158d717eff1c0",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/61a4541a094244390010685196f158d717eff1c0"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree 61a4541a094244390010685196f158d717eff1c0\nparent 75a5c8258ec5309fe506438aa3815608430b53d6\nauthor Hennadii Stepanov <32963518+hebasto@users.noreply.github.com> 1752759626 +0100\ncommitter Hennadii Stepanov <32963518+hebasto@users.noreply.github.com> 1753775664 +0100\n\nqt, refactor: Move `FreespaceChecker` class into its own module\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEE0dvyxLlvLev0wWZUQQEIES5+qB8FAmiIfjAACgkQQQEIES5+\nqB/mXxAAh7NGvO8+EAoOqdAS5nh51I7w0YSUmV1B5OqCbYyfQ8VEO2CsMZvBDSeD\n3vIo5vKCVZmCfL8QtMm0GNhW/9f0JQ4zjcO0MJKq2OEHsUvub/VwA+pUI7g/iC1O\nmMuYqyaZbmd2rB88o08L5BQH4NLR5q3VxFCAS3ae2hDVpKI5zkTA2bYIf893SLUa\nRBPUTOxYeVAC5xGkBzM1qbOSDgYt5IuLmDqqWDroGkIkH+tmtBscQXTvgFpAJppY\nEq8lbi8RIIsl/PMvdmr1RG9pXWrgvhEHce1soLx1Y496p93kKi61kpVOK9yz0ieA\naLxkyQyOqzKzYs9yUMMtiyiMXIwczAdQhHzgNwyxaMdA2Sqm33sDWREt+wwpLbrw\nAX10Z9nRlPSaeKOsF7c0lGlVkCsyXB5xNBX+5IDg2Y0ZdlDrYV/syw85g+AJaVnF\nfNFo/FtjVo0XpWmmBkHp0O4f6jkIhFDd+m8Qgqee8AXuW6juCoOcY7STFvfzNSpb\n/GkotCkam5l9kfUmBffNR+aNNxXDynY/Cfc2RyCOs5bkU86Y1oriP3RiC5B59m/n\n83XQKeq0EXBA0HquMXvMsUIpgRiCM3RdFZefQRSP2oZ4kUS3cACceETgjF/n0toG\nH22RpI+hxWY7+jDMtQXen+0so56Arw4vbq4XkdF4wAaxluqRgCU=\n=rIoo\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/75a5c8258ec5309fe506438aa3815608430b53d6",
+          "sha": "75a5c8258ec5309fe506438aa3815608430b53d6",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/75a5c8258ec5309fe506438aa3815608430b53d6"
+        }
+      ],
+      "message": "qt, refactor: Move `FreespaceChecker` class into its own module",
+      "committer": {
+        "name": "Hennadii Stepanov",
+        "email": "32963518+hebasto@users.noreply.github.com",
+        "date": "2025-07-29T07:54:24Z"
+      },
+      "author": {
+        "name": "Hennadii Stepanov",
+        "email": "32963518+hebasto@users.noreply.github.com",
+        "date": "2025-07-17T13:40:26Z"
+      },
+      "sha": "25884bd89684262b94e09c9904c1560d5ba87d86"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDQ1NDI0MTJhZTA2MzkwMzY1NGZjMWNkOTVmNzc4ODliYWU3NmQ2MWM",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/4542412ae063903654fc1cd95f77889bae76d61c",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/4542412ae063903654fc1cd95f77889bae76d61c",
+      "tree": {
+        "sha": "53461ec99c5bf5f7727658db355fee2c4c434d83",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/53461ec99c5bf5f7727658db355fee2c4c434d83"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree 53461ec99c5bf5f7727658db355fee2c4c434d83\nparent 25884bd89684262b94e09c9904c1560d5ba87d86\nauthor Anthony Towns <aj@erisian.com.au> 1753776766 +0100\ncommitter Hennadii Stepanov <32963518+hebasto@users.noreply.github.com> 1753776829 +0100\n\nqt: Avoid header circular dependency\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEE0dvyxLlvLev0wWZUQQEIES5+qB8FAmiIgr0ACgkQQQEIES5+\nqB9FDw//f5yxHEtf1HYMfqo7nlLDoJkGegiqLWOeNVaS2ai+VZlIOIE9S2D7Io0t\n35/rSpfZEy4k/I04R1bbX/fVqmmFwo95XqnnsQaxgFkNfBA237/TVczXDzLU4Ik9\nV25IjrYsd4Cbb/UMxHvUWDQsd+JiMLA8PdUp0apg0zhGbllyKYzHgvTeToLDC+B/\nVzCtlZEVKtak9Qot+pububvFtpxOsnyi3kL14Tc+db9CwwuiCRmvL0EixO6pyBbW\niJ1gvxTUOcYnovm169XsrH6JCdSC+jAj9qQbSeNRPmCVXCgKw6YywekY1X6P7aJW\nv7btTKUgKAJ3h9E+K0hlET3ZwX4+rTxihPOzkzd+v4Xz84UGmXUuYUKMA6GBnFyF\njCRh+xWDdTPGk59iOurAUpBMeSVPsGTJzq4eXIZFRsvUs8K/Z4+Pbjq2/9Bl7evu\nePofSLc1BfUT5Z87F4Gpe8h4gUwqX8Grv0la6Jr8xNvAoz/UM3Xk4xP2X6+8sptN\nIoiQFD0k5Of8Ltozyo6058sRKBiMegvl7qljEeugEv96ArmjTIXM1dhtXFmUwIZS\n0gu41PluysEYa8tyT5mdZf2S8hajIuUI8X27jOPNL6KpxvFQy6smZ/xE3VTIGEq3\najqcqM/7rjq8hInEeUFqobAVNI/gcPuoCaCTNXEDn/pvgwdxZ50=\n=37qf\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/25884bd89684262b94e09c9904c1560d5ba87d86",
+          "sha": "25884bd89684262b94e09c9904c1560d5ba87d86",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/25884bd89684262b94e09c9904c1560d5ba87d86"
+        }
+      ],
+      "message": "qt: Avoid header circular dependency",
+      "committer": {
+        "name": "Hennadii Stepanov",
+        "email": "32963518+hebasto@users.noreply.github.com",
+        "date": "2025-07-29T08:13:49Z"
+      },
+      "author": {
+        "name": "Anthony Towns",
+        "email": "aj@erisian.com.au",
+        "date": "2025-07-29T08:12:46Z"
+      },
+      "sha": "4542412ae063903654fc1cd95f77889bae76d61c"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 18872920521,
+      "node_id": "HRFPE_lADOEEET9c7Coi1ozwAAAARk6enJ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/18872920521",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": "4542412ae063903654fc1cd95f77889bae76d61c",
+      "commit_url": "https://api.github.com/repos/hebasto/gui/commits/4542412ae063903654fc1cd95f77889bae76d61c",
+      "created_at": "2025-07-29T08:19:27Z"
+    },
+    {
+      "event": "renamed",
+      "id": 18872954857,
+      "node_id": "RTE_lADOEEET9c7Coi1ozwAAAARk6m_p",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/18872954857",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-07-29T08:20:45Z",
+      "rename": {
+        "from": "refactor: Move `FreespaceChecker` class into its own module",
+        "to": "Move `FreespaceChecker` class into its own module"
+      }
+    },
+    {
+      "event": "unlabeled",
+      "id": 18872976772,
+      "node_id": "UNLE_lADOEEET9c7Coi1ozwAAAARk6sWE",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/18872976772",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-07-29T08:21:32Z",
+      "label": {
+        "name": "Refactoring",
+        "color": "ffc6ec"
+      }
+    },
+    {
+      "event": "commented",
+      "id": 3131240655,
+      "node_id": "IC_kwDOEEET9c66ovDP",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/3131240655",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-07-29T08:23:11Z",
+      "updated_at": "2025-07-29T08:23:11Z",
+      "author_association": "MEMBER",
+      "body": "@ajtowns \r\n\r\nThank you for the review! Your feedback has been addressed.",
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/881#issuecomment-3131240655",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/881"
+    },
+    {
+      "event": "mentioned",
+      "id": 18873019283,
+      "node_id": "MEE_lADOEEET9c7Coi1ozwAAAARk62uT",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/18873019283",
+      "actor": {
+        "login": "ajtowns",
+        "id": 127186,
+        "node_id": "MDQ6VXNlcjEyNzE4Ng==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/127186?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ajtowns",
+        "html_url": "https://github.com/ajtowns",
+        "followers_url": "https://api.github.com/users/ajtowns/followers",
+        "following_url": "https://api.github.com/users/ajtowns/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/ajtowns/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/ajtowns/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/ajtowns/subscriptions",
+        "organizations_url": "https://api.github.com/users/ajtowns/orgs",
+        "repos_url": "https://api.github.com/users/ajtowns/repos",
+        "events_url": "https://api.github.com/users/ajtowns/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/ajtowns/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-07-29T08:23:13Z"
+    },
+    {
+      "event": "subscribed",
+      "id": 18873019335,
+      "node_id": "SE_lADOEEET9c7Coi1ozwAAAARk62vH",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/18873019335",
+      "actor": {
+        "login": "ajtowns",
+        "id": 127186,
+        "node_id": "MDQ6VXNlcjEyNzE4Ng==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/127186?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ajtowns",
+        "html_url": "https://github.com/ajtowns",
+        "followers_url": "https://api.github.com/users/ajtowns/followers",
+        "following_url": "https://api.github.com/users/ajtowns/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/ajtowns/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/ajtowns/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/ajtowns/subscriptions",
+        "organizations_url": "https://api.github.com/users/ajtowns/orgs",
+        "repos_url": "https://api.github.com/users/ajtowns/repos",
+        "events_url": "https://api.github.com/users/ajtowns/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/ajtowns/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-07-29T08:23:13Z"
     }
   ],
   "comments": []
