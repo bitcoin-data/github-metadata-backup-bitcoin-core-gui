@@ -12,12 +12,12 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/882/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/882/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/a8720a1ae5ce1c805264c518b419d657407bfcaf",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/73d2cf966e7a2276988fd47fbc12b1344e6b12f3",
     "number": 882,
     "state": "open",
     "locked": false,
     "maintainer_can_modify": true,
-    "title": "qt: clear command history when clearing the console",
+    "title": "qt: add shift key modifier to clear command history when clearing the console",
     "user": {
       "login": "waketraindev",
       "id": 175499942,
@@ -39,14 +39,14 @@
       "site_admin": false,
       "patch_url": null
     },
-    "body": "Clears the command history in the qt console when the user clears the console output.",
+    "body": "If Shift is held clears command history when clearing console in Qt. Adds Ctrl+Shift+L shortcut to reset console.",
     "labels": [],
     "created_at": "2025-07-30T11:41:04Z",
-    "updated_at": "2025-08-05T04:01:51Z",
+    "updated_at": "2025-08-05T10:47:14Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
-    "merge_commit_sha": "f419940c9c151812a4ea7481209d3745e2569578",
+    "merge_commit_sha": "941a81497bbfc94fbb97176abf7b5329ee4d06aa",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -54,7 +54,7 @@
     "head": {
       "label": "waketraindev:2025-07-console-clear-history",
       "ref": "2025-07-console-clear-history",
-      "sha": "a8720a1ae5ce1c805264c518b419d657407bfcaf",
+      "sha": "73d2cf966e7a2276988fd47fbc12b1344e6b12f3",
       "user": {
         "login": "waketraindev",
         "id": 175499942,
@@ -165,7 +165,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-08-05T03:56:52Z",
+        "pushed_at": "2025-08-05T10:40:49Z",
         "created_at": "2025-07-30T11:26:51Z",
         "updated_at": "2025-08-05T03:35:34Z",
         "allow_forking": true,
@@ -189,7 +189,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "75ed673193c5b53b1f4b734e38237f6875bb30b2",
+      "sha": "9617a42fdb6f37e895a70d1db44b496de0388915",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -287,7 +287,7 @@
         "forks_count": 313,
         "stargazers_count": 665,
         "watchers_count": 665,
-        "size": 173178,
+        "size": 173197,
         "default_branch": "master",
         "open_issues_count": 154,
         "is_template": false,
@@ -300,9 +300,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-08-04T18:04:36Z",
+        "pushed_at": "2025-08-05T09:47:07Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2025-08-05T01:14:27Z",
+        "updated_at": "2025-08-05T09:47:11Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -328,54 +328,14 @@
     },
     "author_association": "NONE",
     "draft": true,
-    "additions": 4,
+    "additions": 3,
     "deletions": 0,
     "changed_files": 1,
-    "commits": 2,
+    "commits": 1,
     "review_comments": 0,
-    "comments": 5
+    "comments": 6
   },
   "events": [
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDRkZDlhMDRkMjlmYzhhYTA0ODc0NDQ1ZjQ2NTE2N2VhNjNhMWM0YTM",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/4dd9a04d29fc8aa04874445f465167ea63a1c4a3",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/4dd9a04d29fc8aa04874445f465167ea63a1c4a3",
-      "tree": {
-        "sha": "3c692ad18c233fc1883880e5a17dc97d1b0a96fe",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/3c692ad18c233fc1883880e5a17dc97d1b0a96fe"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/00604296e178b13fb1a701a84deac1e20e15259d",
-          "sha": "00604296e178b13fb1a701a84deac1e20e15259d",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/00604296e178b13fb1a701a84deac1e20e15259d"
-        }
-      ],
-      "message": "qt: clear command history when clearing the console",
-      "committer": {
-        "name": "WakeTrainDev",
-        "email": "175499942+waketraindev@users.noreply.github.com",
-        "date": "2025-07-30T11:39:49Z"
-      },
-      "author": {
-        "name": "WakeTrainDev",
-        "email": "175499942+waketraindev@users.noreply.github.com",
-        "date": "2025-07-30T11:39:49Z"
-      },
-      "sha": "4dd9a04d29fc8aa04874445f465167ea63a1c4a3"
-    },
     {
       "event": "commented",
       "id": 3135919148,
@@ -405,9 +365,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2025-07-30T11:41:09Z",
-      "updated_at": "2025-08-05T03:56:59Z",
+      "updated_at": "2025-08-05T10:36:18Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept NACK | [luke-jr](https://github.com/bitcoin-core/gui/pull/882#issuecomment-3153047499) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--5faf32d7da4f0f540f40219e4f7537a3-->\n### LLM Linter (✨ experimental)\n\nPossible typos and grammar issues:\n\n- clear console both output and input history -> clear both console output and input history [corrects word order for clarity]\n\n<sup>drahtbot_id_4_m</sup>\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept NACK | [luke-jr](https://github.com/bitcoin-core/gui/pull/882#issuecomment-3153047499) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--5faf32d7da4f0f540f40219e4f7537a3-->",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -724,46 +684,6 @@
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/882"
     },
     {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGE4NzIwYTFhZTVjZTFjODA1MjY0YzUxOGI0MTlkNjU3NDA3YmZjYWY",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/a8720a1ae5ce1c805264c518b419d657407bfcaf",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/a8720a1ae5ce1c805264c518b419d657407bfcaf",
-      "tree": {
-        "sha": "2215dd03ba893be8ea7105164dce7526462af04f",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/2215dd03ba893be8ea7105164dce7526462af04f"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/4dd9a04d29fc8aa04874445f465167ea63a1c4a3",
-          "sha": "4dd9a04d29fc8aa04874445f465167ea63a1c4a3",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/4dd9a04d29fc8aa04874445f465167ea63a1c4a3"
-        }
-      ],
-      "message": "qt: ctrl+shift+l shortcut to clear output and command history, only clear input when shift is being held",
-      "committer": {
-        "name": "WakeTrainDev",
-        "email": "175499942+waketraindev@users.noreply.github.com",
-        "date": "2025-08-05T03:56:28Z"
-      },
-      "author": {
-        "name": "WakeTrainDev",
-        "email": "175499942+waketraindev@users.noreply.github.com",
-        "date": "2025-08-05T03:39:46Z"
-      },
-      "sha": "a8720a1ae5ce1c805264c518b419d657407bfcaf"
-    },
-    {
       "event": "convert_to_draft",
       "id": 18982559130,
       "node_id": "CTDE_lADOEEET9c7DTl-5zwAAAARrct2a",
@@ -792,6 +712,196 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2025-08-05T04:01:51Z"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 18988977140,
+      "node_id": "HRFPE_lADOEEET9c7DTl-5zwAAAARr1Mv0",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/18988977140",
+      "actor": {
+        "login": "waketraindev",
+        "id": 175499942,
+        "node_id": "U_kgDOCnXqpg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/175499942?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/waketraindev",
+        "html_url": "https://github.com/waketraindev",
+        "followers_url": "https://api.github.com/users/waketraindev/followers",
+        "following_url": "https://api.github.com/users/waketraindev/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/waketraindev/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/waketraindev/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/waketraindev/subscriptions",
+        "organizations_url": "https://api.github.com/users/waketraindev/orgs",
+        "repos_url": "https://api.github.com/users/waketraindev/repos",
+        "events_url": "https://api.github.com/users/waketraindev/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/waketraindev/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": "3db405bec0ea54582c33d17dfa2282d8996d87be",
+      "commit_url": "https://api.github.com/repos/waketraindev/core-gui/commits/3db405bec0ea54582c33d17dfa2282d8996d87be",
+      "created_at": "2025-08-05T10:36:13Z"
+    },
+    {
+      "event": "commented",
+      "id": 3154660998,
+      "node_id": "IC_kwDOEEET9c68CE6G",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/3154660998",
+      "actor": {
+        "login": "waketraindev",
+        "id": 175499942,
+        "node_id": "U_kgDOCnXqpg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/175499942?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/waketraindev",
+        "html_url": "https://github.com/waketraindev",
+        "followers_url": "https://api.github.com/users/waketraindev/followers",
+        "following_url": "https://api.github.com/users/waketraindev/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/waketraindev/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/waketraindev/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/waketraindev/subscriptions",
+        "organizations_url": "https://api.github.com/users/waketraindev/orgs",
+        "repos_url": "https://api.github.com/users/waketraindev/repos",
+        "events_url": "https://api.github.com/users/waketraindev/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/waketraindev/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-08-05T10:39:40Z",
+      "updated_at": "2025-08-05T10:39:40Z",
+      "author_association": "NONE",
+      "body": "Updated the patch to only clear input when Shift is held; also added Ctrl+Shift+L as a secondary shortcut.",
+      "user": {
+        "login": "waketraindev",
+        "id": 175499942,
+        "node_id": "U_kgDOCnXqpg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/175499942?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/waketraindev",
+        "html_url": "https://github.com/waketraindev",
+        "followers_url": "https://api.github.com/users/waketraindev/followers",
+        "following_url": "https://api.github.com/users/waketraindev/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/waketraindev/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/waketraindev/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/waketraindev/subscriptions",
+        "organizations_url": "https://api.github.com/users/waketraindev/orgs",
+        "repos_url": "https://api.github.com/users/waketraindev/repos",
+        "events_url": "https://api.github.com/users/waketraindev/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/waketraindev/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/882#issuecomment-3154660998",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/882"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDczZDJjZjk2NmU3YTIyNzY5ODhmZDQ3ZmJjMTJiMTM0NGU2YjEyZjM",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/73d2cf966e7a2276988fd47fbc12b1344e6b12f3",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/73d2cf966e7a2276988fd47fbc12b1344e6b12f3",
+      "tree": {
+        "sha": "7d23f6195b3b4458da39dad9f395217bb2045a6f",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/7d23f6195b3b4458da39dad9f395217bb2045a6f"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/00604296e178b13fb1a701a84deac1e20e15259d",
+          "sha": "00604296e178b13fb1a701a84deac1e20e15259d",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/00604296e178b13fb1a701a84deac1e20e15259d"
+        }
+      ],
+      "message": "qt: add Ctrl+Shift+L to clear console and history; clear input only when Shift is held",
+      "committer": {
+        "name": "WakeTrainDev",
+        "email": "175499942+waketraindev@users.noreply.github.com",
+        "date": "2025-08-05T10:40:38Z"
+      },
+      "author": {
+        "name": "WakeTrainDev",
+        "email": "175499942+waketraindev@users.noreply.github.com",
+        "date": "2025-07-30T11:39:49Z"
+      },
+      "sha": "73d2cf966e7a2276988fd47fbc12b1344e6b12f3"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 18989067346,
+      "node_id": "HRFPE_lADOEEET9c7DTl-5zwAAAARr1ixS",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/18989067346",
+      "actor": {
+        "login": "waketraindev",
+        "id": 175499942,
+        "node_id": "U_kgDOCnXqpg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/175499942?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/waketraindev",
+        "html_url": "https://github.com/waketraindev",
+        "followers_url": "https://api.github.com/users/waketraindev/followers",
+        "following_url": "https://api.github.com/users/waketraindev/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/waketraindev/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/waketraindev/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/waketraindev/subscriptions",
+        "organizations_url": "https://api.github.com/users/waketraindev/orgs",
+        "repos_url": "https://api.github.com/users/waketraindev/repos",
+        "events_url": "https://api.github.com/users/waketraindev/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/waketraindev/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": "73d2cf966e7a2276988fd47fbc12b1344e6b12f3",
+      "commit_url": "https://api.github.com/repos/waketraindev/core-gui/commits/73d2cf966e7a2276988fd47fbc12b1344e6b12f3",
+      "created_at": "2025-08-05T10:40:50Z"
+    },
+    {
+      "event": "renamed",
+      "id": 18989186731,
+      "node_id": "RTE_lADOEEET9c7DTl-5zwAAAARr1_6r",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/18989186731",
+      "actor": {
+        "login": "waketraindev",
+        "id": 175499942,
+        "node_id": "U_kgDOCnXqpg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/175499942?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/waketraindev",
+        "html_url": "https://github.com/waketraindev",
+        "followers_url": "https://api.github.com/users/waketraindev/followers",
+        "following_url": "https://api.github.com/users/waketraindev/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/waketraindev/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/waketraindev/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/waketraindev/subscriptions",
+        "organizations_url": "https://api.github.com/users/waketraindev/orgs",
+        "repos_url": "https://api.github.com/users/waketraindev/repos",
+        "events_url": "https://api.github.com/users/waketraindev/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/waketraindev/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-08-05T10:47:14Z",
+      "rename": {
+        "from": "qt: clear command history when clearing the console",
+        "to": "qt: add shift key modifier to clear command history when clearing the console"
+      }
     }
   ],
   "comments": []
