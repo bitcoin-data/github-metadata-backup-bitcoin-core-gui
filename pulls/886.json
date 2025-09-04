@@ -42,7 +42,7 @@
     "body": "...during text selection by only setting plaintext mime data.\r\n\r\nFixes the OOM described in #887.\r\n\r\nThe issue is related to the construction of the [`text/markdown`](https://github.com/qt/qtbase/blob/b617d1176593963a2a9ed21dd5d9a63e84a09400/src/widgets/widgets/qwidgettextcontrol.cpp#L3539) MIME data for the selection. Using the `heaptrack` utility, I observed that nearly all of the allocations when reproducing happen in [`QTextMarkdownWriter::writeFrame`](https://github.com/qt/qtbase/blob/b617d1176593963a2a9ed21dd5d9a63e84a09400/src/gui/text/qtextmarkdownwriter.cpp#L95). I am not 100% sure what is causing this issue in QT's conversion of our HTML to markdown; I have tried changing the [HTML tags](https://github.com/bitcoin/bitcoin/blob/689a32197638e92995dd8eb071425715f5fdc3a4/src/qt/rpcconsole.cpp#L916-L924) (e.g. using `<p></p`> and `<ul><li></li></ul>` in place of tables)  used in our `rpcconsole` messages, but the issue recurs.\r\n\r\nThe solution applied here is to override `createMimeDataFromSelection()` to avoid construction of the (likely never-used anyways) `text/markdown` mime data, and only set plaintext mime data in the clipboard.",
     "labels": [],
     "created_at": "2025-09-03T23:30:05Z",
-    "updated_at": "2025-09-04T16:46:20Z",
+    "updated_at": "2025-09-04T18:55:34Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
@@ -333,7 +333,7 @@
     "changed_files": 2,
     "commits": 1,
     "review_comments": 0,
-    "comments": 6
+    "comments": 7
   },
   "events": [
     {
@@ -740,6 +740,62 @@
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/886#issuecomment-3254577747",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/886"
+    },
+    {
+      "event": "commented",
+      "id": 3255145030,
+      "node_id": "IC_kwDOEEET9c7CBZJG",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/3255145030",
+      "actor": {
+        "login": "davidgumberg",
+        "id": 2257631,
+        "node_id": "MDQ6VXNlcjIyNTc2MzE=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/2257631?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/davidgumberg",
+        "html_url": "https://github.com/davidgumberg",
+        "followers_url": "https://api.github.com/users/davidgumberg/followers",
+        "following_url": "https://api.github.com/users/davidgumberg/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/davidgumberg/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/davidgumberg/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/davidgumberg/subscriptions",
+        "organizations_url": "https://api.github.com/users/davidgumberg/orgs",
+        "repos_url": "https://api.github.com/users/davidgumberg/repos",
+        "events_url": "https://api.github.com/users/davidgumberg/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/davidgumberg/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-09-04T18:55:34Z",
+      "updated_at": "2025-09-04T18:55:34Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "> You implying that an upstream bug must be searched in Qt?\r\n\r\n\"Bug\" might be too strong, having one HTML element be so large is probably pretty unsually behavior for users of `QTextEdit`, but I can't say for sure what is going wrong in [`QTextMarkdownWriter::writeFrame`](https://github.com/qt/qtbase/blob/b617d1176593963a2a9ed21dd5d9a63e84a09400/src/gui/text/qtextmarkdownwriter.cpp#L95).\r\n\r\n\r\n> possible nit:\r\n> \r\n> ```\r\n> PlainCopyQTextEdit\r\n>          ^\r\n> ```\r\n\r\nI don't really agree, I figure that it's best not to use `Q` when overriding a QT base class since this makes it obvious to users of `PlainCopyTextEdit` that it's custom and not from upstream.\r\n\r\n> nit: splash post in two paragraphs (none tiny) then the commit message is a one liner\r\n\r\nI'm not sure I follow what you're suggesting.",
+      "user": {
+        "login": "davidgumberg",
+        "id": 2257631,
+        "node_id": "MDQ6VXNlcjIyNTc2MzE=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/2257631?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/davidgumberg",
+        "html_url": "https://github.com/davidgumberg",
+        "followers_url": "https://api.github.com/users/davidgumberg/followers",
+        "following_url": "https://api.github.com/users/davidgumberg/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/davidgumberg/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/davidgumberg/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/davidgumberg/subscriptions",
+        "organizations_url": "https://api.github.com/users/davidgumberg/orgs",
+        "repos_url": "https://api.github.com/users/davidgumberg/repos",
+        "events_url": "https://api.github.com/users/davidgumberg/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/davidgumberg/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/886#issuecomment-3255145030",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/886"
     }
   ],
