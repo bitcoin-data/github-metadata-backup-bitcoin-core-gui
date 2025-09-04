@@ -49,18 +49,10 @@
         "description": "",
         "color": "cccccc",
         "default": false
-      },
-      {
-        "id": 5353934559,
-        "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
-        "name": "CI failed",
-        "color": "ededed",
-        "default": false
       }
     ],
     "created_at": "2024-03-22T12:55:51Z",
-    "updated_at": "2025-07-28T20:23:53Z",
+    "updated_at": "2025-09-04T10:38:02Z",
     "mergeable": false,
     "mergeable_state": "dirty",
     "merged": false,
@@ -301,12 +293,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 312,
-        "stargazers_count": 663,
-        "watchers_count": 663,
-        "size": 175534,
+        "forks_count": 314,
+        "stargazers_count": 671,
+        "watchers_count": 671,
+        "size": 176293,
         "default_branch": "master",
-        "open_issues_count": 154,
+        "open_issues_count": 156,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -317,9 +309,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-07-28T18:56:15Z",
+        "pushed_at": "2025-09-04T10:06:54Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2025-07-28T18:56:19Z",
+        "updated_at": "2025-09-04T10:37:53Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -572,6 +564,7 @@
       "commit_id": "dfbd145676255f82bad529976928dff1939c5e48",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2024-04-02T02:54:29Z",
       "author_association": "CONTRIBUTOR",
       "body": "tACK dfbd145676255f82bad529976928dff1939c5e48\r\n\r\n<details>\r\n<summary>This PR solves the error described in #805, even #806 fixes other 2 related errors.</summary> \r\n\r\n```\r\nwallet/interfaces.cpp:289:57: runtime error: implicit conversion from type 'int' of value -1 (32-bit, signed) to type 'unsigned int' changed the value to 4294967295 (32-bit, unsigned)\r\n```\r\n</details>\r\n\r\nI agree with the reasoning behind the removal of some arguments and the unreachable exception.\r\n\r\nOut of curiosity, could you please add some refs on \"_The input-output 'change_pos' ref arg from createTransaction, which has been a source of bugs in the past._\", if possible?\r\n\r\nAre there other components/ functions that you think could be moved into the new `util_spend.h` file (perhaps as a follow-up)?",
       "user": {
@@ -609,6 +602,7 @@
       "commit_id": "dfbd145676255f82bad529976928dff1939c5e48",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2024-04-02T04:16:43Z",
       "author_association": "MEMBER",
       "body": "> Out of curiosity, could you please add some refs on \"_The input-output 'change_pos' ref arg from createTransaction, which has been a source of bugs in the past._\", if possible?\r\n\r\nSure, https://github.com/bitcoin/bitcoin/pull/29065.\r\n\r\n> Are there other components/ functions that you think could be moved into the new util_spend.h file (perhaps as a follow-up)?\r\n\r\nNot off the top of my head. Matter of continue breaking the GUI classes dependency on `wallet.h`.",
       "user": {
@@ -646,6 +640,7 @@
       "commit_id": "dfbd145676255f82bad529976928dff1939c5e48",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2024-04-02T23:57:09Z",
       "author_association": "CONTRIBUTOR",
       "user": {
         "login": "pablomartin4btc",
@@ -682,6 +677,7 @@
       "commit_id": "dfbd145676255f82bad529976928dff1939c5e48",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2024-04-02T23:58:41Z",
       "author_association": "CONTRIBUTOR",
       "body": "cr ACK dfbd145676255f82bad529976928dff1939c5e48",
       "user": {
@@ -783,6 +779,7 @@
       "commit_id": "7fb81d2885c28b708c2f61e14b35c205a47c26db",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2024-04-18T11:48:19Z",
       "author_association": "MEMBER",
       "body": "Rebased after #806 merge.",
       "user": {
@@ -1086,6 +1083,7 @@
       "commit_id": "7fb81d2885c28b708c2f61e14b35c205a47c26db",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2024-05-13T16:15:10Z",
       "author_association": "CONTRIBUTOR",
       "body": "",
       "user": {
@@ -1153,6 +1151,7 @@
       "commit_id": "4d941b5ff43e6e7efa83913ded8cd5806ef92dbe",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2024-05-16T21:03:35Z",
       "author_association": "MEMBER",
       "body": "updated per feedback. Thanks @ryanofsky!",
       "user": {
@@ -1280,6 +1279,7 @@
       "commit_id": "4d941b5ff43e6e7efa83913ded8cd5806ef92dbe",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2024-05-16T23:18:47Z",
       "author_association": "CONTRIBUTOR",
       "body": "re-ACK 4d941b5ff43e6e7efa83913ded8cd5806ef92dbe\r\n\r\n- Changes from my last review: `CreatedTransactionResult` struct moved as [suggested](https://github.com/bitcoin-core/gui/pull/807#discussion_r1598730244) by @ryanofsky [explaining](https://github.com/bitcoin/bitcoin/pull/29415#discussion_r1543379055) reasoning behind the convention. I like the idea of keeping the namespace, not only for [consistency](https://github.com/bitcoin/bitcoin/pull/29015#discussion_r1424337693) but for clarity and making the code more readable. I think it would be good to document this somewhere, perhaps in the [developer notes](https://github.com/bitcoin/bitcoin/blob/master/doc/developer-notes.md) to begin with (?).\r\n\r\nnit: on 2nd. commit (95aaaa4f023c6a6b629c36cfb9d8abd4bab1cb66), you forgot to remove the change from the makefile as it's not longer needed.",
       "user": {
@@ -1459,6 +1459,7 @@
       "commit_id": "edc3f9a733aaa1a1cc2547013d09c27828151e8a",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2024-05-17T18:26:46Z",
       "author_association": "CONTRIBUTOR",
       "body": "Concept ACK edc3f9a733aaa1a1cc2547013d09c27828151e8a, but this has some changes I like and other changes I don't think are good. Left a more detailed comment below.",
       "user": {
@@ -1742,6 +1743,7 @@
       "commit_id": "0b92ee2bc7a75074651e4688912e8e3c7de06a5a",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2024-05-22T14:24:31Z",
       "author_association": "MEMBER",
       "body": "Thanks for the review ryanofsky!\r\n\r\n> I just noticed [bitcoin/bitcoin#25269](https://github.com/bitcoin/bitcoin/pull/25269), which I hadn't seen when I posted my comment above. It looks like that PR was closed for inactivity but it does look like a good approach that solves the issue I didn't like in my comment. (Though maybe that PR is still a slight regression because it doesn't include the amount of the fee in the error message.) I wonder if you'd consider reopening that PR and maybe including the changes in this PR there, or basing this PR on that one?\r\n\r\nYeah sure, I closed it for lack of movement after 6 months.\r\nI just reopen it, reworking part of it, and rebased this one on top. I think it make sense to re-introduce the functionality there and cleanup the GUI code here.",
       "user": {
@@ -2057,6 +2059,40 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/807#issuecomment-2893648548",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/807"
+    },
+    {
+      "event": "unlabeled",
+      "id": 19501110576,
+      "node_id": "UNLE_lADOEEET9c6DRom7zwAAAASKW1Uw",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/19501110576",
+      "actor": {
+        "login": "maflcko",
+        "id": 6399679,
+        "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-09-04T10:38:01Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
+      }
     }
   ],
   "comments": [
@@ -2067,7 +2103,7 @@
       "node_id": "PRRC_kwDOEEET9c5cUBYT",
       "diff_hunk": "@@ -142,11 +143,10 @@ class Wallet\n     virtual void listLockedCoins(std::vector<COutPoint>& outputs) = 0;\n \n     //! Create transaction.\n-    virtual util::Result<CTransactionRef> createTransaction(const std::vector<wallet::CRecipient>& recipients,\n+    virtual util::Result<CreatedTransactionResult> createTransaction(const std::vector<wallet::CRecipient>& recipients,",
       "path": "src/interfaces/wallet.h",
-      "position": null,
+      "position": 1,
       "original_position": 13,
       "commit_id": "0b92ee2bc7a75074651e4688912e8e3c7de06a5a",
       "original_commit_id": "dfbd145676255f82bad529976928dff1939c5e48",
@@ -2120,7 +2156,7 @@
       "node_id": "PRRC_kwDOEEET9c5cXnuG",
       "diff_hunk": "@@ -142,11 +143,10 @@ class Wallet\n     virtual void listLockedCoins(std::vector<COutPoint>& outputs) = 0;\n \n     //! Create transaction.\n-    virtual util::Result<CTransactionRef> createTransaction(const std::vector<wallet::CRecipient>& recipients,\n+    virtual util::Result<CreatedTransactionResult> createTransaction(const std::vector<wallet::CRecipient>& recipients,",
       "path": "src/interfaces/wallet.h",
-      "position": null,
+      "position": 1,
       "original_position": 13,
       "commit_id": "0b92ee2bc7a75074651e4688912e8e3c7de06a5a",
       "original_commit_id": "dfbd145676255f82bad529976928dff1939c5e48",
@@ -2173,7 +2209,7 @@
       "node_id": "PRRC_kwDOEEET9c5cZMG9",
       "diff_hunk": "@@ -142,11 +143,10 @@ class Wallet\n     virtual void listLockedCoins(std::vector<COutPoint>& outputs) = 0;\n \n     //! Create transaction.\n-    virtual util::Result<CTransactionRef> createTransaction(const std::vector<wallet::CRecipient>& recipients,\n+    virtual util::Result<CreatedTransactionResult> createTransaction(const std::vector<wallet::CRecipient>& recipients,",
       "path": "src/interfaces/wallet.h",
-      "position": null,
+      "position": 1,
       "original_position": 13,
       "commit_id": "0b92ee2bc7a75074651e4688912e8e3c7de06a5a",
       "original_commit_id": "dfbd145676255f82bad529976928dff1939c5e48",
@@ -2226,7 +2262,7 @@
       "node_id": "PRRC_kwDOEEET9c5fSrAE",
       "diff_hunk": "@@ -0,0 +1,24 @@\n+// Copyright (c) 2024-present The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or https://www.opensource.org/licenses/mit-license.php.\n+\n+#ifndef BITCOIN_WALLET_UTIL_SPEND_H\n+#define BITCOIN_WALLET_UTIL_SPEND_H\n+\n+#include <policy/fees.h>\n+#include <wallet/transaction.h>\n+\n+#include <optional>\n+\n+struct CreatedTransactionResult",
       "path": "src/wallet/util_spend.h",
-      "position": null,
+      "position": 1,
       "original_position": 13,
       "commit_id": "0b92ee2bc7a75074651e4688912e8e3c7de06a5a",
       "original_commit_id": "6d59564646cd6ec087c9cab20f9d5707ec5dd4f9",
@@ -2279,7 +2315,7 @@
       "node_id": "PRRC_kwDOEEET9c5fm6eu",
       "diff_hunk": "@@ -0,0 +1,24 @@\n+// Copyright (c) 2024-present The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or https://www.opensource.org/licenses/mit-license.php.\n+\n+#ifndef BITCOIN_WALLET_UTIL_SPEND_H\n+#define BITCOIN_WALLET_UTIL_SPEND_H\n+\n+#include <policy/fees.h>\n+#include <wallet/transaction.h>\n+\n+#include <optional>\n+\n+struct CreatedTransactionResult",
       "path": "src/wallet/util_spend.h",
-      "position": null,
+      "position": 1,
       "original_position": 13,
       "commit_id": "0b92ee2bc7a75074651e4688912e8e3c7de06a5a",
       "original_commit_id": "6d59564646cd6ec087c9cab20f9d5707ec5dd4f9",
