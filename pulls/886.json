@@ -42,7 +42,7 @@
     "body": "...during text selection by only setting plaintext mime data.\r\n\r\nFixes the OOM described in #887.\r\n\r\nThe issue is related to the construction of the [`text/markdown`](https://github.com/qt/qtbase/blob/b617d1176593963a2a9ed21dd5d9a63e84a09400/src/widgets/widgets/qwidgettextcontrol.cpp#L3539) MIME data for the selection. Using the `heaptrack` utility, I observed that nearly all of the allocations when reproducing happen in [`QTextMarkdownWriter::writeFrame`](https://github.com/qt/qtbase/blob/b617d1176593963a2a9ed21dd5d9a63e84a09400/src/gui/text/qtextmarkdownwriter.cpp#L95). I am not 100% sure what is causing this issue in QT's conversion of our HTML to markdown; I have tried changing the [HTML tags](https://github.com/bitcoin/bitcoin/blob/689a32197638e92995dd8eb071425715f5fdc3a4/src/qt/rpcconsole.cpp#L916-L924) (e.g. using `<p></p`> and `<ul><li></li></ul>` in place of tables)  used in our `rpcconsole` messages, but the issue recurs.\r\n\r\nThe solution applied here is to override `createMimeDataFromSelection()` to avoid construction of the (likely never-used anyways) `text/markdown` mime data, and only set plaintext mime data in the clipboard.",
     "labels": [],
     "created_at": "2025-09-03T23:30:05Z",
-    "updated_at": "2025-09-06T14:23:54Z",
+    "updated_at": "2025-09-07T11:32:12Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
@@ -991,6 +991,44 @@
       "milestone": {
         "title": "30.0"
       }
+    },
+    {
+      "event": "reviewed",
+      "id": 3194403691,
+      "node_id": "PRR_kwDOEEET9c6-Zrtr",
+      "url": null,
+      "actor": null,
+      "commit_id": "5cb39181019dd1d132da9e87e88921e477facbae",
+      "commit_url": null,
+      "created_at": null,
+      "updated_at": "2025-09-07T11:32:12Z",
+      "author_association": "NONE",
+      "body": "",
+      "user": {
+        "login": "Ari4ka",
+        "id": 166764074,
+        "node_id": "U_kgDOCfCeKg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/166764074?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Ari4ka",
+        "html_url": "https://github.com/Ari4ka",
+        "followers_url": "https://api.github.com/users/Ari4ka/followers",
+        "following_url": "https://api.github.com/users/Ari4ka/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/Ari4ka/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/Ari4ka/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/Ari4ka/subscriptions",
+        "organizations_url": "https://api.github.com/users/Ari4ka/orgs",
+        "repos_url": "https://api.github.com/users/Ari4ka/repos",
+        "events_url": "https://api.github.com/users/Ari4ka/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/Ari4ka/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/886#pullrequestreview-3194403691",
+      "submitted_at": "2025-09-07T11:32:12Z",
+      "state": "APPROVED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/886"
     }
   ],
   "comments": []
