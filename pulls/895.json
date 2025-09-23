@@ -17,7 +17,7 @@
     "state": "open",
     "locked": false,
     "maintainer_can_modify": true,
-    "title": "qt: Fix dark mode detection on Linux",
+    "title": "Fix dark mode detection on Linux",
     "user": {
       "login": "benthecarman",
       "id": 15256660,
@@ -40,9 +40,19 @@
       "patch_url": null
     },
     "body": "  Enable GTK3 platform theme integration on Linux to properly detect\r\n  system dark/light mode settings. Without this, Qt applications on\r\n  Linux don't automatically adapt to the system theme, unlike macOS\r\n  where it works out of the box.\r\n\r\n  The fix sets QT_QPA_PLATFORMTHEME to \"gtk3\" before QApplication\r\n  initialization, but only if the user hasn't already set a platform\r\n  theme. This respects existing user configurations while providing\r\n  better defaults for desktop environments using GTK (GNOME, Unity,\r\n  XFCE, MATE).\r\n\r\n  The change is non-breaking as Qt falls back gracefully if the GTK\r\n  platform theme plugin is unavailable\r\n\r\n<!--\r\n*** Please remove the following help text before submitting: ***\r\n\r\nPull requests without a rationale and clear improvement may be closed\r\nimmediately.\r\n\r\nGUI-related pull requests should be opened against\r\nhttps://github.com/bitcoin-core/gui\r\nfirst. See CONTRIBUTING.md\r\n-->\r\n\r\n<!--\r\nPlease provide clear motivation for your patch and explain how it improves\r\nBitcoin Core user experience or Bitcoin Core developer experience\r\nsignificantly:\r\n\r\n* Any test improvements or new tests that improve coverage are always welcome.\r\n* All other changes should have accompanying unit tests (see `src/test/`) or\r\n  functional tests (see `test/`). Contributors should note which tests cover\r\n  modified code. If no tests exist for a region of modified code, new tests\r\n  should accompany the change.\r\n* Bug fixes are most welcome when they come with steps to reproduce or an\r\n  explanation of the potential issue as well as reasoning for the way the bug\r\n  was fixed.\r\n* Features are welcome, but might be rejected due to design or scope issues.\r\n  If a feature is based on a lot of dependencies, contributors should first\r\n  consider building the system outside of Bitcoin Core, if possible.\r\n* Refactoring changes are only accepted if they are required for a feature or\r\n  bug fix or otherwise improve developer experience significantly. For example,\r\n  most \"code style\" refactoring changes require a thorough explanation why they\r\n  are useful, what downsides they have and why they *significantly* improve\r\n  developer experience or avoid serious programming bugs. Note that code style\r\n  is often a subjective matter. Unless they are explicitly mentioned to be\r\n  preferred in the [developer notes](/doc/developer-notes.md), stylistic code\r\n  changes are usually rejected.\r\n-->\r\n\r\n<!--\r\nBitcoin Core has a thorough review process and even the most trivial change\r\nneeds to pass a lot of eyes and requires non-zero or even substantial time\r\neffort to review. There is a huge lack of active reviewers on the project, so\r\npatches often sit for a long time.\r\n-->\r\n",
-    "labels": [],
+    "labels": [
+      {
+        "id": 2793865191,
+        "node_id": "MDU6TGFiZWwyNzkzODY1MTkx",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Linux",
+        "name": "Linux",
+        "description": "",
+        "color": "b60205",
+        "default": false
+      }
+    ],
     "created_at": "2025-09-23T01:19:26Z",
-    "updated_at": "2025-09-23T01:19:34Z",
+    "updated_at": "2025-09-23T08:08:03Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
@@ -152,7 +162,7 @@
         "forks_count": 0,
         "stargazers_count": 1,
         "watchers_count": 1,
-        "size": 96568,
+        "size": 178296,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -333,7 +343,7 @@
     "changed_files": 1,
     "commits": 1,
     "review_comments": 0,
-    "comments": 1
+    "comments": 2
   },
   "events": [
     {
@@ -431,6 +441,130 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/895#issuecomment-3322051804",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/895"
+    },
+    {
+      "event": "commented",
+      "id": 3322865645,
+      "node_id": "IC_kwDOEEET9c7GDuft",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/3322865645",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-09-23T08:07:06Z",
+      "updated_at": "2025-09-23T08:07:06Z",
+      "author_association": "MEMBER",
+      "body": "> Enable GTK3 platform theme integration on Linux to properly detect\r\n> system dark/light mode settings. Without this, Qt applications on\r\n> Linux don't automatically adapt to the system theme, unlike macOS\r\n> where it works out of the box.\r\n\r\nCould you please clarify which build this change is intended to affect, statically linked or shared?  \r\n\r\nIf the latter, which system was this tested on (OS, desktop environment, Qt version)?",
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/895#issuecomment-3322865645",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/895"
+    },
+    {
+      "event": "renamed",
+      "id": 19859882531,
+      "node_id": "RTE_lADOEEET9c7NPHk7zwAAAASfvcIj",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/19859882531",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-09-23T08:07:53Z",
+      "rename": {
+        "from": "qt: Fix dark mode detection on Linux",
+        "to": "Fix dark mode detection on Linux"
+      }
+    },
+    {
+      "event": "labeled",
+      "id": 19859885112,
+      "node_id": "LE_lADOEEET9c7NPHk7zwAAAASfvcw4",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/19859885112",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-09-23T08:08:03Z",
+      "label": {
+        "name": "Linux",
+        "color": "b60205"
+      }
     }
   ],
   "comments": []
