@@ -10,8 +10,8 @@
     "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/287/events",
     "html_url": "https://github.com/bitcoin-core/gui/issues/287",
     "number": 287,
-    "state": "open",
-    "state_reason": null,
+    "state": "closed",
+    "state_reason": "completed",
     "title": "Translation using XLIFF file",
     "body": "TL;DR\r\n\r\n1. _Use_ [Qt Translator Comments](https://doc.qt.io/qt-5/i18n-source-translation.html#translator-comments) to annotate [`tr()`](https://doc.qt.io/qt-5/qobject.html#tr) calls\r\n2. Do _not_ use disambiguation strings in [`tr()`](https://doc.qt.io/qt-5/qobject.html#tr) calls, except in item 3\r\n3. If two or more identical strings have _different_ meanings and could be translated in different ways, _use_ disambiguation strings\r\n\r\n---\r\n\r\nSince https://github.com/bitcoin/bitcoin/pull/21694 is merged there is an opportunity for developers to provide an exhaustive context for translatable strings to translators who are working via the [Transifex](https://www.transifex.com/bitcoin/bitcoin/dashboard/).\r\n\r\n### Strings in Qt code\r\n\r\nUsing a Qt **TS** translation file (pre-21694), v0.21.x and earlier:\r\n![DeepinScreenshot_select-area_20210421165407](https://user-images.githubusercontent.com/32963518/115598009-9a4d5500-a2e2-11eb-8053-6d43705a09e4.png)\r\n\r\nUsing a **XLIFF** translation file (post-21694), v22.x:\r\n![DeepinScreenshot_select-area_20210421165641](https://user-images.githubusercontent.com/32963518/115598350-fd3eec00-a2e2-11eb-8723-5ec33fc1c7d7.png)\r\n\r\nThe added \"DEVELOPER NOTES\" are the main means to provide context to translators in the Transifex editor.\r\nSee:\r\n- https://docs.transifex.com/getting-started-as-a-localization-manager/4-provide-context#developer-notes-&-instructions\r\n- https://docs.transifex.com/translation/tools-in-the-editor#string-instruction-and-developer-notes\r\n\r\nTo provide such notes in C++ code developers must use [Qt Translator Comments](https://doc.qt.io/qt-5/i18n-source-translation.html#translator-comments) that annotate [`tr()`](https://doc.qt.io/qt-5/qobject.html#tr) calls: https://github.com/bitcoin-core/gui/blob/e16f8720dca2de1040478968c9f3ca07644a04b7/src/qt/addressbookpage.cpp#L298-L299\r\n\r\nPlease note, that despite documented support for `<context-group>` and `<context>` XML elements of XLIFF file by Transifex, disambiguation strings, i.e., the second argument of `tr()` call, are _not_  rendered in Transifex editor. Therefore, they add no value to translation process.\r\n\r\nAnother change is \"Context\" in the \"More Info\" tab: a class name (the default context for `tr()` calls) is replaced with a source file name. Therefore, if knowing a class name is valuable to translators, developers must provide it in translator comments.\r\n\r\n### Strings in non-Qt code\r\n\r\nThe only change is \"Context\" in the \"More Info\" tab: instead of \"bitcoin-core\" the `bitcoinstrings.cpp` file is mentioned.\r\n\r\n### Handling plural forms\r\n\r\nSeems everything works fine.\r\nDetails:\r\n- https://docs.transifex.com/localization-tips-workflows/plurals-and-genders#how-pluralized-strings-are-handled-by-transifex\r\n- https://docs.transifex.com/formats/xliff#plural-support",
     "user": {
@@ -32,7 +32,8 @@
       "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/hebasto/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "patch_url": null
     },
     "labels": [
       {
@@ -57,9 +58,31 @@
     "assignees": [],
     "author_association": "MEMBER",
     "locked": false,
-    "comments": 1,
+    "comments": 2,
+    "closed_at": "2025-09-24T08:44:00Z",
+    "closed_by": {
+      "login": "hebasto",
+      "id": 32963518,
+      "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hebasto",
+      "html_url": "https://github.com/hebasto",
+      "followers_url": "https://api.github.com/users/hebasto/followers",
+      "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+      "organizations_url": "https://api.github.com/users/hebasto/orgs",
+      "repos_url": "https://api.github.com/users/hebasto/repos",
+      "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/hebasto/received_events",
+      "type": "User",
+      "site_admin": false,
+      "patch_url": null
+    },
     "created_at": "2021-04-21T19:15:53Z",
-    "updated_at": "2021-08-04T07:40:05Z"
+    "updated_at": "2025-09-24T08:44:00Z"
   },
   "events": [
     {
@@ -85,7 +108,8 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -118,7 +142,8 @@
         "events_url": "https://api.github.com/users/laanwj/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/laanwj/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -144,7 +169,8 @@
         "events_url": "https://api.github.com/users/laanwj/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/laanwj/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/issues/287#issuecomment-824304069",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/287"
@@ -172,7 +198,8 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -205,7 +232,8 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -238,7 +266,8 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -247,6 +276,92 @@
         "name": "Doc",
         "color": "e8987a"
       }
+    },
+    {
+      "event": "commented",
+      "id": 3327249870,
+      "node_id": "IC_kwDOEEET9c7GUc3O",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/3327249870",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-09-24T08:43:59Z",
+      "updated_at": "2025-09-24T08:43:59Z",
+      "author_association": "MEMBER",
+      "body": "Closed via https://github.com/bitcoin/bitcoin/commit/90e0faaa442b6ced94aee2fa9d9d21c4063d76be.",
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/issues/287#issuecomment-3327249870",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/287"
+    },
+    {
+      "event": "closed",
+      "id": 19886729398,
+      "node_id": "CE_lADOEEET9c4zgnN1zwAAAAShV2i2",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/19886729398",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-09-24T08:44:00Z"
     }
   ]
 }
