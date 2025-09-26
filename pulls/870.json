@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/870/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/870/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/82a3969f6570d370943fb3a7be86cd3ffdacdd4d",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/482e80b563c96e0a8c0b0950879eeeaf76f8271b",
     "number": 870,
     "state": "open",
     "locked": false,
@@ -42,11 +42,11 @@
     "body": "based on the QML PR [424](https://github.com/bitcoin-core/gui-qml/pull/424). For evaluation purposes only!\r\n\r\n# GUI Integration for UTXO Snapshot Loading\r\n\r\n## Overview\r\nThis PR adds initial GUI support for loading a UTXO snapshot, building on Bitcoin Core's `assumeutxo` infrastructure.\r\n\r\n## What This PR Does\r\n\r\n1. Adds a basic GUI interface for loading UTXO snapshots via the Options Dialog panel\r\n2. Provides visual confirmation of snapshot activation\r\n3. Adds a snapshot progress notification bar accessible via a handler\r\n\r\n## Implementation Details\r\n\r\n### Core Components Modified\r\n\r\n1. **Node Interface** (`src/node/interfaces.cpp`)\r\n- Implements `snapshotLoad()` based on the [`loadtxoutset`](https://github.com/bitcoin/bitcoin/blob/14b8dfb2bd5e2ca2b7c0c9a7f7d50e1e60adf75c/src/rpc/blockchain.cpp#L3227) RPC\r\n\r\n2. **QT Integration** (`src/qt/optionsdialog.cpp`)\r\n- Manages snapshot loading state and progress\r\n- makes use of a worker class to manage snapshot metadata (src/qt/snapshotmodel.cpp)\r\n- Provides progress updates via a progress bar\r\n\r\n### Key Design Decisions\r\n\r\n2. **Extensibility**\r\n- Interface designed to accommodate future `assumeutxo` changes\r\n- Error handling framework in place\r\n\r\n## Testing Instructions\r\n\r\n1. Build\r\n2. Launch Bitcoin Core GUI (bitcoin-qt)\r\n3. Navigate to Settings -> Options\r\n4. Click `Load Snapshot` button\r\n5. Follow pop-up instructions\r\n6. Test with sample snapshot:\r\n\r\nhttps://bitcoin-snapshots.jaonoctus.dev/ (No affiliation with the maintainer of this site. As always \"Don't trust! Verify!\")\r\n\r\n<details>\r\n  <summary> POC Ubuntu Screenshots `signet`</summary>\r\n\r\n \r\n![Screenshot 2025-04-28 100528](https://github.com/user-attachments/assets/0d66a076-c4a2-46e5-8796-e0b9f6db79f7)\r\nLaunch bitcoin-qt on `signet`\r\n![Screenshot 2025-04-28 100541](https://github.com/user-attachments/assets/a6df2934-a1fc-4890-817f-02059ecb1607)\r\nNavigate to Settings -> Options\r\n![Screenshot 2025-04-28 100559](https://github.com/user-attachments/assets/1d5951d8-6c00-4596-87c4-b64fff0a8c8d)\r\nClick the \"Load Snapshot...\" button\r\n![Select_file](https://github.com/user-attachments/assets/0873c71f-4a38-41eb-bd00-2a09868044fe)\r\nNavigate to where your snapshot file is. The snapshot was downloaded from [here]( https://bitcoin-snapshots.jaonoctus.dev/)\r\n![Screenshot 2025-04-28 100735](https://github.com/user-attachments/assets/ea0272f1-5769-4ac1-a30d-f4d6779d7426)\r\nClick \"Yes\"\r\n![Screenshot 2025-04-28 100950](https://github.com/user-attachments/assets/01dbb48d-33b2-4629-a67d-69f1cd11168f)\r\nWait for the snapshot to load and for this pop-up to appear and click \"Ok\"\r\n![Screenshot 2025-04-28 101743](https://github.com/user-attachments/assets/dabc9f43-3537-4782-a992-2948fbadd1ea)\r\nVerify the \"chain_snapshot\" directory is present in your `datadir`\r\n\r\n</details>\r\n\r\n### Expected Behavior\r\n- File selection dialog works\r\n- Success/failure state properly displayed\r\n- Node becomes usable while background validation continues\r\n\r\n## Notes for Reviewers\r\n\r\n- This is a POC so all feedback is welcomed\r\n- I am not a designer so please feel free to chime in if there's a more elegant way to achieve this\r\n\r\nThis is a work in progress - feedback welcome on the approach and implementation details.",
     "labels": [],
     "created_at": "2025-04-30T15:19:08Z",
-    "updated_at": "2025-09-25T20:51:08Z",
+    "updated_at": "2025-09-26T16:38:24Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
-    "merge_commit_sha": "d77d4db4a6130c4da95c79994eab3cc20a3acd95",
+    "merge_commit_sha": "e257b6ebe546b8af668d5267db97c734b24f531a",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -54,7 +54,7 @@
     "head": {
       "label": "D33r-Gee:2025_gui_interfaces_loadsnapshot_poc",
       "ref": "2025_gui_interfaces_loadsnapshot_poc",
-      "sha": "82a3969f6570d370943fb3a7be86cd3ffdacdd4d",
+      "sha": "482e80b563c96e0a8c0b0950879eeeaf76f8271b",
       "user": {
         "login": "D33r-Gee",
         "id": 111142327,
@@ -152,7 +152,7 @@
         "forks_count": 0,
         "stargazers_count": 1,
         "watchers_count": 1,
-        "size": 176463,
+        "size": 178551,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -165,7 +165,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-09-25T20:44:34Z",
+        "pushed_at": "2025-09-26T16:38:23Z",
         "created_at": "2023-06-23T15:02:44Z",
         "updated_at": "2025-05-20T17:08:03Z",
         "allow_forking": true,
@@ -189,7 +189,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "e62e0a12b3327213fc5535ce9e2779e3068fc903",
+      "sha": "200150beba6601237036bc01ee10f6a0a2246c3d",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -287,7 +287,7 @@
         "forks_count": 317,
         "stargazers_count": 673,
         "watchers_count": 673,
-        "size": 178525,
+        "size": 178593,
         "default_branch": "master",
         "open_issues_count": 147,
         "is_template": false,
@@ -300,9 +300,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-09-25T19:51:06Z",
+        "pushed_at": "2025-09-26T15:50:29Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2025-09-25T19:51:10Z",
+        "updated_at": "2025-09-26T15:50:32Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -328,7 +328,7 @@
     },
     "author_association": "NONE",
     "draft": true,
-    "additions": 529,
+    "additions": 525,
     "deletions": 8,
     "changed_files": 18,
     "commits": 2,
@@ -1081,46 +1081,6 @@
       "sha": "db62435e5df499f69a3e9c1c30e61ebfe309d187"
     },
     {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDgyYTM5NjlmNjU3MGQzNzA5NDNmYjNhN2JlODZjZDNmZmRhY2RkNGQ",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/82a3969f6570d370943fb3a7be86cd3ffdacdd4d",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/82a3969f6570d370943fb3a7be86cd3ffdacdd4d",
-      "tree": {
-        "sha": "dda91546d8224db9bb32f2bc6106776aac5190bc",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/dda91546d8224db9bb32f2bc6106776aac5190bc"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/db62435e5df499f69a3e9c1c30e61ebfe309d187",
-          "sha": "db62435e5df499f69a3e9c1c30e61ebfe309d187",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/db62435e5df499f69a3e9c1c30e61ebfe309d187"
-        }
-      ],
-      "message": "poc: Implement GUI snapshot loading functionality\n\n- Added a new signal `snapshotLoadProgress` to the notifications interface for tracking snapshot loading progress.\n- Introduced a `SnapshotLoadWorker` class to handle snapshot loading in a separate thread, emitting progress updates.\n- Updated `ClientModel` to manage snapshot loading, including methods for setting verification progress and loading snapshots based on that progress.\n- Enhanced the GUI to allow users to select a snapshot file and display loading progress through a dialog.\n- Integrated snapshot path handling in the application initialization process.\n\nThis change improves user experience by providing real-time feedback during snapshot loading operations.",
-      "committer": {
-        "name": "D33r-Gee",
-        "email": "d33r.gee@gmail.com",
-        "date": "2025-09-25T20:27:07Z"
-      },
-      "author": {
-        "name": "D33r-Gee",
-        "email": "d33r.gee@gmail.com",
-        "date": "2025-09-25T20:25:41Z"
-      },
-      "sha": "82a3969f6570d370943fb3a7be86cd3ffdacdd4d"
-    },
-    {
       "event": "head_ref_force_pushed",
       "id": 19929035607,
       "node_id": "HRFPE_lADOEEET9c60su9xzwAAAASj3PNX",
@@ -1325,6 +1285,76 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2025-09-25T20:51:10Z"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDQ4MmU4MGI1NjNjOTZlMGE4YzBiMDk1MDg3OWVlZWFmNzZmODI3MWI",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/482e80b563c96e0a8c0b0950879eeeaf76f8271b",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/482e80b563c96e0a8c0b0950879eeeaf76f8271b",
+      "tree": {
+        "sha": "0e5cc57b20bb810b6bc7407393feacb87fd0f624",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/0e5cc57b20bb810b6bc7407393feacb87fd0f624"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/db62435e5df499f69a3e9c1c30e61ebfe309d187",
+          "sha": "db62435e5df499f69a3e9c1c30e61ebfe309d187",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/db62435e5df499f69a3e9c1c30e61ebfe309d187"
+        }
+      ],
+      "message": "poc: Implement GUI snapshot loading functionality\n\n- Added a new signal `snapshotLoadProgress` to the notifications interface for tracking snapshot loading progress.\n- Introduced a `SnapshotLoadWorker` class to handle snapshot loading in a separate thread, emitting progress updates.\n- Updated `ClientModel` to manage snapshot loading, including methods for setting verification progress and loading snapshots based on that progress.\n- Enhanced the GUI to allow users to select a snapshot file and display loading progress through a dialog.\n- Integrated snapshot path handling in the application initialization process.\n\nThis change improves user experience by providing real-time feedback during snapshot loading operations.",
+      "committer": {
+        "name": "D33r Gee",
+        "email": "d33r.gee@gmail.com",
+        "date": "2025-09-26T16:26:56Z"
+      },
+      "author": {
+        "name": "D33r-Gee",
+        "email": "d33r.gee@gmail.com",
+        "date": "2025-09-25T20:25:41Z"
+      },
+      "sha": "482e80b563c96e0a8c0b0950879eeeaf76f8271b"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 19948180640,
+      "node_id": "HRFPE_lADOEEET9c60su9xzwAAAASlARSg",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/19948180640",
+      "actor": {
+        "login": "D33r-Gee",
+        "id": 111142327,
+        "node_id": "U_kgDOBp_ltw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/111142327?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/D33r-Gee",
+        "html_url": "https://github.com/D33r-Gee",
+        "followers_url": "https://api.github.com/users/D33r-Gee/followers",
+        "following_url": "https://api.github.com/users/D33r-Gee/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/D33r-Gee/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/D33r-Gee/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/D33r-Gee/subscriptions",
+        "organizations_url": "https://api.github.com/users/D33r-Gee/orgs",
+        "repos_url": "https://api.github.com/users/D33r-Gee/repos",
+        "events_url": "https://api.github.com/users/D33r-Gee/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": "482e80b563c96e0a8c0b0950879eeeaf76f8271b",
+      "commit_url": "https://api.github.com/repos/D33r-Gee/bitcoin-gui/commits/482e80b563c96e0a8c0b0950879eeeaf76f8271b",
+      "created_at": "2025-09-26T16:38:24Z"
     }
   ],
   "comments": []
