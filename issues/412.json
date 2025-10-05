@@ -32,7 +32,8 @@
       "events_url": "https://api.github.com/users/GuardianLiarus/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/GuardianLiarus/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "patch_url": null
     },
     "labels": [
       {
@@ -59,7 +60,7 @@
     "locked": false,
     "comments": 6,
     "created_at": "2021-08-27T21:29:40Z",
-    "updated_at": "2021-12-10T21:31:42Z"
+    "updated_at": "2025-10-05T15:54:42Z"
   },
   "events": [
     {
@@ -85,7 +86,8 @@
         "events_url": "https://api.github.com/users/GuardianLiarus/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/GuardianLiarus/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -118,13 +120,14 @@
         "events_url": "https://api.github.com/users/katesalazar/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-08-31T17:09:04Z",
-      "updated_at": "2021-08-31T17:09:04Z",
-      "author_association": "CONTRIBUTOR",
+      "updated_at": "2025-10-05T15:54:38Z",
+      "author_association": "NONE",
       "body": "Hi\r\n\r\n> [...] it would be great if we could choose a transaction / a range of transactions and delete them from the wallet.\r\n\r\nI think wallets hold keys and transactions are in blockchains? I'm not sure what you are asking for.\r\n\r\nWhile there isn't any better for you, have you thought about having two wallets? A \"fast\" wallet where you receive micropayments and aggregate utxos (maybe using command line interface, if you perceive a performance improvement) to send them to a \"slow\" wallet with fewer transactions which loads fast in the Qt client.\r\n\r\n> I also thought about maybe a toggle option that is off by default, that allows you to \"keep only the transaction history from the past X days\"\r\n\r\nNow the blockchain is growing at a more or less predictable pace, you could use \"prune\", meant to prune by (exact) size, in order to prune by (approximate) time.\r\n\r\n```\r\n$ ./src/qt/bitcoin-qt -help | grep -A10 '  -prune'\r\n  -prune=<n>\r\n       Reduce storage requirements by enabling pruning (deleting) of old\r\n       blocks. This allows the pruneblockchain RPC to be called to\r\n       delete specific blocks, and enables automatic pruning of old\r\n       blocks if a target size in MiB is provided. This mode is\r\n       incompatible with -txindex, -coinstatsindex and -rescan. Warning:\r\n       Reverting this setting requires re-downloading the entire\r\n       blockchain. (default: 0 = disable pruning blocks, 1 = allow\r\n       manual pruning via RPC, >=550 = automatically prune block files\r\n       to stay under the specified target size in MiB)\r\n```\r\n",
       "user": {
         "login": "katesalazar",
@@ -144,7 +147,8 @@
         "events_url": "https://api.github.com/users/katesalazar/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/issues/412#issuecomment-909424166",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/412"
@@ -172,7 +176,8 @@
         "events_url": "https://api.github.com/users/GuardianLiarus/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/GuardianLiarus/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -198,7 +203,8 @@
         "events_url": "https://api.github.com/users/GuardianLiarus/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/GuardianLiarus/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/issues/412#issuecomment-909438174",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/412"
@@ -226,13 +232,14 @@
         "events_url": "https://api.github.com/users/katesalazar/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-08-31T18:35:51Z",
-      "updated_at": "2021-08-31T18:35:51Z",
-      "author_association": "CONTRIBUTOR",
+      "updated_at": "2025-10-05T15:54:38Z",
+      "author_association": "NONE",
       "body": "Hi GuardianLiarus.\r\n\r\nI think you want a more simple (at least in visual appearance) interface, with faster boot, fewer elements initially but buttons that trigger deferred data loads.\r\n\r\nI suspect, this would be desirable, but would end up being large enough of a change, that whenever it is added to the code, you'll already fixed your problem by moving to a setup with specialized wallets.\r\n\r\nIf you ever move to a setup with specialized wallets, could you write some followup on the perceived performance difference?\r\n",
       "user": {
         "login": "katesalazar",
@@ -252,7 +259,8 @@
         "events_url": "https://api.github.com/users/katesalazar/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/issues/412#issuecomment-909498258",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/412"
@@ -280,7 +288,8 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -313,7 +322,8 @@
         "events_url": "https://api.github.com/users/GuardianLiarus/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/GuardianLiarus/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -339,7 +349,8 @@
         "events_url": "https://api.github.com/users/GuardianLiarus/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/GuardianLiarus/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/issues/412#issuecomment-990203241",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/412"
@@ -367,13 +378,14 @@
         "events_url": "https://api.github.com/users/katesalazar/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-12-10T20:19:41Z",
-      "updated_at": "2021-12-10T20:19:41Z",
-      "author_association": "CONTRIBUTOR",
+      "updated_at": "2025-10-05T15:54:42Z",
+      "author_association": "NONE",
       "body": "yup\n\ndid you do that?\n\n\nOn Thu, Dec 9, 2021 at 9:06 PM Liarus_ ***@***.***> wrote:\n\n> Hi GuardianLiarus.\n>\n> I think you want a more simple (at least in visual appearance) interface,\n> with faster boot, fewer elements initially but buttons that trigger\n> deferred data loads.\n>\n> I suspect, this would be desirable, but would end up being large enough of\n> a change, that whenever it is added to the code, you'll already fixed your\n> problem by moving to a setup with specialized wallets.\n>\n> If you ever move to a setup with specialized wallets, could you write some\n> followup on the perceived performance difference?\n>\n> Sorry, what do you mean by specialized wallets ?, basically having a\n> different wallet for X purpose ?\n>\n> —\n> You are receiving this because you commented.\n> Reply to this email directly, view it on GitHub\n> <https://github.com/bitcoin-core/gui/issues/412#issuecomment-990203241>,\n> or unsubscribe\n> <https://github.com/notifications/unsubscribe-auth/AMRS4W5YO36A6GGBEIUUGQTUQED4JANCNFSM5C6KHKFA>\n> .\n> Triage notifications on the go with GitHub Mobile for iOS\n> <https://apps.apple.com/app/apple-store/id1477376905?ct=notification-email&mt=8&pt=524675>\n> or Android\n> <https://play.google.com/store/apps/details?id=com.github.android&referrer=utm_campaign%3Dnotification-email%26utm_medium%3Demail%26utm_source%3Dgithub>.\n>\n>\n",
       "user": {
         "login": "katesalazar",
@@ -393,7 +405,8 @@
         "events_url": "https://api.github.com/users/katesalazar/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/issues/412#issuecomment-991268007",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/412"
@@ -421,7 +434,8 @@
         "events_url": "https://api.github.com/users/GuardianLiarus/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/GuardianLiarus/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -447,7 +461,8 @@
         "events_url": "https://api.github.com/users/GuardianLiarus/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/GuardianLiarus/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/issues/412#issuecomment-991308705",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/412"

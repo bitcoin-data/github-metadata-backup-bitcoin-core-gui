@@ -60,7 +60,7 @@
     "locked": false,
     "comments": 3,
     "created_at": "2023-10-15T16:42:16Z",
-    "updated_at": "2025-05-12T15:47:44Z"
+    "updated_at": "2025-10-05T15:54:45Z"
   },
   "events": [
     {
@@ -332,8 +332,8 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2025-05-12T15:46:30Z",
-      "updated_at": "2025-05-12T15:47:43Z",
-      "author_association": "CONTRIBUTOR",
+      "updated_at": "2025-10-05T15:54:45Z",
+      "author_association": "NONE",
       "body": "@luke-jr I don't remember which post to quote or link, the idea was:\n\n> Algorithm to deal with forced address reuse attack utxos:\n> * If the unlock script has not ever been revealed:\n>   * All attack utxos are to be spent together with the non-attack utxos in the spending event.\n> * If the unlock script has already been revelead:\n>   * All attack utxos are to be ignored forever.\n\nFor this algorithm makes sense to have a configuration in order to allow the wallet operator to ignore reused addresses.\n\nI guess one could alternatively have a companion script for checking reused addresses and burn the attacking utxos or spend them in a controlled way, but if the node doesn't ignore them, there'd be always a minimum risk that the funds are used before any observing operator or script gets to spend or burn them.\n\nHope that helped.\n",
       "user": {
         "login": "katesalazar",
