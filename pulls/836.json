@@ -15,7 +15,7 @@
     "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/fee4cba48472239f7a426db62f45c4b6af8e5ef2",
     "number": 836,
     "state": "closed",
-    "locked": false,
+    "locked": true,
     "maintainer_can_modify": false,
     "title": "Fix display issues for IPv6 proxy setup in Options Dialog  (UI only, no functionality impact)",
     "user": {
@@ -36,15 +36,38 @@
       "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "patch_url": null
     },
     "body": "Currently, setting up a proxy (whether SOCKS5 or Tor) with an IPv6 address works correctly via the command line or configuration file in both `bitcoind` and `bitcoin-qt` (also from the UI the ipv6 address gets saved properly in `settings.json`). However, the UI does not reflect this properly, which can create confusion. Since some ISPs and VPNs still experience issues with IPv6, users may mistakenly think there is a problem with Bitcoin Core, when in fact the proxy setup is functioning as expected.\r\n\r\nSo this PR ensures that the proxy IP is displayed correctly in the UI when using an IPv6 address.\r\n\r\nNo functionality impact; changes only affect UI display.\r\n\r\n<details>\r\n<summary>Click her to see <b>before</b> and <b>after</b> screenshots.</summary>\r\n\r\n- Before:\r\n\r\n  ![image](https://github.com/user-attachments/assets/073d9022-3174-4eef-8e0c-8c1b73b17226)\r\n\r\n- After:\r\n\r\n  ![image](https://github.com/user-attachments/assets/293e4e07-83e5-44ec-8ab3-df9d1f601a6f)\r\n\r\n  \r\n</details>\r\n\r\n---\r\n\r\n<details>\r\n<summary>Test instructions</summary>\r\n\r\n(Ubuntu 22.04)\r\n\r\n1. Start ssh service on localhost.\r\n\r\n   `ssh -D [::1]:1080 -f -C -q -N localhost`\r\n\r\n2. Check that the service is up and running.\r\n\r\n   ```\r\n   ps aux | grep ssh\r\n   pepe    2860289  0.0  0.0  20456  5576 ?        Ss   06:59   0:00 ssh -D [::1]:1080 -f -C -q -N localhost\r\n   ```\r\n\r\n3. Check with `bitcoind` if it works correctly.\r\n\r\n   `bitcoind -onlynet=ipv6 -proxy=[::1]:1080`\r\n   \r\n4. Check for established connections.\r\n\r\n   ```\r\n   netstat -natl |grep 1080\r\n   tcp6       0      0 ::1:1080                :::*                    LISTEN     \r\n   tcp6       0      0 ::1:47610               ::1:1080                ESTABLISHED\r\n   tcp6       0      0 ::1:1080                ::1:47610               ESTABLISHED\r\n   tcp6       0      0 ::1:1080                ::1:47606               TIME_WAIT    \r\n   ```\r\n\r\n   ```./build/src/bitcoin-cli getpeerinfo\r\n   [\r\n      {\r\n        \"id\": 0,\r\n        \"addr\": \"[2a01:4f9:4a:2a07::2]:8333\",\r\n        \"addrbind\": \"[::1]:47638\",\r\n        \"network\": \"ipv6\",\r\n   ...\r\n   ```\r\n\r\n   \r\n   \r\n\r\n5. Stop `bitcoind` and run `bitcoin-qt` adding the corresponding configuration in `settings.json`.\r\n\r\n    ```\r\n   {\r\n       \"onlynet\": \"ipv6\",\r\n       \"proxy\": \"[::1]:1080\",\r\n   }\r\n   ```\r\n   \r\n6. Open the Peers window to check available connections or run `getpeerinfo` on the rpc-console window.\r\n\r\n7. Same can be done for Tor setting up `tor` service (I'll add instructions later) and configuring on its default port 9050 and forcing `\"onlynet\": \"onion\"` to verify easily the net traffic.\r\n\r\n</details>\r\n\r\n---\r\n\r\nThanks jarolrod and vasild for your help on validating ipv6 was not broken.",
     "labels": [],
     "created_at": "2024-09-15T18:31:19Z",
-    "updated_at": "2024-10-06T18:27:21Z",
+    "updated_at": "2025-10-06T11:51:35Z",
     "closed_at": "2024-10-06T18:27:21Z",
     "mergeable_state": "unknown",
+    "merged": true,
     "merged_at": "2024-10-06T18:27:21Z",
+    "merged_by": {
+      "login": "hebasto",
+      "id": 32963518,
+      "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hebasto",
+      "html_url": "https://github.com/hebasto",
+      "followers_url": "https://api.github.com/users/hebasto/followers",
+      "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+      "organizations_url": "https://api.github.com/users/hebasto/orgs",
+      "repos_url": "https://api.github.com/users/hebasto/repos",
+      "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/hebasto/received_events",
+      "type": "User",
+      "site_admin": false,
+      "patch_url": null
+    },
     "merge_commit_sha": "5fe6878b5f7c1c97b5c8ae04be9592be73e840c1",
     "assignees": [],
     "requested_reviewers": [],
@@ -71,7 +94,8 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "repo": {
         "id": 535008896,
@@ -96,7 +120,8 @@
           "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
           "type": "User",
-          "site_admin": false
+          "site_admin": false,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/pablomartin4btc/bitcoin-core-gui",
@@ -146,9 +171,9 @@
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
         "forks_count": 0,
-        "stargazers_count": 2,
-        "watchers_count": 2,
-        "size": 163546,
+        "stargazers_count": 0,
+        "watchers_count": 0,
+        "size": 178527,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -161,9 +186,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-10-04T16:06:06Z",
+        "pushed_at": "2025-09-25T19:35:05Z",
         "created_at": "2022-09-10T13:37:44Z",
-        "updated_at": "2024-10-04T16:06:33Z",
+        "updated_at": "2025-09-25T19:35:47Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -203,7 +229,8 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "repo": {
         "id": 272700405,
@@ -228,7 +255,8 @@
           "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
-          "site_admin": false
+          "site_admin": false,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/bitcoin-core/gui",
@@ -277,12 +305,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 261,
-        "stargazers_count": 594,
-        "watchers_count": 594,
-        "size": 163665,
+        "forks_count": 318,
+        "stargazers_count": 676,
+        "watchers_count": 676,
+        "size": 178903,
         "default_branch": "master",
-        "open_issues_count": 153,
+        "open_issues_count": 147,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -293,9 +321,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-10-06T18:27:20Z",
+        "pushed_at": "2025-10-03T22:45:23Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-10-06T18:27:23Z",
+        "updated_at": "2025-10-06T01:56:46Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -351,7 +380,8 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -380,7 +410,8 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -409,7 +440,8 @@
         "events_url": "https://api.github.com/users/vasild/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/vasild/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -438,7 +470,8 @@
         "events_url": "https://api.github.com/users/vasild/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/vasild/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -467,7 +500,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -493,7 +527,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/836#issuecomment-2351728768",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/836"
@@ -521,7 +556,8 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -554,7 +590,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -587,7 +624,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -613,7 +651,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/836#issuecomment-2351786238",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/836"
@@ -641,10 +680,11 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "ba58007588a3cd76bc663a67d88c6238a33ae926",
+      "commit_url": "https://api.github.com/repos/pablomartin4btc/bitcoin-core-gui/commits/ba58007588a3cd76bc663a67d88c6238a33ae926",
       "created_at": "2024-09-15T22:29:20Z"
     },
     {
@@ -670,7 +710,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -689,6 +730,7 @@
       "commit_id": "ba58007588a3cd76bc663a67d88c6238a33ae926",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2024-09-17T10:16:22Z",
       "author_association": "CONTRIBUTOR",
       "body": "The changes to `src/qt/optionsmodel.cpp` look ok to me.",
       "user": {
@@ -709,7 +751,8 @@
         "events_url": "https://api.github.com/users/vasild/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/vasild/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/836#pullrequestreview-2309063950",
       "submitted_at": "2024-09-17T10:16:22Z",
@@ -739,10 +782,11 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "aca2bb3bcde2fa350ce5e349aba8ac079c0393d6",
+      "commit_url": "https://api.github.com/repos/pablomartin4btc/bitcoin-core-gui/commits/aca2bb3bcde2fa350ce5e349aba8ac079c0393d6",
       "created_at": "2024-09-18T09:51:03Z"
     },
     {
@@ -768,10 +812,11 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "eeac4e919dccc6f952fecd9b2db0b4257de617c3",
+      "commit_url": "https://api.github.com/repos/pablomartin4btc/bitcoin-core-gui/commits/eeac4e919dccc6f952fecd9b2db0b4257de617c3",
       "created_at": "2024-09-18T09:52:03Z"
     },
     {
@@ -797,10 +842,11 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "a7d8de94adc3e94ea33d698c307a87ab775c3d20",
+      "commit_url": "https://api.github.com/repos/pablomartin4btc/bitcoin-core-gui/commits/a7d8de94adc3e94ea33d698c307a87ab775c3d20",
       "created_at": "2024-09-18T09:52:40Z"
     },
     {
@@ -826,7 +872,8 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -859,7 +906,8 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -888,7 +936,8 @@
         "events_url": "https://api.github.com/users/vasild/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/vasild/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -903,6 +952,7 @@
       "commit_id": "a7d8de94adc3e94ea33d698c307a87ab775c3d20",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2024-09-19T07:13:09Z",
       "author_association": "CONTRIBUTOR",
       "body": "Approach ACK a7d8de94adc3e94ea33d698c307a87ab775c3d20",
       "user": {
@@ -923,7 +973,8 @@
         "events_url": "https://api.github.com/users/vasild/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/vasild/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/836#pullrequestreview-2314606389",
       "submitted_at": "2024-09-19T07:13:09Z",
@@ -953,10 +1004,11 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "62ca07e30db5cec2ceeba5c5bbcd9bded2012f64",
+      "commit_url": "https://api.github.com/repos/pablomartin4btc/bitcoin-core-gui/commits/62ca07e30db5cec2ceeba5c5bbcd9bded2012f64",
       "created_at": "2024-09-19T09:52:17Z"
     },
     {
@@ -1022,10 +1074,11 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "fee4cba48472239f7a426db62f45c4b6af8e5ef2",
+      "commit_url": "https://api.github.com/repos/pablomartin4btc/bitcoin-core-gui/commits/fee4cba48472239f7a426db62f45c4b6af8e5ef2",
       "created_at": "2024-09-19T09:52:53Z"
     },
     {
@@ -1051,7 +1104,8 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1077,7 +1131,8 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/836#issuecomment-2360536957",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/836"
@@ -1105,7 +1160,8 @@
         "events_url": "https://api.github.com/users/vasild/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/vasild/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1134,7 +1190,8 @@
         "events_url": "https://api.github.com/users/vasild/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/vasild/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1149,6 +1206,7 @@
       "commit_id": "fee4cba48472239f7a426db62f45c4b6af8e5ef2",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2024-09-20T06:45:27Z",
       "author_association": "CONTRIBUTOR",
       "body": "ACK fee4cba48472239f7a426db62f45c4b6af8e5ef2",
       "user": {
@@ -1169,7 +1227,8 @@
         "events_url": "https://api.github.com/users/vasild/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/vasild/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/836#pullrequestreview-2317404454",
       "submitted_at": "2024-09-20T06:45:27Z",
@@ -1185,6 +1244,7 @@
       "commit_id": "fee4cba48472239f7a426db62f45c4b6af8e5ef2",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2024-10-04T23:17:16Z",
       "author_association": "CONTRIBUTOR",
       "body": "Code review ACK fee4cba48472239f7a426db62f45c4b6af8e5ef2.",
       "user": {
@@ -1205,7 +1265,8 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/836#pullrequestreview-2349362315",
       "submitted_at": "2024-10-04T23:17:16Z",
@@ -1221,6 +1282,7 @@
       "commit_id": "fee4cba48472239f7a426db62f45c4b6af8e5ef2",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2024-10-06T18:26:10Z",
       "author_association": "MEMBER",
       "body": "ACK fee4cba48472239f7a426db62f45c4b6af8e5ef2, I have reviewed the code and it looks OK.",
       "user": {
@@ -1241,7 +1303,8 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/836#pullrequestreview-2350580581",
       "submitted_at": "2024-10-06T18:26:10Z",
@@ -1271,7 +1334,8 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": "5fe6878b5f7c1c97b5c8ae04be9592be73e840c1",
       "commit_url": "https://api.github.com/repos/bitcoin-core/gui/commits/5fe6878b5f7c1c97b5c8ae04be9592be73e840c1",
@@ -1300,11 +1364,162 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-10-06T18:27:21Z"
+    },
+    {
+      "event": "referenced",
+      "id": 15084732088,
+      "node_id": "REFE_lADOEEET9c6WoJ1KzwAAAAODHr64",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/15084732088",
+      "actor": {
+        "login": "TheCharlatan",
+        "id": 8421793,
+        "node_id": "MDQ6VXNlcjg0MjE3OTM=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/8421793?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/TheCharlatan",
+        "html_url": "https://github.com/TheCharlatan",
+        "followers_url": "https://api.github.com/users/TheCharlatan/followers",
+        "following_url": "https://api.github.com/users/TheCharlatan/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/TheCharlatan/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/TheCharlatan/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/TheCharlatan/subscriptions",
+        "organizations_url": "https://api.github.com/users/TheCharlatan/orgs",
+        "repos_url": "https://api.github.com/users/TheCharlatan/repos",
+        "events_url": "https://api.github.com/users/TheCharlatan/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/TheCharlatan/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": "8bb47d4c2c57eb33cdb346ea75c549954d5f9cb1",
+      "commit_url": "https://api.github.com/repos/TheCharlatan/rust-bitcoinkernel/commits/8bb47d4c2c57eb33cdb346ea75c549954d5f9cb1",
+      "created_at": "2024-11-02T20:58:33Z"
+    },
+    {
+      "event": "referenced",
+      "id": 16159745917,
+      "node_id": "REFE_lADOEEET9c6WoJ1KzwAAAAPDMid9",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/16159745917",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": "765f6088d3c52d0fa0550885d5fec01f2b85ebb8",
+      "commit_url": "https://api.github.com/repos/bitcoin-core/gui-qml/commits/765f6088d3c52d0fa0550885d5fec01f2b85ebb8",
+      "created_at": "2025-02-03T10:12:17Z"
+    },
+    {
+      "event": "referenced",
+      "id": 18463027620,
+      "node_id": "REFE_lADOEEET9c6WoJ1KzwAAAARMe3Gk",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/18463027620",
+      "actor": {
+        "login": "johnny9",
+        "id": 985648,
+        "node_id": "MDQ6VXNlcjk4NTY0OA==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/985648?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/johnny9",
+        "html_url": "https://github.com/johnny9",
+        "followers_url": "https://api.github.com/users/johnny9/followers",
+        "following_url": "https://api.github.com/users/johnny9/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/johnny9/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/johnny9/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/johnny9/subscriptions",
+        "organizations_url": "https://api.github.com/users/johnny9/orgs",
+        "repos_url": "https://api.github.com/users/johnny9/repos",
+        "events_url": "https://api.github.com/users/johnny9/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/johnny9/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": "69be9806a9003f5b59793db2bb5f068fd11f0ba5",
+      "commit_url": "https://api.github.com/repos/johnny9/bitcoin-core-app/commits/69be9806a9003f5b59793db2bb5f068fd11f0ba5",
+      "created_at": "2025-07-04T02:27:18Z"
+    },
+    {
+      "event": "referenced",
+      "id": 19963750608,
+      "node_id": "REFE_lADOEEET9c6WoJ1KzwAAAASl7qjQ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/19963750608",
+      "actor": {
+        "login": "bug-castercv502",
+        "id": 201734783,
+        "node_id": "U_kgDODAY6fw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/201734783?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/bug-castercv502",
+        "html_url": "https://github.com/bug-castercv502",
+        "followers_url": "https://api.github.com/users/bug-castercv502/followers",
+        "following_url": "https://api.github.com/users/bug-castercv502/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/bug-castercv502/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/bug-castercv502/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/bug-castercv502/subscriptions",
+        "organizations_url": "https://api.github.com/users/bug-castercv502/orgs",
+        "repos_url": "https://api.github.com/users/bug-castercv502/repos",
+        "events_url": "https://api.github.com/users/bug-castercv502/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/bug-castercv502/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": "403bebd59175876eeb1599bb3d0f598246536375",
+      "commit_url": "https://api.github.com/repos/bug-castercv502/rust-bitcoinkernel/commits/403bebd59175876eeb1599bb3d0f598246536375",
+      "created_at": "2025-09-28T08:01:57Z"
+    },
+    {
+      "event": "locked",
+      "id": 20113147050,
+      "node_id": "LOE_lADOEEET9c6WoJ1KzwAAAASu1kSq",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/20113147050",
+      "actor": {
+        "login": "bitcoin-core",
+        "id": 13464320,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjEzNDY0MzIw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/13464320?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/bitcoin-core",
+        "html_url": "https://github.com/bitcoin-core",
+        "followers_url": "https://api.github.com/users/bitcoin-core/followers",
+        "following_url": "https://api.github.com/users/bitcoin-core/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/bitcoin-core/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/bitcoin-core/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/bitcoin-core/subscriptions",
+        "organizations_url": "https://api.github.com/users/bitcoin-core/orgs",
+        "repos_url": "https://api.github.com/users/bitcoin-core/repos",
+        "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
+        "type": "Organization",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-10-06T11:51:35Z"
     }
   ],
   "comments": [
@@ -1315,7 +1530,7 @@
       "node_id": "PRRC_kwDOEEET9c5pEmeY",
       "diff_hunk": "@@ -466,13 +466,13 @@ void OptionsDialog::updateDefaultProxyNets()\n     bool has_proxy;\n \n     has_proxy = model->node().getProxy(NET_IPV4, proxy);\n-    ui->proxyReachIPv4->setChecked(has_proxy && proxy.ToString() == proxyIpText);\n+    ui->proxyReachIPv4->setChecked((has_proxy && proxy.ToString() == proxyIpText) && g_reachable_nets.Contains(NET_IPV4));",
       "path": "src/qt/optionsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 5,
       "commit_id": "fee4cba48472239f7a426db62f45c4b6af8e5ef2",
       "original_commit_id": "ba58007588a3cd76bc663a67d88c6238a33ae926",
@@ -1338,7 +1553,8 @@
         "events_url": "https://api.github.com/users/vasild/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/vasild/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "I think that we are not supposed to access the global state from here, @hebasto?\r\n\r\nAlso, this change is mixing the \"reachable nets\" with the \"which network is accessed via which proxy\" which are two different things. Maybe drop this change altogether?\r\n\r\nSince we are here, I have been thinking that those text descriptions are confusing:\r\n\"Used for reaching peers via [ ] IPv4 [ ] IPv6 [ ] Tor\" \r\n\"Use separte SOCKS5 proxy to reach peers via Tor onion services\".\r\nIt is not that we reach peers **via** IPv4. We reach IPv4 peers via the proxy. IPv4 is the type of the peer in this context. Thus, I think this warrants a reword (here or in another PR):\r\n\r\n\"Used for reaching peers via [ ] IPv4 [ ] IPv6 [ ] Tor\" ->\r\n\"Used for reaching peers of type: [ ] IPv4/IPv6/CJDNS [ ] Tor\".\r\n(combine IPv4, IPv6 and CJDNS peers in one checkbox because we always have a single proxy for all those 3 networks, i.e. can't split it to have proxy1 for IPv4 and proxy2 for IPv6).\r\n\r\n\"Use separte SOCKS5 proxy to reach peers via Tor onion services\" ->\r\n\"Use separte SOCKS5 proxy to reach Tor peers\".",
       "created_at": "2024-09-17T09:28:12Z",
@@ -1367,7 +1583,7 @@
       "node_id": "PRRC_kwDOEEET9c5pFWha",
       "diff_hunk": "@@ -466,13 +466,13 @@ void OptionsDialog::updateDefaultProxyNets()\n     bool has_proxy;\n \n     has_proxy = model->node().getProxy(NET_IPV4, proxy);\n-    ui->proxyReachIPv4->setChecked(has_proxy && proxy.ToString() == proxyIpText);\n+    ui->proxyReachIPv4->setChecked((has_proxy && proxy.ToString() == proxyIpText) && g_reachable_nets.Contains(NET_IPV4));",
       "path": "src/qt/optionsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 5,
       "commit_id": "fee4cba48472239f7a426db62f45c4b6af8e5ef2",
       "original_commit_id": "ba58007588a3cd76bc663a67d88c6238a33ae926",
@@ -1390,7 +1606,8 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "> Also, this change is mixing the \"reachable nets\" with the \"which network is accessed via which proxy\" which are two different things. Maybe drop this change altogether?\r\n\r\nI get it, that's correct, but also when `-onlynet` is specified, g_reachable_nets contains only the nets that are specified by each `-onlynet` option (ie so in this case `-onlynet=ipv6`, ipv4 peers won't be reached by the proxy): \r\n\r\nhttps://github.com/bitcoin-core/gui/blob/225718eda89d65a7041c33e1994d3bf7bd71bbdd/src/init.cpp#L1391-L1399\r\n\r\n> It is not that we reach peers via IPv4. We reach IPv4 peers via the proxy. \r\n\r\nI agree, happy to do it here or on a follow-up to get this merged quicker.\r\n\r\n\"Used for reaching peers of type: [ ] IPv4/IPv6/CJDNS [ ] Tor\".\r\n(combine IPv4, IPv6 and CJDNS peers in one checkbox because we always have a single proxy for all those 3 networks, i.e. can't split it to have proxy1 for IPv4 and proxy2 for IPv6).\r\n\r\nAlso when a separate SOCKS5 for Tor is set, the \"[ ] Tor\" should disappear from the proxy above.",
       "created_at": "2024-09-17T10:41:03Z",
@@ -1419,7 +1636,7 @@
       "node_id": "PRRC_kwDOEEET9c5pMAHQ",
       "diff_hunk": "@@ -466,13 +466,13 @@ void OptionsDialog::updateDefaultProxyNets()\n     bool has_proxy;\n \n     has_proxy = model->node().getProxy(NET_IPV4, proxy);\n-    ui->proxyReachIPv4->setChecked(has_proxy && proxy.ToString() == proxyIpText);\n+    ui->proxyReachIPv4->setChecked((has_proxy && proxy.ToString() == proxyIpText) && g_reachable_nets.Contains(NET_IPV4));",
       "path": "src/qt/optionsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 5,
       "commit_id": "fee4cba48472239f7a426db62f45c4b6af8e5ef2",
       "original_commit_id": "ba58007588a3cd76bc663a67d88c6238a33ae926",
@@ -1442,7 +1659,8 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "I'll drop the changes on `src/qt/optionsdialog.cpp` as suggested by @vasild, since the approach is incorrect.",
       "created_at": "2024-09-18T09:45:54Z",
@@ -1471,7 +1689,7 @@
       "node_id": "PRRC_kwDOEEET9c5pR11p",
       "diff_hunk": "@@ -320,10 +320,14 @@ static ProxySetting ParseProxyString(const QString& proxy)\n     if (proxy.isEmpty()) {\n         return default_val;\n     }\n-    // contains IP at index 0 and port at index 1\n-    QStringList ip_port = GUIUtil::SplitSkipEmptyParts(proxy, \":\");\n-    if (ip_port.size() == 2) {\n-        return {true, ip_port.at(0), ip_port.at(1)};\n+    uint16_t port{0};\n+    std::string hostname;\n+    if (!SplitHostPort(proxy.toStdString(), port, hostname) || port != 0) {",
       "path": "src/qt/optionsmodel.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 10,
       "commit_id": "fee4cba48472239f7a426db62f45c4b6af8e5ef2",
       "original_commit_id": "a7d8de94adc3e94ea33d698c307a87ab775c3d20",
@@ -1494,7 +1712,8 @@
         "events_url": "https://api.github.com/users/vasild/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/vasild/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "`SplitHostPort()` returns \"true if port-portion is absent or within its allowed range\". Here we want the port to be present and with its allowed range. So if we check that `SplitHostPort()` is true, that is not sufficient. For our usecase `SplitHostPort()` must be true and the port must be present. How to check whether the port is present? That would be `port != 0`. So that condition should be:\r\n\r\n```suggestion\r\n    if (SplitHostPort(proxy.toStdString(), port, hostname) && port != 0) {\r\n        // valid and port is present and within the valid range\r\n```\r\nIf there is a bug in `SplitHostPort()` that should be fixed separately.",
       "created_at": "2024-09-19T07:12:43Z",
@@ -1523,7 +1742,7 @@
       "node_id": "PRRC_kwDOEEET9c5pSuG9",
       "diff_hunk": "@@ -320,10 +320,14 @@ static ProxySetting ParseProxyString(const QString& proxy)\n     if (proxy.isEmpty()) {\n         return default_val;\n     }\n-    // contains IP at index 0 and port at index 1\n-    QStringList ip_port = GUIUtil::SplitSkipEmptyParts(proxy, \":\");\n-    if (ip_port.size() == 2) {\n-        return {true, ip_port.at(0), ip_port.at(1)};\n+    uint16_t port{0};\n+    std::string hostname;\n+    if (!SplitHostPort(proxy.toStdString(), port, hostname) || port != 0) {",
       "path": "src/qt/optionsmodel.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 10,
       "commit_id": "fee4cba48472239f7a426db62f45c4b6af8e5ef2",
       "original_commit_id": "a7d8de94adc3e94ea33d698c307a87ab775c3d20",
@@ -1546,7 +1765,8 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "After playing with the function and the tests (`netbase_tests` - `TestSplitHost` - & `net_tests` - `addr.IsValid()`), what you propose looks more correct/ understandable to me as the use cases we were looking at were \"::1:1080\" (which passed to `SplitHostPort()` returns valid/ true and port 0) vs \"[::1]:1080\" (returning true and port 1080).\r\n\r\n> If there is a bug in SplitHostPort() that should be fixed separately.\r\n\r\nI think it's clear to me now that if you have multiple \":\" it's because it's an ipv6 address and in that case you need to use the brackets to separate it from the port as [ipv6]:port otherwise the split will be ignored and the function will return the whole thing as the hostname (check other cases in `TestSplitHost`). Perhaps we can add these 2 cases in the tests so there's no confusion in the future (but there are similar cases with different values).\r\n\r\n```\r\nBOOST_CHECK(TestSplitHost(\"::1:1080\", \"::1:1080\", 0, true));\r\nBOOST_CHECK(TestSplitHost(\"[::1]:1080\", \"::1\", 1080, true));\r\n```",
       "created_at": "2024-09-19T09:40:00Z",
