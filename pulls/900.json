@@ -41,7 +41,7 @@
     },
     "labels": [],
     "created_at": "2025-10-10T19:35:35Z",
-    "updated_at": "2025-10-10T20:52:27Z",
+    "updated_at": "2025-10-10T22:34:11Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
@@ -288,7 +288,7 @@
         "watchers_count": 678,
         "size": 178525,
         "default_branch": "master",
-        "open_issues_count": 149,
+        "open_issues_count": 150,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -331,7 +331,7 @@
     "deletions": 24,
     "changed_files": 1,
     "commits": 2,
-    "review_comments": 4,
+    "review_comments": 5,
     "comments": 2
   },
   "events": [
@@ -796,6 +796,59 @@
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2422058350"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/900"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 123,
+      "original_line": 123,
+      "side": "LEFT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2422197293",
+      "pull_request_review_id": 3326101445,
+      "id": 2422197293,
+      "node_id": "PRRC_kwDOEEET9c6QX8wt",
+      "diff_hunk": "@@ -119,18 +119,13 @@ void RPCNestedTests::rpcNestedTests()\n     RPCConsole::RPCExecuteCommandLine(m_node, result, \"rpcNestedTest(   abc   ,   cba )\");\n     QVERIFY(result == \"[\\\"abc\\\",\\\"cba\\\"]\");\n \n-// Handle deprecated macro, can be removed once minimum Qt is at least 6.3.0.\n-#if (QT_VERSION >= QT_VERSION_CHECK(6, 3, 0))",
+      "path": "src/qt/test/rpcnestedtests.cpp",
+      "position": 56,
+      "original_position": 5,
+      "commit_id": "4f29ddf3c5cbd373ebbfe05e5cd571cc9b383b0c",
+      "original_commit_id": "39d699c9e96c0be4b0137fc61f99959cf7ae99e2",
+      "in_reply_to_id": 2421952199,
+      "user": {
+        "login": "RandyMcMillan",
+        "id": 152159,
+        "node_id": "MDQ6VXNlcjE1MjE1OQ==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/152159?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/RandyMcMillan",
+        "html_url": "https://github.com/RandyMcMillan",
+        "followers_url": "https://api.github.com/users/RandyMcMillan/followers",
+        "following_url": "https://api.github.com/users/RandyMcMillan/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/RandyMcMillan/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/RandyMcMillan/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/RandyMcMillan/subscriptions",
+        "organizations_url": "https://api.github.com/users/RandyMcMillan/orgs",
+        "repos_url": "https://api.github.com/users/RandyMcMillan/repos",
+        "events_url": "https://api.github.com/users/RandyMcMillan/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/RandyMcMillan/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "body": "note: https://github.com/bitcoin-core/gui/actions/runs/18416608653/job/52481652961\n\nonly failure - which suggests the tests aren't actually testing qt version <= 6.2 ",
+      "created_at": "2025-10-10T22:34:11Z",
+      "updated_at": "2025-10-10T22:34:11Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/900#discussion_r2422197293",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2422197293"
         },
         "pull_request": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/900"
