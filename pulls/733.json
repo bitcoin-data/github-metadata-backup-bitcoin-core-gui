@@ -15,7 +15,7 @@
     "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/b48a95a79f65947c2c60eea55411aceca90bad69",
     "number": 733,
     "state": "closed",
-    "locked": false,
+    "locked": true,
     "maintainer_can_modify": false,
     "title": "Deniability - a tool to automatically improve coin ownership privacy",
     "user": {
@@ -36,7 +36,8 @@
       "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/denavila/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "patch_url": null
     },
     "body": "This new feature is an implementation of the ideas in Paul Sztorc's blog post \"Deniability - Unilateral Transaction Meta-Privacy\"(https://www.truthcoin.info/blog/deniability/).\r\n\r\nIn short, the idea is to periodically split coins and send them to yourself, making it look like common \"spend\" transactions, such that blockchain ownership analysis becomes more difficult, and thus improving the user's privacy.\r\n\r\nThis is the GUI portion of the PR (bitcoin-core/gui). The core functionality PR ( https://github.com/bitcoin/bitcoin/pull/27792 ) is in the main repo (bitcoin/bitcoin).\r\n\r\nThis PR implements an additional \"Deniability\" wallet view. The majority of the GUI code is in a new deniabilitydialog.cpp/h source files containing a new DeniabilityDialog class, hooked up via the WalletView class. \r\n\r\nOn startup and on notable events (new blocks, new transactions, etc), we evaluate the privacy of all coins in the wallet, and we build a \"deniabilization\" candidate list. UTXOs that share the same destination address are grouped together into a single candidate (see DeniabilityDialog::updateCoins and DeniabilityDialog::updateCoinTable).\r\n\r\nWe inspect the blockchain data to find out if we have performed \"deniabilization\" transactions already, and we count how many \"cycles\" (self-sends) have been performed for each coin (see DeniabilityDialog::calculateDeniabilizationStats). Since we infer the state entirely from the blockchain data, even if the wallet is restored from a backup, the state would not be lost. This also means that if the user has performed manual self-sends that have improved the ownership privacy, they will be counted too.\r\n\r\n<img width=\"983\" alt=\"deniability_view_initial\" src=\"https://github.com/bitcoin-core/gui/assets/123340139/6626cca3-1b96-4ccd-9463-2a91a9993faa\">\r\n\r\nThe user has a couple of controls for the \"deniabillization\" process - a Frequency selector and a Budget spinner, which respectively determine how often to perform a cycle (see below) and how much total BTC to spend on transaction fees.\r\n\r\n<img width=\"983\" alt=\"deniability_view_pick_budget_frequency\" src=\"https://github.com/bitcoin-core/gui/assets/123340139/7508c23f-2ebb-4345-a440-49b9f60b8412\">\r\n\r\nThe user can initiate the \"deniabillization\" process by pressing the Start button (DeniabilityDialog::startDeniabilization). \r\nThe first time the button is pressed, we offer an information / confirmation box to explain to the user how Deniability works.\r\n\r\n<img width=\"532\" alt=\"deniability_view_start_confirmation\" src=\"https://github.com/bitcoin-core/gui/assets/123340139/c08ee856-8736-4e4e-be71-28219735f764\">\r\n\r\nThe process periodically perform a \"deniabilization\" cycle (DeniabilityDialog::deniabilizeProc). In each such cycle we do the following: \r\nA coin is selected form the candidate list. The more a coin is \"deniabilized\", the less likely it is to be selected. Smaller coins are also less likely to be selected. If a coin is selected, we prepare and broadcast a transaction, which splits the coin into a pair of new wallet addresses (DeniabilityDialog::deniabilizeCoin). \r\n\r\n<img width=\"983\" alt=\"deniability_view_tx_awaiting_confirmation\" src=\"https://github.com/bitcoin-core/gui/assets/123340139/df0354dc-f60f-45db-b692-db5c6ca36253\">\r\n\r\n<img width=\"983\" alt=\"transaction_view_after_deniabilization\" src=\"https://github.com/bitcoin-core/gui/assets/123340139/709084d3-227d-4c0d-ac47-cd83433b992a\">\r\n\r\nIf Bitcoin Core is left running continuously, the cycles would be performed at the selected frequency (with some randomization). If Bitcoin Core is shutdown, the \"deniabilization\" process will resume at the next restart, and if more time has elapsed than the selected frequency, it will perform a single cycle. We deliberately don't \"catch up\" all missed cycles, since that would expose the process to blockchain analysis. The state is saved and restored via QSettings (DeniabilityDialog::loadSettings and DeniabilityDialog::saveSettings).\r\n\r\n<img width=\"983\" alt=\"deniability_view_next_cycle_countdown\" src=\"https://github.com/bitcoin-core/gui/assets/123340139/da5a71e1-0174-4f2a-a9b3-b8a635abe769\">\r\n\r\nWe monitor each broadcasted transaction and we automatically attempt a fee bump if the transaction is still in the memory pool since the previous cycle (DeniabilityDialog::bumpDeniabilizationTx). We don't issue any other deniabilization transactions until the previous transaction is confirmed (or abandoned/dropped).\r\n\r\nThe process ends when the budget is exhausted or if there's no candidates left. The user can also stop the process manually by pressing a Stop button (DeniabilityDialog::stopDeniabilization).\r\n\r\nExternal signers are supported in a \"best effort\" way - since the user needs to manually sign, we postpone the deniabilization processing till the external signer is connected and use some additional UI to get the user's attention to sign (see the codepath predicated on hasExternalSigner). This is not ideal, so I'm looking for ideas if we can improve this in some way.\r\n\r\nWatch-only wallets are partially supported, where we display the candidate list, but we don't allow any processing (since we don't have the private keys to issue transactions).\r\n\r\nI've tested all this functionality on regtest, testnet, signet and mainnet. I've also added some unit tests (under WalletTests) to exercise the main functions.\r\n\r\nThis is my first change and PR for Bitcoin Core, and I did my best to validate everything against the guidelines and documentation and to follow the patterns in the existing code, but I'm sure there may be things I've missed, so I'm looking forward to your feedback. \r\nIn particular one thing I'm not particularly happy with - the save/restore of state via QSettings makes me a bit nervous as we store wallet specific data keyed on wallet name, however wallets can be erased and new ones created with the same name, so this is not ideal. I made an effort to validate all data on load, but it would be great if we could improve this somehow - either by storing the settings based on some wallet identity signature, or by storing the state in the wallet database (however that doesn't seem accessible via the interfaces::Wallet API). Please let me know your thoughts and suggestions.\r\n\r\nThank you.\r\n",
     "labels": [
@@ -60,15 +61,14 @@
       }
     ],
     "created_at": "2023-05-21T06:32:50Z",
-    "updated_at": "2024-10-15T14:32:07Z",
+    "updated_at": "2025-10-15T11:55:32Z",
     "closed_at": "2024-10-15T14:32:07Z",
-    "mergeable": true,
-    "mergeable_state": "clean",
+    "mergeable_state": "unknown",
+    "merged": false,
     "merge_commit_sha": "0db6ba023f609153a1b882f3f2c8257d1f9714b0",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
-    "rebaseable": false,
     "head": {
       "label": "denavila:deniability",
       "ref": "deniability",
@@ -91,7 +91,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "repo": {
         "id": 643409150,
@@ -116,7 +117,8 @@
           "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/denavila/received_events",
           "type": "User",
-          "site_admin": false
+          "site_admin": false,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/denavila/gui",
@@ -168,7 +170,7 @@
         "forks_count": 1,
         "stargazers_count": 1,
         "watchers_count": 1,
-        "size": 164242,
+        "size": 160979,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -181,9 +183,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-10-15T01:43:19Z",
+        "pushed_at": "2025-07-04T00:13:43Z",
         "created_at": "2023-05-21T04:12:26Z",
         "updated_at": "2024-04-29T02:47:56Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -223,7 +226,8 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "repo": {
         "id": 272700405,
@@ -248,7 +252,8 @@
           "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
-          "site_admin": false
+          "site_admin": false,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/bitcoin-core/gui",
@@ -297,12 +302,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 261,
-        "stargazers_count": 596,
-        "watchers_count": 596,
-        "size": 164157,
+        "forks_count": 319,
+        "stargazers_count": 681,
+        "watchers_count": 681,
+        "size": 179042,
         "default_branch": "master",
-        "open_issues_count": 151,
+        "open_issues_count": 152,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -313,9 +318,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-10-15T11:18:00Z",
+        "pushed_at": "2025-10-15T10:20:33Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-10-15T11:18:04Z",
+        "updated_at": "2025-10-15T10:20:37Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -371,7 +377,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -397,7 +404,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1556097316",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/733"
@@ -425,7 +433,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -458,7 +467,8 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -491,7 +501,8 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -524,7 +535,8 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -550,7 +562,8 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1556112377",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/733"
@@ -578,7 +591,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -604,7 +618,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1558676764",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/733"
@@ -632,7 +647,8 @@
         "events_url": "https://api.github.com/users/VladdyC/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/VladdyC/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -658,7 +674,8 @@
         "events_url": "https://api.github.com/users/VladdyC/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/VladdyC/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1561041240",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/733"
@@ -686,7 +703,8 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -712,7 +730,8 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1561460052",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/733"
@@ -740,7 +759,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -766,7 +786,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1561670353",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/733"
@@ -794,7 +815,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -820,7 +842,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1561680006",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/733"
@@ -848,7 +871,8 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -874,7 +898,8 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1561716951",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/733"
@@ -902,7 +927,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -928,7 +954,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1561725613",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/733"
@@ -956,7 +983,8 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -982,7 +1010,8 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1561747032",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/733"
@@ -1010,7 +1039,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1036,7 +1066,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1562231512",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/733"
@@ -1064,7 +1095,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": "a035b42fd6c3c5e9601905d4846e3ad68c7d12da",
       "commit_url": "https://api.github.com/repos/denavila/bitcoin/commits/a035b42fd6c3c5e9601905d4846e3ad68c7d12da",
@@ -1093,7 +1125,8 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1126,10 +1159,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "5958634ce64a091b30c5df0c33e4944d5cd76cb7",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/5958634ce64a091b30c5df0c33e4944d5cd76cb7",
       "created_at": "2023-05-30T16:20:51Z"
     },
     {
@@ -1155,7 +1189,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1181,7 +1216,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1568736418",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/733"
@@ -1209,10 +1245,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "61b4570b77a039def513c89ab5357b3393e75443",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/61b4570b77a039def513c89ab5357b3393e75443",
       "created_at": "2023-05-30T16:57:24Z"
     },
     {
@@ -1238,7 +1275,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1271,10 +1309,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "859b273847572117cb7caea2fec7f4b01ad001d6",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/859b273847572117cb7caea2fec7f4b01ad001d6",
       "created_at": "2023-05-30T18:47:19Z"
     },
     {
@@ -1300,10 +1339,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "53fde3f90815f145372a5bf8d629eac65a509dc8",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/53fde3f90815f145372a5bf8d629eac65a509dc8",
       "created_at": "2023-05-30T19:58:00Z"
     },
     {
@@ -1329,10 +1369,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "db722e49e7749c8f5c96776523d8835bcfd9a58b",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/db722e49e7749c8f5c96776523d8835bcfd9a58b",
       "created_at": "2023-05-30T20:39:25Z"
     },
     {
@@ -1358,10 +1399,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "747f1fb7331355e88861db58ef4b611858bbff9a",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/747f1fb7331355e88861db58ef4b611858bbff9a",
       "created_at": "2023-05-31T03:45:32Z"
     },
     {
@@ -1387,10 +1429,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "b060d568d28109774b97a43e64b1124e79de2117",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/b060d568d28109774b97a43e64b1124e79de2117",
       "created_at": "2023-05-31T06:36:50Z"
     },
     {
@@ -1416,7 +1459,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": "246589f3f795146216531f0311fe5d1ac171842b",
       "commit_url": "https://api.github.com/repos/denavila/bitcoin/commits/246589f3f795146216531f0311fe5d1ac171842b",
@@ -1445,10 +1489,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "b3e349c98214380bf46a5e9fc16f3b5ab2ddc746",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/b3e349c98214380bf46a5e9fc16f3b5ab2ddc746",
       "created_at": "2023-05-31T07:12:16Z"
     },
     {
@@ -1474,10 +1519,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "6d07de6c723cbbb0d7ea26f1160434dc93ad534f",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/6d07de6c723cbbb0d7ea26f1160434dc93ad534f",
       "created_at": "2023-05-31T07:30:31Z"
     },
     {
@@ -1503,7 +1549,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1536,7 +1583,8 @@
         "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1562,7 +1610,8 @@
         "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1590038670",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/733"
@@ -1590,7 +1639,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1619,7 +1669,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1645,7 +1696,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1590079466",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/733"
@@ -1673,7 +1725,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1706,7 +1759,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": "19257380745f0783eb1e2e863797038738d093dd",
       "commit_url": "https://api.github.com/repos/denavila/bitcoin/commits/19257380745f0783eb1e2e863797038738d093dd",
@@ -1735,7 +1789,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": "379b724eb56320ed9f5704814817488686d9c28f",
       "commit_url": "https://api.github.com/repos/denavila/bitcoin/commits/379b724eb56320ed9f5704814817488686d9c28f",
@@ -1764,10 +1819,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "d9e288c5c5de8d37b51b64dad35ba1437281e328",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/d9e288c5c5de8d37b51b64dad35ba1437281e328",
       "created_at": "2023-09-02T22:17:40Z"
     },
     {
@@ -1793,7 +1849,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1826,7 +1883,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1859,7 +1917,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1892,7 +1951,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1925,7 +1985,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1958,7 +2019,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1991,7 +2053,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": "403dba36a571826f11345a3c6372aa36bb9c184d",
       "commit_url": "https://api.github.com/repos/denavila/bitcoin/commits/403dba36a571826f11345a3c6372aa36bb9c184d",
@@ -2020,10 +2083,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "64232fbb38465186067729f40e5505025551e97f",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/64232fbb38465186067729f40e5505025551e97f",
       "created_at": "2023-10-06T17:32:31Z"
     },
     {
@@ -2049,10 +2113,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "29be493e57491e7e0e561b9bc9c2917e3cc08063",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/29be493e57491e7e0e561b9bc9c2917e3cc08063",
       "created_at": "2023-10-08T16:34:06Z"
     },
     {
@@ -2078,10 +2143,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "d5ebbceef2fc47d4f2e9a44205d1b9446235294e",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/d5ebbceef2fc47d4f2e9a44205d1b9446235294e",
       "created_at": "2023-10-08T19:25:07Z"
     },
     {
@@ -2107,7 +2173,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2140,10 +2207,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "6fcf6f5b0bb42bcc08bca0f2d86f126c4756ea54",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/6fcf6f5b0bb42bcc08bca0f2d86f126c4756ea54",
       "created_at": "2023-10-10T22:36:24Z"
     },
     {
@@ -2169,7 +2237,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": "ed75f632a9ffffd0a102a0577bcbf822e0e2575a",
       "commit_url": "https://api.github.com/repos/denavila/bitcoin/commits/ed75f632a9ffffd0a102a0577bcbf822e0e2575a",
@@ -2198,10 +2267,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "fae09cf7abaa319e462ae126f73eee2382eed5ba",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/fae09cf7abaa319e462ae126f73eee2382eed5ba",
       "created_at": "2023-10-21T00:19:05Z"
     },
     {
@@ -2227,7 +2297,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2260,7 +2331,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": "4d1a6d147ef4b44ccc92d5040aaf5bcc565c4b69",
       "commit_url": "https://api.github.com/repos/denavila/bitcoin/commits/4d1a6d147ef4b44ccc92d5040aaf5bcc565c4b69",
@@ -2289,10 +2361,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "5aeab6d2c670af294ee24a0da0b1414abd6ac7f0",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/5aeab6d2c670af294ee24a0da0b1414abd6ac7f0",
       "created_at": "2023-10-21T18:03:35Z"
     },
     {
@@ -2318,10 +2391,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "d48512067a46c53d8b3ca7e04faef114f403bc6d",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/d48512067a46c53d8b3ca7e04faef114f403bc6d",
       "created_at": "2023-10-23T01:36:02Z"
     },
     {
@@ -2347,10 +2421,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "51f444faf5e9c3c1ddb470d3df978c63d2226504",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/51f444faf5e9c3c1ddb470d3df978c63d2226504",
       "created_at": "2023-10-23T02:07:37Z"
     },
     {
@@ -2376,10 +2451,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "78fa5c83b0bccb5270f239dfcf256959b188687c",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/78fa5c83b0bccb5270f239dfcf256959b188687c",
       "created_at": "2023-10-25T03:03:49Z"
     },
     {
@@ -2405,7 +2481,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2438,10 +2515,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "7d8c64882f1172ed648120537f99c9a96b4f84fc",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/7d8c64882f1172ed648120537f99c9a96b4f84fc",
       "created_at": "2023-10-25T22:27:20Z"
     },
     {
@@ -2467,7 +2545,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2500,10 +2579,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "71a3e12fdafd62f2d77ff2d12345d6fce9700772",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/71a3e12fdafd62f2d77ff2d12345d6fce9700772",
       "created_at": "2023-10-25T23:28:22Z"
     },
     {
@@ -2529,7 +2609,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2562,10 +2643,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "16d50b3699232bfe48b21057e6175ab12417ebe3",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/16d50b3699232bfe48b21057e6175ab12417ebe3",
       "created_at": "2023-10-26T02:16:55Z"
     },
     {
@@ -2591,7 +2673,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2610,7 +2693,8 @@
       "commit_id": "16d50b3699232bfe48b21057e6175ab12417ebe3",
       "commit_url": null,
       "created_at": null,
-      "author_association": "CONTRIBUTOR",
+      "updated_at": "2023-10-26T18:36:25Z",
+      "author_association": "NONE",
       "body": "what a long shot\r\n\r\nConcept ACK\r\n\r\nkeep up the good works\r\n",
       "user": {
         "login": "katesalazar",
@@ -2630,7 +2714,8 @@
         "events_url": "https://api.github.com/users/katesalazar/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#pullrequestreview-1700307265",
       "submitted_at": "2023-10-26T18:36:25Z",
@@ -2660,10 +2745,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "219dd62e5c59ebe31e5d480eaaccd1057cadd93c",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/219dd62e5c59ebe31e5d480eaaccd1057cadd93c",
       "created_at": "2023-10-28T20:25:47Z"
     },
     {
@@ -2689,10 +2775,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/c781cd8863bb12e60ce8905063c8041145db63ac",
       "created_at": "2023-10-28T21:00:41Z"
     },
     {
@@ -2718,7 +2805,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2737,7 +2825,8 @@
       "commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
       "commit_url": null,
       "created_at": null,
-      "author_association": "CONTRIBUTOR",
+      "updated_at": "2023-10-29T14:42:16Z",
+      "author_association": "NONE",
       "user": {
         "login": "katesalazar",
         "id": 52637275,
@@ -2756,7 +2845,8 @@
         "events_url": "https://api.github.com/users/katesalazar/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#pullrequestreview-1702973669",
       "submitted_at": "2023-10-29T14:42:16Z",
@@ -2772,7 +2862,8 @@
       "commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
       "commit_url": null,
       "created_at": null,
-      "author_association": "CONTRIBUTOR",
+      "updated_at": "2023-10-29T14:45:10Z",
+      "author_association": "NONE",
       "user": {
         "login": "katesalazar",
         "id": 52637275,
@@ -2791,7 +2882,8 @@
         "events_url": "https://api.github.com/users/katesalazar/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#pullrequestreview-1702974130",
       "submitted_at": "2023-10-29T14:45:10Z",
@@ -2807,7 +2899,8 @@
       "commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
       "commit_url": null,
       "created_at": null,
-      "author_association": "CONTRIBUTOR",
+      "updated_at": "2023-10-29T14:45:55Z",
+      "author_association": "NONE",
       "user": {
         "login": "katesalazar",
         "id": 52637275,
@@ -2826,7 +2919,8 @@
         "events_url": "https://api.github.com/users/katesalazar/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#pullrequestreview-1702974253",
       "submitted_at": "2023-10-29T14:45:55Z",
@@ -2856,10 +2950,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "5b702bc176a67b135e70b30c03e1314498487b4f",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/5b702bc176a67b135e70b30c03e1314498487b4f",
       "created_at": "2023-11-09T12:53:05Z"
     },
     {
@@ -2885,10 +2980,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "4ac59bad8ecbb4ef5445c3b441595811b2bfe6ba",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/4ac59bad8ecbb4ef5445c3b441595811b2bfe6ba",
       "created_at": "2023-11-16T01:07:56Z"
     },
     {
@@ -2914,7 +3010,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2947,7 +3044,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": "842cb26c18bda83538842bec382c749a2354ec1f",
       "commit_url": "https://api.github.com/repos/denavila/bitcoin/commits/842cb26c18bda83538842bec382c749a2354ec1f",
@@ -2976,10 +3074,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "0f92d7e97c85c7ba183c324c432a50508a896c4f",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/0f92d7e97c85c7ba183c324c432a50508a896c4f",
       "created_at": "2023-11-19T18:22:20Z"
     },
     {
@@ -3005,7 +3104,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -3038,7 +3138,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": "21e39b96bc08e29920a1efb61dee79082adb414c",
       "commit_url": "https://api.github.com/repos/denavila/bitcoin/commits/21e39b96bc08e29920a1efb61dee79082adb414c",
@@ -3067,10 +3168,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "3f83a0e11ff9017fb1eaf95b3193199343935d2e",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/3f83a0e11ff9017fb1eaf95b3193199343935d2e",
       "created_at": "2023-11-22T18:12:17Z"
     },
     {
@@ -3096,7 +3198,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -3129,7 +3232,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": "37722d6f2762aa42fd4bfdd59c3351a52848b732",
       "commit_url": "https://api.github.com/repos/denavila/bitcoin/commits/37722d6f2762aa42fd4bfdd59c3351a52848b732",
@@ -3158,10 +3262,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "17e15b779887b5c2d2836ccb7af179fd70ad5679",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/17e15b779887b5c2d2836ccb7af179fd70ad5679",
       "created_at": "2023-11-29T01:03:37Z"
     },
     {
@@ -3187,7 +3292,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -3220,7 +3326,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -3253,7 +3360,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": "9e6fdce4394b941c21b88ebf2ef6910fbe9aa7c7",
       "commit_url": "https://api.github.com/repos/denavila/bitcoin/commits/9e6fdce4394b941c21b88ebf2ef6910fbe9aa7c7",
@@ -3282,7 +3390,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": "737fbc464348c8c2eb51ef65ceef318929969eac",
       "commit_url": "https://api.github.com/repos/denavila/bitcoin/commits/737fbc464348c8c2eb51ef65ceef318929969eac",
@@ -3311,10 +3420,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "8f72d4abe3ab4e4cbbe909694a1fd9d0a8f4a3bf",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/8f72d4abe3ab4e4cbbe909694a1fd9d0a8f4a3bf",
       "created_at": "2023-12-12T17:20:31Z"
     },
     {
@@ -3340,7 +3450,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -3373,7 +3484,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -3406,7 +3518,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -3439,7 +3552,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": "95e53e776675999f456a6402bca9cf200ede4973",
       "commit_url": "https://api.github.com/repos/denavila/bitcoin/commits/95e53e776675999f456a6402bca9cf200ede4973",
@@ -3468,10 +3582,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "64ab1b49e3c7030df79236fcc7048d916c65c2d9",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/64ab1b49e3c7030df79236fcc7048d916c65c2d9",
       "created_at": "2024-01-26T07:23:39Z"
     },
     {
@@ -3497,7 +3612,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -3530,7 +3646,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -3563,7 +3680,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -3589,7 +3707,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1970421734",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/733"
@@ -3617,7 +3736,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -3650,7 +3770,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": "4e836f674e447c3262d44400fd07da13d1e3c395",
       "commit_url": "https://api.github.com/repos/denavila/bitcoin/commits/4e836f674e447c3262d44400fd07da13d1e3c395",
@@ -3679,10 +3800,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "2af84b0cfc13709f41f941ee5bf15a652ab9afe7",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/2af84b0cfc13709f41f941ee5bf15a652ab9afe7",
       "created_at": "2024-02-29T08:06:44Z"
     },
     {
@@ -3708,7 +3830,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -3727,6 +3850,7 @@
       "commit_id": "2af84b0cfc13709f41f941ee5bf15a652ab9afe7",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2024-03-09T01:25:29Z",
       "author_association": "NONE",
       "body": "",
       "user": {
@@ -3747,7 +3871,8 @@
         "events_url": "https://api.github.com/users/jess2505/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jess2505/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#pullrequestreview-1926062004",
       "submitted_at": "2024-03-09T01:25:29Z",
@@ -3777,7 +3902,8 @@
         "events_url": "https://api.github.com/users/1440000bytes/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/1440000bytes/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -3803,7 +3929,8 @@
         "events_url": "https://api.github.com/users/1440000bytes/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/1440000bytes/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-2081539227",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/733"
@@ -3831,7 +3958,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -3857,7 +3985,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-2083190086",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/733"
@@ -3885,7 +4014,8 @@
         "events_url": "https://api.github.com/users/1440000bytes/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/1440000bytes/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -3914,7 +4044,8 @@
         "events_url": "https://api.github.com/users/1440000bytes/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/1440000bytes/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -3943,7 +4074,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -3969,7 +4101,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-2099873590",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/733"
@@ -3997,7 +4130,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -4030,7 +4164,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": "4fd852bb3d63517af43b18492ac245c9350ae2f3",
       "commit_url": "https://api.github.com/repos/denavila/bitcoin/commits/4fd852bb3d63517af43b18492ac245c9350ae2f3",
@@ -4059,10 +4194,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "bb00e41f86960666a4f998565b7528c62a43e7df",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/bb00e41f86960666a4f998565b7528c62a43e7df",
       "created_at": "2024-05-18T01:28:27Z"
     },
     {
@@ -4074,6 +4210,7 @@
       "commit_id": "bb00e41f86960666a4f998565b7528c62a43e7df",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2024-06-01T12:18:26Z",
       "author_association": "NONE",
       "body": "",
       "user": {
@@ -4094,7 +4231,8 @@
         "events_url": "https://api.github.com/users/1Helpmeout3/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/1Helpmeout3/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#pullrequestreview-2092091428",
       "submitted_at": "2024-06-01T12:18:26Z",
@@ -4110,6 +4248,7 @@
       "commit_id": "bb00e41f86960666a4f998565b7528c62a43e7df",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2024-06-01T12:21:15Z",
       "author_association": "NONE",
       "body": "",
       "user": {
@@ -4130,7 +4269,8 @@
         "events_url": "https://api.github.com/users/1Helpmeout3/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/1Helpmeout3/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#pullrequestreview-2092091695",
       "submitted_at": "2024-06-01T12:21:15Z",
@@ -4146,6 +4286,7 @@
       "commit_id": "bb00e41f86960666a4f998565b7528c62a43e7df",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2024-06-01T12:22:08Z",
       "author_association": "NONE",
       "body": "",
       "user": {
@@ -4166,7 +4307,8 @@
         "events_url": "https://api.github.com/users/1Helpmeout3/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/1Helpmeout3/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#pullrequestreview-2092091806",
       "submitted_at": "2024-06-01T12:22:08Z",
@@ -4196,7 +4338,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": "0b66676c2fcc0a7997a9c8e8f649cc9b889776e0",
       "commit_url": "https://api.github.com/repos/denavila/bitcoin/commits/0b66676c2fcc0a7997a9c8e8f649cc9b889776e0",
@@ -4225,7 +4368,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": "c2c12c0a94fb58ae99b73c521b5b89271a398b14",
       "commit_url": "https://api.github.com/repos/denavila/bitcoin/commits/c2c12c0a94fb58ae99b73c521b5b89271a398b14",
@@ -4254,10 +4398,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "e147c60506f6731c56eed93fbe05f6a62114d06b",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/e147c60506f6731c56eed93fbe05f6a62114d06b",
       "created_at": "2024-08-01T23:00:48Z"
     },
     {
@@ -4283,7 +4428,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -4302,6 +4448,7 @@
       "commit_id": "e147c60506f6731c56eed93fbe05f6a62114d06b",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2024-08-28T19:29:24Z",
       "author_association": "MEMBER",
       "body": "Didn't conceptually review yet. While rebasing, the clang-tidy CI highlighted these issues to be addressed:\r\n\r\n```\r\nwallet/spend.cpp:1539:9: error: function 'CalculateDeniabilizationFeeEstimate' is within a recursive call chain [misc-no-recursion,-warnings-as-errors]\r\n 1539 | CAmount CalculateDeniabilizationFeeEstimate(const CScript& shared_script, CAmount total_value, unsigned int num_utxos, unsigned int deniabilization_cycles, const CFeeRate& fee_rate)\r\n      |         ^\r\nwallet/spend.cpp:1539:9: note: example recursive call chain, starting from function 'CalculateDeniabilizationFeeEstimate'\r\n\r\nwallet/spend.cpp:1552:40: note: Frame #1: function 'CalculateDeniabilizationFeeEstimate' calls function 'CalculateDeniabilizationFeeEstimate' here:\r\n 1552 |     CAmount futureDeniabilizationFee = CalculateDeniabilizationFeeEstimate(shared_script, total_value / NUM_DENIABILIZATION_OUTPUTS, 1, deniabilization_cycles + 1, fee_rate) * NUM_DENIABILIZATION_OUTPUTS;\r\n      |                                        ^\r\nwallet/spend.cpp:1552:40: note: ... which was the starting point of the recursive call chain; there may be other cycles\r\n\r\nwallet/spend.cpp:1561:31: error: function 'CalculateDeniabilizationCycles' is within a recursive call chain [misc-no-recursion,-warnings-as-errors]\r\n 1561 | std::pair<unsigned int, bool> CalculateDeniabilizationCycles(CWallet& wallet, const COutPoint& outpoint)\r\n      |                               ^\r\nwallet/spend.cpp:1561:31: note: example recursive call chain, starting from function 'CalculateDeniabilizationCycles'\r\n\r\nwallet/spend.cpp:1634:23: note: Frame #1: function 'CalculateDeniabilizationCycles' calls function 'CalculateDeniabilizationCycles' here:\r\n 1634 |     auto inputStats = CalculateDeniabilizationCycles(wallet, txIn.prevout);\r\n```\r\n",
       "user": {
@@ -4322,7 +4469,8 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#pullrequestreview-2267095566",
       "submitted_at": "2024-08-28T19:29:24Z",
@@ -4352,7 +4500,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -4378,7 +4527,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-2327557888",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/733"
@@ -4406,7 +4556,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": "a869bd1740f76e105181ebcf92e95708d0a3a6b0",
       "commit_url": "https://api.github.com/repos/denavila/bitcoin/commits/a869bd1740f76e105181ebcf92e95708d0a3a6b0",
@@ -4435,7 +4586,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": "a24133189df7f792af99c44b55caabb87cbdd397",
       "commit_url": "https://api.github.com/repos/denavila/bitcoin/commits/a24133189df7f792af99c44b55caabb87cbdd397",
@@ -4464,10 +4616,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "5379115f4e6a425ac34db788666c229caf7e0c6f",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/5379115f4e6a425ac34db788666c229caf7e0c6f",
       "created_at": "2024-09-04T18:32:21Z"
     },
     {
@@ -4493,7 +4646,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": "5f4549cf3aaa381e78afbcc38852195d8428ee28",
       "commit_url": "https://api.github.com/repos/denavila/bitcoin/commits/5f4549cf3aaa381e78afbcc38852195d8428ee28",
@@ -4522,10 +4676,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "ee225c6c04ae17a7de82931af9cbb6baa9c1b3db",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/ee225c6c04ae17a7de82931af9cbb6baa9c1b3db",
       "created_at": "2024-09-04T20:33:42Z"
     },
     {
@@ -4551,7 +4706,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": "38119b91f9ad1b373aaed00a642d144c48e0d3c5",
       "commit_url": "https://api.github.com/repos/denavila/bitcoin/commits/38119b91f9ad1b373aaed00a642d144c48e0d3c5",
@@ -4580,10 +4736,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "a0dc4489f7c1b401989b9e518861e720de6c72de",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/a0dc4489f7c1b401989b9e518861e720de6c72de",
       "created_at": "2024-09-04T21:38:01Z"
     },
     {
@@ -4609,7 +4766,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -4642,7 +4800,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -4675,7 +4834,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -4701,7 +4861,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-2347077149",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/733"
@@ -4729,7 +4890,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -4762,10 +4924,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "6a8d732e3c9acd753b9982787862589edf06eebb",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/6a8d732e3c9acd753b9982787862589edf06eebb",
       "created_at": "2024-09-18T21:37:41Z"
     },
     {
@@ -4791,10 +4954,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "2a75a7171289fb75f0be7c588c1219fc244bcc2c",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/2a75a7171289fb75f0be7c588c1219fc244bcc2c",
       "created_at": "2024-09-18T21:55:51Z"
     },
     {
@@ -4820,7 +4984,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -4853,7 +5018,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -4886,7 +5052,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -4912,7 +5079,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-2405965632",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/733"
@@ -4980,10 +5148,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "3e08c9036a4d78ed4ff31e493d66f9a98ddcaebe",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/3e08c9036a4d78ed4ff31e493d66f9a98ddcaebe",
       "created_at": "2024-10-14T21:14:03Z"
     },
     {
@@ -5009,7 +5178,8 @@
         "events_url": "https://api.github.com/users/1440000bytes/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/1440000bytes/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -5035,7 +5205,8 @@
         "events_url": "https://api.github.com/users/1440000bytes/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/1440000bytes/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-2412386930",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/733"
@@ -5063,7 +5234,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -5092,7 +5264,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -5161,10 +5334,11 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
+      "commit_url": "https://api.github.com/repos/denavila/gui/commits/b48a95a79f65947c2c60eea55411aceca90bad69",
       "created_at": "2024-10-15T01:43:21Z"
     },
     {
@@ -5190,7 +5364,8 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -5223,7 +5398,8 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -5249,7 +5425,8 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-2414104356",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/733"
@@ -5277,11 +5454,42 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2024-10-15T14:32:07Z"
+    },
+    {
+      "event": "locked",
+      "id": 20293214007,
+      "node_id": "LOE_lADOEEET9c5mbIhxzwAAAAS5kd83",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/20293214007",
+      "actor": {
+        "login": "bitcoin-core",
+        "id": 13464320,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjEzNDY0MzIw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/13464320?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/bitcoin-core",
+        "html_url": "https://github.com/bitcoin-core",
+        "followers_url": "https://api.github.com/users/bitcoin-core/followers",
+        "following_url": "https://api.github.com/users/bitcoin-core/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/bitcoin-core/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/bitcoin-core/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/bitcoin-core/subscriptions",
+        "organizations_url": "https://api.github.com/users/bitcoin-core/orgs",
+        "repos_url": "https://api.github.com/users/bitcoin-core/repos",
+        "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
+        "type": "Organization",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-10-15T11:55:32Z"
     }
   ],
   "comments": [
@@ -5315,13 +5523,14 @@
         "events_url": "https://api.github.com/users/katesalazar/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "Crosses even column 160.\r\n```suggestion\r\n        wallet->SetLastBlockProcessed(106, WITH_LOCK(\r\n                node.context()->chainman->GetMutex(),\r\n                return node.context()->chainman->ActiveChain().Tip()->GetBlockHash()));\r\n```\r\nWouldn't reach even column 100.",
       "created_at": "2023-10-26T18:30:00Z",
-      "updated_at": "2023-10-26T18:36:25Z",
+      "updated_at": "2025-10-05T15:54:47Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#discussion_r1373600315",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "NONE",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1373600315"
@@ -5367,13 +5576,14 @@
         "events_url": "https://api.github.com/users/katesalazar/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "```suggestion\r\nResult CreateRateBumpDeniabilizationTransaction(\r\n        CWallet& wallet, const uint256& txid, unsigned int confirm_target,\r\n        bool sign, bilingual_str& error, CAmount& old_fee, CAmount& new_fee,\r\n        CTransactionRef& new_tx)\r\n```\r\nso many params, did you think of removing some?",
       "created_at": "2023-10-26T18:32:40Z",
-      "updated_at": "2023-10-26T18:36:25Z",
+      "updated_at": "2025-10-05T15:54:48Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#discussion_r1373610526",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "NONE",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1373610526"
@@ -5419,13 +5629,14 @@
         "events_url": "https://api.github.com/users/katesalazar/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "same",
       "created_at": "2023-10-26T18:34:33Z",
-      "updated_at": "2023-10-26T18:36:25Z",
+      "updated_at": "2025-10-05T15:54:48Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#discussion_r1373616084",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "NONE",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1373616084"
@@ -5448,7 +5659,7 @@
       "node_id": "PRRC_kwDOEEET9c5R374t",
       "diff_hunk": "@@ -1392,4 +1392,381 @@ bool FundTransaction(CWallet& wallet, CMutableTransaction& tx, CAmount& nFeeRet,\n \n     return true;\n }\n+\n+constexpr int NUM_DENIABILIZATION_OUTPUTS = 2;\n+\n+static unsigned int CalculateDeniabilizationTxSize(const CScript& script, CAmount value, unsigned int numTxIn)\n+{\n+    // Calculation based on the comments and code in GetDustThreshold and CreateTransactionInternal\n+    unsigned int txOutSize = (unsigned int)GetSerializeSize(CTxOut(value, script), PROTOCOL_VERSION);\n+\n+    const size_t txOutCount = NUM_DENIABILIZATION_OUTPUTS;\n+    unsigned int txSize = 10 + GetSizeOfCompactSize(txOutCount); // bytes for output count\n+    txSize += txOutSize * txOutCount;\n+\n+    int witnessversion = 0;\n+    std::vector<unsigned char> witnessprogram;\n+    if (script.IsWitnessProgram(witnessversion, witnessprogram)) {\n+        txSize += (unsigned int)(numTxIn * 67.75f + 0.5f);\n+    } else {\n+        txSize += numTxIn * 148;\n+    }\n+    return txSize;\n+}\n+\n+float CalculateDeniabilizationProbability(unsigned int deniabilization_cycles)\n+{\n+    // 100%, 50%, 25%, 13%, 6%, 3%, 2%, 1%\n+    return powf(0.5f, deniabilization_cycles);\n+}\n+\n+bool IsDeniabilizationWorthwhile(CAmount total_value, CAmount fee_estimate)\n+{\n+    constexpr CAmount value_to_fee_ratio = 10;\n+    return total_value > fee_estimate * value_to_fee_ratio;\n+}\n+\n+CCoinControl SetupDeniabilizationCoinControl(unsigned int confirm_target)\n+{\n+    CCoinControl coin_control;\n+    coin_control.m_avoid_address_reuse = true;\n+    coin_control.m_avoid_partial_spends = true;\n+    coin_control.m_allow_other_inputs = false;\n+    coin_control.m_signal_bip125_rbf = true;\n+    coin_control.m_confirm_target = confirm_target;\n+    // we'll automatically bump the fee if economical ends up not confirming by the next deniabilization cycle\n+    coin_control.m_fee_mode = FeeEstimateMode::ECONOMICAL;\n+    return coin_control;\n+}\n+\n+CFeeRate CalculateDeniabilizationFeeRate(const CWallet& wallet, unsigned int confirm_target)\n+{\n+    CCoinControl coin_control = SetupDeniabilizationCoinControl(confirm_target);\n+\n+    CFeeRate requiredFeeRate = GetRequiredFeeRate(wallet);\n+    FeeCalculation fee_calc;\n+    CFeeRate minFeeRate = GetMinimumFeeRate(wallet, coin_control, &fee_calc);\n+    if (fee_calc.reason == FeeReason::FALLBACK || requiredFeeRate > minFeeRate)\n+        return requiredFeeRate;\n+    return minFeeRate;\n+}\n+\n+static CAmount CalculateDeniabilizationTxFee(const CScript& shared_script, CAmount total_value, unsigned int num_utxos, const CFeeRate& fee_rate)\n+{\n+    Assert(num_utxos > 0);\n+    unsigned int deniabilization_tx_size = CalculateDeniabilizationTxSize(shared_script, total_value, num_utxos);\n+    return fee_rate.GetFee(deniabilization_tx_size);\n+}\n+\n+CAmount CalculateDeniabilizationFeeEstimate(const CScript& shared_script, CAmount total_value, unsigned int num_utxos, unsigned int deniabilization_cycles, const CFeeRate& fee_rate)\n+{\n+    float deniabilizationProbability = CalculateDeniabilizationProbability(deniabilization_cycles);\n+    // convert to integer percent to truncate and check for zero probability\n+    unsigned int deniabilizationProbabilityPercent = deniabilizationProbability * 100;\n+    if (deniabilizationProbabilityPercent == 0) {\n+        return 0;\n+    }\n+\n+    // this cycle will use all the UTXOs, while following cycles will have just one UTXO\n+    CAmount deniabilizationFee = CalculateDeniabilizationTxFee(shared_script, total_value, num_utxos, fee_rate);\n+\n+    // calculate the fees from future deniabilization cycles\n+    CAmount futureDeniabilizationFee = CalculateDeniabilizationFeeEstimate(shared_script, total_value / NUM_DENIABILIZATION_OUTPUTS, 1, deniabilization_cycles + 1, fee_rate) * 2;\n+\n+    // if it's worthwhile to do future deniabilizations then add them to this cycle estimate\n+    if (IsDeniabilizationWorthwhile(total_value, deniabilizationFee + futureDeniabilizationFee)) {\n+        deniabilizationFee += futureDeniabilizationFee;\n+    }\n+    return deniabilizationFee;\n+}\n+\n+std::pair<unsigned int, bool> CalculateDeniabilizationCycles(CWallet& wallet, const COutPoint& outpoint)\n+{\n+    LOCK(wallet.cs_wallet);\n+    auto walletTx = wallet.GetWalletTx(outpoint.hash);\n+    if (!walletTx) {\n+        return std::make_pair(0, false);\n+    }\n+    auto tx = walletTx->tx;\n+\n+    if (tx->IsCoinBase()) {\n+        // this is a block reward tx, so we tag it as such\n+        return std::make_pair(0, true);\n+    }\n+\n+    // an deniabilized coin is one we sent to ourselves\n+    // all txIn should belong to our wallet\n+    if (tx->vin.empty()) {\n+        return std::make_pair(0, false);\n+    }\n+    for (const auto& txIn : tx->vin) {\n+        if (InputIsMine(wallet, txIn) == ISMINE_NO) {\n+            return std::make_pair(0, false);\n+        }\n+    }\n+\n+    // all txOut should belong to our wallet\n+    Assert(outpoint.n < tx->vout.size());\n+    unsigned int n = 0;\n+    for (const auto& txOut : tx->vout) {\n+        if (wallet.IsMine(txOut) == ISMINE_NO) {\n+            Assert(n != outpoint.n);\n+            return std::make_pair(0, false);\n+        }\n+        n++;\n+    }\n+\n+    unsigned int uniqueTxOutCount = 0;\n+    for (const auto& txOut : tx->vout) {\n+        // check if it's a valid destination\n+        CTxDestination txOutDestination;\n+        ExtractDestination(txOut.scriptPubKey, txOutDestination);\n+        if (std::get_if<CNoDestination>(&txOutDestination)) {\n+            continue;\n+        }\n+\n+        // don't count outputs that match any input addresses (eg it's change output)\n+        bool matchesInput = false;\n+        for (const auto& txIn : tx->vin) {\n+            auto prevWalletTx = wallet.GetWalletTx(txIn.prevout.hash);\n+            if (prevWalletTx && prevWalletTx->tx->vout[txIn.prevout.n].scriptPubKey == txOut.scriptPubKey) {\n+                matchesInput = true;\n+                break;\n+            }\n+        }\n+        if (matchesInput) {\n+            continue;\n+        }\n+\n+        uniqueTxOutCount++;\n+    }\n+\n+    // we consider two or more unique outputs an \"deniabilization\" of the coin\n+    unsigned int deniabilizationCycles = uniqueTxOutCount >= 2 ? 1 : 0;\n+\n+    // all txIn and txOut are from our wallet\n+    // however if we have multiple txIn this was either an initial deniabilization of multiple UTXOs or the user manually merged deniabilized UTXOs\n+    // in either case we don't need to recurse into parent transactions and we can return the calculated cycles\n+    if (tx->vin.size() > 1) {\n+        return std::make_pair(deniabilizationCycles, false);\n+    }\n+\n+    const auto& txIn = tx->vin[0];\n+    // now recursively calculate the deniabilization cycles of the input\n+    auto inputStats = CalculateDeniabilizationCycles(wallet, txIn.prevout);\n+    return std::make_pair(inputStats.first + deniabilizationCycles, inputStats.second);\n+};\n+\n+void SpoofTransactionFingerprint(CMutableTransaction& tx, FastRandomContext& rng_fast)\n+{\n+    // Transaction \"fingerprint\" spoofing\n+    struct Fingerprint {\n+        bool standardVersion = false;\n+        bool antiFeeSniping = false;\n+        bool bip69Ordering = false;\n+    };\n+\n+    // wallet fingerprints based on info from variuous sources, see:\n+    // https://github.com/achow101/wallet-fingerprinting/blob/main/fingerprints.md\n+    // https://gitlab.com/1440000bytes/goldfish\n+    // https://ishaana.com/blog/wallet_fingerprinting/\n+    static const Fingerprint s_walletFingerprints[] = {\n+        {true, true, false},   // Core\n+        {true, true, true},    // Electrum\n+        {true, false, false},  // Blue\n+        {false, false, true},  // Trezor\n+        {false, false, false}, // Trust, Ledger\n+    };\n+    constexpr size_t NUM_WALLET_FINGERPRINTS = sizeof(s_walletFingerprints) / sizeof(s_walletFingerprints[0]);\n+\n+    auto fingerprintIndex = rng_fast.randrange(NUM_WALLET_FINGERPRINTS);\n+    const Fingerprint& fingerprint = s_walletFingerprints[fingerprintIndex];\n+\n+    if (fingerprint.standardVersion) {\n+        Assert(tx.nVersion == TX_MAX_STANDARD_VERSION);\n+    } else {\n+        tx.nVersion = 1;\n+    }\n+\n+    if (fingerprint.antiFeeSniping) {\n+        // By default \"Core\" implements anti-fee-sniping (nLockTime == block_height - rng_fast.randrange(100))\n+    } else {\n+        // no anti-fee-sniping\n+        tx.nLockTime = 0;\n+    }\n+\n+    if (fingerprint.bip69Ordering) {\n+        // Sort the inputs and outputs in accordance with BIP69\n+        auto sortInputsBip69 = [](const CTxIn& a, const CTxIn& b) {\n+            // COutPoint operator< does sort in accordance with Bip69, so just use that.\n+            return a.prevout < b.prevout;\n+        };\n+        std::sort(tx.vin.begin(), tx.vin.end(), sortInputsBip69);\n+\n+        auto sortOutputsBip69 = [](const CTxOut& a, const CTxOut& b) {\n+            if (a.nValue == b.nValue) {\n+                // Note: prevector operator< does NOT properly order scriptPubKeys lexicographically. So instead we\n+                // fall-back to using std::memcmp.\n+                const auto& spkA = a.scriptPubKey;\n+                const auto& spkB = b.scriptPubKey;\n+                const int cmp = std::memcmp(spkA.data(), spkB.data(), std::min(spkA.size(), spkB.size()));\n+                return cmp < 0 || (cmp == 0 && spkA.size() < spkB.size());\n+            }\n+            return a.nValue < b.nValue;\n+        };\n+        std::sort(tx.vout.begin(), tx.vout.end(), sortOutputsBip69);\n+    } else {\n+        // By default \"Core\" doesn't perform BIP69 ordering\n+    }\n+}\n+\n+util::Result<CreatedTransactionResult> CreateDeniabilizationTransaction(CWallet& wallet, const std::set<COutPoint>& inputs, const std::optional<OutputType>& opt_output_type, unsigned int confirm_target, unsigned int deniabilization_cycles, bool sign, bool& insufficient_amount)\n+{\n+    if (inputs.empty()) {\n+        return util::Error{_(\"Inputs must not be empty\")};\n+    }\n+\n+    CCoinControl coin_control = SetupDeniabilizationCoinControl(confirm_target);\n+    // TODO: Do we need to limit number of inputs to OUTPUT_GROUP_MAX_ENTRIES\n+    for (const auto& input : inputs) {\n+        coin_control.Select(input);\n+    }\n+    Assert(coin_control.HasSelected());\n+    CFeeRate deniabilization_fee_rate = CalculateDeniabilizationFeeRate(wallet, confirm_target);\n+    coin_control.m_feerate = deniabilization_fee_rate;\n+\n+    LOCK(wallet.cs_wallet);\n+\n+    FastRandomContext rng_fast;\n+    CoinSelectionParams coin_selection_params{rng_fast};\n+    coin_selection_params.m_avoid_partial_spends = coin_control.m_avoid_partial_spends;\n+    coin_selection_params.m_include_unsafe_inputs = coin_control.m_include_unsafe_inputs;\n+    coin_selection_params.m_effective_feerate = deniabilization_fee_rate;\n+    coin_selection_params.m_long_term_feerate = wallet.m_consolidate_feerate;\n+    coin_selection_params.m_subtract_fee_outputs = true;\n+\n+    auto res_fetch_inputs = FetchSelectedInputs(wallet, coin_control, coin_selection_params);\n+    if (!res_fetch_inputs) {\n+        return util::Error{util::ErrorString(res_fetch_inputs)};\n+    }\n+    PreSelectedInputs preset_inputs = *res_fetch_inputs;\n+    CAmount total_amount = preset_inputs.total_amount;\n+\n+    // validate that all UTXOs share the same address\n+    std::optional<CScript> op_shared_script;\n+    for (const auto& coin : preset_inputs.coins) {\n+        if (!op_shared_script) {\n+            op_shared_script = coin->txout.scriptPubKey;\n+        }\n+        if (!op_shared_script || !(*op_shared_script == coin->txout.scriptPubKey)) {\n+            return util::Error{_(\"Input addresses must all match.\")};\n+        }\n+    }\n+    Assert(op_shared_script);\n+    CScript shared_script = *op_shared_script;\n+\n+    CFeeRate discard_feerate = GetDiscardRate(wallet);\n+    CAmount dust_threshold = GetDustThreshold(CTxOut(total_amount, shared_script), discard_feerate);\n+\n+    // deniabilize the UTXOs by splitting the value randomly\n+    // find a split that leaves enough amount post split to finish the deniabilization process in each new UTXO\n+    CAmount min_post_split_amount = CalculateDeniabilizationFeeEstimate(shared_script, total_amount / NUM_DENIABILIZATION_OUTPUTS, 1, deniabilization_cycles + 1, deniabilization_fee_rate) + dust_threshold;\n+    CAmount estimated_tx_fee = CalculateDeniabilizationTxFee(shared_script, total_amount, preset_inputs.coins.size(), deniabilization_fee_rate);\n+\n+    CAmount total_random_range = total_amount - min_post_split_amount * NUM_DENIABILIZATION_OUTPUTS - estimated_tx_fee;\n+    if (total_random_range < 0) {\n+        insufficient_amount = true;\n+        return util::Error{strprintf(_(\"Insufficient amount (%d) for a deniabilization transaction, min amount (%d), tx fee (%d).\"), total_amount, min_post_split_amount, estimated_tx_fee)};\n+    }\n+\n+    OutputType output_type = wallet.m_default_address_type;\n+    if (opt_output_type) {\n+        output_type = *opt_output_type;\n+    } else {\n+        // if no output type was specified, try to infer it from the source inputs\n+        CTxDestination shared_destination = CNoDestination();\n+        if (ExtractDestination(shared_script, shared_destination)) {\n+            std::optional<OutputType> opt_shared_output_type = OutputTypeFromDestination(shared_destination);\n+            if (opt_shared_output_type) {\n+                output_type = *opt_shared_output_type;\n+            }\n+        }\n+    }\n+\n+    const int num_recipients = NUM_DENIABILIZATION_OUTPUTS;\n+    std::vector<CRecipient> recipients(num_recipients);\n+    std::list<ReserveDestination> reservedests;\n+    constexpr bool reservdest_internal = false; // TODO: Should this be \"true\" or \"false\". What does \"internal\" mean?\n+    for (int recipient_index = 0; recipient_index < num_recipients; recipient_index++) {\n+        bool lastRecipient = recipient_index == (num_recipients - 1);\n+        if (!lastRecipient) {\n+            // all recipients except for the last one,\n+            // calculate a random range based on the remaining total random range and the number of remaining recipients\n+            // then generate a random amount within that range\n+            CAmount random_range = total_random_range / (num_recipients - recipient_index - 1);\n+            CAmount random_amount = 0;\n+            if (random_range > 0) {\n+                random_amount = GetRand<CAmount>(random_range);\n+                Assert(total_random_range >= random_amount);\n+                total_random_range -= random_amount;\n+            }\n+            recipients[recipient_index].nAmount = min_post_split_amount + random_amount;\n+        } else {\n+            // the last recipient takes any leftover random amount and the estimated fee\n+            recipients[recipient_index].nAmount = min_post_split_amount + total_random_range + estimated_tx_fee;\n+        }\n+\n+        // the last recipient pays the tx fees\n+        recipients[recipient_index].fSubtractFeeFromAmount = lastRecipient;\n+\n+        auto& reservedest = reservedests.emplace_back(&wallet, output_type);\n+        CTxDestination dest;\n+        auto op_dest = reservedest.GetReservedDestination(reservdest_internal);\n+        if (!op_dest) {\n+            return util::Error{_(\"Failed to reserve a new address.\") + Untranslated(\" \") + util::ErrorString(op_dest)};\n+        }\n+        dest = *op_dest;\n+        recipients[recipient_index].dest = dest;\n+        if (lastRecipient) {\n+            // we don't expect to get change, but we provide the address to prevent CreateTransactionInternal from generating a change address\n+            coin_control.destChange = dest;\n+        }\n+    }\n+\n+    CAmount recipient_amount = std::accumulate(recipients.cbegin(), recipients.cend(), CAmount{0}, [](CAmount sum, const CRecipient& recipient) { return sum + recipient.nAmount; });",
       "path": "src/wallet/spend.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 345,
       "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "16d50b3699232bfe48b21057e6175ab12417ebe3",
@@ -5471,13 +5682,14 @@
         "events_url": "https://api.github.com/users/katesalazar/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "fold to several lines?",
       "created_at": "2023-10-26T18:35:10Z",
-      "updated_at": "2023-10-26T18:36:25Z",
+      "updated_at": "2025-10-05T15:54:48Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#discussion_r1373617709",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "NONE",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1373617709"
@@ -5523,7 +5735,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "The \"inputs\", \"out_output_type\" and \"confirm_target\" are usually passed in as part of CCoinControl. \r\nHowever for deniabilization we create a specifically built CCoinControl, so I didn't want the API user to have to fill one out, just to have the majority of the fields essentially ignored, so that's why I decided to list these individually.\r\nI could make a new class to pass them together though, eg CDeniabilizationControl? \r\nDoes that sound reasonable? ",
       "created_at": "2023-10-28T20:32:22Z",
@@ -5575,7 +5788,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "CreateRateBumpDeniabilizationTransaction essentially does the job of CreateRateBumpTransaction and SignTransaction, but specialized for bumping deniabilization transactions. \r\nThis functionality is responsible for the presence of the \"txid\", \"old_fee\", \"new_fee\" and \"sign\" parameters.\r\n\"confirm_target\" takes the place of the \"coin_control\" parameter (since that's all we need), and the \"error\" and \"new_tx\" are needed to communicate the result/error with the caller.\r\nThe reason we need a new API function here is that we need to take the new bump fee from one of the recipients of the old transaction (fSubtractFeeFromAmount), and there didn't seem to be a way to do that via CreateRateBumpTransaction. And generally CreateRateBumpTransaction just does too many other things that we don't need once we know we're bumping a deniabilization transaction.",
       "created_at": "2023-10-28T20:49:43Z",
@@ -5627,7 +5841,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "There was a bug introduced in the fee bumping after the last rebase. Interestingly it didn't get flagged by the compiler ... even though it was an obviously wrong type being assigned to CRecipient struct ... :-O \r\nAt any rate, I fixed it in the latest commit. Please let me know if you're still seeing an issue running the tests.\r\nThanks! ",
       "created_at": "2023-10-28T20:52:56Z",
@@ -5656,7 +5871,7 @@
       "node_id": "PRRC_kwDOEEET9c5R-b4v",
       "diff_hunk": "@@ -1392,4 +1392,381 @@ bool FundTransaction(CWallet& wallet, CMutableTransaction& tx, CAmount& nFeeRet,\n \n     return true;\n }\n+\n+constexpr int NUM_DENIABILIZATION_OUTPUTS = 2;\n+\n+static unsigned int CalculateDeniabilizationTxSize(const CScript& script, CAmount value, unsigned int numTxIn)\n+{\n+    // Calculation based on the comments and code in GetDustThreshold and CreateTransactionInternal\n+    unsigned int txOutSize = (unsigned int)GetSerializeSize(CTxOut(value, script), PROTOCOL_VERSION);\n+\n+    const size_t txOutCount = NUM_DENIABILIZATION_OUTPUTS;\n+    unsigned int txSize = 10 + GetSizeOfCompactSize(txOutCount); // bytes for output count\n+    txSize += txOutSize * txOutCount;\n+\n+    int witnessversion = 0;\n+    std::vector<unsigned char> witnessprogram;\n+    if (script.IsWitnessProgram(witnessversion, witnessprogram)) {\n+        txSize += (unsigned int)(numTxIn * 67.75f + 0.5f);\n+    } else {\n+        txSize += numTxIn * 148;\n+    }\n+    return txSize;\n+}\n+\n+float CalculateDeniabilizationProbability(unsigned int deniabilization_cycles)\n+{\n+    // 100%, 50%, 25%, 13%, 6%, 3%, 2%, 1%\n+    return powf(0.5f, deniabilization_cycles);\n+}\n+\n+bool IsDeniabilizationWorthwhile(CAmount total_value, CAmount fee_estimate)\n+{\n+    constexpr CAmount value_to_fee_ratio = 10;\n+    return total_value > fee_estimate * value_to_fee_ratio;\n+}\n+\n+CCoinControl SetupDeniabilizationCoinControl(unsigned int confirm_target)\n+{\n+    CCoinControl coin_control;\n+    coin_control.m_avoid_address_reuse = true;\n+    coin_control.m_avoid_partial_spends = true;\n+    coin_control.m_allow_other_inputs = false;\n+    coin_control.m_signal_bip125_rbf = true;\n+    coin_control.m_confirm_target = confirm_target;\n+    // we'll automatically bump the fee if economical ends up not confirming by the next deniabilization cycle\n+    coin_control.m_fee_mode = FeeEstimateMode::ECONOMICAL;\n+    return coin_control;\n+}\n+\n+CFeeRate CalculateDeniabilizationFeeRate(const CWallet& wallet, unsigned int confirm_target)\n+{\n+    CCoinControl coin_control = SetupDeniabilizationCoinControl(confirm_target);\n+\n+    CFeeRate requiredFeeRate = GetRequiredFeeRate(wallet);\n+    FeeCalculation fee_calc;\n+    CFeeRate minFeeRate = GetMinimumFeeRate(wallet, coin_control, &fee_calc);\n+    if (fee_calc.reason == FeeReason::FALLBACK || requiredFeeRate > minFeeRate)\n+        return requiredFeeRate;\n+    return minFeeRate;\n+}\n+\n+static CAmount CalculateDeniabilizationTxFee(const CScript& shared_script, CAmount total_value, unsigned int num_utxos, const CFeeRate& fee_rate)\n+{\n+    Assert(num_utxos > 0);\n+    unsigned int deniabilization_tx_size = CalculateDeniabilizationTxSize(shared_script, total_value, num_utxos);\n+    return fee_rate.GetFee(deniabilization_tx_size);\n+}\n+\n+CAmount CalculateDeniabilizationFeeEstimate(const CScript& shared_script, CAmount total_value, unsigned int num_utxos, unsigned int deniabilization_cycles, const CFeeRate& fee_rate)\n+{\n+    float deniabilizationProbability = CalculateDeniabilizationProbability(deniabilization_cycles);\n+    // convert to integer percent to truncate and check for zero probability\n+    unsigned int deniabilizationProbabilityPercent = deniabilizationProbability * 100;\n+    if (deniabilizationProbabilityPercent == 0) {\n+        return 0;\n+    }\n+\n+    // this cycle will use all the UTXOs, while following cycles will have just one UTXO\n+    CAmount deniabilizationFee = CalculateDeniabilizationTxFee(shared_script, total_value, num_utxos, fee_rate);\n+\n+    // calculate the fees from future deniabilization cycles\n+    CAmount futureDeniabilizationFee = CalculateDeniabilizationFeeEstimate(shared_script, total_value / NUM_DENIABILIZATION_OUTPUTS, 1, deniabilization_cycles + 1, fee_rate) * 2;\n+\n+    // if it's worthwhile to do future deniabilizations then add them to this cycle estimate\n+    if (IsDeniabilizationWorthwhile(total_value, deniabilizationFee + futureDeniabilizationFee)) {\n+        deniabilizationFee += futureDeniabilizationFee;\n+    }\n+    return deniabilizationFee;\n+}\n+\n+std::pair<unsigned int, bool> CalculateDeniabilizationCycles(CWallet& wallet, const COutPoint& outpoint)\n+{\n+    LOCK(wallet.cs_wallet);\n+    auto walletTx = wallet.GetWalletTx(outpoint.hash);\n+    if (!walletTx) {\n+        return std::make_pair(0, false);\n+    }\n+    auto tx = walletTx->tx;\n+\n+    if (tx->IsCoinBase()) {\n+        // this is a block reward tx, so we tag it as such\n+        return std::make_pair(0, true);\n+    }\n+\n+    // an deniabilized coin is one we sent to ourselves\n+    // all txIn should belong to our wallet\n+    if (tx->vin.empty()) {\n+        return std::make_pair(0, false);\n+    }\n+    for (const auto& txIn : tx->vin) {\n+        if (InputIsMine(wallet, txIn) == ISMINE_NO) {\n+            return std::make_pair(0, false);\n+        }\n+    }\n+\n+    // all txOut should belong to our wallet\n+    Assert(outpoint.n < tx->vout.size());\n+    unsigned int n = 0;\n+    for (const auto& txOut : tx->vout) {\n+        if (wallet.IsMine(txOut) == ISMINE_NO) {\n+            Assert(n != outpoint.n);\n+            return std::make_pair(0, false);\n+        }\n+        n++;\n+    }\n+\n+    unsigned int uniqueTxOutCount = 0;\n+    for (const auto& txOut : tx->vout) {\n+        // check if it's a valid destination\n+        CTxDestination txOutDestination;\n+        ExtractDestination(txOut.scriptPubKey, txOutDestination);\n+        if (std::get_if<CNoDestination>(&txOutDestination)) {\n+            continue;\n+        }\n+\n+        // don't count outputs that match any input addresses (eg it's change output)\n+        bool matchesInput = false;\n+        for (const auto& txIn : tx->vin) {\n+            auto prevWalletTx = wallet.GetWalletTx(txIn.prevout.hash);\n+            if (prevWalletTx && prevWalletTx->tx->vout[txIn.prevout.n].scriptPubKey == txOut.scriptPubKey) {\n+                matchesInput = true;\n+                break;\n+            }\n+        }\n+        if (matchesInput) {\n+            continue;\n+        }\n+\n+        uniqueTxOutCount++;\n+    }\n+\n+    // we consider two or more unique outputs an \"deniabilization\" of the coin\n+    unsigned int deniabilizationCycles = uniqueTxOutCount >= 2 ? 1 : 0;\n+\n+    // all txIn and txOut are from our wallet\n+    // however if we have multiple txIn this was either an initial deniabilization of multiple UTXOs or the user manually merged deniabilized UTXOs\n+    // in either case we don't need to recurse into parent transactions and we can return the calculated cycles\n+    if (tx->vin.size() > 1) {\n+        return std::make_pair(deniabilizationCycles, false);\n+    }\n+\n+    const auto& txIn = tx->vin[0];\n+    // now recursively calculate the deniabilization cycles of the input\n+    auto inputStats = CalculateDeniabilizationCycles(wallet, txIn.prevout);\n+    return std::make_pair(inputStats.first + deniabilizationCycles, inputStats.second);\n+};\n+\n+void SpoofTransactionFingerprint(CMutableTransaction& tx, FastRandomContext& rng_fast)\n+{\n+    // Transaction \"fingerprint\" spoofing\n+    struct Fingerprint {\n+        bool standardVersion = false;\n+        bool antiFeeSniping = false;\n+        bool bip69Ordering = false;\n+    };\n+\n+    // wallet fingerprints based on info from variuous sources, see:\n+    // https://github.com/achow101/wallet-fingerprinting/blob/main/fingerprints.md\n+    // https://gitlab.com/1440000bytes/goldfish\n+    // https://ishaana.com/blog/wallet_fingerprinting/\n+    static const Fingerprint s_walletFingerprints[] = {\n+        {true, true, false},   // Core\n+        {true, true, true},    // Electrum\n+        {true, false, false},  // Blue\n+        {false, false, true},  // Trezor\n+        {false, false, false}, // Trust, Ledger\n+    };\n+    constexpr size_t NUM_WALLET_FINGERPRINTS = sizeof(s_walletFingerprints) / sizeof(s_walletFingerprints[0]);\n+\n+    auto fingerprintIndex = rng_fast.randrange(NUM_WALLET_FINGERPRINTS);\n+    const Fingerprint& fingerprint = s_walletFingerprints[fingerprintIndex];\n+\n+    if (fingerprint.standardVersion) {\n+        Assert(tx.nVersion == TX_MAX_STANDARD_VERSION);\n+    } else {\n+        tx.nVersion = 1;\n+    }\n+\n+    if (fingerprint.antiFeeSniping) {\n+        // By default \"Core\" implements anti-fee-sniping (nLockTime == block_height - rng_fast.randrange(100))\n+    } else {\n+        // no anti-fee-sniping\n+        tx.nLockTime = 0;\n+    }\n+\n+    if (fingerprint.bip69Ordering) {\n+        // Sort the inputs and outputs in accordance with BIP69\n+        auto sortInputsBip69 = [](const CTxIn& a, const CTxIn& b) {\n+            // COutPoint operator< does sort in accordance with Bip69, so just use that.\n+            return a.prevout < b.prevout;\n+        };\n+        std::sort(tx.vin.begin(), tx.vin.end(), sortInputsBip69);\n+\n+        auto sortOutputsBip69 = [](const CTxOut& a, const CTxOut& b) {\n+            if (a.nValue == b.nValue) {\n+                // Note: prevector operator< does NOT properly order scriptPubKeys lexicographically. So instead we\n+                // fall-back to using std::memcmp.\n+                const auto& spkA = a.scriptPubKey;\n+                const auto& spkB = b.scriptPubKey;\n+                const int cmp = std::memcmp(spkA.data(), spkB.data(), std::min(spkA.size(), spkB.size()));\n+                return cmp < 0 || (cmp == 0 && spkA.size() < spkB.size());\n+            }\n+            return a.nValue < b.nValue;\n+        };\n+        std::sort(tx.vout.begin(), tx.vout.end(), sortOutputsBip69);\n+    } else {\n+        // By default \"Core\" doesn't perform BIP69 ordering\n+    }\n+}\n+\n+util::Result<CreatedTransactionResult> CreateDeniabilizationTransaction(CWallet& wallet, const std::set<COutPoint>& inputs, const std::optional<OutputType>& opt_output_type, unsigned int confirm_target, unsigned int deniabilization_cycles, bool sign, bool& insufficient_amount)\n+{\n+    if (inputs.empty()) {\n+        return util::Error{_(\"Inputs must not be empty\")};\n+    }\n+\n+    CCoinControl coin_control = SetupDeniabilizationCoinControl(confirm_target);\n+    // TODO: Do we need to limit number of inputs to OUTPUT_GROUP_MAX_ENTRIES\n+    for (const auto& input : inputs) {\n+        coin_control.Select(input);\n+    }\n+    Assert(coin_control.HasSelected());\n+    CFeeRate deniabilization_fee_rate = CalculateDeniabilizationFeeRate(wallet, confirm_target);\n+    coin_control.m_feerate = deniabilization_fee_rate;\n+\n+    LOCK(wallet.cs_wallet);\n+\n+    FastRandomContext rng_fast;\n+    CoinSelectionParams coin_selection_params{rng_fast};\n+    coin_selection_params.m_avoid_partial_spends = coin_control.m_avoid_partial_spends;\n+    coin_selection_params.m_include_unsafe_inputs = coin_control.m_include_unsafe_inputs;\n+    coin_selection_params.m_effective_feerate = deniabilization_fee_rate;\n+    coin_selection_params.m_long_term_feerate = wallet.m_consolidate_feerate;\n+    coin_selection_params.m_subtract_fee_outputs = true;\n+\n+    auto res_fetch_inputs = FetchSelectedInputs(wallet, coin_control, coin_selection_params);\n+    if (!res_fetch_inputs) {\n+        return util::Error{util::ErrorString(res_fetch_inputs)};\n+    }\n+    PreSelectedInputs preset_inputs = *res_fetch_inputs;\n+    CAmount total_amount = preset_inputs.total_amount;\n+\n+    // validate that all UTXOs share the same address\n+    std::optional<CScript> op_shared_script;\n+    for (const auto& coin : preset_inputs.coins) {\n+        if (!op_shared_script) {\n+            op_shared_script = coin->txout.scriptPubKey;\n+        }\n+        if (!op_shared_script || !(*op_shared_script == coin->txout.scriptPubKey)) {\n+            return util::Error{_(\"Input addresses must all match.\")};\n+        }\n+    }\n+    Assert(op_shared_script);\n+    CScript shared_script = *op_shared_script;\n+\n+    CFeeRate discard_feerate = GetDiscardRate(wallet);\n+    CAmount dust_threshold = GetDustThreshold(CTxOut(total_amount, shared_script), discard_feerate);\n+\n+    // deniabilize the UTXOs by splitting the value randomly\n+    // find a split that leaves enough amount post split to finish the deniabilization process in each new UTXO\n+    CAmount min_post_split_amount = CalculateDeniabilizationFeeEstimate(shared_script, total_amount / NUM_DENIABILIZATION_OUTPUTS, 1, deniabilization_cycles + 1, deniabilization_fee_rate) + dust_threshold;\n+    CAmount estimated_tx_fee = CalculateDeniabilizationTxFee(shared_script, total_amount, preset_inputs.coins.size(), deniabilization_fee_rate);\n+\n+    CAmount total_random_range = total_amount - min_post_split_amount * NUM_DENIABILIZATION_OUTPUTS - estimated_tx_fee;\n+    if (total_random_range < 0) {\n+        insufficient_amount = true;\n+        return util::Error{strprintf(_(\"Insufficient amount (%d) for a deniabilization transaction, min amount (%d), tx fee (%d).\"), total_amount, min_post_split_amount, estimated_tx_fee)};\n+    }\n+\n+    OutputType output_type = wallet.m_default_address_type;\n+    if (opt_output_type) {\n+        output_type = *opt_output_type;\n+    } else {\n+        // if no output type was specified, try to infer it from the source inputs\n+        CTxDestination shared_destination = CNoDestination();\n+        if (ExtractDestination(shared_script, shared_destination)) {\n+            std::optional<OutputType> opt_shared_output_type = OutputTypeFromDestination(shared_destination);\n+            if (opt_shared_output_type) {\n+                output_type = *opt_shared_output_type;\n+            }\n+        }\n+    }\n+\n+    const int num_recipients = NUM_DENIABILIZATION_OUTPUTS;\n+    std::vector<CRecipient> recipients(num_recipients);\n+    std::list<ReserveDestination> reservedests;\n+    constexpr bool reservdest_internal = false; // TODO: Should this be \"true\" or \"false\". What does \"internal\" mean?\n+    for (int recipient_index = 0; recipient_index < num_recipients; recipient_index++) {\n+        bool lastRecipient = recipient_index == (num_recipients - 1);\n+        if (!lastRecipient) {\n+            // all recipients except for the last one,\n+            // calculate a random range based on the remaining total random range and the number of remaining recipients\n+            // then generate a random amount within that range\n+            CAmount random_range = total_random_range / (num_recipients - recipient_index - 1);\n+            CAmount random_amount = 0;\n+            if (random_range > 0) {\n+                random_amount = GetRand<CAmount>(random_range);\n+                Assert(total_random_range >= random_amount);\n+                total_random_range -= random_amount;\n+            }\n+            recipients[recipient_index].nAmount = min_post_split_amount + random_amount;\n+        } else {\n+            // the last recipient takes any leftover random amount and the estimated fee\n+            recipients[recipient_index].nAmount = min_post_split_amount + total_random_range + estimated_tx_fee;\n+        }\n+\n+        // the last recipient pays the tx fees\n+        recipients[recipient_index].fSubtractFeeFromAmount = lastRecipient;\n+\n+        auto& reservedest = reservedests.emplace_back(&wallet, output_type);\n+        CTxDestination dest;\n+        auto op_dest = reservedest.GetReservedDestination(reservdest_internal);\n+        if (!op_dest) {\n+            return util::Error{_(\"Failed to reserve a new address.\") + Untranslated(\" \") + util::ErrorString(op_dest)};\n+        }\n+        dest = *op_dest;\n+        recipients[recipient_index].dest = dest;\n+        if (lastRecipient) {\n+            // we don't expect to get change, but we provide the address to prevent CreateTransactionInternal from generating a change address\n+            coin_control.destChange = dest;\n+        }\n+    }\n+\n+    CAmount recipient_amount = std::accumulate(recipients.cbegin(), recipients.cend(), CAmount{0}, [](CAmount sum, const CRecipient& recipient) { return sum + recipient.nAmount; });",
       "path": "src/wallet/spend.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 345,
       "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "16d50b3699232bfe48b21057e6175ab12417ebe3",
@@ -5679,7 +5894,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "Yes, indeed. I split the code into several lines in the latest commit.\r\nThanks!",
       "created_at": "2023-10-28T21:03:19Z",
@@ -5731,13 +5947,14 @@
         "events_url": "https://api.github.com/users/katesalazar/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "just by thinking of the possibility seems reasonable enough for me at this point\r\n\r\nfor now make as you feel it's best made\r\n",
       "created_at": "2023-10-29T14:39:09Z",
-      "updated_at": "2023-10-29T14:39:10Z",
+      "updated_at": "2025-10-05T15:54:48Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#discussion_r1375449856",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "NONE",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1375449856"
@@ -5783,13 +6000,14 @@
         "events_url": "https://api.github.com/users/katesalazar/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "why is this hardwired to 2?",
       "created_at": "2023-10-29T14:42:15Z",
-      "updated_at": "2023-10-29T14:42:16Z",
+      "updated_at": "2025-10-05T15:54:48Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#discussion_r1375450500",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "NONE",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1375450500"
@@ -5812,7 +6030,7 @@
       "node_id": "PRRC_kwDOEEET9c5R-7cr",
       "diff_hunk": "@@ -1392,4 +1392,384 @@ bool FundTransaction(CWallet& wallet, CMutableTransaction& tx, CAmount& nFeeRet,\n \n     return true;\n }\n+\n+constexpr int NUM_DENIABILIZATION_OUTPUTS = 2;\n+\n+static unsigned int CalculateDeniabilizationTxSize(const CScript& script, CAmount value, unsigned int numTxIn)\n+{\n+    // Calculation based on the comments and code in GetDustThreshold and CreateTransactionInternal\n+    unsigned int txOutSize = (unsigned int)GetSerializeSize(CTxOut(value, script), PROTOCOL_VERSION);\n+\n+    const size_t txOutCount = NUM_DENIABILIZATION_OUTPUTS;\n+    unsigned int txSize = 10 + GetSizeOfCompactSize(txOutCount); // bytes for output count\n+    txSize += txOutSize * txOutCount;\n+\n+    int witnessversion = 0;\n+    std::vector<unsigned char> witnessprogram;\n+    if (script.IsWitnessProgram(witnessversion, witnessprogram)) {\n+        txSize += (unsigned int)(numTxIn * 67.75f + 0.5f);\n+    } else {\n+        txSize += numTxIn * 148;",
       "path": "src/wallet/spend.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 21,
       "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
@@ -5835,13 +6053,14 @@
         "events_url": "https://api.github.com/users/katesalazar/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "why this magic number?\r\nis this the number of legacy and p2sh bytes per txin?\r\ncan't name some constant with that?\r\n",
       "created_at": "2023-10-29T14:45:09Z",
-      "updated_at": "2023-10-29T14:45:10Z",
+      "updated_at": "2025-10-05T15:54:48Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#discussion_r1375450923",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "NONE",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1375450923"
@@ -5864,7 +6083,7 @@
       "node_id": "PRRC_kwDOEEET9c5R-7eZ",
       "diff_hunk": "@@ -1392,4 +1392,384 @@ bool FundTransaction(CWallet& wallet, CMutableTransaction& tx, CAmount& nFeeRet,\n \n     return true;\n }\n+\n+constexpr int NUM_DENIABILIZATION_OUTPUTS = 2;\n+\n+static unsigned int CalculateDeniabilizationTxSize(const CScript& script, CAmount value, unsigned int numTxIn)\n+{\n+    // Calculation based on the comments and code in GetDustThreshold and CreateTransactionInternal\n+    unsigned int txOutSize = (unsigned int)GetSerializeSize(CTxOut(value, script), PROTOCOL_VERSION);\n+\n+    const size_t txOutCount = NUM_DENIABILIZATION_OUTPUTS;\n+    unsigned int txSize = 10 + GetSizeOfCompactSize(txOutCount); // bytes for output count\n+    txSize += txOutSize * txOutCount;\n+\n+    int witnessversion = 0;\n+    std::vector<unsigned char> witnessprogram;\n+    if (script.IsWitnessProgram(witnessversion, witnessprogram)) {\n+        txSize += (unsigned int)(numTxIn * 67.75f + 0.5f);\n+    } else {\n+        txSize += numTxIn * 148;\n+    }\n+    return txSize;\n+}\n+\n+float CalculateDeniabilizationProbability(unsigned int deniabilization_cycles)\n+{\n+    // 100%, 50%, 25%, 13%, 6%, 3%, 2%, 1%\n+    return powf(0.5f, deniabilization_cycles);\n+}\n+\n+bool IsDeniabilizationWorthwhile(CAmount total_value, CAmount fee_estimate)\n+{\n+    constexpr CAmount value_to_fee_ratio = 10;\n+    return total_value > fee_estimate * value_to_fee_ratio;\n+}\n+\n+CCoinControl SetupDeniabilizationCoinControl(unsigned int confirm_target)\n+{\n+    CCoinControl coin_control;\n+    coin_control.m_avoid_address_reuse = true;\n+    coin_control.m_avoid_partial_spends = true;\n+    coin_control.m_allow_other_inputs = false;\n+    coin_control.m_signal_bip125_rbf = true;\n+    coin_control.m_confirm_target = confirm_target;\n+    // we'll automatically bump the fee if economical ends up not confirming by the next deniabilization cycle\n+    coin_control.m_fee_mode = FeeEstimateMode::ECONOMICAL;\n+    return coin_control;\n+}\n+\n+CFeeRate CalculateDeniabilizationFeeRate(const CWallet& wallet, unsigned int confirm_target)\n+{\n+    CCoinControl coin_control = SetupDeniabilizationCoinControl(confirm_target);\n+\n+    CFeeRate requiredFeeRate = GetRequiredFeeRate(wallet);\n+    FeeCalculation fee_calc;\n+    CFeeRate minFeeRate = GetMinimumFeeRate(wallet, coin_control, &fee_calc);\n+    if (fee_calc.reason == FeeReason::FALLBACK || requiredFeeRate > minFeeRate)\n+        return requiredFeeRate;\n+    return minFeeRate;\n+}\n+\n+static CAmount CalculateDeniabilizationTxFee(const CScript& shared_script, CAmount total_value, unsigned int num_utxos, const CFeeRate& fee_rate)\n+{\n+    Assert(num_utxos > 0);\n+    unsigned int deniabilization_tx_size = CalculateDeniabilizationTxSize(shared_script, total_value, num_utxos);\n+    return fee_rate.GetFee(deniabilization_tx_size);\n+}\n+\n+CAmount CalculateDeniabilizationFeeEstimate(const CScript& shared_script, CAmount total_value, unsigned int num_utxos, unsigned int deniabilization_cycles, const CFeeRate& fee_rate)\n+{\n+    float deniabilizationProbability = CalculateDeniabilizationProbability(deniabilization_cycles);\n+    // convert to integer percent to truncate and check for zero probability\n+    unsigned int deniabilizationProbabilityPercent = deniabilizationProbability * 100;\n+    if (deniabilizationProbabilityPercent == 0) {\n+        return 0;\n+    }\n+\n+    // this cycle will use all the UTXOs, while following cycles will have just one UTXO\n+    CAmount deniabilizationFee = CalculateDeniabilizationTxFee(shared_script, total_value, num_utxos, fee_rate);\n+\n+    // calculate the fees from future deniabilization cycles\n+    CAmount futureDeniabilizationFee = CalculateDeniabilizationFeeEstimate(shared_script, total_value / NUM_DENIABILIZATION_OUTPUTS, 1, deniabilization_cycles + 1, fee_rate) * 2;",
       "path": "src/wallet/spend.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 83,
       "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
@@ -5887,13 +6106,14 @@
         "events_url": "https://api.github.com/users/katesalazar/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "why compute fee estimate and then multiply by a hardwired 2?",
       "created_at": "2023-10-29T14:45:55Z",
-      "updated_at": "2023-10-29T14:45:55Z",
+      "updated_at": "2025-10-05T15:54:48Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#discussion_r1375451033",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "NONE",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1375451033"
@@ -5916,7 +6136,7 @@
       "node_id": "PRRC_kwDOEEET9c5R-7r6",
       "diff_hunk": "@@ -1392,4 +1392,381 @@ bool FundTransaction(CWallet& wallet, CMutableTransaction& tx, CAmount& nFeeRet,\n \n     return true;\n }\n+\n+constexpr int NUM_DENIABILIZATION_OUTPUTS = 2;\n+\n+static unsigned int CalculateDeniabilizationTxSize(const CScript& script, CAmount value, unsigned int numTxIn)\n+{\n+    // Calculation based on the comments and code in GetDustThreshold and CreateTransactionInternal\n+    unsigned int txOutSize = (unsigned int)GetSerializeSize(CTxOut(value, script), PROTOCOL_VERSION);\n+\n+    const size_t txOutCount = NUM_DENIABILIZATION_OUTPUTS;\n+    unsigned int txSize = 10 + GetSizeOfCompactSize(txOutCount); // bytes for output count\n+    txSize += txOutSize * txOutCount;\n+\n+    int witnessversion = 0;\n+    std::vector<unsigned char> witnessprogram;\n+    if (script.IsWitnessProgram(witnessversion, witnessprogram)) {\n+        txSize += (unsigned int)(numTxIn * 67.75f + 0.5f);\n+    } else {\n+        txSize += numTxIn * 148;\n+    }\n+    return txSize;\n+}\n+\n+float CalculateDeniabilizationProbability(unsigned int deniabilization_cycles)\n+{\n+    // 100%, 50%, 25%, 13%, 6%, 3%, 2%, 1%\n+    return powf(0.5f, deniabilization_cycles);\n+}\n+\n+bool IsDeniabilizationWorthwhile(CAmount total_value, CAmount fee_estimate)\n+{\n+    constexpr CAmount value_to_fee_ratio = 10;\n+    return total_value > fee_estimate * value_to_fee_ratio;\n+}\n+\n+CCoinControl SetupDeniabilizationCoinControl(unsigned int confirm_target)\n+{\n+    CCoinControl coin_control;\n+    coin_control.m_avoid_address_reuse = true;\n+    coin_control.m_avoid_partial_spends = true;\n+    coin_control.m_allow_other_inputs = false;\n+    coin_control.m_signal_bip125_rbf = true;\n+    coin_control.m_confirm_target = confirm_target;\n+    // we'll automatically bump the fee if economical ends up not confirming by the next deniabilization cycle\n+    coin_control.m_fee_mode = FeeEstimateMode::ECONOMICAL;\n+    return coin_control;\n+}\n+\n+CFeeRate CalculateDeniabilizationFeeRate(const CWallet& wallet, unsigned int confirm_target)\n+{\n+    CCoinControl coin_control = SetupDeniabilizationCoinControl(confirm_target);\n+\n+    CFeeRate requiredFeeRate = GetRequiredFeeRate(wallet);\n+    FeeCalculation fee_calc;\n+    CFeeRate minFeeRate = GetMinimumFeeRate(wallet, coin_control, &fee_calc);\n+    if (fee_calc.reason == FeeReason::FALLBACK || requiredFeeRate > minFeeRate)\n+        return requiredFeeRate;\n+    return minFeeRate;\n+}\n+\n+static CAmount CalculateDeniabilizationTxFee(const CScript& shared_script, CAmount total_value, unsigned int num_utxos, const CFeeRate& fee_rate)\n+{\n+    Assert(num_utxos > 0);\n+    unsigned int deniabilization_tx_size = CalculateDeniabilizationTxSize(shared_script, total_value, num_utxos);\n+    return fee_rate.GetFee(deniabilization_tx_size);\n+}\n+\n+CAmount CalculateDeniabilizationFeeEstimate(const CScript& shared_script, CAmount total_value, unsigned int num_utxos, unsigned int deniabilization_cycles, const CFeeRate& fee_rate)\n+{\n+    float deniabilizationProbability = CalculateDeniabilizationProbability(deniabilization_cycles);\n+    // convert to integer percent to truncate and check for zero probability\n+    unsigned int deniabilizationProbabilityPercent = deniabilizationProbability * 100;\n+    if (deniabilizationProbabilityPercent == 0) {\n+        return 0;\n+    }\n+\n+    // this cycle will use all the UTXOs, while following cycles will have just one UTXO\n+    CAmount deniabilizationFee = CalculateDeniabilizationTxFee(shared_script, total_value, num_utxos, fee_rate);\n+\n+    // calculate the fees from future deniabilization cycles\n+    CAmount futureDeniabilizationFee = CalculateDeniabilizationFeeEstimate(shared_script, total_value / NUM_DENIABILIZATION_OUTPUTS, 1, deniabilization_cycles + 1, fee_rate) * 2;\n+\n+    // if it's worthwhile to do future deniabilizations then add them to this cycle estimate\n+    if (IsDeniabilizationWorthwhile(total_value, deniabilizationFee + futureDeniabilizationFee)) {\n+        deniabilizationFee += futureDeniabilizationFee;\n+    }\n+    return deniabilizationFee;\n+}\n+\n+std::pair<unsigned int, bool> CalculateDeniabilizationCycles(CWallet& wallet, const COutPoint& outpoint)\n+{\n+    LOCK(wallet.cs_wallet);\n+    auto walletTx = wallet.GetWalletTx(outpoint.hash);\n+    if (!walletTx) {\n+        return std::make_pair(0, false);\n+    }\n+    auto tx = walletTx->tx;\n+\n+    if (tx->IsCoinBase()) {\n+        // this is a block reward tx, so we tag it as such\n+        return std::make_pair(0, true);\n+    }\n+\n+    // an deniabilized coin is one we sent to ourselves\n+    // all txIn should belong to our wallet\n+    if (tx->vin.empty()) {\n+        return std::make_pair(0, false);\n+    }\n+    for (const auto& txIn : tx->vin) {\n+        if (InputIsMine(wallet, txIn) == ISMINE_NO) {\n+            return std::make_pair(0, false);\n+        }\n+    }\n+\n+    // all txOut should belong to our wallet\n+    Assert(outpoint.n < tx->vout.size());\n+    unsigned int n = 0;\n+    for (const auto& txOut : tx->vout) {\n+        if (wallet.IsMine(txOut) == ISMINE_NO) {\n+            Assert(n != outpoint.n);\n+            return std::make_pair(0, false);\n+        }\n+        n++;\n+    }\n+\n+    unsigned int uniqueTxOutCount = 0;\n+    for (const auto& txOut : tx->vout) {\n+        // check if it's a valid destination\n+        CTxDestination txOutDestination;\n+        ExtractDestination(txOut.scriptPubKey, txOutDestination);\n+        if (std::get_if<CNoDestination>(&txOutDestination)) {\n+            continue;\n+        }\n+\n+        // don't count outputs that match any input addresses (eg it's change output)\n+        bool matchesInput = false;\n+        for (const auto& txIn : tx->vin) {\n+            auto prevWalletTx = wallet.GetWalletTx(txIn.prevout.hash);\n+            if (prevWalletTx && prevWalletTx->tx->vout[txIn.prevout.n].scriptPubKey == txOut.scriptPubKey) {\n+                matchesInput = true;\n+                break;\n+            }\n+        }\n+        if (matchesInput) {\n+            continue;\n+        }\n+\n+        uniqueTxOutCount++;\n+    }\n+\n+    // we consider two or more unique outputs an \"deniabilization\" of the coin\n+    unsigned int deniabilizationCycles = uniqueTxOutCount >= 2 ? 1 : 0;\n+\n+    // all txIn and txOut are from our wallet\n+    // however if we have multiple txIn this was either an initial deniabilization of multiple UTXOs or the user manually merged deniabilized UTXOs\n+    // in either case we don't need to recurse into parent transactions and we can return the calculated cycles\n+    if (tx->vin.size() > 1) {\n+        return std::make_pair(deniabilizationCycles, false);\n+    }\n+\n+    const auto& txIn = tx->vin[0];\n+    // now recursively calculate the deniabilization cycles of the input\n+    auto inputStats = CalculateDeniabilizationCycles(wallet, txIn.prevout);\n+    return std::make_pair(inputStats.first + deniabilizationCycles, inputStats.second);\n+};\n+\n+void SpoofTransactionFingerprint(CMutableTransaction& tx, FastRandomContext& rng_fast)\n+{\n+    // Transaction \"fingerprint\" spoofing\n+    struct Fingerprint {\n+        bool standardVersion = false;\n+        bool antiFeeSniping = false;\n+        bool bip69Ordering = false;\n+    };\n+\n+    // wallet fingerprints based on info from variuous sources, see:\n+    // https://github.com/achow101/wallet-fingerprinting/blob/main/fingerprints.md\n+    // https://gitlab.com/1440000bytes/goldfish\n+    // https://ishaana.com/blog/wallet_fingerprinting/\n+    static const Fingerprint s_walletFingerprints[] = {\n+        {true, true, false},   // Core\n+        {true, true, true},    // Electrum\n+        {true, false, false},  // Blue\n+        {false, false, true},  // Trezor\n+        {false, false, false}, // Trust, Ledger\n+    };\n+    constexpr size_t NUM_WALLET_FINGERPRINTS = sizeof(s_walletFingerprints) / sizeof(s_walletFingerprints[0]);\n+\n+    auto fingerprintIndex = rng_fast.randrange(NUM_WALLET_FINGERPRINTS);\n+    const Fingerprint& fingerprint = s_walletFingerprints[fingerprintIndex];\n+\n+    if (fingerprint.standardVersion) {\n+        Assert(tx.nVersion == TX_MAX_STANDARD_VERSION);\n+    } else {\n+        tx.nVersion = 1;\n+    }\n+\n+    if (fingerprint.antiFeeSniping) {\n+        // By default \"Core\" implements anti-fee-sniping (nLockTime == block_height - rng_fast.randrange(100))\n+    } else {\n+        // no anti-fee-sniping\n+        tx.nLockTime = 0;\n+    }\n+\n+    if (fingerprint.bip69Ordering) {\n+        // Sort the inputs and outputs in accordance with BIP69\n+        auto sortInputsBip69 = [](const CTxIn& a, const CTxIn& b) {\n+            // COutPoint operator< does sort in accordance with Bip69, so just use that.\n+            return a.prevout < b.prevout;\n+        };\n+        std::sort(tx.vin.begin(), tx.vin.end(), sortInputsBip69);\n+\n+        auto sortOutputsBip69 = [](const CTxOut& a, const CTxOut& b) {\n+            if (a.nValue == b.nValue) {\n+                // Note: prevector operator< does NOT properly order scriptPubKeys lexicographically. So instead we\n+                // fall-back to using std::memcmp.\n+                const auto& spkA = a.scriptPubKey;\n+                const auto& spkB = b.scriptPubKey;\n+                const int cmp = std::memcmp(spkA.data(), spkB.data(), std::min(spkA.size(), spkB.size()));\n+                return cmp < 0 || (cmp == 0 && spkA.size() < spkB.size());\n+            }\n+            return a.nValue < b.nValue;\n+        };\n+        std::sort(tx.vout.begin(), tx.vout.end(), sortOutputsBip69);\n+    } else {\n+        // By default \"Core\" doesn't perform BIP69 ordering\n+    }\n+}\n+\n+util::Result<CreatedTransactionResult> CreateDeniabilizationTransaction(CWallet& wallet, const std::set<COutPoint>& inputs, const std::optional<OutputType>& opt_output_type, unsigned int confirm_target, unsigned int deniabilization_cycles, bool sign, bool& insufficient_amount)\n+{\n+    if (inputs.empty()) {\n+        return util::Error{_(\"Inputs must not be empty\")};\n+    }\n+\n+    CCoinControl coin_control = SetupDeniabilizationCoinControl(confirm_target);\n+    // TODO: Do we need to limit number of inputs to OUTPUT_GROUP_MAX_ENTRIES\n+    for (const auto& input : inputs) {\n+        coin_control.Select(input);\n+    }\n+    Assert(coin_control.HasSelected());\n+    CFeeRate deniabilization_fee_rate = CalculateDeniabilizationFeeRate(wallet, confirm_target);\n+    coin_control.m_feerate = deniabilization_fee_rate;\n+\n+    LOCK(wallet.cs_wallet);\n+\n+    FastRandomContext rng_fast;\n+    CoinSelectionParams coin_selection_params{rng_fast};\n+    coin_selection_params.m_avoid_partial_spends = coin_control.m_avoid_partial_spends;\n+    coin_selection_params.m_include_unsafe_inputs = coin_control.m_include_unsafe_inputs;\n+    coin_selection_params.m_effective_feerate = deniabilization_fee_rate;\n+    coin_selection_params.m_long_term_feerate = wallet.m_consolidate_feerate;\n+    coin_selection_params.m_subtract_fee_outputs = true;\n+\n+    auto res_fetch_inputs = FetchSelectedInputs(wallet, coin_control, coin_selection_params);\n+    if (!res_fetch_inputs) {\n+        return util::Error{util::ErrorString(res_fetch_inputs)};\n+    }\n+    PreSelectedInputs preset_inputs = *res_fetch_inputs;\n+    CAmount total_amount = preset_inputs.total_amount;\n+\n+    // validate that all UTXOs share the same address\n+    std::optional<CScript> op_shared_script;\n+    for (const auto& coin : preset_inputs.coins) {\n+        if (!op_shared_script) {\n+            op_shared_script = coin->txout.scriptPubKey;\n+        }\n+        if (!op_shared_script || !(*op_shared_script == coin->txout.scriptPubKey)) {\n+            return util::Error{_(\"Input addresses must all match.\")};\n+        }\n+    }\n+    Assert(op_shared_script);\n+    CScript shared_script = *op_shared_script;\n+\n+    CFeeRate discard_feerate = GetDiscardRate(wallet);\n+    CAmount dust_threshold = GetDustThreshold(CTxOut(total_amount, shared_script), discard_feerate);\n+\n+    // deniabilize the UTXOs by splitting the value randomly\n+    // find a split that leaves enough amount post split to finish the deniabilization process in each new UTXO\n+    CAmount min_post_split_amount = CalculateDeniabilizationFeeEstimate(shared_script, total_amount / NUM_DENIABILIZATION_OUTPUTS, 1, deniabilization_cycles + 1, deniabilization_fee_rate) + dust_threshold;\n+    CAmount estimated_tx_fee = CalculateDeniabilizationTxFee(shared_script, total_amount, preset_inputs.coins.size(), deniabilization_fee_rate);\n+\n+    CAmount total_random_range = total_amount - min_post_split_amount * NUM_DENIABILIZATION_OUTPUTS - estimated_tx_fee;\n+    if (total_random_range < 0) {\n+        insufficient_amount = true;\n+        return util::Error{strprintf(_(\"Insufficient amount (%d) for a deniabilization transaction, min amount (%d), tx fee (%d).\"), total_amount, min_post_split_amount, estimated_tx_fee)};\n+    }\n+\n+    OutputType output_type = wallet.m_default_address_type;\n+    if (opt_output_type) {\n+        output_type = *opt_output_type;\n+    } else {\n+        // if no output type was specified, try to infer it from the source inputs\n+        CTxDestination shared_destination = CNoDestination();\n+        if (ExtractDestination(shared_script, shared_destination)) {\n+            std::optional<OutputType> opt_shared_output_type = OutputTypeFromDestination(shared_destination);\n+            if (opt_shared_output_type) {\n+                output_type = *opt_shared_output_type;\n+            }\n+        }\n+    }\n+\n+    const int num_recipients = NUM_DENIABILIZATION_OUTPUTS;\n+    std::vector<CRecipient> recipients(num_recipients);\n+    std::list<ReserveDestination> reservedests;\n+    constexpr bool reservdest_internal = false; // TODO: Should this be \"true\" or \"false\". What does \"internal\" mean?\n+    for (int recipient_index = 0; recipient_index < num_recipients; recipient_index++) {\n+        bool lastRecipient = recipient_index == (num_recipients - 1);\n+        if (!lastRecipient) {\n+            // all recipients except for the last one,\n+            // calculate a random range based on the remaining total random range and the number of remaining recipients\n+            // then generate a random amount within that range\n+            CAmount random_range = total_random_range / (num_recipients - recipient_index - 1);\n+            CAmount random_amount = 0;\n+            if (random_range > 0) {\n+                random_amount = GetRand<CAmount>(random_range);\n+                Assert(total_random_range >= random_amount);\n+                total_random_range -= random_amount;\n+            }\n+            recipients[recipient_index].nAmount = min_post_split_amount + random_amount;\n+        } else {\n+            // the last recipient takes any leftover random amount and the estimated fee\n+            recipients[recipient_index].nAmount = min_post_split_amount + total_random_range + estimated_tx_fee;\n+        }\n+\n+        // the last recipient pays the tx fees\n+        recipients[recipient_index].fSubtractFeeFromAmount = lastRecipient;\n+\n+        auto& reservedest = reservedests.emplace_back(&wallet, output_type);\n+        CTxDestination dest;\n+        auto op_dest = reservedest.GetReservedDestination(reservdest_internal);\n+        if (!op_dest) {\n+            return util::Error{_(\"Failed to reserve a new address.\") + Untranslated(\" \") + util::ErrorString(op_dest)};\n+        }\n+        dest = *op_dest;\n+        recipients[recipient_index].dest = dest;\n+        if (lastRecipient) {\n+            // we don't expect to get change, but we provide the address to prevent CreateTransactionInternal from generating a change address\n+            coin_control.destChange = dest;\n+        }\n+    }\n+\n+    CAmount recipient_amount = std::accumulate(recipients.cbegin(), recipients.cend(), CAmount{0}, [](CAmount sum, const CRecipient& recipient) { return sum + recipient.nAmount; });",
       "path": "src/wallet/spend.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 345,
       "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "16d50b3699232bfe48b21057e6175ab12417ebe3",
@@ -5939,13 +6159,14 @@
         "events_url": "https://api.github.com/users/katesalazar/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "I hate that indent standard though, and yet I think now it's a bit better than before. Thanks",
       "created_at": "2023-10-29T14:50:30Z",
-      "updated_at": "2023-10-29T14:50:30Z",
+      "updated_at": "2025-10-05T15:54:48Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#discussion_r1375451898",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "NONE",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1375451898"
@@ -5991,7 +6212,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "2 outputs is a common spend transaction and we're trying to mimic that. \r\nAnother concern with a larger output count is that the number of deniabilization chunks grows much larger with each \"cycle\", and thus becomes more expensive to perform further cycles.\r\nIn the end 2 looked like the sweet spot, but I made the constant just in case we want to play with other output counts in the future.\r\nI'll add comments in the code to that effect so that it's more obvious.\r\nThanks!",
       "created_at": "2023-10-30T01:02:13Z",
@@ -6020,7 +6242,7 @@
       "node_id": "PRRC_kwDOEEET9c5R_Ziy",
       "diff_hunk": "@@ -1392,4 +1392,384 @@ bool FundTransaction(CWallet& wallet, CMutableTransaction& tx, CAmount& nFeeRet,\n \n     return true;\n }\n+\n+constexpr int NUM_DENIABILIZATION_OUTPUTS = 2;\n+\n+static unsigned int CalculateDeniabilizationTxSize(const CScript& script, CAmount value, unsigned int numTxIn)\n+{\n+    // Calculation based on the comments and code in GetDustThreshold and CreateTransactionInternal\n+    unsigned int txOutSize = (unsigned int)GetSerializeSize(CTxOut(value, script), PROTOCOL_VERSION);\n+\n+    const size_t txOutCount = NUM_DENIABILIZATION_OUTPUTS;\n+    unsigned int txSize = 10 + GetSizeOfCompactSize(txOutCount); // bytes for output count\n+    txSize += txOutSize * txOutCount;\n+\n+    int witnessversion = 0;\n+    std::vector<unsigned char> witnessprogram;\n+    if (script.IsWitnessProgram(witnessversion, witnessprogram)) {\n+        txSize += (unsigned int)(numTxIn * 67.75f + 0.5f);\n+    } else {\n+        txSize += numTxIn * 148;",
       "path": "src/wallet/spend.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 21,
       "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
@@ -6043,7 +6265,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "Yes, these are legacy vs Segwit tx size calculation, I think I found the code in GetDustThreshold. I'll see if we have named constants for some of those.",
       "created_at": "2023-10-30T01:08:17Z",
@@ -6072,7 +6295,7 @@
       "node_id": "PRRC_kwDOEEET9c5R_Zy4",
       "diff_hunk": "@@ -1392,4 +1392,384 @@ bool FundTransaction(CWallet& wallet, CMutableTransaction& tx, CAmount& nFeeRet,\n \n     return true;\n }\n+\n+constexpr int NUM_DENIABILIZATION_OUTPUTS = 2;\n+\n+static unsigned int CalculateDeniabilizationTxSize(const CScript& script, CAmount value, unsigned int numTxIn)\n+{\n+    // Calculation based on the comments and code in GetDustThreshold and CreateTransactionInternal\n+    unsigned int txOutSize = (unsigned int)GetSerializeSize(CTxOut(value, script), PROTOCOL_VERSION);\n+\n+    const size_t txOutCount = NUM_DENIABILIZATION_OUTPUTS;\n+    unsigned int txSize = 10 + GetSizeOfCompactSize(txOutCount); // bytes for output count\n+    txSize += txOutSize * txOutCount;\n+\n+    int witnessversion = 0;\n+    std::vector<unsigned char> witnessprogram;\n+    if (script.IsWitnessProgram(witnessversion, witnessprogram)) {\n+        txSize += (unsigned int)(numTxIn * 67.75f + 0.5f);\n+    } else {\n+        txSize += numTxIn * 148;\n+    }\n+    return txSize;\n+}\n+\n+float CalculateDeniabilizationProbability(unsigned int deniabilization_cycles)\n+{\n+    // 100%, 50%, 25%, 13%, 6%, 3%, 2%, 1%\n+    return powf(0.5f, deniabilization_cycles);\n+}\n+\n+bool IsDeniabilizationWorthwhile(CAmount total_value, CAmount fee_estimate)\n+{\n+    constexpr CAmount value_to_fee_ratio = 10;\n+    return total_value > fee_estimate * value_to_fee_ratio;\n+}\n+\n+CCoinControl SetupDeniabilizationCoinControl(unsigned int confirm_target)\n+{\n+    CCoinControl coin_control;\n+    coin_control.m_avoid_address_reuse = true;\n+    coin_control.m_avoid_partial_spends = true;\n+    coin_control.m_allow_other_inputs = false;\n+    coin_control.m_signal_bip125_rbf = true;\n+    coin_control.m_confirm_target = confirm_target;\n+    // we'll automatically bump the fee if economical ends up not confirming by the next deniabilization cycle\n+    coin_control.m_fee_mode = FeeEstimateMode::ECONOMICAL;\n+    return coin_control;\n+}\n+\n+CFeeRate CalculateDeniabilizationFeeRate(const CWallet& wallet, unsigned int confirm_target)\n+{\n+    CCoinControl coin_control = SetupDeniabilizationCoinControl(confirm_target);\n+\n+    CFeeRate requiredFeeRate = GetRequiredFeeRate(wallet);\n+    FeeCalculation fee_calc;\n+    CFeeRate minFeeRate = GetMinimumFeeRate(wallet, coin_control, &fee_calc);\n+    if (fee_calc.reason == FeeReason::FALLBACK || requiredFeeRate > minFeeRate)\n+        return requiredFeeRate;\n+    return minFeeRate;\n+}\n+\n+static CAmount CalculateDeniabilizationTxFee(const CScript& shared_script, CAmount total_value, unsigned int num_utxos, const CFeeRate& fee_rate)\n+{\n+    Assert(num_utxos > 0);\n+    unsigned int deniabilization_tx_size = CalculateDeniabilizationTxSize(shared_script, total_value, num_utxos);\n+    return fee_rate.GetFee(deniabilization_tx_size);\n+}\n+\n+CAmount CalculateDeniabilizationFeeEstimate(const CScript& shared_script, CAmount total_value, unsigned int num_utxos, unsigned int deniabilization_cycles, const CFeeRate& fee_rate)\n+{\n+    float deniabilizationProbability = CalculateDeniabilizationProbability(deniabilization_cycles);\n+    // convert to integer percent to truncate and check for zero probability\n+    unsigned int deniabilizationProbabilityPercent = deniabilizationProbability * 100;\n+    if (deniabilizationProbabilityPercent == 0) {\n+        return 0;\n+    }\n+\n+    // this cycle will use all the UTXOs, while following cycles will have just one UTXO\n+    CAmount deniabilizationFee = CalculateDeniabilizationTxFee(shared_script, total_value, num_utxos, fee_rate);\n+\n+    // calculate the fees from future deniabilization cycles\n+    CAmount futureDeniabilizationFee = CalculateDeniabilizationFeeEstimate(shared_script, total_value / NUM_DENIABILIZATION_OUTPUTS, 1, deniabilization_cycles + 1, fee_rate) * 2;",
       "path": "src/wallet/spend.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 83,
       "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
@@ -6095,7 +6318,8 @@
         "events_url": "https://api.github.com/users/denavila/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "Oh, that 2 probably needs to be NUM_DENIABILIZATION_OUTPUTS. Basically we calculate the future cycle cost for each of the chunks we split into. Each chunk should cost the same if the number of splits is the same, so we can calculate one chunk and multiply by the number of splits.\r\nThanks for spotting that. I'll fix it.",
       "created_at": "2023-10-30T01:11:56Z",
@@ -6124,7 +6348,7 @@
       "node_id": "PRRC_kwDOEEET9c5SDBN9",
       "diff_hunk": "@@ -1392,4 +1392,384 @@ bool FundTransaction(CWallet& wallet, CMutableTransaction& tx, CAmount& nFeeRet,\n \n     return true;\n }\n+\n+constexpr int NUM_DENIABILIZATION_OUTPUTS = 2;\n+\n+static unsigned int CalculateDeniabilizationTxSize(const CScript& script, CAmount value, unsigned int numTxIn)\n+{\n+    // Calculation based on the comments and code in GetDustThreshold and CreateTransactionInternal\n+    unsigned int txOutSize = (unsigned int)GetSerializeSize(CTxOut(value, script), PROTOCOL_VERSION);\n+\n+    const size_t txOutCount = NUM_DENIABILIZATION_OUTPUTS;\n+    unsigned int txSize = 10 + GetSizeOfCompactSize(txOutCount); // bytes for output count\n+    txSize += txOutSize * txOutCount;\n+\n+    int witnessversion = 0;\n+    std::vector<unsigned char> witnessprogram;\n+    if (script.IsWitnessProgram(witnessversion, witnessprogram)) {\n+        txSize += (unsigned int)(numTxIn * 67.75f + 0.5f);\n+    } else {\n+        txSize += numTxIn * 148;\n+    }\n+    return txSize;\n+}\n+\n+float CalculateDeniabilizationProbability(unsigned int deniabilization_cycles)\n+{\n+    // 100%, 50%, 25%, 13%, 6%, 3%, 2%, 1%\n+    return powf(0.5f, deniabilization_cycles);\n+}\n+\n+bool IsDeniabilizationWorthwhile(CAmount total_value, CAmount fee_estimate)\n+{\n+    constexpr CAmount value_to_fee_ratio = 10;\n+    return total_value > fee_estimate * value_to_fee_ratio;\n+}\n+\n+CCoinControl SetupDeniabilizationCoinControl(unsigned int confirm_target)\n+{\n+    CCoinControl coin_control;\n+    coin_control.m_avoid_address_reuse = true;\n+    coin_control.m_avoid_partial_spends = true;\n+    coin_control.m_allow_other_inputs = false;\n+    coin_control.m_signal_bip125_rbf = true;\n+    coin_control.m_confirm_target = confirm_target;\n+    // we'll automatically bump the fee if economical ends up not confirming by the next deniabilization cycle\n+    coin_control.m_fee_mode = FeeEstimateMode::ECONOMICAL;\n+    return coin_control;\n+}\n+\n+CFeeRate CalculateDeniabilizationFeeRate(const CWallet& wallet, unsigned int confirm_target)\n+{\n+    CCoinControl coin_control = SetupDeniabilizationCoinControl(confirm_target);\n+\n+    CFeeRate requiredFeeRate = GetRequiredFeeRate(wallet);\n+    FeeCalculation fee_calc;\n+    CFeeRate minFeeRate = GetMinimumFeeRate(wallet, coin_control, &fee_calc);\n+    if (fee_calc.reason == FeeReason::FALLBACK || requiredFeeRate > minFeeRate)\n+        return requiredFeeRate;\n+    return minFeeRate;\n+}\n+\n+static CAmount CalculateDeniabilizationTxFee(const CScript& shared_script, CAmount total_value, unsigned int num_utxos, const CFeeRate& fee_rate)\n+{\n+    Assert(num_utxos > 0);\n+    unsigned int deniabilization_tx_size = CalculateDeniabilizationTxSize(shared_script, total_value, num_utxos);\n+    return fee_rate.GetFee(deniabilization_tx_size);\n+}\n+\n+CAmount CalculateDeniabilizationFeeEstimate(const CScript& shared_script, CAmount total_value, unsigned int num_utxos, unsigned int deniabilization_cycles, const CFeeRate& fee_rate)\n+{\n+    float deniabilizationProbability = CalculateDeniabilizationProbability(deniabilization_cycles);\n+    // convert to integer percent to truncate and check for zero probability\n+    unsigned int deniabilizationProbabilityPercent = deniabilizationProbability * 100;\n+    if (deniabilizationProbabilityPercent == 0) {\n+        return 0;\n+    }\n+\n+    // this cycle will use all the UTXOs, while following cycles will have just one UTXO\n+    CAmount deniabilizationFee = CalculateDeniabilizationTxFee(shared_script, total_value, num_utxos, fee_rate);\n+\n+    // calculate the fees from future deniabilization cycles\n+    CAmount futureDeniabilizationFee = CalculateDeniabilizationFeeEstimate(shared_script, total_value / NUM_DENIABILIZATION_OUTPUTS, 1, deniabilization_cycles + 1, fee_rate) * 2;",
       "path": "src/wallet/spend.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 83,
       "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
@@ -6147,13 +6371,14 @@
         "events_url": "https://api.github.com/users/katesalazar/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "happpy to help",
       "created_at": "2023-10-30T16:42:54Z",
-      "updated_at": "2023-10-30T16:42:55Z",
+      "updated_at": "2025-10-05T15:54:48Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#discussion_r1376523133",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "NONE",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1376523133"
@@ -6176,7 +6401,7 @@
       "node_id": "PRRC_kwDOEEET9c5SDCT1",
       "diff_hunk": "@@ -1392,4 +1392,384 @@ bool FundTransaction(CWallet& wallet, CMutableTransaction& tx, CAmount& nFeeRet,\n \n     return true;\n }\n+\n+constexpr int NUM_DENIABILIZATION_OUTPUTS = 2;\n+\n+static unsigned int CalculateDeniabilizationTxSize(const CScript& script, CAmount value, unsigned int numTxIn)\n+{\n+    // Calculation based on the comments and code in GetDustThreshold and CreateTransactionInternal\n+    unsigned int txOutSize = (unsigned int)GetSerializeSize(CTxOut(value, script), PROTOCOL_VERSION);\n+\n+    const size_t txOutCount = NUM_DENIABILIZATION_OUTPUTS;\n+    unsigned int txSize = 10 + GetSizeOfCompactSize(txOutCount); // bytes for output count\n+    txSize += txOutSize * txOutCount;\n+\n+    int witnessversion = 0;\n+    std::vector<unsigned char> witnessprogram;\n+    if (script.IsWitnessProgram(witnessversion, witnessprogram)) {\n+        txSize += (unsigned int)(numTxIn * 67.75f + 0.5f);\n+    } else {\n+        txSize += numTxIn * 148;",
       "path": "src/wallet/spend.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 21,
       "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
       "original_commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
@@ -6199,13 +6424,14 @@
         "events_url": "https://api.github.com/users/katesalazar/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "and/or simple one line comments could help clarify,\r\nI feel like named constant for magic number is a better strategy than commenting,\r\nbut maintainer should take final choice :thinking:",
       "created_at": "2023-10-30T16:46:28Z",
-      "updated_at": "2023-10-30T16:46:28Z",
+      "updated_at": "2025-10-05T15:54:49Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#discussion_r1376527605",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "NONE",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1376527605"
@@ -6251,13 +6477,14 @@
         "events_url": "https://api.github.com/users/katesalazar/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "patch_url": null
       },
       "body": "Maybe commenting the constant helps,\r\nmaybe best commented in some function,\r\nat the extremely minimum least I think such intrincacies should be commented in the commit message introducing either the constant or whatever function",
       "created_at": "2023-10-30T16:49:34Z",
-      "updated_at": "2023-10-30T16:49:35Z",
+      "updated_at": "2025-10-05T15:54:49Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#discussion_r1376531693",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "NONE",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/1376531693"
