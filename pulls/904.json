@@ -42,7 +42,7 @@
     "body": "Qt::WindowStaysOnTopHint is ineffective on Wayland and causes bitcoin-qt to flicker (see #903 and #33432).\r\n\r\nWayland's window behavior is controlled by the compositor, not the client. This change skips applying hints when running natively under Wayland, resolving the flickering issue.\r\n\r\n<!--\r\n*** Please remove the following help text before submitting: ***\r\n\r\nPull requests without a rationale and clear improvement may be closed\r\nimmediately.\r\n\r\nGUI-related pull requests should be opened against\r\nhttps://github.com/bitcoin-core/gui\r\nfirst. See CONTRIBUTING.md\r\n-->\r\n\r\n<!--\r\nPlease provide clear motivation for your patch and explain how it improves\r\nBitcoin Core user experience or Bitcoin Core developer experience\r\nsignificantly:\r\n\r\n* Any test improvements or new tests that improve coverage are always welcome.\r\n* All other changes should have accompanying unit tests (see `src/test/`) or\r\n  functional tests (see `test/`). Contributors should note which tests cover\r\n  modified code. If no tests exist for a region of modified code, new tests\r\n  should accompany the change.\r\n* Bug fixes are most welcome when they come with steps to reproduce or an\r\n  explanation of the potential issue as well as reasoning for the way the bug\r\n  was fixed.\r\n* Features are welcome, but might be rejected due to design or scope issues.\r\n  If a feature is based on a lot of dependencies, contributors should first\r\n  consider building the system outside of Bitcoin Core, if possible.\r\n* Refactoring changes are only accepted if they are required for a feature or\r\n  bug fix or otherwise improve developer experience significantly. For example,\r\n  most \"code style\" refactoring changes require a thorough explanation why they\r\n  are useful, what downsides they have and why they *significantly* improve\r\n  developer experience or avoid serious programming bugs. Note that code style\r\n  is often a subjective matter. Unless they are explicitly mentioned to be\r\n  preferred in the [developer notes](/doc/developer-notes.md), stylistic code\r\n  changes are usually rejected.\r\n-->\r\n\r\n<!--\r\nBitcoin Core has a thorough review process and even the most trivial change\r\nneeds to pass a lot of eyes and requires non-zero or even substantial time\r\neffort to review. There is a huge lack of active reviewers on the project, so\r\npatches often sit for a long time.\r\n-->\r\n",
     "labels": [],
     "created_at": "2025-10-16T07:19:00Z",
-    "updated_at": "2025-10-16T12:57:26Z",
+    "updated_at": "2025-10-16T13:16:00Z",
     "mergeable": true,
     "mergeable_state": "clean",
     "merged": false,
@@ -331,7 +331,7 @@
     "deletions": 4,
     "changed_files": 1,
     "commits": 1,
-    "review_comments": 5,
+    "review_comments": 6,
     "comments": 2
   },
   "events": [
@@ -850,6 +850,59 @@
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2435815330"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/904"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 410,
+      "original_line": 410,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2435876164",
+      "pull_request_review_id": 3344797946,
+      "id": 2435876164,
+      "node_id": "PRRC_kwDOEEET9c6RMIVE",
+      "diff_hunk": "@@ -407,10 +407,6 @@ void bringToFront(QWidget* w)\n {\n     if (w) {\n         if (QGuiApplication::platformName() == \"wayland\") {\n-            auto flags = w->windowFlags();\n-            w->setWindowFlags(flags|Qt::WindowStaysOnTopHint);\n-            w->show();\n-            w->setWindowFlags(flags);\n             w->show();",
+      "path": "src/qt/guiutil.cpp",
+      "position": 8,
+      "original_position": 8,
+      "commit_id": "4daf53b12e510b309c36247a1825b38b1627cd58",
+      "original_commit_id": "4daf53b12e510b309c36247a1825b38b1627cd58",
+      "in_reply_to_id": 2435752838,
+      "user": {
+        "login": "diegoviola",
+        "id": 4371,
+        "node_id": "MDQ6VXNlcjQzNzE=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/4371?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/diegoviola",
+        "html_url": "https://github.com/diegoviola",
+        "followers_url": "https://api.github.com/users/diegoviola/followers",
+        "following_url": "https://api.github.com/users/diegoviola/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/diegoviola/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/diegoviola/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/diegoviola/subscriptions",
+        "organizations_url": "https://api.github.com/users/diegoviola/orgs",
+        "repos_url": "https://api.github.com/users/diegoviola/repos",
+        "events_url": "https://api.github.com/users/diegoviola/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/diegoviola/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "body": "@hebasto Yeah, I can confirm that reverting https://github.com/bitcoin-core/gui/commit/15aa7d023688700a47997b92108de95f2d864f5a solves the problem for me (on sway).",
+      "created_at": "2025-10-16T13:16:00Z",
+      "updated_at": "2025-10-16T13:16:00Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/904#discussion_r2435876164",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2435876164"
         },
         "pull_request": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/904"
