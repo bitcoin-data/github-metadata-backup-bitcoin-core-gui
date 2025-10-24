@@ -42,11 +42,11 @@
     "body": "The main window (BitcoinGUI) does not need to be passed to bringToFront(), doing so sets Qt::WindowStaysOnTopHint on the main window and causes it to flicker.\r\n\r\nFixes https://github.com/bitcoin-core/gui/issues/903.",
     "labels": [],
     "created_at": "2025-10-16T07:19:00Z",
-    "updated_at": "2025-10-24T07:26:34Z",
+    "updated_at": "2025-10-24T16:31:26Z",
     "mergeable": true,
     "mergeable_state": "clean",
     "merged": false,
-    "merge_commit_sha": "3680e4c2994abc5d25c7bab8ed8c560876f81153",
+    "merge_commit_sha": "54ecef41592bac6a760afb24a1c7d5f633443121",
     "assignees": [],
     "requested_reviewers": [
       {
@@ -308,7 +308,7 @@
         "forks_count": 321,
         "stargazers_count": 680,
         "watchers_count": 680,
-        "size": 179568,
+        "size": 179571,
         "default_branch": "master",
         "open_issues_count": 151,
         "is_template": false,
@@ -321,9 +321,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-10-24T02:41:30Z",
+        "pushed_at": "2025-10-24T08:05:44Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2025-10-24T02:41:33Z",
+        "updated_at": "2025-10-24T08:05:47Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -354,7 +354,7 @@
     "changed_files": 1,
     "commits": 1,
     "review_comments": 6,
-    "comments": 2
+    "comments": 3
   },
   "events": [
     {
@@ -1230,6 +1230,62 @@
       "submitted_at": "2025-10-24T07:26:34Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/904"
+    },
+    {
+      "event": "commented",
+      "id": 3444009050,
+      "node_id": "IC_kwDOEEET9c7NR2ha",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/3444009050",
+      "actor": {
+        "login": "diegoviola",
+        "id": 4371,
+        "node_id": "MDQ6VXNlcjQzNzE=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/4371?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/diegoviola",
+        "html_url": "https://github.com/diegoviola",
+        "followers_url": "https://api.github.com/users/diegoviola/followers",
+        "following_url": "https://api.github.com/users/diegoviola/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/diegoviola/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/diegoviola/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/diegoviola/subscriptions",
+        "organizations_url": "https://api.github.com/users/diegoviola/orgs",
+        "repos_url": "https://api.github.com/users/diegoviola/repos",
+        "events_url": "https://api.github.com/users/diegoviola/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/diegoviola/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-10-24T16:31:26Z",
+      "updated_at": "2025-10-24T16:31:26Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "> tested [095f920](https://github.com/bitcoin-core/gui/commit/095f920629207b5ec4c50de7b454dfced0eafefb) and it fixes the problem.\r\n> \r\n\r\nGreat! Thanks for confirming that.\r\n\r\n> I still need to check if this is the right approach, need to check against `xcb` and `macOS`.\r\n\r\nSure.\r\n\r\n> Also there are other places where `bringToFront` is being used, the `rpcconsole` has the same issue as the main window in `wayland`, so perhaps the fix has to be within `bringToFront`, need more time to test.\r\n\r\nI am not able to reproduce the flickering with the `rpcconsole` specifically, but in a previous testing that I did removing these two lines helped with getting rid of _some_ flickering, not all: https://github.com/bitcoin/bitcoin/blob/v30.0/src/qt/guiutil.cpp#L413-L414.\r\n\r\nCan you please test if removing those help with the `rpcconsole`?\r\n\r\n> Thanks for finding the issue and taking a look at this!\r\n\r\nYou're welcome, thank you for your work as well.",
+      "user": {
+        "login": "diegoviola",
+        "id": 4371,
+        "node_id": "MDQ6VXNlcjQzNzE=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/4371?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/diegoviola",
+        "html_url": "https://github.com/diegoviola",
+        "followers_url": "https://api.github.com/users/diegoviola/followers",
+        "following_url": "https://api.github.com/users/diegoviola/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/diegoviola/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/diegoviola/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/diegoviola/subscriptions",
+        "organizations_url": "https://api.github.com/users/diegoviola/orgs",
+        "repos_url": "https://api.github.com/users/diegoviola/repos",
+        "events_url": "https://api.github.com/users/diegoviola/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/diegoviola/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/904#issuecomment-3444009050",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/904"
     }
   ],
   "comments": [
