@@ -42,7 +42,7 @@
     "body": "Added `createwallet`, `createwalletdescriptor` and `migratewallet` RPC commands to the Qt console history filter since they may include passphrases or other sensitive data that should not be stored in command history.",
     "labels": [],
     "created_at": "2025-10-10T21:08:48Z",
-    "updated_at": "2025-10-25T09:00:56Z",
+    "updated_at": "2025-10-25T10:31:29Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
@@ -332,7 +332,7 @@
     "deletions": 0,
     "changed_files": 1,
     "commits": 1,
-    "review_comments": 1,
+    "review_comments": 2,
     "comments": 1
   },
   "events": [
@@ -581,6 +581,59 @@
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2462677504"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/901"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 76,
+      "original_line": 76,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2462710644",
+      "pull_request_review_id": 3379892520,
+      "id": 2462710644,
+      "node_id": "PRRC_kwDOEEET9c6Syft0",
+      "diff_hunk": "@@ -72,6 +72,9 @@ namespace {\n \n // don't add private key handling cmd's to the history\n const QStringList historyFilter = QStringList()\n+    << \"createwallet\"\n+    << \"createwalletdescriptor\"",
+      "path": "src/qt/rpcconsole.cpp",
+      "position": 5,
+      "original_position": 5,
+      "commit_id": "4e352efa2ce756c668664486c99d003eef530e0c",
+      "original_commit_id": "4e352efa2ce756c668664486c99d003eef530e0c",
+      "in_reply_to_id": 2462677504,
+      "user": {
+        "login": "waketraindev",
+        "id": 175499942,
+        "node_id": "U_kgDOCnXqpg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/175499942?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/waketraindev",
+        "html_url": "https://github.com/waketraindev",
+        "followers_url": "https://api.github.com/users/waketraindev/followers",
+        "following_url": "https://api.github.com/users/waketraindev/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/waketraindev/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/waketraindev/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/waketraindev/subscriptions",
+        "organizations_url": "https://api.github.com/users/waketraindev/orgs",
+        "repos_url": "https://api.github.com/users/waketraindev/repos",
+        "events_url": "https://api.github.com/users/waketraindev/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/waketraindev/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "body": "When I was testing this patch, I ran into some exceptions in `importdescriptors` related to\r\nthe `internal` label and the `range` label (see bitcoin repo #31514, #32376, #33614, #33655)\r\nand the command line history was helpful for manually editing to get it to pass succesfully;\r\n\r\nAt that point, I used #882 to manually clear the command history.\r\n\r\nI wasn't sure about the commands that require a \"desc\" (descriptor) and allowed private ones,\r\nso I held off until I could do some manual testing.\r\n\r\nPotential list:\r\n* Have `passphrase`:\r\nadded `createwallet \"wallet_name\" ( disable_private_keys blank \"passphrase\" avoid_reuse descriptors load_on_startup external_signer )`\r\nadded `encryptwallet \"passphrase\"` \r\nadded `migratewallet ( \"wallet_name\" \"passphrase\" )`\r\nadded `walletpassphrase \"passphrase\" timeout`\r\nadded `walletpassphrasechange \"oldpassphrase\" \"newpassphrase`\r\n\r\n* Have `hdkey`:\r\nadded `createwalletdescriptor \"type\" ( {\"internal\":bool,\"hdkey\":\"str\",...} )`\r\n\r\n* Have `privatekey` or `privkey`\r\nadded `signrawtransactionwithkey \"hexstring\" [\"privatekey\",...] ( [{\"txid\":\"hex\",\"vout\":n,\"scriptPubKey\":\"hex\",\"redeemScript\":\"hex\",\"witnessScript\":\"hex\",\"amount\":amount},...] \"sighashtype\" )`\r\nadded `signmessagewithprivkey \"privkey\" \"message\"`\r\n\r\nTo check which support or allow private descriptors:\r\n* Have `desc` or `descriptor`:\r\n`deriveaddresses \"descriptor\" ( range )`\r\n`getdescriptorinfo \"descriptor\"`\r\n`descriptorprocesspsbt \"psbt\" [\"\",{\"desc\":\"str\",\"range\":n or [n,n]},...] ( \"sighashtype\" bip32derivs finalize )`\r\n`utxoupdatepsbt \"psbt\" ( [\"\",{\"desc\":\"str\",\"range\":n or [n,n]},...] )`\r\n`importdescriptors requests` descriptor in requests\r\n\r\nI also noticed that commands with more complex parameters or arguments can behave unexpectedly when repeated from the command line, at which point manually clearing the command history (#882) can be more practical for the user.\r\n\r\nI'd be happy to add `importdescriptors` and other suggested privacy related commands.\r\n",
+      "created_at": "2025-10-25T10:31:29Z",
+      "updated_at": "2025-10-25T10:31:29Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/901#discussion_r2462710644",
+      "author_association": "NONE",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2462710644"
         },
         "pull_request": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/901"
