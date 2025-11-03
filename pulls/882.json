@@ -12,12 +12,12 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/882/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/882/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/6caddd2d0da05a3db899c52c395a074ffe4a1b36",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/56e3845777ba7f8a1928d8e1b1fe739d42588df8",
     "number": 882,
     "state": "open",
     "locked": false,
     "maintainer_can_modify": true,
-    "title": "qt: add console commands for clearing output and history",
+    "title": "Add console commands for clearing output and history",
     "user": {
       "login": "waketraindev",
       "id": 175499942,
@@ -42,11 +42,11 @@
     "body": "Adds new console commands for clearing the screen and managing command history in the GUI RPC console.\r\n\r\nIntroduces four new commands:\r\n\r\n- `clear` - clears the console output area.\r\n- `clear-all` - clears both output and command history.\r\n- `history` - lists stored command history.\r\n- `history-clear` - clears command history only.\r\n\r\nProvides explicit, privacy-orientd ways to clear console history and output without altering default behavior.\r\nUseful in shared or long-running sessions.",
     "labels": [],
     "created_at": "2025-07-30T11:41:04Z",
-    "updated_at": "2025-10-25T11:00:14Z",
+    "updated_at": "2025-11-03T17:45:18Z",
     "mergeable": true,
-    "mergeable_state": "clean",
+    "mergeable_state": "unstable",
     "merged": false,
-    "merge_commit_sha": "4025bd7c5eb15acbe739ca7ac2a89b18bc3558f8",
+    "merge_commit_sha": "3879f1545fe5088cd6df7f332b76a2fbaf3edfcc",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -54,7 +54,7 @@
     "head": {
       "label": "waketraindev:2025-07-console-clear-history",
       "ref": "2025-07-console-clear-history",
-      "sha": "6caddd2d0da05a3db899c52c395a074ffe4a1b36",
+      "sha": "56e3845777ba7f8a1928d8e1b1fe739d42588df8",
       "user": {
         "login": "waketraindev",
         "id": 175499942,
@@ -152,7 +152,7 @@
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 179091,
+        "size": 180237,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -165,9 +165,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-10-19T08:53:24Z",
+        "pushed_at": "2025-11-03T17:40:29Z",
         "created_at": "2025-07-30T11:26:51Z",
-        "updated_at": "2025-10-19T08:51:26Z",
+        "updated_at": "2025-10-25T12:09:36Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -189,7 +189,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "d30f149360d10de31bd7f7369aa61ce8be0837b5",
+      "sha": "745eb053a41c487cc10f20644c65dc8455cf8974",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -284,10 +284,10 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 321,
-        "stargazers_count": 680,
-        "watchers_count": 680,
-        "size": 180236,
+        "forks_count": 324,
+        "stargazers_count": 684,
+        "watchers_count": 684,
+        "size": 180010,
         "default_branch": "master",
         "open_issues_count": 151,
         "is_template": false,
@@ -300,9 +300,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-10-24T20:25:17Z",
+        "pushed_at": "2025-11-03T16:37:49Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2025-10-24T20:25:21Z",
+        "updated_at": "2025-11-03T16:37:52Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -326,14 +326,14 @@
         "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/882"
       }
     },
-    "author_association": "NONE",
+    "author_association": "CONTRIBUTOR",
     "draft": false,
-    "additions": 50,
+    "additions": 62,
     "deletions": 6,
-    "changed_files": 1,
+    "changed_files": 2,
     "commits": 1,
     "review_comments": 0,
-    "comments": 10
+    "comments": 11
   },
   "events": [
     {
@@ -460,7 +460,7 @@
       "commit_url": null,
       "created_at": "2025-08-02T08:00:46Z",
       "updated_at": "2025-08-02T08:00:46Z",
-      "author_association": "NONE",
+      "author_association": "CONTRIBUTOR",
       "body": "> I don't think this change is practical. Clearing the console should remove the visible output, but it shouldn't also clear the command history. In most terminal environments (e.g., bash, zsh, cmd, PowerShell, etc.), using clear or Ctrl+L clears the screen while preserving command history, which remains accessible via the arrow keys. Users often rely on this history to repeat or modify previous commands, and removing it could unintentionally disrupt that workflow. I suggest keeping the command history intact when clearing the console.\r\n> \r\n> Also, just a heads-up: this GUI repository is currently in maintenance mode and primarily focused on bugfixes — new feature additions are unlikely to be considered or prioritized unless they're closely tied to functionality in Bitcoin Core. If you're interested in contributing new features or improvements, I encourage you to take a look at [bitcoin-core/gui-qml](https://github.com/bitcoin-core/gui-qml), which is the new GUI project under active development. Your contributions would be very welcome there.\r\n\r\nThanks for the feedback. I understand the comparison to typical terminal behavior, but I think the context here is different.\r\n\r\nIn the RPC console, the command history is never cleared unless you shut down Bitcoin Qt. It stays even after using the \"Clear\" button, closing the console, or even closing the wallet. This means any sensitive or debug-related commands remain accessible via the arrow keys across sessions. Clearing only the output gives a false impression that the console was fully reset.\r\n\r\nThis change makes the \"Clear\" button behave more like a full reset, which helps with privacy and general cleanup during debugging. It also aligns with what some users expect from a GUI console.\r\n\r\nI understand the repo is in maintenance mode, but I still think this is a relevant and useful change. If needed, I'm open to submitting it to gui-qml instead.\r\n",
       "user": {
         "login": "waketraindev",
@@ -516,7 +516,7 @@
       "commit_url": null,
       "created_at": "2025-08-02T08:11:28Z",
       "updated_at": "2025-08-02T08:11:28Z",
-      "author_association": "NONE",
+      "author_association": "CONTRIBUTOR",
       "body": "If there is concern about preserving history by default, a compromise could be to clear command history only when holding Shift while clicking the \"Clear\" button, similar to how modifier keys are used in other GUIs for alternate actions. But personally, my expectation as a user is that \"Clear\" fully resets the console, including input history.",
       "user": {
         "login": "waketraindev",
@@ -774,7 +774,7 @@
       "commit_url": null,
       "created_at": "2025-08-05T10:39:40Z",
       "updated_at": "2025-08-05T10:39:40Z",
-      "author_association": "NONE",
+      "author_association": "CONTRIBUTOR",
       "body": "Updated the patch to only clear input when Shift is held; also added Ctrl+Shift+L as a secondary shortcut.",
       "user": {
         "login": "waketraindev",
@@ -1056,7 +1056,7 @@
       "commit_url": null,
       "created_at": "2025-08-12T14:11:47Z",
       "updated_at": "2025-08-12T14:11:47Z",
-      "author_association": "NONE",
+      "author_association": "CONTRIBUTOR",
       "body": "> Thanks for the update, but I don’t think relying on a hidden keyboard combination (Shift modifier and Ctrl+Shift+L) is a good long-term solution. Most users will never discover it, and without documentation, it risks becoming an obscure feature that only a handful of people know about. It also deviates from common terminal behavior, where clearing the output and clearing history are separate, explicit actions. On top of that, shortcut bindings can be difficult to maintain long-term — they may conflict with other shortcuts, differ across platforms, or get broken by `Qt` or `OS` changes.\r\n> \r\n> I think that a more user-friendly and discoverable approach would be to support terminal-style commands in the console, so users can interact in a way they already understand from bash, zsh, cmd, PowerShell, etc. For example:\r\n> \r\n> ```\r\n> history               # list cached commands\r\n> help history          # show usage info for the history command\r\n> history -c            # clear command history\r\n> clear                 # clear visible console output only\r\n> help clear            # explain clear options (e.g. 'clear history')\r\n> clear history         # clear command history\r\n> ```\r\n> \r\n> This way, clearing history becomes an intentional action the user explicitly types, and it can be documented alongside other commands in the console’s help output. It’s discoverable, consistent with terminal norms but mainly with the current rpc console behaviour, and extensible if more sub-commands are needed in the future.\r\n\r\nThanks for the feedback, I agree that discoverability is important, and this is addressed in the latest update.\r\n\r\nThe patch now adds explicit console commands in addition to the button and shortcut:\r\n- clear           -> clears output\r\n- history-clear   -> clears output and history\r\n- history         -> prints command history\r\n\r\nThese commands are listed in the help-console output and also documented in the welcome message shown when the console is cleared, so they are easy to discover. This covers the terminal-style interaction you suggested, while still providing a UI button and shortcut for convenience.\r\n\r\nThe Ctrl+Shift+L shortcut remains as an extra option for users who prefer a quick key combo, but it is no longer the only way to perform the action.\r\n",
       "user": {
         "login": "waketraindev",
@@ -1274,7 +1274,7 @@
       "commit_url": null,
       "created_at": "2025-09-26T11:36:28Z",
       "updated_at": "2025-09-26T11:36:28Z",
-      "author_association": "NONE",
+      "author_association": "CONTRIBUTOR",
       "body": "Thanks a lot for the review!\n\nThe shortcut is already documented as `\"Use %9 to clear both the screen and the command history.\\n\", but I can update it to match the exact wording you suggested.`\n\nAbout splitting the clear functionality: since the output history already includes the input commands, I’m not sure there’s much benefit in clearing just the commands while keeping the output. But if you think it’s more useful that way, I’m happy to adjust and split them.\n\nOn the QML side, I don’t see a mockup of the RPC console yet, and I feel like starting it from scratch on my own might not be the best approach. These are features I use myself right now, so I think they add value in the current console even before the experimental QML GUI is ready.",
       "user": {
         "login": "waketraindev",
@@ -1450,7 +1450,7 @@
       "commit_url": null,
       "created_at": "2025-10-14T20:31:51Z",
       "updated_at": "2025-10-14T20:31:51Z",
-      "author_association": "NONE",
+      "author_association": "CONTRIBUTOR",
       "body": "Rebased on current master.\r\nSimplified to console commands only, dropped the keyboard shortcut and clear button (no new buttons added).\r\nAdded the clear-all command for completness and ease of use.\r\n\r\nTested all commands (clear, clear-all, history, history-clear) on Ubuntu 24.04 and Windows 11 -- all work as expected.",
       "user": {
         "login": "waketraindev",
@@ -1571,46 +1571,6 @@
       "created_at": "2025-10-14T23:29:44Z"
     },
     {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDZjYWRkZDJkMGRhMDVhM2RiODk5YzUyYzM5NWEwNzRmZmU0YTFiMzY",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/6caddd2d0da05a3db899c52c395a074ffe4a1b36",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/6caddd2d0da05a3db899c52c395a074ffe4a1b36",
-      "tree": {
-        "sha": "3b51b8043d676c08e09e45c9f031e6e936136864",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/3b51b8043d676c08e09e45c9f031e6e936136864"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/d30f149360d10de31bd7f7369aa61ce8be0837b5",
-          "sha": "d30f149360d10de31bd7f7369aa61ce8be0837b5",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/d30f149360d10de31bd7f7369aa61ce8be0837b5"
-        }
-      ],
-      "message": "qt: add console commands for clearing screen, clearing and viewing history\n\nAdds the following console commands:\n\n- `clear`: clears the console output area.\n- `clear-all`: clears both output and command history.\n- `history`: lists stored command history.\n- `history-clear`: clears command history only.\n\nThese additions improve privacy and convenience in shared or long-lived\nsessions by allowing users to remove sensitive commands and output from view.",
-      "committer": {
-        "name": "WakeTrainDev",
-        "email": "175499942+waketraindev@users.noreply.github.com",
-        "date": "2025-10-19T08:53:11Z"
-      },
-      "author": {
-        "name": "WakeTrainDev",
-        "email": "175499942+waketraindev@users.noreply.github.com",
-        "date": "2025-10-14T19:47:29Z"
-      },
-      "sha": "6caddd2d0da05a3db899c52c395a074ffe4a1b36"
-    },
-    {
       "event": "head_ref_force_pushed",
       "id": 20365294389,
       "node_id": "HRFPE_lADOEEET9c7DTl-5zwAAAAS93bs1",
@@ -1670,7 +1630,7 @@
       "commit_url": null,
       "created_at": "2025-10-25T11:00:14Z",
       "updated_at": "2025-10-25T11:00:14Z",
-      "author_association": "NONE",
+      "author_association": "CONTRIBUTOR",
       "body": "I'd appreciate any suggestions on discoverability of these console commands.",
       "user": {
         "login": "waketraindev",
@@ -1695,6 +1655,166 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/882#issuecomment-3446557710",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/882"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDU2ZTM4NDU3NzdiYTdmOGExOTI4ZDhlMWIxZmU3MzlkNDI1ODhkZjg",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/56e3845777ba7f8a1928d8e1b1fe739d42588df8",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/56e3845777ba7f8a1928d8e1b1fe739d42588df8",
+      "tree": {
+        "sha": "9de3ec0b4c6e747218032bc068fc835052b5f0df",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/9de3ec0b4c6e747218032bc068fc835052b5f0df"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/d30f149360d10de31bd7f7369aa61ce8be0837b5",
+          "sha": "d30f149360d10de31bd7f7369aa61ce8be0837b5",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/d30f149360d10de31bd7f7369aa61ce8be0837b5"
+        }
+      ],
+      "message": "qt: add console commands for clearing screen, clearing and viewing history\n\nAdds the following console commands:\n\n- `clear`: clears the console output area.\n- `clear-all`: clears both output and command history.\n- `history`: lists stored command history.\n- `history-clear`: clears command history only.\n\nThese additions improve privacy and convenience in shared or long-lived\nsessions by allowing users to remove sensitive commands and output from view.",
+      "committer": {
+        "name": "WakeTrainDev",
+        "email": "175499942+waketraindev@users.noreply.github.com",
+        "date": "2025-11-03T17:37:04Z"
+      },
+      "author": {
+        "name": "WakeTrainDev",
+        "email": "175499942+waketraindev@users.noreply.github.com",
+        "date": "2025-10-14T19:47:29Z"
+      },
+      "sha": "56e3845777ba7f8a1928d8e1b1fe739d42588df8"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 20681121651,
+      "node_id": "HRFPE_lADOEEET9c7DTl-5zwAAAATQsN9z",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/20681121651",
+      "actor": {
+        "login": "waketraindev",
+        "id": 175499942,
+        "node_id": "U_kgDOCnXqpg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/175499942?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/waketraindev",
+        "html_url": "https://github.com/waketraindev",
+        "followers_url": "https://api.github.com/users/waketraindev/followers",
+        "following_url": "https://api.github.com/users/waketraindev/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/waketraindev/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/waketraindev/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/waketraindev/subscriptions",
+        "organizations_url": "https://api.github.com/users/waketraindev/orgs",
+        "repos_url": "https://api.github.com/users/waketraindev/repos",
+        "events_url": "https://api.github.com/users/waketraindev/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/waketraindev/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": "56e3845777ba7f8a1928d8e1b1fe739d42588df8",
+      "commit_url": "https://api.github.com/repos/waketraindev/core-gui/commits/56e3845777ba7f8a1928d8e1b1fe739d42588df8",
+      "created_at": "2025-11-03T17:40:30Z"
+    },
+    {
+      "event": "commented",
+      "id": 3481744961,
+      "node_id": "IC_kwDOEEET9c7PhzZB",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/3481744961",
+      "actor": {
+        "login": "waketraindev",
+        "id": 175499942,
+        "node_id": "U_kgDOCnXqpg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/175499942?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/waketraindev",
+        "html_url": "https://github.com/waketraindev",
+        "followers_url": "https://api.github.com/users/waketraindev/followers",
+        "following_url": "https://api.github.com/users/waketraindev/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/waketraindev/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/waketraindev/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/waketraindev/subscriptions",
+        "organizations_url": "https://api.github.com/users/waketraindev/orgs",
+        "repos_url": "https://api.github.com/users/waketraindev/repos",
+        "events_url": "https://api.github.com/users/waketraindev/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/waketraindev/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-11-03T17:41:36Z",
+      "updated_at": "2025-11-03T17:41:36Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "Added release notes file.",
+      "user": {
+        "login": "waketraindev",
+        "id": 175499942,
+        "node_id": "U_kgDOCnXqpg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/175499942?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/waketraindev",
+        "html_url": "https://github.com/waketraindev",
+        "followers_url": "https://api.github.com/users/waketraindev/followers",
+        "following_url": "https://api.github.com/users/waketraindev/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/waketraindev/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/waketraindev/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/waketraindev/subscriptions",
+        "organizations_url": "https://api.github.com/users/waketraindev/orgs",
+        "repos_url": "https://api.github.com/users/waketraindev/repos",
+        "events_url": "https://api.github.com/users/waketraindev/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/waketraindev/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/882#issuecomment-3481744961",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/882"
+    },
+    {
+      "event": "renamed",
+      "id": 20681225416,
+      "node_id": "RTE_lADOEEET9c7DTl-5zwAAAATQsnTI",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/20681225416",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-11-03T17:45:18Z",
+      "rename": {
+        "from": "qt: add console commands for clearing output and history",
+        "to": "Add console commands for clearing output and history"
+      }
     }
   ],
   "comments": []
