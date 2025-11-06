@@ -13,7 +13,7 @@
     "state": "closed",
     "state_reason": "completed",
     "title": "qt: rpc console, filtered commands replaced with '(…)' may execute unintended actions when recalled from history",
-    "body": "### Is there an existing issue for this?\n\n- [x] I have searched the existing issues\n\n### Current behaviour\n\nIn the Qt rpc console, when a command is filtered for privacy (`historyFilter`) it's parameters are replaced with `(…)`\n\nFor example:\n```\ncreatewallet \"testwallet\"\n\nrecalled as: createwallet(…)\n```\n\nIf this filtered command is later recalled from command history (ArrowUp+Enter), it executes literally, creating or\nexecuting an unintended command such as `createwallet(…)`\n\nThis will then create a wallet named `…`\n\n\n\n### Expected behaviour\n\nFiltered commands should not execute unintended actions when recalled from history.\n\nInstead of replacing parameters with `(…)`, consider:\n* Replacing with a harmless command like help(\"createwallet\") or\n* Replacing with a console only command that will not be executed\n\n### Steps to reproduce\n\n1. Open the rpc console\n2. Run createwallet \"test\"\n3. Press Arrow-Up\n4. Press enter\n\nA new wallet named \"…\" is created.\n\n### Relevant log output\n\n_No response_\n\n### How did you obtain Bitcoin Core\n\nCompiled from source\n\n### What version of Bitcoin Core are you using?\n\n30.0 or master@f54ffb4b *patched with #901*\n\n*createwallet is not added to historyFilter on master yet*\n\n### Operating system and version\n\nWindows 11\n\n### Machine specifications\n\n_No response_",
+    "body": "### Is there an existing issue for this?\n\n- [x] I have searched the existing issues\n\n### Current behaviour\n\nIn the Qt rpc console, when a command is filtered for privacy (`historyFilter`) it's parameters are replaced with `(…)`\n\nFor example:\n```\ncreatewallet \"testwallet\"\n\nrecalled as: createwallet(…)\n```\n\nIf this filtered command is later recalled from command history (ArrowUp+Enter), it executes literally, creating or\nexecuting an unintended command such as `createwallet(…)`\n\nThis will then create a wallet named `…`\n\n\n\n### Expected behaviour\n\nFiltered commands should not execute unintended actions when recalled from history.\n\nInstead of replacing parameters with `(…)`, consider:\n* Replacing with a harmless command like help(\"createwallet\") or\n* Replacing with a console only command that will not be executed\n\n### Steps to reproduce\n\n1. Open the rpc console\n2. Run createwallet \"test\"\n3. Press Arrow-Up\n4. Press enter\n\nA new wallet named \"…\" is created.\n\n### Relevant log output\n\n_No response_\n\n### How did you obtain Bitcoin Core\n\nCompiled from source\n\n### What version of Bitcoin Core are you using?\n\n30.0 or master\n\n### Operating system and version\n\nWindows 11\n\n### Machine specifications\n\n_No response_",
     "user": {
       "login": "waketraindev",
       "id": 175499942,
@@ -33,11 +33,12 @@
       "received_events_url": "https://api.github.com/users/waketraindev/received_events",
       "type": "User",
       "site_admin": false,
+      "name": null,
       "patch_url": null
     },
     "labels": [],
     "assignees": [],
-    "author_association": "NONE",
+    "author_association": "CONTRIBUTOR",
     "locked": false,
     "comments": 0,
     "closed_at": "2025-10-27T17:58:35Z",
@@ -60,10 +61,11 @@
       "received_events_url": "https://api.github.com/users/waketraindev/received_events",
       "type": "User",
       "site_admin": false,
+      "name": null,
       "patch_url": null
     },
     "created_at": "2025-10-25T12:40:13Z",
-    "updated_at": "2025-10-27T17:58:35Z"
+    "updated_at": "2025-11-06T13:06:37Z"
   },
   "events": [
     {
@@ -90,6 +92,7 @@
         "received_events_url": "https://api.github.com/users/waketraindev/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
