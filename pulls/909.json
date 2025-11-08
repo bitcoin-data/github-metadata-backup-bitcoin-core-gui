@@ -12,12 +12,12 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/909/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/909/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/a0422e52a9702847dfd242c0c2bb785e6fae41ba",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/318eacf0b8d80bcbfa7e7ce68c55b39cbedceaa8",
     "number": 909,
     "state": "open",
     "locked": false,
     "maintainer_can_modify": true,
-    "title": "Comment out sensitive console commands in history to prevent re-execution",
+    "title": "Prevent re-execution of sensitive commands from console history",
     "user": {
       "login": "waketraindev",
       "id": 175499942,
@@ -40,14 +40,23 @@
       "name": null,
       "patch_url": null
     },
-    "body": "Prefix filtered commands with \"#\" before adding them to the RPC console history.\r\n\r\nConsole lines starting with \"#\" are ignored by the executor, preventing accidental re-execution of filtered sensitive commands when recalled from history.\r\n\r\nAlso adds a noop signal to handle ignored commands cleanly and documents comment behavior in the console help text (`help-console`).",
-    "labels": [],
+    "body": "Sensitive RPC commands such as `walletpassphrase` or `createwallet`\r\nmay appear in the console history with their arguments redacted. Previously,\r\nthese entries could still be re-executed if recalled, potentially causing\r\nunintended actions.\r\n\r\nThis change prefixes redacted history entries with a leading character(`!`),\r\nmarking them as non-executable when called. The console blocks their\r\nexecution and informs the user that the command was redacted.\r\nThe help text in `help-console` has been updated to explain this behavior.\r\n\r\nTest coverage is updated to verify redaction prefixing and ensure commands are properly filtered.",
+    "labels": [
+      {
+        "id": 5353934559,
+        "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
+        "name": "CI failed",
+        "color": "ededed",
+        "default": false
+      }
+    ],
     "created_at": "2025-11-06T13:26:32Z",
-    "updated_at": "2025-11-07T16:44:10Z",
+    "updated_at": "2025-11-08T02:48:41Z",
     "mergeable": true,
-    "mergeable_state": "clean",
+    "mergeable_state": "unstable",
     "merged": false,
-    "merge_commit_sha": "11c67b28841777a203632066396b63fcc422dbc0",
+    "merge_commit_sha": "ca6c9e42bfcfcc8e4ab7263bb83303e3516079f1",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -55,7 +64,7 @@
     "head": {
       "label": "waketraindev:2025-11-gui-comment-sensitive-commands",
       "ref": "2025-11-gui-comment-sensitive-commands",
-      "sha": "a0422e52a9702847dfd242c0c2bb785e6fae41ba",
+      "sha": "318eacf0b8d80bcbfa7e7ce68c55b39cbedceaa8",
       "user": {
         "login": "waketraindev",
         "id": 175499942,
@@ -168,7 +177,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-11-07T12:04:36Z",
+        "pushed_at": "2025-11-08T02:47:41Z",
         "created_at": "2025-07-30T11:26:51Z",
         "updated_at": "2025-11-07T12:04:40Z",
         "allow_forking": true,
@@ -192,7 +201,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "5c5704e730796c6f31e2d7891bf6334674a04219",
+      "sha": "513a0da2e0c89d4833aeeb9f799cf43548d6441f",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -290,8 +299,8 @@
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
         "forks_count": 326,
-        "stargazers_count": 684,
-        "watchers_count": 684,
+        "stargazers_count": 685,
+        "watchers_count": 685,
         "size": 180416,
         "default_branch": "master",
         "open_issues_count": 152,
@@ -307,7 +316,7 @@
         "visibility": "public",
         "pushed_at": "2025-11-07T15:28:57Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2025-11-07T15:29:01Z",
+        "updated_at": "2025-11-07T20:26:59Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -333,12 +342,12 @@
     },
     "author_association": "CONTRIBUTOR",
     "draft": false,
-    "additions": 29,
+    "additions": 31,
     "deletions": 7,
     "changed_files": 2,
     "commits": 1,
-    "review_comments": 2,
-    "comments": 2
+    "review_comments": 3,
+    "comments": 4
   },
   "events": [
     {
@@ -371,7 +380,7 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2025-11-06T13:26:51Z",
-      "updated_at": "2025-11-07T05:09:00Z",
+      "updated_at": "2025-11-08T02:48:07Z",
       "author_association": "CONTRIBUTOR",
       "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\nA summary of reviews will appear here.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#910](https://github.com/bitcoin-core/gui/pull/910) (Added test coverage for qt gui#901 console history filter by waketraindev)\n* [#882](https://github.com/bitcoin-core/gui/pull/882) (Add console commands for clearing output and history by waketraindev)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n<!--5faf32d7da4f0f540f40219e4f7537a3-->",
       "user": {
@@ -594,46 +603,6 @@
       "created_at": "2025-11-06T17:26:40Z"
     },
     {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGEwNDIyZTUyYTk3MDI4NDdkZmQyNDJjMGMyYmI3ODVlNmZhZTQxYmE",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/a0422e52a9702847dfd242c0c2bb785e6fae41ba",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/a0422e52a9702847dfd242c0c2bb785e6fae41ba",
-      "tree": {
-        "sha": "78aa4878df6d811902f5bc243c5145cd91dda665",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/78aa4878df6d811902f5bc243c5145cd91dda665"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/5c5704e730796c6f31e2d7891bf6334674a04219",
-          "sha": "5c5704e730796c6f31e2d7891bf6334674a04219",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/5c5704e730796c6f31e2d7891bf6334674a04219"
-        }
-      ],
-      "message": "qt: Comment out sensitive commands in history to prevent re-execution",
-      "committer": {
-        "name": "WakeTrainDev",
-        "email": "175499942+waketraindev@users.noreply.github.com",
-        "date": "2025-11-06T17:56:56Z"
-      },
-      "author": {
-        "name": "WakeTrainDev",
-        "email": "175499942+waketraindev@users.noreply.github.com",
-        "date": "2025-11-06T12:55:20Z"
-      },
-      "sha": "a0422e52a9702847dfd242c0c2bb785e6fae41ba"
-    },
-    {
       "event": "head_ref_force_pushed",
       "id": 20767252118,
       "node_id": "HRFPE_lADOEEET9c7WVAHlzwAAAATV0x6W",
@@ -767,6 +736,294 @@
       "submitted_at": "2025-11-07T16:44:10Z",
       "state": "CHANGES_REQUESTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/909"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 20801786733,
+      "node_id": "HRFPE_lADOEEET9c7WVAHlzwAAAATX4hNt",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/20801786733",
+      "actor": {
+        "login": "waketraindev",
+        "id": 175499942,
+        "node_id": "U_kgDOCnXqpg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/175499942?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/waketraindev",
+        "html_url": "https://github.com/waketraindev",
+        "followers_url": "https://api.github.com/users/waketraindev/followers",
+        "following_url": "https://api.github.com/users/waketraindev/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/waketraindev/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/waketraindev/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/waketraindev/subscriptions",
+        "organizations_url": "https://api.github.com/users/waketraindev/orgs",
+        "repos_url": "https://api.github.com/users/waketraindev/repos",
+        "events_url": "https://api.github.com/users/waketraindev/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/waketraindev/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": "a87c8ac075f42d4622feb0c8e3314ac33a6faf08",
+      "commit_url": "https://api.github.com/repos/waketraindev/core-gui/commits/a87c8ac075f42d4622feb0c8e3314ac33a6faf08",
+      "created_at": "2025-11-08T02:14:38Z"
+    },
+    {
+      "event": "renamed",
+      "id": 20801795566,
+      "node_id": "RTE_lADOEEET9c7WVAHlzwAAAATX4jXu",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/20801795566",
+      "actor": {
+        "login": "waketraindev",
+        "id": 175499942,
+        "node_id": "U_kgDOCnXqpg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/175499942?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/waketraindev",
+        "html_url": "https://github.com/waketraindev",
+        "followers_url": "https://api.github.com/users/waketraindev/followers",
+        "following_url": "https://api.github.com/users/waketraindev/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/waketraindev/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/waketraindev/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/waketraindev/subscriptions",
+        "organizations_url": "https://api.github.com/users/waketraindev/orgs",
+        "repos_url": "https://api.github.com/users/waketraindev/repos",
+        "events_url": "https://api.github.com/users/waketraindev/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/waketraindev/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-11-08T02:15:57Z",
+      "rename": {
+        "from": "Comment out sensitive console commands in history to prevent re-execution",
+        "to": "Prevent re-execution of sensitive commands from console history"
+      }
+    },
+    {
+      "event": "commented",
+      "id": 3505624298,
+      "node_id": "IC_kwDOEEET9c7Q85Tq",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/3505624298",
+      "actor": {
+        "login": "waketraindev",
+        "id": 175499942,
+        "node_id": "U_kgDOCnXqpg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/175499942?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/waketraindev",
+        "html_url": "https://github.com/waketraindev",
+        "followers_url": "https://api.github.com/users/waketraindev/followers",
+        "following_url": "https://api.github.com/users/waketraindev/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/waketraindev/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/waketraindev/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/waketraindev/subscriptions",
+        "organizations_url": "https://api.github.com/users/waketraindev/orgs",
+        "repos_url": "https://api.github.com/users/waketraindev/repos",
+        "events_url": "https://api.github.com/users/waketraindev/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/waketraindev/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-11-08T02:23:57Z",
+      "updated_at": "2025-11-08T02:25:26Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "* Blocking character was changed from '#' to '!' in order to reserve '#' for printing comments such as like bash\r\n* Removed noop slot and signal\r\n* Added alert window when a command starting with ! is entered\r\n* Commands starting with ! don't print, and don't go to history\r\n* Updated PR title and description to reflect the changes",
+      "user": {
+        "login": "waketraindev",
+        "id": 175499942,
+        "node_id": "U_kgDOCnXqpg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/175499942?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/waketraindev",
+        "html_url": "https://github.com/waketraindev",
+        "followers_url": "https://api.github.com/users/waketraindev/followers",
+        "following_url": "https://api.github.com/users/waketraindev/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/waketraindev/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/waketraindev/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/waketraindev/subscriptions",
+        "organizations_url": "https://api.github.com/users/waketraindev/orgs",
+        "repos_url": "https://api.github.com/users/waketraindev/repos",
+        "events_url": "https://api.github.com/users/waketraindev/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/waketraindev/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/909#issuecomment-3505624298",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/909"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDMxOGVhY2YwYjhkODBiY2JmYTdlN2NlNjhjNTViMzljYmVkY2VhYTg",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/318eacf0b8d80bcbfa7e7ce68c55b39cbedceaa8",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/318eacf0b8d80bcbfa7e7ce68c55b39cbedceaa8",
+      "tree": {
+        "sha": "21b9603869406a2d4113b8880f901369d7b2d49b",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/21b9603869406a2d4113b8880f901369d7b2d49b"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/5c5704e730796c6f31e2d7891bf6334674a04219",
+          "sha": "5c5704e730796c6f31e2d7891bf6334674a04219",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/5c5704e730796c6f31e2d7891bf6334674a04219"
+        }
+      ],
+      "message": "qt: Prevent re-execution of sensitive commands from console history\n\nSensitive RPC commands such as `walletpassphrase` or `createwallet`\nmay appear in the console history with their arguments redacted. Previously,\nthese entries could still be re-executed if recalled, potentially causing\nunintended actions.\n\nThis change prefixes redacted history entries with a leading character(`!`),\nmarking them as non-executable when called. The console blocks their\nexecution and informs the user that the command was redacted.\nThe help text in `help-console` has been updated to explain this behavior.\n\nTest coverage is updated to verify redaction prefixing and ensure commands\nare properly filtered.",
+      "committer": {
+        "name": "WakeTrainDev",
+        "email": "175499942+waketraindev@users.noreply.github.com",
+        "date": "2025-11-08T02:47:16Z"
+      },
+      "author": {
+        "name": "WakeTrainDev",
+        "email": "175499942+waketraindev@users.noreply.github.com",
+        "date": "2025-11-08T00:40:24Z"
+      },
+      "sha": "318eacf0b8d80bcbfa7e7ce68c55b39cbedceaa8"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 20802147429,
+      "node_id": "HRFPE_lADOEEET9c7WVAHlzwAAAATX55Rl",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/20802147429",
+      "actor": {
+        "login": "waketraindev",
+        "id": 175499942,
+        "node_id": "U_kgDOCnXqpg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/175499942?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/waketraindev",
+        "html_url": "https://github.com/waketraindev",
+        "followers_url": "https://api.github.com/users/waketraindev/followers",
+        "following_url": "https://api.github.com/users/waketraindev/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/waketraindev/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/waketraindev/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/waketraindev/subscriptions",
+        "organizations_url": "https://api.github.com/users/waketraindev/orgs",
+        "repos_url": "https://api.github.com/users/waketraindev/repos",
+        "events_url": "https://api.github.com/users/waketraindev/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/waketraindev/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": "318eacf0b8d80bcbfa7e7ce68c55b39cbedceaa8",
+      "commit_url": "https://api.github.com/repos/waketraindev/core-gui/commits/318eacf0b8d80bcbfa7e7ce68c55b39cbedceaa8",
+      "created_at": "2025-11-08T02:47:42Z"
+    },
+    {
+      "event": "labeled",
+      "id": 20802153036,
+      "node_id": "LE_lADOEEET9c7WVAHlzwAAAATX56pM",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/20802153036",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-11-08T02:48:15Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
+      }
+    },
+    {
+      "event": "commented",
+      "id": 3505664286,
+      "node_id": "IC_kwDOEEET9c7Q9DEe",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/3505664286",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-11-08T02:48:41Z",
+      "updated_at": "2025-11-08T02:48:41Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "<!--85328a0da195eb286784d51f73fa0af9-->\n🚧 At least one of the CI tasks failed.\n<sub>Task `tidy`: https://github.com/bitcoin-core/gui/actions/runs/19186424441/job/54853702939</sub>\n<sub>LLM reason (✨ experimental): Compilation failed due to template/type-mismatch errors in test_bitcoin-qt leading to build failure.</sub>\n\n<details><summary>Hints</summary>\n\nTry to run the tests locally, according to the documentation. However, a CI failure may still\nhappen due to a number of reasons, for example:\n\n* Possibly due to a silent merge conflict (the changes in this pull request being\nincompatible with the current code in the target branch). If so, make sure to rebase on the latest\ncommit of the target branch.\n\n* A sanitizer issue, which can only be found by compiling with the sanitizer and running the\n  affected test.\n\n* An intermittent issue.\n\nLeave a comment here, if you need help tracking down a confusing failure.\n\n</details>\n\n",
+      "user": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/909#issuecomment-3505664286",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/909"
     }
   ],
   "comments": [
@@ -777,7 +1034,7 @@
       "node_id": "PRRC_kwDOEEET9c6VR_g-",
       "diff_hunk": "@@ -1094,6 +1104,12 @@ void RPCConsole::startExecutor()\n         m_is_executing = false;\n     });\n \n+    connect(m_executor, &RPCExecutor::noop, this, [this]() {\n+        ui->messagesWidget->undo();\n+        scrollToEnd();\n+        m_is_executing = false;\n+    });",
       "path": "src/qt/rpcconsole.cpp",
-      "position": 43,
+      "position": 1,
       "original_position": 43,
       "commit_id": "a0422e52a9702847dfd242c0c2bb785e6fae41ba",
       "original_commit_id": "a0422e52a9702847dfd242c0c2bb785e6fae41ba",
@@ -817,10 +1074,10 @@
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/909"
         }
       },
-      "start_line": 1107,
+      "start_line": null,
       "original_start_line": 1107,
       "start_side": "RIGHT",
-      "line": 1111,
+      "line": null,
       "original_line": 1111,
       "side": "RIGHT"
     },
@@ -831,7 +1088,7 @@
       "node_id": "PRRC_kwDOEEET9c6VSBzl",
       "diff_hunk": "@@ -405,9 +408,16 @@ void RPCExecutor::request(const QString &command, const QString& wallet_name)\n                 \"   example:    getblock(getblockhash(0) 1)[tx]\\n\\n\"\n \n                 \"Results without keys can be queried with an integer in brackets using the parenthesized syntax.\\n\"\n-                \"   example:    getblock(getblockhash(0),1)[tx][0]\\n\\n\")));\n+                \"   example:    getblock(getblockhash(0),1)[tx][0]\\n\\n\"\n+\n+                \"Lines starting with '#' are treated as comments and are not executed.\\n\"\n+                \"   example:    # Hello world\\n\\n\")));\n+            return;\n+        } else if (executableCommand.starts_with(\"#\")) {",
       "path": "src/qt/rpcconsole.cpp",
-      "position": 27,
+      "position": 1,
       "original_position": 27,
       "commit_id": "a0422e52a9702847dfd242c0c2bb785e6fae41ba",
       "original_commit_id": "a0422e52a9702847dfd242c0c2bb785e6fae41ba",
@@ -874,7 +1131,61 @@
       "start_line": null,
       "original_start_line": null,
       "start_side": null,
-      "line": 416,
+      "line": null,
+      "original_line": 416,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2505990347",
+      "pull_request_review_id": 3437063977,
+      "id": 2505990347,
+      "node_id": "PRRC_kwDOEEET9c6VXmDL",
+      "diff_hunk": "@@ -405,9 +408,16 @@ void RPCExecutor::request(const QString &command, const QString& wallet_name)\n                 \"   example:    getblock(getblockhash(0) 1)[tx]\\n\\n\"\n \n                 \"Results without keys can be queried with an integer in brackets using the parenthesized syntax.\\n\"\n-                \"   example:    getblock(getblockhash(0),1)[tx][0]\\n\\n\")));\n+                \"   example:    getblock(getblockhash(0),1)[tx][0]\\n\\n\"\n+\n+                \"Lines starting with '#' are treated as comments and are not executed.\\n\"\n+                \"   example:    # Hello world\\n\\n\")));\n+            return;\n+        } else if (executableCommand.starts_with(\"#\")) {",
+      "path": "src/qt/rpcconsole.cpp",
+      "position": 1,
+      "original_position": 27,
+      "commit_id": "a0422e52a9702847dfd242c0c2bb785e6fae41ba",
+      "original_commit_id": "a0422e52a9702847dfd242c0c2bb785e6fae41ba",
+      "in_reply_to_id": 2504531173,
+      "user": {
+        "login": "waketraindev",
+        "id": 175499942,
+        "node_id": "U_kgDOCnXqpg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/175499942?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/waketraindev",
+        "html_url": "https://github.com/waketraindev",
+        "followers_url": "https://api.github.com/users/waketraindev/followers",
+        "following_url": "https://api.github.com/users/waketraindev/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/waketraindev/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/waketraindev/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/waketraindev/subscriptions",
+        "organizations_url": "https://api.github.com/users/waketraindev/orgs",
+        "repos_url": "https://api.github.com/users/waketraindev/repos",
+        "events_url": "https://api.github.com/users/waketraindev/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/waketraindev/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "body": "You’re right, a separate signal/slot wasn’t necessary here. I revisited the implementation, removed both the signal and slot, and consolidated the logic directly into RPCConsole::on_lineEdit_returnPressed, as you suggested, cleaning everything up. Thanks for taking a look at the PR!",
+      "created_at": "2025-11-08T02:21:43Z",
+      "updated_at": "2025-11-08T02:21:43Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/909#discussion_r2505990347",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2505990347"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/909"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": null,
       "original_line": 416,
       "side": "RIGHT"
     }
