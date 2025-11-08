@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/909/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/909/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/318eacf0b8d80bcbfa7e7ce68c55b39cbedceaa8",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/48fefa85f7e9e63b8637eb3180ba4a3a312db965",
     "number": 909,
     "state": "open",
     "locked": false,
@@ -40,14 +40,14 @@
       "name": null,
       "patch_url": null
     },
-    "body": "Sensitive RPC commands such as `walletpassphrase` or `createwallet`\r\nmay appear in the console history with their arguments redacted. Previously,\r\nthese entries could still be re-executed if recalled, potentially causing\r\nunintended actions.\r\n\r\nThis change prefixes redacted history entries with a leading character(`!`),\r\nmarking them as non-executable when called. The console blocks their\r\nexecution and informs the user that the command was redacted.\r\nThe help text in `help-console` has been updated to explain this behavior.\r\n\r\nTest coverage is updated to verify redaction prefixing and ensure commands are properly filtered.",
+    "body": "Sensitive RPC commands such as `walletpassphrase` or `createwallet`\r\nmay appear in the console history with their arguments redacted. Previously,\r\nthese entries could still be re-executed if recalled, potentially causing\r\nunintended actions.\r\n\r\nThis change prefixes sensitive history entries with a leading character(`!`),\r\nmarking them as non-executable when called. The console blocks their\r\nexecution and informs the user that the command was blocked.\r\nThe help text in `help-console` has been updated to explain this behavior.\r\n\r\nTest coverage is updated to verify redaction prefixing and ensure commands are properly filtered.",
     "labels": [],
     "created_at": "2025-11-06T13:26:32Z",
-    "updated_at": "2025-11-08T12:54:57Z",
+    "updated_at": "2025-11-08T13:57:13Z",
     "mergeable": true,
-    "mergeable_state": "clean",
+    "mergeable_state": "unstable",
     "merged": false,
-    "merge_commit_sha": "ca6c9e42bfcfcc8e4ab7263bb83303e3516079f1",
+    "merge_commit_sha": "d75ed11202558c73a4874d8bca12254e8ce50ceb",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -55,7 +55,7 @@
     "head": {
       "label": "waketraindev:2025-11-gui-comment-sensitive-commands",
       "ref": "2025-11-gui-comment-sensitive-commands",
-      "sha": "318eacf0b8d80bcbfa7e7ce68c55b39cbedceaa8",
+      "sha": "48fefa85f7e9e63b8637eb3180ba4a3a312db965",
       "user": {
         "login": "waketraindev",
         "id": 175499942,
@@ -168,7 +168,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-11-08T11:10:54Z",
+        "pushed_at": "2025-11-08T13:06:49Z",
         "created_at": "2025-07-30T11:26:51Z",
         "updated_at": "2025-11-08T11:10:58Z",
         "allow_forking": true,
@@ -333,7 +333,7 @@
     },
     "author_association": "CONTRIBUTOR",
     "draft": true,
-    "additions": 31,
+    "additions": 34,
     "deletions": 7,
     "changed_files": 2,
     "commits": 1,
@@ -853,46 +853,6 @@
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/909"
     },
     {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDMxOGVhY2YwYjhkODBiY2JmYTdlN2NlNjhjNTViMzljYmVkY2VhYTg",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/318eacf0b8d80bcbfa7e7ce68c55b39cbedceaa8",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/318eacf0b8d80bcbfa7e7ce68c55b39cbedceaa8",
-      "tree": {
-        "sha": "21b9603869406a2d4113b8880f901369d7b2d49b",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/21b9603869406a2d4113b8880f901369d7b2d49b"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/5c5704e730796c6f31e2d7891bf6334674a04219",
-          "sha": "5c5704e730796c6f31e2d7891bf6334674a04219",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/5c5704e730796c6f31e2d7891bf6334674a04219"
-        }
-      ],
-      "message": "qt: Prevent re-execution of sensitive commands from console history\n\nSensitive RPC commands such as `walletpassphrase` or `createwallet`\nmay appear in the console history with their arguments redacted. Previously,\nthese entries could still be re-executed if recalled, potentially causing\nunintended actions.\n\nThis change prefixes redacted history entries with a leading character(`!`),\nmarking them as non-executable when called. The console blocks their\nexecution and informs the user that the command was redacted.\nThe help text in `help-console` has been updated to explain this behavior.\n\nTest coverage is updated to verify redaction prefixing and ensure commands\nare properly filtered.",
-      "committer": {
-        "name": "WakeTrainDev",
-        "email": "175499942+waketraindev@users.noreply.github.com",
-        "date": "2025-11-08T02:47:16Z"
-      },
-      "author": {
-        "name": "WakeTrainDev",
-        "email": "175499942+waketraindev@users.noreply.github.com",
-        "date": "2025-11-08T00:40:24Z"
-      },
-      "sha": "318eacf0b8d80bcbfa7e7ce68c55b39cbedceaa8"
-    },
-    {
       "event": "head_ref_force_pushed",
       "id": 20802147429,
       "node_id": "HRFPE_lADOEEET9c7WVAHlzwAAAATX55Rl",
@@ -1081,6 +1041,77 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2025-11-08T12:54:57Z"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDQ4ZmVmYTg1ZjdlOWU2M2I4NjM3ZWIzMTgwYmE0YTNhMzEyZGI5NjU",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/48fefa85f7e9e63b8637eb3180ba4a3a312db965",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/48fefa85f7e9e63b8637eb3180ba4a3a312db965",
+      "tree": {
+        "sha": "fb90125d5c86733fa74bd9da68bf2c0bfebc84f5",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/fb90125d5c86733fa74bd9da68bf2c0bfebc84f5"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/5c5704e730796c6f31e2d7891bf6334674a04219",
+          "sha": "5c5704e730796c6f31e2d7891bf6334674a04219",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/5c5704e730796c6f31e2d7891bf6334674a04219"
+        }
+      ],
+      "message": "qt: Prevent re-execution of sensitive commands from console history\n\nSensitive RPC commands such as `walletpassphrase` or `createwallet`\nmay appear in the console history with their arguments redacted. Previously,\nthese entries could still be re-executed if recalled, potentially causing\nunintended actions.\n\nThis change prefixes sensitive history entries with a leading character(`!`),\nmarking them as non-executable when called. The console blocks their\nexecution and informs the user that the command was blocked.\nThe help text in `help-console` has been updated to explain this behavior.\n\nTest coverage is updated to verify redaction prefixing and ensure commands\nare properly filtered.",
+      "committer": {
+        "name": "WakeTrainDev",
+        "email": "175499942+waketraindev@users.noreply.github.com",
+        "date": "2025-11-08T12:56:45Z"
+      },
+      "author": {
+        "name": "WakeTrainDev",
+        "email": "175499942+waketraindev@users.noreply.github.com",
+        "date": "2025-11-08T00:40:24Z"
+      },
+      "sha": "48fefa85f7e9e63b8637eb3180ba4a3a312db965"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 20807733358,
+      "node_id": "HRFPE_lADOEEET9c7WVAHlzwAAAATYPNBu",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/20807733358",
+      "actor": {
+        "login": "waketraindev",
+        "id": 175499942,
+        "node_id": "U_kgDOCnXqpg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/175499942?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/waketraindev",
+        "html_url": "https://github.com/waketraindev",
+        "followers_url": "https://api.github.com/users/waketraindev/followers",
+        "following_url": "https://api.github.com/users/waketraindev/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/waketraindev/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/waketraindev/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/waketraindev/subscriptions",
+        "organizations_url": "https://api.github.com/users/waketraindev/orgs",
+        "repos_url": "https://api.github.com/users/waketraindev/repos",
+        "events_url": "https://api.github.com/users/waketraindev/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/waketraindev/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": "48fefa85f7e9e63b8637eb3180ba4a3a312db965",
+      "commit_url": "https://api.github.com/repos/waketraindev/core-gui/commits/48fefa85f7e9e63b8637eb3180ba4a3a312db965",
+      "created_at": "2025-11-08T13:06:50Z"
     }
   ],
   "comments": [
