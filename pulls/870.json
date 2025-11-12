@@ -37,18 +37,21 @@
       "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
       "type": "User",
       "site_admin": false,
+      "name": null,
       "patch_url": null
     },
     "body": "based on the QML PR [424](https://github.com/bitcoin-core/gui-qml/pull/424). For evaluation purposes only!\r\n\r\n# GUI Integration for UTXO Snapshot Loading\r\n\r\n## Overview\r\nThis PR adds initial GUI support for loading a UTXO snapshot, building on Bitcoin Core's `assumeutxo` infrastructure.\r\n\r\n## What This PR Does\r\n\r\n1. Adds a basic GUI interface for loading UTXO snapshots via the Options Dialog panel\r\n2. Provides visual confirmation of snapshot activation\r\n3. Adds a snapshot progress notification bar accessible via a handler\r\n\r\n## Implementation Details\r\n\r\n### Core Components Modified\r\n\r\n1. **Node Interface** (`src/node/interfaces.cpp`)\r\n- Implements `snapshotLoad()` based on the [`loadtxoutset`](https://github.com/bitcoin/bitcoin/blob/14b8dfb2bd5e2ca2b7c0c9a7f7d50e1e60adf75c/src/rpc/blockchain.cpp#L3227) RPC\r\n\r\n2. **QT Integration** (`src/qt/optionsdialog.cpp`)\r\n- Manages snapshot loading state and progress\r\n- makes use of a worker class to manage snapshot metadata (src/qt/snapshotmodel.cpp)\r\n- Provides progress updates via a progress bar\r\n\r\n### Key Design Decisions\r\n\r\n2. **Extensibility**\r\n- Interface designed to accommodate future `assumeutxo` changes\r\n- Error handling framework in place\r\n\r\n## Testing Instructions\r\n\r\n1. Build\r\n2. Launch Bitcoin Core GUI (bitcoin-qt)\r\n3. Navigate to Settings -> Options\r\n4. Click `Load Snapshot` button\r\n5. Follow pop-up instructions\r\n6. Test with sample snapshot:\r\n\r\nhttps://bitcoin-snapshots.jaonoctus.dev/ (No affiliation with the maintainer of this site. As always \"Don't trust! Verify!\")\r\n\r\n<details>\r\n  <summary> POC Ubuntu Screenshots `signet`</summary>\r\n\r\n \r\n![Screenshot 2025-04-28 100528](https://github.com/user-attachments/assets/0d66a076-c4a2-46e5-8796-e0b9f6db79f7)\r\nLaunch bitcoin-qt on `signet`\r\n![Screenshot 2025-04-28 100541](https://github.com/user-attachments/assets/a6df2934-a1fc-4890-817f-02059ecb1607)\r\nNavigate to Settings -> Options\r\n![Screenshot 2025-04-28 100559](https://github.com/user-attachments/assets/1d5951d8-6c00-4596-87c4-b64fff0a8c8d)\r\nClick the \"Load Snapshot...\" button\r\n![Select_file](https://github.com/user-attachments/assets/0873c71f-4a38-41eb-bd00-2a09868044fe)\r\nNavigate to where your snapshot file is. The snapshot was downloaded from [here]( https://bitcoin-snapshots.jaonoctus.dev/)\r\n![Screenshot 2025-04-28 100735](https://github.com/user-attachments/assets/ea0272f1-5769-4ac1-a30d-f4d6779d7426)\r\nClick \"Yes\"\r\n![Screenshot 2025-04-28 100950](https://github.com/user-attachments/assets/01dbb48d-33b2-4629-a67d-69f1cd11168f)\r\nWait for the snapshot to load and for this pop-up to appear and click \"Ok\"\r\n![Screenshot 2025-04-28 101743](https://github.com/user-attachments/assets/dabc9f43-3537-4782-a992-2948fbadd1ea)\r\nVerify the \"chain_snapshot\" directory is present in your `datadir`\r\n\r\n</details>\r\n\r\n### Expected Behavior\r\n- File selection dialog works\r\n- Success/failure state properly displayed\r\n- Node becomes usable while background validation continues\r\n\r\n## Notes for Reviewers\r\n\r\n- This is a POC so all feedback is welcomed\r\n- I am not a designer so please feel free to chime in if there's a more elegant way to achieve this\r\n\r\nThis is a work in progress - feedback welcome on the approach and implementation details.",
     "labels": [],
     "created_at": "2025-04-30T15:19:08Z",
-    "updated_at": "2025-10-24T20:28:41Z",
-    "mergeable_state": "unknown",
+    "updated_at": "2025-11-12T18:52:23Z",
+    "mergeable": true,
+    "mergeable_state": "unstable",
     "merged": false,
-    "merge_commit_sha": "43d9d9dcb0c3e25712d0fb66c6c0beabdf8c367a",
+    "merge_commit_sha": "6fd0f8634e2efca2667b030821e0c749f7763c0c",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
+    "rebaseable": true,
     "head": {
       "label": "D33r-Gee:2025_gui_interfaces_loadsnapshot_poc",
       "ref": "2025_gui_interfaces_loadsnapshot_poc",
@@ -72,6 +75,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "repo": {
@@ -98,6 +102,7 @@
           "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
           "type": "User",
           "site_admin": false,
+          "name": null,
           "patch_url": null
         },
         "private": false,
@@ -207,6 +212,7 @@
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "repo": {
@@ -233,6 +239,7 @@
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
           "site_admin": false,
+          "name": null,
           "patch_url": null
         },
         "private": false,
@@ -282,12 +289,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 321,
-        "stargazers_count": 680,
-        "watchers_count": 680,
-        "size": 180231,
+        "forks_count": 326,
+        "stargazers_count": 686,
+        "watchers_count": 686,
+        "size": 180989,
         "default_branch": "master",
-        "open_issues_count": 151,
+        "open_issues_count": 150,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -298,9 +305,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-10-24T20:25:17Z",
+        "pushed_at": "2025-11-12T15:16:40Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2025-10-24T20:25:21Z",
+        "updated_at": "2025-11-12T15:16:43Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -358,14 +365,15 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2025-04-30T15:19:18Z",
-      "updated_at": "2025-10-24T20:28:41Z",
+      "updated_at": "2025-11-12T18:52:23Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [Sjors](https://github.com/bitcoin-core/gui/pull/870#issuecomment-2844581124) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#bitcoin/bitcoin/32297](https://github.com/bitcoin/bitcoin/pull/32297) (bitcoin-cli: Add -ipcconnect option by ryanofsky)\n* [#bitcoin/bitcoin/19461](https://github.com/bitcoin/bitcoin/pull/19461) (multiprocess: Add bitcoin-gui -ipcconnect option by ryanofsky)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n<!--5faf32d7da4f0f540f40219e4f7537a3-->",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [Sjors](https://github.com/bitcoin-core/gui/pull/870#issuecomment-2844581124) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#bitcoin/bitcoin/32297](https://github.com/bitcoin/bitcoin/pull/32297) (bitcoin-cli: Add -ipcconnect option by ryanofsky)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n<!--5faf32d7da4f0f540f40219e4f7537a3-->",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -385,6 +393,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/870#issuecomment-2842351191",
@@ -414,6 +423,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -441,6 +451,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/870#issuecomment-2842456975",
@@ -470,6 +481,7 @@
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -500,6 +512,7 @@
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -530,6 +543,7 @@
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -557,6 +571,7 @@
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/870#issuecomment-2844581124",
@@ -586,6 +601,7 @@
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -613,6 +629,7 @@
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/870#issuecomment-2880052845",
@@ -642,6 +659,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -669,6 +687,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/870#issuecomment-2881745240",
@@ -698,6 +717,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -732,6 +752,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "25bfc724076ace4af4e299e70290515565b7edbc",
@@ -762,6 +783,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -796,6 +818,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -830,6 +853,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "60f676abf54a454361ae9f5dd17509ec929acbac",
@@ -860,6 +884,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -894,6 +919,7 @@
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -921,6 +947,7 @@
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/870#issuecomment-3264907575",
@@ -950,6 +977,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -977,6 +1005,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/870#issuecomment-3267106706",
@@ -1006,6 +1035,7 @@
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1033,6 +1063,7 @@
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/870#issuecomment-3269262623",
@@ -1102,6 +1133,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "82a3969f6570d370943fb3a7be86cd3ffdacdd4d",
@@ -1132,6 +1164,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1159,6 +1192,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/870#issuecomment-3335902873",
@@ -1188,6 +1222,7 @@
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1218,6 +1253,7 @@
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1248,6 +1284,7 @@
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1278,6 +1315,7 @@
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1348,6 +1386,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "482e80b563c96e0a8c0b0950879eeeaf76f8271b",
