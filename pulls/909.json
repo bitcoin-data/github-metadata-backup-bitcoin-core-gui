@@ -41,19 +41,9 @@
       "patch_url": null
     },
     "body": "Sensitive RPC commands such as `walletpassphrase` or `createwallet`\r\nhave their arguments redacted when stored in the console history.\r\nEven though their parameters are hidden, these commands could still\r\nbe recalled and executed again, which might lead to unintended or\r\nharmful actions.\r\n\r\nThis change extends the existing blocking filter that prevents\r\nre-execution of commands considered sensitive or risky when recalled\r\nfrom history. Such entries are prefixed with a leading character (`!`),\r\nmarking them as non-executable. When the user attempts to run them\r\nagain from history, the console blocks the action and displays an\r\ninformational message. Commands entered manually remain unaffected.\r\n\r\nIn addition to wallet and key-related RPCs, this filter now also\r\ncovers transaction-related commands such as `send`, `sendall`,\r\n`sendmany`, and `sendtoaddress`, which may cause unwanted effects\r\nif repeated from history.\r\n\r\nTest coverage has been expanded to verify redaction and blocking\r\nbehavior, ensuring that sensitive commands are correctly identified\r\nand prefixed. The console help text has been updated to describe\r\nthis functionality.\r\n",
-    "labels": [
-      {
-        "id": 2145506980,
-        "node_id": "MDU6TGFiZWwyMTQ1NTA2OTgw",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Needs%20rebase",
-        "name": "Needs rebase",
-        "description": "",
-        "color": "cccccc",
-        "default": false
-      }
-    ],
+    "labels": [],
     "created_at": "2025-11-06T13:26:32Z",
-    "updated_at": "2025-11-18T23:47:59Z",
+    "updated_at": "2025-11-19T01:12:36Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
@@ -165,7 +155,7 @@
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 180817,
+        "size": 181417,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -299,12 +289,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 327,
+        "forks_count": 328,
         "stargazers_count": 687,
         "watchers_count": 687,
-        "size": 181395,
+        "size": 181405,
         "default_branch": "master",
-        "open_issues_count": 148,
+        "open_issues_count": 149,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -1548,6 +1538,41 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/909#issuecomment-3549922600",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/909"
+    },
+    {
+      "event": "unlabeled",
+      "id": 21030138392,
+      "node_id": "UNLE_lADOEEET9c7WVAHlzwAAAATlfnIY",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/21030138392",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-11-19T01:12:36Z",
+      "label": {
+        "name": "Needs rebase",
+        "color": "cccccc"
+      }
     }
   ],
   "comments": [
