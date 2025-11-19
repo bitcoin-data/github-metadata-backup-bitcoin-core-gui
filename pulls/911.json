@@ -52,7 +52,7 @@
       }
     ],
     "created_at": "2025-11-19T01:26:12Z",
-    "updated_at": "2025-11-19T04:33:42Z",
+    "updated_at": "2025-11-19T07:06:47Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
@@ -346,7 +346,7 @@
     "changed_files": 11,
     "commits": 3,
     "review_comments": 0,
-    "comments": 1
+    "comments": 2
   },
   "events": [
     {
@@ -561,6 +561,64 @@
         "name": "CI failed",
         "color": "ededed"
       }
+    },
+    {
+      "event": "commented",
+      "id": 3551114643,
+      "node_id": "IC_kwDOEEET9c7TqbWT",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/3551114643",
+      "actor": {
+        "login": "ajtowns",
+        "id": 127186,
+        "node_id": "MDQ6VXNlcjEyNzE4Ng==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/127186?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ajtowns",
+        "html_url": "https://github.com/ajtowns",
+        "followers_url": "https://api.github.com/users/ajtowns/followers",
+        "following_url": "https://api.github.com/users/ajtowns/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/ajtowns/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/ajtowns/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/ajtowns/subscriptions",
+        "organizations_url": "https://api.github.com/users/ajtowns/orgs",
+        "repos_url": "https://api.github.com/users/ajtowns/repos",
+        "events_url": "https://api.github.com/users/ajtowns/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/ajtowns/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-11-19T07:06:47Z",
+      "updated_at": "2025-11-19T07:06:47Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "To test, start with `-datacarriersize=10`, and run\r\n\r\n```\r\nsend '{\"data\": \"4368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73\"}' null \"unset\" 1\r\n```\r\n\r\nfrom the console. \"Non-mempool: <change amount>\" should appear in the Balances pane on the Overview window with the change from the transaction. Restarting with `-datacarriersize=100000` should allow the tx to enter the mempool, and move the amount into the Available balance. (Presumably, do this on -regtest after generating 100 blocks; or perhaps signet after grabbing some funds from a faucet)",
+      "user": {
+        "login": "ajtowns",
+        "id": 127186,
+        "node_id": "MDQ6VXNlcjEyNzE4Ng==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/127186?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ajtowns",
+        "html_url": "https://github.com/ajtowns",
+        "followers_url": "https://api.github.com/users/ajtowns/followers",
+        "following_url": "https://api.github.com/users/ajtowns/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/ajtowns/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/ajtowns/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/ajtowns/subscriptions",
+        "organizations_url": "https://api.github.com/users/ajtowns/orgs",
+        "repos_url": "https://api.github.com/users/ajtowns/repos",
+        "events_url": "https://api.github.com/users/ajtowns/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/ajtowns/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/911#issuecomment-3551114643",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/911"
     }
   ],
   "comments": []
