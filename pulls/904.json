@@ -43,7 +43,7 @@
     "body": "The main window (BitcoinGUI) does not need to be passed to bringToFront(), doing so sets Qt::WindowStaysOnTopHint on the main window and causes it to flicker.\r\n\r\nFixes https://github.com/bitcoin-core/gui/issues/903.",
     "labels": [],
     "created_at": "2025-10-16T07:19:00Z",
-    "updated_at": "2025-11-21T13:35:07Z",
+    "updated_at": "2025-11-21T15:12:41Z",
     "closed_at": "2025-11-21T13:31:52Z",
     "mergeable": true,
     "mergeable_state": "clean",
@@ -338,7 +338,7 @@
     "changed_files": 1,
     "commits": 1,
     "review_comments": 6,
-    "comments": 5
+    "comments": 6
   },
   "events": [
     {
@@ -1424,6 +1424,64 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2025-11-21T13:31:52Z"
+    },
+    {
+      "event": "commented",
+      "id": 3563438977,
+      "node_id": "IC_kwDOEEET9c7UZcOB",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/3563438977",
+      "actor": {
+        "login": "diegoviola",
+        "id": 4371,
+        "node_id": "MDQ6VXNlcjQzNzE=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/4371?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/diegoviola",
+        "html_url": "https://github.com/diegoviola",
+        "followers_url": "https://api.github.com/users/diegoviola/followers",
+        "following_url": "https://api.github.com/users/diegoviola/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/diegoviola/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/diegoviola/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/diegoviola/subscriptions",
+        "organizations_url": "https://api.github.com/users/diegoviola/orgs",
+        "repos_url": "https://api.github.com/users/diegoviola/repos",
+        "events_url": "https://api.github.com/users/diegoviola/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/diegoviola/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-11-21T15:12:41Z",
+      "updated_at": "2025-11-21T15:12:41Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "> For example, on Fedora 43 with Gnome 49 and Wayland\r\n\r\nAh, I haven't tested this on GNOME. I suspect the use of `showNormal()` likely helps with the desired window behavior, which is why the revert works better.",
+      "user": {
+        "login": "diegoviola",
+        "id": 4371,
+        "node_id": "MDQ6VXNlcjQzNzE=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/4371?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/diegoviola",
+        "html_url": "https://github.com/diegoviola",
+        "followers_url": "https://api.github.com/users/diegoviola/followers",
+        "following_url": "https://api.github.com/users/diegoviola/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/diegoviola/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/diegoviola/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/diegoviola/subscriptions",
+        "organizations_url": "https://api.github.com/users/diegoviola/orgs",
+        "repos_url": "https://api.github.com/users/diegoviola/repos",
+        "events_url": "https://api.github.com/users/diegoviola/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/diegoviola/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/904#issuecomment-3563438977",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/904"
     }
   ],
   "comments": [
