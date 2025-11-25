@@ -52,7 +52,7 @@
       }
     ],
     "created_at": "2025-11-21T12:46:31Z",
-    "updated_at": "2025-11-25T19:58:08Z",
+    "updated_at": "2025-11-25T22:08:52Z",
     "closed_at": "2025-11-24T15:24:07Z",
     "mergeable_state": "unknown",
     "merged": true,
@@ -369,7 +369,7 @@
     "changed_files": 1,
     "commits": 1,
     "review_comments": 0,
-    "comments": 8
+    "comments": 9
   },
   "events": [
     {
@@ -1297,6 +1297,64 @@
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/914#issuecomment-3577355929",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/914"
+    },
+    {
+      "event": "commented",
+      "id": 3577784256,
+      "node_id": "IC_kwDOEEET9c7VQKfA",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/3577784256",
+      "actor": {
+        "login": "diegoviola",
+        "id": 4371,
+        "node_id": "MDQ6VXNlcjQzNzE=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/4371?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/diegoviola",
+        "html_url": "https://github.com/diegoviola",
+        "followers_url": "https://api.github.com/users/diegoviola/followers",
+        "following_url": "https://api.github.com/users/diegoviola/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/diegoviola/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/diegoviola/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/diegoviola/subscriptions",
+        "organizations_url": "https://api.github.com/users/diegoviola/orgs",
+        "repos_url": "https://api.github.com/users/diegoviola/repos",
+        "events_url": "https://api.github.com/users/diegoviola/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/diegoviola/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-11-25T22:08:52Z",
+      "updated_at": "2025-11-25T22:08:52Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "> Built correctly from source both Qt 6.3.2 and 6.10.0, and bringToFront doesn't work on either of them using Wayland.\r\n> 2025-11-25T19:22:58Z System: Ubuntu 22.04.5 LTS, x86_64-little_endian-lp64\r\n\r\nThat's because Mutter on that GNOME version doesn't support the [XDG activation protocol](https://wayland.app/protocols/xdg-activation-v1). Which is the protocol used by clients to request activation of surfaces.\r\n\r\n`GUIUtil::bringToFront` uses `activateWindow()` which uses the XDG activation protocol to communicate with the compositor.\r\n\r\nxdg_activation_v1 is supported since Mutter 48.0, so you probably want to upgrade to Ubuntu 25.04.",
+      "user": {
+        "login": "diegoviola",
+        "id": 4371,
+        "node_id": "MDQ6VXNlcjQzNzE=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/4371?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/diegoviola",
+        "html_url": "https://github.com/diegoviola",
+        "followers_url": "https://api.github.com/users/diegoviola/followers",
+        "following_url": "https://api.github.com/users/diegoviola/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/diegoviola/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/diegoviola/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/diegoviola/subscriptions",
+        "organizations_url": "https://api.github.com/users/diegoviola/orgs",
+        "repos_url": "https://api.github.com/users/diegoviola/repos",
+        "events_url": "https://api.github.com/users/diegoviola/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/diegoviola/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/914#issuecomment-3577784256",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/914"
     }
   ],
