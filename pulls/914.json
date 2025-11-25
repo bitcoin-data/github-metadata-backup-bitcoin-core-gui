@@ -52,7 +52,7 @@
       }
     ],
     "created_at": "2025-11-21T12:46:31Z",
-    "updated_at": "2025-11-24T16:12:37Z",
+    "updated_at": "2025-11-25T11:31:35Z",
     "closed_at": "2025-11-24T15:24:07Z",
     "mergeable_state": "unknown",
     "merged": true,
@@ -323,7 +323,7 @@
         "forks_count": 327,
         "stargazers_count": 687,
         "watchers_count": 687,
-        "size": 181724,
+        "size": 181840,
         "default_branch": "master",
         "open_issues_count": 145,
         "is_template": false,
@@ -336,9 +336,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-11-24T15:24:06Z",
+        "pushed_at": "2025-11-25T11:45:13Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2025-11-24T15:24:10Z",
+        "updated_at": "2025-11-25T11:45:17Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -369,7 +369,7 @@
     "changed_files": 1,
     "commits": 1,
     "review_comments": 0,
-    "comments": 6
+    "comments": 7
   },
   "events": [
     {
@@ -1181,6 +1181,64 @@
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/914#issuecomment-3571589113",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/914"
+    },
+    {
+      "event": "commented",
+      "id": 3575197345,
+      "node_id": "IC_kwDOEEET9c7VGS6h",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/3575197345",
+      "actor": {
+        "login": "diegoviola",
+        "id": 4371,
+        "node_id": "MDQ6VXNlcjQzNzE=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/4371?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/diegoviola",
+        "html_url": "https://github.com/diegoviola",
+        "followers_url": "https://api.github.com/users/diegoviola/followers",
+        "following_url": "https://api.github.com/users/diegoviola/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/diegoviola/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/diegoviola/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/diegoviola/subscriptions",
+        "organizations_url": "https://api.github.com/users/diegoviola/orgs",
+        "repos_url": "https://api.github.com/users/diegoviola/repos",
+        "events_url": "https://api.github.com/users/diegoviola/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/diegoviola/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-11-25T11:31:27Z",
+      "updated_at": "2025-11-25T11:31:27Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "> Instead of linking to a bunch of threads, it could make sense to just say that the issue has been fixed upstream in Qt6, so that the workaround is no longer needed?\r\n\r\nThe `Qt::WindowStaysOnTopHint` workaround was never going to work on Wayland. Clients don't get to dictate whether they stay on top or not. The compositor does, and you (the user) are supposed to control the compositor through configuration. This is a fundamental difference that a lot of people don't seem to understand.\r\n\r\nIt seems like the workaround was added for https://github.com/bitcoin-core/gui/pull/817 but curiously enough this has been working fine. If all you want to do is raise a window just call `activateWindow()` which is what `GUIUtil::bringToFront` already does.\r\n\r\nSo yeah, just upgrade your software and things will work better.",
+      "user": {
+        "login": "diegoviola",
+        "id": 4371,
+        "node_id": "MDQ6VXNlcjQzNzE=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/4371?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/diegoviola",
+        "html_url": "https://github.com/diegoviola",
+        "followers_url": "https://api.github.com/users/diegoviola/followers",
+        "following_url": "https://api.github.com/users/diegoviola/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/diegoviola/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/diegoviola/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/diegoviola/subscriptions",
+        "organizations_url": "https://api.github.com/users/diegoviola/orgs",
+        "repos_url": "https://api.github.com/users/diegoviola/repos",
+        "events_url": "https://api.github.com/users/diegoviola/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/diegoviola/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/914#issuecomment-3575197345",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/914"
     }
   ],
