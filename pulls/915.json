@@ -40,7 +40,7 @@
       "name": null,
       "patch_url": null
     },
-    "body": "Fixes #30070\n\nWhen creating an unsigned PSBT from the GUI, the transaction was already signed during preparation, causing legacy inputs to have non-empty scriptSig fields. The PSBT parser then rejects them.\n\nThis defers signing until the user clicks \"Send\" instead of signing during preparation. Fee calculation still works since transactions can be created without signing.\n\nFollows the approach suggested by @achow101 in the issue comments.",
+    "body": "Fixes [#30070](https://github.com/bitcoin/bitcoin/issues/30070)\r\n\r\nWhen creating an unsigned PSBT from the GUI, the transaction was already signed during preparation, causing legacy inputs to have non-empty scriptSig fields. The PSBT parser then rejects them.\r\n\r\nThis defers signing until the user clicks \"Send\" instead of signing during preparation. Fee calculation still works since transactions can be created without signing.\r\n\r\nFollows the approach suggested by @achow101 in the issue comments.",
     "labels": [
       {
         "id": 5353934559,
@@ -52,7 +52,7 @@
       }
     ],
     "created_at": "2025-11-22T19:19:22Z",
-    "updated_at": "2025-11-29T21:51:40Z",
+    "updated_at": "2025-11-29T22:29:07Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
