@@ -37,6 +37,7 @@
       "received_events_url": "https://api.github.com/users/rebroad/received_events",
       "type": "User",
       "site_admin": false,
+      "name": null,
       "patch_url": null
     },
     "body": "This PR improves the network traffic graph widget in the Debug window to provide:\r\n1. Multiple time range options (from 5 minutes to 28 days)\r\n2. Data persistence between sessions\r\n3. Interactive visualization features including tooltips and logarithmic scaling\r\n\r\n## Motivation\r\nThe existing network traffic graph has limited utility with its fixed time range and lack of historical data preservation. This enhancement allows users to:\r\n- Analyze network traffic patterns over different timeframes\r\n- Preserve historical traffic data between session restarts\r\n- Interact with the graph to get specific data points\r\n- Better visualize varying traffic volumes with logarithmic scaling\r\n\r\nThese improvements are valuable for:\r\n- Network debugging and troubleshooting\r\n- Understanding Bitcoin Core's network behaviour\r\n- Monitoring traffic patterns for optimization\r\n- Research purposes\r\n\r\n## Implementation\r\nThe implementation preserves all existing functionality while adding new features:\r\n- Added a pre-configured timeframe selection (13 different timeframes)\r\n- Implemented traffic data serialization and deserialization\r\n- Enhanced the visualization with interactive features\r\n- Improved tooltip information with precise timestamps and traffic rates\r\n\r\nSupporting changes:\r\n- Added formatBytesps function for a prettier display of traffic rates\r\n- Added FormatISO8601Time for better time display\r\n\r\n## Testing\r\nTested on Linux with various network conditions. The new functionality can be exercised by:\r\n1. Using the slider (or arrow keys) to select different time ranges\r\n2. Restarting the application to verify data persistence\r\n3. Clicking on the graph to toggle between linear and logarithmic scales\r\n4. Hovering over data points to view detailed information\r\n\r\n## Documentation\r\nThe changes are mostly self-documenting through the UI and are constrained to the Qt interface without affecting core functionality.\r\n\r\n## Compatibility\r\nThis PR maintains compatibility with existing functionality. The data persistence file uses proper serialization versioning to allow for future format changes if needed. ",
@@ -61,7 +62,7 @@
       }
     ],
     "created_at": "2025-04-09T23:00:18Z",
-    "updated_at": "2025-09-24T15:06:12Z",
+    "updated_at": "2025-11-29T11:19:45Z",
     "mergeable": false,
     "mergeable_state": "dirty",
     "merged": false,
@@ -86,6 +87,7 @@
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       }
     ],
@@ -114,6 +116,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "repo": {
@@ -140,6 +143,7 @@
           "received_events_url": "https://api.github.com/users/rebroad/received_events",
           "type": "User",
           "site_admin": false,
+          "name": null,
           "patch_url": null
         },
         "private": false,
@@ -249,6 +253,7 @@
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "repo": {
@@ -275,6 +280,7 @@
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
           "site_admin": false,
+          "name": null,
           "patch_url": null
         },
         "private": false,
@@ -324,12 +330,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 317,
-        "stargazers_count": 673,
-        "watchers_count": 673,
-        "size": 178497,
+        "forks_count": 327,
+        "stargazers_count": 687,
+        "watchers_count": 687,
+        "size": 180922,
         "default_branch": "master",
-        "open_issues_count": 145,
+        "open_issues_count": 144,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -340,9 +346,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-09-24T14:08:14Z",
+        "pushed_at": "2025-11-28T16:42:50Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2025-09-24T14:08:18Z",
+        "updated_at": "2025-11-28T16:42:54Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -400,14 +406,15 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2025-04-09T23:00:22Z",
-      "updated_at": "2025-09-24T15:06:12Z",
+      "updated_at": "2025-11-29T11:18:45Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [RandyMcMillan](https://github.com/bitcoin-core/gui/pull/866#issuecomment-3329161743) |\n\nIf your review is incorrectly listed, please react with 👎 to this comment and the bot will ignore it on the next update.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#bitcoin/bitcoin/32862](https://github.com/bitcoin/bitcoin/pull/32862) (rpc: use CScheduler for relocking wallet and remove RPCTimer by pinheadmz)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n<!--5faf32d7da4f0f540f40219e4f7537a3-->\n### LLM Linter (✨ experimental)\n\nPossible typos and grammar issues:\n\n- `if (m_tt_point && m_tt_point <= DESIRED_SAMPLES)` -> `if (m_tt_point > 0 && m_tt_point <= m_time_stamp[m_value].size())` [Index check should use the actual queue size, not a constant]\n- `if (m_tt_point > DESIRED_SAMPLES) m_tt_point = 0;` -> `if (m_tt_point > m_time_stamp[m_value].size()) m_tt_point = 0;` [Index check should use the actual queue size, not a constant]\n- `while (m_time_stamp[i].size() > DESIRED_SAMPLES)` -> `while (m_time_stamp[i].size() > static_cast<int>(DESIRED_SAMPLES * static_cast<double>(m_values[i]) / m_values[0]))` [The maximum number of samples stored per range should scale with the range duration, not a fixed constant, making the queue management logic unclear.]\n- `static uint64_t last_time_ms;` -> `uint64_t last_time_ms;` [Static variable within a loop across ranges leads to incorrect state persistence, corrupting data loading.]\n- `if (!dst_point || (!is_peak && !is_dip)) return dst_point;` -> `if (dst_point == 0 || (!is_peak && !is_dip)) return 0;` [Inconsistent indexing (0-based vs 1-based) and potential out-of-bounds access (accessing at `dst_point - 1` when `dst_point` could be 0) makes the function logic unclear and potentially buggy.]\n\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [RandyMcMillan](https://github.com/bitcoin-core/gui/pull/866#issuecomment-3329161743) |\n\nIf your review is incorrectly listed, please copy-paste <code>&lt;!--meta-tag:bot-skip--&gt;</code> into the comment that the bot should ignore.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#bitcoin/bitcoin/32862](https://github.com/bitcoin/bitcoin/pull/32862) (rpc: use CScheduler for relocking wallet and remove RPCTimer by pinheadmz)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n<!--5faf32d7da4f0f540f40219e4f7537a3-->\n### LLM Linter (✨ experimental)\n\nPossible typos and grammar issues:\n\n- `if (m_tt_point && m_tt_point <= DESIRED_SAMPLES)` -> `if (m_tt_point > 0 && m_tt_point <= m_time_stamp[m_value].size())` [Index check should use the actual queue size, not a constant]\n- `if (m_tt_point > DESIRED_SAMPLES) m_tt_point = 0;` -> `if (m_tt_point > m_time_stamp[m_value].size()) m_tt_point = 0;` [Index check should use the actual queue size, not a constant]\n- `while (m_time_stamp[i].size() > DESIRED_SAMPLES)` -> `while (m_time_stamp[i].size() > static_cast<int>(DESIRED_SAMPLES * static_cast<double>(m_values[i]) / m_values[0]))` [The maximum number of samples stored per range should scale with the range duration, not a fixed constant, making the queue management logic unclear.]\n- `static uint64_t last_time_ms;` -> `uint64_t last_time_ms;` [Static variable within a loop across ranges leads to incorrect state persistence, corrupting data loading.]\n- `if (!dst_point || (!is_peak && !is_dip)) return dst_point;` -> `if (dst_point == 0 || (!is_peak && !is_dip)) return 0;` [Inconsistent indexing (0-based vs 1-based) and potential out-of-bounds access (accessing at `dst_point - 1` when `dst_point` could be 0) makes the function logic unclear and potentially buggy.]\n\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -427,6 +434,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/866#issuecomment-2791157404",
@@ -456,6 +464,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -490,6 +499,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -517,6 +527,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/866#issuecomment-2791211445",
@@ -546,6 +557,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "31b1ffc0ffbf5dfdb9f165a1af3e934384a596c2",
@@ -576,6 +588,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -610,6 +623,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -640,6 +654,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -681,6 +696,7 @@
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/866#pullrequestreview-2765840611",
@@ -712,6 +728,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -739,6 +756,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/866#issuecomment-2807722761",
@@ -768,6 +786,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -792,6 +811,7 @@
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "review_requester": {
@@ -813,6 +833,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       }
     },
@@ -840,6 +861,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "ab7bbd062f5b3de25cf4f79335c890e12f079f35",
@@ -870,6 +892,7 @@
         "received_events_url": "https://api.github.com/users/laanwj/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -904,6 +927,7 @@
         "received_events_url": "https://api.github.com/users/laanwj/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -938,6 +962,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "d5afb13c9dc91c5c949d68c5c6e83dda813aa78d",
@@ -968,6 +993,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "7f8bb6668b659f9fa9e5f7191976a59e8a8b7c70",
@@ -998,6 +1024,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "bfc998da28dce92e69661d48e9895774b0e19a9e",
@@ -1028,6 +1055,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "d68eeca46c7ffec3d9d17ab05418b63285449aa0",
@@ -1058,6 +1086,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "280b15c2b37fd12fa3c5f2cce6a98690d99f59f4",
@@ -1088,6 +1117,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "de2f01ae7ed14d673c69452dbcfc1c423eaa8ce3",
@@ -1118,6 +1148,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1145,6 +1176,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/866#issuecomment-2845967863",
@@ -1174,6 +1206,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "cf274a3367174a5af1edc884450f85c96fd15052",
@@ -1204,6 +1237,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "0982a881462cc9ffdde4d0a6e20678d42dac0aa4",
@@ -1234,6 +1268,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1268,6 +1303,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1295,6 +1331,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/866#issuecomment-2845973296",
@@ -1324,6 +1361,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "47732ed7b053b8b9f86fc1a40537f4d4c2ae7bb9",
@@ -1354,6 +1392,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1381,6 +1420,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/866#issuecomment-2846478431",
@@ -1410,6 +1450,7 @@
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1440,6 +1481,7 @@
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1470,6 +1512,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "c308d557ced732fbd32481d7976f96d32fb11ed7",
@@ -1500,6 +1543,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1534,6 +1578,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "b3155bab3d4632c9d9dcb1aa682d09aec4542c31",
@@ -1564,6 +1609,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "a11432d63dcac0e6dfeb2ca03d48efc1a5b96663",
@@ -1594,6 +1640,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "1b09e1469a6ed6aa56437b1425a25ef7e8383102",
@@ -1624,6 +1671,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "4d14caf125a7673bab69f33fa99eea5c06819047",
@@ -1654,6 +1702,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "54d90c9efa787427b2d268651908ca365c9bab03",
@@ -1684,6 +1733,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1714,6 +1764,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "28ac5175c5192a678c23c5d498fb931ef7c898ae",
@@ -1744,6 +1795,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1771,6 +1823,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/866#issuecomment-2848779371",
@@ -1800,6 +1853,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "c0b9affec67f9d94be921313a21162c2f3f26bb2",
@@ -1830,6 +1884,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1864,6 +1919,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1891,6 +1947,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/866#issuecomment-2849446564",
@@ -1920,6 +1977,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "63bb621d31224e5aa4ad6ded686ea51108daf1de",
@@ -1950,6 +2008,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "6749560f3ceef2cfcd8c15d117b47726b09ddd81",
@@ -1980,6 +2039,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "341b2cd223a37dd87d1e01633d719de3441b1e8b",
@@ -2010,6 +2070,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "d78bad49bb4ed7e98930d0254ca96d51dc0a6a68",
@@ -2040,6 +2101,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "d78bad49bb4ed7e98930d0254ca96d51dc0a6a68",
@@ -2070,6 +2132,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "20c0dd8facfc3026c2c8b0636736b3aabc6c91fd",
@@ -2100,6 +2163,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "31b59ff11c88e10fed7ac991888759abf9437878",
@@ -2130,6 +2194,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "48b175e3e41b12e53e81e5d3af5f8089771e0dab",
@@ -2160,6 +2225,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "b1aa3b82068f315e503d388467c9ba949bbb6d51",
@@ -2190,6 +2256,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -2224,6 +2291,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "a8967487ae415db86b2dd39c5db5cd7626315be1",
@@ -2334,6 +2402,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "15fd680c93b1727716d185a3ab42bb0106e9d7d3",
@@ -2404,6 +2473,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "bc13d019838fa19dd0b4bd6846419e382a6b6505",
@@ -2434,6 +2504,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -2468,6 +2539,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -2495,6 +2567,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/866#issuecomment-3039340126",
@@ -2524,6 +2597,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -2558,6 +2632,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -2585,6 +2660,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/866#issuecomment-3047079323",
@@ -2614,6 +2690,7 @@
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -2648,6 +2725,7 @@
         "received_events_url": "https://api.github.com/users/RandyMcMillan/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -2675,10 +2753,87 @@
         "received_events_url": "https://api.github.com/users/RandyMcMillan/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/866#issuecomment-3329161743",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/866"
+    },
+    {
+      "event": "reviewed",
+      "id": 3520663836,
+      "node_id": "PRR_kwDOEEET9c7R2REc",
+      "url": null,
+      "actor": null,
+      "commit_id": "bc13d019838fa19dd0b4bd6846419e382a6b6505",
+      "commit_url": null,
+      "created_at": null,
+      "updated_at": "2025-11-29T11:18:40Z",
+      "author_association": "NONE",
+      "user": {
+        "login": "th30neee",
+        "id": 201431666,
+        "node_id": "U_kgDODAGacg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/201431666?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/th30neee",
+        "html_url": "https://github.com/th30neee",
+        "followers_url": "https://api.github.com/users/th30neee/followers",
+        "following_url": "https://api.github.com/users/th30neee/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/th30neee/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/th30neee/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/th30neee/subscriptions",
+        "organizations_url": "https://api.github.com/users/th30neee/orgs",
+        "repos_url": "https://api.github.com/users/th30neee/repos",
+        "events_url": "https://api.github.com/users/th30neee/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/th30neee/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/866#pullrequestreview-3520663836",
+      "submitted_at": "2025-11-29T11:18:40Z",
+      "state": "APPROVED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/866"
+    },
+    {
+      "event": "reviewed",
+      "id": 3520664127,
+      "node_id": "PRR_kwDOEEET9c7R2RI_",
+      "url": null,
+      "actor": null,
+      "commit_id": "bc13d019838fa19dd0b4bd6846419e382a6b6505",
+      "commit_url": null,
+      "created_at": null,
+      "updated_at": "2025-11-29T11:19:45Z",
+      "author_association": "NONE",
+      "user": {
+        "login": "th30neee",
+        "id": 201431666,
+        "node_id": "U_kgDODAGacg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/201431666?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/th30neee",
+        "html_url": "https://github.com/th30neee",
+        "followers_url": "https://api.github.com/users/th30neee/followers",
+        "following_url": "https://api.github.com/users/th30neee/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/th30neee/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/th30neee/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/th30neee/subscriptions",
+        "organizations_url": "https://api.github.com/users/th30neee/orgs",
+        "repos_url": "https://api.github.com/users/th30neee/repos",
+        "events_url": "https://api.github.com/users/th30neee/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/th30neee/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/866#pullrequestreview-3520664127",
+      "submitted_at": "2025-11-29T11:19:45Z",
+      "state": "APPROVED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/866"
     }
   ],
   "comments": [
@@ -2713,6 +2868,7 @@
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "The GUI should not be changing low-level internals.\r\n\r\nIf for some reason the clientModel is changed, its data should be taken as authoritative, even if it contradicts the history so far (if that's an issue, wipe the history).\r\n\r\nAlternatively, maybe the history should be stored with the node, and loaded into the GUI (or RPC, in another hypothetical PR).",
@@ -2766,6 +2922,7 @@
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "If we're deleting this, maybe there should be a way for the user to insert a reference line?\r\n\r\nFor now, I'd move removal of anything to a separate PR.",
@@ -2819,6 +2976,7 @@
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "Why are we losing this default constant?",
@@ -2872,6 +3030,7 @@
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "I doubt we'll be restoring this. It was removed intentionally.",
@@ -2925,6 +3084,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "yes, I'm going to remove this, will push an update shortly",
@@ -2978,6 +3138,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "because it isn't needed - on startup it \"defaults\" to the first non-full range",
@@ -3031,6 +3192,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "The user can effectively remove the data by deleting the .dat file - is there any basis for being able to do this while the client is running?",
@@ -3084,6 +3246,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "The idea is that the data is not persistent - but yes, I see your point - it should probably not be something that only happens when the GUI is running, and should perhaps also happen in bitcoind also.",
@@ -3137,6 +3300,7 @@
         "received_events_url": "https://api.github.com/users/rebroad/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "> The GUI should not be changing low-level internals.\r\n> \r\n> If for some reason the clientModel is changed, its data should be taken as authoritative, even if it contradicts the history so far (if that's an issue, wipe the history).\r\n> \r\n> Alternatively, maybe the history should be stored with the node, and loaded into the GUI (or RPC, in another hypothetical PR).\r\n\r\n@luke-jr I've removed the setTotalBytes functions as I agree with your reasoning. The GUI keeps a local track of the totals from the last session and simply adds them to the totals provided by the node now. I did think about storing the data on the node, but I am not sure it makes much sense given the data is currently stored on the GUI and so it makes more sense to keep the totals local with the traffic history for now. Perhaps someone thinks it's worth storing this on the node in the future, but it doesn't seem like an urgent need for now.",
