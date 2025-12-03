@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/762/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/762/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/036f070e3b775cb6c1e3abac11212609e5e7979c",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/0011c7861dc71907abbabcfeb0e4b341ea68f15a",
     "number": 762,
     "state": "open",
     "locked": false,
@@ -41,13 +41,22 @@
       "patch_url": null
     },
     "body": "It fixes https://github.com/bitcoin-core/gui/issues/761.\r\n\r\nAbout logo icon is updated now with the correct colour indicating the chain type of the QT instance that user is running (as the splash screen), plus the title of the about window also is updated with the chain type string as in the main window.\r\n<details>\r\n<summary>Before PR changes screenshot</summary>\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/63945955-2e29-4dc9-8a2e-2a5567983e9b)\r\n</details>\r\n\r\n<details>\r\n<summary>After PR changes screenshot</summary>\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/b6ce187f-ca81-4c4b-b2f6-a2e3b15e6010)\r\n</details>\r\n\r\n<details>\r\n<summary>Current splash screen screenshot</summary>\r\n(this hasn't been touched, just to show consistency with this PR changes)\r\n\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/2a1c329b-baa6-4603-bf20-dac2746682f4)\r\n</details>\r\n\r\nTested it also with:\r\n- mainnet (no command line args after `bitcoin-qt` or `bitcoin-qt -chain=main`), \r\n- `-regtest` and \r\n- `-testnet`.",
-    "labels": [],
+    "labels": [
+      {
+        "id": 5353934559,
+        "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
+        "name": "CI failed",
+        "color": "ededed",
+        "default": false
+      }
+    ],
     "created_at": "2023-09-25T00:03:25Z",
-    "updated_at": "2025-11-30T17:43:28Z",
+    "updated_at": "2025-12-03T01:44:52Z",
     "mergeable": true,
-    "mergeable_state": "clean",
+    "mergeable_state": "unstable",
     "merged": false,
-    "merge_commit_sha": "d4870c3c57897d07b9a82df9ec12d56d8b8f2145",
+    "merge_commit_sha": "4d5ee89b381912a2a95d03bfba9cda565f997577",
     "assignees": [],
     "requested_reviewers": [
       {
@@ -78,7 +87,7 @@
     "head": {
       "label": "pablomartin4btc:gui-update-about-logo-icon",
       "ref": "gui-update-about-logo-icon",
-      "sha": "036f070e3b775cb6c1e3abac11212609e5e7979c",
+      "sha": "0011c7861dc71907abbabcfeb0e4b341ea68f15a",
       "user": {
         "login": "pablomartin4btc",
         "id": 110166421,
@@ -191,7 +200,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-11-30T00:12:44Z",
+        "pushed_at": "2025-12-03T01:44:15Z",
         "created_at": "2022-09-10T13:37:44Z",
         "updated_at": "2025-11-30T00:12:57Z",
         "allow_forking": true,
@@ -215,7 +224,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "8fa10edcd1706a1f0dc9d8c3adbc8efa3c7755bf",
+      "sha": "4c784b25c4782c21764a9c6626fd89c4ed4cd345",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -315,7 +324,7 @@
         "forks_count": 327,
         "stargazers_count": 688,
         "watchers_count": 688,
-        "size": 180922,
+        "size": 180989,
         "default_branch": "master",
         "open_issues_count": 144,
         "is_template": false,
@@ -328,9 +337,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-11-28T16:42:50Z",
+        "pushed_at": "2025-12-02T15:07:10Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2025-11-30T11:59:27Z",
+        "updated_at": "2025-12-02T15:07:15Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -356,11 +365,11 @@
     },
     "author_association": "CONTRIBUTOR",
     "draft": false,
-    "additions": 34,
-    "deletions": 7,
+    "additions": 32,
+    "deletions": 11,
     "changed_files": 4,
     "commits": 1,
-    "review_comments": 16,
+    "review_comments": 18,
     "comments": 15
   },
   "events": [
@@ -394,9 +403,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2023-09-25T00:03:27Z",
-      "updated_at": "2025-11-30T17:43:28Z",
+      "updated_at": "2025-12-03T01:44:37Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [hernanmarino](https://github.com/bitcoin-core/gui/pull/762#pullrequestreview-1662820572), [laanwj](https://github.com/bitcoin-core/gui/pull/762#issuecomment-3437498991) |\n| Stale ACK | [BrandonOdiwuor](https://github.com/bitcoin-core/gui/pull/762#pullrequestreview-1798100255) |\n\nIf your review is incorrectly listed, please copy-paste <code>&lt;!--meta-tag:bot-skip--&gt;</code> into the comment that the bot should ignore.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nNo conflicts as of last run.\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [hernanmarino](https://github.com/bitcoin-core/gui/pull/762#pullrequestreview-1662820572), [laanwj](https://github.com/bitcoin-core/gui/pull/762#issuecomment-3437498991) |\n| Stale ACK | [BrandonOdiwuor](https://github.com/bitcoin-core/gui/pull/762#pullrequestreview-1798100255) |\n\nIf your review is incorrectly listed, please copy-paste <code>&lt;!--meta-tag:bot-skip--&gt;</code> into the comment that the bot should ignore.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nNo conflicts as of last run.\n<!--5faf32d7da4f0f540f40219e4f7537a3-->",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -3293,46 +3302,6 @@
       }
     },
     {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDAzNmYwNzBlM2I3NzVjYjZjMWUzYWJhYzExMjEyNjA5ZTVlNzk3OWM",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/036f070e3b775cb6c1e3abac11212609e5e7979c",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/036f070e3b775cb6c1e3abac11212609e5e7979c",
-      "tree": {
-        "sha": "da3f94354ce1dae94369432020b1f1abcacf65fe",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/da3f94354ce1dae94369432020b1f1abcacf65fe"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/8fa10edcd1706a1f0dc9d8c3adbc8efa3c7755bf",
-          "sha": "8fa10edcd1706a1f0dc9d8c3adbc8efa3c7755bf",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/8fa10edcd1706a1f0dc9d8c3adbc8efa3c7755bf"
-        }
-      ],
-      "message": "gui: Update about logo icon to denote chain type\n\nAdding the networkStyle parameter to the HelpMessageDialog\ncreator on utilitydialog, updating all calls where its instance\nis being created from bitcoingui.cpp. In the object itself,\nuse this new parameter object to build the about window title and\nset the icon of the about logo widget.\n\nAlso, set th correct chain type icon at the very beginning of\nGuiMain() where command line arguments were validated and most of\nthe app settings were not initialised yet.",
-      "committer": {
-        "name": "pablomartin4btc",
-        "email": "pablomartin4btc@gmail.com",
-        "date": "2025-01-31T13:19:14Z"
-      },
-      "author": {
-        "name": "pablomartin4btc",
-        "email": "pablomartin4btc@gmail.com",
-        "date": "2023-09-24T23:44:38Z"
-      },
-      "sha": "036f070e3b775cb6c1e3abac11212609e5e7979c"
-    },
-    {
       "event": "head_ref_force_pushed",
       "id": 16140339968,
       "node_id": "HRFPE_lADOEEET9c5x3tTozwAAAAPCCgsA",
@@ -3852,6 +3821,174 @@
       "submitted_at": "2025-10-23T15:18:14Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/762"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 21320491150,
+      "node_id": "HRFPE_lADOEEET9c5x3tTozwAAAAT2zOCO",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/21320491150",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": "f189e8b0d3630d516151594f47371f3aa22afb98",
+      "commit_url": "https://api.github.com/repos/pablomartin4btc/bitcoin-core-gui/commits/f189e8b0d3630d516151594f47371f3aa22afb98",
+      "created_at": "2025-12-03T01:36:28Z"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 21320579757,
+      "node_id": "HRFPE_lADOEEET9c5x3tTozwAAAAT2zjqt",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/21320579757",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": "6287b64fea3da5b6a0942674896d0f742ef9b64e",
+      "commit_url": "https://api.github.com/repos/pablomartin4btc/bitcoin-core-gui/commits/6287b64fea3da5b6a0942674896d0f742ef9b64e",
+      "created_at": "2025-12-03T01:42:55Z"
+    },
+    {
+      "event": "labeled",
+      "id": 21320588813,
+      "node_id": "LE_lADOEEET9c5x3tTozwAAAAT2zl4N",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/21320588813",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-12-03T01:43:38Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
+      }
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDAwMTFjNzg2MWRjNzE5MDdhYmJhYmNmZWIwZTRiMzQxZWE2OGYxNWE",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/0011c7861dc71907abbabcfeb0e4b341ea68f15a",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/0011c7861dc71907abbabcfeb0e4b341ea68f15a",
+      "tree": {
+        "sha": "251b4ba4280eeeb9191e3ef1ae1ff4f19875bc5b",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/251b4ba4280eeeb9191e3ef1ae1ff4f19875bc5b"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/8fa10edcd1706a1f0dc9d8c3adbc8efa3c7755bf",
+          "sha": "8fa10edcd1706a1f0dc9d8c3adbc8efa3c7755bf",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/8fa10edcd1706a1f0dc9d8c3adbc8efa3c7755bf"
+        }
+      ],
+      "message": "gui: Update about logo icon to denote chain type\n\nAdding the networkStyle parameter to the HelpMessageDialog\ncreator on utilitydialog, updating all calls where its instance\nis being created from bitcoingui.cpp. In the object itself,\nuse this new parameter object to build the about window title and\nset the icon of the about logo widget.",
+      "committer": {
+        "name": "pablomartin4btc",
+        "email": "pablomartin4btc@gmail.com",
+        "date": "2025-12-03T01:44:09Z"
+      },
+      "author": {
+        "name": "pablomartin4btc",
+        "email": "pablomartin4btc@gmail.com",
+        "date": "2023-09-24T23:44:38Z"
+      },
+      "sha": "0011c7861dc71907abbabcfeb0e4b341ea68f15a"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 21320595844,
+      "node_id": "HRFPE_lADOEEET9c5x3tTozwAAAAT2znmE",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/21320595844",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": "0011c7861dc71907abbabcfeb0e4b341ea68f15a",
+      "commit_url": "https://api.github.com/repos/pablomartin4btc/bitcoin-core-gui/commits/0011c7861dc71907abbabcfeb0e4b341ea68f15a",
+      "created_at": "2025-12-03T01:44:16Z"
     }
   ],
   "comments": [
@@ -4510,7 +4647,7 @@
       "node_id": "PRRC_kwDOEEET9c6SXLNj",
       "diff_hunk": "@@ -27,7 +29,7 @@\n #include <QVBoxLayout>\n \n /** \"Help message\" or \"About\" dialog box */\n-HelpMessageDialog::HelpMessageDialog(QWidget *parent, bool about) :\n+HelpMessageDialog::HelpMessageDialog(QWidget* parent, bool about, const NetworkStyle* networkStyle) :",
       "path": "src/qt/utilitydialog.cpp",
-      "position": 14,
+      "position": 1,
       "original_position": 14,
       "commit_id": "036f070e3b775cb6c1e3abac11212609e5e7979c",
       "original_commit_id": "036f070e3b775cb6c1e3abac11212609e5e7979c",
@@ -4553,7 +4690,7 @@
       "start_line": null,
       "original_start_line": null,
       "start_side": null,
-      "line": 32,
+      "line": null,
       "original_line": 32,
       "side": "RIGHT"
     },
@@ -4564,7 +4701,7 @@
       "node_id": "PRRC_kwDOEEET9c6SXMyC",
       "diff_hunk": "@@ -105,7 +105,7 @@ BitcoinGUI::BitcoinGUI(interfaces::Node& node, const PlatformStyle *_platformSty\n     updateWindowTitle();\n \n     rpcConsole = new RPCConsole(node, _platformStyle, nullptr);\n-    helpMessageDialog = new HelpMessageDialog(this, false);\n+    helpMessageDialog = new HelpMessageDialog(this, false, m_network_style);",
       "path": "src/qt/bitcoingui.cpp",
-      "position": 5,
+      "position": 1,
       "original_position": 5,
       "commit_id": "036f070e3b775cb6c1e3abac11212609e5e7979c",
       "original_commit_id": "036f070e3b775cb6c1e3abac11212609e5e7979c",
@@ -4607,7 +4744,7 @@
       "start_line": null,
       "original_start_line": null,
       "start_side": null,
-      "line": 108,
+      "line": null,
       "original_line": 108,
       "side": "RIGHT"
     },
@@ -4618,9 +4755,9 @@
       "node_id": "PRRC_kwDOEEET9c6SXRS4",
       "diff_hunk": "@@ -529,11 +529,17 @@ int GuiMain(int argc, char* argv[])\n     SetupUIArgs(gArgs);\n     std::string error;\n     if (!gArgs.ParseParameters(argc, argv, error)) {\n+        int nMBoxIcon = QMessageBox::Critical;\n         InitError(Untranslated(strprintf(\"Error parsing command line arguments: %s\", error)));\n         // Create a message box, because the gui has neither been created nor has subscribed to core signals\n-        QMessageBox::critical(nullptr, CLIENT_NAME,\n+        QMessageBox mBox(static_cast<QMessageBox::Icon>(nMBoxIcon), CLIENT_NAME,\n             // message cannot be translated because translations have not been initialized\n             QString::fromStdString(\"Error parsing command line arguments: %1.\").arg(QString::fromStdString(error)));\n+        mBox.setTextFormat(Qt::PlainText);\n+        if (gArgs.GetChainTypeString() != \"main\") {",
       "path": "src/qt/bitcoin.cpp",
-      "position": 12,
+      "position": 1,
       "original_position": 12,
-      "commit_id": "036f070e3b775cb6c1e3abac11212609e5e7979c",
+      "commit_id": "f189e8b0d3630d516151594f47371f3aa22afb98",
       "original_commit_id": "036f070e3b775cb6c1e3abac11212609e5e7979c",
       "in_reply_to_id": null,
       "user": {
@@ -4661,7 +4798,7 @@
       "start_line": null,
       "original_start_line": null,
       "start_side": null,
-      "line": 539,
+      "line": null,
       "original_line": 539,
       "side": "RIGHT"
     },
@@ -4672,9 +4809,9 @@
       "node_id": "PRRC_kwDOEEET9c6ZcVWE",
       "diff_hunk": "@@ -529,11 +529,17 @@ int GuiMain(int argc, char* argv[])\n     SetupUIArgs(gArgs);\n     std::string error;\n     if (!gArgs.ParseParameters(argc, argv, error)) {\n+        int nMBoxIcon = QMessageBox::Critical;\n         InitError(Untranslated(strprintf(\"Error parsing command line arguments: %s\", error)));\n         // Create a message box, because the gui has neither been created nor has subscribed to core signals\n-        QMessageBox::critical(nullptr, CLIENT_NAME,\n+        QMessageBox mBox(static_cast<QMessageBox::Icon>(nMBoxIcon), CLIENT_NAME,\n             // message cannot be translated because translations have not been initialized\n             QString::fromStdString(\"Error parsing command line arguments: %1.\").arg(QString::fromStdString(error)));\n+        mBox.setTextFormat(Qt::PlainText);\n+        if (gArgs.GetChainTypeString() != \"main\") {",
       "path": "src/qt/bitcoin.cpp",
-      "position": 12,
+      "position": 1,
       "original_position": 12,
-      "commit_id": "036f070e3b775cb6c1e3abac11212609e5e7979c",
+      "commit_id": "f189e8b0d3630d516151594f47371f3aa22afb98",
       "original_commit_id": "036f070e3b775cb6c1e3abac11212609e5e7979c",
       "in_reply_to_id": 2455573688,
       "user": {
@@ -4715,8 +4852,116 @@
       "start_line": null,
       "original_start_line": null,
       "start_side": null,
-      "line": 539,
+      "line": null,
       "original_line": 539,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2583352655",
+      "pull_request_review_id": 3532824983,
+      "id": 2583352655,
+      "node_id": "PRRC_kwDOEEET9c6Z-tVP",
+      "diff_hunk": "@@ -105,7 +105,7 @@ BitcoinGUI::BitcoinGUI(interfaces::Node& node, const PlatformStyle *_platformSty\n     updateWindowTitle();\n \n     rpcConsole = new RPCConsole(node, _platformStyle, nullptr);\n-    helpMessageDialog = new HelpMessageDialog(this, false);\n+    helpMessageDialog = new HelpMessageDialog(this, false, m_network_style);",
+      "path": "src/qt/bitcoingui.cpp",
+      "position": 1,
+      "original_position": 5,
+      "commit_id": "036f070e3b775cb6c1e3abac11212609e5e7979c",
+      "original_commit_id": "036f070e3b775cb6c1e3abac11212609e5e7979c",
+      "in_reply_to_id": 2455555202,
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "body": "Done.",
+      "created_at": "2025-12-03T01:44:43Z",
+      "updated_at": "2025-12-03T01:44:43Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/762#discussion_r2583352655",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2583352655"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/762"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": null,
+      "original_line": 108,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2583352810",
+      "pull_request_review_id": 3532825163,
+      "id": 2583352810,
+      "node_id": "PRRC_kwDOEEET9c6Z-tXq",
+      "diff_hunk": "@@ -27,7 +29,7 @@\n #include <QVBoxLayout>\n \n /** \"Help message\" or \"About\" dialog box */\n-HelpMessageDialog::HelpMessageDialog(QWidget *parent, bool about) :\n+HelpMessageDialog::HelpMessageDialog(QWidget* parent, bool about, const NetworkStyle* networkStyle) :",
+      "path": "src/qt/utilitydialog.cpp",
+      "position": 1,
+      "original_position": 14,
+      "commit_id": "036f070e3b775cb6c1e3abac11212609e5e7979c",
+      "original_commit_id": "036f070e3b775cb6c1e3abac11212609e5e7979c",
+      "in_reply_to_id": 2455548771,
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "body": "Done.",
+      "created_at": "2025-12-03T01:44:51Z",
+      "updated_at": "2025-12-03T01:44:52Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/762#discussion_r2583352810",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2583352810"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/762"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": null,
+      "original_line": 32,
       "side": "RIGHT"
     }
   ]
