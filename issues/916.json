@@ -13,7 +13,7 @@
     "state": "open",
     "state_reason": null,
     "title": "Consider enabling plugin=wayland for bitcoincore.org builds",
-    "body": "### Please describe the feature you'd like to see added.\n\nWayland is the new standard on Linux these days, pretty much every major distro and DE is on board. And given that https://github.com/bitcoin-core/gui/pull/914 has solved some of the remaining issues (bitcoin-qt specific), I think it's safe to enable `plugin=wayland` by default for builds on bitcoincore.org.\n\nFurthermore, I would like to point out (again) that https://github.com/bitcoin-core/gui/pull/817 not working is a direct result of older compositors lacking [XDG activation protocol](https://wayland.app/protocols/xdg-activation-v1) support, not necessarily a problem with the code or Wayland.\n\nSo given that there are still users stuck with older software that lack this protocol, maybe it's worth considering doing this by the time Ubuntu 26.04 is released?\n\nI also want to make it clear that I am not suggesting disabling `plugin=xcb`, but rather enabling `plugin=wayland` in addition, specifically for Wayland environments.\n\nThanks!",
+    "body": "### Please describe the feature you'd like to see added.\n\nWayland is the new standard on Linux these days, pretty much every major distro and DE is on board. And given that https://github.com/bitcoin-core/gui/pull/914 has solved some of the remaining issues (bitcoin-qt specific), I think it's safe to enable `plugin=wayland` by default for builds on bitcoincore.org.\n\nFurthermore, I would like to point out (again) that https://github.com/bitcoin-core/gui/pull/817 not working is a direct result of older compositors lacking [XDG activation protocol](https://wayland.app/protocols/xdg-activation-v1) support, not necessarily a problem with the code or Wayland.\n\nSo given that there are still users stuck with older software that lack this protocol, would it be reasonable to consider doing this by the time Ubuntu 26.04 is released?\n\nI also want to make it clear that I am not suggesting disabling `plugin=xcb`, but rather enabling `plugin=wayland` in addition, specifically for Wayland environments.\n\nThanks!",
     "user": {
       "login": "diegoviola",
       "id": 4371,
@@ -50,9 +50,9 @@
     "assignees": [],
     "author_association": "CONTRIBUTOR",
     "locked": false,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2025-12-04T06:34:35Z",
-    "updated_at": "2025-12-04T08:48:04Z"
+    "updated_at": "2025-12-04T11:38:00Z"
   },
   "events": [
     {
@@ -89,6 +89,64 @@
         "name": "Feature",
         "color": "8fe567"
       }
+    },
+    {
+      "event": "commented",
+      "id": 3611707501,
+      "node_id": "IC_kwDOEEET9c7XRkht",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/3611707501",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-12-04T11:31:44Z",
+      "updated_at": "2025-12-04T11:32:34Z",
+      "author_association": "MEMBER",
+      "body": "> I think it's safe to enable `plugin=wayland` by default for builds on bitcoincore.org.\n\nA discussion on this topic took place in https://github.com/bitcoin/bitcoin/pull/22708.\n\nThe main concern raised was the introduction of additional dependencies: https://github.com/bitcoin/bitcoin/pull/22708#issuecomment-1100861599.",
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/issues/916#issuecomment-3611707501",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/916"
     }
   ]
 }
