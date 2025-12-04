@@ -13,7 +13,7 @@
     "state": "open",
     "state_reason": null,
     "title": "Consider enabling plugin=wayland for bitcoincore.org builds",
-    "body": "### Please describe the feature you'd like to see added.\n\nWayland is the new standard on Linux these days, pretty much every major distro and DE is on board. And given that https://github.com/bitcoin-core/gui/pull/914 has solved some of the remaining issues (bitcoin-qt specific), I think it's safe to enable `plugin=wayland` by default for builds on bitcoincore.org.\n\nFurthermore, I would like to point out (again) that https://github.com/bitcoin-core/gui/pull/817 is not a problem with the code nor with Wayland, but rather with the lack of [XDG activation protocol](https://wayland.app/protocols/xdg-activation-v1) in older compositors.\n\nSo given that there are still users stuck with older software that lack this protocol, maybe it's worth considering doing this by the time Ubuntu 26.04 is released?\n\nThanks!",
+    "body": "### Please describe the feature you'd like to see added.\n\nWayland is the new standard on Linux these days, pretty much every major distro and DE is on board. And given that https://github.com/bitcoin-core/gui/pull/914 has solved some of the remaining issues (bitcoin-qt specific), I think it's safe to enable `plugin=wayland` by default for builds on bitcoincore.org.\n\nFurthermore, I would like to point out (again) that https://github.com/bitcoin-core/gui/pull/817 not working is a direct result of older compositors lacking [XDG activation protocol](https://wayland.app/protocols/xdg-activation-v1) support, not necessarily a problem with the code or Wayland.\n\nSo given that there are still users stuck with older software that lack this protocol, maybe it's worth considering doing this by the time Ubuntu 26.04 is released?\n\nI also want to make it clear that I am not suggesting disabling `plugin=xcb`, but rather enabling `plugin=wayland` in addition, specifically for Wayland environments.\n\nThanks!",
     "user": {
       "login": "diegoviola",
       "id": 4371,
@@ -52,7 +52,7 @@
     "locked": false,
     "comments": 0,
     "created_at": "2025-12-04T06:34:35Z",
-    "updated_at": "2025-12-04T06:52:19Z"
+    "updated_at": "2025-12-04T08:48:04Z"
   },
   "events": [
     {
