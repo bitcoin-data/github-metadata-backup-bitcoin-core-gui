@@ -59,9 +59,9 @@
     "assignees": [],
     "author_association": "CONTRIBUTOR",
     "locked": false,
-    "comments": 7,
+    "comments": 8,
     "created_at": "2025-12-17T12:31:20Z",
-    "updated_at": "2025-12-18T11:14:03Z"
+    "updated_at": "2025-12-18T13:13:56Z"
   },
   "events": [
     {
@@ -538,6 +538,64 @@
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/issues/918#issuecomment-3669785378",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/918"
+    },
+    {
+      "event": "commented",
+      "id": 3670243771,
+      "node_id": "IC_kwDOEEET9c7aw3m7",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/3670243771",
+      "actor": {
+        "login": "maflcko",
+        "id": 6399679,
+        "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-12-18T13:13:56Z",
+      "updated_at": "2025-12-18T13:13:56Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "Actually, parsing the conf file should clear the old/stale datadir value:\n\n```\nsrc/common/config.cpp-    // If datadir is changed in .conf file:\nsrc/common/config.cpp:    ClearPathCache();\nsrc/common/config.cpp-    if (!CheckDataDirOption(*this)) {\nsrc/common/config.cpp-        error = strprintf(\"specified data directory \\\"%s\\\" does not exist.\", GetArg(\"-datadir\", \"\"));\nsrc/common/config.cpp-        return false;\nsrc/common/config.cpp-    }\n```\n\nCan you reproduce this on Linux?",
+      "user": {
+        "login": "maflcko",
+        "id": 6399679,
+        "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/issues/918#issuecomment-3670243771",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/918"
     }
   ]
