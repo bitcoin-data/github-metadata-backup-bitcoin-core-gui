@@ -59,9 +59,9 @@
     "assignees": [],
     "author_association": "CONTRIBUTOR",
     "locked": false,
-    "comments": 2,
+    "comments": 3,
     "created_at": "2025-12-17T12:31:20Z",
-    "updated_at": "2025-12-17T18:29:27Z"
+    "updated_at": "2025-12-18T10:55:57Z"
   },
   "events": [
     {
@@ -248,6 +248,64 @@
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/issues/918#issuecomment-3666633855",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/918"
+    },
+    {
+      "event": "commented",
+      "id": 3669679934,
+      "node_id": "IC_kwDOEEET9c7aut8-",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/3669679934",
+      "actor": {
+        "login": "rkrux",
+        "id": 5960750,
+        "node_id": "MDQ6VXNlcjU5NjA3NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5960750?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rkrux",
+        "html_url": "https://github.com/rkrux",
+        "followers_url": "https://api.github.com/users/rkrux/followers",
+        "following_url": "https://api.github.com/users/rkrux/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/rkrux/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/rkrux/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/rkrux/subscriptions",
+        "organizations_url": "https://api.github.com/users/rkrux/orgs",
+        "repos_url": "https://api.github.com/users/rkrux/repos",
+        "events_url": "https://api.github.com/users/rkrux/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/rkrux/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-12-18T10:53:32Z",
+      "updated_at": "2025-12-18T10:55:57Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "> Is this really gui-specific? Does it not happen with bitcoind?\n\nYes, it seems to be GUI specific, and doesn't happen with bitcoind alone.\n\n> Can you check the directory permissions please\n\nI did and noticed that the regtest and testnet subdirectories didn't have the r|x permissions for group and others, unlike the data directory. I gave those permissions to them but I don't believe it was the issue - when I was looking into the directory permissions, I also noticed that one regtest subdirectory was present within the regtest subdirectory. I rm-rf'ed it and ran the GUI again, it worked then.\n\nHowever, the GUI seems to be creating this additional subdirectory every time it is run, and I have to delete it every time, otherwise the same error pops up. If I run the GUI without the `-walletdir` argument so that the additional subdirectory is not created, the GUI runs but it is not able to find the already present wallets that I have in regtest, so this argument seems necessary to me, but at the cost of deleting the additional subdirectory after the next run.\n",
+      "user": {
+        "login": "rkrux",
+        "id": 5960750,
+        "node_id": "MDQ6VXNlcjU5NjA3NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5960750?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rkrux",
+        "html_url": "https://github.com/rkrux",
+        "followers_url": "https://api.github.com/users/rkrux/followers",
+        "following_url": "https://api.github.com/users/rkrux/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/rkrux/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/rkrux/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/rkrux/subscriptions",
+        "organizations_url": "https://api.github.com/users/rkrux/orgs",
+        "repos_url": "https://api.github.com/users/rkrux/repos",
+        "events_url": "https://api.github.com/users/rkrux/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/rkrux/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/issues/918#issuecomment-3669679934",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/918"
     }
   ]
