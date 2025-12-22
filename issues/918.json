@@ -59,9 +59,9 @@
     "assignees": [],
     "author_association": "CONTRIBUTOR",
     "locked": false,
-    "comments": 15,
+    "comments": 16,
     "created_at": "2025-12-17T12:31:20Z",
-    "updated_at": "2025-12-22T14:49:49Z"
+    "updated_at": "2025-12-22T19:37:08Z"
   },
   "events": [
     {
@@ -1189,6 +1189,64 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2025-12-22T14:49:51Z"
+    },
+    {
+      "event": "commented",
+      "id": 3683871678,
+      "node_id": "IC_kwDOEEET9c7bk2u-",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/3683871678",
+      "actor": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-12-22T19:37:08Z",
+      "updated_at": "2025-12-22T19:37:08Z",
+      "author_association": "MEMBER",
+      "body": "A part from what I wrote above, check the following branch and let me know how it goes:\nhttps://github.com/furszy/bitcoin-core/tree/2025_wallet_decouple_db_config \n\nThese one should fix the initialization ordering issue (if that is the cause of the crash).\n\nNote: instead of copy pasting the diff as you did above, could fetch from my branch:\n```\ngit remote add furszy https://github.com/furszy/bitcoin-core.git\ngit fetch furszy 2025_wallet_decouple_db_config \ngit cherry-pick 0554fb96e5a25e36940f0fedcfbb0009c1808e84\ngit cherry-pick 1457479b43377713f9db9dc654f68b7efdacaf53\n``` \n\n(the first commit is the important one, the second one is just https://github.com/bitcoin-core/gui/issues/918#issuecomment-3682390048)",
+      "user": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/issues/918#issuecomment-3683871678",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/918"
     }
   ]
 }
