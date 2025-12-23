@@ -59,9 +59,9 @@
     "assignees": [],
     "author_association": "CONTRIBUTOR",
     "locked": false,
-    "comments": 16,
+    "comments": 17,
     "created_at": "2025-12-17T12:31:20Z",
-    "updated_at": "2025-12-22T19:37:08Z"
+    "updated_at": "2025-12-23T10:31:13Z"
   },
   "events": [
     {
@@ -1246,6 +1246,64 @@
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/issues/918#issuecomment-3683871678",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/918"
+    },
+    {
+      "event": "commented",
+      "id": 3686105942,
+      "node_id": "IC_kwDOEEET9c7btYNW",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/3686105942",
+      "actor": {
+        "login": "rkrux",
+        "id": 5960750,
+        "node_id": "MDQ6VXNlcjU5NjA3NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5960750?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rkrux",
+        "html_url": "https://github.com/rkrux",
+        "followers_url": "https://api.github.com/users/rkrux/followers",
+        "following_url": "https://api.github.com/users/rkrux/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/rkrux/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/rkrux/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/rkrux/subscriptions",
+        "organizations_url": "https://api.github.com/users/rkrux/orgs",
+        "repos_url": "https://api.github.com/users/rkrux/repos",
+        "events_url": "https://api.github.com/users/rkrux/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/rkrux/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-12-23T10:31:12Z",
+      "updated_at": "2025-12-23T10:31:12Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "I tried this and got a fatal crash at the first launch of the GUI.\n\nCherry-picked the commits as suggested above on latest master:\n```zsh\ncommit 23820b25bcff1701b309342ce0e154196e3b98d2 (HEAD -> master)\nAuthor: furszy <matiasfurszyfer@protonmail.com>\nDate:   Mon Dec 22 14:30:01 2025 -0500\n\n    SQUASH: GUI - not a fix. Just a check.\n\ncommit 6dceb3cb98b222f67ad1dcb53f216e143a4cc8a0\nAuthor: furszy <matiasfurszyfer@protonmail.com>\nDate:   Mon Dec 22 14:27:27 2025 -0500\n\n    wallet: decouple DB engine conf\n\ncommit d861c3820528fad2e17a45549bec70b6ba434dcc (origin/master, origin/HEAD)\nMerge: 25636500c2 217dbbbb5e\nAuthor: Ava Chow <github@achow101.com>\nDate:   Mon Dec 22 17:14:35 2025 -0800\n\n    Merge bitcoin/bitcoin#33636: wallet: Expand MuSig test coverage and follow-ups\n```\n\nUI\n<img width=\"481\" height=\"351\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ff845a8c-a11c-4454-be00-add012b4200b\" />\n\nTerminal State\n```zsh\n➜  gui-node-1 $BITCOIN_BUILD_BIN_DIR/bitcoin-qt -datadir=/tmp/gui-node-1 -conf=/tmp/gui-node-1/bitcoin-reg.conf\n\n\n************************\nEXCEPTION: St13runtime_error\nSQLiteDatabase: Failed to configure serialized threading mode: bad parameter or other API misuse\n\nbitcoin in Runaway exception\n\n```\n",
+      "user": {
+        "login": "rkrux",
+        "id": 5960750,
+        "node_id": "MDQ6VXNlcjU5NjA3NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5960750?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rkrux",
+        "html_url": "https://github.com/rkrux",
+        "followers_url": "https://api.github.com/users/rkrux/followers",
+        "following_url": "https://api.github.com/users/rkrux/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/rkrux/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/rkrux/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/rkrux/subscriptions",
+        "organizations_url": "https://api.github.com/users/rkrux/orgs",
+        "repos_url": "https://api.github.com/users/rkrux/repos",
+        "events_url": "https://api.github.com/users/rkrux/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/rkrux/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/issues/918#issuecomment-3686105942",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/918"
     }
   ]
