@@ -12,8 +12,8 @@
     "number": 918,
     "state": "open",
     "state_reason": null,
-    "title": "GUI crashes in regtest",
-    "body": "### Is there an existing issue for this?\n\n- [x] I have searched the existing issues\n\n### Current behaviour\n\nThe GUI crashes in regtest immediately on start. It did work once initially but has been crashing since, tried quite a few times.\n\n### Expected behaviour\n\nThe GUI should not crash in regtest, just like it doesn't in main or test environments.\n\n### Steps to reproduce\n\nRegtest conf file to use:\n```zsh\n➜  Bitcoin cat $BITCOIN_DATA_DIR/bitcoin-reg.conf\nregtest=1\n[regtest]\nport=28333\nrpcport=28332\nrpcuser=test\nrpcpassword=test\nbind=127.0.0.1:28334\nbind=127.0.0.1:28335=onion\n```\n\nNew data directory setup:\n```zsh\n➜  ~ mkdir /tmp/gui-node-1\n➜  ~ cp $BITCOIN_DATA_DIR/bitcoin-reg.conf /tmp/gui-node-1\n➜  ~ cd /tmp/gui-node-1\n➜  gui-node-1 l\ntotal 8\ndrwxr-xr-x   3 rkrux  wheel    96B Dec 19 15:48 .\ndrwxrwxrwt  10 root    wheel   320B Dec 19 15:46 ..\n-rw-r--r--   1 rkrux  wheel   123B Dec 19 15:48 bitcoin-reg.conf\n```\n\nRun GUI (bitcoin-qt): Works first time, no wallet right now.\n```zsh\n➜  ~ $BITCOIN_BUILD_BIN_DIR/bitcoin-qt -datadir=/tmp/gui-node-1 -conf=/tmp/gui-node-1/bitcoin-reg.conf\n```\n\nCreate a wallet within the GUI (wallet name eg: gui-node-wallet) and close the GUI. \n\nRun GUI (bitcoin-qt) again - fails now with the below error:\n```zsh\n➜  ~ $BITCOIN_BUILD_BIN_DIR/bitcoin-qt -datadir=/tmp/gui-node-1 -conf=/tmp/gui-node-1/bitcoin-reg.conf\nError: SQLiteDatabase: Failed to configure serialized threading mode: bad parameter or other API misuse\n```\n\nData directory state now:\n```zsh\n➜  gui-node-1 l /tmp/gui-node-1\ntotal 8\ndrwxr-xr-x   4 rkrux  wheel   128B Dec 19 16:08 .\ndrwxrwxrwt  10 root    wheel   320B Dec 19 16:07 ..\n-rw-r--r--   1 rkrux  wheel   123B Dec 19 16:07 bitcoin-reg.conf\ndrwx------  13 rkrux  wheel   416B Dec 19 16:11 regtest\n➜  gui-node-1 l /tmp/gui-node-1/regtest/\ntotal 600\ndrwx------  13 rkrux  wheel   416B Dec 19 16:11 .\ndrwxr-xr-x   4 rkrux  wheel   128B Dec 19 16:08 ..\n-rw-------   1 rkrux  wheel     0B Dec 19 16:08 .lock\n-rw-------   1 rkrux  wheel    37B Dec 19 16:11 anchors.dat\n-rw-------   1 rkrux  wheel   221B Dec 19 16:08 banlist.json\ndrwx------   7 rkrux  wheel   224B Dec 19 16:08 blocks\ndrwx------   7 rkrux  wheel   224B Dec 19 16:10 chainstate\n-rw-------   1 rkrux  wheel    18K Dec 19 16:11 debug.log\n-rw-------   1 rkrux  wheel   242K Dec 19 16:11 fee_estimates.dat\n-rw-------   1 rkrux  wheel    27B Dec 19 16:11 mempool.dat\n-rw-------   1 rkrux  wheel   4.1K Dec 19 16:11 peers.dat\n-rw-------   1 rkrux  wheel   242B Dec 19 16:11 settings.json\ndrwx------   3 rkrux  wheel    96B Dec 19 16:11 wallets\n➜  gui-node-1 l /tmp/gui-node-1/regtest/wallets\ntotal 0\ndrwx------   3 rkrux  wheel    96B Dec 19 16:11 .\ndrwx------  13 rkrux  wheel   416B Dec 19 16:11 ..\ndrwx------   3 rkrux  wheel    96B Dec 19 16:11 gui-node-wallet\n➜  gui-node-1 l /tmp/gui-node-1/regtest/wallets/gui-node-wallet\ntotal 48\ndrwx------  3 rkrux  wheel    96B Dec 19 16:11 .\ndrwx------  3 rkrux  wheel    96B Dec 19 16:11 ..\n-rw-------  1 rkrux  wheel    24K Dec 19 16:11 wallet.dat\n```\n\n### Relevant log output\n\n```zsh\n2025-12-19T10:48:12Z Using data directory /tmp/gui-node-1/regtest\n2025-12-19T10:48:12Z Config file: /tmp/gui-node-1/bitcoin-reg.conf\n2025-12-19T10:48:12Z Config file arg: regtest=\"1\"\n2025-12-19T10:48:12Z Config file arg: [regtest] bind=\"127.0.0.1:28334\"\n2025-12-19T10:48:12Z Config file arg: [regtest] bind=\"127.0.0.1:28335=onion\"\n2025-12-19T10:48:12Z Config file arg: [regtest] port=\"28333\"\n2025-12-19T10:48:12Z Config file arg: [regtest] rpcpassword=****\n2025-12-19T10:48:12Z Config file arg: [regtest] rpcport=\"28332\"\n2025-12-19T10:48:12Z Config file arg: [regtest] rpcuser=****\n2025-12-19T10:48:12Z Setting file arg: wallet = [\"gui-node-wallet\"]\n2025-12-19T10:48:12Z Command-line arg: conf=\"/tmp/gui-node-1/bitcoin-reg.conf\"\n2025-12-19T10:48:12Z Command-line arg: datadir=\"/tmp/gui-node-1\"\n2025-12-19T10:48:12Z Using at most 125 automatic connections (1024 file descriptors available)\n2025-12-19T10:48:12Z scheduler thread start\n2025-12-19T10:48:12Z Using wallet directory /tmp/gui-node-1/regtest/wallets\n2025-12-19T10:48:12Z Using SQLite Version 3.43.2\n2025-12-19T10:48:12Z init message: Verifying wallet(s)…\n2025-12-19T10:48:12Z [warning] SQLite Error. Code: 21. Message: misuse at line 185687 of [1b37c146ee]\n2025-12-19T10:48:12Z [error] SQLiteDatabase: Failed to configure serialized threading mode: bad parameter or other API misuse\n\n2025-12-19T10:48:14Z Shutdown in progress...\n2025-12-19T10:48:14Z scheduler thread exit\n2025-12-19T10:48:14Z Shutdown done\n```\n\n### How did you obtain Bitcoin Core\n\nCompiled from source\n\n### What version of Bitcoin Core are you using?\n\nmaster@13891a8a685d255cb13dd5018e3d5ccc18b07c34\n\n### Operating system and version\n\nMacOS Sequoia (15.4)\n\n### Machine specifications\n\n_No response_",
+    "title": "GUI crashes on startup after creating a wallet previously",
+    "body": "### Is there an existing issue for this?\n\n- [x] I have searched the existing issues\n\n### Current behaviour\n\n_Note: The issue is present in testnet too, not only regtest._\n\nThe GUI crashes in regtest immediately on start. It did work once initially but has been crashing since, tried quite a few times.\n\n### Expected behaviour\n\nThe GUI should not crash in regtest, just like it doesn't in main or test environments.\n\n### Steps to reproduce\n\nRegtest conf file to use:\n```zsh\n➜  Bitcoin cat $BITCOIN_DATA_DIR/bitcoin-reg.conf\nregtest=1\n[regtest]\nport=28333\nrpcport=28332\nrpcuser=test\nrpcpassword=test\nbind=127.0.0.1:28334\nbind=127.0.0.1:28335=onion\n```\n\nNew data directory setup:\n```zsh\n➜  ~ mkdir /tmp/gui-node-1\n➜  ~ cp $BITCOIN_DATA_DIR/bitcoin-reg.conf /tmp/gui-node-1\n➜  ~ cd /tmp/gui-node-1\n➜  gui-node-1 l\ntotal 8\ndrwxr-xr-x   3 rkrux  wheel    96B Dec 19 15:48 .\ndrwxrwxrwt  10 root    wheel   320B Dec 19 15:46 ..\n-rw-r--r--   1 rkrux  wheel   123B Dec 19 15:48 bitcoin-reg.conf\n```\n\nRun GUI (bitcoin-qt): Works first time, no wallet right now.\n```zsh\n➜  ~ $BITCOIN_BUILD_BIN_DIR/bitcoin-qt -datadir=/tmp/gui-node-1 -conf=/tmp/gui-node-1/bitcoin-reg.conf\n```\n\nCreate a wallet within the GUI (wallet name eg: gui-node-wallet) and close the GUI. \n\nRun GUI (bitcoin-qt) again - fails now with the below error:\n```zsh\n➜  ~ $BITCOIN_BUILD_BIN_DIR/bitcoin-qt -datadir=/tmp/gui-node-1 -conf=/tmp/gui-node-1/bitcoin-reg.conf\nError: SQLiteDatabase: Failed to configure serialized threading mode: bad parameter or other API misuse\n```\n\nData directory state now:\n```zsh\n➜  gui-node-1 l /tmp/gui-node-1\ntotal 8\ndrwxr-xr-x   4 rkrux  wheel   128B Dec 19 16:08 .\ndrwxrwxrwt  10 root    wheel   320B Dec 19 16:07 ..\n-rw-r--r--   1 rkrux  wheel   123B Dec 19 16:07 bitcoin-reg.conf\ndrwx------  13 rkrux  wheel   416B Dec 19 16:11 regtest\n➜  gui-node-1 l /tmp/gui-node-1/regtest/\ntotal 600\ndrwx------  13 rkrux  wheel   416B Dec 19 16:11 .\ndrwxr-xr-x   4 rkrux  wheel   128B Dec 19 16:08 ..\n-rw-------   1 rkrux  wheel     0B Dec 19 16:08 .lock\n-rw-------   1 rkrux  wheel    37B Dec 19 16:11 anchors.dat\n-rw-------   1 rkrux  wheel   221B Dec 19 16:08 banlist.json\ndrwx------   7 rkrux  wheel   224B Dec 19 16:08 blocks\ndrwx------   7 rkrux  wheel   224B Dec 19 16:10 chainstate\n-rw-------   1 rkrux  wheel    18K Dec 19 16:11 debug.log\n-rw-------   1 rkrux  wheel   242K Dec 19 16:11 fee_estimates.dat\n-rw-------   1 rkrux  wheel    27B Dec 19 16:11 mempool.dat\n-rw-------   1 rkrux  wheel   4.1K Dec 19 16:11 peers.dat\n-rw-------   1 rkrux  wheel   242B Dec 19 16:11 settings.json\ndrwx------   3 rkrux  wheel    96B Dec 19 16:11 wallets\n➜  gui-node-1 l /tmp/gui-node-1/regtest/wallets\ntotal 0\ndrwx------   3 rkrux  wheel    96B Dec 19 16:11 .\ndrwx------  13 rkrux  wheel   416B Dec 19 16:11 ..\ndrwx------   3 rkrux  wheel    96B Dec 19 16:11 gui-node-wallet\n➜  gui-node-1 l /tmp/gui-node-1/regtest/wallets/gui-node-wallet\ntotal 48\ndrwx------  3 rkrux  wheel    96B Dec 19 16:11 .\ndrwx------  3 rkrux  wheel    96B Dec 19 16:11 ..\n-rw-------  1 rkrux  wheel    24K Dec 19 16:11 wallet.dat\n```\n\n### Relevant log output\n\n```zsh\n2025-12-19T10:48:12Z Using data directory /tmp/gui-node-1/regtest\n2025-12-19T10:48:12Z Config file: /tmp/gui-node-1/bitcoin-reg.conf\n2025-12-19T10:48:12Z Config file arg: regtest=\"1\"\n2025-12-19T10:48:12Z Config file arg: [regtest] bind=\"127.0.0.1:28334\"\n2025-12-19T10:48:12Z Config file arg: [regtest] bind=\"127.0.0.1:28335=onion\"\n2025-12-19T10:48:12Z Config file arg: [regtest] port=\"28333\"\n2025-12-19T10:48:12Z Config file arg: [regtest] rpcpassword=****\n2025-12-19T10:48:12Z Config file arg: [regtest] rpcport=\"28332\"\n2025-12-19T10:48:12Z Config file arg: [regtest] rpcuser=****\n2025-12-19T10:48:12Z Setting file arg: wallet = [\"gui-node-wallet\"]\n2025-12-19T10:48:12Z Command-line arg: conf=\"/tmp/gui-node-1/bitcoin-reg.conf\"\n2025-12-19T10:48:12Z Command-line arg: datadir=\"/tmp/gui-node-1\"\n2025-12-19T10:48:12Z Using at most 125 automatic connections (1024 file descriptors available)\n2025-12-19T10:48:12Z scheduler thread start\n2025-12-19T10:48:12Z Using wallet directory /tmp/gui-node-1/regtest/wallets\n2025-12-19T10:48:12Z Using SQLite Version 3.43.2\n2025-12-19T10:48:12Z init message: Verifying wallet(s)…\n2025-12-19T10:48:12Z [warning] SQLite Error. Code: 21. Message: misuse at line 185687 of [1b37c146ee]\n2025-12-19T10:48:12Z [error] SQLiteDatabase: Failed to configure serialized threading mode: bad parameter or other API misuse\n\n2025-12-19T10:48:14Z Shutdown in progress...\n2025-12-19T10:48:14Z scheduler thread exit\n2025-12-19T10:48:14Z Shutdown done\n```\n\n### How did you obtain Bitcoin Core\n\nCompiled from source\n\n### What version of Bitcoin Core are you using?\n\nmaster@13891a8a685d255cb13dd5018e3d5ccc18b07c34\n\n### Operating system and version\n\nMacOS Sequoia (15.4)\n\n### Machine specifications\n\n_No response_",
     "user": {
       "login": "rkrux",
       "id": 5960750,
@@ -59,9 +59,9 @@
     "assignees": [],
     "author_association": "CONTRIBUTOR",
     "locked": false,
-    "comments": 18,
+    "comments": 19,
     "created_at": "2025-12-17T12:31:20Z",
-    "updated_at": "2025-12-23T17:49:33Z"
+    "updated_at": "2025-12-24T10:24:19Z"
   },
   "events": [
     {
@@ -1363,6 +1363,99 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/issues/918#issuecomment-3687475426",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/918"
+    },
+    {
+      "event": "commented",
+      "id": 3689357803,
+      "node_id": "IC_kwDOEEET9c7b5yHr",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/3689357803",
+      "actor": {
+        "login": "rkrux",
+        "id": 5960750,
+        "node_id": "MDQ6VXNlcjU5NjA3NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5960750?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rkrux",
+        "html_url": "https://github.com/rkrux",
+        "followers_url": "https://api.github.com/users/rkrux/followers",
+        "following_url": "https://api.github.com/users/rkrux/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/rkrux/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/rkrux/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/rkrux/subscriptions",
+        "organizations_url": "https://api.github.com/users/rkrux/orgs",
+        "repos_url": "https://api.github.com/users/rkrux/repos",
+        "events_url": "https://api.github.com/users/rkrux/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/rkrux/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-12-24T10:21:33Z",
+      "updated_at": "2025-12-24T10:21:33Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "It didn't abort, the error behaviour remained the same. I tested with _testnet_ as well and the same error in this flow persists there too - so doesn't seem _regtest_ specific; I will update the issue title.\n\nError:\n<img width=\"482\" height=\"354\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/08f74d7c-eede-46a5-9195-fd5cbca4186a\" />\n\nCherry-picked commit on master\n```zsh\ncommit b684a62c2f47a96ee0498d53baa6481d3f1b457e (HEAD -> master)\nAuthor: furszy <matiasfurszyfer@protonmail.com>\nDate:   Tue Dec 23 12:37:43 2025 -0500\n\n    wallet: abort when sqlite was compiled with no mutex support\n\ncommit d861c3820528fad2e17a45549bec70b6ba434dcc (origin/master, origin/HEAD)\nMerge: 25636500c2 217dbbbb5e\nAuthor: Ava Chow <github@achow101.com>\nDate:   Mon Dec 22 17:14:35 2025 -0800\n\n    Merge bitcoin/bitcoin#33636: wallet: Expand MuSig test coverage and follow-ups\n```",
+      "user": {
+        "login": "rkrux",
+        "id": 5960750,
+        "node_id": "MDQ6VXNlcjU5NjA3NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5960750?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rkrux",
+        "html_url": "https://github.com/rkrux",
+        "followers_url": "https://api.github.com/users/rkrux/followers",
+        "following_url": "https://api.github.com/users/rkrux/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/rkrux/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/rkrux/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/rkrux/subscriptions",
+        "organizations_url": "https://api.github.com/users/rkrux/orgs",
+        "repos_url": "https://api.github.com/users/rkrux/repos",
+        "events_url": "https://api.github.com/users/rkrux/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/rkrux/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/issues/918#issuecomment-3689357803",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/918"
+    },
+    {
+      "event": "renamed",
+      "id": 21739916278,
+      "node_id": "RTE_lADOEEET9c7e2Dl7zwAAAAUPzMv2",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/21739916278",
+      "actor": {
+        "login": "rkrux",
+        "id": 5960750,
+        "node_id": "MDQ6VXNlcjU5NjA3NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5960750?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rkrux",
+        "html_url": "https://github.com/rkrux",
+        "followers_url": "https://api.github.com/users/rkrux/followers",
+        "following_url": "https://api.github.com/users/rkrux/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/rkrux/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/rkrux/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/rkrux/subscriptions",
+        "organizations_url": "https://api.github.com/users/rkrux/orgs",
+        "repos_url": "https://api.github.com/users/rkrux/repos",
+        "events_url": "https://api.github.com/users/rkrux/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/rkrux/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-12-24T10:22:51Z",
+      "rename": {
+        "from": "GUI crashes in regtest",
+        "to": "GUI crashes on startup after creating a wallet previously"
+      }
     }
   ]
 }
