@@ -61,7 +61,7 @@
     "locked": false,
     "comments": 21,
     "created_at": "2025-12-17T12:31:20Z",
-    "updated_at": "2025-12-29T08:49:41Z"
+    "updated_at": "2025-12-29T14:32:20Z"
   },
   "events": [
     {
@@ -1607,9 +1607,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2025-12-29T08:39:34Z",
-      "updated_at": "2025-12-29T08:49:41Z",
+      "updated_at": "2025-12-29T14:32:20Z",
       "author_association": "CONTRIBUTOR",
-      "body": "@furszy Thanks for the suggestions!\n\n> the custom configuration path shouldn’t be relevant here\n\nFirst, I tried with the following command, the same issue persisted:\n```zsh\n$BITCOIN_BUILD_BIN_DIR/bitcoin-qt -regtest -datadir=/tmp/gui-node-1\n```\n\nThen, I built v30.1 (https://github.com/bitcoin/bitcoin/tree/v30.1) in my system and ran the above command, the issue persisted.\n\n> Please try running the release build.\n\nThen, I downloaded the binary from here: https://bitcoincore.org/bin/bitcoin-core-30.0/. This time I don't face the issue and have created multiple wallets since!\n```zsh\n./Downloads/bitcoin-30.0/bin/bitcoin-qt -regtest -datadir=/tmp/guireg2\n```\n\n> In that case, it would be helpful if you could provide more details about how SQLite was installed on your machine and try reinstalling/upgrading it.\n\nIIRC, I didn't install SQLite separately. I am using the one that comes preinstalled in MacOS.\n```zsh\n➜  guireg2 sqlite3 --version\n3.43.2 2023-10-10 13:08:14 1b37c146ee9ebb7acd0160c0ab1fd11017a419fa8a3187386ed8cb32b709aapl (64-bit)\n```\n\nThis tells me that there is some issue when I build the binaries in my system but I never faced such an issue while running `bitcoind` only, which is surprising.",
+      "body": "@furszy Thanks for the suggestions!\n\n> the custom configuration path shouldn’t be relevant here\n\nFirst, I tried with the following command, the same issue persisted:\n```zsh\n$BITCOIN_BUILD_BIN_DIR/bitcoin-qt -regtest -datadir=/tmp/gui-node-1\n```\n\nThen, I built v30.1 (https://github.com/bitcoin/bitcoin/tree/v30.1) in my system and ran the above command, the issue persisted.\n\n> Please try running the release build.\n\nThen, I downloaded the binary from here: https://bitcoincore.org/bin/bitcoin-core-30.0/. This time I don't face the issue and have created multiple wallets since!\n```zsh\n./Downloads/bitcoin-30.0/bin/bitcoin-qt -regtest -datadir=/tmp/guireg2\n```\n\n> In that case, it would be helpful if you could provide more details about how SQLite was installed on your machine and try reinstalling/upgrading it.\n\nIIRC, I didn't install SQLite separately. I am using the one that comes preinstalled in MacOS.\n```zsh\n➜  guireg2 sqlite3 --version\n3.43.2 2023-10-10 13:08:14 1b37c146ee9ebb7acd0160c0ab1fd11017a419fa8a3187386ed8cb32b709aapl (64-bit)\n```\n\nThis experiment tells me that there is some issue when I build the binaries in my system but I never faced such an issue while running `bitcoind` only, which is surprising.",
       "user": {
         "login": "rkrux",
         "id": 5960750,
@@ -1696,6 +1696,37 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2025-12-29T08:39:35Z"
+    },
+    {
+      "event": "unsubscribed",
+      "id": 21776707245,
+      "node_id": "UE_lADOEEET9c7e2Dl7zwAAAAUR_i6t",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/21776707245",
+      "actor": {
+        "login": "waketraindev",
+        "id": 175499942,
+        "node_id": "U_kgDOCnXqpg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/175499942?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/waketraindev",
+        "html_url": "https://github.com/waketraindev",
+        "followers_url": "https://api.github.com/users/waketraindev/followers",
+        "following_url": "https://api.github.com/users/waketraindev/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/waketraindev/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/waketraindev/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/waketraindev/subscriptions",
+        "organizations_url": "https://api.github.com/users/waketraindev/orgs",
+        "repos_url": "https://api.github.com/users/waketraindev/repos",
+        "events_url": "https://api.github.com/users/waketraindev/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/waketraindev/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2025-12-29T10:12:39Z"
     }
   ]
 }
