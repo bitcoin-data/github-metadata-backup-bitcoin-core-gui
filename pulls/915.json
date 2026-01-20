@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/915/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/915/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/58adbcf88a02f4f31c930865f83d4b7c0392c4eb",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/3c61ba5df652a456c2c3ddd97620f086863e68cf",
     "number": 915,
     "state": "open",
     "locked": false,
@@ -53,11 +53,11 @@
       }
     ],
     "created_at": "2025-11-22T19:19:22Z",
-    "updated_at": "2026-01-19T20:54:29Z",
+    "updated_at": "2026-01-20T17:26:44Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
-    "merge_commit_sha": "cd68cf2e1897a632f5ddadc01ef7457684d70333",
+    "merge_commit_sha": "95e3eda544561ec9e4d90ebe6873df4daec5364c",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -65,7 +65,7 @@
     "head": {
       "label": "151henry151:fix-30070-defer-signing",
       "ref": "fix-30070-defer-signing",
-      "sha": "58adbcf88a02f4f31c930865f83d4b7c0392c4eb",
+      "sha": "3c61ba5df652a456c2c3ddd97620f086863e68cf",
       "user": {
         "login": "151henry151",
         "id": 6581719,
@@ -177,7 +177,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-11-22T19:19:13Z",
+        "pushed_at": "2026-01-20T17:25:42Z",
         "created_at": "2025-11-22T19:19:11Z",
         "updated_at": "2025-11-22T19:19:11Z",
         "allow_forking": true,
@@ -201,7 +201,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "fe0e31f1efcac1d129e87f2e98a13bf499ff59e0",
+      "sha": "7f5ebef56a0f2bad7df30252b11da3e33cb3c144",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -301,7 +301,7 @@
         "forks_count": 334,
         "stargazers_count": 695,
         "watchers_count": 695,
-        "size": 183622,
+        "size": 184240,
         "default_branch": "master",
         "open_issues_count": 146,
         "is_template": false,
@@ -314,9 +314,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2026-01-19T16:45:58Z",
+        "pushed_at": "2026-01-20T15:46:19Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2026-01-19T16:46:02Z",
+        "updated_at": "2026-01-20T15:46:25Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -342,54 +342,14 @@
     },
     "author_association": "CONTRIBUTOR",
     "draft": false,
-    "additions": 26,
-    "deletions": 4,
-    "changed_files": 3,
+    "additions": 25,
+    "deletions": 5,
+    "changed_files": 2,
     "commits": 1,
-    "review_comments": 2,
+    "review_comments": 4,
     "comments": 6
   },
   "events": [
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDU4YWRiY2Y4OGEwMmY0ZjMxYzkzMDg2NWY4M2Q0YjdjMDM5MmM0ZWI",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/58adbcf88a02f4f31c930865f83d4b7c0392c4eb",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/58adbcf88a02f4f31c930865f83d4b7c0392c4eb",
-      "tree": {
-        "sha": "1561461816d34c93bc61938c1f5bfa5a1823ef60",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/1561461816d34c93bc61938c1f5bfa5a1823ef60"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/0690514d4f72aac251ee0b876cded9187d42c63e",
-          "sha": "0690514d4f72aac251ee0b876cded9187d42c63e",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/0690514d4f72aac251ee0b876cded9187d42c63e"
-        }
-      ],
-      "message": "qt: Defer transaction signing until user clicks Send\n\nFixes #30070\n\nWhen creating an unsigned PSBT from the GUI, the transaction was already signed during preparation, causing legacy inputs to have non-empty scriptSig fields. The PSBT parser then rejects them.\n\nThis defers signing until the user clicks \"Send\" instead of signing during preparation. Fee calculation still works since transactions can be created without signing.\n\nFollows the approach suggested by @achow101 in the issue comments.",
-      "committer": {
-        "name": "Henry Romp",
-        "email": "151henry151@gmail.com",
-        "date": "2025-11-22T19:19:06Z"
-      },
-      "author": {
-        "name": "Henry Romp",
-        "email": "151henry151@gmail.com",
-        "date": "2025-11-22T19:19:06Z"
-      },
-      "sha": "58adbcf88a02f4f31c930865f83d4b7c0392c4eb"
-    },
     {
       "event": "mentioned",
       "id": 21116699109,
@@ -1226,6 +1186,77 @@
       "submitted_at": "2026-01-19T20:54:26Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/915"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDNjNjFiYTVkZjY1MmE0NTZjMmMzZGRkOTc2MjBmMDg2ODYzZTY4Y2Y",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/3c61ba5df652a456c2c3ddd97620f086863e68cf",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/3c61ba5df652a456c2c3ddd97620f086863e68cf",
+      "tree": {
+        "sha": "d0db37f28b56ab8c4e0e40b28910782ca09d1fac",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/d0db37f28b56ab8c4e0e40b28910782ca09d1fac"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/0690514d4f72aac251ee0b876cded9187d42c63e",
+          "sha": "0690514d4f72aac251ee0b876cded9187d42c63e",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/0690514d4f72aac251ee0b876cded9187d42c63e"
+        }
+      ],
+      "message": "qt: Defer transaction signing until user clicks Send\n\nFixes #30070\n\nWhen creating an unsigned PSBT from the GUI, the transaction was already signed during preparation, causing legacy inputs to have non-empty scriptSig fields. The PSBT parser then rejects them.\n\nThis defers signing until the user clicks \"Send\" instead of signing during preparation. Fee calculation still works since transactions can be created without signing.\n\nFollows the approach suggested by @achow101 in the issue comments.",
+      "committer": {
+        "name": "Henry Romp",
+        "email": "151henry151@gmail.com",
+        "date": "2026-01-20T17:23:49Z"
+      },
+      "author": {
+        "name": "Henry Romp",
+        "email": "151henry151@gmail.com",
+        "date": "2025-11-22T19:19:06Z"
+      },
+      "sha": "3c61ba5df652a456c2c3ddd97620f086863e68cf"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 22167603558,
+      "node_id": "HRFPE_lADOEEET9c7Z2sifzwAAAAUpSslm",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/22167603558",
+      "actor": {
+        "login": "151henry151",
+        "id": 6581719,
+        "node_id": "MDQ6VXNlcjY1ODE3MTk=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6581719?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/151henry151",
+        "html_url": "https://github.com/151henry151",
+        "followers_url": "https://api.github.com/users/151henry151/followers",
+        "following_url": "https://api.github.com/users/151henry151/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/151henry151/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/151henry151/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/151henry151/subscriptions",
+        "organizations_url": "https://api.github.com/users/151henry151/orgs",
+        "repos_url": "https://api.github.com/users/151henry151/repos",
+        "events_url": "https://api.github.com/users/151henry151/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/151henry151/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": "3c61ba5df652a456c2c3ddd97620f086863e68cf",
+      "commit_url": "https://api.github.com/repos/151henry151/gui/commits/3c61ba5df652a456c2c3ddd97620f086863e68cf",
+      "created_at": "2026-01-20T17:25:43Z"
     }
   ],
   "comments": [
@@ -1236,7 +1267,7 @@
       "node_id": "PRRC_kwDOEEET9c6hSvmT",
       "diff_hunk": "@@ -147,7 +147,7 @@ bool WalletModel::validateAddress(const QString& address) const\n     return IsValidDestinationString(address.toStdString());\n }\n \n-WalletModel::SendCoinsReturn WalletModel::prepareTransaction(WalletModelTransaction &transaction, const CCoinControl& coinControl)\n+WalletModel::SendCoinsReturn WalletModel::prepareTransaction(WalletModelTransaction &transaction, const CCoinControl& coinControl, bool sign)",
       "path": "src/qt/walletmodel.cpp",
-      "position": 5,
+      "position": 1,
       "original_position": 5,
       "commit_id": "58adbcf88a02f4f31c930865f83d4b7c0392c4eb",
       "original_commit_id": "58adbcf88a02f4f31c930865f83d4b7c0392c4eb",
@@ -1279,7 +1310,7 @@
       "start_line": null,
       "original_start_line": null,
       "start_side": null,
-      "line": 150,
+      "line": null,
       "original_line": 150,
       "side": "RIGHT"
     },
@@ -1290,7 +1321,7 @@
       "node_id": "PRRC_kwDOEEET9c6hSwQZ",
       "diff_hunk": "@@ -540,6 +542,24 @@ void SendCoinsDialog::sendButtonClicked([[maybe_unused]] bool checked)\n                     presentPSBT(psbtx);\n                 }\n             }\n+        } else {\n+            // Sign the transaction now that the user has confirmed they want to send.\n+            CMutableTransaction mtx = CMutableTransaction{*(m_current_transaction->getWtx())};\n+            PartiallySignedTransaction psbtx(mtx);\n+            bool complete = false;\n+            // Fill and sign the PSBT\n+            const auto err{model->wallet().fillPSBT(std::nullopt, /*sign=*/true, /*bip32derivs=*/false, /*n_signed=*/nullptr, psbtx, complete)};",
       "path": "src/qt/sendcoinsdialog.cpp",
-      "position": 28,
+      "position": 1,
       "original_position": 28,
       "commit_id": "58adbcf88a02f4f31c930865f83d4b7c0392c4eb",
       "original_commit_id": "58adbcf88a02f4f31c930865f83d4b7c0392c4eb",
@@ -1330,10 +1361,118 @@
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/915"
         }
       },
-      "start_line": 547,
+      "start_line": null,
       "original_start_line": 547,
       "start_side": "RIGHT",
-      "line": 551,
+      "line": null,
+      "original_line": 551,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2709357865",
+      "pull_request_review_id": 3683392176,
+      "id": 2709357865,
+      "node_id": "PRRC_kwDOEEET9c6hfYUp",
+      "diff_hunk": "@@ -147,7 +147,7 @@ bool WalletModel::validateAddress(const QString& address) const\n     return IsValidDestinationString(address.toStdString());\n }\n \n-WalletModel::SendCoinsReturn WalletModel::prepareTransaction(WalletModelTransaction &transaction, const CCoinControl& coinControl)\n+WalletModel::SendCoinsReturn WalletModel::prepareTransaction(WalletModelTransaction &transaction, const CCoinControl& coinControl, bool sign)",
+      "path": "src/qt/walletmodel.cpp",
+      "position": 1,
+      "original_position": 5,
+      "commit_id": "58adbcf88a02f4f31c930865f83d4b7c0392c4eb",
+      "original_commit_id": "58adbcf88a02f4f31c930865f83d4b7c0392c4eb",
+      "in_reply_to_id": 2706045331,
+      "user": {
+        "login": "151henry151",
+        "id": 6581719,
+        "node_id": "MDQ6VXNlcjY1ODE3MTk=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6581719?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/151henry151",
+        "html_url": "https://github.com/151henry151",
+        "followers_url": "https://api.github.com/users/151henry151/followers",
+        "following_url": "https://api.github.com/users/151henry151/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/151henry151/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/151henry151/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/151henry151/subscriptions",
+        "organizations_url": "https://api.github.com/users/151henry151/orgs",
+        "repos_url": "https://api.github.com/users/151henry151/repos",
+        "events_url": "https://api.github.com/users/151henry151/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/151henry151/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "body": "suggestion implemented",
+      "created_at": "2026-01-20T17:26:18Z",
+      "updated_at": "2026-01-20T17:26:18Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/915#discussion_r2709357865",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2709357865"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/915"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": null,
+      "original_line": 150,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2709359361",
+      "pull_request_review_id": 3683394979,
+      "id": 2709359361,
+      "node_id": "PRRC_kwDOEEET9c6hfYsB",
+      "diff_hunk": "@@ -540,6 +542,24 @@ void SendCoinsDialog::sendButtonClicked([[maybe_unused]] bool checked)\n                     presentPSBT(psbtx);\n                 }\n             }\n+        } else {\n+            // Sign the transaction now that the user has confirmed they want to send.\n+            CMutableTransaction mtx = CMutableTransaction{*(m_current_transaction->getWtx())};\n+            PartiallySignedTransaction psbtx(mtx);\n+            bool complete = false;\n+            // Fill and sign the PSBT\n+            const auto err{model->wallet().fillPSBT(std::nullopt, /*sign=*/true, /*bip32derivs=*/false, /*n_signed=*/nullptr, psbtx, complete)};",
+      "path": "src/qt/sendcoinsdialog.cpp",
+      "position": 1,
+      "original_position": 28,
+      "commit_id": "58adbcf88a02f4f31c930865f83d4b7c0392c4eb",
+      "original_commit_id": "58adbcf88a02f4f31c930865f83d4b7c0392c4eb",
+      "in_reply_to_id": 2706048025,
+      "user": {
+        "login": "151henry151",
+        "id": 6581719,
+        "node_id": "MDQ6VXNlcjY1ODE3MTk=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6581719?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/151henry151",
+        "html_url": "https://github.com/151henry151",
+        "followers_url": "https://api.github.com/users/151henry151/followers",
+        "following_url": "https://api.github.com/users/151henry151/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/151henry151/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/151henry151/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/151henry151/subscriptions",
+        "organizations_url": "https://api.github.com/users/151henry151/orgs",
+        "repos_url": "https://api.github.com/users/151henry151/repos",
+        "events_url": "https://api.github.com/users/151henry151/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/151henry151/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "body": "refactored as suggested",
+      "created_at": "2026-01-20T17:26:44Z",
+      "updated_at": "2026-01-20T17:26:44Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/915#discussion_r2709359361",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/2709359361"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/915"
+        }
+      },
+      "start_line": null,
+      "original_start_line": 547,
+      "start_side": "RIGHT",
+      "line": null,
       "original_line": 551,
       "side": "RIGHT"
     }
