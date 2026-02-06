@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/807/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/807/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/0b92ee2bc7a75074651e4688912e8e3c7de06a5a",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/691a87658ccb821b996cae124cbdae29232cf55f",
     "number": 807,
     "state": "open",
     "locked": false,
@@ -53,10 +53,11 @@
       }
     ],
     "created_at": "2024-03-22T12:55:51Z",
-    "updated_at": "2025-11-19T17:53:18Z",
-    "mergeable": false,
-    "mergeable_state": "dirty",
+    "updated_at": "2026-02-06T22:59:57Z",
+    "mergeable": true,
+    "mergeable_state": "unstable",
     "merged": false,
+    "merge_commit_sha": "24966bad95dec9b6870db5868308be7c185525fd",
     "assignees": [],
     "requested_reviewers": [
       {
@@ -127,11 +128,11 @@
       }
     ],
     "requested_teams": [],
-    "rebaseable": false,
+    "rebaseable": true,
     "head": {
       "label": "furszy:2024_gui_clean_createTransaction",
       "ref": "2024_gui_clean_createTransaction",
-      "sha": "0b92ee2bc7a75074651e4688912e8e3c7de06a5a",
+      "sha": "691a87658ccb821b996cae124cbdae29232cf55f",
       "user": {
         "login": "furszy",
         "id": 5377650,
@@ -244,7 +245,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-05-12T00:10:21Z",
+        "pushed_at": "2026-02-06T22:59:55Z",
         "created_at": "2022-05-09T14:34:00Z",
         "updated_at": "2023-09-08T14:09:02Z",
         "allow_forking": true,
@@ -268,7 +269,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "6f36624147dfb59603698db647b4ad612b771810",
+      "sha": "d88997b809db6db94d4d420498c0875182596555",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -365,12 +366,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 328,
-        "stargazers_count": 687,
-        "watchers_count": 687,
-        "size": 181438,
+        "forks_count": 335,
+        "stargazers_count": 695,
+        "watchers_count": 695,
+        "size": 181567,
         "default_branch": "master",
-        "open_issues_count": 149,
+        "open_issues_count": 146,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -381,9 +382,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-11-20T00:23:21Z",
+        "pushed_at": "2026-02-06T22:30:44Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2025-11-20T00:23:25Z",
+        "updated_at": "2026-02-06T22:30:49Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -409,10 +410,10 @@
     },
     "author_association": "MEMBER",
     "draft": true,
-    "additions": 65,
-    "deletions": 43,
+    "additions": 33,
+    "deletions": 46,
     "changed_files": 7,
-    "commits": 4,
+    "commits": 3,
     "review_comments": 8,
     "comments": 13
   },
@@ -1655,166 +1656,6 @@
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/807"
     },
     {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDkwMGU1ZWQ1MWJiOWQ1MmFlNDk2ZjFlZDRhM2I1ODcwM2RlNTNhMTI",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/900e5ed51bb9d52ae496f1ed4a3b58703de53a12",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/900e5ed51bb9d52ae496f1ed4a3b58703de53a12",
-      "tree": {
-        "sha": "38acaa9786e06520a9d1c625339ccbba032766c6",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/38acaa9786e06520a9d1c625339ccbba032766c6"
-      },
-      "verification": {
-        "verified": true,
-        "reason": "valid",
-        "payload": "tree 38acaa9786e06520a9d1c625339ccbba032766c6\nparent a786fd2041913d82ca90b561de309421bd24e41b\nauthor furszy <matiasfurszyfer@protonmail.com> 1716301133 -0300\ncommitter furszy <matiasfurszyfer@protonmail.com> 1716301849 -0300\n\nwallet: introduce \"tx amount exceeds balance when fees are included\" error\n\nThis was previously implemented at the GUI level but has been broken since #20640\n",
-        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEEA++0fqwRHQpmlZfQXdI8zGhqpiMFAmZMsBkACgkQXdI8zGhq\npiPYnw/+O/RnGWXPpxu1uEr0Itn5QN35sbj0bVJduyor3AbYU1Ceoi2KziIT54GS\nUvJGpFLgy8CW2vKKz9QAyB4GgtjrxyHKjQQbrTc3s4+qXT3yWcdU3qxpZCAIAl+J\nZa+q04jyEjZPdbL4LCMvvbR1sINxwQLI6caH8Joe+zra5oEatD9Xybd8MdhwakKN\nH8RxU0GmuQHSysIGUTA0mL7J1OjxkuCIV9hmVrfklx0Sr0Mmpgl9Tqnm47aVbIme\nkEA0bF1vQpKjvvNYt28qneLyl1vKqcNfHmXFwzPtXf2Z2BPTDjn1lb/qtK9mFZo2\nhHZKRNs26i/zjXojllHvLS4J6AtUompvHu5O2BuLglSw6d2HsIJ+Ugw2PpMGe3Uj\n9Z2/hNuwJtNWKNxDoODz+mBPdQxCdcpozUYuoo3IgMIS7h0g+ps/bhW7maZyfLdh\nwLHGJCF/W7e0bykw9HdW8Z2vC5q9F3c6h7eqo1hXRaeDE80SSy+70iwDOAghPGgm\nm5JnkK4s45sCshBP5rGZlRbdZZlHCudQT6COfLo+UIOcFAd9j9PXJ6AwH1uiC98l\nw0c0+IACXFWQjMXe1eUf4bAog0jOkj9pq9BuLA3Otq+AK+DVheibCfc7vhb+/Q5s\nEC6/qRbPcVNSSftYEPRgVIKGVHmwdwmDDBbIp321HpzC6VDmY3I=\n=Ioos\n-----END PGP SIGNATURE-----"
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/a786fd2041913d82ca90b561de309421bd24e41b",
-          "sha": "a786fd2041913d82ca90b561de309421bd24e41b",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/a786fd2041913d82ca90b561de309421bd24e41b"
-        }
-      ],
-      "message": "wallet: introduce \"tx amount exceeds balance when fees are included\" error\n\nThis was previously implemented at the GUI level but has been broken since #20640",
-      "committer": {
-        "name": "furszy",
-        "email": "matiasfurszyfer@protonmail.com",
-        "date": "2024-05-21T14:30:49Z"
-      },
-      "author": {
-        "name": "furszy",
-        "email": "matiasfurszyfer@protonmail.com",
-        "date": "2024-05-21T14:18:53Z"
-      },
-      "sha": "900e5ed51bb9d52ae496f1ed4a3b58703de53a12"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGE0MDA3YTQ0N2VkOWE2YzIxODEyZmU1YjNkNDY4Y2Y2ZjcwMzlhNWI",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/a4007a447ed9a6c21812fe5b3d468cf6f7039a5b",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/a4007a447ed9a6c21812fe5b3d468cf6f7039a5b",
-      "tree": {
-        "sha": "016b638becc2729151525f513e5da1ffa384d26e",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/016b638becc2729151525f513e5da1ffa384d26e"
-      },
-      "verification": {
-        "verified": true,
-        "reason": "valid",
-        "payload": "tree 016b638becc2729151525f513e5da1ffa384d26e\nparent 900e5ed51bb9d52ae496f1ed4a3b58703de53a12\nauthor furszy <matiasfurszyfer@protonmail.com> 1711109531 -0300\ncommitter furszy <matiasfurszyfer@protonmail.com> 1716387144 -0300\n\ngui: remove unreachable AmountWithFeeExceedsBalance error\n\nSince #20640, the 'createTransaction' does no longer retrieve the\nfee if the process fails due to insufficient funds.\n\nBut, since #25269, 'createTransaction' retrieves an error message\nindicating that the total transaction amount exceeds the wallet\navailable balance when fees are included.\n\nSo this enum is no longer needed.\n",
-        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEEA++0fqwRHQpmlZfQXdI8zGhqpiMFAmZN/UkACgkQXdI8zGhq\npiNCdg//RwISmqsZNPzZ/aCma0U93gryqB5GmK8zzgQMg1pX1XBmSs5KG8W9e4ig\nqTkiEagCaIxzwBcph9mTIuVym7DjGi4hDhsa5Ga84rPmZEhsHsXR1+NsQFKqiIkA\nKlzMMt/HE6Zy0B5TIJRJTlmzXjqxbO7lWJZiX1C8WyAHZEhXJqsFDqay6zw/FkcV\nON3opf9yKZz6IM6XOqz1DsgF5sQ5+HB9cnVfFBTX84Wif7PQpISEqOoo+sDAiIwG\ntkQWXF2txr0dkguEQNae7J73zmpCGbcKSzYkczpmmzaL3MYSQimPH4Ey3zo05JDr\n79/jYXlwVPiQRk6xpqU8JMChfuu0TWb+pUlBonp1G1coJftR2PqGp0XGO3nkNWa5\ncZy9lXlIvElcJDc2b9WD1uSe7ttaloBFwt6ab6amxC35YNPljUwdqAV4DBsLNkPB\nsFGCVETHGSuby+aSY/TtV/Zg/6mzafKcNd4z7QYuqo8CEHRl3KwUuk2B27WvHNgi\nR75pQOp3MIWZxJt9f0NB6qyx20AOCpSQ8kKGJRtk87f9VkB355i2djako9RtK/YB\nAWtJSF9uFeRqIwyTTt5FY6t+GxbEChOYl5kRvzc4Gvp/3AR58EbDC7gkDYh5VRss\nyI2MbNxbozB2BNIN5HuL6CCYrOpX5fUv+m2aQKE5pGW6o/Kz/IQ=\n=8GzV\n-----END PGP SIGNATURE-----"
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/900e5ed51bb9d52ae496f1ed4a3b58703de53a12",
-          "sha": "900e5ed51bb9d52ae496f1ed4a3b58703de53a12",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/900e5ed51bb9d52ae496f1ed4a3b58703de53a12"
-        }
-      ],
-      "message": "gui: remove unreachable AmountWithFeeExceedsBalance error\n\nSince #20640, the 'createTransaction' does no longer retrieve the\nfee if the process fails due to insufficient funds.\n\nBut, since #25269, 'createTransaction' retrieves an error message\nindicating that the total transaction amount exceeds the wallet\navailable balance when fees are included.\n\nSo this enum is no longer needed.",
-      "committer": {
-        "name": "furszy",
-        "email": "matiasfurszyfer@protonmail.com",
-        "date": "2024-05-22T14:12:24Z"
-      },
-      "author": {
-        "name": "furszy",
-        "email": "matiasfurszyfer@protonmail.com",
-        "date": "2024-03-22T12:12:11Z"
-      },
-      "sha": "a4007a447ed9a6c21812fe5b3d468cf6f7039a5b"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDljZDg0NjJhNmEwNzBiZTA3ZTdkZTc1NTVmMzk2M2M1YmM3NmU1NGE",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/9cd8462a6a070be07e7de7555f3963c5bc76e54a",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/9cd8462a6a070be07e7de7555f3963c5bc76e54a",
-      "tree": {
-        "sha": "985b309c4e48247260e632e182ddf2e57a99181e",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/985b309c4e48247260e632e182ddf2e57a99181e"
-      },
-      "verification": {
-        "verified": true,
-        "reason": "valid",
-        "payload": "tree 985b309c4e48247260e632e182ddf2e57a99181e\nparent a4007a447ed9a6c21812fe5b3d468cf6f7039a5b\nauthor furszy <matiasfurszyfer@protonmail.com> 1711054639 -0300\ncommitter furszy <matiasfurszyfer@protonmail.com> 1716387145 -0300\n\nrefactor: move CreatedTransactionResult to types.h\n\nSo it can be used by external modules without requiring\nwallet.h dependency.\n",
-        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEEA++0fqwRHQpmlZfQXdI8zGhqpiMFAmZN/UkACgkQXdI8zGhq\npiPiiw//ZI9utpb82HpLFxbORtW3l8F5L8sTjqRgadkoGIlw3DQDOVTaV8DiqXdZ\nq9X1NM4as8VTkBs23TXSrlBrUGa0ZoFexn8s2QoHyfLdZj1XDYqI3Oxg+bF42M9l\nnIoq9i9GLv3HWDs5j1R49NZ1wAbWkITfPp7b9FGgcQ9puEElGoJC3esezqmxf3T7\n7sUumXxxFQplahT32IXTdFSwjwJRsNYAiM+WiqOjJbaLetm1eT1EaH/kDUyb4oge\nT0XkhlCuB2rEx0jFhsDDYKpWCVB1hL8mqQl9ynH8iAlUQ1cRiBqCQeTMfcVZWMX7\nIpd526WvtaDcI3f7lJIkcEWffpvYo6/xHqFPlbvMauL4w7yshxIaxAuvEu2FrDrB\n65u71ZLKnv4K+HfnEVF/So6X/41/PvwHR3zk1aZTiqqNZ3dho7V739Kh4s+oNYk/\nshP14423lEJt+Onw1GkhnHdirIlcN/1Fb1VVn+754UncLvU+gvUzCjGEj0cxxPS9\n9SuZMmTrbQH1tqB1KDLDZyRzEn+1bUFv78m/y5ccmibeZCwGhFZIMHVfQjFZY5Jl\noiDSSJD1H5DRRU6ljWpaxvDNcEdMqJLLjNNEPJMYhPZT7Ft5JLgRzGqO8nRToHne\nH/Krj2O7lFYx1DMF8bJGp1j2jrGa9DEfDgiZESQ2VztXrc/kx/c=\n=5VDQ\n-----END PGP SIGNATURE-----"
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/a4007a447ed9a6c21812fe5b3d468cf6f7039a5b",
-          "sha": "a4007a447ed9a6c21812fe5b3d468cf6f7039a5b",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/a4007a447ed9a6c21812fe5b3d468cf6f7039a5b"
-        }
-      ],
-      "message": "refactor: move CreatedTransactionResult to types.h\n\nSo it can be used by external modules without requiring\nwallet.h dependency.",
-      "committer": {
-        "name": "furszy",
-        "email": "matiasfurszyfer@protonmail.com",
-        "date": "2024-05-22T14:12:25Z"
-      },
-      "author": {
-        "name": "furszy",
-        "email": "matiasfurszyfer@protonmail.com",
-        "date": "2024-03-21T20:57:19Z"
-      },
-      "sha": "9cd8462a6a070be07e7de7555f3963c5bc76e54a"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDBiOTJlZTJiYzdhNzUwNzQ2NTFlNDY4ODkxMmU4ZTNjN2RlMDZhNWE",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/0b92ee2bc7a75074651e4688912e8e3c7de06a5a",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/0b92ee2bc7a75074651e4688912e8e3c7de06a5a",
-      "tree": {
-        "sha": "232a046117ad1970ab3c5c8387eab892f7213cbc",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/232a046117ad1970ab3c5c8387eab892f7213cbc"
-      },
-      "verification": {
-        "verified": true,
-        "reason": "valid",
-        "payload": "tree 232a046117ad1970ab3c5c8387eab892f7213cbc\nparent 9cd8462a6a070be07e7de7555f3963c5bc76e54a\nauthor furszy <matiasfurszyfer@protonmail.com> 1711110844 -0300\ncommitter furszy <matiasfurszyfer@protonmail.com> 1716387145 -0300\n\nrefactor: interfaces, make 'createTransaction' less error-prone\n\nBundle all function's outputs inside the util::Result returned object.\n\nReasons for the refactoring:\n- The 'change_pos' ref argument has been a source of bugs in the past.\n- The 'fee' ref argument is currently only set when the transaction creation process succeeds.\n",
-        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEEA++0fqwRHQpmlZfQXdI8zGhqpiMFAmZN/UkACgkQXdI8zGhq\npiO+5w/+Lt4HRb4nLJbBsFnXzP/+q4dVQLoXL4/OwPCHs+QQoqRFKSpHa3ufx6Xb\no2TO1shpnjlntL8cZYVesKpqb9EZSUTFsbYZ9p8CeZlUmms54Ud0UMmyLzZC8K+L\n6AzfIKSf5dnoSu5Q5QIVTWEyb8WU2r+hyju21Cq0Mt8nHCGshff3QlflyWBvmp6d\nAxDchAcayJn1jVWBWnmvinfqiteM9ZnLq3Dd7UkNdPH8zz3Ywdb4JjXE+GA3YsjE\nK/CS/LmpFpAOpAOCe9r5AskRpyHsIGxgJ01P38Po+YWZbSmr7TyF/bRcrV71sO5e\nMlACrcpao5QE0Dj1f+AqYrhOJmllBf3hzZkz8q+HhbNWe9TOJktnGZ12BcWAgPnf\nZ3q0J6cpJGUe28yNqzfFkhO6ZKlwkhi5ZV0owrSHHBfLjmyvR987RfBq1r0pA6iY\nGRJYpfrg1sE5//d+DX4SVvx41S9nr0wgtpOxpfkYsHrFpMFMqpbNcl1nMHYN7W6t\nXI6v622qG26UOr2TIOReoi4XZTI8EJb08/YiAPsb3DPV5/ieLdMmykk7IZeqLTqb\n8GvyqepApayuV1w9iEvsUCbv5nSGl2k5YFY9WuYEEI0ehFi0zNFGl0l+uasFglcU\nY0XwplhprdBrahIH2MX9H7n9B/GVEKPPb0uxKFioeVQfGPbnzSs=\n=xXf7\n-----END PGP SIGNATURE-----"
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/9cd8462a6a070be07e7de7555f3963c5bc76e54a",
-          "sha": "9cd8462a6a070be07e7de7555f3963c5bc76e54a",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/9cd8462a6a070be07e7de7555f3963c5bc76e54a"
-        }
-      ],
-      "message": "refactor: interfaces, make 'createTransaction' less error-prone\n\nBundle all function's outputs inside the util::Result returned object.\n\nReasons for the refactoring:\n- The 'change_pos' ref argument has been a source of bugs in the past.\n- The 'fee' ref argument is currently only set when the transaction creation process succeeds.",
-      "committer": {
-        "name": "furszy",
-        "email": "matiasfurszyfer@protonmail.com",
-        "date": "2024-05-22T14:12:25Z"
-      },
-      "author": {
-        "name": "furszy",
-        "email": "matiasfurszyfer@protonmail.com",
-        "date": "2024-03-22T12:34:04Z"
-      },
-      "sha": "0b92ee2bc7a75074651e4688912e8e3c7de06a5a"
-    },
-    {
       "event": "head_ref_force_pushed",
       "id": 12895322217,
       "node_id": "HRFPE_lADOEEET9c6DRom7zwAAAAMAnwBp",
@@ -2762,6 +2603,188 @@
       "submitted_at": "2025-11-19T17:53:13Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/807"
+    },
+    {
+      "event": "referenced",
+      "id": 22601163446,
+      "node_id": "REFE_lADOEEET9c6DRom7zwAAAAVDImK2",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/22601163446",
+      "actor": {
+        "login": "achow101",
+        "id": 3782274,
+        "node_id": "MDQ6VXNlcjM3ODIyNzQ=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3782274?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/achow101",
+        "html_url": "https://github.com/achow101",
+        "followers_url": "https://api.github.com/users/achow101/followers",
+        "following_url": "https://api.github.com/users/achow101/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/achow101/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/achow101/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/achow101/subscriptions",
+        "organizations_url": "https://api.github.com/users/achow101/orgs",
+        "repos_url": "https://api.github.com/users/achow101/repos",
+        "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/achow101/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": "d88997b809db6db94d4d420498c0875182596555",
+      "commit_url": "https://api.github.com/repos/bitcoin/bitcoin/commits/d88997b809db6db94d4d420498c0875182596555",
+      "created_at": "2026-02-06T22:30:42Z"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDQ1MzcyMTc1YzM1YjczYmZkMzNhMTM4N2IyMjk1ZmM2MWQ5ZWFhYTk",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/45372175c35b73bfd33a1387b2295fc61d9eaaa9",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/45372175c35b73bfd33a1387b2295fc61d9eaaa9",
+      "tree": {
+        "sha": "47a4e1809d11d93faf87410071fe614f40cf8cc7",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/47a4e1809d11d93faf87410071fe614f40cf8cc7"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree 47a4e1809d11d93faf87410071fe614f40cf8cc7\nparent d88997b809db6db94d4d420498c0875182596555\nauthor furszy <matiasfurszyfer@protonmail.com> 1711109531 -0300\ncommitter furszy <matiasfurszyfer@protonmail.com> 1770418392 -0500\n\ngui: remove AmountWithFeeExceedsBalance error special case\n\nSince bitcoin#34299, the wallet handles the error internally\nand retrieves the proper message.\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIyBAABCAAdFiEEA++0fqwRHQpmlZfQXdI8zGhqpiMFAmmGcNgACgkQXdI8zGhq\npiOd2A/4ozpJsBJrVBUd+Oz9TMBr7w3FkYE1PrP679lLHqzYbZBQiqdWvzh46nNQ\nWhh1j2Ezp/S4xgWjakVcTvq+bhR/vQjbNWax+M+jsr1AlNu2SwtLNMp2mwk8CVL4\nbLh9cJryClR/wOziq1XXrHXxHeH4m7w3baEec519AZwbVp2Ah5Qyr1AJ/Nklv+E0\nF7GhmQl7K7TdKjVQRYv8C/67vqyTIKyErdoF2xj5XDjBmRQUyjayAfy11k1LD3Cv\nslP2kbhibMUhfOKNC5woC+AZ6gGVvRDkcb7IY0jOOUKBE6o+URok9uTqsF6+kXWI\nN8j6aQ187qsh706cJusIQF9q2uI99bD8E1hKkhwjKEnR2229WFdhStARmdduhxib\nTAwi5/dYK/lWtIAgy48aSH5r982M+D36NQpVR3u5RCbRkK8rhE7Dfkkw6maS9Ohw\npLkGIT8SGNNHE6bPWvNQ6HQoxNR1HeflJnYnAClbbJ4FYZfdnJO7LSv0S+k/Mmk2\nG90NaB4WueNf5PEiDvcyh4zDxru5ud+l9ityRKAYGxSrY7Q5NBFaw9s1DZAC361M\nEr579noPZ1kuly3q7BhX2DhxYQJ4vQAdT7Nd6Q7PBsANtxvbCBCE6zKE3Ge92OVo\nvfByVi7iE8ha0tkkefXePpFfOD6ou5iiHcr3xNfj/6b4V5pAYw==\n=MdHa\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/d88997b809db6db94d4d420498c0875182596555",
+          "sha": "d88997b809db6db94d4d420498c0875182596555",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/d88997b809db6db94d4d420498c0875182596555"
+        }
+      ],
+      "message": "gui: remove AmountWithFeeExceedsBalance error special case\n\nSince bitcoin#34299, the wallet handles the error internally\nand retrieves the proper message.",
+      "committer": {
+        "name": "furszy",
+        "email": "matiasfurszyfer@protonmail.com",
+        "date": "2026-02-06T22:53:12Z"
+      },
+      "author": {
+        "name": "furszy",
+        "email": "matiasfurszyfer@protonmail.com",
+        "date": "2024-03-22T12:12:11Z"
+      },
+      "sha": "45372175c35b73bfd33a1387b2295fc61d9eaaa9"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGUyYzNlYzliZjQxMjY1NjQwNzBmNGYxMDk3YmVhNDU3NTNlNDFlYWQ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/e2c3ec9bf4126564070f4f1097bea45753e41ead",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/e2c3ec9bf4126564070f4f1097bea45753e41ead",
+      "tree": {
+        "sha": "05ff75eaafe516ba51b219af6c1b31e896061d77",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/05ff75eaafe516ba51b219af6c1b31e896061d77"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree 05ff75eaafe516ba51b219af6c1b31e896061d77\nparent 45372175c35b73bfd33a1387b2295fc61d9eaaa9\nauthor furszy <matiasfurszyfer@protonmail.com> 1711054639 -0300\ncommitter furszy <matiasfurszyfer@protonmail.com> 1770418672 -0500\n\nrefactor: move CreatedTransactionResult to types.h\n\nSo it can be used by external modules without requiring\nwallet.h dependency.\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEEA++0fqwRHQpmlZfQXdI8zGhqpiMFAmmGcfAACgkQXdI8zGhq\npiM7jA//W13IcMxJeB1dxuFu4VBhq3e6tU2S2xT9xGnCGD0J2+v6MNAskyYLpQAa\n77/suCOwPxbpBgpixCPd8ACRQYNe3YObmNEErlPS9ND5EmZHoDHD7omMUk1MMoG2\nu3hjBrlxyfL3j0KXyHM0op6KzebW5VeaTHX+bwPaML3y+QiKRSqJ4DXnXWe2IrQ/\nmauQSqrM3WEj8FseW6UHwQhuy2bh0/lZUr2HeFTBVGoNK91JVDnyXtKwc6U5p9zX\nagCHMtIWnMSnQ7Le4nwyTmAA6Xj+t3K1KGLBiYGpbryt47JlA+yX4jMpbzZcWh8s\n0omoRkAs/INl+CkXT6F2hNFPzdyFFp55+8nkfFrSr2DazQEZ85cYMmRI5SDADcVV\n8yV14hbKGLXOJsDEi1zy3owN8jj5bFPCpdQA3bq7pbzs7orU0I4M1IU0zX0CA2UL\nc8KR2Q4zYqtJDFbYeNClqj6P/wFx3WkNcvefG5mU5V0nhWuo6WbRzB2Uo4RX601I\nEhVGAz0KAusmW9vZ1EVE6DiG2hLIZN2H/6cn8bdF+I/YH7nNpBid+wsdGkM3sghh\nf2OxGpInUomuBvOaGIalyNDUEL4z7bTlyhukdeVeiQoSLn9uiqXZGf0Ei9Lz2ols\nL3uNFTwH9OStb5uIFuBu3UZ+8Xyhnz1e8coJ+BjrmdIqjeqaNYc=\n=js6M\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/45372175c35b73bfd33a1387b2295fc61d9eaaa9",
+          "sha": "45372175c35b73bfd33a1387b2295fc61d9eaaa9",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/45372175c35b73bfd33a1387b2295fc61d9eaaa9"
+        }
+      ],
+      "message": "refactor: move CreatedTransactionResult to types.h\n\nSo it can be used by external modules without requiring\nwallet.h dependency.",
+      "committer": {
+        "name": "furszy",
+        "email": "matiasfurszyfer@protonmail.com",
+        "date": "2026-02-06T22:57:52Z"
+      },
+      "author": {
+        "name": "furszy",
+        "email": "matiasfurszyfer@protonmail.com",
+        "date": "2024-03-21T20:57:19Z"
+      },
+      "sha": "e2c3ec9bf4126564070f4f1097bea45753e41ead"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDY5MWE4NzY1OGNjYjgyMWI5OTZjYWUxMjRjYmRhZTI5MjMyY2Y1NWY",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/691a87658ccb821b996cae124cbdae29232cf55f",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/691a87658ccb821b996cae124cbdae29232cf55f",
+      "tree": {
+        "sha": "fbc7f1883689bbb383d3f2b739da858cdc80c708",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/fbc7f1883689bbb383d3f2b739da858cdc80c708"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree fbc7f1883689bbb383d3f2b739da858cdc80c708\nparent e2c3ec9bf4126564070f4f1097bea45753e41ead\nauthor furszy <matiasfurszyfer@protonmail.com> 1711110844 -0300\ncommitter furszy <matiasfurszyfer@protonmail.com> 1770418672 -0500\n\nrefactor: interfaces, make 'createTransaction' less error-prone\n\nBundle all function's outputs inside the util::Result returned object.\n\nReasons for the refactoring:\n- The 'change_pos' ref argument has been a source of bugs in the past.\n- The 'fee' ref argument is currently only set when the transaction creation process succeeds.\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEEA++0fqwRHQpmlZfQXdI8zGhqpiMFAmmGcfAACgkQXdI8zGhq\npiOQHQ/+PIzruPBYBtgZpOxIVBSw8AJXUfNm2eTBw3n9BcH02JQQ449thi6aX3yv\nhdAZ3AmARBGr9Fhr3zbkwH+6yOzZ/03LG/pfKQbCTu6cqA4TpCbAbCzYDWkt8dsK\nRrtqzlvgNfeeY5yBHr0TMfWuynHJvImWJmaE5TZN3o8DMyQPy/1p39mAwOCmiEm5\nc5WoGXWKka6ALFG/XKo8P0ppVQAmTBv3F0SUkBmW8ED89SkIV2gAu4urS3TxYtyO\nZrHpqHGyRIRA1uI+0KNEKV6bAr0fAllVy8thu5c6/dfOHgOmVHSQei6p77Bgvw/M\nBIW0KvYpBaC/GTm+FzWkUkHpxaWaeIkBm6t6n8o91YjbaBXnMZEOzlTErctZ+xXk\nVu9qAKEeP07Bzy3T0/JwdmLjzVTCu4VIt72UImkAUZ11Y9OyjQrzRfSR+akKu+aR\navdfNDVld7BIhkQT85H+lBWrTq81+IdIfoU1XpFRIy0i4CvdNTKEj/v8Zq9SIUYt\nQtIMvxqE6SXk+oIbU2+rT+FB+u45SP84LfVv3xZwkiFHO0OyjZOfY7bu2ZE1N66g\nT2jZIeoBOU2a8jkyEVLVv46ogumLYsukiadrswZHvPMsHkjCrOaMRcXTVbs2nKZ9\nosah26LkNFghEiLPGbPTfFKqxfRaVkdnhjmZQinZFPW2CN8EfyA=\n=QLa/\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/e2c3ec9bf4126564070f4f1097bea45753e41ead",
+          "sha": "e2c3ec9bf4126564070f4f1097bea45753e41ead",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/e2c3ec9bf4126564070f4f1097bea45753e41ead"
+        }
+      ],
+      "message": "refactor: interfaces, make 'createTransaction' less error-prone\n\nBundle all function's outputs inside the util::Result returned object.\n\nReasons for the refactoring:\n- The 'change_pos' ref argument has been a source of bugs in the past.\n- The 'fee' ref argument is currently only set when the transaction creation process succeeds.",
+      "committer": {
+        "name": "furszy",
+        "email": "matiasfurszyfer@protonmail.com",
+        "date": "2026-02-06T22:57:52Z"
+      },
+      "author": {
+        "name": "furszy",
+        "email": "matiasfurszyfer@protonmail.com",
+        "date": "2024-03-22T12:34:04Z"
+      },
+      "sha": "691a87658ccb821b996cae124cbdae29232cf55f"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 22601646259,
+      "node_id": "HRFPE_lADOEEET9c6DRom7zwAAAAVDKcCz",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/22601646259",
+      "actor": {
+        "login": "furszy",
+        "id": 5377650,
+        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/furszy",
+        "html_url": "https://github.com/furszy",
+        "followers_url": "https://api.github.com/users/furszy/followers",
+        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
+        "organizations_url": "https://api.github.com/users/furszy/orgs",
+        "repos_url": "https://api.github.com/users/furszy/repos",
+        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/furszy/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": "691a87658ccb821b996cae124cbdae29232cf55f",
+      "commit_url": "https://api.github.com/repos/furszy/bitcoin-gui/commits/691a87658ccb821b996cae124cbdae29232cf55f",
+      "created_at": "2026-02-06T22:59:57Z"
     }
   ],
   "comments": [
@@ -3044,7 +3067,7 @@
       "path": "src/qt/walletmodel.cpp",
       "position": 35,
       "original_position": 8,
-      "commit_id": "0b92ee2bc7a75074651e4688912e8e3c7de06a5a",
+      "commit_id": "691a87658ccb821b996cae124cbdae29232cf55f",
       "original_commit_id": "355199c7a6c58eb812dd7ef8e204e6e068c142ae",
       "in_reply_to_id": null,
       "user": {
@@ -3085,8 +3108,8 @@
       "start_line": null,
       "original_start_line": null,
       "start_side": null,
-      "line": 221,
-      "original_line": 221,
+      "line": 216,
+      "original_line": 216,
       "side": "LEFT"
     },
     {
@@ -3096,9 +3119,9 @@
       "node_id": "PRRC_kwDOEEET9c6TCpmu",
       "diff_hunk": "@@ -204,22 +207,21 @@ WalletModel::SendCoinsReturn WalletModel::prepareTransaction(WalletModelTransact\n     }\n \n     try {\n-        CAmount nFeeRequired = 0;\n-        int nChangePosRet = -1;\n-\n         auto& newTx = transaction.getWtx();\n-        const auto& res = m_wallet->createTransaction(vecSend, coinControl, /*sign=*/!wallet().privateKeysDisabled(), nChangePosRet, nFeeRequired);\n-        newTx = res ? *res : nullptr;\n-        transaction.setTransactionFee(nFeeRequired);\n-        if (fSubtractFeeFromAmount && newTx)\n-            transaction.reassignAmounts(nChangePosRet);\n-\n-        if (!newTx) {\n+        const auto& res = m_wallet->createTransaction(vecSend, coinControl, /*sign=*/!wallet().privateKeysDisabled(), /*change_pos=*/std::nullopt);\n+        if (!res) {\n             Q_EMIT message(tr(\"Send Coins\"), QString::fromStdString(util::ErrorString(res).translated),\n-                CClientUIInterface::MSG_ERROR);\n+                           CClientUIInterface::MSG_ERROR);\n             return TransactionCreationFailed;\n         }\n \n+        newTx = res->tx;\n+        CAmount nFeeRequired = res->fee;\n+        transaction.setTransactionFee(nFeeRequired);\n+        if (fSubtractFeeFromAmount && newTx) {\n+            transaction.reassignAmounts(res->change_pos ? int(*res->change_pos) : -1);",
       "path": "src/qt/walletmodel.cpp",
-      "position": 44,
+      "position": 49,
       "original_position": 44,
-      "commit_id": "0b92ee2bc7a75074651e4688912e8e3c7de06a5a",
+      "commit_id": "691a87658ccb821b996cae124cbdae29232cf55f",
       "original_commit_id": "0b92ee2bc7a75074651e4688912e8e3c7de06a5a",
       "in_reply_to_id": null,
       "user": {
@@ -3139,8 +3162,8 @@
       "start_line": null,
       "original_start_line": null,
       "start_side": null,
-      "line": 222,
-      "original_line": 222,
+      "line": 217,
+      "original_line": 217,
       "side": "RIGHT"
     },
     {
@@ -3152,7 +3175,7 @@
       "path": "src/qt/walletmodel.cpp",
       "position": 12,
       "original_position": 12,
-      "commit_id": "0b92ee2bc7a75074651e4688912e8e3c7de06a5a",
+      "commit_id": "691a87658ccb821b996cae124cbdae29232cf55f",
       "original_commit_id": "0b92ee2bc7a75074651e4688912e8e3c7de06a5a",
       "in_reply_to_id": null,
       "user": {
@@ -3193,8 +3216,8 @@
       "start_line": null,
       "original_start_line": null,
       "start_side": null,
-      "line": 157,
-      "original_line": 157,
+      "line": 153,
+      "original_line": 153,
       "side": "RIGHT"
     }
   ]
