@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/915/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/915/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/3c61ba5df652a456c2c3ddd97620f086863e68cf",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/fa548a3d643050b5c27f667ed068fecf88d71a80",
     "number": 915,
     "state": "open",
     "locked": false,
@@ -70,18 +70,19 @@
       }
     ],
     "created_at": "2025-11-22T19:19:22Z",
-    "updated_at": "2026-02-10T17:17:48Z",
-    "mergeable": false,
-    "mergeable_state": "dirty",
+    "updated_at": "2026-02-11T01:52:58Z",
+    "mergeable": true,
+    "mergeable_state": "unstable",
     "merged": false,
+    "merge_commit_sha": "99632b8bdd5520ea1c71dce3115647ba0c26785c",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
-    "rebaseable": false,
+    "rebaseable": true,
     "head": {
       "label": "151henry151:fix-30070-defer-signing",
       "ref": "fix-30070-defer-signing",
-      "sha": "3c61ba5df652a456c2c3ddd97620f086863e68cf",
+      "sha": "fa548a3d643050b5c27f667ed068fecf88d71a80",
       "user": {
         "login": "151henry151",
         "id": 6581719,
@@ -193,7 +194,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2026-01-20T17:25:42Z",
+        "pushed_at": "2026-02-11T01:52:57Z",
         "created_at": "2025-11-22T19:19:11Z",
         "updated_at": "2025-11-22T19:19:11Z",
         "allow_forking": true,
@@ -217,7 +218,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "7f5ebef56a0f2bad7df30252b11da3e33cb3c144",
+      "sha": "91a8e9b549e9965503ce2cfd1bb51f023be9ea2f",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -358,9 +359,9 @@
     },
     "author_association": "CONTRIBUTOR",
     "draft": false,
-    "additions": 25,
-    "deletions": 5,
-    "changed_files": 2,
+    "additions": 30,
+    "deletions": 4,
+    "changed_files": 3,
     "commits": 1,
     "review_comments": 4,
     "comments": 7
@@ -1204,46 +1205,6 @@
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/915"
     },
     {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDNjNjFiYTVkZjY1MmE0NTZjMmMzZGRkOTc2MjBmMDg2ODYzZTY4Y2Y",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/3c61ba5df652a456c2c3ddd97620f086863e68cf",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/3c61ba5df652a456c2c3ddd97620f086863e68cf",
-      "tree": {
-        "sha": "d0db37f28b56ab8c4e0e40b28910782ca09d1fac",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/d0db37f28b56ab8c4e0e40b28910782ca09d1fac"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/0690514d4f72aac251ee0b876cded9187d42c63e",
-          "sha": "0690514d4f72aac251ee0b876cded9187d42c63e",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/0690514d4f72aac251ee0b876cded9187d42c63e"
-        }
-      ],
-      "message": "qt: Defer transaction signing until user clicks Send\n\nFixes #30070\n\nWhen creating an unsigned PSBT from the GUI, the transaction was already signed during preparation, causing legacy inputs to have non-empty scriptSig fields. The PSBT parser then rejects them.\n\nThis defers signing until the user clicks \"Send\" instead of signing during preparation. Fee calculation still works since transactions can be created without signing.\n\nFollows the approach suggested by @achow101 in the issue comments.",
-      "committer": {
-        "name": "Henry Romp",
-        "email": "151henry151@gmail.com",
-        "date": "2026-01-20T17:23:49Z"
-      },
-      "author": {
-        "name": "Henry Romp",
-        "email": "151henry151@gmail.com",
-        "date": "2025-11-22T19:19:06Z"
-      },
-      "sha": "3c61ba5df652a456c2c3ddd97620f086863e68cf"
-    },
-    {
       "event": "head_ref_force_pushed",
       "id": 22167603558,
       "node_id": "HRFPE_lADOEEET9c7Z2sifzwAAAAUpSslm",
@@ -1401,6 +1362,77 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/915#issuecomment-3879545679",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/915"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGZhNTQ4YTNkNjQzMDUwYjVjMjdmNjY3ZWQwNjhmZWNmODhkNzFhODA",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/fa548a3d643050b5c27f667ed068fecf88d71a80",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/fa548a3d643050b5c27f667ed068fecf88d71a80",
+      "tree": {
+        "sha": "f95a34f55460893efed802a2aec61aec7e7e184a",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/f95a34f55460893efed802a2aec61aec7e7e184a"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/91a8e9b549e9965503ce2cfd1bb51f023be9ea2f",
+          "sha": "91a8e9b549e9965503ce2cfd1bb51f023be9ea2f",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/91a8e9b549e9965503ce2cfd1bb51f023be9ea2f"
+        }
+      ],
+      "message": "qt: Defer transaction signing until user clicks Send\n\nThis fixes issue #30070 where creating unsigned PSBTs from the GUI\nwould fail because the transaction was already signed during preparation,\ncausing legacy inputs to have non-empty scriptSig fields.\n\nThe fix defers signing until the user explicitly clicks 'Send', allowing\ntruly unsigned PSBTs to be created while still supporting fee calculation.",
+      "committer": {
+        "name": "Henry Romp",
+        "email": "151henry151@gmail.com",
+        "date": "2026-02-11T01:52:14Z"
+      },
+      "author": {
+        "name": "Henry Romp",
+        "email": "151henry151@gmail.com",
+        "date": "2025-11-20T00:37:44Z"
+      },
+      "sha": "fa548a3d643050b5c27f667ed068fecf88d71a80"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 22691129407,
+      "node_id": "HRFPE_lADOEEET9c7Z2sifzwAAAAVIfyg_",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/22691129407",
+      "actor": {
+        "login": "151henry151",
+        "id": 6581719,
+        "node_id": "MDQ6VXNlcjY1ODE3MTk=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6581719?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/151henry151",
+        "html_url": "https://github.com/151henry151",
+        "followers_url": "https://api.github.com/users/151henry151/followers",
+        "following_url": "https://api.github.com/users/151henry151/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/151henry151/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/151henry151/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/151henry151/subscriptions",
+        "organizations_url": "https://api.github.com/users/151henry151/orgs",
+        "repos_url": "https://api.github.com/users/151henry151/repos",
+        "events_url": "https://api.github.com/users/151henry151/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/151henry151/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": "fa548a3d643050b5c27f667ed068fecf88d71a80",
+      "commit_url": "https://api.github.com/repos/151henry151/gui/commits/fa548a3d643050b5c27f667ed068fecf88d71a80",
+      "created_at": "2026-02-11T01:52:58Z"
     }
   ],
   "comments": [
