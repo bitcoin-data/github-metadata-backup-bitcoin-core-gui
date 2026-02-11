@@ -43,15 +43,6 @@
     "body": "Fixes [#30070](https://github.com/bitcoin/bitcoin/issues/30070)\r\n\r\nWhen creating an unsigned PSBT from the GUI, the transaction was already signed during preparation, causing legacy inputs to have non-empty scriptSig fields. The PSBT parser then rejects them.\r\n\r\nThis defers signing until the user clicks \"Send\" instead of signing during preparation. Fee calculation still works since transactions can be created without signing.\r\n\r\nFollows the approach suggested by @achow101 in the issue comments.",
     "labels": [
       {
-        "id": 2145506980,
-        "node_id": "MDU6TGFiZWwyMTQ1NTA2OTgw",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Needs%20rebase",
-        "name": "Needs rebase",
-        "description": "",
-        "color": "cccccc",
-        "default": false
-      },
-      {
         "id": 2927906211,
         "node_id": "MDU6TGFiZWwyOTI3OTA2MjEx",
         "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Wallet",
@@ -70,7 +61,7 @@
       }
     ],
     "created_at": "2025-11-22T19:19:22Z",
-    "updated_at": "2026-02-11T01:52:58Z",
+    "updated_at": "2026-02-11T02:05:39Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
@@ -181,7 +172,7 @@
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 179623,
+        "size": 182346,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -364,7 +355,7 @@
     "changed_files": 3,
     "commits": 1,
     "review_comments": 4,
-    "comments": 7
+    "comments": 6
   },
   "events": [
     {
@@ -1306,64 +1297,6 @@
       }
     },
     {
-      "event": "commented",
-      "id": 3879545679,
-      "node_id": "IC_kwDOEEET9c7nPStP",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/3879545679",
-      "actor": {
-        "login": "DrahtBot",
-        "id": 39886733,
-        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
-        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/DrahtBot",
-        "html_url": "https://github.com/DrahtBot",
-        "followers_url": "https://api.github.com/users/DrahtBot/followers",
-        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
-        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
-        "repos_url": "https://api.github.com/users/DrahtBot/repos",
-        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
-        "type": "User",
-        "site_admin": false,
-        "name": null,
-        "patch_url": null
-      },
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": "2026-02-10T17:17:48Z",
-      "updated_at": "2026-02-10T17:17:48Z",
-      "author_association": "CONTRIBUTOR",
-      "body": "<!--cf906140f33d8803c4a75a2196329ecb-->\n🐙 This pull request conflicts with the target branch and [needs rebase](https://github.com/bitcoin-core/gui/blob/master/CONTRIBUTING.md#rebasing-changes).\n",
-      "user": {
-        "login": "DrahtBot",
-        "id": 39886733,
-        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
-        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/DrahtBot",
-        "html_url": "https://github.com/DrahtBot",
-        "followers_url": "https://api.github.com/users/DrahtBot/followers",
-        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
-        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
-        "repos_url": "https://api.github.com/users/DrahtBot/repos",
-        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
-        "type": "User",
-        "site_admin": false,
-        "name": null,
-        "patch_url": null
-      },
-      "html_url": "https://github.com/bitcoin-core/gui/pull/915#issuecomment-3879545679",
-      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/915"
-    },
-    {
       "event": "committed",
       "id": null,
       "node_id": "C_kwDOEEET9doAKGZhNTQ4YTNkNjQzMDUwYjVjMjdmNjY3ZWQwNjhmZWNmODhkNzFhODA",
@@ -1433,6 +1366,41 @@
       "commit_id": "fa548a3d643050b5c27f667ed068fecf88d71a80",
       "commit_url": "https://api.github.com/repos/151henry151/gui/commits/fa548a3d643050b5c27f667ed068fecf88d71a80",
       "created_at": "2026-02-11T01:52:58Z"
+    },
+    {
+      "event": "unlabeled",
+      "id": 22691280714,
+      "node_id": "UNLE_lADOEEET9c7Z2sifzwAAAAVIgXdK",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/22691280714",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2026-02-11T02:05:37Z",
+      "label": {
+        "name": "Needs rebase",
+        "color": "cccccc"
+      }
     }
   ],
   "comments": [
