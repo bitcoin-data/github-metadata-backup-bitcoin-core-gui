@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/700/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/700/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/b0cd9917f40b95d77ffa09ec1cf58c85eedf85e0",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/eba0cbeb999e60c30cb351b617a57153414a1ee7",
     "number": 700,
     "state": "open",
     "locked": false,
@@ -70,11 +70,11 @@
       }
     ],
     "created_at": "2023-01-23T21:13:11Z",
-    "updated_at": "2026-04-29T00:17:08Z",
+    "updated_at": "2026-04-29T17:59:10Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
-    "merge_commit_sha": "8618d610558ce584802222acf170e69e892606c9",
+    "merge_commit_sha": "d481cc1cef98c0bf7bb7a9cc578067ad181d29dd",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -82,7 +82,7 @@
     "head": {
       "label": "achow101:bumpfee-choose-reduce-output",
       "ref": "bumpfee-choose-reduce-output",
-      "sha": "b0cd9917f40b95d77ffa09ec1cf58c85eedf85e0",
+      "sha": "eba0cbeb999e60c30cb351b617a57153414a1ee7",
       "user": {
         "login": "achow101",
         "id": 3782274,
@@ -181,7 +181,7 @@
         "forks_count": 0,
         "stargazers_count": 2,
         "watchers_count": 2,
-        "size": 190333,
+        "size": 190660,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -194,7 +194,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2026-04-29T00:17:06Z",
+        "pushed_at": "2026-04-29T17:59:09Z",
         "created_at": "2020-11-12T20:04:24Z",
         "updated_at": "2025-08-07T03:07:40Z",
         "allow_forking": true,
@@ -218,7 +218,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "859215218667ca9f35d5adae0289e4a125798087",
+      "sha": "cef58341a0b2b06ca4ebfe8590cd8e93b09ce72a",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -316,9 +316,9 @@
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
         "forks_count": 349,
-        "stargazers_count": 717,
-        "watchers_count": 717,
-        "size": 190275,
+        "stargazers_count": 718,
+        "watchers_count": 718,
+        "size": 190519,
         "default_branch": "master",
         "open_issues_count": 147,
         "is_template": false,
@@ -331,9 +331,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2026-04-27T19:22:43Z",
+        "pushed_at": "2026-04-29T13:53:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2026-04-27T23:04:47Z",
+        "updated_at": "2026-04-29T13:53:28Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -359,8 +359,8 @@
     },
     "author_association": "MEMBER",
     "draft": false,
-    "additions": 279,
-    "deletions": 4,
+    "additions": 281,
+    "deletions": 6,
     "changed_files": 9,
     "commits": 3,
     "review_comments": 2,
@@ -2492,46 +2492,6 @@
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/700"
     },
     {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGIwY2Q5OTE3ZjQwYjk1ZDc3ZmZhMDllYzFjZjU4Yzg1ZWVkZjg1ZTA",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/b0cd9917f40b95d77ffa09ec1cf58c85eedf85e0",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/b0cd9917f40b95d77ffa09ec1cf58c85eedf85e0",
-      "tree": {
-        "sha": "f10551b0252204c12bd9341f9d018b6aed62c138",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/f10551b0252204c12bd9341f9d018b6aed62c138"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/a88158aab68ae8c13de645f82ca4ca932d5c068a",
-          "sha": "a88158aab68ae8c13de645f82ca4ca932d5c068a",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/a88158aab68ae8c13de645f82ca4ca932d5c068a"
-        }
-      ],
-      "message": "qt: Add a dialog to select the change output when bumping fee\n\nIn order to correctly choose the change output when doing fee bumping in\nthe GUI, we need to ask the user which output is change. We can make a\nguess using our ScriptIsChange heuristic, however the user may have\nchosen to have a custom change address or have otherwise labeled their\nchange address which makes our change detection fail. By asking the user\nwhen fee bumping, we can avoid adding additional change outputs that are\nunnecessary.",
-      "committer": {
-        "name": "Ava Chow",
-        "email": "github@achow101.com",
-        "date": "2026-04-29T00:16:01Z"
-      },
-      "author": {
-        "name": "Andrew Chow",
-        "email": "github@achow101.com",
-        "date": "2022-11-07T23:24:24Z"
-      },
-      "sha": "b0cd9917f40b95d77ffa09ec1cf58c85eedf85e0"
-    },
-    {
       "event": "head_ref_force_pushed",
       "id": 24970366695,
       "node_id": "HRFPE_lADOEEET9c5cnZx9zwAAAAXQWY7n",
@@ -2561,6 +2521,77 @@
       "commit_id": "b0cd9917f40b95d77ffa09ec1cf58c85eedf85e0",
       "commit_url": "https://api.github.com/repos/achow101/gui/commits/b0cd9917f40b95d77ffa09ec1cf58c85eedf85e0",
       "created_at": "2026-04-29T00:17:08Z"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGViYTBjYmViOTk5ZTYwYzMwY2IzNTFiNjE3YTU3MTUzNDE0YTFlZTc",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/eba0cbeb999e60c30cb351b617a57153414a1ee7",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/eba0cbeb999e60c30cb351b617a57153414a1ee7",
+      "tree": {
+        "sha": "b71051f3e1479bdbc9780f93557a8f888767a19c",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/b71051f3e1479bdbc9780f93557a8f888767a19c"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/a88158aab68ae8c13de645f82ca4ca932d5c068a",
+          "sha": "a88158aab68ae8c13de645f82ca4ca932d5c068a",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/a88158aab68ae8c13de645f82ca4ca932d5c068a"
+        }
+      ],
+      "message": "qt: Add a dialog to select the change output when bumping fee\n\nIn order to correctly choose the change output when doing fee bumping in\nthe GUI, we need to ask the user which output is change. We can make a\nguess using our ScriptIsChange heuristic, however the user may have\nchosen to have a custom change address or have otherwise labeled their\nchange address which makes our change detection fail. By asking the user\nwhen fee bumping, we can avoid adding additional change outputs that are\nunnecessary.",
+      "committer": {
+        "name": "Ava Chow",
+        "email": "github@achow101.com",
+        "date": "2026-04-29T17:58:52Z"
+      },
+      "author": {
+        "name": "Andrew Chow",
+        "email": "github@achow101.com",
+        "date": "2022-11-07T23:24:24Z"
+      },
+      "sha": "eba0cbeb999e60c30cb351b617a57153414a1ee7"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 25002513689,
+      "node_id": "HRFPE_lADOEEET9c5cnZx9zwAAAAXSRBUZ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/25002513689",
+      "actor": {
+        "login": "achow101",
+        "id": 3782274,
+        "node_id": "MDQ6VXNlcjM3ODIyNzQ=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3782274?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/achow101",
+        "html_url": "https://github.com/achow101",
+        "followers_url": "https://api.github.com/users/achow101/followers",
+        "following_url": "https://api.github.com/users/achow101/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/achow101/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/achow101/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/achow101/subscriptions",
+        "organizations_url": "https://api.github.com/users/achow101/orgs",
+        "repos_url": "https://api.github.com/users/achow101/repos",
+        "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/achow101/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": "eba0cbeb999e60c30cb351b617a57153414a1ee7",
+      "commit_url": "https://api.github.com/repos/achow101/gui/commits/eba0cbeb999e60c30cb351b617a57153414a1ee7",
+      "created_at": "2026-04-29T17:59:10Z"
     }
   ],
   "comments": [
