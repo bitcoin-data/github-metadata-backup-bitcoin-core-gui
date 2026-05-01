@@ -15,7 +15,7 @@
     "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/5e0b38e4c77b4777542082554181e7e82a5ff53c",
     "number": 869,
     "state": "closed",
-    "locked": false,
+    "locked": true,
     "maintainer_can_modify": false,
     "title": "interface: Expose load utxo snapshot functionality",
     "user": {
@@ -37,19 +37,22 @@
       "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
       "type": "User",
       "site_admin": false,
+      "name": null,
       "patch_url": null
     },
     "body": "Expose load/activate AssumeUTXO snapshot functionality so that it can be loaded through the GUI.\r\n\r\nThis can be tested and viewed in action in the qml repository with legacy code (https://github.com/bitcoin-core/gui-qml/pull/424)\r\n\r\nAlso for further examination please check out the [POC](https://github.com/D33r-Gee/bitcoin-gui/tree/2025_gui_interfaces_loadsnapshot_poc) branch\r\n\r\n<details>\r\n  <summary> POC Ubuntu Screenshots `signet`</summary>\r\n\r\n \r\n![Screenshot 2025-04-28 100528](https://github.com/user-attachments/assets/0d66a076-c4a2-46e5-8796-e0b9f6db79f7)\r\nLaunch bitcoin-qt on `signet`\r\n![Screenshot 2025-04-28 100541](https://github.com/user-attachments/assets/a6df2934-a1fc-4890-817f-02059ecb1607)\r\nNavigate to Settings -> Options\r\n![Screenshot 2025-04-28 100559](https://github.com/user-attachments/assets/1d5951d8-6c00-4596-87c4-b64fff0a8c8d)\r\nClick the \"Load Snapshot...\" button\r\n![Select_file](https://github.com/user-attachments/assets/0873c71f-4a38-41eb-bd00-2a09868044fe)\r\nNavigate to where your snapshot file is. The snapshot was downloaded from [here]( https://bitcoin-snapshots.jaonoctus.dev/)\r\n![Screenshot 2025-04-28 100735](https://github.com/user-attachments/assets/ea0272f1-5769-4ac1-a30d-f4d6779d7426)\r\nClick \"Yes\"\r\n![Screenshot 2025-04-28 100950](https://github.com/user-attachments/assets/01dbb48d-33b2-4629-a67d-69f1cd11168f)\r\nWait for the snapshot to load and for this pop-up to appear and click \"Ok\"\r\n![Screenshot 2025-04-28 101743](https://github.com/user-attachments/assets/dabc9f43-3537-4782-a992-2948fbadd1ea)\r\nVerify the \"chain_snapshot\" directory is present in your `datadir`\r\n\r\n</details>\r\n",
     "labels": [],
     "created_at": "2025-04-28T15:33:49Z",
-    "updated_at": "2025-05-01T10:03:11Z",
+    "updated_at": "2026-05-01T12:00:31Z",
     "closed_at": "2025-04-30T15:23:17Z",
-    "mergeable_state": "unknown",
+    "mergeable": true,
+    "mergeable_state": "clean",
     "merged": false,
     "merge_commit_sha": "5be17efe21f8d8261b8badedc084acab16c58ad7",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
+    "rebaseable": false,
     "head": {
       "label": "D33r-Gee:2025_gui_interfaces_loadsnapshot",
       "ref": "2025_gui_interfaces_loadsnapshot",
@@ -73,6 +76,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "repo": {
@@ -99,6 +103,7 @@
           "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
           "type": "User",
           "site_admin": false,
+          "name": null,
           "patch_url": null
         },
         "private": false,
@@ -151,7 +156,7 @@
         "forks_count": 0,
         "stargazers_count": 1,
         "watchers_count": 1,
-        "size": 170098,
+        "size": 185104,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -164,9 +169,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-04-28T21:59:58Z",
+        "pushed_at": "2026-02-25T17:46:25Z",
         "created_at": "2023-06-23T15:02:44Z",
-        "updated_at": "2025-05-01T10:44:32Z",
+        "updated_at": "2025-05-20T17:08:03Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -208,6 +213,7 @@
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "repo": {
@@ -234,6 +240,7 @@
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
           "site_admin": false,
+          "name": null,
           "patch_url": null
         },
         "private": false,
@@ -283,12 +290,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 294,
-        "stargazers_count": 644,
-        "watchers_count": 644,
-        "size": 170412,
+        "forks_count": 350,
+        "stargazers_count": 718,
+        "watchers_count": 718,
+        "size": 190590,
         "default_branch": "master",
-        "open_issues_count": 153,
+        "open_issues_count": 147,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -299,9 +306,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-04-30T17:56:25Z",
+        "pushed_at": "2026-04-30T21:06:23Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2025-04-30T17:56:29Z",
+        "updated_at": "2026-04-30T21:06:28Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -399,6 +406,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -426,6 +434,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/869#issuecomment-2835657144",
@@ -455,6 +464,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -482,6 +492,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/869#issuecomment-2835661664",
@@ -511,6 +522,7 @@
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -541,6 +553,7 @@
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -556,7 +569,8 @@
       "commit_id": "5e0b38e4c77b4777542082554181e7e82a5ff53c",
       "commit_url": null,
       "created_at": null,
-      "author_association": "MEMBER",
+      "updated_at": "2025-04-28T15:42:02Z",
+      "author_association": "CONTRIBUTOR",
       "body": "There's no consumer of this on the bitcoin-core/gui side, can you show this works with some sort of POC on the bitcoin-core/gui side?\r\n\r\nHow do we know this works",
       "user": {
         "login": "jarolrod",
@@ -577,6 +591,7 @@
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/869#pullrequestreview-2799797924",
@@ -608,6 +623,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -635,6 +651,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/869#issuecomment-2836004928",
@@ -664,6 +681,7 @@
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -691,6 +709,7 @@
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/869#issuecomment-2837856588",
@@ -720,6 +739,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -750,6 +770,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -780,6 +801,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -807,6 +829,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/869#issuecomment-2839515522",
@@ -836,6 +859,7 @@
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -866,6 +890,7 @@
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -896,13 +921,14 @@
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2025-04-29T17:01:57Z",
       "updated_at": "2025-04-29T17:06:16Z",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "body": "@D33r-Gee as we discussed a while ago, this is part (ultimately) of the qml change-set, when qml is ready and it is being up-streamed, this feature, which you find useful as part of the qml change-set, would then be packaged up as part of the PR's integrating this into core.\r\n\r\nThis wouldn't be integrated into the qt widgets gui if qml is to replace it.\r\n\r\nAs is, this should be closed because the qt widgets gui can't use it, so this function goes to no-one.",
       "user": {
         "login": "jarolrod",
@@ -923,6 +949,7 @@
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/869#issuecomment-2839604209",
@@ -952,6 +979,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -982,6 +1010,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1012,6 +1041,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1039,6 +1069,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/869#issuecomment-2839736166",
@@ -1068,13 +1099,14 @@
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2025-04-29T20:32:41Z",
       "updated_at": "2025-04-29T20:32:41Z",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "body": "@D33r-Gee no, your interface changes are part of what gets merged into the qml repo. It is part of the changeset to implement your assumeutxo work -> in the qml repo all in the qml repo. Then the process of packaging it up to upstream is, primarily, outside of your concern. I am just mentioning this to show why this shouldn't be open here.",
       "user": {
         "login": "jarolrod",
@@ -1095,6 +1127,7 @@
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/869#issuecomment-2840173805",
@@ -1124,6 +1157,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1154,6 +1188,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1184,6 +1219,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1211,6 +1247,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/869#issuecomment-2842364549",
@@ -1240,6 +1277,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1270,6 +1308,7 @@
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1300,6 +1339,7 @@
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1330,6 +1370,7 @@
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1360,6 +1401,7 @@
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1390,6 +1432,7 @@
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1417,6 +1460,7 @@
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/869#issuecomment-2844578785",
@@ -1446,6 +1490,7 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1476,11 +1521,43 @@
         "received_events_url": "https://api.github.com/users/D33r-Gee/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2025-05-01T10:03:11Z"
+    },
+    {
+      "event": "locked",
+      "id": 25069223159,
+      "node_id": "LOE_lADOEEET9c60U07zzwAAAAXWPfz3",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/25069223159",
+      "actor": {
+        "login": "bitcoin-core",
+        "id": 13464320,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjEzNDY0MzIw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/13464320?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/bitcoin-core",
+        "html_url": "https://github.com/bitcoin-core",
+        "followers_url": "https://api.github.com/users/bitcoin-core/followers",
+        "following_url": "https://api.github.com/users/bitcoin-core/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/bitcoin-core/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/bitcoin-core/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/bitcoin-core/subscriptions",
+        "organizations_url": "https://api.github.com/users/bitcoin-core/orgs",
+        "repos_url": "https://api.github.com/users/bitcoin-core/repos",
+        "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
+        "type": "Organization",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2026-05-01T12:00:31Z"
     }
   ],
   "comments": []
