@@ -41,13 +41,23 @@
       "patch_url": null
     },
     "body": "<!--\r\n*** Please remove the following help text before submitting: ***\r\n\r\nPull requests without a rationale and clear improvement may be closed\r\nimmediately.\r\n\r\nGUI-related pull requests should be opened against\r\nhttps://github.com/bitcoin-core/gui\r\nfirst. See CONTRIBUTING.md\r\n-->\r\n\r\n<!--\r\nPlease provide clear motivation for your patch and explain how it improves\r\nBitcoin Core user experience or Bitcoin Core developer experience\r\nsignificantly:\r\n\r\n* Any test improvements or new tests that improve coverage are always welcome.\r\n* All other changes should have accompanying unit tests (see `src/test/`) or\r\n  functional tests (see `test/`). Contributors should note which tests cover\r\n  modified code. If no tests exist for a region of modified code, new tests\r\n  should accompany the change.\r\n* Bug fixes are most welcome when they come with steps to reproduce or an\r\n  explanation of the potential issue as well as reasoning for the way the bug\r\n  was fixed.\r\n* Features are welcome, but might be rejected due to design or scope issues.\r\n  If a feature is based on a lot of dependencies, contributors should first\r\n  consider building the system outside of Bitcoin Core, if possible.\r\n* Refactoring changes are only accepted if they are required for a feature or\r\n  bug fix or otherwise improve developer experience significantly. For example,\r\n  most \"code style\" refactoring changes require a thorough explanation why they\r\n  are useful, what downsides they have and why they *significantly* improve\r\n  developer experience or avoid serious programming bugs. Note that code style\r\n  is often a subjective matter. Unless they are explicitly mentioned to be\r\n  preferred in the [developer notes](/doc/developer-notes.md), stylistic code\r\n  changes are usually rejected.\r\n-->\r\n\r\n\r\nDuring IBD, if `LoadingBlocks()` is true (e.g. during a chainstate rebuild after a crash), the node rejects incoming headers from peers. The GUI has headers loaded from the block index on disk, but `bestHeaderDate` becomes stale over time.\r\n\r\nAfter ~4 hours (`HEADER_HEIGHT_DELTA_SYNC * nPowTargetSpacing`), the time-based heuristic in `modaloverlay.cpp` considers headers as \"not synced\" and falls into the `else` branch, displaying \"Unknown\" for both blocks remaining and estimated time. Meanwhile, `UpdateHeaderSyncLabel()` computes a percentage that rounds up to 100.0%, creating a contradictory display: `\"Unknown. Syncing Headers (942188, 100.0%)\"`. Please read issue #65 for more context.\r\n\r\n This patch truncates the percentage to one decimal place instead of rounding, so it only shows 100.0% when headers are truly up to date. The same fix is applied to\r\n  `UpdateHeaderPresyncLabel()` for consistency.\r\n\r\nFixes https://github.com/bitcoin-core/gui/issues/65 .\r\n<!--\r\nBitcoin Core has a thorough review process and even the most trivial change\r\nneeds to pass a lot of eyes and requires non-zero or even substantial time\r\neffort to review. There is a huge lack of active reviewers on the project, so\r\npatches often sit for a long time.\r\n-->\r\n",
-    "labels": [],
+    "labels": [
+      {
+        "id": 2140649117,
+        "node_id": "MDU6TGFiZWwyMTQwNjQ5MTE3",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Bug",
+        "name": "Bug",
+        "description": "Something isn't working",
+        "color": "d73a4a",
+        "default": false
+      }
+    ],
     "created_at": "2026-03-28T12:54:15Z",
-    "updated_at": "2026-05-08T09:43:45Z",
+    "updated_at": "2026-05-11T16:57:25Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
-    "merge_commit_sha": "6eafda18c72eeb43aebf6b81e292cc5386cb600f",
+    "merge_commit_sha": "c8498c37f55f11813537a6b0f9c6de570f1ecf8b",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -289,10 +299,10 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 351,
-        "stargazers_count": 721,
-        "watchers_count": 721,
-        "size": 190794,
+        "forks_count": 353,
+        "stargazers_count": 724,
+        "watchers_count": 724,
+        "size": 189876,
         "default_branch": "master",
         "open_issues_count": 148,
         "is_template": false,
@@ -305,9 +315,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2026-05-08T08:37:12Z",
+        "pushed_at": "2026-05-11T09:52:53Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2026-05-08T08:37:18Z",
+        "updated_at": "2026-05-11T15:16:13Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -658,6 +668,41 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2026-05-08T09:43:47Z"
+    },
+    {
+      "event": "labeled",
+      "id": 25392467090,
+      "node_id": "LE_lADOEEET9c738Sb0zwAAAAXpgkyS",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/25392467090",
+      "actor": {
+        "login": "sedited",
+        "id": 8421793,
+        "node_id": "MDQ6VXNlcjg0MjE3OTM=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/8421793?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/sedited",
+        "html_url": "https://github.com/sedited",
+        "followers_url": "https://api.github.com/users/sedited/followers",
+        "following_url": "https://api.github.com/users/sedited/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/sedited/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/sedited/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/sedited/subscriptions",
+        "organizations_url": "https://api.github.com/users/sedited/orgs",
+        "repos_url": "https://api.github.com/users/sedited/repos",
+        "events_url": "https://api.github.com/users/sedited/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/sedited/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2026-05-11T16:57:25Z",
+      "label": {
+        "name": "Bug",
+        "color": "d73a4a"
+      }
     }
   ],
   "comments": [
