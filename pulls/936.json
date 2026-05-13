@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/936/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/936/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/db677efbdedf36a96c0713d8941fd813b499005c",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/90eda67bb8f9c3b82a3eccc787446269c83b2558",
     "number": 936,
     "state": "open",
     "locked": false,
@@ -41,13 +41,22 @@
       "patch_url": null
     },
     "body": "With the whole network mostly running with Full Replace By Fee, it does not make sense to let the user signal or not to signal for RBF on their transactions.\r\n\r\nWith this PR the transactions created using the GUI will fallback to the wallet configuration in order to signal or not to signal BIP 125. (True by default).\r\n",
-    "labels": [],
+    "labels": [
+      {
+        "id": 5353934559,
+        "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
+        "name": "CI failed",
+        "color": "ededed",
+        "default": false
+      }
+    ],
     "created_at": "2026-05-05T15:10:34Z",
-    "updated_at": "2026-05-11T16:55:40Z",
+    "updated_at": "2026-05-13T18:53:55Z",
     "mergeable": true,
-    "mergeable_state": "clean",
+    "mergeable_state": "unstable",
     "merged": false,
-    "merge_commit_sha": "d3102896528eafc2376bd4a1ee64217cc6b97531",
+    "merge_commit_sha": "e4e3d7ee5cd3549bd1aa66755590753e2aec400a",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -55,7 +64,7 @@
     "head": {
       "label": "polespinasa:2026-05-05-remove-optinRBF",
       "ref": "2026-05-05-remove-optinRBF",
-      "sha": "db677efbdedf36a96c0713d8941fd813b499005c",
+      "sha": "90eda67bb8f9c3b82a3eccc787446269c83b2558",
       "user": {
         "login": "polespinasa",
         "id": 57642229,
@@ -168,7 +177,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2026-05-05T14:55:08Z",
+        "pushed_at": "2026-05-13T18:46:39Z",
         "created_at": "2026-03-12T08:14:42Z",
         "updated_at": "2026-05-05T12:11:00Z",
         "allow_forking": true,
@@ -192,7 +201,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "d7ed2840acc0f065620fdd3d45480169f06a266c",
+      "sha": "82733e61deea24cfd344aed36020675a15cc672e",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -290,9 +299,9 @@
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
         "forks_count": 353,
-        "stargazers_count": 724,
-        "watchers_count": 724,
-        "size": 189876,
+        "stargazers_count": 725,
+        "watchers_count": 725,
+        "size": 189900,
         "default_branch": "master",
         "open_issues_count": 148,
         "is_template": false,
@@ -305,9 +314,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2026-05-11T09:52:53Z",
+        "pushed_at": "2026-05-13T19:00:00Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2026-05-11T15:16:13Z",
+        "updated_at": "2026-05-13T19:00:06Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -333,54 +342,14 @@
     },
     "author_association": "MEMBER",
     "draft": false,
-    "additions": 4,
+    "additions": 8,
     "deletions": 39,
     "changed_files": 4,
     "commits": 1,
-    "review_comments": 1,
+    "review_comments": 2,
     "comments": 1
   },
   "events": [
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGRiNjc3ZWZiZGVkZjM2YTk2YzA3MTNkODk0MWZkODEzYjQ5OTAwNWM",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/db677efbdedf36a96c0713d8941fd813b499005c",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/db677efbdedf36a96c0713d8941fd813b499005c",
-      "tree": {
-        "sha": "4862fbd79e218df53538d141c6ad1bbfa687ea31",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/4862fbd79e218df53538d141c6ad1bbfa687ea31"
-      },
-      "verification": {
-        "verified": true,
-        "reason": "valid",
-        "payload": "tree 4862fbd79e218df53538d141c6ad1bbfa687ea31\nparent c89c8ddbb3657c6b53991c16faaf00e923cbc852\nauthor Pol Espinasa <pol.espinasa@uab.cat> 1777992422 +0200\ncommitter Pol Espinasa <pol.espinasa@uab.cat> 1777992900 +0200\n\nRemove opt-in RBF\n\nRemove the option to signal or not signal for BIP 125 (Opt-in Full Replace-By-Fee).\nBy removing the option in the GUI it will fallback to the wallet configuration which by default is\ntrue unless the user changed it using CLI.\n",
-        "signature": "-----BEGIN PGP SIGNATURE-----\n\niIsEABYKADMWIQRd8IHT46QaaYw3spsoRwkHtAvybQUCafoExRUccG9sLmVzcGlu\nYXNhQHVhYi5jYXQACgkQKEcJB7QL8m0AtwD8DE63kyuqBR9fqqiu8xmtwidua37u\n8gOA6gLRNZV5bUIBAKmnOG/dn1Zd4tSrZj1H0hYQgbQo0LopQgCd8OFPABUO\n=3vX2\n-----END PGP SIGNATURE-----"
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/c89c8ddbb3657c6b53991c16faaf00e923cbc852",
-          "sha": "c89c8ddbb3657c6b53991c16faaf00e923cbc852",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/c89c8ddbb3657c6b53991c16faaf00e923cbc852"
-        }
-      ],
-      "message": "Remove opt-in RBF\n\nRemove the option to signal or not signal for BIP 125 (Opt-in Full Replace-By-Fee).\nBy removing the option in the GUI it will fallback to the wallet configuration which by default is\ntrue unless the user changed it using CLI.",
-      "committer": {
-        "name": "Pol Espinasa",
-        "email": "pol.espinasa@uab.cat",
-        "date": "2026-05-05T14:55:00Z"
-      },
-      "author": {
-        "name": "Pol Espinasa",
-        "email": "pol.espinasa@uab.cat",
-        "date": "2026-05-05T14:47:02Z"
-      },
-      "sha": "db677efbdedf36a96c0713d8941fd813b499005c"
-    },
     {
       "event": "commented",
       "id": 4380574125,
@@ -411,9 +380,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2026-05-05T15:10:49Z",
-      "updated_at": "2026-05-05T15:10:50Z",
+      "updated_at": "2026-05-13T18:53:55Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\nA summary of reviews will appear here.\n<!--5faf32d7da4f0f540f40219e4f7537a3-->",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| ACK | [sedited](https://github.com/bitcoin-core/gui/pull/936#pullrequestreview-4284523928) |\n\nIf your review is incorrectly listed, please copy-paste <code>&lt;!--meta-tag:bot-skip--&gt;</code> into the comment that the bot should ignore.\n<!--5faf32d7da4f0f540f40219e4f7537a3-->",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -476,6 +445,182 @@
       "submitted_at": "2026-05-11T16:55:40Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/936"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 25496386771,
+      "node_id": "HRFPE_lADOEEET9c8AAAABBV_F2s8AAAAF77P80w",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/25496386771",
+      "actor": {
+        "login": "polespinasa",
+        "id": 57642229,
+        "node_id": "MDQ6VXNlcjU3NjQyMjI5",
+        "avatar_url": "https://avatars.githubusercontent.com/u/57642229?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/polespinasa",
+        "html_url": "https://github.com/polespinasa",
+        "followers_url": "https://api.github.com/users/polespinasa/followers",
+        "following_url": "https://api.github.com/users/polespinasa/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/polespinasa/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/polespinasa/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/polespinasa/subscriptions",
+        "organizations_url": "https://api.github.com/users/polespinasa/orgs",
+        "repos_url": "https://api.github.com/users/polespinasa/repos",
+        "events_url": "https://api.github.com/users/polespinasa/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/polespinasa/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": "d10a3e66fcf8a98050ceaac13cef60bc8629c97e",
+      "commit_url": "https://api.github.com/repos/polespinasa/gui/commits/d10a3e66fcf8a98050ceaac13cef60bc8629c97e",
+      "created_at": "2026-05-13T18:45:49Z"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDkwZWRhNjdiYjhmOWMzYjgyYTNlY2NjNzg3NDQ2MjY5YzgzYjI1NTg",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/90eda67bb8f9c3b82a3eccc787446269c83b2558",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/90eda67bb8f9c3b82a3eccc787446269c83b2558",
+      "tree": {
+        "sha": "afbc4fb5234eb44e627663ac09b35671b8f1932b",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/afbc4fb5234eb44e627663ac09b35671b8f1932b"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree afbc4fb5234eb44e627663ac09b35671b8f1932b\nparent c89c8ddbb3657c6b53991c16faaf00e923cbc852\nauthor Pol Espinasa <pol.espinasa@uab.cat> 1777992422 +0200\ncommitter Pol Espinasa <pol.espinasa@uab.cat> 1778697992 +0200\n\nRemove opt-in RBF\n\nRemove the option to signal or not signal for BIP 125 (Opt-in Full Replace-By-Fee).\nBy removing the option in the GUI it will fallback to the wallet configuration which by default is\ntrue unless the user changed it using CLI.\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niIsEABYKADMWIQRd8IHT46QaaYw3spsoRwkHtAvybQUCagTHCRUccG9sLmVzcGlu\nYXNhQHVhYi5jYXQACgkQKEcJB7QL8m0DxwEAh07XBv3iRMgIftEpt6KdRSkFG8wv\nOg15aZTWxYQKoaoA/2iQK1O8feq6t0u3mJoUlQpfv5BYxbuAgYarWCZ90XQF\n=WP36\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/c89c8ddbb3657c6b53991c16faaf00e923cbc852",
+          "sha": "c89c8ddbb3657c6b53991c16faaf00e923cbc852",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/c89c8ddbb3657c6b53991c16faaf00e923cbc852"
+        }
+      ],
+      "message": "Remove opt-in RBF\n\nRemove the option to signal or not signal for BIP 125 (Opt-in Full Replace-By-Fee).\nBy removing the option in the GUI it will fallback to the wallet configuration which by default is\ntrue unless the user changed it using CLI.",
+      "committer": {
+        "name": "Pol Espinasa",
+        "email": "pol.espinasa@uab.cat",
+        "date": "2026-05-13T18:46:32Z"
+      },
+      "author": {
+        "name": "Pol Espinasa",
+        "email": "pol.espinasa@uab.cat",
+        "date": "2026-05-05T14:47:02Z"
+      },
+      "sha": "90eda67bb8f9c3b82a3eccc787446269c83b2558"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 25496416868,
+      "node_id": "HRFPE_lADOEEET9c8AAAABBV_F2s8AAAAF77RyZA",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/25496416868",
+      "actor": {
+        "login": "polespinasa",
+        "id": 57642229,
+        "node_id": "MDQ6VXNlcjU3NjQyMjI5",
+        "avatar_url": "https://avatars.githubusercontent.com/u/57642229?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/polespinasa",
+        "html_url": "https://github.com/polespinasa",
+        "followers_url": "https://api.github.com/users/polespinasa/followers",
+        "following_url": "https://api.github.com/users/polespinasa/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/polespinasa/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/polespinasa/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/polespinasa/subscriptions",
+        "organizations_url": "https://api.github.com/users/polespinasa/orgs",
+        "repos_url": "https://api.github.com/users/polespinasa/repos",
+        "events_url": "https://api.github.com/users/polespinasa/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/polespinasa/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": "90eda67bb8f9c3b82a3eccc787446269c83b2558",
+      "commit_url": "https://api.github.com/repos/polespinasa/gui/commits/90eda67bb8f9c3b82a3eccc787446269c83b2558",
+      "created_at": "2026-05-13T18:46:42Z"
+    },
+    {
+      "event": "labeled",
+      "id": 25496470851,
+      "node_id": "LE_lADOEEET9c8AAAABBV_F2s8AAAAF77VFQw",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/25496470851",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2026-05-13T18:48:09Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
+      }
+    },
+    {
+      "event": "reviewed",
+      "id": 4284523928,
+      "node_id": "PRR_kwDOEEET9c7_YKWY",
+      "url": null,
+      "actor": null,
+      "commit_id": "90eda67bb8f9c3b82a3eccc787446269c83b2558",
+      "commit_url": null,
+      "created_at": null,
+      "updated_at": "2026-05-13T18:53:52Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "ACK 90eda67bb8f9c3b82a3eccc787446269c83b2558",
+      "user": {
+        "login": "sedited",
+        "id": 8421793,
+        "node_id": "MDQ6VXNlcjg0MjE3OTM=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/8421793?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/sedited",
+        "html_url": "https://github.com/sedited",
+        "followers_url": "https://api.github.com/users/sedited/followers",
+        "following_url": "https://api.github.com/users/sedited/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/sedited/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/sedited/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/sedited/subscriptions",
+        "organizations_url": "https://api.github.com/users/sedited/orgs",
+        "repos_url": "https://api.github.com/users/sedited/repos",
+        "events_url": "https://api.github.com/users/sedited/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/sedited/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/936#pullrequestreview-4284523928",
+      "submitted_at": "2026-05-13T18:53:52Z",
+      "state": "APPROVED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/936"
     }
   ],
   "comments": [
@@ -488,7 +633,7 @@
       "path": "src/qt/sendcoinsdialog.cpp",
       "position": 32,
       "original_position": 32,
-      "commit_id": "db677efbdedf36a96c0713d8941fd813b499005c",
+      "commit_id": "90eda67bb8f9c3b82a3eccc787446269c83b2558",
       "original_commit_id": "db677efbdedf36a96c0713d8941fd813b499005c",
       "in_reply_to_id": null,
       "user": {
@@ -521,6 +666,60 @@
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/3220673346"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/936"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 367,
+      "original_line": 367,
+      "side": "LEFT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/3236675060",
+      "pull_request_review_id": 4284470471,
+      "id": 3236675060,
+      "node_id": "PRRC_kwDOEEET9c7A6730",
+      "diff_hunk": "@@ -360,15 +350,6 @@ bool SendCoinsDialog::PrepareSendText(QString& question_string, QString& informa\n         question_string.append(\"<span style='color:#aa0000; font-weight:bold;'>\");\n         question_string.append(BitcoinUnits::formatHtmlWithUnit(model->getOptionsModel()->getDisplayUnit(), txFee));\n         question_string.append(\"</span><br />\");\n-\n-        // append RBF message according to transaction's signalling\n-        question_string.append(\"<span style='font-size:10pt; font-weight:normal;'>\");\n-        if (ui->optInRBF->isChecked()) {\n-            question_string.append(tr(\"You can increase the fee later (signals Replace-By-Fee, BIP-125).\"));",
+      "path": "src/qt/sendcoinsdialog.cpp",
+      "position": 32,
+      "original_position": 32,
+      "commit_id": "90eda67bb8f9c3b82a3eccc787446269c83b2558",
+      "original_commit_id": "db677efbdedf36a96c0713d8941fd813b499005c",
+      "in_reply_to_id": 3220673346,
+      "user": {
+        "login": "polespinasa",
+        "id": 57642229,
+        "node_id": "MDQ6VXNlcjU3NjQyMjI5",
+        "avatar_url": "https://avatars.githubusercontent.com/u/57642229?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/polespinasa",
+        "html_url": "https://github.com/polespinasa",
+        "followers_url": "https://api.github.com/users/polespinasa/followers",
+        "following_url": "https://api.github.com/users/polespinasa/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/polespinasa/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/polespinasa/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/polespinasa/subscriptions",
+        "organizations_url": "https://api.github.com/users/polespinasa/orgs",
+        "repos_url": "https://api.github.com/users/polespinasa/repos",
+        "events_url": "https://api.github.com/users/polespinasa/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/polespinasa/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "body": "Yes, makes sens, added back.",
+      "created_at": "2026-05-13T18:46:04Z",
+      "updated_at": "2026-05-13T18:46:04Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/936#discussion_r3236675060",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/3236675060"
         },
         "pull_request": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/936"
