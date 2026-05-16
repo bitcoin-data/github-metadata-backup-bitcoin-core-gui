@@ -36,7 +36,9 @@
       "events_url": "https://api.github.com/users/stratospher/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/stratospher/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
     },
     "body": "[#8517](https://github.com/bitcoin/bitcoin/pull/8517) introduced the HD status icon in the bottom menu bar. At the time, it may have made sense to disable the HD status icon (which would display the icon at 50% opacity) when the wallet is not HD or watch-only. \r\n \r\nSince then, we have had many changes to our UI. Namely, the ability to switch between dark and light mode on macOS. Additionally, since version 0.16, the Bitcoin Core client only [generates HD wallets](https://github.com/bitcoin/bitcoin/issues/12547). Non-HD Wallets cannot be created anymore, only imported.\r\n \r\nThis PR proposes never to disable the HD status icon in the bottom menu bar. Instead, we always leave the HD status icon enabled for a better user interface. There’s no good reason for it to remain disabled, and it’s hard to see the watch-only icon in macOS dark mode. If a user has imported a non-HD wallet, we also want the icon to be as clear as possible in the bottom menu bar.\r\n\r\n- on macOS\r\n\r\n|                        |      Master      |         PR           |\r\n| ------------- | ------------- | ------------- |\r\n|  Dark Mode    | ![unnamed](https://user-images.githubusercontent.com/44024636/136088058-7eece199-0e6d-4bd3-91d5-8e04b6ccdd32.png)  | ![unnamed-2](https://user-images.githubusercontent.com/44024636/136088203-7704bd25-f822-4489-b023-7acc935698c9.png) |\r\n|  Light Mode   |![unnamed-3](https://user-images.githubusercontent.com/44024636/136088441-a6abcf9d-f2ca-4b6d-96d4-14487dad30c0.png)| ![unnamed-4](https://user-images.githubusercontent.com/44024636/136088539-f61fb93d-63d3-4f3f-908d-1c51e8b0f670.png)|\r\n- on ubuntu 20.04\r\n\r\n\r\n|      Master      |         PR           |\r\n| ------------- | ------------- |\r\n|   ![Screenshot 2021-10-06 at 3 15 12 AM](https://user-images.githubusercontent.com/44024636/136107153-cc00cefc-1ae5-4923-ab8c-f4e8ca2447a1.png) |  ![Screenshot 2021-10-06 at 3 18 20 AM](https://user-images.githubusercontent.com/44024636/136107479-96cb487d-171f-4e11-b1c2-cb3e4109d56f.png)|",
     "labels": [
@@ -54,7 +56,30 @@
     "updated_at": "2023-09-04T12:09:53Z",
     "closed_at": "2021-10-19T21:52:13Z",
     "mergeable_state": "unknown",
+    "merged": true,
     "merged_at": "2021-10-19T21:52:13Z",
+    "merged_by": {
+      "login": "hebasto",
+      "id": 32963518,
+      "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hebasto",
+      "html_url": "https://github.com/hebasto",
+      "followers_url": "https://api.github.com/users/hebasto/followers",
+      "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+      "organizations_url": "https://api.github.com/users/hebasto/orgs",
+      "repos_url": "https://api.github.com/users/hebasto/repos",
+      "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/hebasto/received_events",
+      "type": "User",
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
+    },
     "merge_commit_sha": "23a7d56df2dd42b16e5d9748aad5630e448becd7",
     "assignees": [],
     "requested_reviewers": [],
@@ -81,7 +106,9 @@
         "events_url": "https://api.github.com/users/stratospher/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/stratospher/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 413680137,
@@ -106,7 +133,9 @@
           "events_url": "https://api.github.com/users/stratospher/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/stratospher/received_events",
           "type": "User",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/stratospher/gui",
@@ -174,6 +203,7 @@
         "pushed_at": "2021-12-19T05:20:21Z",
         "created_at": "2021-10-05T05:02:25Z",
         "updated_at": "2021-12-19T05:20:32Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -213,7 +243,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 272700405,
@@ -238,7 +270,9 @@
           "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/bitcoin-core/gui",
@@ -287,12 +321,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 273,
-        "stargazers_count": 501,
-        "watchers_count": 501,
-        "size": 150274,
+        "forks_count": 354,
+        "stargazers_count": 725,
+        "watchers_count": 725,
+        "size": 190146,
         "default_branch": "master",
-        "open_issues_count": 156,
+        "open_issues_count": 148,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -303,9 +337,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-09-02T22:17:41Z",
+        "pushed_at": "2026-05-16T00:00:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2023-09-04T12:17:01Z",
+        "updated_at": "2026-05-16T00:00:11Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -401,7 +436,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -420,7 +457,8 @@
       "commit_id": "35e814c1cfedf17e7751b730ae1e36099801be4c",
       "commit_url": null,
       "created_at": null,
-      "author_association": "MEMBER",
+      "updated_at": "2021-10-06T02:52:30Z",
+      "author_association": "CONTRIBUTOR",
       "body": "ACK 35e814c1cfedf17e7751b730ae1e36099801be4c\r\n\r\nTested on macOS 12. I think this is nice & small UI improvement. It's a bit of an eyesore when using a watch-only wallet. One nice thing about this change is that the icon (in the cases of a watch-only and non-hd wallet) will be properly colorized when switching between light and dark mode on macOS. As shown in your screenshots with Ubuntu, it's a small UI improvement regardless of platform.\r\n\r\n**Watch-Only Icon**\r\n\r\n| master | pr |\r\n|--------|---|\r\n| ![Screen Shot 2021-10-05 at 10 35 10 PM](https://user-images.githubusercontent.com/23396902/136132882-dfe30c5b-b91b-40bf-82d6-c381f24d718c.png) | ![Screen Shot 2021-10-05 at 10 30 48 PM](https://user-images.githubusercontent.com/23396902/136132895-0a131472-9ea7-4943-87dd-5cfc2addf4f2.png) |\r\n \r\n\r\n\r\nSince I don't have a non-HD wallet available to import, I looked at the visual changes this PR would have on the HD disabled icon with the following patch:\r\n\r\n```diff\r\n@@ -1301,7 +1301,7 @@ bool BitcoinGUI::handlePaymentRequest(const SendCoinsRecipient& recipient)\r\n \r\n void BitcoinGUI::setHDStatus(bool privkeyDisabled, int hdEnabled)\r\n {\r\n-    labelWalletHDStatusIcon->setThemedPixmap(privkeyDisabled ? QStringLiteral(\":/icons/eye\") : hdEnabled ? QStringLiteral(\":/icons/hd_enabled\") : QStringLiteral(\":/icons/hd_disabled\"), STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE);\r\n+    labelWalletHDStatusIcon->setThemedPixmap(QStringLiteral(\":/icons/hd_disabled\"), STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE);\r\n     labelWalletHDStatusIcon->setToolTip(privkeyDisabled ? tr(\"Private key <b>disabled</b>\") : hdEnabled ? tr(\"HD key generation is <b>enabled</b>\") : tr(\"HD key generation is <b>disabled</b>\"));\r\n```\r\n\r\n**HD disabled icon**\r\n| master + patch | pr + patch |\r\n| ----------------|-----------|\r\n| ![Screen Shot 2021-10-05 at 10 46 00 PM](https://user-images.githubusercontent.com/23396902/136132761-428aa22e-fdc2-413b-8c8b-9d3d90679a39.png) | ![Screen Shot 2021-10-05 at 10 41 31 PM](https://user-images.githubusercontent.com/23396902/136132789-48c72fbd-c2b1-4801-bf80-81a6a4fb4a58.png) |\r\n \r\n",
       "user": {
         "login": "jarolrod",
@@ -440,7 +478,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/447#pullrequestreview-772147575",
       "submitted_at": "2021-10-06T02:52:30Z",
@@ -470,7 +510,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -496,7 +538,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/447#issuecomment-937744731",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/447"
@@ -524,7 +568,9 @@
         "events_url": "https://api.github.com/users/GBKS/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/GBKS/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -553,7 +599,9 @@
         "events_url": "https://api.github.com/users/GBKS/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/GBKS/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -582,7 +630,9 @@
         "events_url": "https://api.github.com/users/Bosch-0/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Bosch-0/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -611,7 +661,9 @@
         "events_url": "https://api.github.com/users/Bosch-0/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Bosch-0/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -626,6 +678,7 @@
       "commit_id": "35e814c1cfedf17e7751b730ae1e36099801be4c",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-10-07T13:15:13Z",
       "author_association": "CONTRIBUTOR",
       "body": "Tested successfully on Ubuntu 20.04\r\n\r\nThis PR allows displaying of the non-HD enabled icons without reduced opacity.\r\n\r\nI have noticed an issue with this PR that I want to address by showing the difference between Master and PR screenshots.\r\n\r\n|Scenario|Master|PR|\r\n|------------|---------|----|\r\n|HD + Private keys|![hd + pri master](https://user-images.githubusercontent.com/85434418/136390619-fcc00982-6ab8-405d-b733-3b27f70c70ee.png)|![hd + pri pr](https://user-images.githubusercontent.com/85434418/136390688-6ba6ae0e-1274-4834-aff5-441ca2cf6432.png)|\r\n|non HD + Private keys|![nohd + pri master](https://user-images.githubusercontent.com/85434418/136390759-0464a49c-e1fb-42d7-8be7-4707b58fa482.png)|![nohd + pri pr](https://user-images.githubusercontent.com/85434418/136390817-864de077-2104-45f1-b24b-8de289129657.png)|\r\n|HD + no Private keys|![hd+nopri Master](https://user-images.githubusercontent.com/85434418/136390950-12e5ea86-b137-4cdb-bdff-16097a8c3371.png)|![hd + nopri pr](https://user-images.githubusercontent.com/85434418/136390992-95f85c21-3aac-4161-afa7-55ecfea35495.png)|\r\n|non HD + no Private keys|![nohd + nopri master](https://user-images.githubusercontent.com/85434418/136391059-9349706e-9fc3-4bd6-88a9-5dd055851fdc.png)|![nohd + nopri pr](https://user-images.githubusercontent.com/85434418/136391096-edf809e7-f9f1-4425-996a-b279f0ec53a2.png)|\r\n\r\nAs you might notice, the icons displayed in the last two scenarios in the PR have become precisely the same, which will probably introduce unnecessary confusion. And I don’t think inducing any kind of UX confusion, however small, is favorable.\r\n\r\n> Is a “non-HD” label is more clear to read and understand than a crossed “HD” one?\r\n\r\nI would love to listen to the Designers’ take on this matter before forming an opinion for this PR.\r\n\r\n<p>",
       "user": {
@@ -646,7 +699,9 @@
         "events_url": "https://api.github.com/users/shaavan/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/shaavan/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/447#pullrequestreview-773890292",
       "submitted_at": "2021-10-07T13:15:13Z",
@@ -676,13 +731,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-10-15T14:53:38Z",
       "updated_at": "2021-10-15T14:53:38Z",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "body": "> Screenshots in the OP seem misleading as they do not show the`labelWalletHDStatusIcon`.\r\n\r\nThey certainly are showing the `labelWalletHDStatusIcon`, but in the included screenshots it is currently set to the watch-only icon. Seem's that the reason for including the screenshot would be to highlight the visual change in the case of watch-only. In the case of HD enabled, it is already going to be set `enabled`. OP could have included screenshots showing the visual difference in the case that HD wallet status is disabled. Before this PR, this icon would be disabled, with this PR it is always enabled. In all of these mentioned cases, the icon displayed is the `labelWalletHDStatusIcon`.\r\n\r\n> As you might notice, the icons displayed in the last two scenarios in the PR have become precisely the same, which will probably introduce unnecessary confusion. And I don’t think inducing any kind of UX confusion, however small, is favorable.\r\n\r\nThe point of the PR is to never disable the `labelWalletHDStatusIcon`, this behavior is correct. There's no reason to disable the icon.\r\n\r\n\r\n> > Is a “non-HD” label is more clear to read and understand than a crossed “HD” one?\r\ng an opinion for this PR.\r\n\r\nThis is out of the scope of this PR.\r\n\r\n",
       "user": {
         "login": "jarolrod",
@@ -702,7 +759,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/447#issuecomment-944366114",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/447"
@@ -730,7 +789,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -756,7 +817,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/447#issuecomment-947128051",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/447"
@@ -770,6 +833,7 @@
       "commit_id": "35e814c1cfedf17e7751b730ae1e36099801be4c",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-10-19T21:44:39Z",
       "author_association": "MEMBER",
       "body": "ACK 35e814c1cfedf17e7751b730ae1e36099801be4c",
       "user": {
@@ -790,7 +854,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/447#pullrequestreview-783814736",
       "submitted_at": "2021-10-19T21:44:39Z",
@@ -820,7 +886,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "23a7d56df2dd42b16e5d9748aad5630e448becd7",
       "commit_url": "https://api.github.com/repos/bitcoin-core/gui/commits/23a7d56df2dd42b16e5d9748aad5630e448becd7",
@@ -849,7 +917,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -878,7 +948,9 @@
         "events_url": "https://api.github.com/users/sidhujag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/sidhujag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "48d2d79dd861c75f0f5680eb65dd4bacc2076e07",
       "commit_url": "https://api.github.com/repos/syscoin/syscoin/commits/48d2d79dd861c75f0f5680eb65dd4bacc2076e07",
@@ -907,7 +979,9 @@
         "events_url": "https://api.github.com/users/laanwj/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/laanwj/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -933,7 +1007,9 @@
         "events_url": "https://api.github.com/users/laanwj/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/laanwj/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/447#issuecomment-948796478",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/447"
@@ -961,7 +1037,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -987,7 +1065,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/447#issuecomment-1186294233",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/447"
@@ -1015,7 +1095,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1041,7 +1123,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/447#issuecomment-1236400863",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/447"
@@ -1069,7 +1153,9 @@
         "events_url": "https://api.github.com/users/delta1/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/delta1/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "e59e22f32f5c0ef2a25fb78c41b5393352085777",
       "commit_url": "https://api.github.com/repos/delta1/elements/commits/e59e22f32f5c0ef2a25fb78c41b5393352085777",
@@ -1098,7 +1184,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,

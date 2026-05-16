@@ -36,7 +36,9 @@
       "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
     },
     "body": "Currently the GUI shows confusing error messages when `settings.json` can't be read or written on startup. This causes the unrecoverable read error described in bitcoin/bitcoin#21340 and write error described bitcoin/bitcoin#21974. Current error read message looks like:\r\n\r\n![current](https://user-images.githubusercontent.com/7133040/124977362-638ffc80-dffe-11eb-9edd-89135a9bc602.png)\r\n\r\nThis PR tries to clarify the error dialog, and adds an option to just clear the settings and reset them to default:\r\n\r\n![new-read-error](https://user-images.githubusercontent.com/7133040/124977636-b669b400-dffe-11eb-8d35-02eda95f48c0.png)\r\n![new-read-details](https://user-images.githubusercontent.com/7133040/124977644-bb2e6800-dffe-11eb-9209-11c1c3d7be40.png)\r\n\r\nAdditionally the PR also shows a slightly better error message when there is an error trying to write the settings file. This error probably should occur less frequently, but it is easy to improve, and it should be good to make the write error consistent with the read error. The new write error dialog looks like:\r\n\r\n![new-write-error](https://user-images.githubusercontent.com/7133040/124978016-3bed6400-dfff-11eb-9d79-9b2e9bbc4369.png)\r\n\r\n![new-write-details](https://user-images.githubusercontent.com/7133040/124978025-3db72780-dfff-11eb-8df5-741f75a402d9.png)",
     "labels": [
@@ -55,7 +57,30 @@
     "updated_at": "2022-09-04T06:02:11Z",
     "closed_at": "2021-08-06T15:44:41Z",
     "mergeable_state": "unknown",
+    "merged": true,
     "merged_at": "2021-08-06T15:44:41Z",
+    "merged_by": {
+      "login": "hebasto",
+      "id": 32963518,
+      "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hebasto",
+      "html_url": "https://github.com/hebasto",
+      "followers_url": "https://api.github.com/users/hebasto/followers",
+      "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+      "organizations_url": "https://api.github.com/users/hebasto/orgs",
+      "repos_url": "https://api.github.com/users/hebasto/repos",
+      "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/hebasto/received_events",
+      "type": "User",
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
+    },
     "merge_commit_sha": "7ebc4c668968da084d7258b32c5f3b2aceefc232",
     "assignees": [],
     "requested_reviewers": [],
@@ -82,7 +107,9 @@
         "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 280158297,
@@ -107,7 +134,9 @@
           "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
           "type": "User",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/ryanofsky/gui",
@@ -156,8 +185,8 @@
         "svn_url": "https://github.com/ryanofsky/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "forks_count": 1,
-        "stargazers_count": 1,
-        "watchers_count": 1,
+        "stargazers_count": 2,
+        "watchers_count": 2,
         "size": 135528,
         "default_branch": "master",
         "open_issues_count": 0,
@@ -173,7 +202,8 @@
         "visibility": "public",
         "pushed_at": "2022-09-21T16:17:37Z",
         "created_at": "2020-07-16T13:15:24Z",
-        "updated_at": "2021-06-15T08:55:53Z",
+        "updated_at": "2025-08-07T03:07:21Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -213,7 +243,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 272700405,
@@ -238,7 +270,9 @@
           "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/bitcoin-core/gui",
@@ -287,12 +321,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 271,
-        "stargazers_count": 491,
-        "watchers_count": 491,
-        "size": 149681,
+        "forks_count": 354,
+        "stargazers_count": 725,
+        "watchers_count": 725,
+        "size": 190146,
         "default_branch": "master",
-        "open_issues_count": 155,
+        "open_issues_count": 148,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -303,9 +337,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-08-01T15:59:41Z",
+        "pushed_at": "2026-05-16T00:00:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2023-08-02T07:56:25Z",
+        "updated_at": "2026-05-16T00:00:11Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -401,7 +436,9 @@
         "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -427,7 +464,9 @@
         "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/379#issuecomment-876690369",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/379"
@@ -455,10 +494,12 @@
         "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "ebfd619e3cfef148fd0e93ca00505d635636ac34",
+      "commit_url": "https://api.github.com/repos/ryanofsky/gui/commits/ebfd619e3cfef148fd0e93ca00505d635636ac34",
       "created_at": "2021-07-13T19:21:29Z"
     },
     {
@@ -484,7 +525,9 @@
         "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -510,7 +553,9 @@
         "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/379#issuecomment-879340916",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/379"
@@ -538,7 +583,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -557,7 +604,8 @@
       "commit_id": "ebfd619e3cfef148fd0e93ca00505d635636ac34",
       "commit_url": null,
       "created_at": null,
-      "author_association": "MEMBER",
+      "updated_at": "2021-07-23T07:37:39Z",
+      "author_association": "CONTRIBUTOR",
       "body": "ACK ebfd619e3cfef148fd0e93ca00505d635636ac34\r\n\r\nTested functionality on `macOS 11.3`, `Arch Linux` and cross compiled to `Windows 10`. This is a nice change and makes these errors seem less scary. The nit on translator comments can be addressed in a follow-up, non-blocker.\r\n\r\nTested the error message would show up by applying this patch: https://github.com/bitcoin-core/gui/pull/379#issuecomment-876690369\r\n\r\nTested that I could abort and reset manually changing the settings file with the implemented buttons. Presentation of the read error was done by passing in a data directory that already had a settings file. The presentation of the write error was tested by passing in a new and empty data directory.\r\n\r\n## macOS 11.3\r\n**Read Error**\r\n\r\n| Presentation   | Expand Details |\r\n| ------------------- | ------------------- |\r\n| ![pr-read-error-1](https://user-images.githubusercontent.com/23396902/126750325-9fbd147d-edee-4ff5-972f-f3a076154420.png) | ![pr-read-error-2](https://user-images.githubusercontent.com/23396902/126750347-321df5be-b88a-4686-a23b-43d3ea071ca0.png) |\r\n\r\n**Write Error:**\r\n| Presentation   | Expand Details |\r\n| ------------------- | ------------------- |\r\n| ![pr-write-error-1](https://user-images.githubusercontent.com/23396902/126750434-ca821cc4-fec9-4d98-956a-7b71faae7d9a.png) | ![pr-write-error-2](https://user-images.githubusercontent.com/23396902/126750449-d42a76b5-4bf7-4a23-961a-990429c2ed77.png) |\r\n\r\n## Arch Linux\r\n\r\n**Read Error**\r\n| Presentation   | Expand Details |\r\n| ------------------- | ------------------- |\r\n| ![read-error-1](https://user-images.githubusercontent.com/23396902/126750536-76f4a57b-9408-4d64-aed2-57f0b43a0c8b.png) | ![read-erro-2](https://user-images.githubusercontent.com/23396902/126750558-c0a9b6d1-0277-4681-a0f7-9bb22fb4dae2.png) |\r\n\r\n**Write Error:**\r\n| Presentation   | Expand Details |\r\n| ------------------- | ------------------- |\r\n| ![write-error](https://user-images.githubusercontent.com/23396902/126750643-2e1749c2-d12b-48e3-a874-adf00d5c1e54.png) | ![write-error-2](https://user-images.githubusercontent.com/23396902/126750657-644623f6-c9ca-4800-9850-07a6e685e36c.png) |\r\n\r\n## Windows 10\r\n\r\n**Read Error**\r\n| Presentation   | Expand Details |\r\n| ------------------- | ------------------- |\r\n| ![pr-read-error-1](https://user-images.githubusercontent.com/23396902/126750745-37a77c10-f5f7-4f4b-8865-9737cc044434.png) | ![pr-read-error-2](https://user-images.githubusercontent.com/23396902/126750755-0aa3b173-9c0e-4650-be96-55615a39fd19.png) |\r\n\r\n**Write Error:**\r\n| Presentation   | Expand Details |\r\n| ------------------- | ------------------- |\r\n| ![pr-write-error-1](https://user-images.githubusercontent.com/23396902/126750825-4c85cafa-ec1d-42a5-8491-b65057389c55.png) | ![pr-write-error-2](https://user-images.githubusercontent.com/23396902/126750839-21f8b0cd-d8ef-4934-890c-e27003747c49.png) |\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
       "user": {
         "login": "jarolrod",
@@ -577,7 +625,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/379#pullrequestreview-713449961",
       "submitted_at": "2021-07-23T07:37:39Z",
@@ -593,6 +643,7 @@
       "commit_id": "ebfd619e3cfef148fd0e93ca00505d635636ac34",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-07-27T15:49:17Z",
       "author_association": "CONTRIBUTOR",
       "body": "tACK ebfd619e3cfef148fd0e93ca00505d635636ac34\r\n\r\nSuccessfully compiled and tested on Ubuntu 20.04\r\nI like the idea of elaborating the problem, and it is an improvement compared to the error message of the master branch. Because: \r\n\r\nRead Error: Now, the user is aware of the issue and can either continue to GUI or abort and close the program.\r\nWrite Error: The error message had essential details to understand the problem and do something about it.\r\n\r\nBut I would like to suggest some elaborations to make the user’s work more straightforward if they face this issue.\r\n\r\nSome recommended further elaborations: \r\n\r\n- In case of an error in writing the file or failure in overwriting, then. \r\n    - If settings.json file:\r\n\r\n        - does not exist: create a new file with default values\r\n\r\n        - exists: try deleting the file and make a new file with default values\r\n    - Abort\r\n- In case of not able to delete the file (above solution):\r\n    - Abort",
       "user": {
@@ -613,7 +664,9 @@
         "events_url": "https://api.github.com/users/shaavan/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/shaavan/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/379#pullrequestreview-716093347",
       "submitted_at": "2021-07-27T15:49:17Z",
@@ -643,7 +696,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -669,7 +724,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/379#issuecomment-888537173",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/379"
@@ -697,7 +754,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -723,7 +782,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/379#issuecomment-888551631",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/379"
@@ -751,10 +812,12 @@
         "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "1ee6d0b01a517893967379677029fb5417978247",
+      "commit_url": "https://api.github.com/repos/ryanofsky/gui/commits/1ee6d0b01a517893967379677029fb5417978247",
       "created_at": "2021-07-29T23:08:46Z"
     },
     {
@@ -766,6 +829,7 @@
       "commit_id": "ebfd619e3cfef148fd0e93ca00505d635636ac34",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-07-29T23:12:30Z",
       "author_association": "CONTRIBUTOR",
       "body": "Thanks for the reviews and testing!\r\n\r\nUpdated ebfd619e3cfef148fd0e93ca00505d635636ac34 -> 1ee6d0b01a517893967379677029fb5417978247 ([`pr/badset.2`](https://github.com/ryanofsky/gui/commits/pr/badset.2) -> [`pr/badset.3`](https://github.com/ryanofsky/gui/commits/pr/badset.3), [compare](https://github.com/ryanofsky/gui/compare/pr/badset.2..pr/badset.3)) just adding jarolrod's suggested translator comments verbatim.\r\n\r\n---\r\n\r\nThis PR may be close to ready for merge.\r\n\r\n---\r\n\r\nre: https://github.com/bitcoin-core/gui/pull/379#pullrequestreview-716093347\r\n\r\n> Some recommended further elaborations:\r\n\r\nThanks, I think I basically agree with the suggestions. Would encouraging filing new issues if there are specific problems that aren't being addressed. This PR clarifies the write error somewhat, but after this PR there are two more issues that need to be resolved on settings write errors: \r\n\r\n- [bitcoin/bitcoin#21974](https://github.com/bitcoin/bitcoin/issues/21974) - when settings file doesn't exist and writing a new one fails, it can be indicate a problem with the datadir, like maybe it was set to an external location that is no longer accessible, so a more convenient option to choose a new datadir could be provided\r\n- [bitcoin/bitcoin#22571](https://github.com/bitcoin/bitcoin/issues/22571) - valid but inaccessible settings.json files could be overwritten in some cases due to read access errors\r\n\r\n---\r\n\r\nre: https://github.com/bitcoin-core/gui/pull/379#issuecomment-888537173\r\n\r\n> I've tried reproducing using permissions like this:\r\n> [...]\r\n\r\nre: https://github.com/bitcoin-core/gui/pull/379#issuecomment-888551631\r\n\r\n> I've created AppArmor profile `/etc/apparmor.d/bitcoin` that attaches to the built binaries (master and pr) and allows (almost) everything, except access to the `settings.json`:\r\n> [...]\r\n\r\nGreat find! Both of these posts are describing the same bug and I filed a new issue https://github.com/bitcoin/bitcoin/issues/22571. The fix needs to stop ignoring `EACCES` (Permission denied) and other read errors, instead of treating them the same as `ENOENT` (No such file or directory)",
       "user": {
@@ -786,7 +850,9 @@
         "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/379#pullrequestreview-718589463",
       "submitted_at": "2021-07-29T23:11:57Z",
@@ -802,6 +868,7 @@
       "commit_id": "1ee6d0b01a517893967379677029fb5417978247",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-07-30T20:53:24Z",
       "author_association": "MEMBER",
       "body": "",
       "user": {
@@ -822,7 +889,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/379#pullrequestreview-719452537",
       "submitted_at": "2021-07-30T20:53:24Z",
@@ -838,7 +907,8 @@
       "commit_id": "1ee6d0b01a517893967379677029fb5417978247",
       "commit_url": null,
       "created_at": null,
-      "author_association": "MEMBER",
+      "updated_at": "2021-08-03T01:09:24Z",
+      "author_association": "CONTRIBUTOR",
       "body": "ACK 1ee6d0b01a517893967379677029fb5417978247\r\n\r\nChanges since my last review are only translator comments, thanks for adding them 🥃",
       "user": {
         "login": "jarolrod",
@@ -858,7 +928,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/379#pullrequestreview-720697434",
       "submitted_at": "2021-08-03T01:09:24Z",
@@ -888,7 +960,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -914,7 +988,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/379#issuecomment-893391637",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/379"
@@ -928,6 +1004,7 @@
       "commit_id": "1ee6d0b01a517893967379677029fb5417978247",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-08-05T12:30:20Z",
       "author_association": "MEMBER",
       "user": {
         "login": "hebasto",
@@ -947,7 +1024,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/379#pullrequestreview-723293441",
       "submitted_at": "2021-08-05T12:30:20Z",
@@ -963,6 +1042,7 @@
       "commit_id": "1ee6d0b01a517893967379677029fb5417978247",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-08-05T19:40:05Z",
       "author_association": "CONTRIBUTOR",
       "body": "Thanks for reviews! There's good discussion from luke and hebasto about issues that would be good to follow up on (https://github.com/bitcoin-core/gui/pull/379#discussion_r683406901, https://github.com/bitcoin-core/gui/pull/379#discussion_r680408927), but to me it looks like with the testing and review this PR has had so far, it could be ready for merge.\r\n\r\nI'd like this PR to remain simple and focused on the basic UX improvement of displaying settings.json read errors. I'd like future PRs to address settings write errors, settings read implementation bugs, and better distinctions between untranslated \"details\" and untranslated \"original messages\" as other improvements that can build on top of this improvement.",
       "user": {
@@ -983,7 +1063,9 @@
         "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/379#pullrequestreview-723688808",
       "submitted_at": "2021-08-05T19:40:05Z",
@@ -1013,7 +1095,9 @@
         "events_url": "https://api.github.com/users/ghost/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ghost/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1039,7 +1123,9 @@
         "events_url": "https://api.github.com/users/ghost/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ghost/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/379#issuecomment-893780501",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/379"
@@ -1053,6 +1139,7 @@
       "commit_id": "1ee6d0b01a517893967379677029fb5417978247",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-08-05T23:01:54Z",
       "author_association": "CONTRIBUTOR",
       "body": "ACK 1ee6d0b01a517893967379677029fb5417978247",
       "user": {
@@ -1073,7 +1160,9 @@
         "events_url": "https://api.github.com/users/Zero-1729/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Zero-1729/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/379#pullrequestreview-723860207",
       "submitted_at": "2021-08-05T23:01:54Z",
@@ -1089,6 +1178,7 @@
       "commit_id": "1ee6d0b01a517893967379677029fb5417978247",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-08-06T15:37:41Z",
       "author_association": "MEMBER",
       "body": "ACK 1ee6d0b01a517893967379677029fb5417978247, tested on Linux Mint 20.2 (Qt 5.12.8).",
       "user": {
@@ -1109,7 +1199,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/379#pullrequestreview-724483847",
       "submitted_at": "2021-08-06T15:37:41Z",
@@ -1139,7 +1231,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "7ebc4c668968da084d7258b32c5f3b2aceefc232",
       "commit_url": "https://api.github.com/repos/bitcoin-core/gui/commits/7ebc4c668968da084d7258b32c5f3b2aceefc232",
@@ -1168,7 +1262,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1183,6 +1279,7 @@
       "commit_id": "1ee6d0b01a517893967379677029fb5417978247",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-08-06T19:13:19Z",
       "author_association": "MEMBER",
       "user": {
         "login": "hebasto",
@@ -1202,7 +1299,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/379#pullrequestreview-724643981",
       "submitted_at": "2021-08-06T19:13:19Z",
@@ -1232,7 +1331,9 @@
         "events_url": "https://api.github.com/users/sidhujag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/sidhujag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "1f3f166be5600443e8953db34d793011200be6d3",
       "commit_url": "https://api.github.com/repos/syscoin/syscoin/commits/1f3f166be5600443e8953db34d793011200be6d3",
@@ -1261,7 +1362,9 @@
         "events_url": "https://api.github.com/users/ghost/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ghost/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1287,7 +1390,9 @@
         "events_url": "https://api.github.com/users/ghost/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ghost/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/379#issuecomment-894704499",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/379"
@@ -1315,7 +1420,9 @@
         "events_url": "https://api.github.com/users/fanquake/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/fanquake/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "c3545a7396787c1d649f2d12fcb380b714cab6b2",
       "commit_url": "https://api.github.com/repos/bitcoin-core/gui/commits/c3545a7396787c1d649f2d12fcb380b714cab6b2",
@@ -1327,24 +1434,26 @@
       "node_id": "REFE_lADOEEET9c44CYqyzwAAAAE5YNKB",
       "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/5257613953",
       "actor": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "91e07cc50db675b97fee324a8a293bc6b353d991",
       "commit_url": "https://api.github.com/repos/bitcoin-core/gui/commits/91e07cc50db675b97fee324a8a293bc6b353d991",
@@ -1373,7 +1482,9 @@
         "events_url": "https://api.github.com/users/sidhujag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/sidhujag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "64186eccd8c5612b2b08d7a3eb8bc9728b20fe77",
       "commit_url": "https://api.github.com/repos/syscoin/syscoin/commits/64186eccd8c5612b2b08d7a3eb8bc9728b20fe77",
@@ -1402,7 +1513,9 @@
         "events_url": "https://api.github.com/users/PastaPastaPasta/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/PastaPastaPasta/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "8d07123fa7ea330477b9b33698c9ce920665d5d1",
       "commit_url": "https://api.github.com/repos/PastaPastaPasta/dash/commits/8d07123fa7ea330477b9b33698c9ce920665d5d1",
@@ -1431,7 +1544,9 @@
         "events_url": "https://api.github.com/users/PastaPastaPasta/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/PastaPastaPasta/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "befba8f2c313c71883ee41cb96de09daa1f70f7a",
       "commit_url": "https://api.github.com/repos/PastaPastaPasta/dash/commits/befba8f2c313c71883ee41cb96de09daa1f70f7a",
@@ -1460,7 +1575,9 @@
         "events_url": "https://api.github.com/users/PastaPastaPasta/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/PastaPastaPasta/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "657bfaebcdcd7eddb745033e0e3a718dc3e94cee",
       "commit_url": "https://api.github.com/repos/PastaPastaPasta/dash/commits/657bfaebcdcd7eddb745033e0e3a718dc3e94cee",
@@ -1489,7 +1606,9 @@
         "events_url": "https://api.github.com/users/PastaPastaPasta/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/PastaPastaPasta/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "ab4405258e752a8d50ee2a4058adadcd034cbd1d",
       "commit_url": "https://api.github.com/repos/PastaPastaPasta/dash/commits/ab4405258e752a8d50ee2a4058adadcd034cbd1d",
@@ -1518,7 +1637,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1557,13 +1678,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "could add a translator comment:\r\n```diff\r\ndiff --git a/src/qt/bitcoin.cpp b/src/qt/bitcoin.cpp\r\nindex c72a5ecdd..bc9da65ab 100644\r\n--- a/src/qt/bitcoin.cpp\r\n+++ b/src/qt/bitcoin.cpp\r\n@@ -161,6 +161,8 @@ static bool InitSettings()\r\n         InitError(Untranslated(strprintf(\"%s:\\n%s\\n\", error.original, JoinErrors(errors))));\r\n \r\n         QMessageBox messagebox(QMessageBox::Critical, PACKAGE_NAME, QString::fromStdString(strprintf(\"%s.\", error.translated)), QMessageBox::Reset | QMessageBox::Abort);\r\n+        /*: Explanatory text shown on startup when the settings file cannot be read.\r\n+            Prompts user to make a choice between resetting or aborting. */\r\n         messagebox.setInformativeText(QObject::tr(\"Do you want to reset settings to default values, or to abort without making changes?\"));\r\n         messagebox.setDetailedText(QString::fromStdString(JoinErrors(errors)));\r\n         messagebox.setTextFormat(Qt::PlainText);\r\n```",
       "created_at": "2021-07-23T07:12:54Z",
       "updated_at": "2021-07-23T07:37:39Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/379#discussion_r675351502",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/675351502"
@@ -1609,13 +1732,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "could add translator comment:\r\n\r\n```diff\r\ndiff --git a/src/qt/bitcoin.cpp b/src/qt/bitcoin.cpp\r\nindex c72a5ecdd..b29fb5dde 100644\r\n--- a/src/qt/bitcoin.cpp\r\n+++ b/src/qt/bitcoin.cpp\r\n@@ -181,6 +181,9 @@ static bool InitSettings()\r\n         InitError(Untranslated(strprintf(\"%s:\\n%s\\n\", error.original, JoinErrors(errors))));\r\n \r\n         QMessageBox messagebox(QMessageBox::Critical, PACKAGE_NAME, QString::fromStdString(strprintf(\"%s.\", error.translated)), QMessageBox::Ok);\r\n+        /*: Explanatory text shown on startup when the settings file could not be written.\r\n+            Prompts user to check that we have the ability to write to the file.\r\n+            Explains that the user has the option of running without a settings file.*/\r\n         messagebox.setInformativeText(QObject::tr(\"A fatal error occured. Check that settings file is writable, or try running with -nosettings.\"));\r\n         messagebox.setDetailedText(QString::fromStdString(JoinErrors(errors)));\r\n         messagebox.setTextFormat(Qt::PlainText);\r\n```",
       "created_at": "2021-07-23T07:18:15Z",
       "updated_at": "2021-07-23T07:37:39Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/379#discussion_r675353977",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/675353977"
@@ -1661,7 +1786,9 @@
         "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "re: https://github.com/bitcoin-core/gui/pull/379#discussion_r675351502\r\n\r\n> could add a translator comment:\r\n\r\nAdded, thanks!",
       "created_at": "2021-07-29T22:40:22Z",
@@ -1713,7 +1840,9 @@
         "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "re: https://github.com/bitcoin-core/gui/pull/379#discussion_r675353977\r\n\r\n> could add translator comment:\r\n\r\nAdded, thanks!",
       "created_at": "2021-07-29T22:42:14Z",
@@ -1765,7 +1894,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "I don't see the logic to actually reset the settings to defaults.",
       "created_at": "2021-07-30T20:52:01Z",
@@ -1817,7 +1948,9 @@
         "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "> I don't see the logic to actually reset the settings to defaults.\r\n\r\nIt happens implicitly because if reading the settings file fails, the file that is written on line 181 will be empty.",
       "created_at": "2021-07-30T22:23:45Z",
@@ -1869,7 +2002,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "But if it fails part way into reading the settings, won't the ones it already read remain?",
       "created_at": "2021-07-31T20:58:12Z",
@@ -1921,7 +2056,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Usually, we use a detailed text to show untranslated error messages to users for convenient googling and referencing (see https://github.com/bitcoin/bitcoin/pull/16224). Now it only contains a list of errors. Could an untranslated error message be added here as well?",
       "created_at": "2021-08-05T12:30:20Z",
@@ -1973,7 +2110,9 @@
         "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "re: https://github.com/bitcoin-core/gui/pull/379#discussion_r683406901\r\n\r\n> Usually, we use a detailed text to show untranslated error messages to users for convenient googling and referencing (see [bitcoin/bitcoin#16224](https://github.com/bitcoin/bitcoin/pull/16224)). Now it only contains a list of errors. Could an untranslated error message be added here as well?\r\n\r\nJust to clarify what's being discussed, `errors` is untranslated, and the error messages are self contained, so this dialog is consistent with other dialogs in using translated text in the main section, and untranslated text in the details section. The inconsistency is just in the prefixing.\r\n\r\nOn the prefixing, I do think it would be reasonable for a followup PR to append `BitcoinGUI::tr(\"Original message:\") + \"\\n\" + QString::fromStdString(error.original)` if `error.original != error.translated` to be a consistent with [`ThreadSafeMessageBox`](https://github.com/bitcoin/bitcoin/blob/d67330d11245b11fbdd5e2dd5343ee451186931e/src/qt/bitcoingui.cpp#L1450) but I think it would be better to do it in a separate PR because:\r\n\r\n- I think this logic should go in a common util function so it is not duplicated. Trying to do this and refactor the `ThreadSafeMessageBox` code would expand the scope of this PR and complicate it when I think this PR is already a strict improvement and it's been reviewed and tested by people.\r\n\r\n- In this specific place, just because of the fact that `ReadSettings` errors are fully self-describing, I think adding the extra text would actually make the UX slightly worse (more repetitive and confusing) so more discussion in a followup PR about how to have consistency and clarity in these dialogs at same time could be a good idea.",
       "created_at": "2021-08-05T18:47:46Z",
@@ -2025,7 +2164,9 @@
         "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "re: https://github.com/bitcoin-core/gui/pull/379#discussion_r680408927\r\n\r\n> But if it fails part way into reading the settings, won't the ones it already read remain?\r\n\r\nTo my surprise, it is actually technically possible for this to happen! And it needs to be fixed outside the GUI code so I filed a bug in the main repo https://github.com/bitcoin/bitcoin/issues/22638. Practically speaking, the scenario where this would happen is nearly impossible and if it did happen, the effect would just be settings kept instead of discarded. So I think there's no need for this PR to be held up by the bug, but it is a good catch!",
       "created_at": "2021-08-05T19:18:52Z",
@@ -2077,7 +2218,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "typo: occured ==> occurred\r\n\r\nAddressed in https://github.com/bitcoin/bitcoin/pull/22653.",
       "created_at": "2021-08-06T19:13:18Z",

@@ -36,7 +36,9 @@
       "events_url": "https://api.github.com/users/john-moffett/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/john-moffett/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
     },
     "body": "Fixes #689 \r\n\r\n## Summary\r\n\r\nIf you open a wallet and send a shutdown signal during that process, you'll get a segfault when the wallet finishes opening. That's because the `WalletController` object gets deleted manually in bitcoin.cpp during shutdown, but copies of the pointer (and pointers to child objects) are dangling in various places and are accessed in queued events after the deletion.\r\n\r\n## Details\r\n\r\nThe issue in #689 is caused by the following sequence of events:\r\n\r\n1. Wallet open modal dialog is shown and worker thread does the actual work.\r\n2. Every 200ms, the main event loop checks to see if a shutdown has been requested, but only if a modal is not being shown.\r\n3. Request a shutdown while the modal window is shown.\r\n4. The wallet open process completes, the modal window is dismissed, and various `finish` signals are sent.\r\n5. During handling of one of the `finish` signals, `qApp->processEvents()` is [called](https://github.com/bitcoin-core/gui/blob/e9262ea32a6e1d364fb7974844fadc36f931f8c6/src/qt/sendcoinsdialog.cpp#L603), which causes the main event loop to detect the shutdown (now that the modal window has been dismissed). The `WalletController` and all the `WalletModel`s are [deleted](https://github.com/bitcoin-core/gui/blob/65de8eeeca29e71378aa34602b287ab921b040e4/src/qt/bitcoin.cpp#L394-L401).\r\n6. Control returns to the `finish` method, which eventually tries to send a [signal](https://github.com/bitcoin-core/gui/blob/e9262ea32a6e1d364fb7974844fadc36f931f8c6/src/qt/sendcoinsdialog.cpp#L167) from a wallet model, but it's been deleted already (and the signal is sent from a now-[dangling](https://github.com/bitcoin-core/gui/blob/d8bdee0fc889def7c5f5076da13db4fce0a3728a/src/qt/walletview.cpp#L65) pointer).\r\n\r\nThe simplest fix for that is to change the `qApp->processEvents()` into a `QueuedConnection` call. (The `qApp->processEvents() was a [workaround](https://github.com/bitcoin/bitcoin/pull/593#issuecomment-3050699) to get the GUI to scroll to the last item in a list that just got added, and this is just a safer way of doing that).\r\n\r\nHowever, once that segfault is fixed, another segfault occurs due to some queued wallet events happening after the wallet controller object is deleted here:\r\n\r\nhttps://github.com/bitcoin-core/gui/blob/65de8eeeca29e71378aa34602b287ab921b040e4/src/qt/bitcoin.cpp#L394-L401\r\n\r\nSince `m_wallet_controller` is a copy of that pointer in `bitcoingui.cpp`, it's now dangling and `if(null)` checks won't work correctly. For instance, this line:\r\n\r\nhttps://github.com/bitcoin-core/gui/blob/65de8eeeca29e71378aa34602b287ab921b040e4/src/qt/bitcoingui.cpp#L413\r\n\r\nsets up a `QueuedConnection` to `setCurrentWallet`, but by the time control reaches that method (one event cycle after shutdown deleted `m_wallet_controller` in `bitcoin.cpp`), the underlying objects have been destroyed (but the pointers are still dangling).\r\n\r\nIdeally, we'd use a `QPointer` or `std::shared_ptr / std::weak_ptr`s for these, but the changes would be more involved.\r\n\r\nThis is a minimal fix for the issues. Just set `m_wallet_controller` to `nullptr` in `bitcoingui.cpp`, check its value in a couple places, and avoid a use of `qApp->processEvents`.\r\n",
     "labels": [
@@ -54,7 +56,30 @@
     "updated_at": "2024-03-26T12:40:07Z",
     "closed_at": "2023-03-27T14:54:14Z",
     "mergeable_state": "unknown",
+    "merged": true,
     "merged_at": "2023-03-27T14:54:14Z",
+    "merged_by": {
+      "login": "hebasto",
+      "id": 32963518,
+      "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hebasto",
+      "html_url": "https://github.com/hebasto",
+      "followers_url": "https://api.github.com/users/hebasto/followers",
+      "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+      "organizations_url": "https://api.github.com/users/hebasto/orgs",
+      "repos_url": "https://api.github.com/users/hebasto/repos",
+      "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/hebasto/received_events",
+      "type": "User",
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
+    },
     "merge_commit_sha": "ff26406b2bb114d877b6d5bb10cec15ba91775ec",
     "assignees": [],
     "requested_reviewers": [],
@@ -81,7 +106,9 @@
         "events_url": "https://api.github.com/users/john-moffett/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/john-moffett/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 566395938,
@@ -106,7 +133,9 @@
           "events_url": "https://api.github.com/users/john-moffett/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/john-moffett/received_events",
           "type": "User",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/john-moffett/bitcoin-gui",
@@ -158,7 +187,7 @@
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 147678,
+        "size": 179956,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -171,9 +200,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-07-03T17:05:10Z",
+        "pushed_at": "2025-10-30T22:37:31Z",
         "created_at": "2022-11-15T15:31:57Z",
         "updated_at": "2022-11-28T21:03:40Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -213,7 +243,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 272700405,
@@ -238,7 +270,9 @@
           "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/bitcoin-core/gui",
@@ -287,12 +321,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 245,
-        "stargazers_count": 551,
-        "watchers_count": 551,
-        "size": 156587,
+        "forks_count": 354,
+        "stargazers_count": 725,
+        "watchers_count": 725,
+        "size": 190146,
         "default_branch": "master",
-        "open_issues_count": 161,
+        "open_issues_count": 148,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -303,9 +337,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-03-26T08:57:08Z",
+        "pushed_at": "2026-05-16T00:00:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-03-23T16:09:14Z",
+        "updated_at": "2026-05-16T00:00:11Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -361,7 +396,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -387,7 +424,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/693#issuecomment-1368573972",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/693"
@@ -415,7 +454,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -448,10 +489,12 @@
         "events_url": "https://api.github.com/users/john-moffett/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/john-moffett/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "114d738830368dc155f27a72128adf91b4fffd37",
+      "commit_url": "https://api.github.com/repos/john-moffett/bitcoin-gui/commits/114d738830368dc155f27a72128adf91b4fffd37",
       "created_at": "2023-01-03T15:22:23Z"
     },
     {
@@ -477,7 +520,9 @@
         "events_url": "https://api.github.com/users/john-moffett/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/john-moffett/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -503,7 +548,9 @@
         "events_url": "https://api.github.com/users/john-moffett/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/john-moffett/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/693#issuecomment-1369895269",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/693"
@@ -517,6 +564,7 @@
       "commit_id": "114d738830368dc155f27a72128adf91b4fffd37",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2023-01-05T13:23:03Z",
       "author_association": "MEMBER",
       "body": "",
       "user": {
@@ -537,7 +585,9 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/693#pullrequestreview-1237382851",
       "submitted_at": "2023-01-05T13:23:03Z",
@@ -553,6 +603,7 @@
       "commit_id": "114d738830368dc155f27a72128adf91b4fffd37",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2023-01-06T12:37:17Z",
       "author_association": "MEMBER",
       "body": "Code ACK 114d7388 with the nuance of not being able to reproduce the crash on master on my system.",
       "user": {
@@ -573,7 +624,9 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/693#pullrequestreview-1238788070",
       "submitted_at": "2023-01-06T12:37:17Z",
@@ -603,7 +656,9 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -629,7 +684,9 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/693#issuecomment-1374948924",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/693"
@@ -697,10 +754,12 @@
         "events_url": "https://api.github.com/users/john-moffett/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/john-moffett/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "9a1d73fdffa4f35e33bc187ac9b3afbba28b1950",
+      "commit_url": "https://api.github.com/repos/john-moffett/bitcoin-gui/commits/9a1d73fdffa4f35e33bc187ac9b3afbba28b1950",
       "created_at": "2023-01-09T00:32:48Z"
     },
     {
@@ -726,7 +785,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -752,7 +813,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/693#issuecomment-1384313750",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/693"
@@ -780,7 +843,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -809,7 +874,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -838,7 +905,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -864,7 +933,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/693#issuecomment-1385662485",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/693"
@@ -878,6 +949,7 @@
       "commit_id": "9a1d73fdffa4f35e33bc187ac9b3afbba28b1950",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2023-03-27T10:46:54Z",
       "author_association": "MEMBER",
       "body": "ACK 9a1d73fdffa4f35e33bc187ac9b3afbba28b1950, I have reviewed the code and it looks OK.",
       "user": {
@@ -898,7 +970,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/693#pullrequestreview-1358843813",
       "submitted_at": "2023-03-27T10:46:53Z",
@@ -928,7 +1002,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -951,7 +1027,9 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "review_requester": {
         "login": "DrahtBot",
@@ -971,137 +1049,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
-      }
-    },
-    {
-      "event": "cross-referenced",
-      "id": null,
-      "node_id": null,
-      "url": null,
-      "actor": {
-        "login": "hebasto",
-        "id": 32963518,
-        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
-        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/hebasto",
-        "html_url": "https://github.com/hebasto",
-        "followers_url": "https://api.github.com/users/hebasto/followers",
-        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
-        "organizations_url": "https://api.github.com/users/hebasto/orgs",
-        "repos_url": "https://api.github.com/users/hebasto/repos",
-        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/hebasto/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": "2023-03-27T10:48:32Z",
-      "updated_at": "2023-03-27T10:48:32Z",
-      "source": {
-        "issue": {
-          "id": 1509412184,
-          "node_id": "I_kwDOEEET9c5Z981Y",
-          "url": "https://api.github.com/repos/bitcoin-core/gui/issues/689",
-          "repository_url": "https://api.github.com/repos/bitcoin-core/gui",
-          "labels_url": "https://api.github.com/repos/bitcoin-core/gui/issues/689/labels%7B/name%7D",
-          "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/689/comments",
-          "events_url": "https://api.github.com/repos/bitcoin-core/gui/issues/689/events",
-          "html_url": "https://github.com/bitcoin-core/gui/issues/689",
-          "number": 689,
-          "state": "closed",
-          "state_reason": "completed",
-          "title": "Segmentation fault when closing while loading wallets",
-          "body": "Steps to reproduce:\r\n\r\n* Exit or CTRL+C while the \"Loading wallets\" *pop-up* is visible.\r\n\r\n```\r\nThread 1 \"bitcoin-qt\" received signal SIGSEGV, Segmentation fault.\r\n\r\n\r\nThread 1 (Thread 0x7ffff5935080 (LWP 52927) \"bitcoin-qt\"):\r\n#0  0x00007ffff78cf1ae in QObjectPrivate::addConnection(int, QObjectPrivate::Connection*) () at /lib64/libQt5Core.so.5\r\n#1  0x00007ffff78d5067 in QObjectPrivate::connectImpl(QObject const*, int, QObject const*, void**, QtPrivate::QSlotObjectBase*, Qt::ConnectionType, int const*, QMetaObject const*) () at /lib64/libQt5Core.so.5\r\n#2  0x00007ffff78d54d5 in QObject::connectImpl(QObject const*, void**, QObject const*, void**, QtPrivate::QSlotObjectBase*, Qt::ConnectionType, int const*, QMetaObject const*) () at /lib64/libQt5Core.so.5\r\n#3  0x00005555556c700d in QObject::connect<void (WalletModel::*)(interfaces::WalletBalances const&), void (SendCoinsDialog::*)(interfaces::WalletBalances const&)>(QtPrivate::FunctionPointer<void (WalletModel::*)(interfaces::WalletBalances const&)>::Object const*, void (WalletModel::*)(interfaces::WalletBalances const&), QtPrivate::FunctionPointer<void (SendCoinsDialog::*)(interfaces::WalletBalances const&)>::Object const*, void (SendCoinsDialog::*)(interfaces::WalletBalances const&), Qt::ConnectionType) (sender=0x7fff28001900, signal=(void (WalletModel::*)(WalletModel * const, const interfaces::WalletBalances &)) 0x5555556c83e0 <SendCoinsDialog::setBalance(interfaces::WalletBalances const&)>, receiver=0x555556f20860, slot=(void (SendCoinsDialog::*)(SendCoinsDialog * const, const interfaces::WalletBalances &)) 0x555556e4c2c0, this adjustment 93825023925952, type=Qt::AutoConnection) at /usr/include/qt5/QtCore/qobject.h:264\r\n#4  SendCoinsDialog::setModel(WalletModel*) (this=0x555556f20860, _model=0x7fff28001900) at qt/sendcoinsdialog.cpp:167\r\n#5  0x000055555568726a in WalletView::WalletView(WalletModel*, PlatformStyle const*, QWidget*) (this=0x555556650360, wallet_model=<optimized out>, _platformStyle=<optimized out>, parent=<optimized out>) at qt/walletview.cpp:65\r\n#6  0x000055555560321a in BitcoinGUI::addWallet(WalletModel*) (this=0x555556fde0e0, walletModel=0x7fff28001900) at qt/bitcoingui.cpp:697\r\n#7  0x0000555555609c22 in _ZZN7GUIUtil20ExceptionSafeConnectIP16WalletControllerMS1_FvP11WalletModelEP10BitcoinGUIMS7_FvS4_EEEDaT_T0_T1_T2_N2Qt14ConnectionTypeEENKUlDpOT_E_clIJRS4_EEEDaSJ_ (this=0x5555566cebd0, args=<optimized out>) at ./qt/guiutil.h:400\r\n#8  0x0000555555609bc0 in _ZN9QtPrivate11FunctorCallINS_11IndexesListIJLi0EEEENS_4ListIJP11WalletModelEEEvZN7GUIUtil20ExceptionSafeConnectIP16WalletControllerMS9_FvS5_EP10BitcoinGUIMSD_FvS5_EEEDaT_T0_T1_T2_N2Qt14ConnectionTypeEEUlDpOT_E_E4callERSQ_PPv (f=..., arg=0x5) at /usr/include/qt5/QtCore/qobjectdefs_impl.h:146\r\n#9  _ZN9QtPrivate7FunctorIZN7GUIUtil20ExceptionSafeConnectIP16WalletControllerMS3_FvP11WalletModelEP10BitcoinGUIMS9_FvS6_EEEDaT_T0_T1_T2_N2Qt14ConnectionTypeEEUlDpOT_E_Li1EE4callINS_4ListIJS6_EEEvEEvRSM_PvPSS_ (f=..., arg=0x5) at /usr/include/qt5/QtCore/qobjectdefs_impl.h:256\r\n#10 _ZN9QtPrivate18QFunctorSlotObjectIZN7GUIUtil20ExceptionSafeConnectIP16WalletControllerMS3_FvP11WalletModelEP10BitcoinGUIMS9_FvS6_EEEDaT_T0_T1_T2_N2Qt14ConnectionTypeEEUlDpOT_E_Li1ENS_4ListIJS6_EEEvE4implEiPNS_15QSlotObjectBaseEP7QObjectPPvPb (which=<optimized out>, this_=<optimized out>, r=0x555557728670, a=0x5, ret=0x7fffffffcd18) at /usr/include/qt5/QtCore/qobjectdefs_impl.h:443\r\n#11 0x00007ffff78d2ec4 in QObject::event(QEvent*) () at /lib64/libQt5Core.so.5\r\n#12 0x00007ffff6faed12 in QApplicationPrivate::notify_helper(QObject*, QEvent*) () at /lib64/libQt5Widgets.so.5\r\n#13 0x00007ffff78a8278 in QCoreApplication::notifyInternal2(QObject*, QEvent*) () at /lib64/libQt5Core.so.5\r\n#14 0x00007ffff78ab5e4 in QCoreApplicationPrivate::sendPostedEvents(QObject*, int, QThreadData*) () at /lib64/libQt5Core.so.5\r\n#15 0x00007ffff78f9897 in postEventSourceDispatch(_GSource*, int (*)(void*), void*) () at /lib64/libQt5Core.so.5\r\n#16 0x00007ffff5266cbf in g_main_context_dispatch () at /lib64/libglib-2.0.so.0\r\n#17 0x00007ffff52bc598 in g_main_context_iterate.constprop () at /lib64/libglib-2.0.so.0\r\n#18 0x00007ffff5263f40 in g_main_context_iteration () at /lib64/libglib-2.0.so.0\r\n#19 0x00007ffff78f938a in QEventDispatcherGlib::processEvents(QFlags<QEventLoop::ProcessEventsFlag>) () at /lib64/libQt5Core.so.5\r\n#20 0x00007ffff78a6cca in QEventLoop::exec(QFlags<QEventLoop::ProcessEventsFlag>) () at /lib64/libQt5Core.so.5\r\n#21 0x00007ffff78aed92 in QCoreApplication::exec() () at /lib64/libQt5Core.so.5\r\n#22 0x00005555555f25fd in GuiMain(int, char**) (argc=<optimized out>, argv=<optimized out>) at qt/bitcoin.cpp:697\r\n#23 0x00005555555ecc4a in main(int, char**) (argc=-67945086, argv=0x3) at qt/main.cpp:24\r\n",
-          "user": {
-            "login": "maflcko",
-            "id": 6399679,
-            "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
-            "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
-            "gravatar_id": "",
-            "url": "https://api.github.com/users/maflcko",
-            "html_url": "https://github.com/maflcko",
-            "followers_url": "https://api.github.com/users/maflcko/followers",
-            "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
-            "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
-            "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
-            "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
-            "organizations_url": "https://api.github.com/users/maflcko/orgs",
-            "repos_url": "https://api.github.com/users/maflcko/repos",
-            "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
-            "received_events_url": "https://api.github.com/users/maflcko/received_events",
-            "type": "User",
-            "site_admin": false
-          },
-          "labels": [
-            {
-              "id": 2140649117,
-              "node_id": "MDU6TGFiZWwyMTQwNjQ5MTE3",
-              "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Bug",
-              "name": "Bug",
-              "description": "Something isn't working",
-              "color": "d73a4a",
-              "default": false
-            },
-            {
-              "id": 2927906211,
-              "node_id": "MDU6TGFiZWwyOTI3OTA2MjEx",
-              "url": "https://api.github.com/repos/bitcoin-core/gui/labels/Wallet",
-              "name": "Wallet",
-              "description": "",
-              "color": "08a781",
-              "default": false
-            }
-          ],
-          "assignees": [],
-          "author_association": "CONTRIBUTOR",
-          "milestone": {
-            "url": "https://api.github.com/repos/bitcoin-core/gui/milestones/10",
-            "html_url": "https://github.com/bitcoin-core/gui/milestone/10",
-            "labels_url": "https://api.github.com/repos/bitcoin-core/gui/milestones/10/labels",
-            "id": 8796054,
-            "node_id": "MI_kwDOEEET9c4AhjeW",
-            "number": 10,
-            "state": "closed",
-            "title": "24.1",
-            "creator": {
-              "login": "maflcko",
-              "id": 6399679,
-              "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
-              "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
-              "gravatar_id": "",
-              "url": "https://api.github.com/users/maflcko",
-              "html_url": "https://github.com/maflcko",
-              "followers_url": "https://api.github.com/users/maflcko/followers",
-              "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
-              "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
-              "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
-              "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
-              "organizations_url": "https://api.github.com/users/maflcko/orgs",
-              "repos_url": "https://api.github.com/users/maflcko/repos",
-              "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
-              "received_events_url": "https://api.github.com/users/maflcko/received_events",
-              "type": "User",
-              "site_admin": false
-            },
-            "open_issues": 0,
-            "closed_issues": 2,
-            "created_at": "2022-12-25T11:03:58Z",
-            "updated_at": "2024-02-15T11:10:39Z",
-            "closed_at": "2024-02-15T11:10:39Z"
-          },
-          "locked": true,
-          "comments": 2,
-          "closed_at": "2023-03-27T14:54:12Z",
-          "created_at": "2022-12-23T14:31:24Z",
-          "updated_at": "2024-03-26T12:40:08Z"
-        },
-        "type": "issue"
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       }
     },
     {
@@ -1113,6 +1063,7 @@
       "commit_id": "9a1d73fdffa4f35e33bc187ac9b3afbba28b1950",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2023-03-27T14:44:42Z",
       "author_association": "MEMBER",
       "body": "ACK https://github.com/bitcoin-core/gui/commit/9a1d73fdffa4f35e33bc187ac9b3afbba28b1950",
       "user": {
@@ -1133,7 +1084,9 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/693#pullrequestreview-1359226870",
       "submitted_at": "2023-03-27T14:44:42Z",
@@ -1163,7 +1116,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "ff26406b2bb114d877b6d5bb10cec15ba91775ec",
       "commit_url": "https://api.github.com/repos/bitcoin-core/gui/commits/ff26406b2bb114d877b6d5bb10cec15ba91775ec",
@@ -1192,7 +1147,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1221,7 +1178,9 @@
         "events_url": "https://api.github.com/users/sidhujag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/sidhujag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "3618cbd691ec0b43e5ad9455a8b513d8a7a784f4",
       "commit_url": "https://api.github.com/repos/syscoin/syscoin/commits/3618cbd691ec0b43e5ad9455a8b513d8a7a784f4",
@@ -1250,7 +1209,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1288,7 +1249,9 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "This is most likely because we are creating the widget in a separate thread.\r\n\r\nTry this:\r\n```diff\r\ndiff --git a/src/qt/sendcoinsdialog.cpp b/src/qt/sendcoinsdialog.cpp\r\n--- a/src/qt/sendcoinsdialog.cpp\t(revision 114d738830368dc155f27a72128adf91b4fffd37)\r\n+++ b/src/qt/sendcoinsdialog.cpp\t(date 1672923728012)\r\n@@ -600,11 +600,9 @@\r\n     entry->clear();\r\n     entry->setFocus();\r\n     ui->scrollAreaWidgetContents->resize(ui->scrollAreaWidgetContents->sizeHint());\r\n-    QMetaObject::invokeMethod(ui->scrollArea, [this] {\r\n-        if (ui->scrollArea->verticalScrollBar()) {\r\n-            ui->scrollArea->verticalScrollBar()->setValue(ui->scrollArea->verticalScrollBar()->maximum());\r\n-        }\r\n-    }, Qt::QueuedConnection);\r\n+    if (ui->scrollArea->verticalScrollBar()) {\r\n+        ui->scrollArea->verticalScrollBar()->setValue(ui->scrollArea->verticalScrollBar()->maximum());\r\n+    }\r\n \r\n     updateTabsAndLabels();\r\n     return entry;\r\n@@ -697,6 +695,13 @@\r\n     return true;\r\n }\r\n \r\n+void SendCoinsDialog::showEvent(QShowEvent* event)\r\n+{\r\n+    if (ui->scrollArea->verticalScrollBar()) {\r\n+        ui->scrollArea->verticalScrollBar()->setValue(ui->scrollArea->verticalScrollBar()->maximum());\r\n+    }\r\n+}\r\n+\r\n void SendCoinsDialog::setBalance(const interfaces::WalletBalances& balances)\r\n {\r\n     if(model && model->getOptionsModel())\r\nIndex: src/qt/sendcoinsdialog.h\r\nIDEA additional info:\r\nSubsystem: com.intellij.openapi.diff.impl.patch.CharsetEP\r\n<+>UTF-8\r\n===================================================================\r\ndiff --git a/src/qt/sendcoinsdialog.h b/src/qt/sendcoinsdialog.h\r\n--- a/src/qt/sendcoinsdialog.h\t(revision 114d738830368dc155f27a72128adf91b4fffd37)\r\n+++ b/src/qt/sendcoinsdialog.h\t(date 1672923728023)\r\n@@ -49,6 +49,8 @@\r\n     void pasteEntry(const SendCoinsRecipient &rv);\r\n     bool handlePaymentRequest(const SendCoinsRecipient &recipient);\r\n \r\n+    void showEvent(QShowEvent* event) override;\r\n+\r\n public Q_SLOTS:\r\n     void clear();\r\n     void reject() override;\r\n```",
       "created_at": "2023-01-05T13:22:45Z",
@@ -1340,7 +1303,9 @@
         "events_url": "https://api.github.com/users/john-moffett/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/john-moffett/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Thank you for the suggestion!\r\n\r\nWhile this (also) fixes the first segfault, it doesn't achieve the intended scrolling behavior (at least on my macOS setup). \r\n\r\nBefore clicking 'Add Recipient':\r\n\r\n<img width=\"799\" alt=\"image\" src=\"https://user-images.githubusercontent.com/116917595/210798920-844108e5-125a-46d8-96c9-752ddf3bcc18.png\">\r\n\r\nAfter:\r\n\r\n<img width=\"795\" alt=\"image\" src=\"https://user-images.githubusercontent.com/116917595/210798464-ff4478d9-f9e7-4108-ae94-1f50ae385b00.png\">\r\n\r\nWhereas the original workaround (and my workaround of the workaround) gives this \"After\":\r\n\r\n<img width=\"796\" alt=\"image\" src=\"https://user-images.githubusercontent.com/116917595/210797010-681fd76c-f2b5-410c-ac7c-33d205d1b27d.png\">\r\n\r\nIt seems to be a fairly [common](https://stackoverflow.com/questions/65087088/how-to-move-to-end-of-scrollbar-after-adding-qwidget-into-the-qscrollarea) issue [without](https://stackoverflow.com/questions/63884331/scroll-to-the-bottom-when-adding-an-element-to-a-qscrollarea) an [ideal](https://stackoverflow.com/questions/19836404/qscrollarea-does-not-scroll-to-maximum-after-widgets-have-been-added) solution. There are more involved solutions, like subscribing to `rangeChanged` signals, but those would require much more logic (eg - ignore those when manually resizing the viewport, etc.). ",
       "created_at": "2023-01-05T14:08:35Z",
@@ -1392,7 +1357,9 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "hmm true, ok. Sounds good to go with the simplest fix here.\r\nWould be good to add a comment above so we don't forget the rationale behind it.\r\n",
       "created_at": "2023-01-06T12:11:32Z",
@@ -1444,7 +1411,9 @@
         "events_url": "https://api.github.com/users/john-moffett/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/john-moffett/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Good call. Adding.",
       "created_at": "2023-01-06T15:04:58Z",

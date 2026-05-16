@@ -37,6 +37,7 @@
       "received_events_url": "https://api.github.com/users/mjdietzx/received_events",
       "type": "User",
       "site_admin": false,
+      "name": null,
       "patch_url": null
     },
     "body": "Prior to this commit, when a psbt requiring multiple signers is signed via gui the dialogue is vague/confusing. Whether the signer successfully partially signs the psbt or not the same warning is displayed \"Could not sign any more inputs.\" After signing the tx, the only way for the user to know if their action had any effect is to inspect the psbt (unless it was the last signature that completed the psbt, in which case there is a success dialoge).\r\n\r\nNow we indicate when a psbt has been partially signed, and show how many partial signatures the psbt has in the transaction description.\r\n\r\nHere is what a \"daisy chain\" signing flow for a 4-of-4 multisig looks like via gui. Same as in bitcoin core's functional test [wallet_multisig_descriptor_psbt](https://github.com/bitcoin/bitcoin/blob/d367a4e36f7357c4ebd018e8e1c9c5071db2e1c2/test/functional/wallet_multisig_descriptor_psbt.py#L140-L147)\r\n\r\nFirst signer: \r\n![image](https://github.com/user-attachments/assets/61734da1-b962-41d6-9fd2-c41b7d89708b)\r\n\r\nSecond signer: \r\n![image](https://github.com/user-attachments/assets/fe080f7a-0f55-4ce1-a9dd-87c3ee76517d)\r\n\r\nThird signer: \r\n![image](https://github.com/user-attachments/assets/caaac83e-78f6-4d43-a0df-498d074c82c8)\r\n\r\nFourth and final signer (psbt is complete and can be broadcasted): \r\n![image](https://github.com/user-attachments/assets/36eea1de-6fa9-4668-9162-c87fade2044b)\r\n\r\nBefore this commit, the first-third signers would just see this after signing. It is at best confusing because it is the same warning a signer would see if they were not in the multisig and no signature was added to the psbt:\r\n![image](https://github.com/user-attachments/assets/16f08359-4d6a-4e4c-9807-9f5ebf8a24c6)\r\n",
@@ -93,6 +94,7 @@
         "received_events_url": "https://api.github.com/users/mjdietzx/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "repo": {
@@ -119,6 +121,7 @@
           "received_events_url": "https://api.github.com/users/mjdietzx/received_events",
           "type": "User",
           "site_admin": false,
+          "name": null,
           "patch_url": null
         },
         "private": false,
@@ -227,6 +230,7 @@
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "repo": {
@@ -253,6 +257,7 @@
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
           "site_admin": false,
+          "name": null,
           "patch_url": null
         },
         "private": false,
@@ -302,12 +307,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 321,
-        "stargazers_count": 680,
-        "watchers_count": 680,
-        "size": 179444,
+        "forks_count": 354,
+        "stargazers_count": 725,
+        "watchers_count": 725,
+        "size": 190146,
         "default_branch": "master",
-        "open_issues_count": 150,
+        "open_issues_count": 148,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -318,9 +323,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-10-22T10:50:07Z",
+        "pushed_at": "2026-05-16T00:00:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2025-10-22T10:50:10Z",
+        "updated_at": "2026-05-16T00:00:11Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -378,6 +383,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -405,6 +411,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/832#issuecomment-2259233184",
@@ -434,6 +441,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -468,6 +476,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -495,6 +504,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/832#issuecomment-2259428854",
@@ -564,6 +574,7 @@
         "received_events_url": "https://api.github.com/users/mjdietzx/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "8aec372053706c134999562367b2b656d9bed4fc",
@@ -594,6 +605,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -628,6 +640,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -662,6 +675,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -689,6 +703,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/832#issuecomment-2259861057",
@@ -718,6 +733,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -748,6 +764,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -778,6 +795,7 @@
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -808,6 +826,7 @@
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -845,6 +864,7 @@
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/832#pullrequestreview-2210599733",
@@ -876,6 +896,7 @@
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -903,6 +924,7 @@
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/832#issuecomment-2260948149",
@@ -932,6 +954,7 @@
         "received_events_url": "https://api.github.com/users/mjdietzx/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -959,6 +982,7 @@
         "received_events_url": "https://api.github.com/users/mjdietzx/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/832#issuecomment-2260977081",
@@ -995,6 +1019,7 @@
         "received_events_url": "https://api.github.com/users/BrandonOdiwuor/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/832#pullrequestreview-2247585717",
@@ -1026,6 +1051,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1060,6 +1086,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1094,6 +1121,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1128,6 +1156,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1155,6 +1184,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/832#issuecomment-2633807096",
@@ -1184,6 +1214,7 @@
         "received_events_url": "https://api.github.com/users/w0xlt/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1211,6 +1242,7 @@
         "received_events_url": "https://api.github.com/users/w0xlt/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/832#issuecomment-2776995770",
@@ -1240,6 +1272,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1267,6 +1300,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/832#issuecomment-3021313837",
@@ -1296,6 +1330,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1323,6 +1358,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/832#issuecomment-3342136149",
@@ -1352,6 +1388,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1386,6 +1423,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1413,6 +1451,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/832#issuecomment-3432685420",
@@ -1442,6 +1481,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1481,6 +1521,7 @@
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "optional nit (IMO makes it more clear that includes the just added partial signature):\r\n```suggestion\r\n            tx_description.append(tr(\"Each input now has %1 partial signatures.\").arg(QString::number(num_partial_sigs)));\r\n```",
@@ -1534,6 +1575,7 @@
         "received_events_url": "https://api.github.com/users/mjdietzx/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "Before you sign, if there are already partial sigs on a psbt, this text will show that. For example, 3rd signer in a multisig:\r\n- before signing `tx_description` tells them there are already 2 partial sigs\r\n- they sign and see they have successfully added a partial signature. `tx_description` now tells them there are 3 partial sigs\r\n- if they were to try to sign again, then they'd see the warning \"Could not sign any more inputs.\" at the top of dialog, but `tx_description` would still show there are 3 psbts\r\n\r\nTherefore I think `now` should not be added",
@@ -1587,6 +1629,7 @@
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "Ok, thanks.",

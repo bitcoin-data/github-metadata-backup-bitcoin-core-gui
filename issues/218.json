@@ -32,7 +32,9 @@
       "events_url": "https://api.github.com/users/chaihahaha/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/chaihahaha/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
     },
     "labels": [
       {
@@ -51,6 +53,28 @@
     "active_lock_reason": "resolved",
     "comments": 6,
     "closed_at": "2021-02-23T08:14:05Z",
+    "closed_by": {
+      "login": "maflcko",
+      "id": 6399679,
+      "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/maflcko",
+      "html_url": "https://github.com/maflcko",
+      "followers_url": "https://api.github.com/users/maflcko/followers",
+      "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+      "organizations_url": "https://api.github.com/users/maflcko/orgs",
+      "repos_url": "https://api.github.com/users/maflcko/repos",
+      "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/maflcko/received_events",
+      "type": "User",
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
+    },
     "created_at": "2021-02-23T04:45:53Z",
     "updated_at": "2022-08-16T16:57:47Z"
   },
@@ -78,7 +102,9 @@
         "events_url": "https://api.github.com/users/chaihahaha/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/chaihahaha/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -111,13 +137,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-02-23T06:33:33Z",
       "updated_at": "2021-02-23T07:37:15Z",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "body": "Confirming that I can replicate this issue on master. System: macOS 11.1\r\n\r\nSteps I took to Replicate:\r\n- Create a new Encrypted wallet with `Make Blank Wallet` option selected. This option means that the wallet starts out with no private keys and you can add them in later with `importprivkey` or `sethdseed`\r\n- Go over to console and unlock wallet with `walletpassphrase \"123\" 60`\r\n- In console, run: `importprivkey <priv_key> \"label\"`\r\n- Run `getnewaddress` -> get error: `Error: This wallet has no available keys (code -4)`\r\n\r\nWhile `importprivkey` leads to this error, I can still populate the wallet with a key using `sethdseed` then subsequently create a new address.",
       "user": {
         "login": "jarolrod",
@@ -137,7 +165,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/issues/218#issuecomment-783946010",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/218"
@@ -165,13 +195,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-02-23T07:17:39Z",
       "updated_at": "2021-02-23T07:37:42Z",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "body": "I can also replicate using `bitcoind` and `bitcoin-cli` on master, the debug log says I already have this key in pubkey and already have the script. This is the same issue as outlined in https://github.com/bitcoin/bitcoin/issues/16711. Still cannot create a new address with `getnewaddress` after importing the private key",
       "user": {
         "login": "jarolrod",
@@ -191,7 +223,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/issues/218#issuecomment-783966927",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/218"
@@ -219,7 +253,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -245,7 +281,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/issues/218#issuecomment-783977829",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/218"
@@ -273,7 +311,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -302,7 +342,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -331,7 +373,9 @@
         "events_url": "https://api.github.com/users/chaihahaha/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/chaihahaha/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -360,7 +404,9 @@
         "events_url": "https://api.github.com/users/chaihahaha/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/chaihahaha/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -389,13 +435,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-02-23T07:47:24Z",
       "updated_at": "2021-02-23T07:47:39Z",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "body": "@hebasto After importing a valid private key with `importprivkey` the `keypoolsize` is 0:\r\n```\r\n{\r\n  \"walletname\": \"new-wallet\",\r\n  \"walletversion\": 169900,\r\n  \"format\": \"bdb\",\r\n  \"balance\": 0.00000000,\r\n  \"unconfirmed_balance\": 0.00000000,\r\n  \"immature_balance\": 0.00000000,\r\n  \"txcount\": 0,\r\n  \"keypoololdest\": 1614066198,\r\n  \"keypoolsize\": 0,\r\n  \"keypoolsize_hd_internal\": 0,\r\n  \"paytxfee\": 0.00000000,\r\n  \"private_keys_enabled\": true,\r\n  \"avoid_reuse\": false,\r\n  \"scanning\": false,\r\n  \"descriptors\": false\r\n}\r\n```\r\n\r\nafter running `sethdseed`, it successfully populates with a private key:\r\n```\r\n\r\n{\r\n  \"walletname\": \"new-wallet\",\r\n  \"walletversion\": 169900,\r\n  \"format\": \"bdb\",\r\n  \"balance\": 0.00000000,\r\n  \"unconfirmed_balance\": 0.00000000,\r\n  \"immature_balance\": 0.00000000,\r\n  \"txcount\": 0,\r\n  \"keypoololdest\": 1614066274,\r\n  \"keypoolsize\": 1000,\r\n  \"hdseedid\": \"114871bad9b02312f198bbd5ebd852ae0614b855\",\r\n  \"keypoolsize_hd_internal\": 1000,\r\n  \"paytxfee\": 0.00000000,\r\n  \"private_keys_enabled\": true,\r\n  \"avoid_reuse\": false,\r\n  \"scanning\": false,\r\n  \"descriptors\": false\r\n}\r\n\r\n```\r\n",
       "user": {
         "login": "jarolrod",
@@ -415,7 +463,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/issues/218#issuecomment-783981421",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/218"
@@ -443,7 +493,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -472,7 +524,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -501,7 +555,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -527,7 +583,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/issues/218#issuecomment-783983285",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/218"
@@ -555,13 +613,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-02-23T08:10:05Z",
       "updated_at": "2021-02-23T08:10:05Z",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "body": "This can be closed in favor of https://github.com/bitcoin/bitcoin/issues/21275",
       "user": {
         "login": "jarolrod",
@@ -581,7 +641,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/issues/218#issuecomment-783992931",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/218"
@@ -592,24 +654,26 @@
       "node_id": "MDExOkNsb3NlZEV2ZW50NDM2Mzc3MzYzMg==",
       "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/4363773632",
       "actor": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -638,7 +702,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,

@@ -36,7 +36,9 @@
       "events_url": "https://api.github.com/users/john-moffett/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/john-moffett/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
     },
     "body": "## Misleading message from RPCConsole window ##\r\n\r\nIn certain circumstances, the GUI console will display the message 'Executing command without any wallet' when it is, in fact, using the currently loaded wallet. For instance:\r\n\r\n![scr3](https://user-images.githubusercontent.com/116917595/211404066-d49a6cbf-d3c3-4e89-8720-3583c6acf521.gif)\r\n\r\n\r\nIn RPC calls, if no wallet is explicitly selected and there is exactly one wallet loaded, the [default](https://github.com/bitcoin-core/gui/blob/39363a4b945114f5e4718f75098f3036e8fe6a1d/src/wallet/rpc/util.cpp#L71-L93) is to act on that loaded wallet.\r\n\r\nThe GUI console acts that way in reality, but sometimes erroneously reports that it's not acting on any particular wallet. The root issue is due to the logic that prevents changing the selected wallet if the RPCConsole is visible:\r\n\r\nhttps://github.com/bitcoin-core/gui/blob/39363a4b945114f5e4718f75098f3036e8fe6a1d/src/qt/rpcconsole.cpp#L783-L786\r\n\r\nThis PR removes that unnecessary logic. This does have some ramifications. Prior to this PR, if a user opened the console window without any wallets loaded, then opened two or more wallets, the RPC console would select \"None\" of the wallets and any wallet-specific RPCs would fail. However, the behavior was different if the user hadn't had the console window open. In that case, if they opened the RPC Console window _after_ loading at least the first wallet, it would select the first-loaded wallet. This context-dependent behavior is (IMO) undesirable, and this PR changes it to be consistent. \r\n",
     "labels": [
@@ -63,7 +65,30 @@
     "updated_at": "2024-02-02T12:27:21Z",
     "closed_at": "2023-02-02T12:19:14Z",
     "mergeable_state": "unknown",
+    "merged": true,
     "merged_at": "2023-02-02T12:19:14Z",
+    "merged_by": {
+      "login": "hebasto",
+      "id": 32963518,
+      "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hebasto",
+      "html_url": "https://github.com/hebasto",
+      "followers_url": "https://api.github.com/users/hebasto/followers",
+      "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+      "organizations_url": "https://api.github.com/users/hebasto/orgs",
+      "repos_url": "https://api.github.com/users/hebasto/repos",
+      "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/hebasto/received_events",
+      "type": "User",
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
+    },
     "merge_commit_sha": "ea41abade4b752d9f72a472cd66d7bf330e46ce2",
     "assignees": [],
     "requested_reviewers": [],
@@ -90,7 +115,9 @@
         "events_url": "https://api.github.com/users/john-moffett/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/john-moffett/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 566395938,
@@ -115,7 +142,9 @@
           "events_url": "https://api.github.com/users/john-moffett/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/john-moffett/received_events",
           "type": "User",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/john-moffett/bitcoin-gui",
@@ -167,7 +196,7 @@
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 147678,
+        "size": 179956,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -180,9 +209,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-07-03T17:05:10Z",
+        "pushed_at": "2025-10-30T22:37:31Z",
         "created_at": "2022-11-15T15:31:57Z",
         "updated_at": "2022-11-28T21:03:40Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -222,7 +252,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 272700405,
@@ -247,7 +279,9 @@
           "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/bitcoin-core/gui",
@@ -296,12 +330,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 293,
-        "stargazers_count": 532,
-        "watchers_count": 532,
-        "size": 153542,
+        "forks_count": 354,
+        "stargazers_count": 725,
+        "watchers_count": 725,
+        "size": 190146,
         "default_branch": "master",
-        "open_issues_count": 167,
+        "open_issues_count": 148,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -312,9 +346,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-02-01T16:11:38Z",
+        "pushed_at": "2026-05-16T00:00:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-02-02T04:37:14Z",
+        "updated_at": "2026-05-16T00:00:11Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -410,7 +445,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -436,7 +473,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/695#issuecomment-1376321651",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/695"
@@ -464,7 +503,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -497,7 +538,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -530,7 +573,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -556,7 +601,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/695#issuecomment-1384255437",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/695"
@@ -584,7 +631,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -603,6 +652,7 @@
       "commit_id": "576f7b86147447215566f0b15ef0b56cd1282929",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2023-01-16T16:38:00Z",
       "author_association": "MEMBER",
       "body": "ACK 576f7b86147447215566f0b15ef0b56cd1282929, tested on Ubuntu 22.04 (Qt 5.15.3).\r\n\r\nThis patch also fixes another buggy behavior for me. Steps to reproduce it on the master branch:\r\n1. Run `bitcoin-qt -nowallet`.\r\n2. Open the \"Console\" tab of the \"Node window\".\r\n3. Open a wallet.\r\n4. Run `getwalletinfo` in the \"Console\" tab -- BUG: No \"Executing command using...\" message.\r\n5. Open another wallet.\r\n6. The wallet selector in the \"Console\" tab has the \"none\" value. Not a bug(?), but unexpected behavior (already mentioned in the PR description).",
       "user": {
@@ -623,7 +673,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/695#pullrequestreview-1250446008",
       "submitted_at": "2023-01-16T16:38:00Z",
@@ -653,7 +705,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "ea41abade4b752d9f72a472cd66d7bf330e46ce2",
       "commit_url": "https://api.github.com/repos/bitcoin-core/gui/commits/ea41abade4b752d9f72a472cd66d7bf330e46ce2",
@@ -682,7 +736,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -711,7 +767,9 @@
         "events_url": "https://api.github.com/users/sidhujag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/sidhujag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "bd8dc70d03d83cc8636e4998664ed46efcf6a048",
       "commit_url": "https://api.github.com/repos/syscoin/syscoin/commits/bd8dc70d03d83cc8636e4998664ed46efcf6a048",
@@ -740,7 +798,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,

@@ -37,6 +37,7 @@
       "received_events_url": "https://api.github.com/users/achow101/received_events",
       "type": "User",
       "site_admin": false,
+      "name": null,
       "patch_url": null
     },
     "body": "Currently the Migrate Wallet menu item can only be used to migrate the currently loaded wallet. This is not suitable for the future when legacy wallets can no longer be loaded at all, but should still be able to be migrated. This PR changes that menu item into a menu list like Open Wallet and lets users migrate any legacy wallet in their wallet directory regardless of the wallets loaded.\r\n\r\nOne issue I ran into was dealing with encrypted wallets. Ideally, we would detect whether a wallet is encrypted, and prompt the user for their passphrase at that time. However, that's actually difficult to do in the GUI since migration will unload the wallet if it was already loaded, and reload it without connecting it to any signals or interfaces. Only then can it detect whether a wallet is encrypted, but then there is no `WalletModel` or even an `interfaces::Wallet` that the GUI could use to unlock it via a callback.\r\n\r\nTo deal with this, I've opted to just add a button to the migration dialog box that has the user enter their passphrase first, along with instructional text to use that button if their wallet was encrypted. If the user enters the wrong passphrase or clicked the other button that does not prompt for the passphrase, migration will fail with a message indicating that the passphrase was incorrect.",
@@ -80,6 +81,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "open_issues": 0,
@@ -112,6 +114,7 @@
       "received_events_url": "https://api.github.com/users/hebasto/received_events",
       "type": "User",
       "site_admin": false,
+      "name": null,
       "patch_url": null
     },
     "merge_commit_sha": "e682e7db7e399ce888e492eab8f99c389aae05b5",
@@ -141,6 +144,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "repo": {
@@ -167,6 +171,7 @@
           "received_events_url": "https://api.github.com/users/achow101/received_events",
           "type": "User",
           "site_admin": false,
+          "name": null,
           "patch_url": null
         },
         "private": false,
@@ -218,7 +223,7 @@
         "forks_count": 0,
         "stargazers_count": 2,
         "watchers_count": 2,
-        "size": 172570,
+        "size": 190644,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -231,7 +236,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-06-20T20:56:36Z",
+        "pushed_at": "2026-04-29T18:09:11Z",
         "created_at": "2020-11-12T20:04:24Z",
         "updated_at": "2025-08-07T03:07:40Z",
         "allow_forking": true,
@@ -275,6 +280,7 @@
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "repo": {
@@ -301,6 +307,7 @@
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
           "site_admin": false,
+          "name": null,
           "patch_url": null
         },
         "private": false,
@@ -350,12 +357,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 312,
-        "stargazers_count": 666,
-        "watchers_count": 666,
-        "size": 175119,
+        "forks_count": 354,
+        "stargazers_count": 725,
+        "watchers_count": 725,
+        "size": 190146,
         "default_branch": "master",
-        "open_issues_count": 154,
+        "open_issues_count": 148,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -366,9 +373,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-08-15T11:13:43Z",
+        "pushed_at": "2026-05-16T00:00:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2025-08-15T11:19:38Z",
+        "updated_at": "2026-05-16T00:00:11Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -426,6 +433,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -453,6 +461,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/824#issuecomment-2159249212",
@@ -482,6 +491,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -515,6 +525,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -548,6 +559,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "bc8a218a1dfb42548017d1fbe1b5861e236095f0",
@@ -578,6 +590,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -612,6 +625,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -639,6 +653,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/824#issuecomment-2159966884",
@@ -668,6 +683,7 @@
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -695,6 +711,7 @@
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/824#issuecomment-2163848450",
@@ -724,6 +741,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -751,6 +769,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/824#issuecomment-2163926995",
@@ -780,6 +799,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "d45ac03a89cc500cd461f878f092cf8ec99e7760",
@@ -817,6 +837,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/824#pullrequestreview-2176626111",
@@ -848,6 +869,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -875,6 +897,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/824#issuecomment-2227310588",
@@ -904,6 +927,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -931,6 +955,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/824#issuecomment-2255472610",
@@ -960,6 +985,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1001,6 +1027,7 @@
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/824#pullrequestreview-2211182348",
@@ -1032,6 +1059,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1056,6 +1084,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "review_requester": {
@@ -1077,6 +1106,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       }
     },
@@ -1104,6 +1134,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1137,6 +1168,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "bcf47b9f34e4f21e5ac75521ddd4f25ff3812412",
@@ -1167,6 +1199,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1194,6 +1227,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/824#issuecomment-2276010915",
@@ -1223,6 +1257,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1257,6 +1292,7 @@
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1284,6 +1320,7 @@
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/824#issuecomment-2276180981",
@@ -1320,6 +1357,7 @@
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/824#pullrequestreview-2230620169",
@@ -1358,6 +1396,7 @@
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/824#pullrequestreview-2231855105",
@@ -1389,6 +1428,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1423,6 +1463,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "df9c1ef696bf818f41cad402b1fccd148827cd70",
@@ -1453,6 +1494,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1487,6 +1529,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1528,6 +1571,7 @@
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/824#pullrequestreview-2235734674",
@@ -1559,6 +1603,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "be93d63db4a61c3f4b5127943d409659cfb33955",
@@ -1749,6 +1794,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "fd087d4667b94051d00617189dcecc4f88d849ce",
@@ -1779,6 +1825,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1806,6 +1853,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/824#issuecomment-2286529365",
@@ -1835,6 +1883,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1876,6 +1925,7 @@
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/824#pullrequestreview-2236408618",
@@ -1907,6 +1957,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1931,6 +1982,7 @@
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "review_requester": {
@@ -1952,6 +2004,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       }
     },
@@ -1986,6 +2039,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/824#pullrequestreview-2236548045",
@@ -2057,6 +2111,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "8f2522d242961ceb9e79672aa43e856863a1a6dd",
@@ -2094,6 +2149,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/824#pullrequestreview-2237595730",
@@ -2125,6 +2181,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -2149,6 +2206,7 @@
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "review_requester": {
@@ -2170,6 +2228,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       }
     },
@@ -2197,6 +2256,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -2224,6 +2284,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/824#issuecomment-2288250542",
@@ -2253,6 +2314,7 @@
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -2283,6 +2345,7 @@
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -2320,6 +2383,7 @@
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/824#pullrequestreview-2238083184",
@@ -2351,6 +2415,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "e682e7db7e399ce888e492eab8f99c389aae05b5",
@@ -2381,6 +2446,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -2411,6 +2477,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -2451,6 +2518,7 @@
         "received_events_url": "https://api.github.com/users/MarnixCroes/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/824#pullrequestreview-2238653261",
@@ -2489,6 +2557,7 @@
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/824#pullrequestreview-2240673487",
@@ -2520,6 +2589,7 @@
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "c2ac37d385fd7ebdaeb254365930f4f24591c41a",
@@ -2550,6 +2620,7 @@
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -2589,6 +2660,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "Apparently, this code has been dead since introducing in https://github.com/bitcoin-core/gui/pull/738.",
@@ -2618,7 +2690,7 @@
       "node_id": "PRRC_kwDOEEET9c5j9qiS",
       "diff_hunk": "@@ -456,10 +457,33 @@ void BitcoinGUI::createActions()\n         connect(m_close_all_wallets_action, &QAction::triggered, [this] {\n             m_wallet_controller->closeAllWallets(this);\n         });\n-        connect(m_migrate_wallet_action, &QAction::triggered, [this] {\n-            auto activity = new MigrateWalletActivity(m_wallet_controller, this);\n-            connect(activity, &MigrateWalletActivity::migrated, this, &BitcoinGUI::setCurrentWallet);\n-            activity->migrate(walletFrame->currentWalletModel());\n+        connect(m_migrate_wallet_menu, &QMenu::aboutToShow, [this] {\n+            m_migrate_wallet_menu->clear();\n+            for (const auto& [wallet_name, info] : m_wallet_controller->listWalletDir()) {\n+                const auto& [loaded, format] = info;\n+                QString name = GUIUtil::WalletDisplayName(wallet_name);\n+                // Menu items remove single &. Single & are shown when && is in\n+                // the string, but only the first occurrence. So replace only\n+                // the first & with &&.\n+                name.replace(name.indexOf(QChar('&')), 1, QString(\"&&\"));",
       "path": "src/qt/bitcoingui.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 45,
       "commit_id": "8f2522d242961ceb9e79672aa43e856863a1a6dd",
       "original_commit_id": "d45ac03a89cc500cd461f878f092cf8ec99e7760",
@@ -2642,6 +2714,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "https://github.com/bitcoin-core/gui/pull/828 can relevant to this code.",
@@ -2671,7 +2744,7 @@
       "node_id": "PRRC_kwDOEEET9c5j9qlC",
       "diff_hunk": "@@ -26,6 +26,7 @@ class AskPassphraseDialog : public QDialog\n         Encrypt,    /**< Ask passphrase twice and encrypt */\n         Unlock,     /**< Ask passphrase and unlock */\n         ChangePass, /**< Ask old passphrase + new passphrase twice */\n+        UnlockMigration, // Ask passphrase for unlocking during migration",
       "path": "src/qt/askpassphrasedialog.h",
-      "position": null,
+      "position": 1,
       "original_position": 4,
       "commit_id": "8f2522d242961ceb9e79672aa43e856863a1a6dd",
       "original_commit_id": "d45ac03a89cc500cd461f878f092cf8ec99e7760",
@@ -2695,6 +2768,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "Mind following the Doxygen comment formatting above?",
@@ -2724,7 +2798,7 @@
       "node_id": "PRRC_kwDOEEET9c5j9qr9",
       "diff_hunk": "@@ -46,6 +46,7 @@ enum isminetype : unsigned int;\n struct CRecipient;\n struct WalletContext;\n using isminefilter = std::underlying_type<isminetype>::type;\n+enum class DatabaseFormat;",
       "path": "src/interfaces/wallet.h",
-      "position": null,
+      "position": 1,
       "original_position": 4,
       "commit_id": "8f2522d242961ceb9e79672aa43e856863a1a6dd",
       "original_commit_id": "d45ac03a89cc500cd461f878f092cf8ec99e7760",
@@ -2748,6 +2822,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "Why is this line needed?",
@@ -2777,7 +2852,7 @@
       "node_id": "PRRC_kwDOEEET9c5lOjt5",
       "diff_hunk": "@@ -456,10 +457,33 @@ void BitcoinGUI::createActions()\n         connect(m_close_all_wallets_action, &QAction::triggered, [this] {\n             m_wallet_controller->closeAllWallets(this);\n         });\n-        connect(m_migrate_wallet_action, &QAction::triggered, [this] {\n-            auto activity = new MigrateWalletActivity(m_wallet_controller, this);\n-            connect(activity, &MigrateWalletActivity::migrated, this, &BitcoinGUI::setCurrentWallet);\n-            activity->migrate(walletFrame->currentWalletModel());\n+        connect(m_migrate_wallet_menu, &QMenu::aboutToShow, [this] {\n+            m_migrate_wallet_menu->clear();\n+            for (const auto& [wallet_name, info] : m_wallet_controller->listWalletDir()) {\n+                const auto& [loaded, format] = info;\n+                QString name = GUIUtil::WalletDisplayName(wallet_name);\n+                // Menu items remove single &. Single & are shown when && is in\n+                // the string, but only the first occurrence. So replace only\n+                // the first & with &&.\n+                name.replace(name.indexOf(QChar('&')), 1, QString(\"&&\"));",
       "path": "src/qt/bitcoingui.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 45,
       "commit_id": "8f2522d242961ceb9e79672aa43e856863a1a6dd",
       "original_commit_id": "d45ac03a89cc500cd461f878f092cf8ec99e7760",
@@ -2801,6 +2876,7 @@
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "Since #828 has been merged, please keep in mind this update...\r\n```suggestion\r\n                // Single & are shown when && is in the string. So replace & with &&.\r\n                name.replace(QChar('&'), QString(\"&&\"));\r\n```",
@@ -2830,7 +2906,7 @@
       "node_id": "PRRC_kwDOEEET9c5l54JN",
       "diff_hunk": "@@ -456,10 +457,33 @@ void BitcoinGUI::createActions()\n         connect(m_close_all_wallets_action, &QAction::triggered, [this] {\n             m_wallet_controller->closeAllWallets(this);\n         });\n-        connect(m_migrate_wallet_action, &QAction::triggered, [this] {\n-            auto activity = new MigrateWalletActivity(m_wallet_controller, this);\n-            connect(activity, &MigrateWalletActivity::migrated, this, &BitcoinGUI::setCurrentWallet);\n-            activity->migrate(walletFrame->currentWalletModel());\n+        connect(m_migrate_wallet_menu, &QMenu::aboutToShow, [this] {\n+            m_migrate_wallet_menu->clear();\n+            for (const auto& [wallet_name, info] : m_wallet_controller->listWalletDir()) {\n+                const auto& [loaded, format] = info;\n+                QString name = GUIUtil::WalletDisplayName(wallet_name);\n+                // Menu items remove single &. Single & are shown when && is in\n+                // the string, but only the first occurrence. So replace only\n+                // the first & with &&.\n+                name.replace(name.indexOf(QChar('&')), 1, QString(\"&&\"));",
       "path": "src/qt/bitcoingui.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 45,
       "commit_id": "8f2522d242961ceb9e79672aa43e856863a1a6dd",
       "original_commit_id": "d45ac03a89cc500cd461f878f092cf8ec99e7760",
@@ -2854,6 +2930,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "Fixed during rebase.",
@@ -2883,7 +2960,7 @@
       "node_id": "PRRC_kwDOEEET9c5l54Ly",
       "diff_hunk": "@@ -26,6 +26,7 @@ class AskPassphraseDialog : public QDialog\n         Encrypt,    /**< Ask passphrase twice and encrypt */\n         Unlock,     /**< Ask passphrase and unlock */\n         ChangePass, /**< Ask old passphrase + new passphrase twice */\n+        UnlockMigration, // Ask passphrase for unlocking during migration",
       "path": "src/qt/askpassphrasedialog.h",
-      "position": null,
+      "position": 1,
       "original_position": 4,
       "commit_id": "8f2522d242961ceb9e79672aa43e856863a1a6dd",
       "original_commit_id": "d45ac03a89cc500cd461f878f092cf8ec99e7760",
@@ -2907,6 +2984,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "Done",
@@ -2936,7 +3014,7 @@
       "node_id": "PRRC_kwDOEEET9c5l54PN",
       "diff_hunk": "@@ -46,6 +46,7 @@ enum isminetype : unsigned int;\n struct CRecipient;\n struct WalletContext;\n using isminefilter = std::underlying_type<isminetype>::type;\n+enum class DatabaseFormat;",
       "path": "src/interfaces/wallet.h",
-      "position": null,
+      "position": 1,
       "original_position": 4,
       "commit_id": "8f2522d242961ceb9e79672aa43e856863a1a6dd",
       "original_commit_id": "d45ac03a89cc500cd461f878f092cf8ec99e7760",
@@ -2960,6 +3038,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "Removed",
@@ -2989,7 +3068,7 @@
       "node_id": "PRRC_kwDOEEET9c5mGqC6",
       "diff_hunk": "@@ -455,10 +456,33 @@ void BitcoinGUI::createActions()\n         connect(m_close_all_wallets_action, &QAction::triggered, [this] {\n             m_wallet_controller->closeAllWallets(this);\n         });\n-        connect(m_migrate_wallet_action, &QAction::triggered, [this] {\n-            auto activity = new MigrateWalletActivity(m_wallet_controller, this);\n-            connect(activity, &MigrateWalletActivity::migrated, this, &BitcoinGUI::setCurrentWallet);\n-            activity->migrate(walletFrame->currentWalletModel()->wallet().getWalletName());\n+        connect(m_migrate_wallet_menu, &QMenu::aboutToShow, [this] {\n+            m_migrate_wallet_menu->clear();\n+            for (const auto& [wallet_name, info] : m_wallet_controller->listWalletDir()) {\n+                const auto& [loaded, format] = info;\n+                QString name = GUIUtil::WalletDisplayName(wallet_name);\n+                // Menu items remove single &. Single & are shown when && is in\n+                // the string, but only the first occurrence. So replace only\n+                // the first & with &&.\n+                name.replace(name.indexOf(QChar('&')), 1, QString(\"&&\"));\n+                QAction* action = m_migrate_wallet_menu->addAction(name);\n+\n+                if (format != \"bdb\") {\n+                    // This wallet is already migrated\n+                    action->setEnabled(false);\n+                    continue;\n+                }",
       "path": "src/qt/bitcoingui.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 31,
       "commit_id": "8f2522d242961ceb9e79672aa43e856863a1a6dd",
       "original_commit_id": "bcf47b9f34e4f21e5ac75521ddd4f25ff3812412",
@@ -3013,6 +3092,7 @@
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "I don't think showing the already migrated wallets here adds any value. The user cannot do anything with them and they do not present any extra information. I would skip them:\r\n```diff\r\ndiff --git a/src/qt/bitcoingui.cpp b/src/qt/bitcoingui.cpp\r\n--- a/src/qt/bitcoingui.cpp\r\n+++ b/src/qt/bitcoingui.cpp\r\n@@ -460,6 +460,10 @@\r\n             m_migrate_wallet_menu->clear();\r\n             for (const auto& [wallet_name, info] : m_wallet_controller->listWalletDir()) {\r\n                 const auto& [loaded, format] = info;\r\n+                if (format != \"bdb\") { // skip already migrated wallets\r\n+                    continue;\r\n+                }\r\n+\r\n                 QString name = GUIUtil::WalletDisplayName(wallet_name);\r\n                 // Menu items remove single &. Single & are shown when && is in\r\n                 // the string, but only the first occurrence. So replace only\r\n@@ -467,12 +471,6 @@\r\n                 name.replace(name.indexOf(QChar('&')), 1, QString(\"&&\"));\r\n                 QAction* action = m_migrate_wallet_menu->addAction(name);\r\n-\r\n-                if (format != \"bdb\") {\r\n-                    // This wallet is already migrated\r\n-                    action->setEnabled(false);\r\n-                    continue;\r\n-                }\r\n-\r\n                 connect(action, &QAction::triggered, [this, wallet_name] {\r\n                     auto activity = new MigrateWalletActivity(m_wallet_controller, this);\r\n                     connect(activity, &MigrateWalletActivity::migrated, this, &BitcoinGUI::setCurrentWallet);\r\n```",
@@ -3066,6 +3146,7 @@
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "Compilation error: `error: 'wallet_name' in capture list does not name a variable`.\r\n\r\nIt seems the lambda expression cannot capture the structured binding. A local reference of the variable fixes it.\r\n\r\nSame happens on the `m_open_wallet_menu` action lambda with the \"path\" variable.",
@@ -3095,7 +3176,7 @@
       "node_id": "PRRC_kwDOEEET9c5mKUc-",
       "diff_hunk": "@@ -436,47 +445,50 @@ void RestoreWalletActivity::finish()\n     Q_EMIT finished();\n }\n \n-void MigrateWalletActivity::migrate(WalletModel* wallet_model)\n+void MigrateWalletActivity::migrate(const std::string& name)\n {\n     // Warn the user about migration\n     QMessageBox box(m_parent_widget);\n     box.setWindowTitle(tr(\"Migrate wallet\"));\n-    box.setText(tr(\"Are you sure you wish to migrate the wallet <i>%1</i>?\").arg(GUIUtil::HtmlEscape(wallet_model->getDisplayName())));\n+    box.setText(tr(\"Are you sure you wish to migrate the wallet <i>%1</i>?\").arg(GUIUtil::HtmlEscape(GUIUtil::WalletDisplayName(name))));\n     box.setInformativeText(tr(\"Migrating the wallet will convert this wallet to one or more descriptor wallets. A new wallet backup will need to be made.\\n\"\n                 \"If this wallet contains any watchonly scripts, a new wallet will be created which contains those watchonly scripts.\\n\"\n                 \"If this wallet contains any solvable but not watched scripts, a different and new wallet will be created which contains those scripts.\\n\\n\"\n                 \"The migration process will create a backup of the wallet before migrating. This backup file will be named \"\n                 \"<wallet name>-<timestamp>.legacy.bak and can be found in the directory for this wallet. In the event of \"\n-                \"an incorrect migration, the backup can be restored with the \\\"Restore Wallet\\\" functionality.\"));\n-    box.setStandardButtons(QMessageBox::Yes|QMessageBox::Cancel);\n-    box.setDefaultButton(QMessageBox::Yes);\n-    if (box.exec() != QMessageBox::Yes) return;\n+                \"an incorrect migration, the backup can be restored with the \\\"Restore Wallet\\\" functionality.\\n\\n\"\n+                \"If your wallet is encrypted, please provide the passphrase now as by choosing \\\"Yes, encrypted\\\".\"));\n+    QPushButton* yes_enc_button = box.addButton(tr(\"Yes, encrypted\"), QMessageBox::YesRole);\n+    QPushButton* yes_button = box.addButton(QMessageBox::Yes);\n+    QPushButton* cancel_button = box.addButton(QMessageBox::Cancel);\n+    box.setDefaultButton(yes_button);\n+    box.exec();\n+    if (!box.clickedButton() || box.clickedButton() == (QAbstractButton*)cancel_button) return;\n \n-    // Get the passphrase if it is encrypted regardless of it is locked or unlocked. We need the passphrase itself.\n     SecureString passphrase;\n-    WalletModel::EncryptionStatus enc_status = wallet_model->getEncryptionStatus();\n-    if (enc_status == WalletModel::EncryptionStatus::Locked || enc_status == WalletModel::EncryptionStatus::Unlocked) {\n-        AskPassphraseDialog dlg(AskPassphraseDialog::Unlock, m_parent_widget, &passphrase);\n-        dlg.setModel(wallet_model);\n-        dlg.exec();\n+    if (box.clickedButton() == (QAbstractButton*)yes_enc_button) {\n+        // Get the passphrase for the wallet\n+        AskPassphraseDialog dlg(AskPassphraseDialog::UnlockMigration, m_parent_widget, &passphrase);\n+        if (dlg.exec() == QDialog::Rejected) return;\n     }\n \n     // GUI needs to remove the wallet so that it can actually be unloaded by migration\n-    const std::string name = wallet_model->wallet().getWalletName();\n-    m_wallet_controller->removeAndDeleteWallet(wallet_model);\n+    if (WalletModel* wallet = m_wallet_controller->getWallet(name)) {\n+        m_wallet_controller->removeAndDeleteWallet(wallet);\n+    };",
       "path": "src/qt/walletcontroller.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 64,
       "commit_id": "8f2522d242961ceb9e79672aa43e856863a1a6dd",
       "original_commit_id": "2c116ea99f6491fae00bd1738a63adceb5c7c89f",
@@ -3119,6 +3200,7 @@
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "We don't actually need to do this. Could cherry-pick https://github.com/furszy/bitcoin-core/commit/f5c0c58977a8989fe17db361d179281d051b0806 and remove the introduced `getWallet` function.",
@@ -3172,6 +3254,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "What compiler? I'm not seeing this error, and it seems neither did CI.",
@@ -3201,7 +3284,7 @@
       "node_id": "PRRC_kwDOEEET9c5mK6r0",
       "diff_hunk": "@@ -455,10 +456,33 @@ void BitcoinGUI::createActions()\n         connect(m_close_all_wallets_action, &QAction::triggered, [this] {\n             m_wallet_controller->closeAllWallets(this);\n         });\n-        connect(m_migrate_wallet_action, &QAction::triggered, [this] {\n-            auto activity = new MigrateWalletActivity(m_wallet_controller, this);\n-            connect(activity, &MigrateWalletActivity::migrated, this, &BitcoinGUI::setCurrentWallet);\n-            activity->migrate(walletFrame->currentWalletModel()->wallet().getWalletName());\n+        connect(m_migrate_wallet_menu, &QMenu::aboutToShow, [this] {\n+            m_migrate_wallet_menu->clear();\n+            for (const auto& [wallet_name, info] : m_wallet_controller->listWalletDir()) {\n+                const auto& [loaded, format] = info;\n+                QString name = GUIUtil::WalletDisplayName(wallet_name);\n+                // Menu items remove single &. Single & are shown when && is in\n+                // the string, but only the first occurrence. So replace only\n+                // the first & with &&.\n+                name.replace(name.indexOf(QChar('&')), 1, QString(\"&&\"));\n+                QAction* action = m_migrate_wallet_menu->addAction(name);\n+\n+                if (format != \"bdb\") {\n+                    // This wallet is already migrated\n+                    action->setEnabled(false);\n+                    continue;\n+                }",
       "path": "src/qt/bitcoingui.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 31,
       "commit_id": "8f2522d242961ceb9e79672aa43e856863a1a6dd",
       "original_commit_id": "bcf47b9f34e4f21e5ac75521ddd4f25ff3812412",
@@ -3225,6 +3308,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "Done",
@@ -3254,7 +3338,7 @@
       "node_id": "PRRC_kwDOEEET9c5mK6uU",
       "diff_hunk": "@@ -436,47 +445,50 @@ void RestoreWalletActivity::finish()\n     Q_EMIT finished();\n }\n \n-void MigrateWalletActivity::migrate(WalletModel* wallet_model)\n+void MigrateWalletActivity::migrate(const std::string& name)\n {\n     // Warn the user about migration\n     QMessageBox box(m_parent_widget);\n     box.setWindowTitle(tr(\"Migrate wallet\"));\n-    box.setText(tr(\"Are you sure you wish to migrate the wallet <i>%1</i>?\").arg(GUIUtil::HtmlEscape(wallet_model->getDisplayName())));\n+    box.setText(tr(\"Are you sure you wish to migrate the wallet <i>%1</i>?\").arg(GUIUtil::HtmlEscape(GUIUtil::WalletDisplayName(name))));\n     box.setInformativeText(tr(\"Migrating the wallet will convert this wallet to one or more descriptor wallets. A new wallet backup will need to be made.\\n\"\n                 \"If this wallet contains any watchonly scripts, a new wallet will be created which contains those watchonly scripts.\\n\"\n                 \"If this wallet contains any solvable but not watched scripts, a different and new wallet will be created which contains those scripts.\\n\\n\"\n                 \"The migration process will create a backup of the wallet before migrating. This backup file will be named \"\n                 \"<wallet name>-<timestamp>.legacy.bak and can be found in the directory for this wallet. In the event of \"\n-                \"an incorrect migration, the backup can be restored with the \\\"Restore Wallet\\\" functionality.\"));\n-    box.setStandardButtons(QMessageBox::Yes|QMessageBox::Cancel);\n-    box.setDefaultButton(QMessageBox::Yes);\n-    if (box.exec() != QMessageBox::Yes) return;\n+                \"an incorrect migration, the backup can be restored with the \\\"Restore Wallet\\\" functionality.\\n\\n\"\n+                \"If your wallet is encrypted, please provide the passphrase now as by choosing \\\"Yes, encrypted\\\".\"));\n+    QPushButton* yes_enc_button = box.addButton(tr(\"Yes, encrypted\"), QMessageBox::YesRole);\n+    QPushButton* yes_button = box.addButton(QMessageBox::Yes);\n+    QPushButton* cancel_button = box.addButton(QMessageBox::Cancel);\n+    box.setDefaultButton(yes_button);\n+    box.exec();\n+    if (!box.clickedButton() || box.clickedButton() == (QAbstractButton*)cancel_button) return;\n \n-    // Get the passphrase if it is encrypted regardless of it is locked or unlocked. We need the passphrase itself.\n     SecureString passphrase;\n-    WalletModel::EncryptionStatus enc_status = wallet_model->getEncryptionStatus();\n-    if (enc_status == WalletModel::EncryptionStatus::Locked || enc_status == WalletModel::EncryptionStatus::Unlocked) {\n-        AskPassphraseDialog dlg(AskPassphraseDialog::Unlock, m_parent_widget, &passphrase);\n-        dlg.setModel(wallet_model);\n-        dlg.exec();\n+    if (box.clickedButton() == (QAbstractButton*)yes_enc_button) {\n+        // Get the passphrase for the wallet\n+        AskPassphraseDialog dlg(AskPassphraseDialog::UnlockMigration, m_parent_widget, &passphrase);\n+        if (dlg.exec() == QDialog::Rejected) return;\n     }\n \n     // GUI needs to remove the wallet so that it can actually be unloaded by migration\n-    const std::string name = wallet_model->wallet().getWalletName();\n-    m_wallet_controller->removeAndDeleteWallet(wallet_model);\n+    if (WalletModel* wallet = m_wallet_controller->getWallet(name)) {\n+        m_wallet_controller->removeAndDeleteWallet(wallet);\n+    };",
       "path": "src/qt/walletcontroller.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 64,
       "commit_id": "8f2522d242961ceb9e79672aa43e856863a1a6dd",
       "original_commit_id": "2c116ea99f6491fae00bd1738a63adceb5c7c89f",
@@ -3278,6 +3362,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "Cherry picked.",
@@ -3331,6 +3416,7 @@
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "> What compiler? I'm not seeing this error, and it seems neither did CI.\r\n\r\nclang 14.0.3 (clang-1403.0.22.14.1).",
@@ -3360,7 +3446,7 @@
       "node_id": "PRRC_kwDOEEET9c5mRrSJ",
       "diff_hunk": "@@ -456,10 +457,33 @@ void BitcoinGUI::createActions()\n         connect(m_close_all_wallets_action, &QAction::triggered, [this] {\n             m_wallet_controller->closeAllWallets(this);\n         });\n-        connect(m_migrate_wallet_action, &QAction::triggered, [this] {\n-            auto activity = new MigrateWalletActivity(m_wallet_controller, this);\n-            connect(activity, &MigrateWalletActivity::migrated, this, &BitcoinGUI::setCurrentWallet);\n-            activity->migrate(walletFrame->currentWalletModel());\n+        connect(m_migrate_wallet_menu, &QMenu::aboutToShow, [this] {\n+            m_migrate_wallet_menu->clear();\n+            for (const auto& [wallet_name, info] : m_wallet_controller->listWalletDir()) {\n+                const auto& [loaded, format] = info;\n+                QString name = GUIUtil::WalletDisplayName(wallet_name);\n+                // Menu items remove single &. Single & are shown when && is in\n+                // the string, but only the first occurrence. So replace only\n+                // the first & with &&.\n+                name.replace(name.indexOf(QChar('&')), 1, QString(\"&&\"));",
       "path": "src/qt/bitcoingui.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 45,
       "commit_id": "8f2522d242961ceb9e79672aa43e856863a1a6dd",
       "original_commit_id": "d45ac03a89cc500cd461f878f092cf8ec99e7760",
@@ -3384,6 +3470,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "> Fixed during rebase.\r\n\r\nIt still needs to be fixed.",
@@ -3413,7 +3500,7 @@
       "node_id": "PRRC_kwDOEEET9c5mSVit",
       "diff_hunk": "@@ -456,10 +457,33 @@ void BitcoinGUI::createActions()\n         connect(m_close_all_wallets_action, &QAction::triggered, [this] {\n             m_wallet_controller->closeAllWallets(this);\n         });\n-        connect(m_migrate_wallet_action, &QAction::triggered, [this] {\n-            auto activity = new MigrateWalletActivity(m_wallet_controller, this);\n-            connect(activity, &MigrateWalletActivity::migrated, this, &BitcoinGUI::setCurrentWallet);\n-            activity->migrate(walletFrame->currentWalletModel());\n+        connect(m_migrate_wallet_menu, &QMenu::aboutToShow, [this] {\n+            m_migrate_wallet_menu->clear();\n+            for (const auto& [wallet_name, info] : m_wallet_controller->listWalletDir()) {\n+                const auto& [loaded, format] = info;\n+                QString name = GUIUtil::WalletDisplayName(wallet_name);\n+                // Menu items remove single &. Single & are shown when && is in\n+                // the string, but only the first occurrence. So replace only\n+                // the first & with &&.\n+                name.replace(name.indexOf(QChar('&')), 1, QString(\"&&\"));",
       "path": "src/qt/bitcoingui.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 45,
       "commit_id": "8f2522d242961ceb9e79672aa43e856863a1a6dd",
       "original_commit_id": "d45ac03a89cc500cd461f878f092cf8ec99e7760",
@@ -3437,6 +3524,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "Ah, missed one, fixed.",
@@ -3490,6 +3578,7 @@
         "received_events_url": "https://api.github.com/users/MarnixCroes/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "nit: maybe a more descriptive text would be good?\r\nsomething like `No wallets that need to be migrated`\r\n\r\nfor people who don't know about the migration and why/what it is.\r\nseeing _No wallets available_ while they have wallet(s) might seem wrong/confusing.\r\n\r\nsry for commenting post-merge",

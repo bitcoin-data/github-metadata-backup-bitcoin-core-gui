@@ -37,6 +37,7 @@
       "received_events_url": "https://api.github.com/users/theStack/received_events",
       "type": "User",
       "site_admin": false,
+      "name": null,
       "patch_url": null
     },
     "body": "Legacy addresses are less and less common these days and not recommended to use, so it seems senseful to also reflect that in the example addresses and update to the most recent address / output type (bech32m / P2TR). Also, as I couldn't see any value in computing these at runtime, they are pre-generated. This was done with the following Python script, executed in `./test/functional` (it's also included in the commit body, though without the she-bang):\r\n```python\r\n#!/usr/bin/env python3\r\nfrom test_framework.segwit_addr import CHARSET, decode_segwit_address, encode_segwit_address\r\nfrom test_framework.messages import sha256\r\n\r\noutput_key = sha256(b'bitcoin dummy taproot output key')\r\nfor network, hrp in [('mainnet', 'bc'), ('signet', 'tb'), ('testnet', 'tb'), ('regtest', 'bcrt')]:\r\n    dummy_address = encode_segwit_address(hrp, 1, output_key)\r\n    while decode_segwit_address(hrp, dummy_address) != (None, None):\r\n        last_char = CHARSET[(CHARSET.index(dummy_address[-1]) + 1) % 32]\r\n        dummy_address = dummy_address[:-1] + last_char\r\n    print(f'{network:7} example address: {dummy_address}')\r\n```\r\n\r\nNote that the last bech32 character is modified in order to make the checksum fail.\r\n\r\nmaster (mainnet):\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/91535/8c94cc1e-5649-47ed-8b2d-33b18654f6a2)\r\n\r\nPR (mainnet):\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/91535/1ce208a6-1218-4850-93e0-5323c73e9049)\r\n",
@@ -66,6 +67,7 @@
       "received_events_url": "https://api.github.com/users/hebasto/received_events",
       "type": "User",
       "site_admin": false,
+      "name": null,
       "patch_url": null
     },
     "merge_commit_sha": "c05c214f2e9cfd6070a3c7680bfa09358fd9d97a",
@@ -90,6 +92,7 @@
         "received_events_url": "https://api.github.com/users/MarnixCroes/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       }
     ],
@@ -117,6 +120,7 @@
         "received_events_url": "https://api.github.com/users/theStack/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "repo": {
@@ -143,6 +147,7 @@
           "received_events_url": "https://api.github.com/users/theStack/received_events",
           "type": "User",
           "site_admin": false,
+          "name": null,
           "patch_url": null
         },
         "private": false,
@@ -192,8 +197,8 @@
         "svn_url": "https://github.com/theStack/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "forks_count": 0,
-        "stargazers_count": 1,
-        "watchers_count": 1,
+        "stargazers_count": 0,
+        "watchers_count": 0,
         "size": 159436,
         "default_branch": "master",
         "open_issues_count": 0,
@@ -209,7 +214,7 @@
         "visibility": "public",
         "pushed_at": "2025-03-17T09:28:36Z",
         "created_at": "2023-03-13T22:40:28Z",
-        "updated_at": "2024-09-28T22:45:39Z",
+        "updated_at": "2025-08-07T03:10:13Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -251,6 +256,7 @@
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "repo": {
@@ -277,6 +283,7 @@
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
           "site_admin": false,
+          "name": null,
           "patch_url": null
         },
         "private": false,
@@ -326,12 +333,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 293,
-        "stargazers_count": 642,
-        "watchers_count": 642,
-        "size": 170355,
+        "forks_count": 354,
+        "stargazers_count": 725,
+        "watchers_count": 725,
+        "size": 190146,
         "default_branch": "master",
-        "open_issues_count": 153,
+        "open_issues_count": 148,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -342,9 +349,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-04-17T17:51:45Z",
+        "pushed_at": "2026-05-16T00:00:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2025-04-17T17:51:51Z",
+        "updated_at": "2026-05-16T00:00:11Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -402,6 +409,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -429,6 +437,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/808#issuecomment-2015510084",
@@ -458,6 +467,7 @@
         "received_events_url": "https://api.github.com/users/theStack/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "960b2d401e2fb4b657446305df7a4a0de50ece67",
@@ -473,6 +483,7 @@
       "commit_id": "960b2d401e2fb4b657446305df7a4a0de50ece67",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2024-03-22T17:41:01Z",
       "author_association": "CONTRIBUTOR",
       "body": "cACK\r\n\r\nUsing the default address type (bech32) for this makes the most sense I think, instead of the latest, no?",
       "user": {
@@ -494,6 +505,7 @@
         "received_events_url": "https://api.github.com/users/MarnixCroes/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/808#pullrequestreview-1955403375",
@@ -510,6 +522,7 @@
       "commit_id": "960b2d401e2fb4b657446305df7a4a0de50ece67",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2024-03-28T07:20:33Z",
       "author_association": "CONTRIBUTOR",
       "body": "",
       "user": {
@@ -531,6 +544,7 @@
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/808#pullrequestreview-1965349734",
@@ -562,6 +576,7 @@
         "received_events_url": "https://api.github.com/users/theStack/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -589,6 +604,7 @@
         "received_events_url": "https://api.github.com/users/theStack/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/808#issuecomment-2024754657",
@@ -618,6 +634,7 @@
         "received_events_url": "https://api.github.com/users/MarnixCroes/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -648,6 +665,7 @@
         "received_events_url": "https://api.github.com/users/MarnixCroes/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -718,6 +736,7 @@
         "received_events_url": "https://api.github.com/users/theStack/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "c6d1b8de89d87fe4fd171dc85557299e429e6564",
@@ -748,6 +767,7 @@
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -775,6 +795,7 @@
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/808#issuecomment-2024873012",
@@ -804,6 +825,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -828,6 +850,7 @@
         "received_events_url": "https://api.github.com/users/MarnixCroes/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "review_requester": {
@@ -849,6 +872,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       }
     },
@@ -861,6 +885,7 @@
       "commit_id": "c6d1b8de89d87fe4fd171dc85557299e429e6564",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2024-04-03T05:38:37Z",
       "author_association": "CONTRIBUTOR",
       "body": "tACK c6d1b8de89d87fe4fd171dc85557299e429e6564\r\n\r\n<details>\r\n<summary>Tested running <code>bitcoin-qt</code> on <code>signet</code>.</summary>\r\n\r\n![image](https://github.com/bitcoin-core/gui/assets/110166421/360629aa-df82-4a48-93fb-0ff2df8065a5)\r\n\r\n</details>\r\n\r\n<details>\r\n<summary>Also tested the script provided in the <a href=\"https://github.com/bitcoin-core/gui/pull/808#issue-2202921882\">description</a>.</summary>\r\n\r\n```\r\n/test/functional$ ./gen_add_type.py\r\nmainnet example address: bc1p35yvjel7srp783ztf8v6jdra7dhfzk5jaun8xz2qp6ws7z80n4tq2jku9f\r\nsignet  example address: tb1p35yvjel7srp783ztf8v6jdra7dhfzk5jaun8xz2qp6ws7z80n4tqa6qnlg\r\ntestnet example address: tb1p35yvjel7srp783ztf8v6jdra7dhfzk5jaun8xz2qp6ws7z80n4tqa6qnlg\r\nregtest example address: bcrt1p35yvjel7srp783ztf8v6jdra7dhfzk5jaun8xz2qp6ws7z80n4tqsr2427\r\n```\r\n\r\n</details>\r\n",
       "user": {
@@ -882,6 +907,7 @@
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/808#pullrequestreview-1975550497",
@@ -913,6 +939,7 @@
         "received_events_url": "https://api.github.com/users/kristapsk/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -940,6 +967,7 @@
         "received_events_url": "https://api.github.com/users/kristapsk/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/808#issuecomment-2035390185",
@@ -969,6 +997,7 @@
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -996,6 +1025,7 @@
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/808#issuecomment-2063203191",
@@ -1025,6 +1055,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "c05c214f2e9cfd6070a3c7680bfa09358fd9d97a",
@@ -1055,6 +1086,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1085,6 +1117,7 @@
         "received_events_url": "https://api.github.com/users/theStack/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1115,6 +1148,7 @@
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1130,7 +1164,7 @@
       "node_id": "PRRC_kwDOEEET9c5b75zW",
       "diff_hunk": "@@ -109,22 +109,19 @@ QFont fixedPitchFont(bool use_embedded_font)\n     return QFontDatabase::systemFont(QFontDatabase::FixedFont);\n }\n \n-// Just some dummy data to generate a convincing random-looking (but consistent) address\n-static const uint8_t dummydata[] = {0xeb,0x15,0x23,0x1d,0xfc,0xeb,0x60,0x92,0x58,0x86,0xb6,0x7d,0x06,0x52,0x99,0x92,0x59,0x15,0xae,0xb1,0x72,0xc0,0x66,0x47};\n-\n-// Generate a dummy address with invalid CRC, starting with the network prefix.\n+// Return a pre-generated dummy bech32m address (P2TR) with invalid checksum.\n static std::string DummyAddress(const CChainParams &params)\n {\n-    std::vector<unsigned char> sourcedata = params.Base58Prefix(CChainParams::PUBKEY_ADDRESS);\n-    sourcedata.insert(sourcedata.end(), dummydata, dummydata + sizeof(dummydata));\n-    for(int i=0; i<256; ++i) { // Try every trailing byte\n-        std::string s = EncodeBase58(sourcedata);\n-        if (!IsValidDestinationString(s)) {\n-            return s;\n-        }\n-        sourcedata[sourcedata.size()-1] += 1;\n-    }\n-    return \"\";\n+    switch (params.GetChainType()) {\n+    case ChainType::MAIN:\n+        return \"bc1p35yvjel7srp783ztf8v6jdra7dhfzk5jaun8xz2qp6ws7z80n4tq2jku9f\";\n+    case ChainType::SIGNET:\n+    case ChainType::TESTNET:\n+        return \"tb1p35yvjel7srp783ztf8v6jdra7dhfzk5jaun8xz2qp6ws7z80n4tqa6qnlg\";\n+    case ChainType::REGTEST:\n+        return \"bcrt1p35yvjel7srp783ztf8v6jdra7dhfzk5jaun8xz2qp6ws7z80n4tqsr2427\";\n+    } // no default case, so the compiler can warn about missing cases\n+    assert(false);",
       "path": "src/qt/guiutil.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 30,
       "commit_id": "c6d1b8de89d87fe4fd171dc85557299e429e6564",
       "original_commit_id": "960b2d401e2fb4b657446305df7a4a0de50ece67",
@@ -1154,6 +1188,7 @@
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "Can the `!IsValidDestinationString` check be kept?",
@@ -1183,7 +1218,7 @@
       "node_id": "PRRC_kwDOEEET9c5b8d4J",
       "diff_hunk": "@@ -109,22 +109,19 @@ QFont fixedPitchFont(bool use_embedded_font)\n     return QFontDatabase::systemFont(QFontDatabase::FixedFont);\n }\n \n-// Just some dummy data to generate a convincing random-looking (but consistent) address\n-static const uint8_t dummydata[] = {0xeb,0x15,0x23,0x1d,0xfc,0xeb,0x60,0x92,0x58,0x86,0xb6,0x7d,0x06,0x52,0x99,0x92,0x59,0x15,0xae,0xb1,0x72,0xc0,0x66,0x47};\n-\n-// Generate a dummy address with invalid CRC, starting with the network prefix.\n+// Return a pre-generated dummy bech32m address (P2TR) with invalid checksum.\n static std::string DummyAddress(const CChainParams &params)\n {\n-    std::vector<unsigned char> sourcedata = params.Base58Prefix(CChainParams::PUBKEY_ADDRESS);\n-    sourcedata.insert(sourcedata.end(), dummydata, dummydata + sizeof(dummydata));\n-    for(int i=0; i<256; ++i) { // Try every trailing byte\n-        std::string s = EncodeBase58(sourcedata);\n-        if (!IsValidDestinationString(s)) {\n-            return s;\n-        }\n-        sourcedata[sourcedata.size()-1] += 1;\n-    }\n-    return \"\";\n+    switch (params.GetChainType()) {\n+    case ChainType::MAIN:\n+        return \"bc1p35yvjel7srp783ztf8v6jdra7dhfzk5jaun8xz2qp6ws7z80n4tq2jku9f\";\n+    case ChainType::SIGNET:\n+    case ChainType::TESTNET:\n+        return \"tb1p35yvjel7srp783ztf8v6jdra7dhfzk5jaun8xz2qp6ws7z80n4tqa6qnlg\";\n+    case ChainType::REGTEST:\n+        return \"bcrt1p35yvjel7srp783ztf8v6jdra7dhfzk5jaun8xz2qp6ws7z80n4tqsr2427\";\n+    } // no default case, so the compiler can warn about missing cases\n+    assert(false);",
       "path": "src/qt/guiutil.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 30,
       "commit_id": "c6d1b8de89d87fe4fd171dc85557299e429e6564",
       "original_commit_id": "960b2d401e2fb4b657446305df7a4a0de50ece67",
@@ -1207,6 +1242,7 @@
         "received_events_url": "https://api.github.com/users/theStack/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "Sure, good idea. With an `Assert`? (I'm always a bit unsure when to use `Assert` and when `Assume`; the old `assert` should rather be avoided in general, from my understanding).",
@@ -1236,7 +1272,7 @@
       "node_id": "PRRC_kwDOEEET9c5b8ulo",
       "diff_hunk": "@@ -109,22 +109,19 @@ QFont fixedPitchFont(bool use_embedded_font)\n     return QFontDatabase::systemFont(QFontDatabase::FixedFont);\n }\n \n-// Just some dummy data to generate a convincing random-looking (but consistent) address\n-static const uint8_t dummydata[] = {0xeb,0x15,0x23,0x1d,0xfc,0xeb,0x60,0x92,0x58,0x86,0xb6,0x7d,0x06,0x52,0x99,0x92,0x59,0x15,0xae,0xb1,0x72,0xc0,0x66,0x47};\n-\n-// Generate a dummy address with invalid CRC, starting with the network prefix.\n+// Return a pre-generated dummy bech32m address (P2TR) with invalid checksum.\n static std::string DummyAddress(const CChainParams &params)\n {\n-    std::vector<unsigned char> sourcedata = params.Base58Prefix(CChainParams::PUBKEY_ADDRESS);\n-    sourcedata.insert(sourcedata.end(), dummydata, dummydata + sizeof(dummydata));\n-    for(int i=0; i<256; ++i) { // Try every trailing byte\n-        std::string s = EncodeBase58(sourcedata);\n-        if (!IsValidDestinationString(s)) {\n-            return s;\n-        }\n-        sourcedata[sourcedata.size()-1] += 1;\n-    }\n-    return \"\";\n+    switch (params.GetChainType()) {\n+    case ChainType::MAIN:\n+        return \"bc1p35yvjel7srp783ztf8v6jdra7dhfzk5jaun8xz2qp6ws7z80n4tq2jku9f\";\n+    case ChainType::SIGNET:\n+    case ChainType::TESTNET:\n+        return \"tb1p35yvjel7srp783ztf8v6jdra7dhfzk5jaun8xz2qp6ws7z80n4tqa6qnlg\";\n+    case ChainType::REGTEST:\n+        return \"bcrt1p35yvjel7srp783ztf8v6jdra7dhfzk5jaun8xz2qp6ws7z80n4tqsr2427\";\n+    } // no default case, so the compiler can warn about missing cases\n+    assert(false);",
       "path": "src/qt/guiutil.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 30,
       "commit_id": "c6d1b8de89d87fe4fd171dc85557299e429e6564",
       "original_commit_id": "960b2d401e2fb4b657446305df7a4a0de50ece67",
@@ -1260,6 +1296,7 @@
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "As it is not critical, keeping the fallback to the empty string seems fine.\r\n\r\n```cpp\r\nif (Assume(!IsValidDestinationString(s))) return s;\r\nreturn {};\r\n```",
@@ -1289,7 +1326,7 @@
       "node_id": "PRRC_kwDOEEET9c5b8y0A",
       "diff_hunk": "@@ -109,22 +109,19 @@ QFont fixedPitchFont(bool use_embedded_font)\n     return QFontDatabase::systemFont(QFontDatabase::FixedFont);\n }\n \n-// Just some dummy data to generate a convincing random-looking (but consistent) address\n-static const uint8_t dummydata[] = {0xeb,0x15,0x23,0x1d,0xfc,0xeb,0x60,0x92,0x58,0x86,0xb6,0x7d,0x06,0x52,0x99,0x92,0x59,0x15,0xae,0xb1,0x72,0xc0,0x66,0x47};\n-\n-// Generate a dummy address with invalid CRC, starting with the network prefix.\n+// Return a pre-generated dummy bech32m address (P2TR) with invalid checksum.\n static std::string DummyAddress(const CChainParams &params)\n {\n-    std::vector<unsigned char> sourcedata = params.Base58Prefix(CChainParams::PUBKEY_ADDRESS);\n-    sourcedata.insert(sourcedata.end(), dummydata, dummydata + sizeof(dummydata));\n-    for(int i=0; i<256; ++i) { // Try every trailing byte\n-        std::string s = EncodeBase58(sourcedata);\n-        if (!IsValidDestinationString(s)) {\n-            return s;\n-        }\n-        sourcedata[sourcedata.size()-1] += 1;\n-    }\n-    return \"\";\n+    switch (params.GetChainType()) {\n+    case ChainType::MAIN:\n+        return \"bc1p35yvjel7srp783ztf8v6jdra7dhfzk5jaun8xz2qp6ws7z80n4tq2jku9f\";\n+    case ChainType::SIGNET:\n+    case ChainType::TESTNET:\n+        return \"tb1p35yvjel7srp783ztf8v6jdra7dhfzk5jaun8xz2qp6ws7z80n4tqa6qnlg\";\n+    case ChainType::REGTEST:\n+        return \"bcrt1p35yvjel7srp783ztf8v6jdra7dhfzk5jaun8xz2qp6ws7z80n4tqsr2427\";\n+    } // no default case, so the compiler can warn about missing cases\n+    assert(false);",
       "path": "src/qt/guiutil.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 30,
       "commit_id": "c6d1b8de89d87fe4fd171dc85557299e429e6564",
       "original_commit_id": "960b2d401e2fb4b657446305df7a4a0de50ece67",
@@ -1313,6 +1350,7 @@
         "received_events_url": "https://api.github.com/users/theStack/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "Thanks, done.",

@@ -36,7 +36,9 @@
       "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/hebasto/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
     },
     "body": "Only toolbar icons support Dark/Light runtime switching for now.",
     "labels": [
@@ -54,11 +56,14 @@
     "created_at": "2021-04-07T07:13:13Z",
     "updated_at": "2022-08-16T16:57:35Z",
     "closed_at": "2021-04-09T06:36:00Z",
-    "mergeable_state": "unknown",
+    "mergeable": true,
+    "mergeable_state": "clean",
+    "merged": false,
     "merge_commit_sha": "a83ee007a75cbf1e92e802a3fefddfebad3610f0",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
+    "rebaseable": false,
     "head": {
       "label": "hebasto:210407-dark-poc",
       "ref": "210407-dark-poc",
@@ -81,7 +86,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 273230449,
@@ -106,7 +113,9 @@
           "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/hebasto/received_events",
           "type": "User",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/hebasto/gui",
@@ -156,9 +165,9 @@
         "homepage": "",
         "language": "C++",
         "forks_count": 2,
-        "stargazers_count": 4,
-        "watchers_count": 4,
-        "size": 150547,
+        "stargazers_count": 8,
+        "watchers_count": 8,
+        "size": 190189,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -171,9 +180,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-08-01T18:13:22Z",
+        "pushed_at": "2026-04-09T10:37:41Z",
         "created_at": "2020-06-18T12:20:51Z",
-        "updated_at": "2023-07-25T14:36:43Z",
+        "updated_at": "2026-04-09T10:38:02Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -213,7 +223,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 272700405,
@@ -238,7 +250,9 @@
           "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/bitcoin-core/gui",
@@ -287,12 +301,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 271,
-        "stargazers_count": 491,
-        "watchers_count": 491,
-        "size": 149681,
+        "forks_count": 354,
+        "stargazers_count": 725,
+        "watchers_count": 725,
+        "size": 190146,
         "default_branch": "master",
-        "open_issues_count": 155,
+        "open_issues_count": 148,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -303,9 +317,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-08-01T15:59:41Z",
+        "pushed_at": "2026-05-16T00:00:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2023-08-02T07:56:25Z",
+        "updated_at": "2026-05-16T00:00:11Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -441,7 +456,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -460,7 +477,8 @@
       "commit_id": "0993439ce0840a68e189add369ea8e9f92b5c2c4",
       "commit_url": null,
       "created_at": null,
-      "author_association": "MEMBER",
+      "updated_at": "2021-04-08T15:01:11Z",
+      "author_association": "CONTRIBUTOR",
       "body": "Concept ACK,\r\n\r\nThis seems to be a step in the right direction to supporting theme switching on macOS. The icons this PR touches do get recolorized.\r\n\r\nBelow are some screenshots with all possible build options on macOS 11.2.3 and macOS 10.15.7, comparing `master` and `pr`.\r\n\r\nIt is weird that dark mode does not work at all on a native depends build, but works on a cross-compile depends build.\r\n\r\n## Master\r\n\r\n### Compiled Natively\r\n\r\n#### macOS 11.2.3\r\n\r\n| Start: Light Mode      | Switch to Dark Mode |\r\n| -------------------- | --------------------- |\r\n| ![Screen Shot 2021-04-07 at 12 27 07 PM](https://user-images.githubusercontent.com/23396902/113956976-6c4d1880-97ec-11eb-9073-50de3e36f404.png) | ![Screen Shot 2021-04-07 at 12 27 27 PM](https://user-images.githubusercontent.com/23396902/113957000-753dea00-97ec-11eb-9314-1169bf85550a.png) |\r\n\r\n#### macOS 10.15.7\r\n\r\n| Start: Light Mode      | Switch to Dark Mode |\r\n| -------------------- | --------------------- |\r\n|  <img width=\"891\" alt=\"before\" src=\"https://user-images.githubusercontent.com/23396902/114047150-748e6d80-9857-11eb-9d70-9f73586adf1b.png\"> |  <img width=\"891\" alt=\"after\" src=\"https://user-images.githubusercontent.com/23396902/114047213-8112c600-9857-11eb-8e4d-683005a0f3e3.png\"> |\r\n\r\n### Depends Build Natively\r\n\r\n#### macOS 11.2.3\r\n\r\n| Start: Light Mode      | Switch to Dark Mode |\r\n| -------------------- | --------------------- |\r\n| ![Screen Shot 2021-04-07 at 1 33 10 PM](https://user-images.githubusercontent.com/23396902/113957110-a8807900-97ec-11eb-8579-9ebcc7c88d5c.png) | ![Screen Shot 2021-04-07 at 1 33 19 PM](https://user-images.githubusercontent.com/23396902/113957190-c77f0b00-97ec-11eb-9ffb-1f191766035e.png) |\r\n\r\n#### macOS 10.15.7\r\n\r\n| Start: Light Mode      | Switch to Dark Mode |\r\n| -------------------- | --------------------- |\r\n| <img width=\"891\" alt=\"before\" src=\"https://user-images.githubusercontent.com/23396902/114047773-f1b9e280-9857-11eb-9430-4a409c7e6825.png\"> | <img width=\"891\" alt=\"after\" src=\"https://user-images.githubusercontent.com/23396902/114047825-fc747780-9857-11eb-821b-4c70acaba9d0.png\"> |\r\n\r\n### Depends Cross Compile (from Linux)\r\n\r\n#### macOS 11.2.3\r\n\r\n| Start: Light Mode      | Switch to Dark Mode |\r\n| -------------------- | --------------------- |\r\n| ![before](https://user-images.githubusercontent.com/23396902/113957314-fd23f400-97ec-11eb-9922-385bf232b1f1.png) | ![after](https://user-images.githubusercontent.com/23396902/113957329-01e8a800-97ed-11eb-9167-6c84e0bb6d58.png) |\r\n\r\n#### macOS 10.15.7\r\n\r\n| Start: Light Mode      | Switch to Dark Mode |\r\n| -------------------- | --------------------- |\r\n| ![Screen Shot 2021-04-07 at 9 16 29 PM](https://user-images.githubusercontent.com/23396902/114047936-1615bf00-9858-11eb-8feb-7f068c808586.png) | ![Screen Shot 2021-04-07 at 9 16 47 PM](https://user-images.githubusercontent.com/23396902/114047969-1e6dfa00-9858-11eb-9962-e7501722e4d8.png) |\r\n\r\n## PR 0993439ce0840a68e189add369ea8e9f92b5c2c4\r\n\r\n### Compiled Natively\r\n\r\n#### macOS 11.2.3\r\n\r\n| Start: Light Mode      | Switch to Dark Mode |\r\n| -------------------- | --------------------- |\r\n| ![Screen Shot 2021-04-07 at 12 06 55 PM](https://user-images.githubusercontent.com/23396902/114048263-642ac280-9858-11eb-88c5-0f68db99746b.png) | ![Screen Shot 2021-04-07 at 12 10 11 PM](https://user-images.githubusercontent.com/23396902/114048295-68ef7680-9858-11eb-9153-29c7ff7baccf.png) |\r\n\r\n#### macOS 10.15.7\r\n\r\n| Start: Light Mode      | Switch to Dark Mode |\r\n| -------------------- | --------------------- |\r\n| <img width=\"891\" alt=\"Screen Shot 2021-04-07 at 5 57 09 PM\" src=\"https://user-images.githubusercontent.com/23396902/114048396-86bcdb80-9858-11eb-8d85-608534d2c626.png\"> |  <img width=\"891\" alt=\"Screen Shot 2021-04-07 at 5 57 25 PM\" src=\"https://user-images.githubusercontent.com/23396902/114048413-8b818f80-9858-11eb-9d92-ff6628a2644e.png\"> |\r\n\r\n### Depends Build Natively\r\n\r\n#### macOS 11.2.3\r\n\r\n| Start: Light Mode      | Switch to Dark Mode |\r\n| -------------------- | --------------------- |\r\n| ![before](https://user-images.githubusercontent.com/23396902/114048667-c84d8680-9858-11eb-9727-cbd6f8695c3b.png) | ![after](https://user-images.githubusercontent.com/23396902/114048695-cbe10d80-9858-11eb-940e-f0ad040bc2a7.png) |\r\n\r\n#### macOS 10.15.7\r\n\r\n| Start: Light Mode      | Switch to Dark Mode |\r\n| -------------------- | --------------------- |\r\n| <img width=\"891\" alt=\"before\" src=\"https://user-images.githubusercontent.com/23396902/114048813-e4512800-9858-11eb-80ac-ebe670bdbfb5.png\"> | <img width=\"891\" alt=\"after\" src=\"https://user-images.githubusercontent.com/23396902/114048842-e87d4580-9858-11eb-867a-360de0d72626.png\"> |\r\n\r\n### Depends Cross Compile (from Linux)\r\n\r\n#### macOS 11.2.3\r\n\r\n| Start: Light Mode      | Switch to Dark Mode |\r\n| -------------------- | --------------------- |\r\n| ![Screen Shot 2021-04-07 at 9 53 39 PM](https://user-images.githubusercontent.com/23396902/114049000-0d71b880-9859-11eb-88a4-b760a9fe772e.png) | ![Screen Shot 2021-04-07 at 9 54 00 PM](https://user-images.githubusercontent.com/23396902/114049008-119dd600-9859-11eb-8709-67bffa7b5e6c.png) |\r\n\r\n#### macOS 10.15.7\r\n\r\n| Start: Light Mode      | Switch to Dark Mode |\r\n| -------------------- | --------------------- |\r\n| <img width=\"891\" alt=\"before\" src=\"https://user-images.githubusercontent.com/23396902/114049082-22e6e280-9859-11eb-9fc0-0150f726a006.png\"> | <img width=\"891\" alt=\"Screen Shot 2021-04-07 at 6 59 56 PM\" src=\"https://user-images.githubusercontent.com/23396902/114049106-27130000-9859-11eb-89e1-c0a5e3fb3628.png\"> |\r\n\r\n",
       "user": {
         "login": "jarolrod",
@@ -480,7 +498,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/274#pullrequestreview-631505467",
       "submitted_at": "2021-04-08T14:59:42Z",
@@ -510,7 +530,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -536,7 +558,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/274#issuecomment-816447875",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/274"
@@ -564,7 +588,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -593,7 +619,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -622,7 +650,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,

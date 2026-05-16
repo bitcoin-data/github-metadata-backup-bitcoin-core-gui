@@ -37,6 +37,7 @@
       "received_events_url": "https://api.github.com/users/furszy/received_events",
       "type": "User",
       "site_admin": false,
+      "name": null,
       "patch_url": null
     },
     "body": "Fixing #800.\r\n\r\nDuring shutdown, already queue events dispatched from the backend such\r\n'numConnectionsChanged' and 0networkActiveChanged' could try to access\r\nthe clientModel object, which might not exist because we manually delete\r\nit inside 'BitcoinApplication::requestShutdown()'.\r\n\r\nThis happen because boost does not clears the queued events when they arise\r\nconcurrently with the signal disconnection (see https://www.boost.org/doc/libs/1_55_0/doc/html/signals2/thread-safety.html).\r\nFrom the docs:\r\n1) \"Note that since we unlock the connection's mutex before executing its associated slot, it is possible a slot will still be executing after it has been disconnected by a [connection::disconnect](https://www.boost.org/doc/libs/1_55_0/doc/html/boost/signals2/connection.html#idp89761576-bb)(), if the disconnect was called concurrently with signal invocation.\"\r\n2)  \"The fact that concurrent signal invocations use the same combiner object means you need to insure any custom combiner you write is thread-safe\" \r\n\r\nSo, we need to guard `clientModel` before accessing it at the handler side.",
@@ -70,6 +71,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "open_issues": 0,
@@ -103,6 +105,7 @@
       "received_events_url": "https://api.github.com/users/hebasto/received_events",
       "type": "User",
       "site_admin": false,
+      "name": null,
       "patch_url": null
     },
     "merge_commit_sha": "776d48dd5606747eb947a07acfa2ec67d9424602",
@@ -132,6 +135,7 @@
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "repo": {
@@ -158,6 +162,7 @@
           "received_events_url": "https://api.github.com/users/furszy/received_events",
           "type": "User",
           "site_admin": false,
+          "name": null,
           "patch_url": null
         },
         "private": false,
@@ -210,7 +215,7 @@
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 163552,
+        "size": 145343,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -223,7 +228,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-10-04T19:58:58Z",
+        "pushed_at": "2026-02-10T15:36:07Z",
         "created_at": "2022-05-09T14:34:00Z",
         "updated_at": "2023-09-08T14:09:02Z",
         "allow_forking": true,
@@ -267,6 +272,7 @@
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "repo": {
@@ -293,6 +299,7 @@
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
           "site_admin": false,
+          "name": null,
           "patch_url": null
         },
         "private": false,
@@ -342,12 +349,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 284,
-        "stargazers_count": 630,
-        "watchers_count": 630,
-        "size": 165139,
+        "forks_count": 354,
+        "stargazers_count": 725,
+        "watchers_count": 725,
+        "size": 190146,
         "default_branch": "master",
-        "open_issues_count": 150,
+        "open_issues_count": 148,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -358,9 +365,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-03-04T00:40:45Z",
+        "pushed_at": "2026-05-16T00:00:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2025-03-04T00:40:49Z",
+        "updated_at": "2026-05-16T00:00:11Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -418,6 +425,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -445,6 +453,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/801#issuecomment-1968956388",
@@ -459,6 +468,7 @@
       "commit_id": "a568d6e44b8bbdcd0f4c36640f43847016079260",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2024-02-28T13:25:09Z",
       "author_association": "CONTRIBUTOR",
       "user": {
         "login": "maflcko",
@@ -479,6 +489,7 @@
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/801#pullrequestreview-1906265175",
@@ -510,6 +521,7 @@
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "cc337f86ab566f68fe51daebda662f697be02153",
@@ -540,6 +552,7 @@
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "4b47c785e0adfb946b9874fb7d6c76e68471868b",
@@ -610,6 +623,7 @@
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "f357578badc12f7816b56af8486caadba90a534b",
@@ -640,6 +654,7 @@
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -667,6 +682,7 @@
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/801#issuecomment-1970628802",
@@ -696,6 +712,7 @@
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -729,6 +746,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -756,6 +774,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/801#issuecomment-1971395733",
@@ -785,6 +804,7 @@
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -815,6 +835,7 @@
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -830,6 +851,7 @@
       "commit_id": "b7aa717cdd3f6af266c244fec6d775e917cf8d0c",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2024-02-29T17:41:03Z",
       "author_association": "MEMBER",
       "body": "ACK f357578badc12f7816b56af8486caadba90a534b, I have reviewed the code and it looks OK. Tested on Ubuntu 23.10.\r\n\r\nnit: The second commit message might be amended according to https://github.com/bitcoin-core/gui/pull/801#issuecomment-1970628802.",
       "user": {
@@ -851,6 +873,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/801#pullrequestreview-1909329318",
@@ -922,6 +945,7 @@
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "b7aa717cdd3f6af266c244fec6d775e917cf8d0c",
@@ -937,6 +961,7 @@
       "commit_id": "b7aa717cdd3f6af266c244fec6d775e917cf8d0c",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2024-03-01T13:35:24Z",
       "author_association": "MEMBER",
       "body": "re-ACK b7aa717cdd3f6af266c244fec6d775e917cf8d0c",
       "user": {
@@ -958,6 +983,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/801#pullrequestreview-1911197997",
@@ -989,6 +1015,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "776d48dd5606747eb947a07acfa2ec67d9424602",
@@ -1019,6 +1046,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1049,6 +1077,7 @@
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1079,6 +1108,7 @@
         "received_events_url": "https://api.github.com/users/Fabcien/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "2f1230a536106a4648895a12e530b3769c3746a9",
@@ -1109,6 +1139,7 @@
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1148,6 +1179,7 @@
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "Not sure, this could still race, since there is no lock, so clientModel may still be deleted after this statement?",
@@ -1201,6 +1233,7 @@
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "> Not sure, this could still race, since there is no lock, so clientModel may still be deleted after this statement?\r\n\r\nCheck it now.\r\n`BitcoinApplication::requestShutdown()` sets the main window (`BitcoinGUI`) `clientModel` to nullptr without clearing the subscribed signals (this is the `window->setClientModel(nullptr)` line), which leaves an open window where the signal handlers are still active but the main window client model is nullptr. So, by unsubscribing the signals prior to the `setClientModel(nullptr)` call, we avoid any concurrent event happening in-between the main window nullptr client model and the final clientModel destruction at the end of `BitcoinApplication::requestShutdown()` (which was the one destructing the event handlers).",
@@ -1254,6 +1287,7 @@
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "What about events that are already running? Does the destructor ensure they are flushed/discarded, or will it just disconnect?",
@@ -1307,6 +1341,7 @@
         "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "> What about events that are already running? Does the destructor ensure they are flushed/discarded, or will it just disconnect?\r\n\r\nI haven't looked in detail, but it seems like in principle, if any boost signal events are currently running, and they send asynchronous Q_EMIT qt signals that are run in the GUI event loop thread, there should not be a problem. That is assuming this method is always running the GUI event loop thread, and the code deleting clientModel is also running in the GUI event loop thread.",
@@ -1360,6 +1395,7 @@
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "Ok, but then it means this check in this line could be removed?\r\n\r\n",
@@ -1413,6 +1449,7 @@
         "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "> Ok, but then it means this check in this line could be removed?\r\n\r\nI think not if the events are queued, but again I'm not too sure.",
@@ -1466,6 +1503,7 @@
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "A bit late but here again. Sorry, life called.\r\n\r\n> it means this check in this line could be removed?\r\n\r\nNot really. While `requestShutdown()` is being executed, no other task can be processed in the main thread but new tasks can be enqueued to be executed by the main thread after it. So, any event coming from the backend while  `requestShutdown()` is running (prior to the `unsubscribeFromCoreSignals` call) will be executed right after it finishes it.\r\nSo.. this means that we also need to guard `RPCConsole::updateNetworkState()` function for a nullptr `clientModel`. The same segfault could arise there too.\r\n\r\n> I think not if the events are queued, but again I'm not too sure.\r\n\r\nYes. Both events are running on the main thread. The diff is on who enqueues them: the quit action is appended by the main thread (when we press the quit button) and the \"network active change\" is enqueued by the backend thread, when the RPC changes the value.\r\n\r\n--------------\r\n\r\nThat being said, it is all theoretical. Let me do some tests.",
@@ -1519,6 +1557,7 @@
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "> > I think not if the events are queued, but again I'm not too sure.\r\n> \r\n> Yes. Both events are running on the main thread. The diff is on who enqueues them: the quit action is appended by the main thread (when we press the quit button) and the \"network active change\" is enqueued by the backend thread, when the RPC changes the value.\r\n\r\nThanks for clarifying. Indeed, if the events all run on a single thread (haven't checked this), this fix should be correct.\r\n\r\nI guess I was confusing myself with the second commit.",
@@ -1572,6 +1611,7 @@
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "> if the events all run on a single thread (haven't checked this), this fix should be correct.\r\n\r\nYeah. As far as I have tested, they are running on the main thread. But, this doesn't mean that the code will always act in the same way.. we are using the default qt `connection()` function, which provides `Qt::ConnectionType = Qt::AutoConnection`, which per https://doc.qt.io/qt-6/qt.html#ConnectionType-enum it might use `Qt::DirectConnection`,  which executes the task on the signalling thread.\r\nTo solve this, we could force the main thread execution by changing the slot connection side but, as I haven't been able to trigger the segfault after the fix, will leave this investigation for a follow-up.",

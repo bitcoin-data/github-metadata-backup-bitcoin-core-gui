@@ -36,7 +36,9 @@
       "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/jarolrod/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
     },
     "body": "It was originally believed that theme switching on macOS was broken only on macOS 10.14: https://github.com/bitcoin-core/gui/pull/154#issuecomment-786885443, https://github.com/bitcoin-core/gui/pull/154#pullrequestreview-600078428\r\n\r\nIt is actually broken on `Catalina` and `Big Sur` as well (building and compiling off master). When switching from one theme to another the Icons do not get re-colorized. \r\n\r\nThis PR documents that theme switching is not currently supported in the release notes. Based on https://github.com/bitcoin-core/gui/pull/154#issuecomment-806292153, but drops the macOS 10.14 part.\r\n\r\nBelow are screenshots that were taken on `Big Sur` which show this behavior. The same occurs on `Catalina`.\r\n\r\n**Light Mode to Dark Mode**\r\n|  Light Mode     | Dark Mode |\r\n| -------------- | ----------- |\r\n| ![Screen Shot 2021-04-02 at 3 39 05 PM](https://user-images.githubusercontent.com/23396902/113469371-fb3be880-941a-11eb-9097-03c818d1af12.png) | ![Screen Shot 2021-04-02 at 3 39 32 PM](https://user-images.githubusercontent.com/23396902/113469377-04c55080-941b-11eb-9304-7657f1a656e2.png) |\r\n\r\n**Dark Mode to Light Mode**\r\n|  Dark Mode    | Light Mode |\r\n| ------------- | ----------- |\r\n| ![Screen Shot 2021-04-02 at 3 40 22 PM](https://user-images.githubusercontent.com/23396902/113469425-5077fa00-941b-11eb-94a0-7bd72e11e278.png) | ![Screen Shot 2021-04-02 at 3 40 31 PM](https://user-images.githubusercontent.com/23396902/113469429-5bcb2580-941b-11eb-9e6a-2790fdefa7e9.png) |\r\n\r\n",
     "labels": [
@@ -63,11 +65,14 @@
     "created_at": "2021-04-03T05:30:15Z",
     "updated_at": "2022-08-16T16:57:59Z",
     "closed_at": "2021-05-28T16:13:39Z",
-    "mergeable_state": "unknown",
+    "mergeable": true,
+    "mergeable_state": "clean",
+    "merged": false,
     "merge_commit_sha": "5e0b195720edcc0ab06cbf1f863ebdbd7b98d43f",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
+    "rebaseable": false,
     "head": {
       "label": "jarolrod:doc-switch-macos",
       "ref": "doc-switch-macos",
@@ -90,7 +95,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 310414870,
@@ -115,7 +122,9 @@
           "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/jarolrod/received_events",
           "type": "User",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/jarolrod/gui",
@@ -167,7 +176,7 @@
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 147893,
+        "size": 167963,
         "default_branch": "master",
         "open_issues_count": 1,
         "is_template": false,
@@ -180,9 +189,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-07-05T02:33:18Z",
+        "pushed_at": "2025-01-08T17:03:39Z",
         "created_at": "2020-11-05T20:54:31Z",
-        "updated_at": "2022-01-09T00:40:30Z",
+        "updated_at": "2025-01-08T17:04:31Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -222,7 +232,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 272700405,
@@ -247,7 +259,9 @@
           "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/bitcoin-core/gui",
@@ -296,12 +310,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 271,
-        "stargazers_count": 491,
-        "watchers_count": 491,
-        "size": 149681,
+        "forks_count": 354,
+        "stargazers_count": 725,
+        "watchers_count": 725,
+        "size": 190146,
         "default_branch": "master",
-        "open_issues_count": 155,
+        "open_issues_count": 148,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -312,9 +326,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-08-01T15:59:41Z",
+        "pushed_at": "2026-05-16T00:00:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2023-08-02T07:56:25Z",
+        "updated_at": "2026-05-16T00:00:11Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -337,7 +352,7 @@
         "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/268"
       }
     },
-    "author_association": "MEMBER",
+    "author_association": "CONTRIBUTOR",
     "draft": false,
     "additions": 1,
     "deletions": 0,
@@ -410,7 +425,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -443,7 +460,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -469,7 +488,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/268#issuecomment-816450996",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/268"
@@ -497,7 +518,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -530,7 +553,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -556,7 +581,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/268#issuecomment-837401595",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/268"
@@ -584,7 +611,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -613,7 +642,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -642,13 +673,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-05-10T21:56:49Z",
       "updated_at": "2021-05-10T21:56:49Z",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "body": "@hebasto It won't be needed so long as we can get #275 in before the freeze. Otherwise, it is needed.",
       "user": {
         "login": "jarolrod",
@@ -668,7 +701,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/268#issuecomment-837406478",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/268"
@@ -696,7 +731,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -725,7 +762,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -754,7 +793,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "123b401e0acf3b26f149711bdf06d7f6eced1968",
       "commit_url": "https://api.github.com/repos/bitcoin-core/gui/commits/123b401e0acf3b26f149711bdf06d7f6eced1968",
@@ -783,13 +824,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-05-28T16:06:56Z",
       "updated_at": "2021-05-28T16:06:56Z",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "body": "Closing since #275 was merged 🎉",
       "user": {
         "login": "jarolrod",
@@ -809,7 +852,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/268#issuecomment-850521524",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/268"
@@ -837,7 +882,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -866,7 +913,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,

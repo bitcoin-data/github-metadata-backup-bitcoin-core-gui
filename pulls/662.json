@@ -37,6 +37,7 @@
       "received_events_url": "https://api.github.com/users/luke-jr/received_events",
       "type": "User",
       "site_admin": false,
+      "name": null,
       "patch_url": null
     },
     "body": "#204 reverted a necessary bugfix, and #205 introduced regressions since `setModel` resets column widths. Note that you need to delete your saved GUI config to see the fix, otherwise the prior widths are restored.\r\n\r\nBefore regressions:\r\n\r\n![Screenshot_20220905_232835 branch-21](https://user-images.githubusercontent.com/1095675/188704558-c7ab4c90-7b8d-44df-b479-cc6bb5d82a4a.png)\r\n\r\nAfter regressions / current master:\r\n\r\n![Screenshot_20220905_233054 branch-22](https://user-images.githubusercontent.com/1095675/188704641-261d6304-3c8c-4537-afef-6aa0e894abff.png)\r\n\r\nWith this PR:\r\n\r\n![Screenshot_20220906_134210](https://user-images.githubusercontent.com/1095675/188704714-4168ef53-ec4a-4daa-bbbf-0f7ea8723efe.png)\r\n",
@@ -62,11 +63,14 @@
     "created_at": "2022-09-06T17:51:22Z",
     "updated_at": "2025-02-10T07:30:51Z",
     "closed_at": "2024-02-11T22:05:43Z",
-    "mergeable_state": "unknown",
+    "mergeable": true,
+    "mergeable_state": "clean",
+    "merged": false,
     "merge_commit_sha": "da4191687fc70c670f6accfd3610ad5817f31cdd",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
+    "rebaseable": false,
     "head": {
       "label": "luke-jr:qt_fix_txview_202209",
       "ref": "qt_fix_txview_202209",
@@ -90,6 +94,7 @@
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "repo": {
@@ -116,6 +121,7 @@
           "received_events_url": "https://api.github.com/users/luke-jr/received_events",
           "type": "User",
           "site_admin": false,
+          "name": null,
           "patch_url": null
         },
         "private": false,
@@ -224,6 +230,7 @@
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "repo": {
@@ -250,6 +257,7 @@
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
           "site_admin": false,
+          "name": null,
           "patch_url": null
         },
         "private": false,
@@ -299,12 +307,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 280,
-        "stargazers_count": 628,
-        "watchers_count": 628,
-        "size": 169171,
+        "forks_count": 354,
+        "stargazers_count": 725,
+        "watchers_count": 725,
+        "size": 190146,
         "default_branch": "master",
-        "open_issues_count": 152,
+        "open_issues_count": 148,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -315,9 +323,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-02-07T16:30:32Z",
+        "pushed_at": "2026-05-16T00:00:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2025-02-07T22:47:38Z",
+        "updated_at": "2026-05-16T00:00:11Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -375,6 +383,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -402,6 +411,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/662#issuecomment-1238661677",
@@ -416,7 +426,8 @@
       "commit_id": "e515b0f24efc35f0c593e89cd53b71c46e33afe7",
       "commit_url": null,
       "created_at": null,
-      "author_association": "MEMBER",
+      "updated_at": "2022-09-19T03:50:27Z",
+      "author_association": "CONTRIBUTOR",
       "body": "if we revert the PR's aren't we still left with a buggy transaction table? Additionally, it's possible that the class mentioned can lead to a segfault when loading in a very large wallet:[ ](https://github.com/bitcoin/bitcoin/issues/20776)",
       "user": {
         "login": "jarolrod",
@@ -437,6 +448,7 @@
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/662#pullrequestreview-1111672702",
@@ -468,6 +480,7 @@
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -495,6 +508,7 @@
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/662#issuecomment-1251030451",
@@ -524,6 +538,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -558,6 +573,7 @@
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -588,6 +604,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -615,6 +632,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/662#issuecomment-1339772054",
@@ -644,6 +662,7 @@
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -671,6 +690,7 @@
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/662#issuecomment-1340152924",
@@ -700,6 +720,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -734,6 +755,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -761,6 +783,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/662#issuecomment-1570569786",
@@ -790,6 +813,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -980,6 +1004,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1007,6 +1032,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/662#issuecomment-1613900091",
@@ -1036,6 +1062,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1066,6 +1093,7 @@
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "8e428cc1188568aaeeaeb8f1f4498ae5b738a5e2",
@@ -1096,6 +1124,7 @@
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1123,6 +1152,7 @@
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/662#issuecomment-1613900449",
@@ -1152,6 +1182,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1186,6 +1217,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1220,6 +1252,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1247,6 +1280,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/662#issuecomment-1618516641",
@@ -1276,6 +1310,7 @@
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1303,6 +1338,7 @@
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/662#issuecomment-1707870729",
@@ -1317,6 +1353,7 @@
       "commit_id": "8e428cc1188568aaeeaeb8f1f4498ae5b738a5e2",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2023-09-16T22:58:00Z",
       "author_association": "CONTRIBUTOR",
       "body": "Tested 8e428cc1188568aaeeaeb8f1f4498ae5b738a5e2 on Ubuntu 22.04.\r\n\r\nDeleted `TransactionViewHeaderState` row manually from `qt` config file as requested in the description by the author (`.config/Bitcoin/Bitcoin-Qt-regtest.conf`), instead of using `-resetguisettings` as I didn't want to lose the rest.\r\n\r\nAs @hebasto posted above, \"Amount\" column goes out of scope when I resize to the right and then to the left (and the same happens with the \"Requested payments history\" in the receivecoinsdialog).\r\n![Peek 2023-09-16 14-39](https://github.com/bitcoin-core/gui/assets/110166421/739f08a8-2946-467d-a1a2-8bb9e6b9dd95)\r\n\r\nSomething I noticed when I resize the Label column enough to fit the most of the address (when are not labeled) is that with this PR changes, when the  \"Amount\" column is correctly resized and gets fit in the table view, it's changing the Label column size that I set manually, so that's a bit  contradictory, we let the user change something and then we correct the user:\r\n![Peek 2023-09-16 15-31](https://github.com/bitcoin-core/gui/assets/110166421/873a7f9c-4d65-44b1-aaca-97bbe79d9514)\r\n\r\nSo, in terms of the 2 issues detected and explained above I prefer the current state of the table view, in `master` we also have the horizontal scrollbar at the bottom which has disappear with the changes of this PR.\r\n\r\nGoing thru all the PRs and beyond, is the actual issue that the \"last column itself cannot be resized\" (in the case of the transaction view/ table would be the \"Amount\" column)? In this case I see the issue is still in `master` (user can make it wider but not shrink it - this is because of `setStretchLastSection(true)`) and this PR doesn't fix it, the PR deals more with the resizing of the table but user can't make the last column shorter or larger (last column is set as \"interactive\" but it's fixed for the user perspective). I see where this is achieved is on the Peers table (`setStretchLastSection` is not called so it's `false` by default), user can set the last column \"User Agent\" width freely.\r\n\r\nI can verify that there's another issue in `master`, and this PR solves, which is the fact that the default widths are not set properly the first time `qt` runs on a machine (or settings of the transaction view are missing from the qt config file) and user can see the 2nd. screenshot from the top description. As it's mentioned in the description as well \"`setModel` resets column widths\", can't we not move the settings state restore/ set column widths defaults at the very end of it?.\r\n\r\nPerhaps the description of the PR could be clearer in terms of what the proper issue is and just mention the history of tries as a reference. This is original issue in the bitcoin repo: [#2862](https://github.com/bitcoin/bitcoin/issues/2862).",
       "user": {
@@ -1338,6 +1375,7 @@
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/662#pullrequestreview-1630002233",
@@ -1354,6 +1392,7 @@
       "commit_id": "8e428cc1188568aaeeaeb8f1f4498ae5b738a5e2",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2023-09-16T22:12:43Z",
       "author_association": "CONTRIBUTOR",
       "user": {
         "login": "pablomartin4btc",
@@ -1374,6 +1413,7 @@
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/662#pullrequestreview-1630017561",
@@ -1405,6 +1445,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1432,6 +1473,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/662#issuecomment-1927138953",
@@ -1461,6 +1503,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1488,6 +1531,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/662#issuecomment-1937888058",
@@ -1517,6 +1561,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1547,6 +1592,7 @@
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1586,6 +1632,7 @@
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "What the \"Message\" column would be? Sounds like something dynamic but it's fixed to the `secondToLastColumIndex` (which is the Label column in the transactions table).",
@@ -1639,6 +1686,7 @@
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "This line doesn't make any difference, user still can't change the last column size manually.\r\n```suggestion\r\n```",

@@ -36,7 +36,9 @@
       "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/Sjors/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
     },
     "body": "This PR replaces the Bech32 checkbox with an address type dropdown It \"Use Taproot\" checkbox to the receive screen for any wallet with a Taproot descriptor. The Bech32m option is hidden for wallets that don't have taproot descriptors.\r\n\r\nBech32 is kept as the default even for Taproot enabled wallets until it's more widely supported.\r\n\r\n(an earlier attempt of this PR added a second checkbox)\r\n\r\n<img width=\"469\" alt=\"Schermafbeelding 2021-12-21 om 11 44 05\" src=\"https://user-images.githubusercontent.com/10217/146872660-339fae1f-c0b8-4673-b8be-33c25f3933fd.png\">\r\n\r\n**Suggested testing**\r\n* notice that the Bech32m entry only appears for wallet with a taproot descriptor\r\n* verify that it generates a bc1p instead of bc1q address\r\n1. Legacy wallet\r\n2. Default descriptor wallet (current does not have taproot descriptor)\r\n3. Wallet with taproot descriptor:\r\n   * just create a new descriptor wallet\r\n\r\nReplaces https://github.com/bitcoin/bitcoin/pull/22260",
     "labels": [
@@ -72,7 +74,30 @@
     "updated_at": "2022-12-23T10:04:17Z",
     "closed_at": "2021-12-22T11:10:28Z",
     "mergeable_state": "unknown",
+    "merged": true,
     "merged_at": "2021-12-22T11:10:28Z",
+    "merged_by": {
+      "login": "maflcko",
+      "id": 6399679,
+      "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/maflcko",
+      "html_url": "https://github.com/maflcko",
+      "followers_url": "https://api.github.com/users/maflcko/followers",
+      "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+      "organizations_url": "https://api.github.com/users/maflcko/orgs",
+      "repos_url": "https://api.github.com/users/maflcko/repos",
+      "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/maflcko/received_events",
+      "type": "User",
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
+    },
     "merge_commit_sha": "63b5dfac21613b984803347bfe81454da667016e",
     "assignees": [],
     "requested_reviewers": [],
@@ -99,7 +124,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 273307189,
@@ -124,7 +151,9 @@
           "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/Sjors/received_events",
           "type": "User",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/Sjors/gui",
@@ -172,7 +201,7 @@
         "hooks_url": "https://api.github.com/repos/Sjors/gui/hooks",
         "svn_url": "https://github.com/Sjors/gui",
         "homepage": "",
-        "forks_count": 0,
+        "forks_count": 1,
         "stargazers_count": 0,
         "watchers_count": 0,
         "size": 129113,
@@ -191,6 +220,7 @@
         "pushed_at": "2022-04-25T15:45:26Z",
         "created_at": "2020-06-18T18:04:50Z",
         "updated_at": "2020-06-18T18:04:52Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -230,7 +260,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 272700405,
@@ -255,7 +287,9 @@
           "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/bitcoin-core/gui",
@@ -304,12 +338,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 271,
-        "stargazers_count": 491,
-        "watchers_count": 491,
-        "size": 149681,
+        "forks_count": 354,
+        "stargazers_count": 725,
+        "watchers_count": 725,
+        "size": 190146,
         "default_branch": "master",
-        "open_issues_count": 155,
+        "open_issues_count": 148,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -320,9 +354,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-08-01T15:59:41Z",
+        "pushed_at": "2026-05-16T00:00:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2023-08-02T07:56:25Z",
+        "updated_at": "2026-05-16T00:00:11Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -378,7 +413,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -397,26 +434,29 @@
       "commit_id": "943fb5e34a4041fe77a3fc9105f053051ccc44d3",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-10-29T12:34:33Z",
       "author_association": "CONTRIBUTOR",
       "user": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#pullrequestreview-792982725",
       "submitted_at": "2021-10-29T12:34:33Z",
@@ -446,10 +486,12 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "f04337ebae26048489e4992992d13a59cfa03ec7",
+      "commit_url": "https://api.github.com/repos/Sjors/gui/commits/f04337ebae26048489e4992992d13a59cfa03ec7",
       "created_at": "2021-10-29T12:41:17Z"
     },
     {
@@ -475,7 +517,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -494,6 +538,7 @@
       "commit_id": "f04337ebae26048489e4992992d13a59cfa03ec7",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-10-29T17:30:12Z",
       "author_association": "MEMBER",
       "body": "Kinda ugly to have two mutually-exclusive (logically) checkboxes between Legacy/Bech32 and ???/Bech32m...\r\n\r\nProbably should just make the existing checkbox a combobox or something?",
       "user": {
@@ -514,7 +559,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#pullrequestreview-793295055",
       "submitted_at": "2021-10-29T17:30:12Z",
@@ -544,7 +591,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -570,7 +619,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#issuecomment-955002403",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/459"
@@ -598,7 +649,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -624,7 +677,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#issuecomment-955089638",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/459"
@@ -652,7 +707,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -678,7 +735,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#issuecomment-955201050",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/459"
@@ -706,7 +765,9 @@
         "events_url": "https://api.github.com/users/ghost/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ghost/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -732,7 +793,9 @@
         "events_url": "https://api.github.com/users/ghost/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ghost/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#issuecomment-955645521",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/459"
@@ -760,7 +823,9 @@
         "events_url": "https://api.github.com/users/sipa/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/sipa/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -786,7 +851,9 @@
         "events_url": "https://api.github.com/users/sipa/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/sipa/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#issuecomment-955759809",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/459"
@@ -800,26 +867,29 @@
       "commit_id": "f04337ebae26048489e4992992d13a59cfa03ec7",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-11-01T13:57:48Z",
       "author_association": "CONTRIBUTOR",
       "user": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#pullrequestreview-794235795",
       "submitted_at": "2021-11-01T13:57:48Z",
@@ -832,24 +902,26 @@
       "node_id": "IC_kwDOEEET9c44_5IV",
       "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/956273173",
       "actor": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -858,24 +930,26 @@
       "author_association": "CONTRIBUTOR",
       "body": "> FWIW, I think we should get rid of the LEGACY/P2SH_SEGWIT OutputTypes, and merge them into a BASE58 one or so.\r\n\r\nIn that case we should also never ever send change to LEGACY again, unless manually done so by the user?",
       "user": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#issuecomment-956273173",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/459"
@@ -903,7 +977,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -929,7 +1005,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#issuecomment-956400226",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/459"
@@ -957,7 +1035,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -983,7 +1063,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#issuecomment-956533480",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/459"
@@ -1011,7 +1093,9 @@
         "events_url": "https://api.github.com/users/sipa/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/sipa/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1037,7 +1121,9 @@
         "events_url": "https://api.github.com/users/sipa/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/sipa/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#issuecomment-956559356",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/459"
@@ -1065,7 +1151,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1094,7 +1182,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1123,7 +1213,9 @@
         "events_url": "https://api.github.com/users/ajtowns/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ajtowns/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1149,7 +1241,9 @@
         "events_url": "https://api.github.com/users/ajtowns/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ajtowns/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#issuecomment-957139944",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/459"
@@ -1177,7 +1271,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1206,7 +1302,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1235,7 +1333,9 @@
         "events_url": "https://api.github.com/users/sipa/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/sipa/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1264,7 +1364,9 @@
         "events_url": "https://api.github.com/users/sipa/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/sipa/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1293,7 +1395,9 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1319,7 +1423,9 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#issuecomment-957935624",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/459"
@@ -1347,7 +1453,9 @@
         "events_url": "https://api.github.com/users/Rspigler/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Rspigler/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1373,7 +1481,9 @@
         "events_url": "https://api.github.com/users/Rspigler/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Rspigler/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#issuecomment-960587189",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/459"
@@ -1401,7 +1511,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1430,7 +1542,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1459,7 +1573,9 @@
         "events_url": "https://api.github.com/users/ajtowns/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ajtowns/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1488,7 +1604,9 @@
         "events_url": "https://api.github.com/users/ajtowns/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ajtowns/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1517,7 +1635,9 @@
         "events_url": "https://api.github.com/users/sipa/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/sipa/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1546,7 +1666,9 @@
         "events_url": "https://api.github.com/users/sipa/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/sipa/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1575,7 +1697,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1601,7 +1725,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#issuecomment-960655215",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/459"
@@ -1629,7 +1755,9 @@
         "events_url": "https://api.github.com/users/Rspigler/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Rspigler/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1655,7 +1783,9 @@
         "events_url": "https://api.github.com/users/Rspigler/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Rspigler/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#issuecomment-961328134",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/459"
@@ -1683,7 +1813,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1709,7 +1841,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#issuecomment-961333697",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/459"
@@ -1737,7 +1871,9 @@
         "events_url": "https://api.github.com/users/sipa/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/sipa/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1763,7 +1899,9 @@
         "events_url": "https://api.github.com/users/sipa/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/sipa/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#issuecomment-963755996",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/459"
@@ -1791,10 +1929,12 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "e2981ccf232087a5b1276739680a9ade10caf0d2",
+      "commit_url": "https://api.github.com/repos/Sjors/gui/commits/e2981ccf232087a5b1276739680a9ade10caf0d2",
       "created_at": "2021-11-14T18:19:26Z"
     },
     {
@@ -1820,7 +1960,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1853,7 +1995,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1886,10 +2030,12 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "ab1e59db223b7be1e7d95f78b756f080e0e6b69a",
+      "commit_url": "https://api.github.com/repos/Sjors/gui/commits/ab1e59db223b7be1e7d95f78b756f080e0e6b69a",
       "created_at": "2021-12-08T11:10:18Z"
     },
     {
@@ -1915,7 +2061,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1948,10 +2096,12 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "4c87ff08632a89437d97f8c0546bc1997cfbf435",
+      "commit_url": "https://api.github.com/repos/Sjors/gui/commits/4c87ff08632a89437d97f8c0546bc1997cfbf435",
       "created_at": "2021-12-08T11:16:17Z"
     },
     {
@@ -1963,6 +2113,7 @@
       "commit_id": "4c87ff08632a89437d97f8c0546bc1997cfbf435",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-12-08T23:55:57Z",
       "author_association": "CONTRIBUTOR",
       "body": "ACK 4c87ff08632a89437d97f8c0546bc1997cfbf435 (tested on signet with both descriptors and legacy wallets).",
       "user": {
@@ -1983,7 +2134,9 @@
         "events_url": "https://api.github.com/users/kristapsk/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/kristapsk/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#pullrequestreview-827073841",
       "submitted_at": "2021-12-08T23:55:57Z",
@@ -2013,7 +2166,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2039,7 +2194,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#issuecomment-989453475",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/459"
@@ -2067,10 +2224,12 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "f5ba3d9394e47fa737429ecbb43a91bb767e8c59",
+      "commit_url": "https://api.github.com/repos/Sjors/gui/commits/f5ba3d9394e47fa737429ecbb43a91bb767e8c59",
       "created_at": "2021-12-09T08:59:19Z"
     },
     {
@@ -2082,26 +2241,29 @@
       "commit_id": "f5ba3d9394e47fa737429ecbb43a91bb767e8c59",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-12-09T16:00:24Z",
       "author_association": "CONTRIBUTOR",
       "user": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#pullrequestreview-827881061",
       "submitted_at": "2021-12-09T16:00:24Z",
@@ -2131,7 +2293,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2146,27 +2310,30 @@
       "commit_id": "f5ba3d9394e47fa737429ecbb43a91bb767e8c59",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-12-10T12:55:27Z",
       "author_association": "CONTRIBUTOR",
       "body": "ACK",
       "user": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#pullrequestreview-828861065",
       "submitted_at": "2021-12-10T12:55:27Z",
@@ -2182,6 +2349,7 @@
       "commit_id": "f5ba3d9394e47fa737429ecbb43a91bb767e8c59",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-12-10T13:50:23Z",
       "author_association": "CONTRIBUTOR",
       "body": "re-ACK f5ba3d9394e47fa737429ecbb43a91bb767e8c59",
       "user": {
@@ -2202,7 +2370,9 @@
         "events_url": "https://api.github.com/users/kristapsk/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/kristapsk/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#pullrequestreview-828913935",
       "submitted_at": "2021-12-10T13:50:23Z",
@@ -2218,26 +2388,29 @@
       "commit_id": "f5ba3d9394e47fa737429ecbb43a91bb767e8c59",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-12-13T10:50:33Z",
       "author_association": "CONTRIBUTOR",
       "user": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#pullrequestreview-830075192",
       "submitted_at": "2021-12-13T10:50:33Z",
@@ -2267,10 +2440,12 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "79580c09ff9d3c9c845e02fbcf98f8187e7e9fea",
+      "commit_url": "https://api.github.com/repos/Sjors/gui/commits/79580c09ff9d3c9c845e02fbcf98f8187e7e9fea",
       "created_at": "2021-12-13T11:54:27Z"
     },
     {
@@ -2282,6 +2457,7 @@
       "commit_id": "79580c09ff9d3c9c845e02fbcf98f8187e7e9fea",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-12-13T12:04:51Z",
       "author_association": "CONTRIBUTOR",
       "body": "Tested ACK 79580c09ff9d3c9c845e02fbcf98f8187e7e9fea.\r\n\r\nMy only comment is that combo box entries are mapped to `OutputType` values - meaning we can't reorder. The following commit uses `UserRole` to store the type instead of combo box index https://github.com/promag/gui/commit/b164039aa2b6462b6b1eac6bc79b40cd211b41b4 (https://github.com/promag/gui/tree/pr/459).",
       "user": {
@@ -2302,7 +2478,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#pullrequestreview-830148001",
       "submitted_at": "2021-12-13T12:04:51Z",
@@ -2332,7 +2510,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2358,7 +2538,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#issuecomment-992441497",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/459"
@@ -2386,7 +2568,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2415,7 +2599,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2444,10 +2630,12 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "11e80240ff27feca5ed5a08041646cb8b8227080",
+      "commit_url": "https://api.github.com/repos/Sjors/gui/commits/11e80240ff27feca5ed5a08041646cb8b8227080",
       "created_at": "2021-12-13T12:48:10Z"
     },
     {
@@ -2473,7 +2661,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2499,7 +2689,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#issuecomment-992444191",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/459"
@@ -2527,7 +2719,9 @@
         "events_url": "https://api.github.com/users/Rspigler/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Rspigler/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2553,7 +2747,9 @@
         "events_url": "https://api.github.com/users/Rspigler/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Rspigler/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#issuecomment-994156068",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/459"
@@ -2581,7 +2777,9 @@
         "events_url": "https://api.github.com/users/Rspigler/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Rspigler/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2607,7 +2805,9 @@
         "events_url": "https://api.github.com/users/Rspigler/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Rspigler/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#issuecomment-998459117",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/459"
@@ -2715,7 +2915,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2741,7 +2943,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#issuecomment-998468428",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/459"
@@ -2769,10 +2973,12 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "c9a77e227eecf357c7dd550efb8c1827bb99a5de",
+      "commit_url": "https://api.github.com/repos/Sjors/gui/commits/c9a77e227eecf357c7dd550efb8c1827bb99a5de",
       "created_at": "2021-12-21T04:45:42Z"
     },
     {
@@ -2798,7 +3004,9 @@
         "events_url": "https://api.github.com/users/Rspigler/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Rspigler/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2824,7 +3032,9 @@
         "events_url": "https://api.github.com/users/Rspigler/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Rspigler/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#issuecomment-998785279",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/459"
@@ -2838,6 +3048,7 @@
       "commit_id": "c9a77e227eecf357c7dd550efb8c1827bb99a5de",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-12-22T10:42:43Z",
       "author_association": "CONTRIBUTOR",
       "body": "re-ACK c9a77e227eecf357c7dd550efb8c1827bb99a5de",
       "user": {
@@ -2858,7 +3069,9 @@
         "events_url": "https://api.github.com/users/kristapsk/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/kristapsk/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#pullrequestreview-838321063",
       "submitted_at": "2021-12-22T10:42:43Z",
@@ -2871,24 +3084,26 @@
       "node_id": "ME_lADOEEET9c499YTQzwAAAAFZ9E62",
       "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/5804150454",
       "actor": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "63b5dfac21613b984803347bfe81454da667016e",
       "commit_url": "https://api.github.com/repos/bitcoin-core/gui/commits/63b5dfac21613b984803347bfe81454da667016e",
@@ -2900,24 +3115,26 @@
       "node_id": "CE_lADOEEET9c499YTQzwAAAAFZ9E7O",
       "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/5804150478",
       "actor": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2932,26 +3149,29 @@
       "commit_id": "c9a77e227eecf357c7dd550efb8c1827bb99a5de",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-12-22T11:28:37Z",
       "author_association": "CONTRIBUTOR",
       "user": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#pullrequestreview-838359643",
       "submitted_at": "2021-12-22T11:28:37Z",
@@ -2967,26 +3187,29 @@
       "commit_id": "c9a77e227eecf357c7dd550efb8c1827bb99a5de",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-12-22T11:52:16Z",
       "author_association": "CONTRIBUTOR",
       "user": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/459#pullrequestreview-838377951",
       "submitted_at": "2021-12-22T11:52:16Z",
@@ -3016,7 +3239,9 @@
         "events_url": "https://api.github.com/users/sidhujag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/sidhujag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "b960097cf43772281bd7d0bc53adaa16f2b20433",
       "commit_url": "https://api.github.com/repos/syscoin/syscoin/commits/b960097cf43772281bd7d0bc53adaa16f2b20433",
@@ -3045,7 +3270,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -3074,7 +3301,9 @@
         "events_url": "https://api.github.com/users/RandyMcMillan/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/RandyMcMillan/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "aaa89c92e46566b8d798c0730a642c08aa810f44",
       "commit_url": "https://api.github.com/repos/RandyMcMillan/gui/commits/aaa89c92e46566b8d798c0730a642c08aa810f44",
@@ -3103,7 +3332,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -3118,30 +3349,32 @@
       "node_id": "PRRC_kwDOEEET9c4sDzcL",
       "diff_hunk": "@@ -458,6 +458,11 @@ class WalletImpl : public Wallet\n     bool canGetAddresses() override { return m_wallet->CanGetAddresses(); }\n     bool hasExternalSigner() override { return m_wallet->IsWalletFlagSet(WALLET_FLAG_EXTERNAL_SIGNER); }\n     bool privateKeysDisabled() override { return m_wallet->IsWalletFlagSet(WALLET_FLAG_DISABLE_PRIVATE_KEYS); }\n+    bool taprootEnabled() override {\n+        if (m_wallet->IsLegacy()) return false;\n+        auto spk_man = m_wallet->GetScriptPubKeyMan(OutputType::BECH32M, false);",
       "path": "src/wallet/interfaces.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 6,
       "commit_id": "c9a77e227eecf357c7dd550efb8c1827bb99a5de",
       "original_commit_id": "943fb5e34a4041fe77a3fc9105f053051ccc44d3",
       "in_reply_to_id": null,
       "user": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "```suggestion\r\n        auto spk_man = m_wallet->GetScriptPubKeyMan(OutputType::BECH32M, /*internal=*/false);\r\n```\r\n\r\nnit: might be nice to use named args",
       "created_at": "2021-10-29T12:34:33Z",
@@ -3176,24 +3409,26 @@
       "original_commit_id": "f04337ebae26048489e4992992d13a59cfa03ec7",
       "in_reply_to_id": null,
       "user": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Is this special case needed? Wouldn't it return nullptr below?",
       "created_at": "2021-11-01T13:57:47Z",
@@ -3245,7 +3480,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Maybe not, but since legacy wallets don't have descriptors, it does seem cleaner.",
       "created_at": "2021-11-01T14:09:19Z",
@@ -3274,30 +3511,32 @@
       "node_id": "PRRC_kwDOEEET9c4tpygy",
       "diff_hunk": "@@ -87,11 +87,18 @@ void ReceiveCoinsDialog::setModel(WalletModel *_model)\n             &QItemSelectionModel::selectionChanged, this,\n             &ReceiveCoinsDialog::recentRequestsView_selectionChanged);\n \n-        if (model->wallet().getDefaultAddressType() == OutputType::BECH32) {\n-            ui->useBech32->setCheckState(Qt::Checked);\n-        } else {\n-            ui->useBech32->setCheckState(Qt::Unchecked);\n+        // Populate address type dropdown and select default\n+        ui->addressType->insertItem((int)OutputType::LEGACY, \"Base58 (Legacy)\");\n+        ui->addressType->setItemData((int)OutputType::LEGACY, \"Not recommended due to higher fees and less protection against typos.\", Qt::ToolTipRole);",
       "path": "src/qt/receivecoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 10,
       "commit_id": "c9a77e227eecf357c7dd550efb8c1827bb99a5de",
       "original_commit_id": "f5ba3d9394e47fa737429ecbb43a91bb767e8c59",
       "in_reply_to_id": null,
       "user": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Sorry to bike-shed, but this wasn't exposed previously through the gui. Adding Taproot addresses seems an odd reason to start offering this again for the average user. Experts that really want this can still use the gui rpc console.\r\n\r\nFor our GUI users, I expect that less options here is beneficial.",
       "created_at": "2021-12-09T16:00:23Z",
@@ -3326,7 +3565,7 @@
       "node_id": "PRRC_kwDOEEET9c4trLLr",
       "diff_hunk": "@@ -87,11 +87,18 @@ void ReceiveCoinsDialog::setModel(WalletModel *_model)\n             &QItemSelectionModel::selectionChanged, this,\n             &ReceiveCoinsDialog::recentRequestsView_selectionChanged);\n \n-        if (model->wallet().getDefaultAddressType() == OutputType::BECH32) {\n-            ui->useBech32->setCheckState(Qt::Checked);\n-        } else {\n-            ui->useBech32->setCheckState(Qt::Unchecked);\n+        // Populate address type dropdown and select default\n+        ui->addressType->insertItem((int)OutputType::LEGACY, \"Base58 (Legacy)\");\n+        ui->addressType->setItemData((int)OutputType::LEGACY, \"Not recommended due to higher fees and less protection against typos.\", Qt::ToolTipRole);",
       "path": "src/qt/receivecoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 10,
       "commit_id": "c9a77e227eecf357c7dd550efb8c1827bb99a5de",
       "original_commit_id": "f5ba3d9394e47fa737429ecbb43a91bb767e8c59",
@@ -3349,7 +3588,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "It becomes a problem when the user sets `-addresstype=legacy`, because then nothing would be selected by default. Previously the checkbox would toggle between legacy and bech32 in that case. This was by design, though not well documented: https://github.com/bitcoin/bitcoin/pull/11991#issue-284181828",
       "created_at": "2021-12-10T02:17:30Z",
@@ -3378,30 +3619,32 @@
       "node_id": "PRRC_kwDOEEET9c4trz17",
       "diff_hunk": "@@ -87,11 +87,18 @@ void ReceiveCoinsDialog::setModel(WalletModel *_model)\n             &QItemSelectionModel::selectionChanged, this,\n             &ReceiveCoinsDialog::recentRequestsView_selectionChanged);\n \n-        if (model->wallet().getDefaultAddressType() == OutputType::BECH32) {\n-            ui->useBech32->setCheckState(Qt::Checked);\n-        } else {\n-            ui->useBech32->setCheckState(Qt::Unchecked);\n+        // Populate address type dropdown and select default\n+        ui->addressType->insertItem((int)OutputType::LEGACY, \"Base58 (Legacy)\");\n+        ui->addressType->setItemData((int)OutputType::LEGACY, \"Not recommended due to higher fees and less protection against typos.\", Qt::ToolTipRole);",
       "path": "src/qt/receivecoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 10,
       "commit_id": "c9a77e227eecf357c7dd550efb8c1827bb99a5de",
       "original_commit_id": "f5ba3d9394e47fa737429ecbb43a91bb767e8c59",
       "in_reply_to_id": 765929522,
       "user": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "When unchecked, `-addresstype=legacy` would map to `p2sh-witness` in the GUI, not `legacy`. So I think we should preserve that, no?",
       "created_at": "2021-12-10T08:11:59Z",
@@ -3430,7 +3673,7 @@
       "node_id": "PRRC_kwDOEEET9c4tr1Ht",
       "diff_hunk": "@@ -87,11 +87,18 @@ void ReceiveCoinsDialog::setModel(WalletModel *_model)\n             &QItemSelectionModel::selectionChanged, this,\n             &ReceiveCoinsDialog::recentRequestsView_selectionChanged);\n \n-        if (model->wallet().getDefaultAddressType() == OutputType::BECH32) {\n-            ui->useBech32->setCheckState(Qt::Checked);\n-        } else {\n-            ui->useBech32->setCheckState(Qt::Unchecked);\n+        // Populate address type dropdown and select default\n+        ui->addressType->insertItem((int)OutputType::LEGACY, \"Base58 (Legacy)\");\n+        ui->addressType->setItemData((int)OutputType::LEGACY, \"Not recommended due to higher fees and less protection against typos.\", Qt::ToolTipRole);",
       "path": "src/qt/receivecoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 10,
       "commit_id": "c9a77e227eecf357c7dd550efb8c1827bb99a5de",
       "original_commit_id": "f5ba3d9394e47fa737429ecbb43a91bb767e8c59",
@@ -3453,7 +3696,9 @@
         "events_url": "https://api.github.com/users/kristapsk/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/kristapsk/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "I think Bitcoin Core users are already above average Bitcoin users and mostly know what they are doing, don't think we should limit people from creating legacy P2PKH addresses, if they want to.",
       "created_at": "2021-12-10T08:20:59Z",
@@ -3482,30 +3727,32 @@
       "node_id": "PRRC_kwDOEEET9c4tr2Oh",
       "diff_hunk": "@@ -87,11 +87,18 @@ void ReceiveCoinsDialog::setModel(WalletModel *_model)\n             &QItemSelectionModel::selectionChanged, this,\n             &ReceiveCoinsDialog::recentRequestsView_selectionChanged);\n \n-        if (model->wallet().getDefaultAddressType() == OutputType::BECH32) {\n-            ui->useBech32->setCheckState(Qt::Checked);\n-        } else {\n-            ui->useBech32->setCheckState(Qt::Unchecked);\n+        // Populate address type dropdown and select default\n+        ui->addressType->insertItem((int)OutputType::LEGACY, \"Base58 (Legacy)\");\n+        ui->addressType->setItemData((int)OutputType::LEGACY, \"Not recommended due to higher fees and less protection against typos.\", Qt::ToolTipRole);",
       "path": "src/qt/receivecoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 10,
       "commit_id": "c9a77e227eecf357c7dd550efb8c1827bb99a5de",
       "original_commit_id": "f5ba3d9394e47fa737429ecbb43a91bb767e8c59",
       "in_reply_to_id": 765929522,
       "user": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "No one has been using this for the past 4 years, and I am not aware of anyone complaining about the lack of it? So it seems odd to add an option that has no use case.",
       "created_at": "2021-12-10T08:27:57Z",
@@ -3534,7 +3781,7 @@
       "node_id": "PRRC_kwDOEEET9c4tr2xV",
       "diff_hunk": "@@ -87,11 +87,18 @@ void ReceiveCoinsDialog::setModel(WalletModel *_model)\n             &QItemSelectionModel::selectionChanged, this,\n             &ReceiveCoinsDialog::recentRequestsView_selectionChanged);\n \n-        if (model->wallet().getDefaultAddressType() == OutputType::BECH32) {\n-            ui->useBech32->setCheckState(Qt::Checked);\n-        } else {\n-            ui->useBech32->setCheckState(Qt::Unchecked);\n+        // Populate address type dropdown and select default\n+        ui->addressType->insertItem((int)OutputType::LEGACY, \"Base58 (Legacy)\");\n+        ui->addressType->setItemData((int)OutputType::LEGACY, \"Not recommended due to higher fees and less protection against typos.\", Qt::ToolTipRole);",
       "path": "src/qt/receivecoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 10,
       "commit_id": "c9a77e227eecf357c7dd550efb8c1827bb99a5de",
       "original_commit_id": "f5ba3d9394e47fa737429ecbb43a91bb767e8c59",
@@ -3557,7 +3804,9 @@
         "events_url": "https://api.github.com/users/kristapsk/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/kristapsk/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "I have used this by using RPC. Would have used in GUI if it would have been available.",
       "created_at": "2021-12-10T08:31:33Z",
@@ -3586,7 +3835,7 @@
       "node_id": "PRRC_kwDOEEET9c4tsjVP",
       "diff_hunk": "@@ -87,11 +87,18 @@ void ReceiveCoinsDialog::setModel(WalletModel *_model)\n             &QItemSelectionModel::selectionChanged, this,\n             &ReceiveCoinsDialog::recentRequestsView_selectionChanged);\n \n-        if (model->wallet().getDefaultAddressType() == OutputType::BECH32) {\n-            ui->useBech32->setCheckState(Qt::Checked);\n-        } else {\n-            ui->useBech32->setCheckState(Qt::Unchecked);\n+        // Populate address type dropdown and select default\n+        ui->addressType->insertItem((int)OutputType::LEGACY, \"Base58 (Legacy)\");\n+        ui->addressType->setItemData((int)OutputType::LEGACY, \"Not recommended due to higher fees and less protection against typos.\", Qt::ToolTipRole);",
       "path": "src/qt/receivecoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 10,
       "commit_id": "c9a77e227eecf357c7dd550efb8c1827bb99a5de",
       "original_commit_id": "f5ba3d9394e47fa737429ecbb43a91bb767e8c59",
@@ -3609,7 +3858,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Correction, the checkbox is not disabled on master when using  `-addresstype=legacy`. The original PR description was wrong (or the behavior was changed later).\r\n\r\nOn master you can test that, when launched with  `-addresstype=legacy`, it would produce a P2PKH address, not wrapped segwit. This happened in the code below:\r\n\r\n<img width=\"540\" alt=\"Schermafbeelding 2021-12-10 om 19 45 45\" src=\"https://user-images.githubusercontent.com/10217/145576223-4cee1254-ceb6-4a38-a5a5-1a5fd9112c9e.png\">\r\n\r\nNotice also that this logic leads to a bug for anyone who sets `-addresstype=bech32m`; it would then fall back to P2PKH instead of wrapped SegWit when unchecked. So introducing this dropdown is probably a good idea in any case (or just add `|| address_type == OutputType::BECH32M`).\r\n\r\nIIRC @luke-jr at the time requested the ability to opt out of SegWit entirely. But I don't know how many people actually knew of this behaviour.",
       "created_at": "2021-12-10T12:51:50Z",
@@ -3638,30 +3889,32 @@
       "node_id": "PRRC_kwDOEEET9c4twNnc",
       "diff_hunk": "@@ -0,0 +1,4 @@\n+GUI changes\n+-----------\n+\n+- The Bech32 checkbox has been replaced with a dropdown for all address types, including the new Bech32m (BIP-350) standard for Taproot enabled wallets. The default remains Bech32 (SegWit).",
       "path": "doc/release-notes-gui-459.md",
-      "position": null,
+      "position": 1,
       "original_position": 4,
       "commit_id": "c9a77e227eecf357c7dd550efb8c1827bb99a5de",
       "original_commit_id": "f5ba3d9394e47fa737429ecbb43a91bb767e8c59",
       "in_reply_to_id": null,
       "user": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "```suggestion\r\n- The Bech32 checkbox has been replaced with a dropdown for all address types, including the new Bech32m (BIP-350) standard for Taproot enabled wallets.\r\n```\r\n\r\nnit: I don't think we need to mention stuff that doesn't change. Also, this is wrong? The default is whatever `-addresstype` is set to?",
       "created_at": "2021-12-13T10:50:33Z",
@@ -3690,7 +3943,7 @@
       "node_id": "PRRC_kwDOEEET9c4twgFV",
       "diff_hunk": "@@ -0,0 +1,4 @@\n+GUI changes\n+-----------\n+\n+- The Bech32 checkbox has been replaced with a dropdown for all address types, including the new Bech32m (BIP-350) standard for Taproot enabled wallets. The default remains Bech32 (SegWit).",
       "path": "doc/release-notes-gui-459.md",
-      "position": null,
+      "position": 1,
       "original_position": 4,
       "commit_id": "c9a77e227eecf357c7dd550efb8c1827bb99a5de",
       "original_commit_id": "f5ba3d9394e47fa737429ecbb43a91bb767e8c59",
@@ -3713,7 +3966,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Fixed",
       "created_at": "2021-12-13T11:54:29Z",
@@ -3748,24 +4003,26 @@
       "original_commit_id": "c9a77e227eecf357c7dd550efb8c1827bb99a5de",
       "in_reply_to_id": null,
       "user": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "This is missing a check (like the one for taproot)?\r\n\r\nLocally, I am getting:\r\n\r\n![Screenshot from 2021-12-22 12-26-46](https://user-images.githubusercontent.com/6399679/147086033-71596569-dff5-4b03-b654-9588c021be6c.png)\r\n\r\n",
       "created_at": "2021-12-22T11:28:36Z",
@@ -3800,24 +4057,26 @@
       "original_commit_id": "c9a77e227eecf357c7dd550efb8c1827bb99a5de",
       "in_reply_to_id": null,
       "user": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "nit: maybe replace \"wallets\" with \"services\" or \"third-party services\" or \"third-party wallets\".\r\n\r\nOtherwise the user  might get confused into thinking that an old wallet.dat can't generate this, which is not true?",
       "created_at": "2021-12-22T11:52:16Z",
@@ -3869,7 +4128,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "I assume you manually created a wallet without a `pkh()` descriptor? We could add checks for the existence of each output type to the interface and then remove them from the dropdown. However, if someone manually creates a wallet, they would also understand the error message, and it might even better than a missing item?",
       "created_at": "2021-12-23T02:31:28Z",
@@ -3921,7 +4182,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "I'm not sure if they're more likely to think of an upgrade scenario than about receiving coins from another wallet they have? \"third-party\" is a bit of an tech industry term, and probably doesn't translate well. Paging @jonatack.\r\n\r\n(\"other, old, wallets\" is more clear perhaps, though maybe not pretty)",
       "created_at": "2021-12-23T02:34:49Z",

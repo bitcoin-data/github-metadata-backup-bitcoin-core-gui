@@ -36,7 +36,9 @@
       "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/jonatack/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
     },
     "body": "![Screenshot from 2021-04-24 13-15-54](https://user-images.githubusercontent.com/2415484/115995575-4df86280-a5cb-11eb-84a6-7f2d3143b980.png)\r\n\r\nThis was initially proposed in #179 and saw an enthusiastic reception with several ACKs. One contributor was a weak NACK due to the horizontal space and so this was temporarily dropped, but since then #202 (and soon #256 and #293) resolve the issue. Moreover, the current state of displaying only a connection `Type` column without a connection `Direction` column is confusing (e.g. https://github.com/bitcoin/bitcoin/issues/21747#issuecomment-825072559), particularly as both the direction and the type are displayed in the peer details area with the `Direction/Type` row.\r\n\r\nThis patch fixes it and completes the initial proposal in #179 by adding a `Direction` column, making the peers tab the same as the `Direction/Type` row in the peer details and the direction and type columns in our other user-facing peer connections table in `-netinfo`.\r\n\r\nUsers can now sort the peers table by direction. The default sort is set to inbound, then outbound.\r\n\r\nThis patch also makes the direction and type translations the same for the 3 places where they are used (the peers column, the peer details row, and its tooltip), adds translator comments to link them together, and adds QStringBuilder fast QString concatenation with the `%` operator.",
     "labels": [
@@ -54,11 +56,14 @@
     "created_at": "2021-04-23T13:51:53Z",
     "updated_at": "2022-08-16T16:58:56Z",
     "closed_at": "2021-04-30T20:34:41Z",
-    "mergeable_state": "unknown",
+    "mergeable": true,
+    "mergeable_state": "clean",
+    "merged": false,
     "merge_commit_sha": "757c8200aee63b7c2fbf8544685468c67d591482",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
+    "rebaseable": false,
     "head": {
       "label": "jonatack:add-direction-column-to-peers-tab",
       "ref": "add-direction-column-to-peers-tab",
@@ -81,7 +86,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 312640672,
@@ -106,7 +113,9 @@
           "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/jonatack/received_events",
           "type": "User",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/jonatack/gui",
@@ -155,8 +164,8 @@
         "svn_url": "https://github.com/jonatack/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "forks_count": 0,
-        "stargazers_count": 0,
-        "watchers_count": 0,
+        "stargazers_count": 1,
+        "watchers_count": 1,
         "size": 124658,
         "default_branch": "master",
         "open_issues_count": 0,
@@ -172,7 +181,8 @@
         "visibility": "public",
         "pushed_at": "2022-11-17T17:37:53Z",
         "created_at": "2020-11-13T17:25:17Z",
-        "updated_at": "2020-11-13T17:25:18Z",
+        "updated_at": "2025-09-17T13:52:43Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -212,7 +222,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 272700405,
@@ -237,7 +249,9 @@
           "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/bitcoin-core/gui",
@@ -286,12 +300,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 271,
-        "stargazers_count": 491,
-        "watchers_count": 491,
-        "size": 149681,
+        "forks_count": 354,
+        "stargazers_count": 725,
+        "watchers_count": 725,
+        "size": 190146,
         "default_branch": "master",
-        "open_issues_count": 155,
+        "open_issues_count": 148,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -302,9 +316,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-08-01T15:59:41Z",
+        "pushed_at": "2026-05-16T00:00:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2023-08-02T07:56:25Z",
+        "updated_at": "2026-05-16T00:00:11Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -327,7 +342,7 @@
         "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/289"
       }
     },
-    "author_association": "CONTRIBUTOR",
+    "author_association": "MEMBER",
     "draft": false,
     "additions": 47,
     "deletions": 24,
@@ -346,7 +361,8 @@
       "commit_id": "d508c3fd2749d1628f2e2d3f94ce71f429536c64",
       "commit_url": null,
       "created_at": null,
-      "author_association": "MEMBER",
+      "updated_at": "2021-04-23T20:02:59Z",
+      "author_association": "CONTRIBUTOR",
       "body": "Concept ACK\r\n\r\nI think this is an improvement over the current little arrows next to the address. But, this improvement is dependent on getting translations done. \r\n\r\nWhat if we kept the arrow next to the `Inbound` and `Outbound` text. That way, if there is no translation available, the arrows provide some context to go on. ",
       "user": {
         "login": "jarolrod",
@@ -366,7 +382,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#pullrequestreview-643624608",
       "submitted_at": "2021-04-23T20:02:59Z",
@@ -396,10 +414,12 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "8c580ef03e34ada1413f0541f73a6ba5b6d75514",
+      "commit_url": "https://api.github.com/repos/jonatack/gui/commits/8c580ef03e34ada1413f0541f73a6ba5b6d75514",
       "created_at": "2021-04-24T11:41:43Z"
     },
     {
@@ -425,13 +445,15 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-04-24T11:57:47Z",
       "updated_at": "2021-04-25T13:48:18Z",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "> What if we kept the arrow next to the `Inbound` and `Outbound` text. That way, if there is no translation available, the arrows provide some context to go on.\r\n\r\n@jarolrod Thanks for reviewing! I added the arrows yesterday but then removed them today, because the `Direction` and `Type` columns should display the same thing as the `Direction/Type` details row. I also made the direction and type translations the same for the three places where they are used (peers column, peer details row, and its tooltip) and added translator comments.\r\n",
       "user": {
         "login": "jonatack",
@@ -451,7 +473,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#issuecomment-826082034",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/289"
@@ -479,7 +503,9 @@
         "events_url": "https://api.github.com/users/RandyMcMillan/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/RandyMcMillan/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -505,7 +531,9 @@
         "events_url": "https://api.github.com/users/RandyMcMillan/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/RandyMcMillan/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#issuecomment-826157331",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/289"
@@ -533,7 +561,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -562,7 +592,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -591,13 +623,15 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-04-24T21:53:02Z",
       "updated_at": "2021-04-24T21:53:02Z",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "Thanks -- yes, I know but don't prefer a column with just arrows.\r\n\r\nMore objectively, there is an issue described in the PR description above: the Inbound/Outbound direction is displayed in the peer details area (the `Direction/Type` row) but not in the peers windows itself, which is confusing to users. Now that space is less of an issue thanks to #202 and #256, we can complete what was started in #179 and properly display the Direction and the Type next to each other as we are already doing in the peer details.",
       "user": {
         "login": "jonatack",
@@ -617,7 +651,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#issuecomment-826158213",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/289"
@@ -645,7 +681,9 @@
         "events_url": "https://api.github.com/users/RandyMcMillan/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/RandyMcMillan/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -671,7 +709,9 @@
         "events_url": "https://api.github.com/users/RandyMcMillan/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/RandyMcMillan/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#issuecomment-826167596",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/289"
@@ -699,13 +739,15 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-04-25T13:05:28Z",
       "updated_at": "2021-04-25T13:05:28Z",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "> What do you think leave the Ampersands or take them out?\r\n\r\nThe current space-ampersand-space, or comma-space, seem like good separators.",
       "user": {
         "login": "jonatack",
@@ -725,7 +767,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#issuecomment-826321347",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/289"
@@ -753,10 +797,12 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "d04ebdaab74493bb0cba79fbb81b8225e8bbb8de",
+      "commit_url": "https://api.github.com/repos/jonatack/gui/commits/d04ebdaab74493bb0cba79fbb81b8225e8bbb8de",
       "created_at": "2021-04-25T13:43:16Z"
     },
     {
@@ -782,7 +828,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -811,7 +859,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -840,13 +890,15 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-04-25T13:50:55Z",
       "updated_at": "2021-04-25T13:50:55Z",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "Update: after adding the arrows yesterday, I removed them today because the `Direction` and `Type` columns should display the same thing as the `Direction/Type` details row. In a new second commit, I made the direction and type translations the same for the three places where they are used (peers column, peer details row, and its tooltip) and added translator comments to link them together. It's not clear to me, however, if the translator comments should refer to places in the codebase or to where the translations are displayed to users.",
       "user": {
         "login": "jonatack",
@@ -866,7 +918,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#issuecomment-826328046",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/289"
@@ -880,6 +934,7 @@
       "commit_id": "d04ebdaab74493bb0cba79fbb81b8225e8bbb8de",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-04-25T13:58:55Z",
       "author_association": "NONE",
       "body": "tACK d04ebdaab74493bb0cba79fbb81b8225e8bbb8de, tested on Debian Sid with Qt 5.15.2.",
       "user": {
@@ -900,7 +955,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#pullrequestreview-644143214",
       "submitted_at": "2021-04-25T13:58:55Z",
@@ -930,10 +987,12 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "cee6761b061c7fdd5aa207625acd5a6ad8c54d4e",
+      "commit_url": "https://api.github.com/repos/jonatack/gui/commits/cee6761b061c7fdd5aa207625acd5a6ad8c54d4e",
       "created_at": "2021-04-25T15:38:21Z"
     },
     {
@@ -959,7 +1018,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -978,6 +1039,7 @@
       "commit_id": "cee6761b061c7fdd5aa207625acd5a6ad8c54d4e",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-04-25T16:54:36Z",
       "author_association": "NONE",
       "body": "",
       "user": {
@@ -998,7 +1060,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#pullrequestreview-644159799",
       "submitted_at": "2021-04-25T16:54:36Z",
@@ -1028,7 +1092,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1101,10 +1167,12 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "181065c0c5100e9a863266b0e4b9dc767cf3e13a",
+      "commit_url": "https://api.github.com/repos/jonatack/gui/commits/181065c0c5100e9a863266b0e4b9dc767cf3e13a",
       "created_at": "2021-04-28T19:19:55Z"
     },
     {
@@ -1130,13 +1198,15 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-04-28T19:21:19Z",
       "updated_at": "2021-04-28T19:21:19Z",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "Rebased due to the merge of #18. Thanks for the reviews @Talkless!",
       "user": {
         "login": "jonatack",
@@ -1156,7 +1226,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#issuecomment-828716688",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/289"
@@ -1184,7 +1256,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1213,7 +1287,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1242,7 +1318,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1395,10 +1473,12 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "2bf3f5aee014ab4e0ff72e6bdbb33ada02dec314",
+      "commit_url": "https://api.github.com/repos/jonatack/gui/commits/2bf3f5aee014ab4e0ff72e6bdbb33ada02dec314",
       "created_at": "2021-04-28T23:28:33Z"
     },
     {
@@ -1424,7 +1504,9 @@
         "events_url": "https://api.github.com/users/ghost/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ghost/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1450,7 +1532,9 @@
         "events_url": "https://api.github.com/users/ghost/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ghost/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#issuecomment-829842694",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/289"
@@ -1464,6 +1548,7 @@
       "commit_id": "678b57227e5c163cfbe77444d2c8b39c357678c2",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-04-30T05:13:32Z",
       "author_association": "NONE",
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#pullrequestreview-648886313",
       "submitted_at": "2021-04-30T05:13:32Z",
@@ -1493,7 +1578,9 @@
         "events_url": "https://api.github.com/users/ghost/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ghost/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1519,7 +1606,9 @@
         "events_url": "https://api.github.com/users/ghost/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ghost/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#issuecomment-829846634",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/289"
@@ -1533,7 +1622,8 @@
       "commit_id": "2bf3f5aee014ab4e0ff72e6bdbb33ada02dec314",
       "commit_url": null,
       "created_at": null,
-      "author_association": "MEMBER",
+      "updated_at": "2021-04-30T07:03:12Z",
+      "author_association": "CONTRIBUTOR",
       "body": "ACK 2bf3f5aee014ab4e0ff72e6bdbb33ada02dec314\r\n\r\nThis patch works well and is a UX improvement. Tested on macOS 11.3 Qt 5.15.2\r\n\r\nThanks for working on this and adding in translator comments.\r\n\r\n![Screen Shot 2021-04-30 at 2 59 31 AM](https://user-images.githubusercontent.com/23396902/116660066-7df38d00-a960-11eb-81fa-8252e38e4765.png)\r\n\r\n",
       "user": {
         "login": "jarolrod",
@@ -1553,7 +1643,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#pullrequestreview-648937354",
       "submitted_at": "2021-04-30T07:03:12Z",
@@ -1583,13 +1675,15 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-04-30T07:22:16Z",
       "updated_at": "2021-04-30T07:22:16Z",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "> How do you have 3 Block Relay connections in this screenshot? Isn't [MAX 2](https://github.com/bitcoin/bitcoin/blob/66fd3b28e85c167f3955b5603496daf8d91abcad/src/net.h#L68)?\r\n\r\nWe very often have a short-lived third extra block relay connection since the merge of https://github.com/bitcoin/bitcoin/pull/19858. \r\n\r\nSee this open PR that updates our docs about this: https://github.com/bitcoin/bitcoin/pull/21709/files.",
       "user": {
         "login": "jonatack",
@@ -1609,7 +1703,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#issuecomment-829897665",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/289"
@@ -1637,7 +1733,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1663,7 +1761,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#issuecomment-830057766",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/289"
@@ -1691,7 +1791,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1720,7 +1822,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1749,13 +1853,15 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-04-30T20:34:41Z",
       "updated_at": "2021-04-30T20:34:41Z",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "Up for grabs.",
       "user": {
         "login": "jonatack",
@@ -1775,7 +1881,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#issuecomment-830366411",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/289"
@@ -1803,7 +1911,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1832,7 +1942,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1865,7 +1977,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1894,7 +2008,9 @@
         "events_url": "https://api.github.com/users/ghost/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ghost/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1920,7 +2036,9 @@
         "events_url": "https://api.github.com/users/ghost/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ghost/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#issuecomment-830863992",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/289"
@@ -1948,7 +2066,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1977,7 +2097,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2006,7 +2128,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2032,7 +2156,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#issuecomment-830865832",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/289"
@@ -2080,13 +2206,15 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-05-02T20:45:04Z",
       "updated_at": "2021-05-02T20:45:04Z",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "Hi @prayank23, sorry for the confusion.  I opened this to finish what was started with #179 but decided to not spend further time on GUI/design/QT/UI/translation things.  Everything takes time to do well, and discussing each word, arrow, indentation, translation, and consistency question and explanation until everyone is happy is completely normal, but it takes bandwidth in an area that isn't my focus.  Cheers.",
       "user": {
         "login": "jonatack",
@@ -2106,7 +2234,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#issuecomment-830869190",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/289"
@@ -2154,13 +2284,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-05-26T15:16:36Z",
       "updated_at": "2021-05-26T15:16:36Z",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "body": "@hebasto this is no longer up for grabs as it was picked up in #317 ",
       "user": {
         "login": "jarolrod",
@@ -2180,7 +2312,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#issuecomment-848857753",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/289"
@@ -2208,7 +2342,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2237,7 +2373,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2266,7 +2404,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2299,7 +2439,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2332,7 +2474,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2365,7 +2509,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2398,7 +2544,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2431,7 +2579,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "77e23ca945030d557559a7391cb8bd368693548c",
       "commit_url": "https://api.github.com/repos/bitcoin-core/gui/commits/77e23ca945030d557559a7391cb8bd368693548c",
@@ -2460,7 +2610,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "ccc4b9125ae4e2d45979137507c63684c373bb92",
       "commit_url": "https://api.github.com/repos/bitcoin-core/gui/commits/ccc4b9125ae4e2d45979137507c63684c373bb92",
@@ -2489,7 +2641,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2505,7 +2659,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDYxOTQ2NTg3OA==",
       "diff_hunk": "@@ -161,8 +163,9 @@ QVariant PeerTableModel::data(const QModelIndex &index, int role) const\n         case NetNodeId:\n             return (qint64)rec->nodeStats.nodeid;\n         case Address:\n-            // prepend to peer address down-arrow symbol for inbound connection and up-arrow for outbound connection\n-            return QString(rec->nodeStats.fInbound ? \"↓ \" : \"↑ \") + QString::fromStdString(rec->nodeStats.addrName);\n+            return QString::fromStdString(rec->nodeStats.addrName);\n+        case Direction:\n+            return QString(rec->nodeStats.fInbound ? \"Inbound\" : \"Outbound\");",
       "path": "src/qt/peertablemodel.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 17,
       "commit_id": "2bf3f5aee014ab4e0ff72e6bdbb33ada02dec314",
       "original_commit_id": "d508c3fd2749d1628f2e2d3f94ce71f429536c64",
@@ -2528,13 +2682,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "@hebasto: Would this return the translated string? \r\n\r\nWouldn't we need to do \r\n```suggestion\r\n            return QString(rec->nodeStats.fInbound ? tr(\"Inbound\") : tr(\"Outbound\"));\r\n```",
       "created_at": "2021-04-23T19:59:52Z",
       "updated_at": "2021-04-28T23:28:33Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#discussion_r619465878",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/619465878"
@@ -2557,7 +2713,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDYxOTQ3MzczOA==",
       "diff_hunk": "@@ -161,8 +163,9 @@ QVariant PeerTableModel::data(const QModelIndex &index, int role) const\n         case NetNodeId:\n             return (qint64)rec->nodeStats.nodeid;\n         case Address:\n-            // prepend to peer address down-arrow symbol for inbound connection and up-arrow for outbound connection\n-            return QString(rec->nodeStats.fInbound ? \"↓ \" : \"↑ \") + QString::fromStdString(rec->nodeStats.addrName);\n+            return QString::fromStdString(rec->nodeStats.addrName);\n+        case Direction:\n+            return QString(rec->nodeStats.fInbound ? \"Inbound\" : \"Outbound\");",
       "path": "src/qt/peertablemodel.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 17,
       "commit_id": "2bf3f5aee014ab4e0ff72e6bdbb33ada02dec314",
       "original_commit_id": "d508c3fd2749d1628f2e2d3f94ce71f429536c64",
@@ -2580,7 +2736,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Also we could add translator comments now (see #287 for details).",
       "created_at": "2021-04-23T20:17:09Z",
@@ -2609,7 +2767,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDYxOTY0ODQ5Mw==",
       "diff_hunk": "@@ -161,8 +163,9 @@ QVariant PeerTableModel::data(const QModelIndex &index, int role) const\n         case NetNodeId:\n             return (qint64)rec->nodeStats.nodeid;\n         case Address:\n-            // prepend to peer address down-arrow symbol for inbound connection and up-arrow for outbound connection\n-            return QString(rec->nodeStats.fInbound ? \"↓ \" : \"↑ \") + QString::fromStdString(rec->nodeStats.addrName);\n+            return QString::fromStdString(rec->nodeStats.addrName);\n+        case Direction:\n+            return QString(rec->nodeStats.fInbound ? \"Inbound\" : \"Outbound\");",
       "path": "src/qt/peertablemodel.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 17,
       "commit_id": "2bf3f5aee014ab4e0ff72e6bdbb33ada02dec314",
       "original_commit_id": "d508c3fd2749d1628f2e2d3f94ce71f429536c64",
@@ -2632,13 +2790,15 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Done.",
       "created_at": "2021-04-24T11:42:13Z",
       "updated_at": "2021-04-28T23:28:33Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#discussion_r619648493",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/619648493"
@@ -2661,7 +2821,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDYxOTgyMDU3NQ==",
       "diff_hunk": "@@ -462,15 +462,17 @@ RPCConsole::RPCConsole(interfaces::Node& node, const PlatformStyle *_platformSty\n \n     constexpr QChar nonbreaking_hyphen(8209);\n     const std::vector<QString> CONNECTION_TYPE_DOC{\n-        tr(\"Inbound: initiated by peer\"),\n-        tr(\"Outbound Full Relay: default\"),\n-        tr(\"Outbound Block Relay: does not relay transactions or addresses\"),\n-        tr(\"Outbound Manual: added using RPC %1 or %2/%3 configuration options\")\n+        //: The connection direction (Inbound/Outbound) is also used in ConnectionTypeToQString() and PeerTableModel::data().\n+        //: The connection types (Full Relay, Block Relay, Manual, Feeler, Address Fetch) are also used in ConnectionTypeToQString().\n+        tr(\"Inbound\") + \": \" + tr(\"initiated by peer\"),",
       "path": "src/qt/rpcconsole.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 10,
       "commit_id": "2bf3f5aee014ab4e0ff72e6bdbb33ada02dec314",
       "original_commit_id": "d04ebdaab74493bb0cba79fbb81b8225e8bbb8de",
@@ -2684,7 +2844,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "nit: Now there's lot's of string concatenations, maybe worth using QStringBuilder's `%` and wrapping \" \" and \": \" with `QLatin1String` ?",
       "created_at": "2021-04-25T13:58:07Z",
@@ -2713,7 +2875,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDYxOTgzNTE1Ng==",
       "diff_hunk": "@@ -462,15 +462,17 @@ RPCConsole::RPCConsole(interfaces::Node& node, const PlatformStyle *_platformSty\n \n     constexpr QChar nonbreaking_hyphen(8209);\n     const std::vector<QString> CONNECTION_TYPE_DOC{\n-        tr(\"Inbound: initiated by peer\"),\n-        tr(\"Outbound Full Relay: default\"),\n-        tr(\"Outbound Block Relay: does not relay transactions or addresses\"),\n-        tr(\"Outbound Manual: added using RPC %1 or %2/%3 configuration options\")\n+        //: The connection direction (Inbound/Outbound) is also used in ConnectionTypeToQString() and PeerTableModel::data().\n+        //: The connection types (Full Relay, Block Relay, Manual, Feeler, Address Fetch) are also used in ConnectionTypeToQString().\n+        tr(\"Inbound\") + \": \" + tr(\"initiated by peer\"),",
       "path": "src/qt/rpcconsole.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 10,
       "commit_id": "2bf3f5aee014ab4e0ff72e6bdbb33ada02dec314",
       "original_commit_id": "d04ebdaab74493bb0cba79fbb81b8225e8bbb8de",
@@ -2736,13 +2898,15 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Thanks @Talkless. Added QLatin1String constants in 73cf0fdc8edacf9294f9facc8248fb078298b2d7. Let me know if you think using `%` would still improve the diff and what you'd suggest. ",
       "created_at": "2021-04-25T15:40:50Z",
       "updated_at": "2021-04-28T23:28:33Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#discussion_r619835156",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/619835156"
@@ -2788,7 +2952,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Uhm, I'm a bit lost, why do we have QLatin1String is included a lot in this PR?",
       "created_at": "2021-04-25T16:50:04Z",
@@ -2840,7 +3006,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Interesting idea. It actually could be `constexpr`.",
       "created_at": "2021-04-25T16:51:52Z",
@@ -2892,7 +3060,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Not sure if it helps only by including (without using `operator %`), unless whole bitcoin-qt would be built with `QT_USE_QSTRINGBUILDER`.",
       "created_at": "2021-04-25T16:53:46Z",
@@ -2944,13 +3114,15 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Added because this file already uses `%`.",
       "created_at": "2021-04-25T16:56:55Z",
       "updated_at": "2021-04-28T23:28:33Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#discussion_r619844821",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/619844821"
@@ -2996,13 +3168,15 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Added the header where it is used but header is missing.",
       "created_at": "2021-04-25T16:57:41Z",
       "updated_at": "2021-04-28T23:28:33Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#discussion_r619844944",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/619844944"
@@ -3048,13 +3222,15 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "That was the first thing I tried but the compiler doesn't like it.",
       "created_at": "2021-04-25T16:59:45Z",
       "updated_at": "2021-04-28T23:28:33Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#discussion_r619845197",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/619845197"
@@ -3100,7 +3276,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "I see, QLatin1String and QStringBuilder included because where simply _missing_, not because of new usage. New usage would be nice though, but I don't want to be too-QString-nazi..",
       "created_at": "2021-04-26T18:03:24Z",
@@ -3152,7 +3330,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "That's strange, QLatin1String's constructors are constexpr-marked since at least 5.3: https://code.qt.io/cgit/qt/qtbase.git/tree/src/corelib/tools/qstring.h?h=5.3#n89\r\n\r\nSure that wasn't type or something? What kind of message was that? And what compiler?",
       "created_at": "2021-04-26T18:04:30Z",
@@ -3204,13 +3384,15 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "This seemed relevant: https://stackoverflow.com/questions/56201976/qt-vs-constexpr-string-literal\r\n\r\nClang 9 and GCC 10.2.1:\r\n```\r\n  CXX      qt/libbitcoinqt_a-rpcconsole.o\r\nqt/rpcconsole.cpp:58:32: error: constexpr variable 'COLON_SPACE' must be initialized by a constant expression\r\nstatic constexpr QLatin1String COLON_SPACE{\": \"};\r\n                               ^~~~~~~~~~~~~~~~~\r\n/usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h:91:93: note: non-constexpr function 'strlen' cannot be used in a constant expression\r\n    Q_DECL_CONSTEXPR inline explicit QLatin1String(const char *s) noexcept : m_size(s ? int(strlen(s)) : 0), m_data(s) {}\r\n                                                                                            ^\r\nqt/rpcconsole.cpp:58:32: note: in call to 'QLatin1String(&\": \"[0])'\r\nstatic constexpr QLatin1String COLON_SPACE{\": \"};\r\n                               ^\r\nqt/rpcconsole.cpp:59:32: error: constexpr variable 'SPACE' must be initialized by a constant expression\r\nstatic constexpr QLatin1String SPACE{\" \"};\r\n                               ^~~~~~~~~~\r\n/usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h:91:93: note: non-constexpr function 'strlen' cannot be used in a constant expression\r\n    Q_DECL_CONSTEXPR inline explicit QLatin1String(const char *s) noexcept : m_size(s ? int(strlen(s)) : 0), m_data(s) {}\r\n                                                                                            ^\r\nqt/rpcconsole.cpp:59:32: note: in call to 'QLatin1String(&\" \"[0])'\r\nstatic constexpr QLatin1String SPACE{\" \"};\r\n                               ^\r\n2 errors generated.\r\n```\r\n\r\n",
       "created_at": "2021-04-28T23:05:09Z",
       "updated_at": "2021-04-28T23:28:33Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#discussion_r622624476",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/622624476"
@@ -3256,13 +3438,15 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Thanks for the nudge, @Talkless. Looked up https://wiki.qt.io/Using_QString_Effectively and updated. Please let me know what you think.",
       "created_at": "2021-04-28T23:29:52Z",
       "updated_at": "2021-04-28T23:29:52Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#discussion_r622634384",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/622634384"
@@ -3341,13 +3525,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Here is how that would look, not a bad idea. But, a) I think this change is ok as is b) would like to hear other opinions.\r\n\r\n![Screen Shot 2021-04-30 at 3 09 34 AM](https://user-images.githubusercontent.com/23396902/116660814-89938380-a961-11eb-9bd4-a37ee76ab85e.png)\r\n",
       "created_at": "2021-04-30T07:11:02Z",
       "updated_at": "2021-04-30T07:11:02Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#discussion_r623661998",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/623661998"
@@ -3393,13 +3579,15 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "The goal is to unify the peers tab Direction and Type columns with the Direction/Type row in the peer details sidebar, so if the side bar displays \"Outbound Full Relay\", the main table also displays \"Outbound Full Relay\" with the ability to sort by either Direction or Type.",
       "created_at": "2021-04-30T07:15:47Z",
       "updated_at": "2021-04-30T07:15:47Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#discussion_r623665832",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/623665832"
@@ -3445,13 +3633,15 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "(I also tried \"In/Out\" while working on this PR, and the horizontal space isn't reduced unless the column header is \"Dir\" instead of \"Direction\". But the other headers are full words.) ",
       "created_at": "2021-04-30T07:25:57Z",
       "updated_at": "2021-04-30T07:25:57Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/289#discussion_r623671515",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/623671515"

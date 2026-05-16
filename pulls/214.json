@@ -36,7 +36,9 @@
       "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/jarolrod/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
     },
     "body": "The recent requests table will allow you to copy data points even if they do not exist. This PR implements checks to disable the `copy label`, `copy message`, and `copy amount` context menu actions if the respective fields are empty. This brings the recent requests table context menu behavior closer to the behavior seen in the transaction view.\r\n\r\nOn a payment request entry which does not have a value for label, message, or amount:\r\n| Master        | PR               |\r\n| ----------- | ----------- |\r\n|<img width=\"169\" alt=\"Screen Shot 2021-02-19 at 1 22 28 AM\" src=\"https://user-images.githubusercontent.com/23396902/108466086-167adc00-7251-11eb-8bd6-13984042bdb3.png\">| <img width=\"169\" alt=\"Screen Shot 2021-02-19 at 1 21 49 AM\" src=\"https://user-images.githubusercontent.com/23396902/108466185-3e6a3f80-7251-11eb-9dd8-492ed07fd638.png\">|\r\n\r\n`copy URI` never needs to be disabled as an entry in the recent requests table must have a URI even if it doesn't have a label, message, or amount. #213 will add a `copy address` context menu action. This also does not need a check as an entry must be associated with an address.\r\n\r\nBelow are some more examples of how this PR will behave:\r\n**Has Label, Message, and Amount**\r\n<img width=\"780\" alt=\"Screen Shot 2021-02-19 at 12 05 38 AM\" src=\"https://user-images.githubusercontent.com/23396902/108466507-c18b9580-7251-11eb-8875-f3aeb9c4c8e9.png\">\r\n\r\n**Has Label and Amount, but no Message**\r\n<img width=\"780\" alt=\"Screen Shot 2021-02-19 at 12 05 58 AM\" src=\"https://user-images.githubusercontent.com/23396902/108466421-9b65f580-7251-11eb-97eb-a3bfaa21fa7d.png\">\r\n\r\n",
     "labels": [],
@@ -45,7 +47,30 @@
     "updated_at": "2022-08-16T16:57:24Z",
     "closed_at": "2021-02-25T08:03:59Z",
     "mergeable_state": "unknown",
+    "merged": true,
     "merged_at": "2021-02-25T08:03:59Z",
+    "merged_by": {
+      "login": "maflcko",
+      "id": 6399679,
+      "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/maflcko",
+      "html_url": "https://github.com/maflcko",
+      "followers_url": "https://api.github.com/users/maflcko/followers",
+      "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+      "organizations_url": "https://api.github.com/users/maflcko/orgs",
+      "repos_url": "https://api.github.com/users/maflcko/repos",
+      "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/maflcko/received_events",
+      "type": "User",
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
+    },
     "merge_commit_sha": "09bc7bfed1e6c696cb8ec9c6135aaa8551a985c5",
     "assignees": [],
     "requested_reviewers": [],
@@ -72,7 +97,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 310414870,
@@ -97,7 +124,9 @@
           "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/jarolrod/received_events",
           "type": "User",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/jarolrod/gui",
@@ -149,7 +178,7 @@
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 147893,
+        "size": 167963,
         "default_branch": "master",
         "open_issues_count": 1,
         "is_template": false,
@@ -162,9 +191,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-07-05T02:33:18Z",
+        "pushed_at": "2025-01-08T17:03:39Z",
         "created_at": "2020-11-05T20:54:31Z",
-        "updated_at": "2022-01-09T00:40:30Z",
+        "updated_at": "2025-01-08T17:04:31Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -204,7 +234,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 272700405,
@@ -229,7 +261,9 @@
           "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/bitcoin-core/gui",
@@ -278,12 +312,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 271,
-        "stargazers_count": 491,
-        "watchers_count": 491,
-        "size": 149681,
+        "forks_count": 354,
+        "stargazers_count": 725,
+        "watchers_count": 725,
+        "size": 190146,
         "default_branch": "master",
-        "open_issues_count": 155,
+        "open_issues_count": 148,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -294,9 +328,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-08-01T15:59:41Z",
+        "pushed_at": "2026-05-16T00:00:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2023-08-02T07:56:25Z",
+        "updated_at": "2026-05-16T00:00:11Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -319,7 +354,7 @@
         "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/214"
       }
     },
-    "author_association": "MEMBER",
+    "author_association": "CONTRIBUTOR",
     "draft": false,
     "additions": 16,
     "deletions": 4,
@@ -352,7 +387,9 @@
         "events_url": "https://api.github.com/users/jonasschnelli/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonasschnelli/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -378,7 +415,9 @@
         "events_url": "https://api.github.com/users/jonasschnelli/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonasschnelli/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/214#issuecomment-781903757",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/214"
@@ -406,13 +445,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-02-19T08:13:57Z",
       "updated_at": "2021-02-19T08:13:57Z",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "body": "> utACK [69915b8](https://github.com/bitcoin-core/gui/commit/69915b80ccf853b66345b3d612d24eddd3411a2a) - I guess comparing against zero for an \"empty\" amount is acceptable here.\r\n\r\nComparing against zero is what's used to determine `(no amount requested)` in [recentrequeststablemodel.cpp](https://github.com/bitcoin-core/gui/blob/master/src/qt/recentrequeststablemodel.cpp) Line 84",
       "user": {
         "login": "jarolrod",
@@ -432,7 +473,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/214#issuecomment-781911662",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/214"
@@ -460,7 +503,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -486,7 +531,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/214#issuecomment-782715782",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/214"
@@ -500,6 +547,7 @@
       "commit_id": "69915b80ccf853b66345b3d612d24eddd3411a2a",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-02-20T17:09:39Z",
       "author_association": "NONE",
       "body": "",
       "user": {
@@ -520,7 +568,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/214#pullrequestreview-594768967",
       "submitted_at": "2021-02-20T17:09:39Z",
@@ -550,10 +600,12 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "336a6435965dc813bdc2bf11398bce564e52c984",
+      "commit_url": "https://api.github.com/repos/jarolrod/gui/commits/336a6435965dc813bdc2bf11398bce564e52c984",
       "created_at": "2021-02-21T21:44:10Z"
     },
     {
@@ -579,13 +631,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-02-21T21:49:22Z",
       "updated_at": "2021-02-21T21:49:22Z",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "body": "updated 69915b8 -> 336a643\r\n\r\nAddressed @Talkless suggestions, thanks for the review!\r\n\r\nChanges:\r\n- variables that can be `const` are made `const`\r\n- refactor context menu action disable logic from using `setEnabled` with negations to using `setDisabled` without negations",
       "user": {
         "login": "jarolrod",
@@ -605,7 +659,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/214#issuecomment-782933034",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/214"
@@ -633,7 +689,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -662,7 +720,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -677,27 +737,30 @@
       "commit_id": "336a6435965dc813bdc2bf11398bce564e52c984",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-02-22T07:42:11Z",
       "author_association": "CONTRIBUTOR",
       "body": "tested ACK 336a6435965dc813bdc2bf11398bce564e52c984\r\n\r\ndidn't review code",
       "user": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/214#pullrequestreview-595072937",
       "submitted_at": "2021-02-22T07:42:11Z",
@@ -727,7 +790,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -753,7 +818,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/214#issuecomment-783519994",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/214"
@@ -767,6 +834,7 @@
       "commit_id": "336a6435965dc813bdc2bf11398bce564e52c984",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-02-22T17:12:52Z",
       "author_association": "MEMBER",
       "body": "ACK 336a6435965dc813bdc2bf11398bce564e52c984, tested on Linux Mint 20.1 (Qt 5.12.8).",
       "user": {
@@ -787,7 +855,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/214#pullrequestreview-595579186",
       "submitted_at": "2021-02-22T17:12:52Z",
@@ -817,10 +887,12 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "3f83f05f52be8f3bac2267d447b5037409cde17d",
+      "commit_url": "https://api.github.com/repos/jarolrod/gui/commits/3f83f05f52be8f3bac2267d447b5037409cde17d",
       "created_at": "2021-02-23T02:16:08Z"
     },
     {
@@ -846,13 +918,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-02-23T02:20:21Z",
       "updated_at": "2021-02-23T02:20:21Z",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "body": "updated from 336a643  -> 3f83f05f52be8f3bac2267d447b5037409cde17d, thanks @hebasto @MarcoFalke for the review\r\n\r\nChanges:\r\n- Adhere to [clang-format](https://github.com/bitcoin/bitcoin/blob/master/src/.clang-format)\r\n- `req` is made to be a const reference as that makes more sense",
       "user": {
         "login": "jarolrod",
@@ -872,7 +946,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/214#issuecomment-783821285",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/214"
@@ -883,24 +959,26 @@
       "node_id": "MDE0Ok1lbnRpb25lZEV2ZW50NDM2Mjg2Nzk3NQ==",
       "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/4362867975",
       "actor": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -912,24 +990,26 @@
       "node_id": "MDE1OlN1YnNjcmliZWRFdmVudDQzNjI4Njc5Nzc=",
       "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/4362867977",
       "actor": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -958,7 +1038,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -987,7 +1069,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1002,6 +1086,7 @@
       "commit_id": "3f83f05f52be8f3bac2267d447b5037409cde17d",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-02-23T07:28:06Z",
       "author_association": "MEMBER",
       "body": "re-ACK 3f83f05f52be8f3bac2267d447b5037409cde17d, only suggested changes and rebased since my [previous](https://github.com/bitcoin-core/gui/pull/214#pullrequestreview-595579186) review, verified with\r\n```\r\n$ git range-diff master 336a6435965dc813bdc2bf11398bce564e52c984 3f83f05f52be8f3bac2267d447b5037409cde17d\r\n```",
       "user": {
@@ -1022,7 +1107,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/214#pullrequestreview-596050465",
       "submitted_at": "2021-02-23T07:28:06Z",
@@ -1052,7 +1139,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1125,10 +1214,12 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "bb3da8fe410285887f22679c6f08a1f40bcfac8f",
+      "commit_url": "https://api.github.com/repos/jarolrod/gui/commits/bb3da8fe410285887f22679c6f08a1f40bcfac8f",
       "created_at": "2021-02-23T17:20:44Z"
     },
     {
@@ -1154,13 +1245,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-02-23T17:24:37Z",
       "updated_at": "2021-02-23T17:24:37Z",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "body": "Updated from 3f83f05 -> bb3da8f\r\n\r\nChanges: Resolve conflict with #213 ",
       "user": {
         "login": "jarolrod",
@@ -1180,7 +1273,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/214#issuecomment-784367711",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/214"
@@ -1208,7 +1303,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1227,6 +1324,7 @@
       "commit_id": "bb3da8fe410285887f22679c6f08a1f40bcfac8f",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-02-23T18:41:26Z",
       "author_association": "MEMBER",
       "body": "re-ACK bb3da8fe410285887f22679c6f08a1f40bcfac8f",
       "user": {
@@ -1247,7 +1345,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/214#pullrequestreview-596678064",
       "submitted_at": "2021-02-23T18:41:26Z",
@@ -1263,6 +1363,7 @@
       "commit_id": "bb3da8fe410285887f22679c6f08a1f40bcfac8f",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-02-24T16:59:29Z",
       "author_association": "MEMBER",
       "body": "utACK",
       "user": {
@@ -1283,7 +1384,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/214#pullrequestreview-597709609",
       "submitted_at": "2021-02-24T16:59:29Z",
@@ -1296,24 +1399,26 @@
       "node_id": "MDExOk1lcmdlZEV2ZW50NDM3NTEwMzg3OQ==",
       "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/4375103879",
       "actor": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "09bc7bfed1e6c696cb8ec9c6135aaa8551a985c5",
       "commit_url": "https://api.github.com/repos/bitcoin-core/gui/commits/09bc7bfed1e6c696cb8ec9c6135aaa8551a985c5",
@@ -1325,24 +1430,26 @@
       "node_id": "MDExOkNsb3NlZEV2ZW50NDM3NTEwMzg5Mg==",
       "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/4375103892",
       "actor": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1371,7 +1478,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1400,7 +1509,9 @@
         "events_url": "https://api.github.com/users/gwillen/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/gwillen/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "1bbd69a6afe9acbed3a169a315fb1a84ddd7b250",
       "commit_url": "https://api.github.com/repos/ElementsProject/elements/commits/1bbd69a6afe9acbed3a169a315fb1a84ddd7b250",
@@ -1429,7 +1540,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1445,7 +1558,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDU3OTY4MTkzMw==",
       "diff_hunk": "@@ -267,9 +267,18 @@ void ReceiveCoinsDialog::copyColumnToClipboard(int column)\n // context menu\n void ReceiveCoinsDialog::showMenu(const QPoint &point)\n {\n-    if (!selectedRow().isValid()) {\n+    QModelIndex sel = selectedRow();\n+    if (!sel.isValid()) {\n         return;\n     }\n+\n+    // disable context menu actions when appropriate\n+    const RecentRequestsTableModel * const submodel = model->getRecentRequestsTableModel();\n+    const RecentRequestEntry *req = &submodel->entry(sel.row());\n+    copyLabelAction->setEnabled(!req->recipient.label.isEmpty());",
       "path": "src/qt/receivecoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 26,
       "commit_id": "bb3da8fe410285887f22679c6f08a1f40bcfac8f",
       "original_commit_id": "69915b80ccf853b66345b3d612d24eddd3411a2a",
@@ -1468,7 +1581,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "nit: negations could be avoided (simplified) by using `setDisabled` instead (same for all three similar lines).",
       "created_at": "2021-02-20T17:08:46Z",
@@ -1497,7 +1612,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDU3OTY4MTk1NQ==",
       "diff_hunk": "@@ -267,9 +267,18 @@ void ReceiveCoinsDialog::copyColumnToClipboard(int column)\n // context menu\n void ReceiveCoinsDialog::showMenu(const QPoint &point)\n {\n-    if (!selectedRow().isValid()) {\n+    QModelIndex sel = selectedRow();",
       "path": "src/qt/receivecoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 18,
       "commit_id": "bb3da8fe410285887f22679c6f08a1f40bcfac8f",
       "original_commit_id": "69915b80ccf853b66345b3d612d24eddd3411a2a",
@@ -1520,7 +1635,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "nit: `sel` Could be const.",
       "created_at": "2021-02-20T17:08:56Z",
@@ -1549,7 +1666,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDU3OTY4MTk2MA==",
       "diff_hunk": "@@ -267,9 +267,18 @@ void ReceiveCoinsDialog::copyColumnToClipboard(int column)\n // context menu\n void ReceiveCoinsDialog::showMenu(const QPoint &point)\n {\n-    if (!selectedRow().isValid()) {\n+    QModelIndex sel = selectedRow();\n+    if (!sel.isValid()) {\n         return;\n     }\n+\n+    // disable context menu actions when appropriate\n+    const RecentRequestsTableModel * const submodel = model->getRecentRequestsTableModel();\n+    const RecentRequestEntry *req = &submodel->entry(sel.row());",
       "path": "src/qt/receivecoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 25,
       "commit_id": "bb3da8fe410285887f22679c6f08a1f40bcfac8f",
       "original_commit_id": "69915b80ccf853b66345b3d612d24eddd3411a2a",
@@ -1572,7 +1689,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "nit: Pointer `req` is not change within function, could be  `const RecentRequestEntry * const req` (same as `submodel` above).",
       "created_at": "2021-02-20T17:09:00Z",
@@ -1601,7 +1720,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDU3OTg3MDU2MA==",
       "diff_hunk": "@@ -267,9 +267,18 @@ void ReceiveCoinsDialog::copyColumnToClipboard(int column)\n // context menu\n void ReceiveCoinsDialog::showMenu(const QPoint &point)\n {\n-    if (!selectedRow().isValid()) {\n+    QModelIndex sel = selectedRow();\n+    if (!sel.isValid()) {\n         return;\n     }\n+\n+    // disable context menu actions when appropriate\n+    const RecentRequestsTableModel * const submodel = model->getRecentRequestsTableModel();\n+    const RecentRequestEntry *req = &submodel->entry(sel.row());",
       "path": "src/qt/receivecoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 25,
       "commit_id": "bb3da8fe410285887f22679c6f08a1f40bcfac8f",
       "original_commit_id": "69915b80ccf853b66345b3d612d24eddd3411a2a",
@@ -1624,13 +1743,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "addressed in 336a643",
       "created_at": "2021-02-21T21:45:48Z",
       "updated_at": "2021-02-23T17:20:44Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/214#discussion_r579870560",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/579870560"
@@ -1653,7 +1774,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDU3OTg3MDYyMA==",
       "diff_hunk": "@@ -267,9 +267,18 @@ void ReceiveCoinsDialog::copyColumnToClipboard(int column)\n // context menu\n void ReceiveCoinsDialog::showMenu(const QPoint &point)\n {\n-    if (!selectedRow().isValid()) {\n+    QModelIndex sel = selectedRow();",
       "path": "src/qt/receivecoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 18,
       "commit_id": "bb3da8fe410285887f22679c6f08a1f40bcfac8f",
       "original_commit_id": "69915b80ccf853b66345b3d612d24eddd3411a2a",
@@ -1676,13 +1797,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "addressed in 336a643",
       "created_at": "2021-02-21T21:46:04Z",
       "updated_at": "2021-02-23T17:20:44Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/214#discussion_r579870620",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/579870620"
@@ -1705,7 +1828,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDU3OTg3MDYzNQ==",
       "diff_hunk": "@@ -267,9 +267,18 @@ void ReceiveCoinsDialog::copyColumnToClipboard(int column)\n // context menu\n void ReceiveCoinsDialog::showMenu(const QPoint &point)\n {\n-    if (!selectedRow().isValid()) {\n+    QModelIndex sel = selectedRow();\n+    if (!sel.isValid()) {\n         return;\n     }\n+\n+    // disable context menu actions when appropriate\n+    const RecentRequestsTableModel * const submodel = model->getRecentRequestsTableModel();\n+    const RecentRequestEntry *req = &submodel->entry(sel.row());\n+    copyLabelAction->setEnabled(!req->recipient.label.isEmpty());",
       "path": "src/qt/receivecoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 26,
       "commit_id": "bb3da8fe410285887f22679c6f08a1f40bcfac8f",
       "original_commit_id": "69915b80ccf853b66345b3d612d24eddd3411a2a",
@@ -1728,13 +1851,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "addressed in 336a643",
       "created_at": "2021-02-21T21:46:14Z",
       "updated_at": "2021-02-23T17:20:44Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/214#discussion_r579870635",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/579870635"
@@ -1757,30 +1882,32 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDU4MDAzNzEzNw==",
       "diff_hunk": "@@ -267,9 +267,18 @@ void ReceiveCoinsDialog::copyColumnToClipboard(int column)\n // context menu\n void ReceiveCoinsDialog::showMenu(const QPoint &point)\n {\n-    if (!selectedRow().isValid()) {\n+    const QModelIndex sel = selectedRow();\n+    if (!sel.isValid()) {\n         return;\n     }\n+\n+    // disable context menu actions when appropriate\n+    const RecentRequestsTableModel * const submodel = model->getRecentRequestsTableModel();\n+    const RecentRequestEntry * const req = &submodel->entry(sel.row());",
       "path": "src/qt/receivecoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 25,
       "commit_id": "bb3da8fe410285887f22679c6f08a1f40bcfac8f",
       "original_commit_id": "336a6435965dc813bdc2bf11398bce564e52c984",
       "in_reply_to_id": null,
       "user": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "wouldn't a const reference make more sense?\r\n```suggestion\r\n    const RecentRequestEntry& req = submodel->entry(sel.row());\r\n```",
       "created_at": "2021-02-22T07:41:54Z",
@@ -1809,7 +1936,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDU4MDQyNTAzNA==",
       "diff_hunk": "@@ -54,6 +54,9 @@ public Q_SLOTS:\n     GUIUtil::TableViewLastColumnResizingFixer *columnResizingFixer;\n     WalletModel *model;\n     QMenu *contextMenu;\n+    QAction *copyLabelAction;\n+    QAction *copyMessageAction;\n+    QAction *copyAmountAction;",
       "path": "src/qt/receivecoinsdialog.h",
-      "position": null,
+      "position": 1,
       "original_position": 6,
       "commit_id": "bb3da8fe410285887f22679c6f08a1f40bcfac8f",
       "original_commit_id": "336a6435965dc813bdc2bf11398bce564e52c984",
@@ -1832,7 +1959,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "style nit (see [clang-format-diff.py](https://github.com/bitcoin/bitcoin/tree/master/contrib/devtools#clang-format-diffpy)):\r\n```suggestion\r\n    QAction* copyLabelAction;\r\n    QAction* copyMessageAction;\r\n    QAction* copyAmountAction;\r\n```",
       "created_at": "2021-02-22T17:10:01Z",
@@ -1861,7 +1990,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDU4MDQyNTkzOA==",
       "diff_hunk": "@@ -267,9 +267,18 @@ void ReceiveCoinsDialog::copyColumnToClipboard(int column)\n // context menu\n void ReceiveCoinsDialog::showMenu(const QPoint &point)\n {\n-    if (!selectedRow().isValid()) {\n+    const QModelIndex sel = selectedRow();\n+    if (!sel.isValid()) {\n         return;\n     }\n+\n+    // disable context menu actions when appropriate\n+    const RecentRequestsTableModel * const submodel = model->getRecentRequestsTableModel();",
       "path": "src/qt/receivecoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 24,
       "commit_id": "bb3da8fe410285887f22679c6f08a1f40bcfac8f",
       "original_commit_id": "336a6435965dc813bdc2bf11398bce564e52c984",
@@ -1884,7 +2013,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "style nit (see [clang-format-diff.py](https://github.com/bitcoin/bitcoin/tree/master/contrib/devtools#clang-format-diffpy)):\r\n```suggestion\r\n    const RecentRequestsTableModel* const submodel = model->getRecentRequestsTableModel();\r\n```",
       "created_at": "2021-02-22T17:11:09Z",
@@ -1913,7 +2044,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDU4MDcyNjUyMA==",
       "diff_hunk": "@@ -54,6 +54,9 @@ public Q_SLOTS:\n     GUIUtil::TableViewLastColumnResizingFixer *columnResizingFixer;\n     WalletModel *model;\n     QMenu *contextMenu;\n+    QAction *copyLabelAction;\n+    QAction *copyMessageAction;\n+    QAction *copyAmountAction;",
       "path": "src/qt/receivecoinsdialog.h",
-      "position": null,
+      "position": 1,
       "original_position": 6,
       "commit_id": "bb3da8fe410285887f22679c6f08a1f40bcfac8f",
       "original_commit_id": "336a6435965dc813bdc2bf11398bce564e52c984",
@@ -1936,13 +2067,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Addressed in 3f83f05f52be8f3bac2267d447b5037409cde17d",
       "created_at": "2021-02-23T02:17:26Z",
       "updated_at": "2021-02-23T17:20:44Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/214#discussion_r580726520",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/580726520"
@@ -1965,7 +2098,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDU4MDcyNjU5Mw==",
       "diff_hunk": "@@ -267,9 +267,18 @@ void ReceiveCoinsDialog::copyColumnToClipboard(int column)\n // context menu\n void ReceiveCoinsDialog::showMenu(const QPoint &point)\n {\n-    if (!selectedRow().isValid()) {\n+    const QModelIndex sel = selectedRow();\n+    if (!sel.isValid()) {\n         return;\n     }\n+\n+    // disable context menu actions when appropriate\n+    const RecentRequestsTableModel * const submodel = model->getRecentRequestsTableModel();\n+    const RecentRequestEntry * const req = &submodel->entry(sel.row());",
       "path": "src/qt/receivecoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 25,
       "commit_id": "bb3da8fe410285887f22679c6f08a1f40bcfac8f",
       "original_commit_id": "336a6435965dc813bdc2bf11398bce564e52c984",
@@ -1988,13 +2121,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "addressed in 3f83f05f52be8f3bac2267d447b5037409cde17d",
       "created_at": "2021-02-23T02:17:36Z",
       "updated_at": "2021-02-23T17:20:44Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/214#discussion_r580726593",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/580726593"
@@ -2040,7 +2175,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "```suggestion\r\n    const auto& r = model->getRecentRequestsTableModel()->entry(sel.row()).recipient;\r\n    copyLabelAction->setDisabled(r.label.isEmpty());\r\n    copyMessageAction->setDisabled(r.message.isEmpty());\r\n    copyAmountAction->setDisabled(r.amount == 0);\r\n```",
       "created_at": "2021-02-23T07:27:36Z",
@@ -2092,13 +2229,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Since 213 was merged with the style used in this PR, I'll close this for consistency",
       "created_at": "2021-02-23T17:23:08Z",
       "updated_at": "2021-02-23T17:23:08Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/214#discussion_r581232738",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/581232738"

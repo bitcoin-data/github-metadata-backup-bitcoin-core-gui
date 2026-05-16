@@ -36,7 +36,9 @@
       "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/Sjors/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
     },
     "body": "Fixes #551\r\n\r\nFor the simplest use case of a wallet with one external signer and \"PSBT Controls\" disabled in settings (the default), the send dialog will behave the same as when using a wallet with private keys. I.e. there's no \"Create Unsigned\" button.\r\n\r\nWhen PSBT controls are turned on, you can now actually make a PSBT with signing it; before this PR that button would trigger a sign event and would broadcast the transaction.\r\n\r\nIn case a multisig, the Send button will sign on the device, and then fall back to presenting a PSBT (same behavior as before #441).\r\n\r\nThis PR starts with two refactoring commits to move some stuff into a helper function for improved readability in general, and to make the main commit easier to review.",
     "labels": [
@@ -87,19 +89,44 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "open_issues": 0,
-      "closed_issues": 11,
+      "open_issues": 1,
+      "closed_issues": 10,
       "created_at": "2021-09-03T10:20:23Z",
-      "updated_at": "2022-12-25T11:04:17Z",
+      "updated_at": "2024-02-24T16:55:40Z",
       "closed_at": "2022-12-25T11:04:17Z"
     },
     "created_at": "2022-02-21T12:54:59Z",
     "updated_at": "2023-06-05T10:05:00Z",
     "closed_at": "2022-03-17T06:21:57Z",
     "mergeable_state": "unknown",
+    "merged": true,
     "merged_at": "2022-03-17T06:21:57Z",
+    "merged_by": {
+      "login": "hebasto",
+      "id": 32963518,
+      "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hebasto",
+      "html_url": "https://github.com/hebasto",
+      "followers_url": "https://api.github.com/users/hebasto/followers",
+      "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+      "organizations_url": "https://api.github.com/users/hebasto/orgs",
+      "repos_url": "https://api.github.com/users/hebasto/repos",
+      "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/hebasto/received_events",
+      "type": "User",
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
+    },
     "merge_commit_sha": "aece56624941bc6284a01a4df7881e73cdf4290f",
     "assignees": [],
     "requested_reviewers": [
@@ -121,7 +148,9 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       }
     ],
     "requested_teams": [],
@@ -147,7 +176,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 273307189,
@@ -172,7 +203,9 @@
           "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/Sjors/received_events",
           "type": "User",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/Sjors/gui",
@@ -220,7 +253,7 @@
         "hooks_url": "https://api.github.com/repos/Sjors/gui/hooks",
         "svn_url": "https://github.com/Sjors/gui",
         "homepage": "",
-        "forks_count": 0,
+        "forks_count": 1,
         "stargazers_count": 0,
         "watchers_count": 0,
         "size": 129113,
@@ -239,6 +272,7 @@
         "pushed_at": "2022-04-25T15:45:26Z",
         "created_at": "2020-06-18T18:04:50Z",
         "updated_at": "2020-06-18T18:04:52Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -278,7 +312,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 272700405,
@@ -303,7 +339,9 @@
           "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/bitcoin-core/gui",
@@ -352,12 +390,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 271,
-        "stargazers_count": 491,
-        "watchers_count": 491,
-        "size": 149681,
+        "forks_count": 354,
+        "stargazers_count": 725,
+        "watchers_count": 725,
+        "size": 190146,
         "default_branch": "master",
-        "open_issues_count": 155,
+        "open_issues_count": 148,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -368,9 +406,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-08-01T15:59:41Z",
+        "pushed_at": "2026-05-16T00:00:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2023-08-02T07:56:25Z",
+        "updated_at": "2026-05-16T00:00:11Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -426,7 +465,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -452,7 +493,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/555#issuecomment-1046881504",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/555"
@@ -480,7 +523,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -512,7 +557,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -545,7 +592,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -578,7 +627,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -601,7 +652,9 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "review_requester": {
         "login": "Sjors",
@@ -621,7 +674,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       }
     },
     {
@@ -633,6 +688,7 @@
       "commit_id": "a49bb0c8328d1e0ecf0ee80916594ff260f79613",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2022-02-22T22:01:57Z",
       "author_association": "CONTRIBUTOR",
       "body": "Concept ACK",
       "user": {
@@ -653,7 +709,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/555#pullrequestreview-890395361",
       "submitted_at": "2022-02-22T22:01:57Z",
@@ -723,10 +781,12 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "33d165d802846943c0ba70be4e643e3b50c6634e",
+      "commit_url": "https://api.github.com/repos/Sjors/gui/commits/33d165d802846943c0ba70be4e643e3b50c6634e",
       "created_at": "2022-02-24T11:42:31Z"
     },
     {
@@ -752,7 +812,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -778,7 +840,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/555#issuecomment-1049774760",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/555"
@@ -806,7 +870,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -835,7 +901,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -864,7 +932,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -890,7 +960,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/555#issuecomment-1056296091",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/555"
@@ -904,6 +976,7 @@
       "commit_id": "33d165d802846943c0ba70be4e643e3b50c6634e",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2022-03-06T22:02:45Z",
       "author_association": "CONTRIBUTOR",
       "body": "@Sjors it will broadcast even if you reject signing on the device, so it's missing `broadcast = false` in that case.",
       "user": {
@@ -924,7 +997,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/555#pullrequestreview-901125818",
       "submitted_at": "2022-03-06T22:02:44Z",
@@ -940,6 +1015,7 @@
       "commit_id": "33d165d802846943c0ba70be4e643e3b50c6634e",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2022-03-06T23:09:28Z",
       "author_association": "CONTRIBUTOR",
       "user": {
         "login": "promag",
@@ -959,7 +1035,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/555#pullrequestreview-901133654",
       "submitted_at": "2022-03-06T23:09:28Z",
@@ -989,7 +1067,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1022,13 +1102,15 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2022-03-10T19:08:24Z",
       "updated_at": "2022-03-10T19:08:24Z",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "Concept ACK",
       "user": {
         "login": "jonatack",
@@ -1048,7 +1130,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/555#issuecomment-1064398304",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/555"
@@ -1076,10 +1160,12 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "4ed2a3bd0ce16efefa0b689fb1457a5273cf528f",
+      "commit_url": "https://api.github.com/repos/Sjors/gui/commits/4ed2a3bd0ce16efefa0b689fb1457a5273cf528f",
       "created_at": "2022-03-10T21:20:08Z"
     },
     {
@@ -1105,10 +1191,12 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "86e3e2cda8f2ed91f13ea0cf7c0bf291083c1970",
+      "commit_url": "https://api.github.com/repos/Sjors/gui/commits/86e3e2cda8f2ed91f13ea0cf7c0bf291083c1970",
       "created_at": "2022-03-10T21:21:39Z"
     },
     {
@@ -1134,7 +1222,9 @@
         "events_url": "https://api.github.com/users/kristapsk/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/kristapsk/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1160,7 +1250,9 @@
         "events_url": "https://api.github.com/users/kristapsk/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/kristapsk/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/555#issuecomment-1064520216",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/555"
@@ -1174,6 +1266,7 @@
       "commit_id": "86e3e2cda8f2ed91f13ea0cf7c0bf291083c1970",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2022-03-11T01:31:46Z",
       "author_association": "CONTRIBUTOR",
       "body": "Tested ACK 86e3e2cda8f2ed91f13ea0cf7c0bf291083c1970.",
       "user": {
@@ -1194,7 +1287,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/555#pullrequestreview-906674435",
       "submitted_at": "2022-03-11T01:31:45Z",
@@ -1210,7 +1305,8 @@
       "commit_id": "86e3e2cda8f2ed91f13ea0cf7c0bf291083c1970",
       "commit_url": null,
       "created_at": null,
-      "author_association": "CONTRIBUTOR",
+      "updated_at": "2022-03-11T10:49:12Z",
+      "author_association": "MEMBER",
       "body": "Untested ACK 86e3e2cda8f2ed91f13ea0cf7c0bf291083c1970 code review and debug build, the approach and logic looks correct\r\n\r\nA few style and readability suggestions, happy to re-review if you update.",
       "user": {
         "login": "jonatack",
@@ -1230,7 +1326,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/555#pullrequestreview-906982120",
       "submitted_at": "2022-03-11T10:32:08Z",
@@ -1246,6 +1344,7 @@
       "commit_id": "86e3e2cda8f2ed91f13ea0cf7c0bf291083c1970",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2022-03-14T22:15:25Z",
       "author_association": "MEMBER",
       "body": "utACK 86e3e2cda8f2ed91f13ea0cf7c0bf291083c1970 except for 1 part I'm unsure on",
       "user": {
@@ -1266,7 +1365,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/555#pullrequestreview-909447063",
       "submitted_at": "2022-03-14T22:15:25Z",
@@ -1296,10 +1397,12 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "225794f42f8bb3d1d8f0413867a4423ae42e7500",
+      "commit_url": "https://api.github.com/repos/Sjors/gui/commits/225794f42f8bb3d1d8f0413867a4423ae42e7500",
       "created_at": "2022-03-15T15:42:06Z"
     },
     {
@@ -1325,7 +1428,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1351,7 +1456,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/555#issuecomment-1068137977",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/555"
@@ -1379,7 +1486,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1408,7 +1517,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1437,7 +1548,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1466,7 +1579,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1495,10 +1610,12 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "347871fd432559ba156535f47a42b82a3e920f3d",
+      "commit_url": "https://api.github.com/repos/Sjors/gui/commits/347871fd432559ba156535f47a42b82a3e920f3d",
       "created_at": "2022-03-15T15:46:38Z"
     },
     {
@@ -1524,10 +1641,12 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "053861480417ad48aa37e0376eedbea629e052b7",
+      "commit_url": "https://api.github.com/repos/Sjors/gui/commits/053861480417ad48aa37e0376eedbea629e052b7",
       "created_at": "2022-03-15T15:49:13Z"
     },
     {
@@ -1539,6 +1658,7 @@
       "commit_id": "053861480417ad48aa37e0376eedbea629e052b7",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2022-03-15T23:22:47Z",
       "author_association": "MEMBER",
       "body": "",
       "user": {
@@ -1559,7 +1679,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/555#pullrequestreview-910930188",
       "submitted_at": "2022-03-15T23:22:47Z",
@@ -1669,10 +1791,12 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "2efdfb88aab6496dcf2b98e0de30635bc6bade85",
+      "commit_url": "https://api.github.com/repos/Sjors/gui/commits/2efdfb88aab6496dcf2b98e0de30635bc6bade85",
       "created_at": "2022-03-16T09:29:28Z"
     },
     {
@@ -1684,6 +1808,7 @@
       "commit_id": "2efdfb88aab6496dcf2b98e0de30635bc6bade85",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2022-03-16T16:54:30Z",
       "author_association": "MEMBER",
       "body": "utACK 2efdfb88aab6496dcf2b98e0de30635bc6bade85",
       "user": {
@@ -1704,7 +1829,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/555#pullrequestreview-911975843",
       "submitted_at": "2022-03-16T16:54:30Z",
@@ -1734,13 +1861,15 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2022-03-16T19:53:31Z",
       "updated_at": "2022-03-16T19:53:31Z",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "utACK 2efdfb88aab6496dcf2b98e0de30635bc6bade85 diff review since my last review, code re-review, rebased to current master, verified clean debug build of each commit",
       "user": {
         "login": "jonatack",
@@ -1760,7 +1889,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/555#issuecomment-1069555234",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/555"
@@ -1788,7 +1919,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1821,7 +1954,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "aece56624941bc6284a01a4df7881e73cdf4290f",
       "commit_url": "https://api.github.com/repos/bitcoin-core/gui/commits/aece56624941bc6284a01a4df7881e73cdf4290f",
@@ -1850,7 +1985,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1879,7 +2016,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "fc421d4c8c8cdd94a5377a8004209506a089357b",
       "commit_url": "https://api.github.com/repos/hebasto/bitcoin/commits/fc421d4c8c8cdd94a5377a8004209506a089357b",
@@ -1908,7 +2047,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "940694664de2a10b9d6d81ddff9be05495e6a3da",
       "commit_url": "https://api.github.com/repos/hebasto/bitcoin/commits/940694664de2a10b9d6d81ddff9be05495e6a3da",
@@ -1937,7 +2078,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "642f2726deaa1dad21912d4319fac0deb6dbb564",
       "commit_url": "https://api.github.com/repos/hebasto/bitcoin/commits/642f2726deaa1dad21912d4319fac0deb6dbb564",
@@ -1966,7 +2109,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1992,7 +2137,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/555#issuecomment-1070373527",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/555"
@@ -2020,7 +2167,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2053,13 +2202,15 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2022-03-17T08:49:45Z",
       "updated_at": "2022-03-17T08:49:45Z",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "It might be good to have another tested ACK of the latest push. ",
       "user": {
         "login": "jonatack",
@@ -2079,7 +2230,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/555#issuecomment-1070547990",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/555"
@@ -2107,7 +2260,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2133,7 +2288,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/555#issuecomment-1070627481",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/555"
@@ -2161,7 +2318,9 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2190,7 +2349,9 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2219,7 +2380,9 @@
         "events_url": "https://api.github.com/users/sidhujag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/sidhujag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "e19f98b3d3c0b5440850c1ab47a2d8650c13a466",
       "commit_url": "https://api.github.com/repos/syscoin/syscoin/commits/e19f98b3d3c0b5440850c1ab47a2d8650c13a466",
@@ -2231,24 +2394,26 @@
       "node_id": "REFE_lADOEEET9c5ESvG3zwAAAAF3VFy5",
       "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/6296984761",
       "actor": {
-        "login": "MarcoFalke",
+        "login": "maflcko",
         "id": 6399679,
         "node_id": "MDQ6VXNlcjYzOTk2Nzk=",
         "avatar_url": "https://avatars.githubusercontent.com/u/6399679?v=4",
         "gravatar_id": "",
-        "url": "https://api.github.com/users/MarcoFalke",
-        "html_url": "https://github.com/MarcoFalke",
-        "followers_url": "https://api.github.com/users/MarcoFalke/followers",
-        "following_url": "https://api.github.com/users/MarcoFalke/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/MarcoFalke/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/MarcoFalke/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/MarcoFalke/subscriptions",
-        "organizations_url": "https://api.github.com/users/MarcoFalke/orgs",
-        "repos_url": "https://api.github.com/users/MarcoFalke/repos",
-        "events_url": "https://api.github.com/users/MarcoFalke/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/MarcoFalke/received_events",
+        "url": "https://api.github.com/users/maflcko",
+        "html_url": "https://github.com/maflcko",
+        "followers_url": "https://api.github.com/users/maflcko/followers",
+        "following_url": "https://api.github.com/users/maflcko/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/maflcko/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/maflcko/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/maflcko/subscriptions",
+        "organizations_url": "https://api.github.com/users/maflcko/orgs",
+        "repos_url": "https://api.github.com/users/maflcko/repos",
+        "events_url": "https://api.github.com/users/maflcko/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "7d03cf632d16659166ef7f0d2e3b37ac1f05c0b5",
       "commit_url": "https://api.github.com/repos/bitcoin/bitcoin/commits/7d03cf632d16659166ef7f0d2e3b37ac1f05c0b5",
@@ -2277,7 +2442,9 @@
         "events_url": "https://api.github.com/users/fujicoin/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/fujicoin/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "85b3b0439273ae11a61a19cda821eee07b03db3e",
       "commit_url": "https://api.github.com/repos/fujicoin/fujicoin-23.0/commits/85b3b0439273ae11a61a19cda821eee07b03db3e",
@@ -2306,7 +2473,9 @@
         "events_url": "https://api.github.com/users/fujicoin/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/fujicoin/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "7866b8850ae504074caf447dd172a8f513e8596a",
       "commit_url": "https://api.github.com/repos/fujicoin/fujicoin-23.0/commits/7866b8850ae504074caf447dd172a8f513e8596a",
@@ -2335,7 +2504,9 @@
         "events_url": "https://api.github.com/users/fujicoin/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/fujicoin/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "47c94164adf1a55d68c19bd1f26179f11cbc87bd",
       "commit_url": "https://api.github.com/repos/fujicoin/fujicoin-23.0/commits/47c94164adf1a55d68c19bd1f26179f11cbc87bd",
@@ -2364,7 +2535,9 @@
         "events_url": "https://api.github.com/users/backpacker69/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/backpacker69/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "a3ffd89267298829d0ece4cff984c8de402ee1d1",
       "commit_url": "https://api.github.com/repos/peercoin/peercoin/commits/a3ffd89267298829d0ece4cff984c8de402ee1d1",
@@ -2393,7 +2566,9 @@
         "events_url": "https://api.github.com/users/backpacker69/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/backpacker69/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "078cd1ce306a847d3e4303243a3384761ac98bac",
       "commit_url": "https://api.github.com/repos/peercoin/peercoin/commits/078cd1ce306a847d3e4303243a3384761ac98bac",
@@ -2422,7 +2597,9 @@
         "events_url": "https://api.github.com/users/backpacker69/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/backpacker69/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "a77578477f32f21a5cf1e7535da4e95d7cbc2c82",
       "commit_url": "https://api.github.com/repos/peercoin/peercoin/commits/a77578477f32f21a5cf1e7535da4e95d7cbc2c82",
@@ -2451,7 +2628,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2466,7 +2645,7 @@
       "node_id": "PRRC_kwDOEEET9c4wa_WU",
       "diff_hunk": "@@ -401,6 +401,52 @@ bool SendCoinsDialog::PrepareSendText(QString& question_string, QString& informa\n     return true;\n }\n \n+void SendCoinsDialog::presentPSBT(PartiallySignedTransaction &psbtx)",
       "path": "src/qt/sendcoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 4,
       "commit_id": "2efdfb88aab6496dcf2b98e0de30635bc6bade85",
       "original_commit_id": "5e6cda4b3b5707b246d36406578c92cb20f47cb7",
@@ -2489,7 +2668,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "5e6cda4b3b5707b246d36406578c92cb20f47cb7\r\n\r\nnit, `&` before space 🙉 header too",
       "created_at": "2022-02-22T21:41:51Z",
@@ -2518,7 +2699,7 @@
       "node_id": "PRRC_kwDOEEET9c4wbCfm",
       "diff_hunk": "@@ -502,19 +502,32 @@ void SendCoinsDialog::sendButtonClicked([[maybe_unused]] bool checked)\n     }\n \n     bool send_failure = false;\n-    if (retval == QMessageBox::Save) {\n+    if (retval == QMessageBox::Save) { // Create Unsigned clicked\n         CMutableTransaction mtx = CMutableTransaction{*(m_current_transaction->getWtx())};\n         PartiallySignedTransaction psbtx(mtx);\n+        // Copy PSBT to clipboard and offer to save\n+        presentPSBT(psbtx);\n+    } else { // Send clicked\n+        assert(!model->wallet().privateKeysDisabled() || model->wallet().hasExternalSigner());\n         bool complete = false;",
       "path": "src/qt/sendcoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 21,
       "commit_id": "2efdfb88aab6496dcf2b98e0de30635bc6bade85",
       "original_commit_id": "a49bb0c8328d1e0ecf0ee80916594ff260f79613",
@@ -2541,7 +2722,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "a49bb0c8328d1e0ecf0ee80916594ff260f79613\r\n\r\nI think it makes more sense to refactor this to:\r\n```cpp\r\nbool broadcast = true;\r\nif (model->wallet().hasExternalSigner()) {\r\n    // ...\r\n    bool complete;\r\n    send_failure = !signWithExternalSigner(psbtx, mtx, complete);\r\n    if (complete) {\r\n        // ...\r\n    } else {\r\n        // ...\r\n        broadcast = false\r\n    }\r\n}\r\nif (broadcast) {\r\n    // ...\r\n}",
       "created_at": "2022-02-22T22:01:33Z",
@@ -2570,7 +2753,7 @@
       "node_id": "PRRC_kwDOEEET9c4w5NAY",
       "diff_hunk": "@@ -502,19 +502,34 @@ void SendCoinsDialog::sendButtonClicked([[maybe_unused]] bool checked)\n     }\n \n     bool send_failure = false;\n-    if (retval == QMessageBox::Save) {\n+    bool broadcast = true;",
       "path": "src/qt/sendcoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 14,
       "commit_id": "2efdfb88aab6496dcf2b98e0de30635bc6bade85",
       "original_commit_id": "33d165d802846943c0ba70be4e643e3b50c6634e",
@@ -2593,7 +2776,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "33d165d802846943c0ba70be4e643e3b50c6634e\r\n\r\n```diff\r\ndiff --git a/src/qt/sendcoinsdialog.cpp b/src/qt/sendcoinsdialog.cpp\r\nindex c420aa3581..87a0e4a098 100644\r\n--- a/src/qt/sendcoinsdialog.cpp\r\n+++ b/src/qt/sendcoinsdialog.cpp\r\n@@ -502,7 +502,6 @@ void SendCoinsDialog::sendButtonClicked([[maybe_unused]] bool checked)\r\n     }\r\n\r\n     bool send_failure = false;\r\n-    bool broadcast = true;\r\n     if (retval == QMessageBox::Save) { // Create Unsigned clicked\r\n         CMutableTransaction mtx = CMutableTransaction{*(m_current_transaction->getWtx())};\r\n         PartiallySignedTransaction psbtx(mtx);\r\n@@ -510,11 +509,13 @@ void SendCoinsDialog::sendButtonClicked([[maybe_unused]] bool checked)\r\n         presentPSBT(psbtx);\r\n     } else { // Send clicked\r\n         assert(!model->wallet().privateKeysDisabled() || model->wallet().hasExternalSigner());\r\n+        bool broadcast = true;\r\n         if (model->wallet().hasExternalSigner()) {\r\n             CMutableTransaction mtx = CMutableTransaction{*(m_current_transaction->getWtx())};\r\n             PartiallySignedTransaction psbtx(mtx);\r\n             bool complete = false;\r\n             send_failure = !signWithExternalSigner(psbtx, mtx, complete);\r\n+            broadcast = complete;\r\n             // A transaction signed with an external signer is not always complete,\r\n             // e.g. in a multisig wallet.\r\n             if (complete) {\r\n@@ -523,7 +524,6 @@ void SendCoinsDialog::sendButtonClicked([[maybe_unused]] bool checked)\r\n                 m_current_transaction->setWtx(tx);\r\n             } else if (!send_failure) {\r\n                 presentPSBT(psbtx);\r\n-                broadcast = false;\r\n             }\r\n         }\r\n```",
       "created_at": "2022-03-06T23:09:28Z",
@@ -2622,7 +2807,7 @@
       "node_id": "PRRC_kwDOEEET9c4xHixJ",
       "diff_hunk": "@@ -502,19 +502,34 @@ void SendCoinsDialog::sendButtonClicked([[maybe_unused]] bool checked)\n     }\n \n     bool send_failure = false;\n-    if (retval == QMessageBox::Save) {\n+    bool broadcast = true;",
       "path": "src/qt/sendcoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 14,
       "commit_id": "2efdfb88aab6496dcf2b98e0de30635bc6bade85",
       "original_commit_id": "33d165d802846943c0ba70be4e643e3b50c6634e",
@@ -2645,7 +2830,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "If the user rejects the transaction then `complete = false` and it will present the PSBT. We can't tell the difference between rejection and failure, so that's difficult to avoid. I don't see how this patch would change that.",
       "created_at": "2022-03-10T19:03:47Z",
@@ -2674,7 +2861,7 @@
       "node_id": "PRRC_kwDOEEET9c4xHlCB",
       "diff_hunk": "@@ -502,19 +502,34 @@ void SendCoinsDialog::sendButtonClicked([[maybe_unused]] bool checked)\n     }\n \n     bool send_failure = false;\n-    if (retval == QMessageBox::Save) {\n+    bool broadcast = true;",
       "path": "src/qt/sendcoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 14,
       "commit_id": "2efdfb88aab6496dcf2b98e0de30635bc6bade85",
       "original_commit_id": "33d165d802846943c0ba70be4e643e3b50c6634e",
@@ -2697,7 +2884,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "If user rejects then `complete = false` and `send_failure = true`, so it doesn't `presentPSBT()` and because \r\n`broadcast = true` it calls `model->sendCoins()`",
       "created_at": "2022-03-10T19:15:44Z",
@@ -2726,7 +2915,7 @@
       "node_id": "PRRC_kwDOEEET9c4xH8jk",
       "diff_hunk": "@@ -502,19 +502,34 @@ void SendCoinsDialog::sendButtonClicked([[maybe_unused]] bool checked)\n     }\n \n     bool send_failure = false;\n-    if (retval == QMessageBox::Save) {\n+    bool broadcast = true;",
       "path": "src/qt/sendcoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 14,
       "commit_id": "2efdfb88aab6496dcf2b98e0de30635bc6bade85",
       "original_commit_id": "33d165d802846943c0ba70be4e643e3b50c6634e",
@@ -2749,7 +2938,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "I see. I restructured this code and fix a bit... ",
       "created_at": "2022-03-10T21:20:10Z",
@@ -2778,7 +2969,7 @@
       "node_id": "PRRC_kwDOEEET9c4xH-I_",
       "diff_hunk": "@@ -502,19 +502,34 @@ void SendCoinsDialog::sendButtonClicked([[maybe_unused]] bool checked)\n     }\n \n     bool send_failure = false;\n-    if (retval == QMessageBox::Save) {\n+    bool broadcast = true;",
       "path": "src/qt/sendcoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 14,
       "commit_id": "2efdfb88aab6496dcf2b98e0de30635bc6bade85",
       "original_commit_id": "33d165d802846943c0ba70be4e643e3b50c6634e",
@@ -2801,7 +2992,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Thanks, LGTM, will re-test.",
       "created_at": "2022-03-10T21:30:01Z",
@@ -2830,7 +3023,7 @@
       "node_id": "PRRC_kwDOEEET9c4xJZfK",
       "diff_hunk": "@@ -70,13 +70,24 @@ public Q_SLOTS:\n     bool fFeeMinimized;\n     const PlatformStyle *platformStyle;\n \n+    // Copy PSBT to clipboard and offer to save it.\n+    void presentPSBT(PartiallySignedTransaction& psbt);\n     // Process WalletModel::SendCoinsReturn and generate a pair consisting\n     // of a message and message flags for use in Q_EMIT message().\n     // Additional parameter msgArg can be used via .arg(msgArg).\n     void processSendCoinsReturn(const WalletModel::SendCoinsReturn &sendCoinsReturn, const QString &msgArg = QString());\n     void minimizeFeeSection(bool fMinimize);\n     // Format confirmation message\n     bool PrepareSendText(QString& question_string, QString& informative_text, QString& detailed_text);\n+    /* Sign PSBT using external signer.\n+     *\n+     * @param psbtx the PSBT to sign\n+     * @param mtx needed to attempt to finalize\n+     * @param complete whether the PSBT is complete (a succesfully signed multisig transaction may not be complete)",
       "path": "src/qt/sendcoinsdialog.h",
-      "position": null,
+      "position": 1,
       "original_position": 17,
       "commit_id": "2efdfb88aab6496dcf2b98e0de30635bc6bade85",
       "original_commit_id": "86e3e2cda8f2ed91f13ea0cf7c0bf291083c1970",
@@ -2853,13 +3046,15 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "e1c1c615 Thanks for adding the doxygen documentation.\r\n\r\nThese 3 `@param` might be more explicit as `@param[in,out]`\r\n\r\n```suggestion\r\n     * @param complete whether the PSBT is complete (a successfully signed multisig transaction may not be complete)\r\n```",
       "created_at": "2022-03-11T09:43:00Z",
       "updated_at": "2022-03-11T10:32:08Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/555#discussion_r824547274",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/824547274"
@@ -2882,7 +3077,7 @@
       "node_id": "PRRC_kwDOEEET9c4xJae-",
       "diff_hunk": "@@ -401,6 +401,85 @@ bool SendCoinsDialog::PrepareSendText(QString& question_string, QString& informa\n     return true;\n }\n \n+void SendCoinsDialog::presentPSBT(PartiallySignedTransaction& psbtx)\n+{\n+    // Serialize the PSBT\n+    CDataStream ssTx(SER_NETWORK, PROTOCOL_VERSION);\n+    ssTx << psbtx;\n+    GUIUtil::setClipboard(EncodeBase64(ssTx.str()).c_str());\n+    QMessageBox msgBox;\n+    msgBox.setText(\"Unsigned Transaction\");\n+    msgBox.setInformativeText(\"The PSBT has been copied to the clipboard. You can also save it.\");\n+    msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard);\n+    msgBox.setDefaultButton(QMessageBox::Discard);\n+    switch (msgBox.exec()) {\n+    case QMessageBox::Save: {\n+        QString selectedFilter;\n+        QString fileNameSuggestion = \"\";\n+        bool first = true;\n+        for (const SendCoinsRecipient &rcp : m_current_transaction->getRecipients()) {\n+            if (!first) {\n+                fileNameSuggestion.append(\" - \");\n+            }\n+            QString labelOrAddress = rcp.label.isEmpty() ? rcp.address : rcp.label;\n+            QString amount = BitcoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), rcp.amount);\n+            fileNameSuggestion.append(labelOrAddress + \"-\" + amount);\n+            first = false;\n+        }\n+        fileNameSuggestion.append(\".psbt\");\n+        QString filename = GUIUtil::getSaveFileName(this,\n+            tr(\"Save Transaction Data\"), fileNameSuggestion,\n+            //: Expanded name of the binary PSBT file format. See: BIP 174.\n+            tr(\"Partially Signed Transaction (Binary)\") + QLatin1String(\" (*.psbt)\"), &selectedFilter);\n+        if (filename.isEmpty()) {\n+            return;\n+        }\n+        std::ofstream out{filename.toLocal8Bit().data(), std::ofstream::out | std::ofstream::binary};\n+        out << ssTx.str();\n+        out.close();\n+        Q_EMIT message(tr(\"PSBT saved\"), \"PSBT saved to disk\", CClientUIInterface::MSG_INFORMATION);\n+        break;\n+    }\n+    case QMessageBox::Discard:\n+        break;\n+    default:\n+        assert(false);\n+    } // msgBox.exec()\n+}\n+\n+bool SendCoinsDialog::signWithExternalSigner(PartiallySignedTransaction& psbtx, CMutableTransaction& mtx, bool& complete) {\n+    // Always fill without signing first. This prevents an external signer\n+    // from being called prematurely and is not expensive.\n+    TransactionError err = model->wallet().fillPSBT(SIGHASH_ALL, false /* sign */, true /* bip32derivs */, nullptr, psbtx, complete);",
       "path": "src/qt/sendcoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 53,
       "commit_id": "2efdfb88aab6496dcf2b98e0de30635bc6bade85",
       "original_commit_id": "86e3e2cda8f2ed91f13ea0cf7c0bf291083c1970",
@@ -2905,13 +3100,15 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "e1c1c615105ce7e2bf76b1e9522408e369ff0c5f if you retouch, clang-tidy named args format (and maybe add for `n_signed`)\r\n```suggestion\r\n    TransactionError err = model->wallet().fillPSBT(SIGHASH_ALL, /*sign=*/false, /*bip32derivs=*/true, /*n_signed=*/nullptr, psbtx, complete);\r\n```",
       "created_at": "2022-03-11T09:48:08Z",
       "updated_at": "2022-03-11T10:32:08Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/555#discussion_r824551358",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/824551358"
@@ -2934,7 +3131,7 @@
       "node_id": "PRRC_kwDOEEET9c4xJbSl",
       "diff_hunk": "@@ -70,13 +70,24 @@ public Q_SLOTS:\n     bool fFeeMinimized;\n     const PlatformStyle *platformStyle;\n \n+    // Copy PSBT to clipboard and offer to save it.\n+    void presentPSBT(PartiallySignedTransaction& psbt);\n     // Process WalletModel::SendCoinsReturn and generate a pair consisting\n     // of a message and message flags for use in Q_EMIT message().\n     // Additional parameter msgArg can be used via .arg(msgArg).\n     void processSendCoinsReturn(const WalletModel::SendCoinsReturn &sendCoinsReturn, const QString &msgArg = QString());\n     void minimizeFeeSection(bool fMinimize);\n     // Format confirmation message\n     bool PrepareSendText(QString& question_string, QString& informative_text, QString& detailed_text);\n+    /* Sign PSBT using external signer.\n+     *\n+     * @param psbtx the PSBT to sign\n+     * @param mtx needed to attempt to finalize\n+     * @param complete whether the PSBT is complete (a succesfully signed multisig transaction may not be complete)\n+     *\n+     * @returns false if any failure occured, which may include the user rejection a transaction on the device.",
       "path": "src/qt/sendcoinsdialog.h",
-      "position": null,
+      "position": 1,
       "original_position": 19,
       "commit_id": "2efdfb88aab6496dcf2b98e0de30635bc6bade85",
       "original_commit_id": "86e3e2cda8f2ed91f13ea0cf7c0bf291083c1970",
@@ -2957,13 +3154,15 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "e1c1c615105ce7e2bf76b1e9522408e369ff0c5f s/occured/occurred/ and missing the word \"of\" if I understand the intended message\r\n```suggestion\r\n     * @returns false if any failure occurred, which may include the user rejection of a transaction on the device.\r\n```",
       "created_at": "2022-03-11T09:52:17Z",
       "updated_at": "2022-03-11T10:32:09Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/555#discussion_r824554661",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/824554661"
@@ -2986,7 +3185,7 @@
       "node_id": "PRRC_kwDOEEET9c4xJfvy",
       "diff_hunk": "@@ -411,7 +490,7 @@ void SendCoinsDialog::sendButtonClicked([[maybe_unused]] bool checked)\n     assert(m_current_transaction);\n \n     const QString confirmation = tr(\"Confirm send coins\");\n-    auto confirmationDialog = new SendConfirmationDialog(confirmation, question_string, informative_text, detailed_text, SEND_CONFIRM_DELAY, !model->wallet().privateKeysDisabled(), model->getOptionsModel()->getEnablePSBTControls(), this);\n+    auto confirmationDialog = new SendConfirmationDialog(confirmation, question_string, informative_text, detailed_text, SEND_CONFIRM_DELAY, /*enable_send=*/!model->wallet().privateKeysDisabled() || model->wallet().hasExternalSigner(), /*always_show_unsigned=*/model->getOptionsModel()->getEnablePSBTControls(), this);",
       "path": "src/qt/sendcoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 91,
       "commit_id": "2efdfb88aab6496dcf2b98e0de30635bc6bade85",
       "original_commit_id": "86e3e2cda8f2ed91f13ea0cf7c0bf291083c1970",
@@ -3009,13 +3208,15 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "33d165d readability suggestion, replace named args with localvars of same name here\r\n\r\n```diff\r\n+    const bool enable_send{!model->wallet().privateKeysDisabled() || model->wallet().hasExternalSigner()};\r\n+    const bool always_show_unsigned{model->getOptionsModel()->getEnablePSBTControls()};\r\n```\r\n\r\n```suggestion\r\n    auto confirmationDialog = new SendConfirmationDialog(confirmation, question_string, informative_text, detailed_text, SEND_CONFIRM_DELAY, enable_send, always_show_unsigned, this);\r\n```",
       "created_at": "2022-03-11T10:14:19Z",
       "updated_at": "2022-03-11T10:32:09Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/555#discussion_r824572914",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/824572914"
@@ -3038,7 +3239,7 @@
       "node_id": "PRRC_kwDOEEET9c4xJgY-",
       "diff_hunk": "@@ -423,50 +502,38 @@ void SendCoinsDialog::sendButtonClicked([[maybe_unused]] bool checked)\n     }\n \n     bool send_failure = false;\n-    if (retval == QMessageBox::Save) {\n+    if (retval == QMessageBox::Save) { // Create Unsigned clicked\n         CMutableTransaction mtx = CMutableTransaction{*(m_current_transaction->getWtx())};\n         PartiallySignedTransaction psbtx(mtx);\n-        bool complete = false;\n-        // Always fill without signing first. This prevents an external signer\n-        // from being called prematurely and is not expensive.\n-        TransactionError err = model->wallet().fillPSBT(SIGHASH_ALL, false /* sign */, true /* bip32derivs */, nullptr, psbtx, complete);\n-        assert(!complete);\n-        assert(err == TransactionError::OK);\n+        // Copy PSBT to clipboard and offer to save\n+        presentPSBT(psbtx);\n+    } else { // Send clicked",
       "path": "src/qt/sendcoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 111,
       "commit_id": "2efdfb88aab6496dcf2b98e0de30635bc6bade85",
       "original_commit_id": "86e3e2cda8f2ed91f13ea0cf7c0bf291083c1970",
@@ -3061,13 +3262,15 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "33d165d readability suggestion\r\n\r\n```diff\r\n     bool send_failure = false;\r\n-    if (retval == QMessageBox::Save) { // Create Unsigned clicked\r\n+    if (retval == QMessageBox::Save) {\r\n+        // \"Create Unsigned\" clicked\r\n         CMutableTransaction mtx = CMutableTransaction{*(m_current_transaction->getWtx())};\r\n         PartiallySignedTransaction psbtx(mtx);\r\n         // Copy PSBT to clipboard and offer to save\r\n         presentPSBT(psbtx);\r\n-    } else { // Send clicked\r\n+    } else {\r\n+        // \"Send\" clicked\r\n         assert(!model->wallet().privateKeysDisabled() || model->wallet().hasExternalSigner());\r\n```\r\n",
       "created_at": "2022-03-11T10:17:43Z",
       "updated_at": "2022-03-11T10:32:09Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/555#discussion_r824575550",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/824575550"
@@ -3090,7 +3293,7 @@
       "node_id": "PRRC_kwDOEEET9c4xJhv9",
       "diff_hunk": "@@ -117,6 +128,8 @@ class SendConfirmationDialog : public QMessageBox\n \n public:\n     SendConfirmationDialog(const QString& title, const QString& text, const QString& informative_text = \"\", const QString& detailed_text = \"\", int secDelay = SEND_CONFIRM_DELAY, bool enable_send = true, bool always_show_unsigned = true, QWidget* parent = nullptr);\n+    /* Returns QMessageBox::Cancel, QMessageBox::Yes when send is\n+       clicked and QMessageBox::Save when Create Unsigned is clicked. */",
       "path": "src/qt/sendcoinsdialog.h",
-      "position": null,
+      "position": 1,
       "original_position": 30,
       "commit_id": "2efdfb88aab6496dcf2b98e0de30635bc6bade85",
       "original_commit_id": "86e3e2cda8f2ed91f13ea0cf7c0bf291083c1970",
@@ -3113,13 +3316,15 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "33d165d maybe s/send/Send/, and wrap Send and Create Unsigned in quotes",
       "created_at": "2022-03-11T10:24:42Z",
       "updated_at": "2022-03-11T10:32:09Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/555#discussion_r824581117",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/824581117"
@@ -3165,7 +3370,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "e1c1c615105ce7e2bf76b1e9522408e369ff0c5f claims \"Does not change behavior.\", yet this is no longer done for wallets without an external signer.",
       "created_at": "2022-03-14T21:58:48Z",
@@ -3217,7 +3424,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Good point. I moved this out of the helper function.\r\n\r\nIt leads to some duplication in 053861480417ad48aa37e0376eedbea629e052b7, but it's probably better to preserve the behavior. It might even useful, though I'm a bit rusty on what PSBT filling does on top of what the wallet already does.",
       "created_at": "2022-03-15T15:42:08Z",
@@ -3246,7 +3455,7 @@
       "node_id": "PRRC_kwDOEEET9c4xUoTW",
       "diff_hunk": "@@ -401,6 +401,80 @@ bool SendCoinsDialog::PrepareSendText(QString& question_string, QString& informa\n     return true;\n }\n \n+void SendCoinsDialog::presentPSBT(PartiallySignedTransaction& psbtx)\n+{\n+    // Serialize the PSBT\n+    CDataStream ssTx(SER_NETWORK, PROTOCOL_VERSION);\n+    ssTx << psbtx;\n+    GUIUtil::setClipboard(EncodeBase64(ssTx.str()).c_str());\n+    QMessageBox msgBox;\n+    msgBox.setText(\"Unsigned Transaction\");\n+    msgBox.setInformativeText(\"The PSBT has been copied to the clipboard. You can also save it.\");\n+    msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard);\n+    msgBox.setDefaultButton(QMessageBox::Discard);\n+    switch (msgBox.exec()) {\n+    case QMessageBox::Save: {\n+        QString selectedFilter;\n+        QString fileNameSuggestion = \"\";\n+        bool first = true;\n+        for (const SendCoinsRecipient &rcp : m_current_transaction->getRecipients()) {\n+            if (!first) {\n+                fileNameSuggestion.append(\" - \");\n+            }\n+            QString labelOrAddress = rcp.label.isEmpty() ? rcp.address : rcp.label;\n+            QString amount = BitcoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), rcp.amount);\n+            fileNameSuggestion.append(labelOrAddress + \"-\" + amount);\n+            first = false;\n+        }\n+        fileNameSuggestion.append(\".psbt\");\n+        QString filename = GUIUtil::getSaveFileName(this,\n+            tr(\"Save Transaction Data\"), fileNameSuggestion,\n+            //: Expanded name of the binary PSBT file format. See: BIP 174.\n+            tr(\"Partially Signed Transaction (Binary)\") + QLatin1String(\" (*.psbt)\"), &selectedFilter);\n+        if (filename.isEmpty()) {\n+            return;\n+        }\n+        std::ofstream out{filename.toLocal8Bit().data(), std::ofstream::out | std::ofstream::binary};\n+        out << ssTx.str();\n+        out.close();\n+        Q_EMIT message(tr(\"PSBT saved\"), \"PSBT saved to disk\", CClientUIInterface::MSG_INFORMATION);\n+        break;\n+    }\n+    case QMessageBox::Discard:\n+        break;\n+    default:\n+        assert(false);\n+    } // msgBox.exec()\n+}\n+\n+bool SendCoinsDialog::signWithExternalSigner(PartiallySignedTransaction& psbtx, CMutableTransaction& mtx, bool& complete) {\n+    TransactionError err;\n+    try {\n+        err = model->wallet().fillPSBT(SIGHASH_ALL, /*sign=*/false, /*bip32derivs=*/true, /*n_signed=*/nullptr, psbtx, complete);",
       "path": "src/qt/sendcoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 53,
       "commit_id": "2efdfb88aab6496dcf2b98e0de30635bc6bade85",
       "original_commit_id": "053861480417ad48aa37e0376eedbea629e052b7",
@@ -3269,7 +3478,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "`sign` was `true` here - why was it changed to `false`?",
       "created_at": "2022-03-15T23:17:18Z",
@@ -3298,7 +3509,7 @@
       "node_id": "PRRC_kwDOEEET9c4xVysk",
       "diff_hunk": "@@ -401,6 +401,80 @@ bool SendCoinsDialog::PrepareSendText(QString& question_string, QString& informa\n     return true;\n }\n \n+void SendCoinsDialog::presentPSBT(PartiallySignedTransaction& psbtx)\n+{\n+    // Serialize the PSBT\n+    CDataStream ssTx(SER_NETWORK, PROTOCOL_VERSION);\n+    ssTx << psbtx;\n+    GUIUtil::setClipboard(EncodeBase64(ssTx.str()).c_str());\n+    QMessageBox msgBox;\n+    msgBox.setText(\"Unsigned Transaction\");\n+    msgBox.setInformativeText(\"The PSBT has been copied to the clipboard. You can also save it.\");\n+    msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard);\n+    msgBox.setDefaultButton(QMessageBox::Discard);\n+    switch (msgBox.exec()) {\n+    case QMessageBox::Save: {\n+        QString selectedFilter;\n+        QString fileNameSuggestion = \"\";\n+        bool first = true;\n+        for (const SendCoinsRecipient &rcp : m_current_transaction->getRecipients()) {\n+            if (!first) {\n+                fileNameSuggestion.append(\" - \");\n+            }\n+            QString labelOrAddress = rcp.label.isEmpty() ? rcp.address : rcp.label;\n+            QString amount = BitcoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), rcp.amount);\n+            fileNameSuggestion.append(labelOrAddress + \"-\" + amount);\n+            first = false;\n+        }\n+        fileNameSuggestion.append(\".psbt\");\n+        QString filename = GUIUtil::getSaveFileName(this,\n+            tr(\"Save Transaction Data\"), fileNameSuggestion,\n+            //: Expanded name of the binary PSBT file format. See: BIP 174.\n+            tr(\"Partially Signed Transaction (Binary)\") + QLatin1String(\" (*.psbt)\"), &selectedFilter);\n+        if (filename.isEmpty()) {\n+            return;\n+        }\n+        std::ofstream out{filename.toLocal8Bit().data(), std::ofstream::out | std::ofstream::binary};\n+        out << ssTx.str();\n+        out.close();\n+        Q_EMIT message(tr(\"PSBT saved\"), \"PSBT saved to disk\", CClientUIInterface::MSG_INFORMATION);\n+        break;\n+    }\n+    case QMessageBox::Discard:\n+        break;\n+    default:\n+        assert(false);\n+    } // msgBox.exec()\n+}\n+\n+bool SendCoinsDialog::signWithExternalSigner(PartiallySignedTransaction& psbtx, CMutableTransaction& mtx, bool& complete) {\n+    TransactionError err;\n+    try {\n+        err = model->wallet().fillPSBT(SIGHASH_ALL, /*sign=*/false, /*bip32derivs=*/true, /*n_signed=*/nullptr, psbtx, complete);",
       "path": "src/qt/sendcoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 53,
       "commit_id": "2efdfb88aab6496dcf2b98e0de30635bc6bade85",
       "original_commit_id": "053861480417ad48aa37e0376eedbea629e052b7",
@@ -3321,7 +3532,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Yikes, I broke that during the style fix.\r\n(fixed and re-tested on device this time)",
       "created_at": "2022-03-16T09:29:41Z",
@@ -3373,13 +3586,15 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Yes, as a potential follow-up it looks like this code block could be potentially de-duped by extracting to a helper method that returns `psbtx` and `mtx`.\r\n```cpp\r\n        CMutableTransaction mtx = CMutableTransaction{*(m_current_transaction->getWtx())};\r\n        PartiallySignedTransaction psbtx(mtx);\r\n        bool complete = false;\r\n        TransactionError err = model->wallet().fillPSBT(SIGHASH_ALL, /*sign=*/false, /*bip32derivs=*/true, /*n_signed=*/nullptr, psbtx, complete);\r\n        assert(!complete);\r\n        assert(err == TransactionError::OK);\r\n```\r\n(and `TransactionError err` could be const)",
       "created_at": "2022-03-16T19:37:32Z",
       "updated_at": "2022-03-16T20:09:59Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/555#discussion_r828379723",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/828379723"
@@ -3425,7 +3640,9 @@
         "events_url": "https://api.github.com/users/Sjors/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Sjors/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "I'm going to avoid touching this now, but I agree it would be good to move into a helper.",
       "created_at": "2022-03-16T19:57:04Z",

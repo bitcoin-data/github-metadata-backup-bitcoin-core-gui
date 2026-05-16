@@ -36,7 +36,9 @@
       "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
     },
     "body": "Closes https://github.com/bitcoin/bitcoin/issues/3314\r\nBuilt off of https://github.com/bitcoin/bitcoin/pull/27216 (== first two commits of this PR, required core updates)\r\n\r\nThis PR adds a \"warnings\" column in the receive coins dialog (recent requests table) and the address book receive page. Hovering over the ⚠️ if present shows a tooltip with a list of warnings.  We also add a \"warnings\" field in the receive request dialog (shown after double-clicking an address in the first table) with the same message.\r\n\r\nThe warnings shown can be anything implemented in new methods `GetWarnings()` but for now the only message we show there is:\r\n\r\n> This address should not be used. It was derived from an inactive seed, was imported, or may have been stored unencrypted.\r\n\r\nExample screenshots:\r\n\r\n# 1. Create new unencrypted wallet, get new receive address\r\n\r\n![1](https://user-images.githubusercontent.com/2084648/229900643-52c49c2c-589a-450c-b78d-1d3f5489bf63.png)\r\n\r\n# 2. Encrypt wallet\r\n\r\nNotice how the first address is immediately flagged.\r\n\r\n![2](https://user-images.githubusercontent.com/2084648/229900642-b3a02025-39fa-4679-913d-e8cd9984a5ab.png)\r\n\r\n# 3. Get new receive address after encrypting wallet\r\n\r\nNew address is not flagged, it is active and safe to use.\r\n\r\n![3](https://user-images.githubusercontent.com/2084648/229900641-4dd59d82-c9a9-4134-bb5a-155dc90811d2.png)\r\n\r\n\r\n\r\n\r\n\r\n",
     "labels": [
@@ -64,6 +66,7 @@
     "closed_at": "2023-10-12T14:51:01Z",
     "mergeable": false,
     "mergeable_state": "dirty",
+    "merged": false,
     "merge_commit_sha": "e7290ca4030a35cd5a606df54fa2a9d7db7159b1",
     "assignees": [],
     "requested_reviewers": [],
@@ -91,7 +94,9 @@
         "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 615062874,
@@ -116,7 +121,9 @@
           "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
           "type": "User",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/pinheadmz/bitcoin-core-gui",
@@ -183,6 +190,7 @@
         "pushed_at": "2023-05-01T17:23:49Z",
         "created_at": "2023-03-16T21:57:55Z",
         "updated_at": "2023-03-11T23:33:45Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -222,7 +230,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 272700405,
@@ -247,7 +257,9 @@
           "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/bitcoin-core/gui",
@@ -296,12 +308,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 261,
-        "stargazers_count": 594,
-        "watchers_count": 594,
-        "size": 164130,
+        "forks_count": 354,
+        "stargazers_count": 725,
+        "watchers_count": 725,
+        "size": 190146,
         "default_branch": "master",
-        "open_issues_count": 152,
+        "open_issues_count": 148,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -312,9 +324,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2024-10-11T12:46:45Z",
+        "pushed_at": "2026-05-16T00:00:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2024-10-11T12:46:49Z",
+        "updated_at": "2026-05-16T00:00:11Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -370,7 +383,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -396,7 +411,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#issuecomment-1483261585",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/723"
@@ -424,7 +441,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -457,10 +476,12 @@
         "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "36562fcf16035c93996e932cf273a33203932e9d",
+      "commit_url": "https://api.github.com/repos/pinheadmz/bitcoin-core-gui/commits/36562fcf16035c93996e932cf273a33203932e9d",
       "created_at": "2023-04-03T18:25:28Z"
     },
     {
@@ -486,10 +507,12 @@
         "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "6a97c4d9cbf424d95f95be5016ebef92c41c4284",
+      "commit_url": "https://api.github.com/repos/pinheadmz/bitcoin-core-gui/commits/6a97c4d9cbf424d95f95be5016ebef92c41c4284",
       "created_at": "2023-04-03T20:08:16Z"
     },
     {
@@ -515,10 +538,12 @@
         "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "e7a24403032f93e61eac3e47205fb19e7518455b",
+      "commit_url": "https://api.github.com/repos/pinheadmz/bitcoin-core-gui/commits/e7a24403032f93e61eac3e47205fb19e7518455b",
       "created_at": "2023-04-04T00:32:17Z"
     },
     {
@@ -544,10 +569,12 @@
         "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "2750aff43042008cf90c655c7b4df7fe7d83fd60",
+      "commit_url": "https://api.github.com/repos/pinheadmz/bitcoin-core-gui/commits/2750aff43042008cf90c655c7b4df7fe7d83fd60",
       "created_at": "2023-04-04T19:09:06Z"
     },
     {
@@ -573,10 +600,12 @@
         "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "e4e7466c8621ddb5c6dd7434a34764eabe065208",
+      "commit_url": "https://api.github.com/repos/pinheadmz/bitcoin-core-gui/commits/e4e7466c8621ddb5c6dd7434a34764eabe065208",
       "created_at": "2023-04-04T19:25:16Z"
     },
     {
@@ -602,7 +631,9 @@
         "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -621,6 +652,7 @@
       "commit_id": "e4e7466c8621ddb5c6dd7434a34764eabe065208",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2023-04-04T20:38:19Z",
       "author_association": "MEMBER",
       "body": "Quick GitHub review, will swing back and build/test.\r\n\r\nA couple thoughts:\r\n\r\n- `GetWarnings` is already the name of a method in `src/warnings`; perhaps use a slightly different name.\r\n- Watch out for missing brackets in conditionals as mentioned in the developer notes; we require brackets with conditionals over one line due to CVE-2014-1266 (the Apple \"goto fail\" vulnerability, see also https://dwheeler.com/essays/apple-goto-fail).\r\n- Consider notating pure/getter-like or need-to-check-returned-value methods with `[[nodiscard]]`. As written recently here in the repo by martinus, a [[nodiscard]] attribute is most useful in two cases:\r\n    - if a function has no effects beyond returning a certain result, i.e. is pure. If the result is not used, the call is certainly useless.\r\n    - if the return value must be checked, e.g. for a C-like interface that returns error codes instead of throwing.\r\n",
       "user": {
@@ -641,7 +673,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#pullrequestreview-1371706276",
       "submitted_at": "2023-04-04T20:38:19Z",
@@ -671,10 +705,12 @@
         "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "b53d9bee68247805fb6f0541d31ddb5f57a768fe",
+      "commit_url": "https://api.github.com/repos/pinheadmz/bitcoin-core-gui/commits/b53d9bee68247805fb6f0541d31ddb5f57a768fe",
       "created_at": "2023-04-05T17:25:15Z"
     },
     {
@@ -700,10 +736,12 @@
         "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "8823c421de5a59d2eb3e18fa0add9e82a8043a7e",
+      "commit_url": "https://api.github.com/repos/pinheadmz/bitcoin-core-gui/commits/8823c421de5a59d2eb3e18fa0add9e82a8043a7e",
       "created_at": "2023-04-05T17:36:47Z"
     },
     {
@@ -729,7 +767,9 @@
         "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -755,7 +795,9 @@
         "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#issuecomment-1497872600",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/723"
@@ -783,7 +825,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -812,7 +856,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -841,7 +887,9 @@
         "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -867,7 +915,9 @@
         "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#issuecomment-1497880274",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/723"
@@ -895,7 +945,9 @@
         "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -924,10 +976,12 @@
         "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "9b5d7aa0411305c8c026f930f58e5c6dcef09ed2",
+      "commit_url": "https://api.github.com/repos/pinheadmz/bitcoin-core-gui/commits/9b5d7aa0411305c8c026f930f58e5c6dcef09ed2",
       "created_at": "2023-04-08T16:32:27Z"
     },
     {
@@ -953,7 +1007,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -986,10 +1042,12 @@
         "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "58fba35e25c2b9dcdd5b3dd0aa8f412801a98146",
+      "commit_url": "https://api.github.com/repos/pinheadmz/bitcoin-core-gui/commits/58fba35e25c2b9dcdd5b3dd0aa8f412801a98146",
       "created_at": "2023-04-12T17:42:27Z"
     },
     {
@@ -1015,7 +1073,9 @@
         "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1041,7 +1101,9 @@
         "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#issuecomment-1505684094",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/723"
@@ -1069,7 +1131,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1102,10 +1166,12 @@
         "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "568fe6cd77ecd99cb6c63e71076c431f3bcb5dbc",
+      "commit_url": "https://api.github.com/repos/pinheadmz/bitcoin-core-gui/commits/568fe6cd77ecd99cb6c63e71076c431f3bcb5dbc",
       "created_at": "2023-04-14T19:34:38Z"
     },
     {
@@ -1131,7 +1197,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1364,7 +1432,9 @@
         "events_url": "https://api.github.com/users/RandyMcMillan/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/RandyMcMillan/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1390,7 +1460,9 @@
         "events_url": "https://api.github.com/users/RandyMcMillan/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/RandyMcMillan/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#issuecomment-1529850188",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/723"
@@ -1538,10 +1610,12 @@
         "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "d6519a80eaa79371616053906723e74c6f06cc1a",
+      "commit_url": "https://api.github.com/repos/pinheadmz/bitcoin-core-gui/commits/d6519a80eaa79371616053906723e74c6f06cc1a",
       "created_at": "2023-05-01T17:23:52Z"
     },
     {
@@ -1567,7 +1641,9 @@
         "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1593,7 +1669,9 @@
         "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#issuecomment-1529982632",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/723"
@@ -1621,7 +1699,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1654,7 +1734,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1687,7 +1769,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1713,7 +1797,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#issuecomment-1547702065",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/723"
@@ -1741,7 +1827,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1767,7 +1855,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#issuecomment-1654628389",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/723"
@@ -1795,7 +1885,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1821,7 +1913,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#issuecomment-1731860349",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/723"
@@ -1849,7 +1943,9 @@
         "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1864,6 +1960,7 @@
       "commit_id": "d6519a80eaa79371616053906723e74c6f06cc1a",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2023-10-07T19:57:39Z",
       "author_association": "CONTRIBUTOR",
       "body": "Concept ACK\r\n\r\nI'd prefer your [suggestion](https://github.com/bitcoin-core/gui/pull/723#issuecomment-1497880274) of removing the title of the column or even removing the column completely and put the warning icon next to the date-time in the `Date` column as [proposed](https://github.com/bitcoin/bitcoin/issues/3314#issuecomment-81567665) by @jonasschnelli. ",
       "user": {
@@ -1884,7 +1981,9 @@
         "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#pullrequestreview-1663103921",
       "submitted_at": "2023-10-07T19:57:39Z",
@@ -1914,7 +2013,9 @@
         "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1940,7 +2041,9 @@
         "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/723#issuecomment-1759767185",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/723"
@@ -1968,7 +2071,9 @@
         "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1997,7 +2102,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2012,7 +2119,7 @@
       "node_id": "PRRC_kwDOEEET9c5FAUuU",
       "diff_hunk": "@@ -230,6 +244,16 @@ QVariant AddressTableModel::data(const QModelIndex &index, int role) const\n             return {};\n         } // no default case, so the compiler can warn about missing cases\n         assert(false);\n+    } else if (role == Qt::DecorationRole) {\n+        if (index.column() == Warnings) {\n+            if (rec->GetWarnings().isEmpty())\n+                return {};\n+            else",
       "path": "src/qt/addresstablemodel.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 99,
       "commit_id": "d6519a80eaa79371616053906723e74c6f06cc1a",
       "original_commit_id": "e4e7466c8621ddb5c6dd7434a34764eabe065208",
@@ -2035,7 +2142,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Missing brackets here (we require brackets with conditionals over one line due to CVE-2014-1266, the Apple \"goto fail\" vulnerability, see also https://dwheeler.com/essays/apple-goto-fail).",
       "created_at": "2023-04-04T20:09:16Z",
@@ -2064,7 +2173,7 @@
       "node_id": "PRRC_kwDOEEET9c5FAU6z",
       "diff_hunk": "@@ -230,6 +244,16 @@ QVariant AddressTableModel::data(const QModelIndex &index, int role) const\n             return {};\n         } // no default case, so the compiler can warn about missing cases\n         assert(false);\n+    } else if (role == Qt::DecorationRole) {\n+        if (index.column() == Warnings) {\n+            if (rec->GetWarnings().isEmpty())\n+                return {};\n+            else\n+                return platformStyle->TextColorIcon(QIcon(\":/icons/warning\"));\n+        }\n+    } else if (role == Qt::ToolTipRole) {\n+        if (index.column() == Warnings)\n+            return rec->GetWarnings();",
       "path": "src/qt/addresstablemodel.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 104,
       "commit_id": "d6519a80eaa79371616053906723e74c6f06cc1a",
       "original_commit_id": "e4e7466c8621ddb5c6dd7434a34764eabe065208",
@@ -2087,7 +2196,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Brackets here as well. Perhaps can combine the 2 conditionals into one.",
       "created_at": "2023-04-04T20:10:09Z",
@@ -2116,7 +2227,7 @@
       "node_id": "PRRC_kwDOEEET9c5FAVJg",
       "diff_hunk": "@@ -333,11 +357,15 @@ QModelIndex AddressTableModel::index(int row, int column, const QModelIndex &par\n     }\n }\n \n-void AddressTableModel::updateEntry(const QString &address,\n-        const QString &label, bool isMine, const QString &purpose, int status)\n+void AddressTableModel::updateEntry(const QString& address,\n+                                    const QString& label,\n+                                    bool isMine,\n+                                    const QString& purpose,\n+                                    int status,\n+                                    bool isActive)",
       "path": "src/qt/addresstablemodel.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 119,
       "commit_id": "d6519a80eaa79371616053906723e74c6f06cc1a",
       "original_commit_id": "e4e7466c8621ddb5c6dd7434a34764eabe065208",
@@ -2139,7 +2250,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "nit, I prefer to read left-to-right rather than up-to-down, when these can all be on one line",
       "created_at": "2023-04-04T20:11:21Z",
@@ -2168,7 +2281,7 @@
       "node_id": "PRRC_kwDOEEET9c5FAVWp",
       "diff_hunk": "@@ -25,12 +27,13 @@ class AddressTableModel : public QAbstractTableModel\n     Q_OBJECT\n \n public:\n-    explicit AddressTableModel(WalletModel *parent = nullptr, bool pk_hash_only = false);\n+    explicit AddressTableModel(const PlatformStyle* platformStyle, WalletModel* parent = nullptr, bool pk_hash_only = false);\n     ~AddressTableModel();\n \n     enum ColumnIndex {\n-        Label = 0,   /**< User specified label */\n-        Address = 1  /**< Bitcoin address */\n+        Warnings = 0, /**< Warn user about using this address with tooltip explanation */\n+        Label = 1,    /**< User specified label */\n+        Address = 2   /**< Bitcoin address */",
       "path": "src/qt/addresstablemodel.h",
-      "position": null,
+      "position": 1,
       "original_position": 22,
       "commit_id": "d6519a80eaa79371616053906723e74c6f06cc1a",
       "original_commit_id": "e4e7466c8621ddb5c6dd7434a34764eabe065208",
@@ -2191,7 +2304,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Could set only the first enum value for smaller diffs/less churn in future changes.\r\n",
       "created_at": "2023-04-04T20:12:15Z",
@@ -2220,7 +2335,7 @@
       "node_id": "PRRC_kwDOEEET9c5FAVnC",
       "diff_hunk": "@@ -160,14 +160,20 @@ void ReceiveCoinsDialog::on_receiveButton_clicked()\n         // Success\n         SendCoinsRecipient info(address, label,\n             ui->reqAmount->value(), ui->reqMessage->text());\n+\n+        /* Store request for later reference */\n+        std::optional<RecentRequestEntry> entry = model->getRecentRequestsTableModel()->addNewRequest(info);\n+\n+        // Wallet failed to set address receive request\n+        if (!entry.has_value())\n+            break;",
       "path": "src/qt/receivecoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 10,
       "commit_id": "d6519a80eaa79371616053906723e74c6f06cc1a",
       "original_commit_id": "e4e7466c8621ddb5c6dd7434a34764eabe065208",
@@ -2243,7 +2358,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "(As above) same line or brackets here.",
       "created_at": "2023-04-04T20:13:14Z",
@@ -2295,7 +2412,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "(Idem brackets.)\r\n\r\nnit, looks like this warning is the same one as above at https://github.com/bitcoin-core/gui/pull/723/files#diff-74dd156c97c401ff337c0ed5399192d86ea2120f7baed1368d2a407a74e347cfR74. Maybe define it in one place if it makes sense to do so.",
       "created_at": "2023-04-04T20:14:09Z",
@@ -2347,7 +2466,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "(Idem brackets here and lines 118-119)",
       "created_at": "2023-04-04T20:16:14Z",
@@ -2376,7 +2497,7 @@
       "node_id": "PRRC_kwDOEEET9c5FAWef",
       "diff_hunk": "@@ -54,14 +60,15 @@ class RecentRequestsTableModel: public QAbstractTableModel\n     Q_OBJECT\n \n public:\n-    explicit RecentRequestsTableModel(WalletModel *parent);\n+    explicit RecentRequestsTableModel(const PlatformStyle* platformStyle, WalletModel* parent);\n     ~RecentRequestsTableModel();\n \n     enum ColumnIndex {\n-        Date = 0,\n-        Label = 1,\n-        Message = 2,\n-        Amount = 3,\n+        Warnings = 0,\n+        Date = 1,\n+        Label = 2,\n+        Message = 3,\n+        Amount = 4,",
       "path": "src/qt/recentrequeststablemodel.h",
-      "position": null,
+      "position": 1,
       "original_position": 45,
       "commit_id": "d6519a80eaa79371616053906723e74c6f06cc1a",
       "original_commit_id": "e4e7466c8621ddb5c6dd7434a34764eabe065208",
@@ -2399,7 +2520,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Could set only the first enum value for smaller diffs/less churn in future changes.\r\n",
       "created_at": "2023-04-04T20:17:32Z",
@@ -2428,7 +2551,7 @@
       "node_id": "PRRC_kwDOEEET9c5FAW1L",
       "diff_hunk": "@@ -137,11 +137,15 @@ void WalletModel::updateTransaction()\n     fForceCheckBalanceChanged = true;\n }\n \n-void WalletModel::updateAddressBook(const QString &address, const QString &label,\n-        bool isMine, const QString &purpose, int status)\n+void WalletModel::updateAddressBook(const QString& address,\n+                                    const QString& label,\n+                                    bool isMine,\n+                                    const QString& purpose,\n+                                    int status,\n+                                    bool isActive)",
       "path": "src/qt/walletmodel.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 23,
       "commit_id": "d6519a80eaa79371616053906723e74c6f06cc1a",
       "original_commit_id": "e4e7466c8621ddb5c6dd7434a34764eabe065208",
@@ -2451,7 +2574,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Why not just on one line?",
       "created_at": "2023-04-04T20:19:03Z",
@@ -2480,7 +2605,7 @@
       "node_id": "PRRC_kwDOEEET9c5FAW3S",
       "diff_hunk": "@@ -375,21 +379,26 @@ static void NotifyKeyStoreStatusChanged(WalletModel *walletmodel)\n     assert(invoked);\n }\n \n-static void NotifyAddressBookChanged(WalletModel *walletmodel,\n-        const CTxDestination &address, const std::string &label, bool isMine,\n-        const std::string &purpose, ChangeType status)\n+static void NotifyAddressBookChanged(WalletModel* walletmodel,\n+                                     const CTxDestination& address,\n+                                     const std::string& label,\n+                                     bool isMine,\n+                                     const std::string& purpose,\n+                                     ChangeType status,\n+                                     bool isActive)",
       "path": "src/qt/walletmodel.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 44,
       "commit_id": "d6519a80eaa79371616053906723e74c6f06cc1a",
       "original_commit_id": "e4e7466c8621ddb5c6dd7434a34764eabe065208",
@@ -2503,7 +2628,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Why not just on one line?",
       "created_at": "2023-04-04T20:19:10Z",
@@ -2532,7 +2659,7 @@
       "node_id": "PRRC_kwDOEEET9c5FAXNu",
       "diff_hunk": "@@ -392,6 +392,29 @@ std::vector<WalletDestination> LegacyScriptPubKeyMan::MarkUnusedAddresses(const\n     return result;\n }\n \n+bool LegacyScriptPubKeyMan::IsKeyActive(const CScript& script)\n+{\n+    LOCK(cs_KeyStore);\n+\n+    // Not in the keystore at all\n+    if (!IsMine(script))\n+        return false;",
       "path": "src/wallet/scriptpubkeyman.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 10,
       "commit_id": "d6519a80eaa79371616053906723e74c6f06cc1a",
       "original_commit_id": "e4e7466c8621ddb5c6dd7434a34764eabe065208",
@@ -2555,7 +2682,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "(Same line or brackets)",
       "created_at": "2023-04-04T20:20:48Z",
@@ -2584,7 +2713,7 @@
       "node_id": "PRRC_kwDOEEET9c5FAXhh",
       "diff_hunk": "@@ -2556,6 +2558,17 @@ void CWallet::ForEachAddrBookEntry(const ListAddrBookFunc& func) const\n     }\n }\n \n+bool CWallet::IsDestinationActive(const CTxDestination& dest) const\n+{\n+    CScript script = GetScriptForDestination(dest);\n+    for (const auto& spk_man : GetActiveScriptPubKeyMans()) {\n+        if (spk_man->IsKeyActive(script))\n+            return true;",
       "path": "src/wallet/wallet.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 38,
       "commit_id": "d6519a80eaa79371616053906723e74c6f06cc1a",
       "original_commit_id": "e4e7466c8621ddb5c6dd7434a34764eabe065208",
@@ -2607,7 +2736,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "(Same line or brackets)",
       "created_at": "2023-04-04T20:22:20Z",
@@ -2636,7 +2767,7 @@
       "node_id": "PRRC_kwDOEEET9c5FAYo_",
       "diff_hunk": "@@ -117,8 +117,8 @@ class Wallet\n     //! Get wallet address list.\n     virtual std::vector<WalletAddress> getAddresses() const = 0;\n \n-    //! Get receive requests.\n-    virtual std::vector<std::string> getAddressReceiveRequests() = 0;\n+    //! Get receive requests. Bool indicating key is active, string containing serialized destination data\n+    virtual std::vector<std::pair<bool, std::string>> getAddressReceiveRequests() = 0;",
       "path": "src/interfaces/wallet.h",
-      "position": null,
+      "position": 1,
       "original_position": 7,
       "commit_id": "d6519a80eaa79371616053906723e74c6f06cc1a",
       "original_commit_id": "e4e7466c8621ddb5c6dd7434a34764eabe065208",
@@ -2659,7 +2790,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "I have a personal preference for using a struct rather than a pair in these cases to make the code clearer to read and understand, as it provides named fields like `object.member_name` instead of just `pair.second`.",
       "created_at": "2023-04-04T20:26:52Z",
@@ -2688,7 +2821,7 @@
       "node_id": "PRRC_kwDOEEET9c5FAY-w",
       "diff_hunk": "@@ -17,19 +18,28 @@\n \n #include <utility>\n \n+#include <QIcon>\n #include <QLatin1Char>\n #include <QLatin1String>\n \n-RecentRequestsTableModel::RecentRequestsTableModel(WalletModel *parent) :\n-    QAbstractTableModel(parent), walletModel(parent)\n+QString RecentRequestEntry::GetWarnings() const\n+{\n+    QString warnings;\n+    if (!m_is_active)\n+        warnings += QObject::tr(\"This address should not be used. It was derived from an inactive seed, was imported, or may have been stored unencrypted.\\n\");\n+\n+    return warnings;\n+}\n+\n+RecentRequestsTableModel::RecentRequestsTableModel(const PlatformStyle* platformStyle, WalletModel* parent) : QAbstractTableModel(parent), walletModel(parent)\n {\n     // Load entries from wallet\n-    for (const std::string& request : parent->wallet().getAddressReceiveRequests()) {\n+    for (const std::pair<bool, std::string>& request : parent->wallet().getAddressReceiveRequests()) {\n         addNewRequest(request);\n     }\n \n     /* These columns must match the indices in the ColumnIndex enumeration */\n-    columns << tr(\"Date\") << tr(\"Label\") << tr(\"Message\") << getAmountTitle();\n+    columns << tr(\"Warnings\") << tr(\"Date\") << tr(\"Label\") << tr(\"Message\") << getAmountTitle();",
       "path": "src/qt/recentrequeststablemodel.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 37,
       "commit_id": "d6519a80eaa79371616053906723e74c6f06cc1a",
       "original_commit_id": "e4e7466c8621ddb5c6dd7434a34764eabe065208",
@@ -2711,7 +2844,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "In general, I think I'd start with the date column first, and then the warnings one.",
       "created_at": "2023-04-04T20:28:06Z",
@@ -2740,7 +2875,7 @@
       "node_id": "PRRC_kwDOEEET9c5FAcC3",
       "diff_hunk": "@@ -17,19 +18,28 @@\n \n #include <utility>\n \n+#include <QIcon>\n #include <QLatin1Char>\n #include <QLatin1String>\n \n-RecentRequestsTableModel::RecentRequestsTableModel(WalletModel *parent) :\n-    QAbstractTableModel(parent), walletModel(parent)\n+QString RecentRequestEntry::GetWarnings() const\n+{\n+    QString warnings;\n+    if (!m_is_active)\n+        warnings += QObject::tr(\"This address should not be used. It was derived from an inactive seed, was imported, or may have been stored unencrypted.\\n\");\n+\n+    return warnings;\n+}\n+\n+RecentRequestsTableModel::RecentRequestsTableModel(const PlatformStyle* platformStyle, WalletModel* parent) : QAbstractTableModel(parent), walletModel(parent)\n {\n     // Load entries from wallet\n-    for (const std::string& request : parent->wallet().getAddressReceiveRequests()) {\n+    for (const std::pair<bool, std::string>& request : parent->wallet().getAddressReceiveRequests()) {\n         addNewRequest(request);\n     }\n \n     /* These columns must match the indices in the ColumnIndex enumeration */\n-    columns << tr(\"Date\") << tr(\"Label\") << tr(\"Message\") << getAmountTitle();\n+    columns << tr(\"Warnings\") << tr(\"Date\") << tr(\"Label\") << tr(\"Message\") << getAmountTitle();",
       "path": "src/qt/recentrequeststablemodel.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 37,
       "commit_id": "d6519a80eaa79371616053906723e74c6f06cc1a",
       "original_commit_id": "e4e7466c8621ddb5c6dd7434a34764eabe065208",
@@ -2763,7 +2898,9 @@
         "events_url": "https://api.github.com/users/jonatack/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "> In general, I think I'd start with the date column first, and then the warnings one.\r\n\r\nI see that Jonas Schnelli used a date-first order as well in https://github.com/bitcoin/bitcoin/issues/3314#issuecomment-81567665.",
       "created_at": "2023-04-04T20:42:51Z",
@@ -2815,7 +2952,9 @@
         "events_url": "https://api.github.com/users/pinheadmz/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/pinheadmz/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Yeah the warning is the same, but in the GUI we have these related-but-different classes `RecentRequestEntry` for one view and `AddressTableEntry` for another. I don't see a great common file in `qt/` to declare warning strings, so I'm open to suggestions or maybe I should just start a new file?",
       "created_at": "2023-04-05T17:28:47Z",

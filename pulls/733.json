@@ -37,6 +37,7 @@
       "received_events_url": "https://api.github.com/users/denavila/received_events",
       "type": "User",
       "site_admin": false,
+      "name": null,
       "patch_url": null
     },
     "body": "This new feature is an implementation of the ideas in Paul Sztorc's blog post \"Deniability - Unilateral Transaction Meta-Privacy\"(https://www.truthcoin.info/blog/deniability/).\r\n\r\nIn short, the idea is to periodically split coins and send them to yourself, making it look like common \"spend\" transactions, such that blockchain ownership analysis becomes more difficult, and thus improving the user's privacy.\r\n\r\nThis is the GUI portion of the PR (bitcoin-core/gui). The core functionality PR ( https://github.com/bitcoin/bitcoin/pull/27792 ) is in the main repo (bitcoin/bitcoin).\r\n\r\nThis PR implements an additional \"Deniability\" wallet view. The majority of the GUI code is in a new deniabilitydialog.cpp/h source files containing a new DeniabilityDialog class, hooked up via the WalletView class. \r\n\r\nOn startup and on notable events (new blocks, new transactions, etc), we evaluate the privacy of all coins in the wallet, and we build a \"deniabilization\" candidate list. UTXOs that share the same destination address are grouped together into a single candidate (see DeniabilityDialog::updateCoins and DeniabilityDialog::updateCoinTable).\r\n\r\nWe inspect the blockchain data to find out if we have performed \"deniabilization\" transactions already, and we count how many \"cycles\" (self-sends) have been performed for each coin (see DeniabilityDialog::calculateDeniabilizationStats). Since we infer the state entirely from the blockchain data, even if the wallet is restored from a backup, the state would not be lost. This also means that if the user has performed manual self-sends that have improved the ownership privacy, they will be counted too.\r\n\r\n<img width=\"983\" alt=\"deniability_view_initial\" src=\"https://github.com/bitcoin-core/gui/assets/123340139/6626cca3-1b96-4ccd-9463-2a91a9993faa\">\r\n\r\nThe user has a couple of controls for the \"deniabillization\" process - a Frequency selector and a Budget spinner, which respectively determine how often to perform a cycle (see below) and how much total BTC to spend on transaction fees.\r\n\r\n<img width=\"983\" alt=\"deniability_view_pick_budget_frequency\" src=\"https://github.com/bitcoin-core/gui/assets/123340139/7508c23f-2ebb-4345-a440-49b9f60b8412\">\r\n\r\nThe user can initiate the \"deniabillization\" process by pressing the Start button (DeniabilityDialog::startDeniabilization). \r\nThe first time the button is pressed, we offer an information / confirmation box to explain to the user how Deniability works.\r\n\r\n<img width=\"532\" alt=\"deniability_view_start_confirmation\" src=\"https://github.com/bitcoin-core/gui/assets/123340139/c08ee856-8736-4e4e-be71-28219735f764\">\r\n\r\nThe process periodically perform a \"deniabilization\" cycle (DeniabilityDialog::deniabilizeProc). In each such cycle we do the following: \r\nA coin is selected form the candidate list. The more a coin is \"deniabilized\", the less likely it is to be selected. Smaller coins are also less likely to be selected. If a coin is selected, we prepare and broadcast a transaction, which splits the coin into a pair of new wallet addresses (DeniabilityDialog::deniabilizeCoin). \r\n\r\n<img width=\"983\" alt=\"deniability_view_tx_awaiting_confirmation\" src=\"https://github.com/bitcoin-core/gui/assets/123340139/df0354dc-f60f-45db-b692-db5c6ca36253\">\r\n\r\n<img width=\"983\" alt=\"transaction_view_after_deniabilization\" src=\"https://github.com/bitcoin-core/gui/assets/123340139/709084d3-227d-4c0d-ac47-cd83433b992a\">\r\n\r\nIf Bitcoin Core is left running continuously, the cycles would be performed at the selected frequency (with some randomization). If Bitcoin Core is shutdown, the \"deniabilization\" process will resume at the next restart, and if more time has elapsed than the selected frequency, it will perform a single cycle. We deliberately don't \"catch up\" all missed cycles, since that would expose the process to blockchain analysis. The state is saved and restored via QSettings (DeniabilityDialog::loadSettings and DeniabilityDialog::saveSettings).\r\n\r\n<img width=\"983\" alt=\"deniability_view_next_cycle_countdown\" src=\"https://github.com/bitcoin-core/gui/assets/123340139/da5a71e1-0174-4f2a-a9b3-b8a635abe769\">\r\n\r\nWe monitor each broadcasted transaction and we automatically attempt a fee bump if the transaction is still in the memory pool since the previous cycle (DeniabilityDialog::bumpDeniabilizationTx). We don't issue any other deniabilization transactions until the previous transaction is confirmed (or abandoned/dropped).\r\n\r\nThe process ends when the budget is exhausted or if there's no candidates left. The user can also stop the process manually by pressing a Stop button (DeniabilityDialog::stopDeniabilization).\r\n\r\nExternal signers are supported in a \"best effort\" way - since the user needs to manually sign, we postpone the deniabilization processing till the external signer is connected and use some additional UI to get the user's attention to sign (see the codepath predicated on hasExternalSigner). This is not ideal, so I'm looking for ideas if we can improve this in some way.\r\n\r\nWatch-only wallets are partially supported, where we display the candidate list, but we don't allow any processing (since we don't have the private keys to issue transactions).\r\n\r\nI've tested all this functionality on regtest, testnet, signet and mainnet. I've also added some unit tests (under WalletTests) to exercise the main functions.\r\n\r\nThis is my first change and PR for Bitcoin Core, and I did my best to validate everything against the guidelines and documentation and to follow the patterns in the existing code, but I'm sure there may be things I've missed, so I'm looking forward to your feedback. \r\nIn particular one thing I'm not particularly happy with - the save/restore of state via QSettings makes me a bit nervous as we store wallet specific data keyed on wallet name, however wallets can be erased and new ones created with the same name, so this is not ideal. I made an effort to validate all data on load, but it would be great if we could improve this somehow - either by storing the settings based on some wallet identity signature, or by storing the state in the wallet database (however that doesn't seem accessible via the interfaces::Wallet API). Please let me know your thoughts and suggestions.\r\n\r\nThank you.\r\n",
@@ -63,12 +64,14 @@
     "created_at": "2023-05-21T06:32:50Z",
     "updated_at": "2025-10-15T11:55:32Z",
     "closed_at": "2024-10-15T14:32:07Z",
-    "mergeable_state": "unknown",
+    "mergeable": true,
+    "mergeable_state": "clean",
     "merged": false,
     "merge_commit_sha": "0db6ba023f609153a1b882f3f2c8257d1f9714b0",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
+    "rebaseable": false,
     "head": {
       "label": "denavila:deniability",
       "ref": "deniability",
@@ -92,6 +95,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "repo": {
@@ -118,6 +122,7 @@
           "received_events_url": "https://api.github.com/users/denavila/received_events",
           "type": "User",
           "site_admin": false,
+          "name": null,
           "patch_url": null
         },
         "private": false,
@@ -227,6 +232,7 @@
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "repo": {
@@ -253,6 +259,7 @@
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
           "site_admin": false,
+          "name": null,
           "patch_url": null
         },
         "private": false,
@@ -302,12 +309,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 319,
-        "stargazers_count": 681,
-        "watchers_count": 681,
-        "size": 179042,
+        "forks_count": 354,
+        "stargazers_count": 725,
+        "watchers_count": 725,
+        "size": 190146,
         "default_branch": "master",
-        "open_issues_count": 152,
+        "open_issues_count": 148,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -318,9 +325,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-10-15T10:20:33Z",
+        "pushed_at": "2026-05-16T00:00:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2025-10-15T10:20:37Z",
+        "updated_at": "2026-05-16T00:00:11Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -378,6 +385,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -405,6 +413,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1556097316",
@@ -434,6 +443,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -468,6 +478,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -502,6 +513,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -536,6 +548,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -563,6 +576,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1556112377",
@@ -592,6 +606,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -619,6 +634,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1558676764",
@@ -648,6 +664,7 @@
         "received_events_url": "https://api.github.com/users/VladdyC/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -675,6 +692,7 @@
         "received_events_url": "https://api.github.com/users/VladdyC/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1561041240",
@@ -704,6 +722,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -731,6 +750,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1561460052",
@@ -760,6 +780,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -787,6 +808,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1561670353",
@@ -816,6 +838,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -843,6 +866,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1561680006",
@@ -872,6 +896,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -899,6 +924,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1561716951",
@@ -928,6 +954,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -955,6 +982,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1561725613",
@@ -984,6 +1012,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1011,6 +1040,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1561747032",
@@ -1040,6 +1070,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1067,6 +1098,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1562231512",
@@ -1096,6 +1128,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "a035b42fd6c3c5e9601905d4846e3ad68c7d12da",
@@ -1126,6 +1159,7 @@
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1160,6 +1194,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "5958634ce64a091b30c5df0c33e4944d5cd76cb7",
@@ -1190,6 +1225,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1217,6 +1253,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1568736418",
@@ -1246,6 +1283,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "61b4570b77a039def513c89ab5357b3393e75443",
@@ -1276,6 +1314,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1310,6 +1349,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "859b273847572117cb7caea2fec7f4b01ad001d6",
@@ -1340,6 +1380,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "53fde3f90815f145372a5bf8d629eac65a509dc8",
@@ -1370,6 +1411,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "db722e49e7749c8f5c96776523d8835bcfd9a58b",
@@ -1400,6 +1442,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "747f1fb7331355e88861db58ef4b611858bbff9a",
@@ -1430,6 +1473,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "b060d568d28109774b97a43e64b1124e79de2117",
@@ -1460,6 +1504,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "246589f3f795146216531f0311fe5d1ac171842b",
@@ -1490,6 +1535,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "b3e349c98214380bf46a5e9fc16f3b5ab2ddc746",
@@ -1520,6 +1566,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "6d07de6c723cbbb0d7ea26f1160434dc93ad534f",
@@ -1550,6 +1597,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1584,6 +1632,7 @@
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1611,6 +1660,7 @@
         "received_events_url": "https://api.github.com/users/maflcko/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1590038670",
@@ -1640,6 +1690,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1670,6 +1721,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1697,6 +1749,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1590079466",
@@ -1726,6 +1779,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1760,6 +1814,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "19257380745f0783eb1e2e863797038738d093dd",
@@ -1790,6 +1845,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "379b724eb56320ed9f5704814817488686d9c28f",
@@ -1820,6 +1876,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "d9e288c5c5de8d37b51b64dad35ba1437281e328",
@@ -1850,6 +1907,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1884,6 +1942,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1918,6 +1977,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1952,6 +2012,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -1986,6 +2047,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -2020,6 +2082,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -2054,6 +2117,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "403dba36a571826f11345a3c6372aa36bb9c184d",
@@ -2084,6 +2148,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "64232fbb38465186067729f40e5505025551e97f",
@@ -2114,6 +2179,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "29be493e57491e7e0e561b9bc9c2917e3cc08063",
@@ -2144,6 +2210,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "d5ebbceef2fc47d4f2e9a44205d1b9446235294e",
@@ -2174,6 +2241,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -2208,6 +2276,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "6fcf6f5b0bb42bcc08bca0f2d86f126c4756ea54",
@@ -2238,6 +2307,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "ed75f632a9ffffd0a102a0577bcbf822e0e2575a",
@@ -2268,6 +2338,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "fae09cf7abaa319e462ae126f73eee2382eed5ba",
@@ -2298,6 +2369,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -2332,6 +2404,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "4d1a6d147ef4b44ccc92d5040aaf5bcc565c4b69",
@@ -2362,6 +2435,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "5aeab6d2c670af294ee24a0da0b1414abd6ac7f0",
@@ -2392,6 +2466,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "d48512067a46c53d8b3ca7e04faef114f403bc6d",
@@ -2422,6 +2497,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "51f444faf5e9c3c1ddb470d3df978c63d2226504",
@@ -2452,6 +2528,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "78fa5c83b0bccb5270f239dfcf256959b188687c",
@@ -2482,6 +2559,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -2516,6 +2594,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "7d8c64882f1172ed648120537f99c9a96b4f84fc",
@@ -2546,6 +2625,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -2580,6 +2660,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "71a3e12fdafd62f2d77ff2d12345d6fce9700772",
@@ -2610,6 +2691,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -2644,6 +2726,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "16d50b3699232bfe48b21057e6175ab12417ebe3",
@@ -2674,6 +2757,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -2715,6 +2799,7 @@
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#pullrequestreview-1700307265",
@@ -2746,6 +2831,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "219dd62e5c59ebe31e5d480eaaccd1057cadd93c",
@@ -2776,6 +2862,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "c781cd8863bb12e60ce8905063c8041145db63ac",
@@ -2806,6 +2893,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -2846,6 +2934,7 @@
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#pullrequestreview-1702973669",
@@ -2883,6 +2972,7 @@
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#pullrequestreview-1702974130",
@@ -2920,6 +3010,7 @@
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#pullrequestreview-1702974253",
@@ -2951,6 +3042,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "5b702bc176a67b135e70b30c03e1314498487b4f",
@@ -2981,6 +3073,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "4ac59bad8ecbb4ef5445c3b441595811b2bfe6ba",
@@ -3011,6 +3104,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -3045,6 +3139,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "842cb26c18bda83538842bec382c749a2354ec1f",
@@ -3075,6 +3170,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "0f92d7e97c85c7ba183c324c432a50508a896c4f",
@@ -3105,6 +3201,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -3139,6 +3236,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "21e39b96bc08e29920a1efb61dee79082adb414c",
@@ -3169,6 +3267,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "3f83a0e11ff9017fb1eaf95b3193199343935d2e",
@@ -3199,6 +3298,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -3233,6 +3333,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "37722d6f2762aa42fd4bfdd59c3351a52848b732",
@@ -3263,6 +3364,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "17e15b779887b5c2d2836ccb7af179fd70ad5679",
@@ -3293,6 +3395,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -3327,6 +3430,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -3361,6 +3465,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "9e6fdce4394b941c21b88ebf2ef6910fbe9aa7c7",
@@ -3391,6 +3496,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "737fbc464348c8c2eb51ef65ceef318929969eac",
@@ -3421,6 +3527,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "8f72d4abe3ab4e4cbbe909694a1fd9d0a8f4a3bf",
@@ -3451,6 +3558,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -3485,6 +3593,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -3519,6 +3628,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -3553,6 +3663,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "95e53e776675999f456a6402bca9cf200ede4973",
@@ -3583,6 +3694,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "64ab1b49e3c7030df79236fcc7048d916c65c2d9",
@@ -3613,6 +3725,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -3647,6 +3760,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -3681,6 +3795,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -3708,6 +3823,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-1970421734",
@@ -3737,6 +3853,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -3771,6 +3888,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "4e836f674e447c3262d44400fd07da13d1e3c395",
@@ -3801,6 +3919,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "2af84b0cfc13709f41f941ee5bf15a652ab9afe7",
@@ -3831,6 +3950,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -3872,6 +3992,7 @@
         "received_events_url": "https://api.github.com/users/jess2505/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#pullrequestreview-1926062004",
@@ -3903,6 +4024,7 @@
         "received_events_url": "https://api.github.com/users/1440000bytes/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -3930,6 +4052,7 @@
         "received_events_url": "https://api.github.com/users/1440000bytes/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-2081539227",
@@ -3959,6 +4082,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -3986,6 +4110,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-2083190086",
@@ -4015,6 +4140,7 @@
         "received_events_url": "https://api.github.com/users/1440000bytes/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -4045,6 +4171,7 @@
         "received_events_url": "https://api.github.com/users/1440000bytes/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -4075,6 +4202,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -4102,6 +4230,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-2099873590",
@@ -4131,6 +4260,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -4165,6 +4295,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "4fd852bb3d63517af43b18492ac245c9350ae2f3",
@@ -4195,6 +4326,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "bb00e41f86960666a4f998565b7528c62a43e7df",
@@ -4232,6 +4364,7 @@
         "received_events_url": "https://api.github.com/users/1Helpmeout3/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#pullrequestreview-2092091428",
@@ -4270,6 +4403,7 @@
         "received_events_url": "https://api.github.com/users/1Helpmeout3/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#pullrequestreview-2092091695",
@@ -4308,6 +4442,7 @@
         "received_events_url": "https://api.github.com/users/1Helpmeout3/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#pullrequestreview-2092091806",
@@ -4339,6 +4474,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "0b66676c2fcc0a7997a9c8e8f649cc9b889776e0",
@@ -4369,6 +4505,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "c2c12c0a94fb58ae99b73c521b5b89271a398b14",
@@ -4399,6 +4536,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "e147c60506f6731c56eed93fbe05f6a62114d06b",
@@ -4429,6 +4567,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -4470,6 +4609,7 @@
         "received_events_url": "https://api.github.com/users/jonatack/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#pullrequestreview-2267095566",
@@ -4501,6 +4641,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -4528,6 +4669,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-2327557888",
@@ -4557,6 +4699,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "a869bd1740f76e105181ebcf92e95708d0a3a6b0",
@@ -4587,6 +4730,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "a24133189df7f792af99c44b55caabb87cbdd397",
@@ -4617,6 +4761,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "5379115f4e6a425ac34db788666c229caf7e0c6f",
@@ -4647,6 +4792,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "5f4549cf3aaa381e78afbcc38852195d8428ee28",
@@ -4677,6 +4823,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "ee225c6c04ae17a7de82931af9cbb6baa9c1b3db",
@@ -4707,6 +4854,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "38119b91f9ad1b373aaed00a642d144c48e0d3c5",
@@ -4737,6 +4885,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "a0dc4489f7c1b401989b9e518861e720de6c72de",
@@ -4767,6 +4916,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -4801,6 +4951,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -4835,6 +4986,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -4862,6 +5014,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-2347077149",
@@ -4891,6 +5044,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -4925,6 +5079,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "6a8d732e3c9acd753b9982787862589edf06eebb",
@@ -4955,6 +5110,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "2a75a7171289fb75f0be7c588c1219fc244bcc2c",
@@ -4985,6 +5141,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -5019,6 +5176,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -5053,6 +5211,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -5080,6 +5239,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-2405965632",
@@ -5149,6 +5309,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "3e08c9036a4d78ed4ff31e493d66f9a98ddcaebe",
@@ -5179,6 +5340,7 @@
         "received_events_url": "https://api.github.com/users/1440000bytes/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -5206,6 +5368,7 @@
         "received_events_url": "https://api.github.com/users/1440000bytes/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-2412386930",
@@ -5235,6 +5398,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -5265,6 +5429,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -5335,6 +5500,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": "b48a95a79f65947c2c60eea55411aceca90bad69",
@@ -5365,6 +5531,7 @@
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -5399,6 +5566,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -5426,6 +5594,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/733#issuecomment-2414104356",
@@ -5455,6 +5624,7 @@
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -5485,6 +5655,7 @@
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "commit_id": null,
@@ -5524,6 +5695,7 @@
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "Crosses even column 160.\r\n```suggestion\r\n        wallet->SetLastBlockProcessed(106, WITH_LOCK(\r\n                node.context()->chainman->GetMutex(),\r\n                return node.context()->chainman->ActiveChain().Tip()->GetBlockHash()));\r\n```\r\nWouldn't reach even column 100.",
@@ -5577,6 +5749,7 @@
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "```suggestion\r\nResult CreateRateBumpDeniabilizationTransaction(\r\n        CWallet& wallet, const uint256& txid, unsigned int confirm_target,\r\n        bool sign, bilingual_str& error, CAmount& old_fee, CAmount& new_fee,\r\n        CTransactionRef& new_tx)\r\n```\r\nso many params, did you think of removing some?",
@@ -5630,6 +5803,7 @@
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "same",
@@ -5683,6 +5857,7 @@
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "fold to several lines?",
@@ -5736,6 +5911,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "The \"inputs\", \"out_output_type\" and \"confirm_target\" are usually passed in as part of CCoinControl. \r\nHowever for deniabilization we create a specifically built CCoinControl, so I didn't want the API user to have to fill one out, just to have the majority of the fields essentially ignored, so that's why I decided to list these individually.\r\nI could make a new class to pass them together though, eg CDeniabilizationControl? \r\nDoes that sound reasonable? ",
@@ -5789,6 +5965,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "CreateRateBumpDeniabilizationTransaction essentially does the job of CreateRateBumpTransaction and SignTransaction, but specialized for bumping deniabilization transactions. \r\nThis functionality is responsible for the presence of the \"txid\", \"old_fee\", \"new_fee\" and \"sign\" parameters.\r\n\"confirm_target\" takes the place of the \"coin_control\" parameter (since that's all we need), and the \"error\" and \"new_tx\" are needed to communicate the result/error with the caller.\r\nThe reason we need a new API function here is that we need to take the new bump fee from one of the recipients of the old transaction (fSubtractFeeFromAmount), and there didn't seem to be a way to do that via CreateRateBumpTransaction. And generally CreateRateBumpTransaction just does too many other things that we don't need once we know we're bumping a deniabilization transaction.",
@@ -5842,6 +6019,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "There was a bug introduced in the fee bumping after the last rebase. Interestingly it didn't get flagged by the compiler ... even though it was an obviously wrong type being assigned to CRecipient struct ... :-O \r\nAt any rate, I fixed it in the latest commit. Please let me know if you're still seeing an issue running the tests.\r\nThanks! ",
@@ -5895,6 +6073,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "Yes, indeed. I split the code into several lines in the latest commit.\r\nThanks!",
@@ -5948,6 +6127,7 @@
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "just by thinking of the possibility seems reasonable enough for me at this point\r\n\r\nfor now make as you feel it's best made\r\n",
@@ -6001,6 +6181,7 @@
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "why is this hardwired to 2?",
@@ -6054,6 +6235,7 @@
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "why this magic number?\r\nis this the number of legacy and p2sh bytes per txin?\r\ncan't name some constant with that?\r\n",
@@ -6107,6 +6289,7 @@
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "why compute fee estimate and then multiply by a hardwired 2?",
@@ -6160,6 +6343,7 @@
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "I hate that indent standard though, and yet I think now it's a bit better than before. Thanks",
@@ -6213,6 +6397,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "2 outputs is a common spend transaction and we're trying to mimic that. \r\nAnother concern with a larger output count is that the number of deniabilization chunks grows much larger with each \"cycle\", and thus becomes more expensive to perform further cycles.\r\nIn the end 2 looked like the sweet spot, but I made the constant just in case we want to play with other output counts in the future.\r\nI'll add comments in the code to that effect so that it's more obvious.\r\nThanks!",
@@ -6266,6 +6451,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "Yes, these are legacy vs Segwit tx size calculation, I think I found the code in GetDustThreshold. I'll see if we have named constants for some of those.",
@@ -6319,6 +6505,7 @@
         "received_events_url": "https://api.github.com/users/denavila/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "Oh, that 2 probably needs to be NUM_DENIABILIZATION_OUTPUTS. Basically we calculate the future cycle cost for each of the chunks we split into. Each chunk should cost the same if the number of splits is the same, so we can calculate one chunk and multiply by the number of splits.\r\nThanks for spotting that. I'll fix it.",
@@ -6372,6 +6559,7 @@
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "happpy to help",
@@ -6425,6 +6613,7 @@
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "and/or simple one line comments could help clarify,\r\nI feel like named constant for magic number is a better strategy than commenting,\r\nbut maintainer should take final choice :thinking:",
@@ -6478,6 +6667,7 @@
         "received_events_url": "https://api.github.com/users/katesalazar/received_events",
         "type": "User",
         "site_admin": false,
+        "name": null,
         "patch_url": null
       },
       "body": "Maybe commenting the constant helps,\r\nmaybe best commented in some function,\r\nat the extremely minimum least I think such intrincacies should be commented in the commit message introducing either the constant or whatever function",

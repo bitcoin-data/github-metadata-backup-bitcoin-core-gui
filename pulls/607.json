@@ -36,7 +36,9 @@
       "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/hebasto/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
     },
     "body": "Internally, `interfaces::HandlerImpl` keeps a member of the `boost::signals2::scoped_connection` type https://github.com/bitcoin-core/gui/blob/192d639a6b1bd0feaa52e6ea4e63e33982704c32/src/interfaces/handler.cpp#L21  [which](https://www.boost.org/doc/libs/1_64_0/doc/html/boost/signals2/scoped_connection.html) automatically disconnects on destruction.\r\n\r\nTherefore, manual disconnections are redundant in class destructors.",
     "labels": [
@@ -53,11 +55,14 @@
     "created_at": "2022-05-26T12:30:47Z",
     "updated_at": "2023-07-19T10:13:28Z",
     "closed_at": "2022-07-19T13:29:48Z",
-    "mergeable_state": "unknown",
+    "mergeable": true,
+    "mergeable_state": "clean",
+    "merged": false,
     "merge_commit_sha": "51a638cab63091952e36ac82489ce9ec56526b7d",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
+    "rebaseable": false,
     "head": {
       "label": "hebasto:220526-handler",
       "ref": "220526-handler",
@@ -80,7 +85,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 273230449,
@@ -105,7 +112,9 @@
           "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/hebasto/received_events",
           "type": "User",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/hebasto/gui",
@@ -155,9 +164,9 @@
         "homepage": "",
         "language": "C++",
         "forks_count": 2,
-        "stargazers_count": 4,
-        "watchers_count": 4,
-        "size": 150547,
+        "stargazers_count": 8,
+        "watchers_count": 8,
+        "size": 190189,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -170,9 +179,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-08-01T18:13:22Z",
+        "pushed_at": "2026-04-09T10:37:41Z",
         "created_at": "2020-06-18T12:20:51Z",
-        "updated_at": "2023-07-25T14:36:43Z",
+        "updated_at": "2026-04-09T10:38:02Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -212,7 +222,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 272700405,
@@ -237,7 +249,9 @@
           "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/bitcoin-core/gui",
@@ -286,12 +300,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 271,
-        "stargazers_count": 491,
-        "watchers_count": 491,
-        "size": 149681,
+        "forks_count": 354,
+        "stargazers_count": 725,
+        "watchers_count": 725,
+        "size": 190146,
         "default_branch": "master",
-        "open_issues_count": 155,
+        "open_issues_count": 148,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -302,9 +316,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-08-01T15:59:41Z",
+        "pushed_at": "2026-05-16T00:00:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2023-08-02T07:56:25Z",
+        "updated_at": "2026-05-16T00:00:11Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -520,7 +535,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -539,6 +556,7 @@
       "commit_id": "512072f9c969b414a71cec56e348ef6136a31385",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2022-05-26T12:50:51Z",
       "author_association": "CONTRIBUTOR",
       "body": "Code review ACK 512072f9c969b414a71cec56e348ef6136a31385.",
       "user": {
@@ -559,7 +577,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/607#pullrequestreview-986165393",
       "submitted_at": "2022-05-26T12:50:51Z",
@@ -589,7 +609,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -615,7 +637,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/607#issuecomment-1139161162",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/607"
@@ -629,7 +653,8 @@
       "commit_id": "512072f9c969b414a71cec56e348ef6136a31385",
       "commit_url": null,
       "created_at": null,
-      "author_association": "CONTRIBUTOR",
+      "updated_at": "2022-05-27T17:28:41Z",
+      "author_association": "MEMBER",
       "body": "Code review ACK 512072f9\r\n\r\nTo not forget about this, would be nice to add a doc comment at the top of the `HandlerImpl` class and `MakeHandler(boost::signals2::connection)` explaining that the returned `Handler` disconnects the signal when the object is destructed.",
       "user": {
         "login": "furszy",
@@ -649,7 +674,9 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/607#pullrequestreview-987817824",
       "submitted_at": "2022-05-27T17:28:41Z",
@@ -665,7 +692,8 @@
       "commit_id": "512072f9c969b414a71cec56e348ef6136a31385",
       "commit_url": null,
       "created_at": null,
-      "author_association": "MEMBER",
+      "updated_at": "2022-05-28T23:03:55Z",
+      "author_association": "CONTRIBUTOR",
       "body": "ACK 512072f9c969b414a71cec56e348ef6136a31385\r\n\r\nConfirmed PR description, and compiled and ran locally.",
       "user": {
         "login": "jarolrod",
@@ -685,7 +713,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/607#pullrequestreview-988560343",
       "submitted_at": "2022-05-28T23:03:55Z",
@@ -715,7 +745,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -741,7 +773,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/607#issuecomment-1140463162",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/607"
@@ -769,7 +803,9 @@
         "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -798,7 +834,9 @@
         "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -813,6 +851,7 @@
       "commit_id": "512072f9c969b414a71cec56e348ef6136a31385",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2022-05-31T19:07:29Z",
       "author_association": "CONTRIBUTOR",
       "body": "Tentative code review ACK 512072f9c969b414a71cec56e348ef6136a31385. For all the commits except the first commit, the destructors are non-empty, so this PR changes behavior by disconnecting signals after the other code in the destructor instead of before the other code in the constructor. In theory this could be a problem if a new signal is sent while the object is being destroyed. Previously the signal would be ignored, now it could call methods on a half destroyed object.\r\n\r\nIt would be good if commit messages acknowledged the delayed disconnection of signals, and perhaps explained why it was safe to delay disconnecting signals.",
       "user": {
@@ -833,7 +872,9 @@
         "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/607#pullrequestreview-991017943",
       "submitted_at": "2022-05-31T19:07:29Z",
@@ -863,7 +904,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -889,7 +932,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/607#issuecomment-1142579246",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/607"
@@ -917,7 +962,9 @@
         "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -943,7 +990,9 @@
         "events_url": "https://api.github.com/users/ryanofsky/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ryanofsky/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/607#issuecomment-1142605980",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/607"
@@ -971,7 +1020,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -997,7 +1048,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/607#issuecomment-1189056363",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/607"
@@ -1025,7 +1078,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1054,7 +1109,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,

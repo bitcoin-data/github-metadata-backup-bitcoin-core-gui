@@ -36,7 +36,9 @@
       "events_url": "https://api.github.com/users/psancheti110/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/psancheti110/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
     },
     "body": "This PR provides a fix to the issue mentioned in #232. \r\n\r\nCurrently, the **_Load PSBT_** functionality works well in case a wallet is loaded but does nothing when a wallet isn't loaded. \r\n\r\nIf a function cannot work without a wallet being loaded, it is disabled by default (It is unclickable as shown in the image). \r\n\r\nFor e.g. One cannot `Close Wallet` or `Backup Wallet` or `Sign Messages` without a wallet being loaded. And hence they are disabled. But if you notice, `Load PSBT` options are not disabled by default even when a wallet isn't loaded.\r\n\r\n>  ![Screenshot 2021-08-07 at 11 46 30 PM](https://user-images.githubusercontent.com/54016434/128610208-45376026-0e91-4268-abdf-342e3cec5917.png)\r\n\r\n\r\n\r\nAs mentioned by hebasto in the issue description : \r\n\r\n``` \r\n<hebasto> achow101: does \"File\" -> \"Load PSBT from {file|clipboard}\" make any sense when no wallet is loaded?\r\n<achow101> hebasto: yes, for finalize and sending\r\n```\r\n\r\nThis means **_Load PSBT_**  should be working just as similar whether wallets are being loaded or not. \r\n\r\nAfter making the required changes to the code, The **_Load PSBT_** works as expected even with no wallet loaded and the PSBT is finalized. \r\n\r\n| Master | PR | \r\n|-------------|---------------|\r\n| ![Hnet com-image (1)](https://user-images.githubusercontent.com/54016434/128611454-4dfc3fd3-ecc0-48f0-8408-60eb98035694.gif) | ![Hnet com-image (2)](https://user-images.githubusercontent.com/54016434/128611461-982468d2-9cd0-4f9b-9392-c25b6c8857e2.gif) | \r\n\r\n\r\nClose #232 ",
     "labels": [
@@ -73,7 +75,30 @@
     "updated_at": "2022-08-16T16:56:49Z",
     "closed_at": "2021-08-11T19:30:01Z",
     "mergeable_state": "unknown",
+    "merged": true,
     "merged_at": "2021-08-11T19:30:00Z",
+    "merged_by": {
+      "login": "hebasto",
+      "id": 32963518,
+      "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hebasto",
+      "html_url": "https://github.com/hebasto",
+      "followers_url": "https://api.github.com/users/hebasto/followers",
+      "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+      "organizations_url": "https://api.github.com/users/hebasto/orgs",
+      "repos_url": "https://api.github.com/users/hebasto/repos",
+      "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/hebasto/received_events",
+      "type": "User",
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
+    },
     "merge_commit_sha": "e614cc8cd808902c843568f1790730622d619620",
     "assignees": [],
     "requested_reviewers": [],
@@ -100,7 +125,9 @@
         "events_url": "https://api.github.com/users/psancheti110/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/psancheti110/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 390471565,
@@ -125,7 +152,9 @@
           "events_url": "https://api.github.com/users/psancheti110/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/psancheti110/received_events",
           "type": "User",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/psancheti110/gui",
@@ -193,6 +222,7 @@
         "pushed_at": "2021-09-21T18:32:10Z",
         "created_at": "2021-07-28T19:03:50Z",
         "updated_at": "2021-09-21T18:32:15Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -232,7 +262,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 272700405,
@@ -257,7 +289,9 @@
           "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/bitcoin-core/gui",
@@ -306,12 +340,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 271,
-        "stargazers_count": 491,
-        "watchers_count": 491,
-        "size": 149681,
+        "forks_count": 354,
+        "stargazers_count": 725,
+        "watchers_count": 725,
+        "size": 190146,
         "default_branch": "master",
-        "open_issues_count": 155,
+        "open_issues_count": 148,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -322,9 +356,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-08-01T15:59:41Z",
+        "pushed_at": "2026-05-16T00:00:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2023-08-02T07:56:25Z",
+        "updated_at": "2026-05-16T00:00:11Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -380,7 +415,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -406,7 +443,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/399#issuecomment-894697473",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/399"
@@ -434,7 +473,9 @@
         "events_url": "https://api.github.com/users/psancheti110/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/psancheti110/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -463,7 +504,9 @@
         "events_url": "https://api.github.com/users/psancheti110/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/psancheti110/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -492,7 +535,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -525,7 +570,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -558,7 +605,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -591,7 +640,9 @@
         "events_url": "https://api.github.com/users/psancheti110/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/psancheti110/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -624,7 +675,9 @@
         "events_url": "https://api.github.com/users/psancheti110/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/psancheti110/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -653,7 +706,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -672,6 +727,7 @@
       "commit_id": "a77d04fb1a4e788b51424e8fb41122a0568e2756",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-08-09T18:55:07Z",
       "author_association": "MEMBER",
       "body": "Concept ACK",
       "user": {
@@ -692,7 +748,9 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/399#pullrequestreview-725704910",
       "submitted_at": "2021-08-09T18:55:07Z",
@@ -708,6 +766,7 @@
       "commit_id": "a77d04fb1a4e788b51424e8fb41122a0568e2756",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-08-10T07:40:51Z",
       "author_association": "MEMBER",
       "body": "",
       "user": {
@@ -728,7 +787,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/399#pullrequestreview-726099556",
       "submitted_at": "2021-08-10T07:40:51Z",
@@ -758,10 +819,12 @@
         "events_url": "https://api.github.com/users/psancheti110/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/psancheti110/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "cb7b222cb2ccd1b7d92f7123557097559b0c16a1",
+      "commit_url": "https://api.github.com/repos/psancheti110/gui/commits/cb7b222cb2ccd1b7d92f7123557097559b0c16a1",
       "created_at": "2021-08-10T10:36:48Z"
     },
     {
@@ -787,7 +850,9 @@
         "events_url": "https://api.github.com/users/psancheti110/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/psancheti110/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -813,7 +878,9 @@
         "events_url": "https://api.github.com/users/psancheti110/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/psancheti110/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/399#issuecomment-896065556",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/399"
@@ -841,7 +908,9 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -870,7 +939,9 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -885,6 +956,7 @@
       "commit_id": "cb7b222cb2ccd1b7d92f7123557097559b0c16a1",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-08-10T15:14:39Z",
       "author_association": "MEMBER",
       "body": "Approach ACK cb7b222cb2ccd1b7d92f7123557097559b0c16a1.\r\n\r\nAfter moving PSBT dialog code from `walletview.cpp` into `waletframe.cpp`, some `include`s could be removed:\r\n```diff\r\n--- a/src/qt/walletview.cpp\r\n+++ b/src/qt/walletview.cpp\r\n@@ -8,7 +8,6 @@\r\n #include <qt/askpassphrasedialog.h>\r\n #include <qt/clientmodel.h>\r\n #include <qt/guiutil.h>\r\n-#include <qt/psbtoperationsdialog.h>\r\n #include <qt/optionsmodel.h>\r\n #include <qt/overviewpage.h>\r\n #include <qt/platformstyle.h>\r\n@@ -21,13 +20,10 @@\r\n \r\n #include <interfaces/node.h>\r\n #include <node/ui_interface.h>\r\n-#include <psbt.h>\r\n #include <util/strencodings.h>\r\n \r\n #include <QAction>\r\n #include <QActionGroup>\r\n-#include <QApplication>\r\n-#include <QClipboard>\r\n #include <QFileDialog>\r\n #include <QHBoxLayout>\r\n #include <QProgressDialog>\r\n```",
       "user": {
@@ -905,7 +977,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/399#pullrequestreview-726541283",
       "submitted_at": "2021-08-10T15:14:39Z",
@@ -935,10 +1009,12 @@
         "events_url": "https://api.github.com/users/psancheti110/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/psancheti110/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "e5e00910ae5fc3d07e1a4ed5aff5b23a26166495",
+      "commit_url": "https://api.github.com/repos/psancheti110/gui/commits/e5e00910ae5fc3d07e1a4ed5aff5b23a26166495",
       "created_at": "2021-08-10T18:57:37Z"
     },
     {
@@ -964,7 +1040,9 @@
         "events_url": "https://api.github.com/users/psancheti110/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/psancheti110/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -990,7 +1068,9 @@
         "events_url": "https://api.github.com/users/psancheti110/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/psancheti110/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/399#issuecomment-896238199",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/399"
@@ -1018,7 +1098,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1047,7 +1129,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1076,7 +1160,9 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1102,7 +1188,9 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/399#issuecomment-896289920",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/399"
@@ -1116,6 +1204,7 @@
       "commit_id": "e5e00910ae5fc3d07e1a4ed5aff5b23a26166495",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-08-11T07:46:21Z",
       "author_association": "MEMBER",
       "body": "Tested e5e00910ae5fc3d07e1a4ed5aff5b23a26166495.\r\n\r\nI think the `PSBTOperationsDialog::showTransactionStatus` should be modified to correctly handle unsigned PSBTs:\r\n```diff\r\n--- a/src/qt/psbtoperationsdialog.cpp\r\n+++ b/src/qt/psbtoperationsdialog.cpp\r\n@@ -254,7 +254,10 @@ void PSBTOperationsDialog::showTransactionStatus(const PartiallySignedTransactio\r\n         case PSBTRole::SIGNER: {\r\n             QString need_sig_text = tr(\"Transaction still needs signature(s).\");\r\n             StatusLevel level = StatusLevel::INFO;\r\n-            if (m_wallet_model->wallet().privateKeysDisabled()) {\r\n+            if (!m_wallet_model) {\r\n+                need_sig_text += \" \" + tr(\"(But no wallet is loaded.)\");\r\n+                level = StatusLevel::WARN;\r\n+            } else if (m_wallet_model->wallet().privateKeysDisabled()) {\r\n                 need_sig_text += \" \" + tr(\"(But this wallet cannot sign transactions.)\");\r\n                 level = StatusLevel::WARN;\r\n             } else if (n_could_sign < 1) {\r\n```",
       "user": {
@@ -1136,7 +1225,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/399#pullrequestreview-727158375",
       "submitted_at": "2021-08-11T07:46:21Z",
@@ -1206,10 +1297,12 @@
         "events_url": "https://api.github.com/users/psancheti110/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/psancheti110/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "0237d95323dec7c65b7223c314afdf63aab6b11b",
+      "commit_url": "https://api.github.com/repos/psancheti110/gui/commits/0237d95323dec7c65b7223c314afdf63aab6b11b",
       "created_at": "2021-08-11T10:11:15Z"
     },
     {
@@ -1235,7 +1328,9 @@
         "events_url": "https://api.github.com/users/psancheti110/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/psancheti110/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1261,7 +1356,9 @@
         "events_url": "https://api.github.com/users/psancheti110/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/psancheti110/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/399#issuecomment-896697008",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/399"
@@ -1289,7 +1386,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1318,7 +1417,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1333,6 +1434,7 @@
       "commit_id": "0237d95323dec7c65b7223c314afdf63aab6b11b",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-08-11T11:09:25Z",
       "author_association": "MEMBER",
       "body": "ACK 0237d95323dec7c65b7223c314afdf63aab6b11b, tested on Linux Mint 20.2 (Qt 5.12.8).\r\n\r\nNo wallet is loaded when testing: `bitcoin-qt -nowallet`.\r\n\r\n**A.** The loading of an unsigned PSBT being prepared with the `walletcreatefundedpsbt` RPC command:\r\n\r\n![Screenshot from 2021-08-11 14-06-59](https://user-images.githubusercontent.com/32963518/129018790-cd3e6cad-1dc4-40b8-a4d4-8a8937f828f6.png)\r\n\r\n**B.** The loading of a signed PSBT which is the PSBT mentioned above being processed with the `walletprocesspsbt` RPC command:\r\n\r\n![Screenshot from 2021-08-11 14-07-33](https://user-images.githubusercontent.com/32963518/129018892-69d25362-8662-4a9d-8026-babfa76a4607.png)\r\n",
       "user": {
@@ -1353,7 +1455,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/399#pullrequestreview-727350249",
       "submitted_at": "2021-08-11T11:09:25Z",
@@ -1383,7 +1487,9 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1409,7 +1515,9 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/399#issuecomment-897083709",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/399"
@@ -1437,7 +1545,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "e614cc8cd808902c843568f1790730622d619620",
       "commit_url": "https://api.github.com/repos/bitcoin-core/gui/commits/e614cc8cd808902c843568f1790730622d619620",
@@ -1466,7 +1576,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1495,7 +1607,9 @@
         "events_url": "https://api.github.com/users/psancheti110/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/psancheti110/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1521,7 +1635,9 @@
         "events_url": "https://api.github.com/users/psancheti110/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/psancheti110/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/399#issuecomment-897845730",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/399"
@@ -1549,7 +1665,9 @@
         "events_url": "https://api.github.com/users/sidhujag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/sidhujag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "32e3d703105a1f5840123658497c59bd63622edf",
       "commit_url": "https://api.github.com/repos/syscoin/syscoin/commits/32e3d703105a1f5840123658497c59bd63622edf",
@@ -1578,7 +1696,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1594,7 +1714,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDY4NTQ0MDI1OQ==",
       "diff_hunk": "@@ -237,7 +244,6 @@ size_t PSBTOperationsDialog::couldSignInputs(const PartiallySignedTransaction &p\n void PSBTOperationsDialog::showTransactionStatus(const PartiallySignedTransaction &psbtx) {\n     PSBTAnalysis analysis = AnalyzePSBT(psbtx);\n     size_t n_could_sign = couldSignInputs(psbtx);\n-",
       "path": "src/qt/psbtoperationsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 61,
       "commit_id": "0237d95323dec7c65b7223c314afdf63aab6b11b",
       "original_commit_id": "a77d04fb1a4e788b51424e8fb41122a0568e2756",
@@ -1617,7 +1737,9 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "nit: Unnecessary whitespace change.",
       "created_at": "2021-08-09T18:51:43Z",
@@ -1646,7 +1768,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDY4NTQ0MTA3Nw==",
       "diff_hunk": "@@ -46,20 +46,23 @@ PSBTOperationsDialog::~PSBTOperationsDialog()\n void PSBTOperationsDialog::openWithPSBT(PartiallySignedTransaction psbtx)\n {\n     m_transaction_data = psbtx;\n-\n-    bool complete;\n-    size_t n_could_sign;\n-    FinalizePSBT(psbtx);  // Make sure all existing signatures are fully combined before checking for completeness.\n-    TransactionError err = m_wallet_model->wallet().fillPSBT(SIGHASH_ALL, false /* sign */, true /* bip32derivs */, &n_could_sign, m_transaction_data, complete);\n-    if (err != TransactionError::OK) {\n-        showStatus(tr(\"Failed to load transaction: %1\")\n-            .arg(QString::fromStdString(TransactionErrorString(err).translated)), StatusLevel::ERR);\n-        return;\n+    if (m_wallet_model) {\n+        bool complete;\n+        size_t n_could_sign;\n+        FinalizePSBT(psbtx); // Make sure all existing signatures are fully combined before checking for completeness.",
       "path": "src/qt/psbtoperationsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 16,
       "commit_id": "0237d95323dec7c65b7223c314afdf63aab6b11b",
       "original_commit_id": "a77d04fb1a4e788b51424e8fb41122a0568e2756",
@@ -1669,7 +1791,9 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "`FinalizePSBT` is not a wallet function, it should always be done. It also returns a bool indicating whether the transaction is completely signed, so this could be\r\n\r\n    bool complete = FinalizePSBT(psbt);",
       "created_at": "2021-08-09T18:52:54Z",
@@ -1721,7 +1845,9 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "If `complete` is set by `FinalizePSBT` as I suggested above, then this line can be unchanged and the `broadcastTransactionButton` lines can be removed from the if-else blocks.",
       "created_at": "2021-08-09T18:53:36Z",
@@ -1750,7 +1876,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDY4NTQ0MjQwOQ==",
       "diff_hunk": "@@ -46,20 +46,23 @@ PSBTOperationsDialog::~PSBTOperationsDialog()\n void PSBTOperationsDialog::openWithPSBT(PartiallySignedTransaction psbtx)\n {\n     m_transaction_data = psbtx;\n-\n-    bool complete;\n-    size_t n_could_sign;\n-    FinalizePSBT(psbtx);  // Make sure all existing signatures are fully combined before checking for completeness.\n-    TransactionError err = m_wallet_model->wallet().fillPSBT(SIGHASH_ALL, false /* sign */, true /* bip32derivs */, &n_could_sign, m_transaction_data, complete);\n-    if (err != TransactionError::OK) {\n-        showStatus(tr(\"Failed to load transaction: %1\")\n-            .arg(QString::fromStdString(TransactionErrorString(err).translated)), StatusLevel::ERR);\n-        return;\n+    if (m_wallet_model) {\n+        bool complete;\n+        size_t n_could_sign;\n+        FinalizePSBT(psbtx); // Make sure all existing signatures are fully combined before checking for completeness.\n+        TransactionError err = m_wallet_model->wallet().fillPSBT(SIGHASH_ALL, false /* sign */, true /* bip32derivs */, &n_could_sign, m_transaction_data, complete);\n+        if (err != TransactionError::OK) {\n+            showStatus(tr(\"Failed to load transaction: %1\")\n+                           .arg(QString::fromStdString(TransactionErrorString(err).translated)),\n+                       StatusLevel::ERR);\n+            return;\n+        }\n+        m_ui->broadcastTransactionButton->setEnabled(complete);\n+        m_ui->signTransactionButton->setEnabled(!complete && !m_wallet_model->wallet().privateKeysDisabled() && n_could_sign > 0);\n+    } else {\n+        m_ui->broadcastTransactionButton->setEnabled(true);",
       "path": "src/qt/psbtoperationsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 27,
       "commit_id": "0237d95323dec7c65b7223c314afdf63aab6b11b",
       "original_commit_id": "a77d04fb1a4e788b51424e8fb41122a0568e2756",
@@ -1773,7 +1899,9 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "It's not always correct for the broadcast button to be enabled since the user could provide a PSBT that is incomplete. By always doing `FinalizePSBT` as I have suggested above, then we will know whether the PSBT is complete by the time we get here.",
       "created_at": "2021-08-09T18:54:59Z",
@@ -1802,7 +1930,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDY4NTc2NTEyNg==",
       "diff_hunk": "@@ -4,17 +4,23 @@\n \n #include <qt/walletframe.h>\n \n-#include <qt/overviewpage.h>\n-#include <qt/walletmodel.h>\n-#include <qt/walletview.h>\n-\n-#include <cassert>\n-\n+#include <QApplication>\n+#include <QClipboard>\n #include <QGroupBox>\n #include <QHBoxLayout>\n #include <QLabel>\n #include <QPushButton>\n #include <QVBoxLayout>\n+#include <cassert>\n+#include <qt/guiutil.h>\n+#include <qt/overviewpage.h>\n+#include <qt/walletmodel.h>\n+#include <qt/walletview.h>\n+\n+#include <node/ui_interface.h>\n+#include <psbt.h>\n+#include <qt/psbtoperationsdialog.h>",
       "path": "src/qt/walletframe.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 25,
       "commit_id": "0237d95323dec7c65b7223c314afdf63aab6b11b",
       "original_commit_id": "a77d04fb1a4e788b51424e8fb41122a0568e2756",
@@ -1825,7 +1953,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Please keep the grouping of headers unchanged -- (1) our own headers, (2) C++ headers, (3) Qt headers.",
       "created_at": "2021-08-10T07:32:40Z",
@@ -1854,7 +1984,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDY4NTc2NTM5Mw==",
       "diff_hunk": "@@ -4,17 +4,23 @@\n \n #include <qt/walletframe.h>\n \n-#include <qt/overviewpage.h>\n-#include <qt/walletmodel.h>\n-#include <qt/walletview.h>\n-\n-#include <cassert>\n-\n+#include <QApplication>\n+#include <QClipboard>\n #include <QGroupBox>\n #include <QHBoxLayout>\n #include <QLabel>\n #include <QPushButton>\n #include <QVBoxLayout>\n+#include <cassert>\n+#include <qt/guiutil.h>\n+#include <qt/overviewpage.h>\n+#include <qt/walletmodel.h>\n+#include <qt/walletview.h>\n+\n+#include <node/ui_interface.h>\n+#include <psbt.h>\n+#include <qt/psbtoperationsdialog.h>\n+",
       "path": "src/qt/walletframe.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 26,
       "commit_id": "0237d95323dec7c65b7223c314afdf63aab6b11b",
       "original_commit_id": "a77d04fb1a4e788b51424e8fb41122a0568e2756",
@@ -1877,7 +2007,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Why this line added?",
       "created_at": "2021-08-10T07:33:01Z",
@@ -1906,7 +2038,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDY4NjA5NjIxMA==",
       "diff_hunk": "@@ -47,18 +47,22 @@ void PSBTOperationsDialog::openWithPSBT(PartiallySignedTransaction psbtx)\n {\n     m_transaction_data = psbtx;\n \n-    bool complete;\n-    size_t n_could_sign;\n-    FinalizePSBT(psbtx);  // Make sure all existing signatures are fully combined before checking for completeness.\n-    TransactionError err = m_wallet_model->wallet().fillPSBT(SIGHASH_ALL, false /* sign */, true /* bip32derivs */, &n_could_sign, m_transaction_data, complete);\n-    if (err != TransactionError::OK) {\n-        showStatus(tr(\"Failed to load transaction: %1\")\n-            .arg(QString::fromStdString(TransactionErrorString(err).translated)), StatusLevel::ERR);\n-        return;\n+    bool complete = FinalizePSBT(psbtx); // Make sure all existing signatures are fully combined before checking for completeness.;",
       "path": "src/qt/psbtoperationsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 12,
       "commit_id": "0237d95323dec7c65b7223c314afdf63aab6b11b",
       "original_commit_id": "cb7b222cb2ccd1b7d92f7123557097559b0c16a1",
@@ -1929,7 +2061,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "nit: extra `;` at the comment end?",
       "created_at": "2021-08-10T14:51:19Z",
@@ -1981,7 +2115,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "nit: Add an empty line above as it was in `walletview.cpp` for readability and easier verifying with `diff --color-moved=dimmed-zebra`?",
       "created_at": "2021-08-10T14:53:28Z",
@@ -2033,7 +2169,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "nit: Add an empty line above as it was in `walletview.cpp` for readability and easier verifying with `diff --color-moved=dimmed-zebra`?",
       "created_at": "2021-08-10T14:58:03Z",
@@ -2062,7 +2200,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDY4NjExMDM0Mg==",
       "diff_hunk": "@@ -184,10 +190,38 @@ void WalletFrame::gotoVerifyMessageTab(QString addr)\n \n void WalletFrame::gotoLoadPSBT(bool from_clipboard)\n {\n-    WalletView *walletView = currentWalletView();\n-    if (walletView) {\n-        walletView->gotoLoadPSBT(from_clipboard);\n+    std::string data;\n+    if (from_clipboard) {\n+        std::string raw = QApplication::clipboard()->text().toStdString();\n+        bool invalid;\n+        data = DecodeBase64(raw, &invalid);\n+        if (invalid) {\n+            Q_EMIT message(tr(\"Error\"), tr(\"Unable to decode PSBT from clipboard (invalid base64)\"), CClientUIInterface::MSG_ERROR);\n+            return;\n+        }\n+    } else {\n+        QString filename = GUIUtil::getOpenFileName(this,\n+                                                    tr(\"Load Transaction Data\"), QString(),\n+                                                    tr(\"Partially Signed Transaction (*.psbt)\"), nullptr);",
       "path": "src/qt/walletframe.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 38,
       "commit_id": "0237d95323dec7c65b7223c314afdf63aab6b11b",
       "original_commit_id": "cb7b222cb2ccd1b7d92f7123557097559b0c16a1",
@@ -2085,7 +2223,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "I understand these indentations were suggested by `clang-format-diff.py`, but to keep verifying easy with `diff --color-moved=dimmed-zebra`, I'd suggest to keep the same indentations as they were in `walletview.cpp`.",
       "created_at": "2021-08-10T15:07:12Z",

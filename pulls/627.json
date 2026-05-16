@@ -36,7 +36,9 @@
       "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/jarolrod/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
     },
     "body": "This is a followup to #617. Because the strings were being concatenated, we can not apply translator comments to all of the revelant strings. This can be tested by applying the following diff to current master and running `make translate`; then check the resulting diff:\r\n\r\n```diff\r\ndiff --git a/src/qt/optionsdialog.cpp b/src/qt/optionsdialog.cpp\r\nindex 462b923d6..3cf165004 100644\r\n--- a/src/qt/optionsdialog.cpp\r\n+++ b/src/qt/optionsdialog.cpp\r\n@@ -286,9 +286,17 @@ void OptionsDialog::on_resetButton_clicked()\r\n {\r\n     if (model) {\r\n         // confirmation dialog\r\n+        //: Window title text of pop-up window shown when the user has chosen to reset options.\r\n         QMessageBox::StandardButton btnRetVal = QMessageBox::question(this, tr(\"Confirm options reset\"),\r\n+            /*: Text explaining that the settings the user changed will not come\r\n+                into effect until the client is restarted. */\r\n             tr(\"Client restart required to activate changes.\") + \"<br><br>\" +\r\n+            /*: Text explaining to the user that the client's current settings\r\n+                will be backed up at a specific location. %1 is a stand-in\r\n+                argument for the backup location's path. */\r\n             tr(\"Current settings will be backed up at \\\"%1\\\".\").arg(m_client_model->dataDir()) + \"<br><br>\" +\r\n+            /*: Text asking the user to confirm if they would like to proceed\r\n+                with a client shutdown. */\r\n             tr(\"Client will be shut down. Do you want to proceed?\"),\r\n             QMessageBox::Yes | QMessageBox::Cancel, QMessageBox::Cancel);\r\n```\r\n\r\nTo apply the above translator comments, what we want to do instead is have a variable in which the translatable strings are appended to using the [QString append function](https://doc.qt.io/qt-5/qstring.html#append).\r\n\r\nWhen you run `make translate` with this PR, you will see the translator comments properly applied, as shown below:\r\n``` diff\r\ndiff --git a/src/qt/locale/bitcoin_en.ts b/src/qt/locale/bitcoin_en.ts\r\nindex 35d820187..9e5158b3e 100644\r\n--- a/src/qt/locale/bitcoin_en.ts\r\n+++ b/src/qt/locale/bitcoin_en.ts\r\n@@ -1942,28 +1942,37 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>\r\n         <translation>default</translation>\r\n     </message>\r\n     <message>\r\n-        <location line=\"+81\"/>\r\n+        <location line=\"+86\"/>\r\n         <source>none</source>\r\n         <translation type=\"unfinished\"></translation>\r\n     </message>\r\n     <message>\r\n-        <location line=\"+97\"/>\r\n+        <location line=\"+107\"/>\r\n         <source>Confirm options reset</source>\r\n+        <extracomment>Window title text of pop-up window shown when the user has chosen to reset options.</extracomment>\r\n         <translation>Confirm options reset</translation>\r\n     </message>\r\n     <message>\r\n-        <location line=\"+1\"/>\r\n-        <location line=\"+70\"/>\r\n+        <location line=\"-9\"/>\r\n+        <location line=\"+79\"/>\r\n         <source>Client restart required to activate changes.</source>\r\n+        <extracomment>Text explaining that the settings changed will not come into effect until the client is restarted.</extracomment>\r\n+        <translation type=\"unfinished\"></translation>\r\n+    </message>\r\n+    <message>\r\n+        <location line=\"-75\"/>\r\n+        <source>Current settings will be backed up at &quot;%1&quot;.</source>\r\n+        <extracomment>Text explaining to the user that the client&apos;s current settings will be backed up at a specific location. %1 is a stand-in argument for the backup location&apos;s path.</extracomment>\r\n         <translation type=\"unfinished\"></translation>\r\n     </message>\r\n     <message>\r\n-        <location line=\"-70\"/>\r\n+        <location line=\"+3\"/>\r\n         <source>Client will be shut down. Do you want to proceed?</source>\r\n+        <extracomment>Text asking the user to confirm if they would like to proceed with a client shutdown.</extracomment>\r\n         <translation type=\"unfinished\"></translation>\r\n     </message>\r\n     <message>\r\n-        <location line=\"+18\"/>\r\n+        <location line=\"+20\"/>\r\n         <source>Configuration options</source>\r\n         <extracomment>Window title text of pop-up box that allows opening up of configuration file.</extracomment>\r\n         <translation type=\"unfinished\"></translation>\r\n```\r\n\r\nNo difference in rendering between master and PR\r\n\r\n| master | PR |\r\n| ------- | --- |\r\n<img width=\"532\" alt=\"Screen Shot 2022-06-29 at 11 39 17 PM\" src=\"https://user-images.githubusercontent.com/23396902/176588495-9d3761b6-9d96-489a-bbe5-a8907f7d5f99.png\"> | <img width=\"532\" alt=\"Screen Shot 2022-06-29 at 11 39 51 PM\" src=\"https://user-images.githubusercontent.com/23396902/176588513-92e29564-b74a-46f5-a5dd-469c4ee953f7.png\"> |\r\n ",
     "labels": [
@@ -54,7 +56,30 @@
     "updated_at": "2023-07-12T10:10:13Z",
     "closed_at": "2022-07-12T07:46:29Z",
     "mergeable_state": "unknown",
+    "merged": true,
     "merged_at": "2022-07-12T07:46:28Z",
+    "merged_by": {
+      "login": "hebasto",
+      "id": 32963518,
+      "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hebasto",
+      "html_url": "https://github.com/hebasto",
+      "followers_url": "https://api.github.com/users/hebasto/followers",
+      "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+      "organizations_url": "https://api.github.com/users/hebasto/orgs",
+      "repos_url": "https://api.github.com/users/hebasto/repos",
+      "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/hebasto/received_events",
+      "type": "User",
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
+    },
     "merge_commit_sha": "27a4dd055b9c008f8c9cd2a988b9696b7537e07d",
     "assignees": [],
     "requested_reviewers": [],
@@ -81,7 +106,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 310414870,
@@ -106,7 +133,9 @@
           "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/jarolrod/received_events",
           "type": "User",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/jarolrod/gui",
@@ -158,7 +187,7 @@
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 147893,
+        "size": 167963,
         "default_branch": "master",
         "open_issues_count": 1,
         "is_template": false,
@@ -171,9 +200,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-07-05T02:33:18Z",
+        "pushed_at": "2025-01-08T17:03:39Z",
         "created_at": "2020-11-05T20:54:31Z",
-        "updated_at": "2022-01-09T00:40:30Z",
+        "updated_at": "2025-01-08T17:04:31Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -213,7 +243,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 272700405,
@@ -238,7 +270,9 @@
           "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/bitcoin-core/gui",
@@ -287,12 +321,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 271,
-        "stargazers_count": 491,
-        "watchers_count": 491,
-        "size": 149681,
+        "forks_count": 354,
+        "stargazers_count": 725,
+        "watchers_count": 725,
+        "size": 190146,
         "default_branch": "master",
-        "open_issues_count": 155,
+        "open_issues_count": 148,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -303,9 +337,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-08-01T15:59:41Z",
+        "pushed_at": "2026-05-16T00:00:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2023-08-02T07:56:25Z",
+        "updated_at": "2026-05-16T00:00:11Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -328,7 +363,7 @@
         "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/627"
       }
     },
-    "author_association": "MEMBER",
+    "author_association": "CONTRIBUTOR",
     "draft": false,
     "additions": 12,
     "deletions": 4,
@@ -401,7 +436,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -434,7 +471,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -453,6 +492,7 @@
       "commit_id": "d5c141f221d67aaeee989da0db0ac5383d7562d3",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2022-07-01T18:27:02Z",
       "author_association": "CONTRIBUTOR",
       "body": "ACK d5c141f221d67aaeee989da0db0ac5383d7562d3\r\n\r\n- I was able to verify that applying the patch given in the description leads to failing of `make translate`.\r\n\r\n![Master_Patch_Translate](https://user-images.githubusercontent.com/85434418/176949676-06a6b029-f139-4713-a4f0-78dc076919b5.png)\r\n\r\n- The `make translate` command ran successfully for this PR.\r\n- I was able to verify that the displayed message remains unchanged.\r\n\r\n**Screenshot:**\r\n|Master|PR|\r\n|---------|----|\r\n|![Master](https://user-images.githubusercontent.com/85434418/176949634-351cc0bb-c6f9-47a8-b9e3-06fd30575802.png)|![Screenshot from 2022-07-01 23-49-30](https://user-images.githubusercontent.com/85434418/176949647-400cc79f-45ab-41e1-bb4c-0303b65b8fe1.png)|\r\n\r\n**Notes:**\r\nInstructions on how to using `make translate` are given in [this](https://github.com/bitcoin/bitcoin/blob/master/doc/translation_process.md) documentation ",
       "user": {
@@ -473,7 +513,9 @@
         "events_url": "https://api.github.com/users/shaavan/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/shaavan/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/627#pullrequestreview-1026538789",
       "submitted_at": "2022-07-01T18:27:02Z",
@@ -489,7 +531,8 @@
       "commit_id": "d5c141f221d67aaeee989da0db0ac5383d7562d3",
       "commit_url": null,
       "created_at": null,
-      "author_association": "CONTRIBUTOR",
+      "updated_at": "2022-07-11T15:39:10Z",
+      "author_association": "MEMBER",
       "body": "Tested ACK d5c141f2, no functional changes.",
       "user": {
         "login": "furszy",
@@ -509,7 +552,9 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/627#pullrequestreview-1034553846",
       "submitted_at": "2022-07-11T15:39:10Z",
@@ -525,6 +570,7 @@
       "commit_id": "d5c141f221d67aaeee989da0db0ac5383d7562d3",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2022-07-11T17:07:56Z",
       "author_association": "CONTRIBUTOR",
       "body": "tACK https://github.com/bitcoin-core/gui/pull/627/commits/d5c141f221d67aaeee989da0db0ac5383d7562d3",
       "user": {
@@ -545,7 +591,9 @@
         "events_url": "https://api.github.com/users/w0xlt/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/w0xlt/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/627#pullrequestreview-1034673862",
       "submitted_at": "2022-07-11T17:07:56Z",
@@ -575,7 +623,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "27a4dd055b9c008f8c9cd2a988b9696b7537e07d",
       "commit_url": "https://api.github.com/repos/bitcoin-core/gui/commits/27a4dd055b9c008f8c9cd2a988b9696b7537e07d",
@@ -604,7 +654,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -633,7 +685,9 @@
         "events_url": "https://api.github.com/users/sidhujag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/sidhujag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "990f7e746515bd556615fbcaa146f9f4cfbf1435",
       "commit_url": "https://api.github.com/repos/syscoin/syscoin/commits/990f7e746515bd556615fbcaa146f9f4cfbf1435",
@@ -662,7 +716,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,

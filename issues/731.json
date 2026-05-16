@@ -32,7 +32,9 @@
       "events_url": "https://api.github.com/users/fanquake/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/fanquake/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
     },
     "labels": [],
     "assignees": [],
@@ -66,13 +68,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2023-05-19T21:44:04Z",
       "updated_at": "2023-05-19T21:47:43Z",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "body": "@ddykeman1 would you be able to compile bitcoin core on your own, enabling debug during the configure stage, that would greatly help to identify exactly what is going on. \r\n\r\nI'd also suggest sanity checking your setup:\r\n1) Is the data directory existing and available\r\n2) Does the crash occur if you choose a different data directory? (You can run the gui on startup with `-resetguisettings` to be able to choose a new data directory within the gui itself on startup, or pass `-datadir` when running the gui from the command line\r\n\r\n@hebasto \r\nSo the GUI ran for 3 hours, then a crash occurred. And now subsequent startups for the gui result in the above crash. So to begin we'd want to look at macOS && GUI specific init code. The current crash log does provide hints with `0x7ff8205329a4 -[NSApplication _createDockMenu:] + 165`. Looking at this [patch](https://github.com/bitcoin-core/gui/commit/0bb33b5348dbddd65b88a7f00449c965562355d3), would it be reasonable to do a check on the delegate to make sure that it's even available in the first place?\r\n\r\nSo within the constructor for `MacDockIconHandler`, we could do something like this before calling the `setupDockClickHandler`:\r\n\r\n```c++\r\nMacDockIconHandler::MacDockIconHandler() : QObject()\r\n{\r\n    id delegate = [[NSApplication sharedApplication] delegate];\r\n    if (delegate == nil) {\r\n        // delegate not set\r\n    } else {\r\n        //delegate is set\r\n        setupDockClickHandler();\r\n    }\r\n}\r\n```",
       "user": {
         "login": "jarolrod",
@@ -92,7 +96,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/issues/731#issuecomment-1555287731",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/731"
@@ -120,7 +126,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -149,7 +157,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -178,7 +188,9 @@
         "events_url": "https://api.github.com/users/ddykeman1/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ddykeman1/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -207,7 +219,9 @@
         "events_url": "https://api.github.com/users/ddykeman1/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ddykeman1/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -236,7 +250,9 @@
         "events_url": "https://api.github.com/users/ddykeman1/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ddykeman1/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -262,7 +278,9 @@
         "events_url": "https://api.github.com/users/ddykeman1/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/ddykeman1/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/issues/731#issuecomment-1556206697",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/731"

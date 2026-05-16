@@ -36,7 +36,9 @@
       "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/jarolrod/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
     },
     "body": "This PR refactors our GUI `apptests` so that it uses regex search to find values in our console/qtextedit output regardless if it is in `plaintext`, `html`, or `markdown`. \r\n\r\nThis introduces a new function `FindInConsole` which uses [QRegularExpression](https://doc.qt.io/qt-5/qregularexpression.html) to search the output of the console. The function must be provided with a [perl compatible regex](https://www.debuggex.com/cheatsheet/regex/pcre) pattern which wants to match a single group. The function then returns the matched group. If no match is found, an empty `QString` is returned.\r\n\r\nWe then use this new function in `TestRpcCommand` to find the current `chain` value instead of reading with univalue. \r\n\r\nThis approach can apply to a wider variety of testing scenarios as we can reuse this function to search for values when the console output is exported in a different format than `plaintext`. As an example, A follow up PR will add tests for console resizing and needs to look for the size in `html` tags after exporting the console text with `toHtml()`.",
     "labels": [
@@ -55,7 +57,30 @@
     "updated_at": "2022-08-16T16:56:41Z",
     "closed_at": "2021-08-05T05:53:29Z",
     "mergeable_state": "unknown",
+    "merged": true,
     "merged_at": "2021-08-05T05:53:29Z",
+    "merged_by": {
+      "login": "hebasto",
+      "id": 32963518,
+      "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hebasto",
+      "html_url": "https://github.com/hebasto",
+      "followers_url": "https://api.github.com/users/hebasto/followers",
+      "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+      "organizations_url": "https://api.github.com/users/hebasto/orgs",
+      "repos_url": "https://api.github.com/users/hebasto/repos",
+      "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/hebasto/received_events",
+      "type": "User",
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
+    },
     "merge_commit_sha": "be37037e8e6bcff2060092ad2d7533f87861532a",
     "assignees": [],
     "requested_reviewers": [],
@@ -82,7 +107,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 310414870,
@@ -107,7 +134,9 @@
           "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/jarolrod/received_events",
           "type": "User",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/jarolrod/gui",
@@ -159,7 +188,7 @@
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 147893,
+        "size": 167963,
         "default_branch": "master",
         "open_issues_count": 1,
         "is_template": false,
@@ -172,9 +201,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-07-05T02:33:18Z",
+        "pushed_at": "2025-01-08T17:03:39Z",
         "created_at": "2020-11-05T20:54:31Z",
-        "updated_at": "2022-01-09T00:40:30Z",
+        "updated_at": "2025-01-08T17:04:31Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -214,7 +244,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 272700405,
@@ -239,7 +271,9 @@
           "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/bitcoin-core/gui",
@@ -288,12 +322,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 271,
-        "stargazers_count": 491,
-        "watchers_count": 491,
-        "size": 149681,
+        "forks_count": 354,
+        "stargazers_count": 725,
+        "watchers_count": 725,
+        "size": 190146,
         "default_branch": "master",
-        "open_issues_count": 155,
+        "open_issues_count": 148,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -304,9 +338,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-08-01T15:59:41Z",
+        "pushed_at": "2026-05-16T00:00:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2023-08-02T07:56:25Z",
+        "updated_at": "2026-05-16T00:00:11Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -329,7 +364,7 @@
         "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/337"
       }
     },
-    "author_association": "MEMBER",
+    "author_association": "CONTRIBUTOR",
     "draft": false,
     "additions": 12,
     "deletions": 5,
@@ -362,7 +397,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -395,10 +432,12 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "d3426306953d991006ba12885cd3432b9ff034b2",
+      "commit_url": "https://api.github.com/repos/jarolrod/gui/commits/d3426306953d991006ba12885cd3432b9ff034b2",
       "created_at": "2021-05-18T14:32:41Z"
     },
     {
@@ -424,13 +463,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-05-18T14:37:47Z",
       "updated_at": "2021-05-18T14:37:47Z",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "body": "updated from d32b704 -> d342630\r\n\r\nChanges:\r\n- Address [CI failure](https://cirrus-ci.com/task/6137803319803904?logs=ci#L4339) by explicitly making the \"regtest\" string a `QString`\r\n  - Note: Using `QStringLiteral` would be more efficient since it avoids constructing a `QString` and copying data to it. But we are not in a loop, the performance benefit is minimal, and just `QString` is cleaner.\r\n- While here, include missing `QString` header ",
       "user": {
         "login": "jarolrod",
@@ -450,7 +491,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/337#issuecomment-843228481",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/337"
@@ -464,6 +507,7 @@
       "commit_id": "2c679ecd578898bb5bc6be14c1affc474518a08a",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-05-20T18:27:54Z",
       "author_association": "MEMBER",
       "user": {
         "login": "hebasto",
@@ -483,7 +527,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/337#pullrequestreview-664729295",
       "submitted_at": "2021-05-20T18:27:54Z",
@@ -513,7 +559,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -546,10 +594,12 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "1a63f44609d1c7a4de0f5c4727e0d4cd3d7448ad",
+      "commit_url": "https://api.github.com/repos/jarolrod/gui/commits/1a63f44609d1c7a4de0f5c4727e0d4cd3d7448ad",
       "created_at": "2021-05-21T02:09:47Z"
     },
     {
@@ -575,13 +625,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-05-21T02:15:43Z",
       "updated_at": "2021-05-21T02:15:43Z",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "body": "updated from d342630 -> 1a63f44 ([pr337.01](https://github.com/jarolrod/gui/commits/pr337.01) -> [pr337.02](https://github.com/jarolrod/gui/commits/pr337.02))\r\n\r\nChanges:\r\n- Rebase due to conflict with #335",
       "user": {
         "login": "jarolrod",
@@ -601,7 +653,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/337#issuecomment-845602269",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/337"
@@ -629,7 +683,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -648,6 +704,7 @@
       "commit_id": "1a63f44609d1c7a4de0f5c4727e0d4cd3d7448ad",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-05-22T22:03:16Z",
       "author_association": "MEMBER",
       "body": "Approach ACK 1a63f44609d1c7a4de0f5c4727e0d4cd3d7448ad.",
       "user": {
@@ -668,7 +725,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/337#pullrequestreview-666213455",
       "submitted_at": "2021-05-22T22:03:16Z",
@@ -698,10 +757,12 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "9bde3812ced53d16547e287eff760502ee58b127",
+      "commit_url": "https://api.github.com/repos/jarolrod/gui/commits/9bde3812ced53d16547e287eff760502ee58b127",
       "created_at": "2021-05-26T04:27:29Z"
     },
     {
@@ -727,13 +788,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-05-26T04:30:55Z",
       "updated_at": "2021-05-26T04:30:55Z",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "body": "updated from 1a63f44 -> 9bde381 ([pr337.02](https://github.com/jarolrod/gui/tree/pr337.02), [pr337.03](https://github.com/jarolrod/gui/tree/pr337.03), [diff](https://github.com/jarolrod/gui/compare/pr337.02...jarolrod:pr337.03))\r\n\r\n**Changes:**\r\n- Address @hebasto's suggestions ([1](https://github.com/bitcoin-core/gui/pull/337#discussion_r637455152), [2](https://github.com/bitcoin-core/gui/pull/337#discussion_r637455353))",
       "user": {
         "login": "jarolrod",
@@ -753,7 +816,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/337#issuecomment-848444966",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/337"
@@ -781,7 +846,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -810,7 +877,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -839,7 +908,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -952,10 +1023,12 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "6969b2bb98a2f44e1b51c905db92ec2e28345078",
+      "commit_url": "https://api.github.com/repos/jarolrod/gui/commits/6969b2bb98a2f44e1b51c905db92ec2e28345078",
       "created_at": "2021-06-01T06:22:46Z"
     },
     {
@@ -981,13 +1054,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-06-01T06:24:56Z",
       "updated_at": "2021-06-01T06:24:56Z",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "body": "Updated from 9bde381 -> 6969b2b ([pr337.03](https://github.com/jarolrod/gui/tree/pr337.03) -> [pr337.04](https://github.com/jarolrod/gui/tree/pr337.04))\r\n\r\n**Changes:**\r\n- address conflict with #123 ",
       "user": {
         "login": "jarolrod",
@@ -1007,7 +1082,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/337#issuecomment-851855131",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/337"
@@ -1035,7 +1112,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1054,6 +1133,7 @@
       "commit_id": "6969b2bb98a2f44e1b51c905db92ec2e28345078",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-06-05T18:27:34Z",
       "author_association": "MEMBER",
       "body": "ACK 6969b2bb98a2f44e1b51c905db92ec2e28345078",
       "user": {
@@ -1074,7 +1154,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/337#pullrequestreview-676800175",
       "submitted_at": "2021-06-05T18:27:34Z",
@@ -1090,6 +1172,7 @@
       "commit_id": "6969b2bb98a2f44e1b51c905db92ec2e28345078",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-08-02T18:19:19Z",
       "author_association": "CONTRIBUTOR",
       "body": "ACK 6969b2bb98a2f44e1b51c905db92ec2e28345078\r\nCompiled the PR properly on Ubuntu 20.04\r\n\r\nThe PR introduces regex search functionality to apptest.cpp file by replacing univalue based search, which requires the qmessagewidget to be output in plaintext to work properly, with a more general Qregularexpression based search which doesn’t explicitly require a plaincheck to function.\r\n\r\nTested if the new apptest is running properly by running `./src/qt/test/test_bitcoin-qt` and from there obtained: `PASS   : AppTests::appTests()`\r\nFor the sake of completion, the final result obtained from running the `test_bitcoin-qt` file was:\r\n`Totals: 3 passed, 0 failed, 0 skipped, 0 blacklisted, 96ms`\r\n\r\nThis PR is an improvement over the master, as now the search string need not have to be a plaintext, which increases the number of use cases of the search action. An example of an additional use case is if we want to output the qmessagewidget in HTML to examine the values of the current HTML elements.\r\n",
       "user": {
@@ -1110,7 +1193,9 @@
         "events_url": "https://api.github.com/users/shaavan/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/shaavan/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/337#pullrequestreview-720475674",
       "submitted_at": "2021-08-02T18:19:19Z",
@@ -1140,7 +1225,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "be37037e8e6bcff2060092ad2d7533f87861532a",
       "commit_url": "https://api.github.com/repos/bitcoin-core/gui/commits/be37037e8e6bcff2060092ad2d7533f87861532a",
@@ -1169,7 +1256,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1198,7 +1287,9 @@
         "events_url": "https://api.github.com/users/sidhujag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/sidhujag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "d001fe4679a57126b47ded6cefc0ed6bdfef7c2a",
       "commit_url": "https://api.github.com/repos/syscoin/syscoin/commits/d001fe4679a57126b47ded6cefc0ed6bdfef7c2a",
@@ -1227,7 +1318,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1266,7 +1359,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "https://github.com/bitcoin/bitcoin/pull/17213#issuecomment-546684680\r\n\r\nhttps://github.com/bitcoin/bitcoin/pull/16432#discussion_r315464914",
       "created_at": "2021-05-20T18:27:54Z",
@@ -1318,7 +1413,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "I verified that Qt itself uses `QRegularExpression` header, at least for version we use in depends.\r\n\r\nSo, I'm ok with it.",
       "created_at": "2021-05-22T21:37:54Z",
@@ -1347,7 +1444,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDYzNzQ1NTE1Mg==",
       "diff_hunk": "@@ -21,15 +20,24 @@\n \n #include <QAction>\n #include <QLineEdit>\n+#include <QRegularExpression>\n #include <QScopedPointer>\n #include <QSignalSpy>\n+#include <QString>\n #include <QTest>\n #include <QTextEdit>\n #include <QtGlobal>\n #include <QtTest/QtTestWidgets>\n #include <QtTest/QtTestGui>\n \n namespace {\n+//! Regex find a string group inside of the console output\n+QString FindInConsole(const QString& output, const QString& pattern)\n+{\n+    QRegularExpression re(pattern);",
       "path": "src/qt/test/apptests.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 26,
       "commit_id": "6969b2bb98a2f44e1b51c905db92ec2e28345078",
       "original_commit_id": "1a63f44609d1c7a4de0f5c4727e0d4cd3d7448ad",
@@ -1370,7 +1467,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "nit:\r\n```suggestion\r\n    const QRegularExpression re(pattern);\r\n```",
       "created_at": "2021-05-22T21:58:21Z",
@@ -1399,7 +1498,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDYzNzQ1NTM1Mw==",
       "diff_hunk": "@@ -41,10 +49,9 @@ void TestRpcCommand(RPCConsole* console)\n     QTest::keyClick(lineEdit, Qt::Key_Return);\n     QVERIFY(mw_spy.wait(1000));\n     QCOMPARE(mw_spy.count(), 2);\n-    QString output = messagesWidget->toPlainText();\n-    UniValue value;\n-    value.read(output.right(output.size() - output.lastIndexOf(QChar::ObjectReplacementCharacter) - 1).toStdString());\n-    QCOMPARE(value[\"chain\"].get_str(), std::string(\"regtest\"));\n+    const QString output = messagesWidget->toPlainText();\n+    const QString pattern = \"\\\"chain\\\": \\\"(\\\\w+)\\\"\";",
       "path": "src/qt/test/apptests.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 42,
       "commit_id": "6969b2bb98a2f44e1b51c905db92ec2e28345078",
       "original_commit_id": "1a63f44609d1c7a4de0f5c4727e0d4cd3d7448ad",
@@ -1422,7 +1521,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "nit:\r\n```suggestion\r\n    const QString pattern = QStringLiteral(\"\\\"chain\\\": \\\"(\\\\w+)\\\"\");\r\n```",
       "created_at": "2021-05-22T22:01:36Z",
@@ -1451,7 +1552,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDYzOTM5Mjc3Mg==",
       "diff_hunk": "@@ -21,15 +20,24 @@\n \n #include <QAction>\n #include <QLineEdit>\n+#include <QRegularExpression>\n #include <QScopedPointer>\n #include <QSignalSpy>\n+#include <QString>\n #include <QTest>\n #include <QTextEdit>\n #include <QtGlobal>\n #include <QtTest/QtTestWidgets>\n #include <QtTest/QtTestGui>\n \n namespace {\n+//! Regex find a string group inside of the console output\n+QString FindInConsole(const QString& output, const QString& pattern)\n+{\n+    QRegularExpression re(pattern);",
       "path": "src/qt/test/apptests.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 26,
       "commit_id": "6969b2bb98a2f44e1b51c905db92ec2e28345078",
       "original_commit_id": "1a63f44609d1c7a4de0f5c4727e0d4cd3d7448ad",
@@ -1474,13 +1575,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Addressed in 9bde381",
       "created_at": "2021-05-26T04:31:10Z",
       "updated_at": "2021-05-26T04:31:10Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/337#discussion_r639392772",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/639392772"
@@ -1503,7 +1606,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDYzOTM5MjgwNw==",
       "diff_hunk": "@@ -41,10 +49,9 @@ void TestRpcCommand(RPCConsole* console)\n     QTest::keyClick(lineEdit, Qt::Key_Return);\n     QVERIFY(mw_spy.wait(1000));\n     QCOMPARE(mw_spy.count(), 2);\n-    QString output = messagesWidget->toPlainText();\n-    UniValue value;\n-    value.read(output.right(output.size() - output.lastIndexOf(QChar::ObjectReplacementCharacter) - 1).toStdString());\n-    QCOMPARE(value[\"chain\"].get_str(), std::string(\"regtest\"));\n+    const QString output = messagesWidget->toPlainText();\n+    const QString pattern = \"\\\"chain\\\": \\\"(\\\\w+)\\\"\";",
       "path": "src/qt/test/apptests.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 42,
       "commit_id": "6969b2bb98a2f44e1b51c905db92ec2e28345078",
       "original_commit_id": "1a63f44609d1c7a4de0f5c4727e0d4cd3d7448ad",
@@ -1526,13 +1629,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Addressed in 9bde381",
       "created_at": "2021-05-26T04:31:17Z",
       "updated_at": "2021-05-26T04:31:17Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/337#discussion_r639392807",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/639392807"

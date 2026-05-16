@@ -36,7 +36,9 @@
       "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/furszy/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
     },
     "body": "As per the title says, we are recalculating the entire wallet balance on different situations calling to `wallet().getBalances()`, when should instead make use of the wallet model cached balance.\r\n\r\nThis has the benefits of (1) not spending resources calculating a balance that we already have cached, and (2) avoid blocking the main thread for a long time, in case of big wallets, walking through the entire wallet's tx map more than what it's really needed.\r\n\r\nChanges:\r\n\r\n1) Fix: `SendCoinsDialog` was calling `wallet().getBalances()` twice during `setModel`.\r\n2) Use the cached balance if the user did not select any UTXO manually inside the wallet model `getAvailableBalance` call.\r\n\r\n-----------------------\r\nAs an extra note, this work born in [#25005](https://github.com/bitcoin/bitcoin/pull/25005) but grew out of scope of it.",
     "labels": [
@@ -54,7 +56,30 @@
     "updated_at": "2023-08-16T10:20:28Z",
     "closed_at": "2022-08-15T18:38:26Z",
     "mergeable_state": "unknown",
+    "merged": true,
     "merged_at": "2022-08-15T18:38:26Z",
+    "merged_by": {
+      "login": "hebasto",
+      "id": 32963518,
+      "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hebasto",
+      "html_url": "https://github.com/hebasto",
+      "followers_url": "https://api.github.com/users/hebasto/followers",
+      "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+      "organizations_url": "https://api.github.com/users/hebasto/orgs",
+      "repos_url": "https://api.github.com/users/hebasto/repos",
+      "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/hebasto/received_events",
+      "type": "User",
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
+    },
     "merge_commit_sha": "6d4889a694da12e03ef4d18bef2ff60d1d170f18",
     "assignees": [],
     "requested_reviewers": [],
@@ -81,7 +106,9 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 490320067,
@@ -106,7 +133,9 @@
           "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/furszy/received_events",
           "type": "User",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/furszy/bitcoin-gui",
@@ -154,10 +183,11 @@
         "hooks_url": "https://api.github.com/repos/furszy/bitcoin-gui/hooks",
         "svn_url": "https://github.com/furszy/bitcoin-gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
+        "language": "C++",
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 150464,
+        "size": 145343,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -170,9 +200,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-08-13T23:42:04Z",
+        "pushed_at": "2026-02-10T15:36:07Z",
         "created_at": "2022-05-09T14:34:00Z",
-        "updated_at": "2023-02-27T18:03:52Z",
+        "updated_at": "2023-09-08T14:09:02Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -212,7 +243,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 272700405,
@@ -237,7 +270,9 @@
           "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/bitcoin-core/gui",
@@ -286,12 +321,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 271,
-        "stargazers_count": 497,
-        "watchers_count": 497,
-        "size": 150541,
+        "forks_count": 354,
+        "stargazers_count": 725,
+        "watchers_count": 725,
+        "size": 190146,
         "default_branch": "master",
-        "open_issues_count": 157,
+        "open_issues_count": 148,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -302,9 +337,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-08-15T21:22:01Z",
+        "pushed_at": "2026-05-16T00:00:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2023-08-12T06:07:11Z",
+        "updated_at": "2026-05-16T00:00:11Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -327,7 +363,7 @@
         "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/598"
       }
     },
-    "author_association": "CONTRIBUTOR",
+    "author_association": "MEMBER",
     "draft": false,
     "additions": 54,
     "deletions": 39,
@@ -346,6 +382,7 @@
       "commit_id": "e19f35a5351eafd62665e5bdb3aafb474849fd6f",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2022-05-09T15:47:18Z",
       "author_association": "CONTRIBUTOR",
       "body": "",
       "user": {
@@ -366,7 +403,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#pullrequestreview-966377806",
       "submitted_at": "2022-05-09T15:47:18Z",
@@ -396,10 +435,12 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "6c81f6e150b4fb90f8196743ccbb6f30750700b6",
+      "commit_url": "https://api.github.com/repos/furszy/bitcoin-gui/commits/6c81f6e150b4fb90f8196743ccbb6f30750700b6",
       "created_at": "2022-05-09T16:36:11Z"
     },
     {
@@ -425,10 +466,12 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "a8d9b7d73d0515f6a3aeca4609a62c6eeb08f7ab",
+      "commit_url": "https://api.github.com/repos/furszy/bitcoin-gui/commits/a8d9b7d73d0515f6a3aeca4609a62c6eeb08f7ab",
       "created_at": "2022-05-09T17:30:09Z"
     },
     {
@@ -454,102 +497,13 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "7345a04a2f27d407a66595708b96537f8374be14",
+      "commit_url": "https://api.github.com/repos/furszy/bitcoin-gui/commits/7345a04a2f27d407a66595708b96537f8374be14",
       "created_at": "2022-05-09T18:19:45Z"
-    },
-    {
-      "event": "cross-referenced",
-      "id": null,
-      "node_id": null,
-      "url": null,
-      "actor": {
-        "login": "furszy",
-        "id": 5377650,
-        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
-        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/furszy",
-        "html_url": "https://github.com/furszy",
-        "followers_url": "https://api.github.com/users/furszy/followers",
-        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
-        "organizations_url": "https://api.github.com/users/furszy/orgs",
-        "repos_url": "https://api.github.com/users/furszy/repos",
-        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/furszy/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": "2022-05-09T20:58:06Z",
-      "updated_at": "2022-05-09T20:58:06Z",
-      "source": {
-        "issue": {
-          "id": 1217495965,
-          "node_id": "PR_kwDOABII58424ecR",
-          "url": "https://api.github.com/repos/bitcoin/bitcoin/issues/25005",
-          "repository_url": "https://api.github.com/repos/bitcoin/bitcoin",
-          "labels_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/25005/labels%7B/name%7D",
-          "comments_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/25005/comments",
-          "events_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/25005/events",
-          "html_url": "https://github.com/bitcoin/bitcoin/pull/25005",
-          "number": 25005,
-          "state": "closed",
-          "state_reason": null,
-          "title": "wallet: remove extra wtx lookup in 'AvailableCoins' + several code cleanups.",
-          "body": "This started in #24845 but grew out of scope of it. \r\n\r\nSo, points tackled:\r\n\r\n1) Avoid extra `GetWalletTx` lookups inside `AvailableCoins -> IsSpentKey`.\r\n    `IsSpentKey` was receiving the tx hash and index to internally lookup the tx inside the wallet's map. As all the `IsSpentKey` function callers already have the wtx available, them can provide the `scriptPubKey` directly.\r\n\r\n2) Most of the time, we call `Wallet::AvailableCoins`, and later on the process, skip the non-spendable coins from the result in subsequent for-loops. So to speedup the process: introduced the ability to filter by \"only_spendable\" coins inside `Wallet::AvailableCoins` directly.\r\n(the non-spendable coins skip examples are inside `AttemptSelection->GroupOutputs` and `GetAvailableBalance`).\r\n\r\n4) Refactored `AvailableCoins` in several ways:\r\n\r\n   a) Now it will return a new struct `CoinsResult` instead of receiving the vCoins vector reference (which was being cleared at the beginning of the method anyway). --> this is coming from #24845 but cherry-picked it here too to make the following commits look nicer.\r\n\r\n   b) Unified all the 'wtx.tx->vout[I]' calls into a single call (coming from this comment https://github.com/bitcoin/bitcoin/pull/24699#discussion_r854163032). \r\n\r\n5) The wallet `IsLockedCoin` and `IsSpent` methods now accept an `OutPoint` instead of a hash:index. Which let me cleanup a bunch of extra code.\r\n\r\n6) Speeded up the wallet 'GetAvailableBalance': filtering `AvailableCoins` by spendable outputs only and using the 'AvailableCoins' retrieved `total_amount` instead of looping over all the retrieved coins once more.\r\n\r\n-------------------------------------------------------\r\n\r\nSide topic, all this process will look even nicer with #25218",
-          "user": {
-            "login": "furszy",
-            "id": 5377650,
-            "node_id": "MDQ6VXNlcjUzNzc2NTA=",
-            "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
-            "gravatar_id": "",
-            "url": "https://api.github.com/users/furszy",
-            "html_url": "https://github.com/furszy",
-            "followers_url": "https://api.github.com/users/furszy/followers",
-            "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
-            "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
-            "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
-            "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
-            "organizations_url": "https://api.github.com/users/furszy/orgs",
-            "repos_url": "https://api.github.com/users/furszy/repos",
-            "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
-            "received_events_url": "https://api.github.com/users/furszy/received_events",
-            "type": "User",
-            "site_admin": false
-          },
-          "labels": [
-            {
-              "id": 149424,
-              "node_id": "MDU6TGFiZWwxNDk0MjQ=",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Wallet",
-              "name": "Wallet",
-              "color": "08a781",
-              "default": false
-            }
-          ],
-          "assignees": [],
-          "author_association": "MEMBER",
-          "locked": false,
-          "comments": 12,
-          "pull_request": {
-            "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/25005",
-            "html_url": "https://github.com/bitcoin/bitcoin/pull/25005",
-            "diff_url": "https://github.com/bitcoin/bitcoin/pull/25005.diff",
-            "patch_url": "https://github.com/bitcoin/bitcoin/pull/25005.patch"
-          },
-          "closed_at": "2022-06-17T22:03:07Z",
-          "created_at": "2022-04-27T15:09:06Z",
-          "updated_at": "2023-05-27T01:51:51Z"
-        },
-        "type": "issue"
-      }
     },
     {
       "event": "reviewed",
@@ -560,6 +514,7 @@
       "commit_id": "a95c81fd7e917435d93ff02ab3accd60e63dc4e0",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2022-05-16T20:44:49Z",
       "author_association": "MEMBER",
       "body": "",
       "user": {
@@ -580,7 +535,9 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#pullrequestreview-974532796",
       "submitted_at": "2022-05-16T20:44:49Z",
@@ -610,10 +567,12 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "061c6ee98af7185fa340989da8178e0149207e3f",
+      "commit_url": "https://api.github.com/repos/furszy/bitcoin-gui/commits/061c6ee98af7185fa340989da8178e0149207e3f",
       "created_at": "2022-05-20T13:49:42Z"
     },
     {
@@ -639,13 +598,15 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2022-05-20T13:50:24Z",
       "updated_at": "2022-05-20T13:50:24Z",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "thanks achow101 for the review!\r\n\r\ntypo fixed 👍🏼.",
       "user": {
         "login": "furszy",
@@ -665,7 +626,9 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#issuecomment-1132924661",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/598"
@@ -693,7 +656,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -726,7 +691,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -752,7 +719,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#issuecomment-1141403196",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/598"
@@ -766,6 +735,7 @@
       "commit_id": "061c6ee98af7185fa340989da8178e0149207e3f",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2022-05-30T19:08:35Z",
       "author_association": "MEMBER",
       "body": "It seems wrong to me when the commit 696683d7c330e2fa1591501aac8bb13324af68f9 _\"GUI: use cached balance in overviewpage and sendcoinsdialog.\"_ breaks GUI `WalletTests`, then another commit fixes the broken test.\r\n\r\nIf a change is a refactoring then all tests must pass. Otherwise, if a commit introduces a new feature/functionality, it should change both main code and its tests.",
       "user": {
@@ -786,7 +756,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#pullrequestreview-989627378",
       "submitted_at": "2022-05-30T19:08:35Z",
@@ -816,10 +788,12 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "f6084d013c5831f723f9051de78f5e16bc1b210f",
+      "commit_url": "https://api.github.com/repos/furszy/bitcoin-gui/commits/f6084d013c5831f723f9051de78f5e16bc1b210f",
       "created_at": "2022-05-31T15:03:35Z"
     },
     {
@@ -845,13 +819,15 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2022-05-31T15:04:57Z",
       "updated_at": "2022-05-31T15:04:57Z",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "thanks for the review hebasto!\r\n\r\n> It seems wrong to me when the commit https://github.com/bitcoin-core/gui/commit/696683d7c330e2fa1591501aac8bb13324af68f9 \"GUI: use cached balance in overviewpage and sendcoinsdialog.\" breaks GUI WalletTests, then another commit fixes the broken test.\r\n>\r\n> If a change is a refactoring then all tests must pass. Otherwise, if a commit introduces a new feature/functionality, it should change both main code and its tests.\r\n\r\nI decoupled it to explain the rationale properly but sure. Squashed 👍🏼 .\r\n\r\n---\r\n\r\nFeedback tackled.",
       "user": {
         "login": "furszy",
@@ -871,7 +847,9 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#issuecomment-1142255909",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/598"
@@ -899,7 +877,9 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -922,7 +902,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "review_requester": {
         "login": "furszy",
@@ -942,7 +924,9 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       }
     },
     {
@@ -968,7 +952,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -994,7 +980,9 @@
         "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#issuecomment-1153300910",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/598"
@@ -1008,7 +996,8 @@
       "commit_id": "f6084d013c5831f723f9051de78f5e16bc1b210f",
       "commit_url": null,
       "created_at": null,
-      "author_association": "MEMBER",
+      "updated_at": "2022-06-26T02:39:37Z",
+      "author_association": "CONTRIBUTOR",
       "body": "could break off 20d1b909b4c0836068e18d8982e67edeb593245c into it's own PR in order to make this focused on refactoring to use the model cache",
       "user": {
         "login": "jarolrod",
@@ -1028,7 +1017,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#pullrequestreview-1019367575",
       "submitted_at": "2022-06-26T02:39:37Z",
@@ -1058,13 +1049,15 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2022-06-27T13:45:43Z",
       "updated_at": "2022-06-27T13:46:05Z",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "> could break off https://github.com/bitcoin-core/gui/commit/20d1b909b4c0836068e18d8982e67edeb593245c into it's own PR in order to make this focused on refactoring to use the model cache\r\n\r\nHey @jarolrod, I honestly don't think that separating that easy reviewable fix would make any difference.\r\n\r\nWould rather friendly ping/dm some possible reviewers directly. This set of changes will be quite beneficial for large wallets.",
       "user": {
         "login": "furszy",
@@ -1084,7 +1077,9 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#issuecomment-1167373230",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/598"
@@ -1112,7 +1107,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1141,7 +1138,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1156,6 +1155,7 @@
       "commit_id": "f6084d013c5831f723f9051de78f5e16bc1b210f",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2022-07-04T12:05:31Z",
       "author_association": "CONTRIBUTOR",
       "body": "Concept ACK\r\n\r\n- I agree with using cached balances whenever possible to save time on wallet balances more than necessary.\r\n- I would like to briefly summarise my understanding of each commit, along with a few points I would like to discuss.\r\n- If some of my observations are erroneous or incomplete, please do correct me.\r\n\r\n**Notes:**\r\n\r\n1. Commit-1\r\n    1. **Doubt:** It is claimed that `setBalance` is called twice. But it is so only when `displayUnitChanged` signal is emitted. So, as far as I understood, this will lead to not updating the balance in case `displayUnit` is not changed.\r\n    2. Renaming the `updateDisplayUnit` function is technically a refactoring change, so ideally, it should be separate from the code changes.\r\n2. Commit-2:\r\n    1. Introduces the `getCachedBalance` function. \r\n    2. I think I understand @hebasto’s reasoning here to rename the function to `CachedBalance()`. `m_cached_balances` should be something that is updated only by the internal functions of the class. Since they can directly access the variable, they don’t need a setter.\r\n    3. And having a function named `CachedBalance()` clearly points to what value the function will return; hence the `get` suffix seems redundant.\r\n3. Commit-3:\r\n    1. Makes the code changes to use the cached balance.\r\n    2. And make relevant test changes to allow them to pass. \r\n    3. The relevant change includes doing manual balance polling updates.\r\n    4. **commit ACK.**\r\n4. Commit-4:\r\n    1. Adds a function that checks if the coins are manually selected; if so, they are passed through the previously used `getAvailableBalance()` function, otherwise, the cachedBalance is used.\r\n    2. This makes sense as the cached balance is created with the `GetBalance(*m_wallet)` function.\r\n    3. **commit ACK.**\r\n5. Commit-5:\r\n    1. Removes a redundant global variable.\r\n    2. On line 308, of `src/qt/overviewpage.cpp`, the `m_balances` variable should be renamed to balances as the `m_` prefix is reserved for global variables.",
       "user": {
@@ -1176,7 +1176,9 @@
         "events_url": "https://api.github.com/users/shaavan/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/shaavan/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#pullrequestreview-1027457975",
       "submitted_at": "2022-07-04T12:05:31Z",
@@ -1206,13 +1208,15 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2022-07-06T17:15:02Z",
       "updated_at": "2022-07-27T19:15:33Z",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "Thanks @shaavan for the review :).\r\n\r\n> 1. Commit-1\r\n> * Doubt: It is claimed that setBalance is called twice. But it is so only when displayUnitChanged signal is emitted. So, as far as I understood, this will lead to not updating the balance in case displayUnit is not changed.\r\n\r\nAt startup, when the widgets are initialized, `SendCoinsDialog::setModel` is called. Which calculates and sets the initial balance prior receiving any signal.\r\n\r\nTo be specific, in master:\r\n1. First calculation:\r\n\tInside `SendCoinsDialog::setModel`, at line 167 and 168 getBalances and setBalance are called.\r\n2. Second calculation:  Inside `SendCoinsDialog::setModel`, at line 171 updateDisplayUnit is called which internally calls to `setBalance(model->wallet().getBalances());`.\r\n\r\n---------------------------\r\n\r\n> And having a function named CachedBalance() clearly points to what value the function will return; hence the get suffix seems redundant.\r\n\r\nI tried to explain the rationale in a previous comment:\r\nGenerally speaking, if the method is a getter (it returns the value of an object's private field), then why not just name it getSomething by convention as it’s done, by convention, in plenty of projects out there? \r\n\r\nSo any dev using the model interface (or any interface actually) can find it right away without even need to think twice about it.\r\nPersonally, I think that those three characters (same as other coding styling conventions) make searches across large interfaces/projects simpler and more organized than having to know/remember how things are/were called in the first place (or require to remember each project specific conventions).\r\n\r\nAt the end, It’s more a general code styling conversation than something for this PR. But.. I’m in favor of not making code harder to read/follow with local/own conventions where is possible.",
       "user": {
         "login": "furszy",
@@ -1232,7 +1236,9 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#issuecomment-1176479942",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/598"
@@ -1260,7 +1266,9 @@
         "events_url": "https://api.github.com/users/shaavan/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/shaavan/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1289,7 +1297,9 @@
         "events_url": "https://api.github.com/users/shaavan/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/shaavan/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1318,7 +1328,9 @@
         "events_url": "https://api.github.com/users/shaavan/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/shaavan/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1344,7 +1356,9 @@
         "events_url": "https://api.github.com/users/shaavan/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/shaavan/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#issuecomment-1205215299",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/598"
@@ -1372,7 +1386,9 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1401,7 +1417,9 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1430,10 +1448,12 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "42059fbc5cf4256c4f9e0b380164d34d962ae59a",
+      "commit_url": "https://api.github.com/repos/furszy/bitcoin-gui/commits/42059fbc5cf4256c4f9e0b380164d34d962ae59a",
       "created_at": "2022-08-04T15:57:12Z"
     },
     {
@@ -1459,13 +1479,15 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2022-08-04T15:58:08Z",
       "updated_at": "2022-08-04T15:58:08Z",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "Thanks @shaavan\r\n\r\n> On line 308, of src/qt/overviewpage.cpp, the m_balances variable should be renamed to balances as the m_ prefix is reserved for global variables.\r\n\r\nnit pushed in 42059fb 👍🏼 ",
       "user": {
         "login": "furszy",
@@ -1485,7 +1507,9 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#issuecomment-1205447724",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/598"
@@ -1513,7 +1537,9 @@
         "events_url": "https://api.github.com/users/shaavan/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/shaavan/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1542,7 +1568,9 @@
         "events_url": "https://api.github.com/users/shaavan/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/shaavan/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1557,6 +1585,7 @@
       "commit_id": "42059fbc5cf4256c4f9e0b380164d34d962ae59a",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2022-08-09T14:37:52Z",
       "author_association": "CONTRIBUTOR",
       "body": "ACK 42059fbc5cf4256c4f9e0b380164d34d962ae59a\r\n\r\nChanges since my last review:\r\n- Renamed `m_balances` -> `balances`\r\n\r\nApologize for the late reply. I missed your notification earlier when the PR was updated. Thanks for your patience!",
       "user": {
@@ -1577,7 +1606,9 @@
         "events_url": "https://api.github.com/users/shaavan/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/shaavan/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#pullrequestreview-1066847394",
       "submitted_at": "2022-08-09T14:37:52Z",
@@ -1593,6 +1624,7 @@
       "commit_id": "42059fbc5cf4256c4f9e0b380164d34d962ae59a",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2022-08-10T00:59:25Z",
       "author_association": "CONTRIBUTOR",
       "body": "ACK https://github.com/bitcoin-core/gui/pull/598/commits/42059fbc5cf4256c4f9e0b380164d34d962ae59a",
       "user": {
@@ -1613,7 +1645,9 @@
         "events_url": "https://api.github.com/users/w0xlt/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/w0xlt/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#pullrequestreview-1067534348",
       "submitted_at": "2022-08-10T00:59:25Z",
@@ -1643,13 +1677,15 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2022-08-12T12:14:58Z",
       "updated_at": "2022-08-12T12:14:58Z",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "@hebasto maybe merge?",
       "user": {
         "login": "furszy",
@@ -1669,7 +1705,9 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#issuecomment-1213049333",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/598"
@@ -1697,7 +1735,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1726,7 +1766,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1741,6 +1783,7 @@
       "commit_id": "42059fbc5cf4256c4f9e0b380164d34d962ae59a",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2022-08-12T15:46:16Z",
       "author_association": "MEMBER",
       "body": "ACK 42059fbc5cf4256c4f9e0b380164d34d962ae59a, I have reviewed the code and it looks OK.",
       "user": {
@@ -1761,7 +1804,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#pullrequestreview-1071268192",
       "submitted_at": "2022-08-12T15:46:16Z",
@@ -1991,10 +2036,12 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "4584d300a40bfd84517072f7a6eee114fb7cab08",
+      "commit_url": "https://api.github.com/repos/furszy/bitcoin-gui/commits/4584d300a40bfd84517072f7a6eee114fb7cab08",
       "created_at": "2022-08-12T16:07:22Z"
     },
     {
@@ -2020,13 +2067,15 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2022-08-12T16:07:50Z",
       "updated_at": "2022-08-12T16:07:50Z",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "nits tackled.",
       "user": {
         "login": "furszy",
@@ -2046,7 +2095,9 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#issuecomment-1213279576",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/598"
@@ -2060,6 +2111,7 @@
       "commit_id": "4584d300a40bfd84517072f7a6eee114fb7cab08",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2022-08-12T17:52:45Z",
       "author_association": "MEMBER",
       "body": "re-ACK 4584d300a40bfd84517072f7a6eee114fb7cab08, only suggested changes and commit message formatting since my [recent](https://github.com/bitcoin-core/gui/pull/598#pullrequestreview-1071268192) review.",
       "user": {
@@ -2080,7 +2132,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#pullrequestreview-1071448015",
       "submitted_at": "2022-08-12T17:52:45Z",
@@ -2110,7 +2164,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2136,7 +2192,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#issuecomment-1213369006",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/598"
@@ -2164,7 +2222,9 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2193,7 +2253,9 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2222,7 +2284,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2251,7 +2315,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2280,7 +2346,9 @@
         "events_url": "https://api.github.com/users/shaavan/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/shaavan/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2309,7 +2377,9 @@
         "events_url": "https://api.github.com/users/shaavan/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/shaavan/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2338,7 +2408,9 @@
         "events_url": "https://api.github.com/users/w0xlt/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/w0xlt/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2367,7 +2439,9 @@
         "events_url": "https://api.github.com/users/w0xlt/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/w0xlt/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2396,13 +2470,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2022-08-15T17:15:09Z",
       "updated_at": "2022-08-15T17:15:09Z",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "body": "ACK 4584d300a40bfd84517072f7a6eee114fb7cab08\r\n\r\nI tested this with a script i wrote to generate a bunch of blocks on regtest and generate 10K transactions for a wallet. I tested the wallet with this PR and Master. I didn't visually perceive a difference between master and this PR; probably due to the power of my desktop, but obviously the code shows that this is an improvement.",
       "user": {
         "login": "jarolrod",
@@ -2422,7 +2498,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#issuecomment-1215415539",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/598"
@@ -2450,7 +2528,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "6d4889a694da12e03ef4d18bef2ff60d1d170f18",
       "commit_url": "https://api.github.com/repos/bitcoin-core/gui/commits/6d4889a694da12e03ef4d18bef2ff60d1d170f18",
@@ -2479,7 +2559,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2508,13 +2590,15 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2022-08-16T13:20:18Z",
       "updated_at": "2022-08-16T13:20:18Z",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "body": "> ACK [4584d30](https://github.com/bitcoin-core/gui/commit/4584d300a40bfd84517072f7a6eee114fb7cab08)\r\n> \r\n> I tested this with a script i wrote to generate a bunch of blocks on regtest and generate 10K transactions for a wallet. I tested the wallet with this PR and Master. I didn't visually perceive a difference between master and this PR; probably due to the power of my desktop, but obviously the code shows that this is an improvement.\r\n\r\n10k txes isn't that much (otherwise the wallet would be pretty unusable). 100k should be enough to notice it even on powerful machines. Will see a longer loading time for the wallet at startup (in the worker thread).\r\n\r\nStill.. have to say that this is just the tip of the iceberg, and we do have other stuff that can be improved to decrease the wallet startup time.",
       "user": {
         "login": "furszy",
@@ -2534,7 +2618,9 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#issuecomment-1216629686",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/598"
@@ -2562,138 +2648,13 @@
         "events_url": "https://api.github.com/users/sidhujag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/sidhujag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "4d5fd73715ca5f5c2d38eb6e56e5bde690424370",
       "commit_url": "https://api.github.com/repos/syscoin/syscoin/commits/4d5fd73715ca5f5c2d38eb6e56e5bde690424370",
       "created_at": "2022-08-16T21:39:06Z"
-    },
-    {
-      "event": "cross-referenced",
-      "id": null,
-      "node_id": null,
-      "url": null,
-      "actor": {
-        "login": "furszy",
-        "id": 5377650,
-        "node_id": "MDQ6VXNlcjUzNzc2NTA=",
-        "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/furszy",
-        "html_url": "https://github.com/furszy",
-        "followers_url": "https://api.github.com/users/furszy/followers",
-        "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
-        "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
-        "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
-        "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
-        "organizations_url": "https://api.github.com/users/furszy/orgs",
-        "repos_url": "https://api.github.com/users/furszy/repos",
-        "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
-        "received_events_url": "https://api.github.com/users/furszy/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": "2022-12-14T14:07:02Z",
-      "updated_at": "2022-12-14T14:07:02Z",
-      "source": {
-        "issue": {
-          "id": 1496702678,
-          "node_id": "PR_kwDOABII585FdB03",
-          "url": "https://api.github.com/repos/bitcoin/bitcoin/issues/26699",
-          "repository_url": "https://api.github.com/repos/bitcoin/bitcoin",
-          "labels_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/26699/labels%7B/name%7D",
-          "comments_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/26699/comments",
-          "events_url": "https://api.github.com/repos/bitcoin/bitcoin/issues/26699/events",
-          "html_url": "https://github.com/bitcoin/bitcoin/pull/26699",
-          "number": 26699,
-          "state": "closed",
-          "state_reason": null,
-          "title": "wallet, gui: bugfix, getAvailableBalance skips selected coins",
-          "body": "Fixes https://github.com/bitcoin-core/gui/issues/688 and https://github.com/bitcoin/bitcoin/issues/26687.\r\n\r\nFirst Issue Description (https://github.com/bitcoin-core/gui/issues/688):\r\n\r\nThe previous behavior for `getAvailableBalance`, when the coin control had selected coins, was to return the sum of them. Instead, we are currently returning the wallet's available total balance minus the selected coins total amount.\r\n\r\nReason:\r\nMissed to update the `GetAvailableBalance` function to include the coin control selected coins on #25685.\r\n\r\nContext:\r\nSince #25685 we skip the selected coins inside `AvailableCoins`, the reason is that there is no need to waste resources walking through the entire wallet's txes map just to get coins that could have gotten by just doing a simple `mapWallet.find`).\r\n\r\nPlaces Where This Generates Issues (only when the user manually select coins via coin control):\r\n1) The GUI balance check prior the transaction creation process.\r\n2) The GUI \"useAvailableBalance\" functionality.\r\n\r\nNote 1:\r\nAs the GUI uses a balance cache since https://github.com/bitcoin-core/gui/pull/598, this issue does not affect the regular spending process. Only arises when the user manually select coins.\r\n\r\nNote 2:\r\nAdded test coverage for the `useAvailableBalance` functionality.\r\n\r\n----------------------------------\r\n\r\nSecond Issue Description (https://github.com/bitcoin/bitcoin/issues/26687):\r\n\r\nAs we are using a cached balance on `WalletModel::getAvailableBalance`,\r\nthe function needs to include the watch-only available balance for wallets\r\nwith private keys disabled.\r\n",
-          "user": {
-            "login": "furszy",
-            "id": 5377650,
-            "node_id": "MDQ6VXNlcjUzNzc2NTA=",
-            "avatar_url": "https://avatars.githubusercontent.com/u/5377650?v=4",
-            "gravatar_id": "",
-            "url": "https://api.github.com/users/furszy",
-            "html_url": "https://github.com/furszy",
-            "followers_url": "https://api.github.com/users/furszy/followers",
-            "following_url": "https://api.github.com/users/furszy/following%7B/other_user%7D",
-            "gists_url": "https://api.github.com/users/furszy/gists%7B/gist_id%7D",
-            "starred_url": "https://api.github.com/users/furszy/starred%7B/owner%7D%7B/repo%7D",
-            "subscriptions_url": "https://api.github.com/users/furszy/subscriptions",
-            "organizations_url": "https://api.github.com/users/furszy/orgs",
-            "repos_url": "https://api.github.com/users/furszy/repos",
-            "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
-            "received_events_url": "https://api.github.com/users/furszy/received_events",
-            "type": "User",
-            "site_admin": false
-          },
-          "labels": [
-            {
-              "id": 149424,
-              "node_id": "MDU6TGFiZWwxNDk0MjQ=",
-              "url": "https://api.github.com/repos/bitcoin/bitcoin/labels/Wallet",
-              "name": "Wallet",
-              "color": "08a781",
-              "default": false
-            }
-          ],
-          "assignees": [],
-          "author_association": "MEMBER",
-          "milestone": {
-            "url": "https://api.github.com/repos/bitcoin/bitcoin/milestones/56",
-            "html_url": "https://github.com/bitcoin/bitcoin/milestone/56",
-            "labels_url": "https://api.github.com/repos/bitcoin/bitcoin/milestones/56/labels",
-            "id": 7733968,
-            "node_id": "MI_kwDOABII584AdgLQ",
-            "number": 56,
-            "state": "closed",
-            "title": "25.0",
-            "description": "",
-            "creator": {
-              "login": "laanwj",
-              "id": 126646,
-              "node_id": "MDQ6VXNlcjEyNjY0Ng==",
-              "avatar_url": "https://avatars.githubusercontent.com/u/126646?v=4",
-              "gravatar_id": "",
-              "url": "https://api.github.com/users/laanwj",
-              "html_url": "https://github.com/laanwj",
-              "followers_url": "https://api.github.com/users/laanwj/followers",
-              "following_url": "https://api.github.com/users/laanwj/following%7B/other_user%7D",
-              "gists_url": "https://api.github.com/users/laanwj/gists%7B/gist_id%7D",
-              "starred_url": "https://api.github.com/users/laanwj/starred%7B/owner%7D%7B/repo%7D",
-              "subscriptions_url": "https://api.github.com/users/laanwj/subscriptions",
-              "organizations_url": "https://api.github.com/users/laanwj/orgs",
-              "repos_url": "https://api.github.com/users/laanwj/repos",
-              "events_url": "https://api.github.com/users/laanwj/events%7B/privacy%7D",
-              "received_events_url": "https://api.github.com/users/laanwj/received_events",
-              "type": "User",
-              "site_admin": false
-            },
-            "open_issues": 0,
-            "closed_issues": 38,
-            "created_at": "2022-03-03T18:51:29Z",
-            "updated_at": "2023-05-25T13:24:42Z",
-            "closed_at": "2023-05-25T13:24:42Z"
-          },
-          "locked": false,
-          "comments": 13,
-          "pull_request": {
-            "url": "https://api.github.com/repos/bitcoin/bitcoin/pulls/26699",
-            "html_url": "https://github.com/bitcoin/bitcoin/pull/26699",
-            "diff_url": "https://github.com/bitcoin/bitcoin/pull/26699.diff",
-            "patch_url": "https://github.com/bitcoin/bitcoin/pull/26699.patch"
-          },
-          "closed_at": "2023-04-11T18:06:25Z",
-          "created_at": "2022-12-14T14:07:01Z",
-          "updated_at": "2023-05-27T01:46:30Z"
-        },
-        "type": "issue"
-      }
     },
     {
       "event": "referenced",
@@ -2718,7 +2679,9 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "27dcc07c08a77eba53ccc91e5521ff674f1bd198",
       "commit_url": "https://api.github.com/repos/bitcoin-core/gui/commits/27dcc07c08a77eba53ccc91e5521ff674f1bd198",
@@ -2747,7 +2710,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -2762,7 +2727,7 @@
       "node_id": "PRRC_kwDOEEET9c4zvwVD",
       "diff_hunk": "@@ -120,12 +120,23 @@ void WalletModel::pollBalanceChanged()\n \n void WalletModel::checkBalanceChanged(const interfaces::WalletBalances& new_balances)\n {\n-    if(new_balances.balanceChanged(m_cached_balances)) {\n-        m_cached_balances = new_balances;\n+    const auto& cached_balace = getCachedBalance();\n+    if (new_balances.balanceChanged(cached_balace)) {\n+        {\n+            // Only place where the balance cache is updated.\n+            QMutexLocker locker(&m_cache_mutex);\n+            m_cached_balances = new_balances;\n+        }\n         Q_EMIT balanceChanged(new_balances);\n     }\n }\n \n+interfaces::WalletBalances WalletModel::getCachedBalance() const\n+{\n+    QMutexLocker locker(&m_cache_mutex);",
       "path": "src/qt/walletmodel.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 19,
       "commit_id": "4584d300a40bfd84517072f7a6eee114fb7cab08",
       "original_commit_id": "0ac7d0cd538d79511105e0e4f69dc6e2a8f10a44",
@@ -2785,7 +2750,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "0ac7d0cd538d79511105e0e4f69dc6e2a8f10a44\r\n\r\nAre there concurrent accesses?",
       "created_at": "2022-05-09T15:42:05Z",
@@ -2814,7 +2781,7 @@
       "node_id": "PRRC_kwDOEEET9c4zv772",
       "diff_hunk": "@@ -120,12 +120,23 @@ void WalletModel::pollBalanceChanged()\n \n void WalletModel::checkBalanceChanged(const interfaces::WalletBalances& new_balances)\n {\n-    if(new_balances.balanceChanged(m_cached_balances)) {\n-        m_cached_balances = new_balances;\n+    const auto& cached_balace = getCachedBalance();\n+    if (new_balances.balanceChanged(cached_balace)) {\n+        {\n+            // Only place where the balance cache is updated.\n+            QMutexLocker locker(&m_cache_mutex);\n+            m_cached_balances = new_balances;\n+        }\n         Q_EMIT balanceChanged(new_balances);\n     }\n }\n \n+interfaces::WalletBalances WalletModel::getCachedBalance() const\n+{\n+    QMutexLocker locker(&m_cache_mutex);",
       "path": "src/qt/walletmodel.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 19,
       "commit_id": "4584d300a40bfd84517072f7a6eee114fb7cab08",
       "original_commit_id": "0ac7d0cd538d79511105e0e4f69dc6e2a8f10a44",
@@ -2837,13 +2804,15 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Hey, not yet. It's a glance into the future actually hehe.\r\n\r\nAt the moment it's only accessed from the main thread. At the following locations:\r\n\r\n1) From `pollBalanceChanged` (`QTimer`).\r\n2) From `setWalletModel` -> in `OverviewPage` and `SendCoinsDialog`.\r\n3) From `useAvailableBalance` in `SendCoinsDialog`.\r\n4) From `prepareTransaction` in `SendCoinsDialog`.\r\n\r\nNow the rationale:\r\n I'm locally working on a branch that moves part of the processes to a worker thread thus why the guard. And added that commit here mainly because it would let me work on different flows in different scoped PRs without having to add it to each of them. \r\n-- Not a big deal for me to remove it from this one --",
       "created_at": "2022-05-09T16:34:30Z",
       "updated_at": "2022-05-09T16:36:26Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#discussion_r868204278",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/868204278"
@@ -2866,7 +2835,7 @@
       "node_id": "PRRC_kwDOEEET9c4zwH7V",
       "diff_hunk": "@@ -120,12 +120,23 @@ void WalletModel::pollBalanceChanged()\n \n void WalletModel::checkBalanceChanged(const interfaces::WalletBalances& new_balances)\n {\n-    if(new_balances.balanceChanged(m_cached_balances)) {\n-        m_cached_balances = new_balances;\n+    const auto& cached_balace = getCachedBalance();\n+    if (new_balances.balanceChanged(cached_balace)) {\n+        {\n+            // Only place where the balance cache is updated.\n+            QMutexLocker locker(&m_cache_mutex);\n+            m_cached_balances = new_balances;\n+        }\n         Q_EMIT balanceChanged(new_balances);\n     }\n }\n \n+interfaces::WalletBalances WalletModel::getCachedBalance() const\n+{\n+    QMutexLocker locker(&m_cache_mutex);",
       "path": "src/qt/walletmodel.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 19,
       "commit_id": "4584d300a40bfd84517072f7a6eee114fb7cab08",
       "original_commit_id": "0ac7d0cd538d79511105e0e4f69dc6e2a8f10a44",
@@ -2889,7 +2858,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Personally, a good rule to follow is to only push stuff that is used or necessary.",
       "created_at": "2022-05-09T17:34:35Z",
@@ -2918,7 +2889,7 @@
       "node_id": "PRRC_kwDOEEET9c4zwSVs",
       "diff_hunk": "@@ -120,12 +120,23 @@ void WalletModel::pollBalanceChanged()\n \n void WalletModel::checkBalanceChanged(const interfaces::WalletBalances& new_balances)\n {\n-    if(new_balances.balanceChanged(m_cached_balances)) {\n-        m_cached_balances = new_balances;\n+    const auto& cached_balace = getCachedBalance();\n+    if (new_balances.balanceChanged(cached_balace)) {\n+        {\n+            // Only place where the balance cache is updated.\n+            QMutexLocker locker(&m_cache_mutex);\n+            m_cached_balances = new_balances;\n+        }\n         Q_EMIT balanceChanged(new_balances);\n     }\n }\n \n+interfaces::WalletBalances WalletModel::getCachedBalance() const\n+{\n+    QMutexLocker locker(&m_cache_mutex);",
       "path": "src/qt/walletmodel.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 19,
       "commit_id": "4584d300a40bfd84517072f7a6eee114fb7cab08",
       "original_commit_id": "0ac7d0cd538d79511105e0e4f69dc6e2a8f10a44",
@@ -2941,13 +2912,15 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "np 👍🏼, dropped.",
       "created_at": "2022-05-09T18:21:30Z",
       "updated_at": "2022-05-09T18:21:30Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#discussion_r868296044",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/868296044"
@@ -2970,7 +2943,7 @@
       "node_id": "PRRC_kwDOEEET9c40GjDE",
       "diff_hunk": "@@ -120,12 +119,18 @@ void WalletModel::pollBalanceChanged()\n \n void WalletModel::checkBalanceChanged(const interfaces::WalletBalances& new_balances)\n {\n-    if(new_balances.balanceChanged(m_cached_balances)) {\n+    const auto& cached_balace = getCachedBalance();",
       "path": "src/qt/walletmodel.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 13,
       "commit_id": "4584d300a40bfd84517072f7a6eee114fb7cab08",
       "original_commit_id": "0da631685626c84934735cf9ddef5cca834180a2",
@@ -2993,7 +2966,9 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "In 0da631685626c84934735cf9ddef5cca834180a2 \"GUI: add getter for WalletModel::m_cached_balances field.\"\r\n\r\nnit: typo\r\n\r\n```suggestion\r\n    const auto& cached_balance = getCachedBalance();\r\n```",
       "created_at": "2022-05-16T20:31:25Z",
@@ -3045,7 +3020,9 @@
         "events_url": "https://api.github.com/users/achow101/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/achow101/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "In 7345a04a2f27d407a66595708b96537f8374be14 \"test: GUI WalletTests, trigger walletModel balance changed manually.\"\r\n\r\nIt seems potentially bad that the cached balance might be out of sync with the real balance and that `pollBalanceChanged` needs to be called here in the tests?",
       "created_at": "2022-05-16T20:44:47Z",
@@ -3097,13 +3074,15 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "It's out of sync merely because we are not starting the polling timer at all in the test. Same as we aren't initializing several parts of the GUI objects. All the objects (wallet, models, views, etc) that are used on this test are manually created instead of using the `WalletController` class flow.\r\n\r\nWhich I think that is actually what we are looking for. It's an unit test that is focused on verifying that GUI widgets/views are behaving as expected: updating the presented information, etc. when they receive different signals and/or function calls from outside (in other words, focus is on the signal slots/receiver side). It's not about whether the wallet balance polling timer is functioning as expected or not (which we definitely can create a new test case for it in a follow-up work).",
       "created_at": "2022-05-20T13:44:59Z",
       "updated_at": "2022-05-21T02:28:10Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#discussion_r878162235",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/878162235"
@@ -3126,7 +3105,7 @@
       "node_id": "PRRC_kwDOEEET9c40wJSU",
       "diff_hunk": "@@ -18,7 +18,6 @@\n #include <qt/sendcoinsdialog.h>\n #include <qt/transactiontablemodel.h>\n \n-#include <interfaces/handler.h>",
       "path": "src/qt/walletmodel.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 4,
       "commit_id": "4584d300a40bfd84517072f7a6eee114fb7cab08",
       "original_commit_id": "061c6ee98af7185fa340989da8178e0149207e3f",
@@ -3149,7 +3128,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "08e74071e3ae30393a80d94a8286536ad7bfab3d\r\n\r\n> Plus, removed unused include of \"interfaces/handler.h\".\r\n\r\nActually, it is used here: https://github.com/bitcoin-core/gui/blob/08e74071e3ae30393a80d94a8286536ad7bfab3d/src/qt/walletmodel.cpp#L431-L437\r\n\r\nIn general, better to use [IWYU](https://github.com/bitcoin/bitcoin/pull/24831) instead of random fixing of included headers.",
       "created_at": "2022-05-30T18:56:02Z",
@@ -3178,7 +3159,7 @@
       "node_id": "PRRC_kwDOEEET9c40wJVO",
       "diff_hunk": "@@ -120,12 +123,18 @@ void WalletModel::pollBalanceChanged()\n \n void WalletModel::checkBalanceChanged(const interfaces::WalletBalances& new_balances)\n {\n-    if(new_balances.balanceChanged(m_cached_balances)) {\n+    const auto& cached_balance = getCachedBalance();\n+    if (new_balances.balanceChanged(cached_balance)) {",
       "path": "src/qt/walletmodel.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 25,
       "commit_id": "4584d300a40bfd84517072f7a6eee114fb7cab08",
       "original_commit_id": "061c6ee98af7185fa340989da8178e0149207e3f",
@@ -3201,7 +3182,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "08e74071e3ae30393a80d94a8286536ad7bfab3d\r\n\r\nWhy this change?",
       "created_at": "2022-05-30T18:56:35Z",
@@ -3253,7 +3236,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "08e74071e3ae30393a80d94a8286536ad7bfab3d\r\n\r\nWithout having a setter, maybe shorter `cachedBalance()` is better?",
       "created_at": "2022-05-30T19:04:48Z",
@@ -3282,7 +3267,7 @@
       "node_id": "PRRC_kwDOEEET9c40wKSL",
       "diff_hunk": "@@ -178,6 +176,7 @@ void OverviewPage::handleTransactionClicked(const QModelIndex &index)\n void OverviewPage::setPrivacy(bool privacy)\n {\n     m_privacy = privacy;\n+    const auto& m_balances = walletModel->getCachedBalance();",
       "path": "src/qt/overviewpage.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 13,
       "commit_id": "4584d300a40bfd84517072f7a6eee114fb7cab08",
       "original_commit_id": "061c6ee98af7185fa340989da8178e0149207e3f",
@@ -3305,7 +3290,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "061c6ee98af7185fa340989da8178e0149207e3f\r\n\r\n`m_` prefix is used for member variables, not for local ones.\r\n\r\nSee https://github.com/bitcoin/bitcoin/blob/master/doc/developer-notes.md#coding-style-c",
       "created_at": "2022-05-30T19:08:28Z",
@@ -3334,7 +3321,7 @@
       "node_id": "PRRC_kwDOEEET9c40yy3Q",
       "diff_hunk": "@@ -120,12 +123,18 @@ void WalletModel::pollBalanceChanged()\n \n void WalletModel::checkBalanceChanged(const interfaces::WalletBalances& new_balances)\n {\n-    if(new_balances.balanceChanged(m_cached_balances)) {\n+    const auto& cached_balance = getCachedBalance();\n+    if (new_balances.balanceChanged(cached_balance)) {",
       "path": "src/qt/walletmodel.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 25,
       "commit_id": "4584d300a40bfd84517072f7a6eee114fb7cab08",
       "original_commit_id": "061c6ee98af7185fa340989da8178e0149207e3f",
@@ -3357,13 +3344,15 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "This was because of https://github.com/bitcoin-core/gui/pull/598#discussion_r868204278.\r\n\r\nBefore the removal of that commit, `getCachedBalance` was guarded by a mutex. Now is not needed anymore 👍🏼.",
       "created_at": "2022-05-31T14:43:22Z",
       "updated_at": "2022-05-31T19:24:30Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#discussion_r885730768",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/885730768"
@@ -3409,13 +3398,15 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "At least for me, it's cleared to always use the same naming convention even if we don't have a setter right now.\r\n\r\nI mean, generally speaking, if the method is a getter, then why not just name it `getSomething`?\r\nSo any dev using the model interface (or any interface) can find it right away without even need to think twice about it.\r\n\r\nAt least for me, those three characters make searches across large interfaces/projects a bit more simple and organized.",
       "created_at": "2022-05-31T15:00:47Z",
       "updated_at": "2022-05-31T15:07:18Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#discussion_r885751018",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/885751018"
@@ -3438,7 +3429,7 @@
       "node_id": "PRRC_kwDOEEET9c44TTav",
       "diff_hunk": "@@ -599,3 +610,7 @@ uint256 WalletModel::getLastBlockProcessed() const\n {\n     return m_client_model ? m_client_model->getBestBlockHash() : uint256{};\n }\n+\n+CAmount WalletModel::getAvailableBalance(const CCoinControl* control) {",
       "path": "src/qt/walletmodel.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 46,
       "commit_id": "4584d300a40bfd84517072f7a6eee114fb7cab08",
       "original_commit_id": "42059fbc5cf4256c4f9e0b380164d34d962ae59a",
@@ -3461,7 +3452,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "ed0a32ec66db47b99d7d89e8c6df94b3f405f8f0, style nit:\r\n```suggestion\r\nCAmount WalletModel::getAvailableBalance(const CCoinControl* control)\r\n{\r\n```",
       "created_at": "2022-08-12T15:34:35Z",
@@ -3490,7 +3483,7 @@
       "node_id": "PRRC_kwDOEEET9c44TTwx",
       "diff_hunk": "@@ -23,7 +23,6 @@\n #include <key_io.h>\n #include <node/ui_interface.h>\n #include <policy/fees.h>\n-#include <txmempool.h>",
       "path": "src/qt/sendcoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 4,
       "commit_id": "4584d300a40bfd84517072f7a6eee114fb7cab08",
       "original_commit_id": "42059fbc5cf4256c4f9e0b380164d34d962ae59a",
@@ -3513,7 +3506,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "ed0a32ec66db47b99d7d89e8c6df94b3f405f8f0\r\n\r\nThis removal looks unrelated to this PR, doesn't it?",
       "created_at": "2022-08-12T15:36:21Z",
@@ -3542,7 +3537,7 @@
       "node_id": "PRRC_kwDOEEET9c44TXwh",
       "diff_hunk": "@@ -23,7 +23,6 @@\n #include <key_io.h>\n #include <node/ui_interface.h>\n #include <policy/fees.h>\n-#include <txmempool.h>",
       "path": "src/qt/sendcoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 4,
       "commit_id": "4584d300a40bfd84517072f7a6eee114fb7cab08",
       "original_commit_id": "42059fbc5cf4256c4f9e0b380164d34d962ae59a",
@@ -3565,13 +3560,15 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Yeah, it's a manual removal of an unused include.\r\n(This is an old PR, prior me knowing about IWYU existence.. sorry for that, I forgot to update it)\r\n\r\nDo you want me to revert it or we just go ahead with it?",
       "created_at": "2022-08-12T15:54:32Z",
       "updated_at": "2022-08-12T15:54:32Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#discussion_r944602145",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/944602145"
@@ -3594,7 +3591,7 @@
       "node_id": "PRRC_kwDOEEET9c44TZFW",
       "diff_hunk": "@@ -23,7 +23,6 @@\n #include <key_io.h>\n #include <node/ui_interface.h>\n #include <policy/fees.h>\n-#include <txmempool.h>",
       "path": "src/qt/sendcoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 4,
       "commit_id": "4584d300a40bfd84517072f7a6eee114fb7cab08",
       "original_commit_id": "42059fbc5cf4256c4f9e0b380164d34d962ae59a",
@@ -3617,7 +3614,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "I'll really appreciate addressing of comments before merging :)",
       "created_at": "2022-08-12T16:00:45Z",
@@ -3646,7 +3645,7 @@
       "node_id": "PRRC_kwDOEEET9c44TaTH",
       "diff_hunk": "@@ -23,7 +23,6 @@\n #include <key_io.h>\n #include <node/ui_interface.h>\n #include <policy/fees.h>\n-#include <txmempool.h>",
       "path": "src/qt/sendcoinsdialog.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 4,
       "commit_id": "4584d300a40bfd84517072f7a6eee114fb7cab08",
       "original_commit_id": "42059fbc5cf4256c4f9e0b380164d34d962ae59a",
@@ -3669,13 +3668,15 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "pushed",
       "created_at": "2022-08-12T16:07:33Z",
       "updated_at": "2022-08-12T16:07:33Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#discussion_r944612551",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/944612551"
@@ -3698,7 +3699,7 @@
       "node_id": "PRRC_kwDOEEET9c44TaT0",
       "diff_hunk": "@@ -599,3 +610,7 @@ uint256 WalletModel::getLastBlockProcessed() const\n {\n     return m_client_model ? m_client_model->getBestBlockHash() : uint256{};\n }\n+\n+CAmount WalletModel::getAvailableBalance(const CCoinControl* control) {",
       "path": "src/qt/walletmodel.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 46,
       "commit_id": "4584d300a40bfd84517072f7a6eee114fb7cab08",
       "original_commit_id": "42059fbc5cf4256c4f9e0b380164d34d962ae59a",
@@ -3721,13 +3722,15 @@
         "events_url": "https://api.github.com/users/furszy/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/furszy/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "done",
       "created_at": "2022-08-12T16:07:37Z",
       "updated_at": "2022-08-12T16:07:37Z",
       "html_url": "https://github.com/bitcoin-core/gui/pull/598#discussion_r944612596",
-      "author_association": "CONTRIBUTOR",
+      "author_association": "MEMBER",
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/944612596"

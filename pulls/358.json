@@ -36,7 +36,9 @@
       "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/jarolrod/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
     },
     "body": "This allows the `GUIUtil::ThemedLabel` class able to be used in UI form files. This is accomplished by introducing a form file friendly constructor which only takes in a `QWidget* parent`.\r\n\r\nYou cannot pass in the `platform_style` when initializing a `GUIUtil::ThemedLabel` in a UI form file. This introduces a `setPlatformStyle` function to be able to pass in the `platform_style` at a later point.\r\n\r\nAdditionally; because we are not initializing the class with a `platform_style`, we need to implement a check in `updateThemedPixmap` so that it only executes when the `m_platform_style` has been set. A segfault would occur without this conditional as a `ChangeEvent` occurs on application start\r\n\r\nThis allows this class to be used in the form file for #330 for an elegant solution.\r\n\r\n",
     "labels": [
@@ -54,11 +56,14 @@
     "created_at": "2021-06-07T07:59:17Z",
     "updated_at": "2022-08-16T16:56:34Z",
     "closed_at": "2021-07-05T21:52:32Z",
-    "mergeable_state": "unknown",
+    "mergeable": true,
+    "mergeable_state": "clean",
+    "merged": false,
     "merge_commit_sha": "c3518371aabc91f7334648056e95170f9154d30b",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
+    "rebaseable": false,
     "head": {
       "label": "jarolrod:themedlabel-forms",
       "ref": "themedlabel-forms",
@@ -81,7 +86,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 310414870,
@@ -106,7 +113,9 @@
           "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/jarolrod/received_events",
           "type": "User",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/jarolrod/gui",
@@ -158,7 +167,7 @@
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 147893,
+        "size": 167963,
         "default_branch": "master",
         "open_issues_count": 1,
         "is_template": false,
@@ -171,9 +180,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-07-05T02:33:18Z",
+        "pushed_at": "2025-01-08T17:03:39Z",
         "created_at": "2020-11-05T20:54:31Z",
-        "updated_at": "2022-01-09T00:40:30Z",
+        "updated_at": "2025-01-08T17:04:31Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -213,7 +223,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 272700405,
@@ -238,7 +250,9 @@
           "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/bitcoin-core/gui",
@@ -287,12 +301,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 271,
-        "stargazers_count": 491,
-        "watchers_count": 491,
-        "size": 149681,
+        "forks_count": 354,
+        "stargazers_count": 725,
+        "watchers_count": 725,
+        "size": 190146,
         "default_branch": "master",
-        "open_issues_count": 155,
+        "open_issues_count": 148,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -303,9 +317,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-08-01T15:59:41Z",
+        "pushed_at": "2026-05-16T00:00:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2023-08-02T07:56:25Z",
+        "updated_at": "2026-05-16T00:00:11Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -328,7 +343,7 @@
         "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/358"
       }
     },
-    "author_association": "MEMBER",
+    "author_association": "CONTRIBUTOR",
     "draft": false,
     "additions": 16,
     "deletions": 2,
@@ -401,7 +416,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -420,6 +437,7 @@
       "commit_id": "f923b80a23450ec8735b09f31768e0157dc802cf",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-06-12T21:16:43Z",
       "author_association": "MEMBER",
       "body": "",
       "user": {
@@ -440,7 +458,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/358#pullrequestreview-682354724",
       "submitted_at": "2021-06-12T21:16:43Z",
@@ -470,7 +490,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -489,6 +511,7 @@
       "commit_id": "f923b80a23450ec8735b09f31768e0157dc802cf",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-06-13T02:57:28Z",
       "author_association": "MEMBER",
       "body": "@jarolrod \r\n\r\nI think we should adopt your suggestion on IRC to move the `ThemedLabel` into its own module for the following reasons:\r\n- all of so called [\"promoted widgets\"](https://doc.qt.io/qt-5/designer-using-custom-widgets.html#promoting-widgets) in our repo have their own modules\r\n- see https://github.com/bitcoin-core/gui/pull/330/files#r650460316\r\n\r\nAlso, it seams reasonable to me to drop this pr, and review both commits in #330, because without actual usage of a promoted widget in a `*.ui` file it is not easy to test it.",
       "user": {
@@ -509,7 +532,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/358#pullrequestreview-682366220",
       "submitted_at": "2021-06-13T02:57:28Z",
@@ -539,13 +564,15 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
       "created_at": "2021-07-05T21:52:32Z",
       "updated_at": "2021-07-05T21:52:32Z",
-      "author_association": "MEMBER",
+      "author_association": "CONTRIBUTOR",
       "body": "This was meant to be a part of https://github.com/bitcoin-core/gui/pull/330. A simpler approach was chosen for that PR and this is no longer worth the effort as the issue has been fixed. \r\n\r\nNote: If there is ever a reason to make the `ThemedLabel` class UI friendly, the approach should be to do so in its own class file; moving it away from `GUIUtil`",
       "user": {
         "login": "jarolrod",
@@ -565,7 +592,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/358#issuecomment-874343564",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/358"
@@ -593,7 +622,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -622,7 +653,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -661,7 +694,9 @@
         "events_url": "https://api.github.com/users/luke-jr/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/luke-jr/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "`{nullptr}`",
       "created_at": "2021-06-12T21:16:10Z",
@@ -713,7 +748,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "```suggestion\r\n    : QLabel{parent} {}\r\n```",
       "created_at": "2021-06-13T02:35:39Z",
@@ -765,7 +802,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "style nit: Add an empty line as a separator?",
       "created_at": "2021-06-13T02:43:43Z",

@@ -36,7 +36,9 @@
       "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/hebasto/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
     },
     "body": "An instance of the `WalletView` class without the `walletModel` data member being set is invalid. So, it is better to set it in the constructor.\r\n\r\nEstablishing one more `WalletView` class's invariant in constructor:\r\n- allows to drop all of checks of the`walletModel` in member functions\r\n- makes reasoning about the code that uses instances of the `WalletView` class  easier\r\n\r\nPossible follow ups could extend this approach to other classes, e.g., `OverviewPage`, `TransactionView`, `ReceiveCoinsDialog`, `SendCoinsDialog`, `AddressBookPage`.",
     "labels": [
@@ -64,7 +66,30 @@
     "updated_at": "2022-09-07T07:03:14Z",
     "closed_at": "2021-09-07T05:49:12Z",
     "mergeable_state": "unknown",
+    "merged": true,
     "merged_at": "2021-09-07T05:49:12Z",
+    "merged_by": {
+      "login": "hebasto",
+      "id": 32963518,
+      "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hebasto",
+      "html_url": "https://github.com/hebasto",
+      "followers_url": "https://api.github.com/users/hebasto/followers",
+      "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+      "organizations_url": "https://api.github.com/users/hebasto/orgs",
+      "repos_url": "https://api.github.com/users/hebasto/repos",
+      "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/hebasto/received_events",
+      "type": "User",
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
+    },
     "merge_commit_sha": "503194d2ee3d32ce17178c8299c3881a5e1262a4",
     "assignees": [],
     "requested_reviewers": [],
@@ -91,7 +116,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 273230449,
@@ -116,7 +143,9 @@
           "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/hebasto/received_events",
           "type": "User",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/hebasto/gui",
@@ -166,9 +195,9 @@
         "homepage": "",
         "language": "C++",
         "forks_count": 2,
-        "stargazers_count": 4,
-        "watchers_count": 4,
-        "size": 150547,
+        "stargazers_count": 8,
+        "watchers_count": 8,
+        "size": 190189,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -181,9 +210,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-08-01T18:13:22Z",
+        "pushed_at": "2026-04-09T10:37:41Z",
         "created_at": "2020-06-18T12:20:51Z",
-        "updated_at": "2023-07-25T14:36:43Z",
+        "updated_at": "2026-04-09T10:38:02Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -223,7 +253,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 272700405,
@@ -248,7 +280,9 @@
           "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/bitcoin-core/gui",
@@ -297,12 +331,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 271,
-        "stargazers_count": 491,
-        "watchers_count": 491,
-        "size": 149681,
+        "forks_count": 354,
+        "stargazers_count": 725,
+        "watchers_count": 725,
+        "size": 190146,
         "default_branch": "master",
-        "open_issues_count": 155,
+        "open_issues_count": 148,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -313,9 +347,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-08-01T15:59:41Z",
+        "pushed_at": "2026-05-16T00:00:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2023-08-02T07:56:25Z",
+        "updated_at": "2026-05-16T00:00:11Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -371,7 +406,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -404,7 +441,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -437,7 +476,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -463,7 +504,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/398#issuecomment-896076113",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/398"
@@ -477,6 +520,7 @@
       "commit_id": "210b67beb4f395a3a7a606cba3cd1ec8c31cd0eb",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-08-10T14:54:33Z",
       "author_association": "NONE",
       "body": "",
       "user": {
@@ -497,7 +541,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/398#pullrequestreview-726539547",
       "submitted_at": "2021-08-10T14:54:33Z",
@@ -513,6 +559,7 @@
       "commit_id": "210b67beb4f395a3a7a606cba3cd1ec8c31cd0eb",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-08-10T17:23:55Z",
       "author_association": "NONE",
       "body": "Wrong tab, sorry, deletec ack.",
       "user": {
@@ -533,7 +580,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/398#pullrequestreview-726649720",
       "submitted_at": "2021-08-10T17:23:08Z",
@@ -563,7 +612,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -589,7 +640,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/398#issuecomment-897016913",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/398"
@@ -617,7 +670,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -646,7 +701,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -675,7 +732,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -704,7 +763,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "774a4f517cf63df345e6a4852cc0b135b0a9ab76",
       "commit_url": "https://api.github.com/repos/bitcoin-core/gui/commits/774a4f517cf63df345e6a4852cc0b135b0a9ab76",
@@ -853,7 +914,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -882,10 +945,12 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "92ddc02a16a74e10f24190929f05e2dcf2b55871",
+      "commit_url": "https://api.github.com/repos/hebasto/gui/commits/92ddc02a16a74e10f24190929f05e2dcf2b55871",
       "created_at": "2021-08-26T13:37:02Z"
     },
     {
@@ -911,7 +976,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -937,7 +1004,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/398#issuecomment-906423295",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/398"
@@ -965,7 +1034,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -994,7 +1065,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1023,7 +1096,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1049,7 +1124,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/398#issuecomment-906526966",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/398"
@@ -1077,7 +1154,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1100,7 +1179,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "review_requester": {
         "login": "hebasto",
@@ -1120,7 +1201,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       }
     },
     {
@@ -1146,7 +1229,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1169,7 +1254,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "review_requester": {
         "login": "hebasto",
@@ -1189,7 +1276,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       }
     },
     {
@@ -1201,6 +1290,7 @@
       "commit_id": "92ddc02a16a74e10f24190929f05e2dcf2b55871",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-09-02T21:04:52Z",
       "author_association": "CONTRIBUTOR",
       "user": {
         "login": "promag",
@@ -1220,7 +1310,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/398#pullrequestreview-745518620",
       "submitted_at": "2021-09-02T21:04:52Z",
@@ -1290,7 +1382,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1316,7 +1410,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/398#issuecomment-912071917",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/398"
@@ -1344,7 +1440,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1373,7 +1471,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1388,6 +1488,7 @@
       "commit_id": "d319c4dae9ed7d59d71b926e677707fce4194d0c",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-09-04T14:12:03Z",
       "author_association": "CONTRIBUTOR",
       "body": "Code review ACK d319c4dae9ed7d59d71b926e677707fce4194d0c\r\n\r\nThese changes seem to simplify the code a great bit. Thanks for this amazing work!\r\n\r\nI have compiled some notes regarding the changes made in each of the commits in this PR. However, @hebasto has very clearly mentioned the details in the commit message of each commit. I still think my notes might be of some help to fellow reviewers.\r\n\r\nNOTES:\r\n- **qt, refactor: Pass WalletModel object to WalletView constructor**\r\n    - The process of creating `walletmodel` has been moved under the constructor of the `WalletView` class.\r\n    - The redundant function of creating a `walletmodel` has been removed.\r\n    - `walletview.h` file has been appropriately modified to account for all the changes made in the `walletview.cpp` file.\r\n- **qt, refactor: Drop redundant checks of walletModel**\r\n    - As the name suggests, all the redundant checks of `walletModel` in the `walletview.cpp` file have been removed, as the `walletmodel` is now constructed during the construction of the `walletview` object itself.\r\n- **qt, refactor: Declare getWalletModel with const and noexcept qualifiers** \r\n    - This is done to ensure that the function is not changing a member variable’s value. And the given function will not throw an exception (since the `walletmodel` is generated with the constructor itself).\r\n- **qt, refactor: Replace WalletFrame::addWallet with WalletFrame::addView**\r\n    - Modified the `addWallet` function such that it now doesn’t need to take `walletmodel` as an argument. And also removed the need to check for the existence of a `walletmodel` inside this function.\r\n\r\nIf some of my observation is erroneous or lacking thorough observation, please do inform me. \r\n<p>",
       "user": {
@@ -1408,7 +1509,9 @@
         "events_url": "https://api.github.com/users/shaavan/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/shaavan/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/398#pullrequestreview-746573065",
       "submitted_at": "2021-09-04T14:12:03Z",
@@ -1424,6 +1527,7 @@
       "commit_id": "d319c4dae9ed7d59d71b926e677707fce4194d0c",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2021-09-05T10:25:54Z",
       "author_association": "CONTRIBUTOR",
       "body": "Code review ACK d319c4dae9ed7d59d71b926e677707fce4194d0c.",
       "user": {
@@ -1444,7 +1548,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/398#pullrequestreview-746636093",
       "submitted_at": "2021-09-05T10:25:54Z",
@@ -1474,7 +1580,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1500,7 +1608,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/398#issuecomment-913332755",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/398"
@@ -1528,7 +1638,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1557,7 +1669,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1586,7 +1700,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1615,7 +1731,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1630,7 +1748,8 @@
       "commit_id": "d319c4dae9ed7d59d71b926e677707fce4194d0c",
       "commit_url": null,
       "created_at": null,
-      "author_association": "MEMBER",
+      "updated_at": "2021-09-06T20:51:41Z",
+      "author_association": "CONTRIBUTOR",
       "body": "ACK d319c4dae9ed7d59d71b926e677707fce4194d0c\r\n\r\nI did light testing with different wallets and switching between them. I also ran the qt tests locally. Performed identical testing steps on macOS and on Ubuntu.\r\n\r\nThis is a nice simplification of the WalletModel/WalletView logic. It ties up nicely at the end with the last commit where we now only need to pass the WalletView object; not both a WalletModel and WalletView object.\r\n\r\n@ShaMan239 your notes on the PR are excellent and I looked at them before beginning my review. Thanks for posting them!",
       "user": {
         "login": "jarolrod",
@@ -1650,7 +1769,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/398#pullrequestreview-747419680",
       "submitted_at": "2021-09-06T20:51:41Z",
@@ -1680,7 +1801,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "503194d2ee3d32ce17178c8299c3881a5e1262a4",
       "commit_url": "https://api.github.com/repos/bitcoin-core/gui/commits/503194d2ee3d32ce17178c8299c3881a5e1262a4",
@@ -1709,7 +1832,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1738,7 +1863,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1767,7 +1894,9 @@
         "events_url": "https://api.github.com/users/sidhujag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/sidhujag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "5d8af9cedad95028ebab453ad093dd52554e24e5",
       "commit_url": "https://api.github.com/repos/syscoin/syscoin/commits/5d8af9cedad95028ebab453ad093dd52554e24e5",
@@ -1796,7 +1925,9 @@
         "events_url": "https://api.github.com/users/domob1812/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/domob1812/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "a3a5d6ef3e0d41b7aaa234630315125f65a812ad",
       "commit_url": "https://api.github.com/repos/domob1812/namecoin-core/commits/a3a5d6ef3e0d41b7aaa234630315125f65a812ad",
@@ -1825,7 +1956,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1841,7 +1974,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDY4NjA5NDg4Mw==",
       "diff_hunk": "@@ -100,49 +127,15 @@ void WalletView::setClientModel(ClientModel *_clientModel)\n \n     overviewPage->setClientModel(_clientModel);\n     sendCoinsPage->setClientModel(_clientModel);\n-    if (walletModel) walletModel->setClientModel(_clientModel);\n-}\n-\n-void WalletView::setWalletModel(WalletModel *_walletModel)\n-{\n-    this->walletModel = _walletModel;\n-\n-    // Put transaction list in tabs\n-    transactionView->setModel(_walletModel);\n-    overviewPage->setWalletModel(_walletModel);\n-    receiveCoinsPage->setModel(_walletModel);\n-    sendCoinsPage->setModel(_walletModel);\n-    usedReceivingAddressesPage->setModel(_walletModel ? _walletModel->getAddressTableModel() : nullptr);\n-    usedSendingAddressesPage->setModel(_walletModel ? _walletModel->getAddressTableModel() : nullptr);\n-\n-    if (_walletModel)\n-    {\n-        // Receive and pass through messages from wallet model\n-        connect(_walletModel, &WalletModel::message, this, &WalletView::message);\n-\n-        // Handle changes in encryption status\n-        connect(_walletModel, &WalletModel::encryptionStatusChanged, this, &WalletView::encryptionStatusChanged);\n-        updateEncryptionStatus();\n-\n-        // update HD status\n-        Q_EMIT hdEnabledStatusChanged();",
       "path": "src/qt/walletview.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 99,
       "commit_id": "d319c4dae9ed7d59d71b926e677707fce4194d0c",
       "original_commit_id": "210b67beb4f395a3a7a606cba3cd1ec8c31cd0eb",
@@ -1864,7 +1997,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "I don't see this signal being emmited in new code. It's because initialization in the constructor, as there's no \"change\" per se?",
       "created_at": "2021-08-10T14:49:55Z",
@@ -1893,7 +2028,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDY4NjA5ODUyMA==",
       "diff_hunk": "@@ -35,26 +35,26 @@ class WalletView : public QStackedWidget\n     Q_OBJECT\n \n public:\n-    explicit WalletView(const PlatformStyle *platformStyle, QWidget *parent);\n+    explicit WalletView(WalletModel* wallet_model, const PlatformStyle* platformStyle, QWidget* parent);\n     ~WalletView();\n \n     /** Set the client model.\n         The client model represents the part of the core that communicates with the P2P network, and is wallet-agnostic.\n     */\n     void setClientModel(ClientModel *clientModel);\n-    WalletModel *getWalletModel() { return walletModel; }\n-    /** Set the wallet model.\n-        The wallet model represents a bitcoin wallet, and offers access to the list of transactions, address book and sending\n-        functionality.\n-    */\n-    void setWalletModel(WalletModel *walletModel);\n+    WalletModel* getWalletModel() const { return walletModel; }",
       "path": "src/qt/walletview.h",
-      "position": null,
+      "position": 1,
       "original_position": 18,
       "commit_id": "d319c4dae9ed7d59d71b926e677707fce4194d0c",
       "original_commit_id": "210b67beb4f395a3a7a606cba3cd1ec8c31cd0eb",
@@ -1916,7 +2051,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Maybe worth adding `noexcept` and `[[nodiscard]]` too? Or at least just `noexcept`, as it's not \"heavyweight\" operation to ask for \"nodsicardness\", but still...",
       "created_at": "2021-08-10T14:53:48Z",
@@ -1945,7 +2082,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDY4NjEwNTQ3MA==",
       "diff_hunk": "@@ -35,26 +35,26 @@ class WalletView : public QStackedWidget\n     Q_OBJECT\n \n public:\n-    explicit WalletView(const PlatformStyle *platformStyle, QWidget *parent);\n+    explicit WalletView(WalletModel* wallet_model, const PlatformStyle* platformStyle, QWidget* parent);\n     ~WalletView();\n \n     /** Set the client model.\n         The client model represents the part of the core that communicates with the P2P network, and is wallet-agnostic.\n     */\n     void setClientModel(ClientModel *clientModel);\n-    WalletModel *getWalletModel() { return walletModel; }\n-    /** Set the wallet model.\n-        The wallet model represents a bitcoin wallet, and offers access to the list of transactions, address book and sending\n-        functionality.\n-    */\n-    void setWalletModel(WalletModel *walletModel);\n+    WalletModel* getWalletModel() const { return walletModel; }",
       "path": "src/qt/walletview.h",
-      "position": null,
+      "position": 1,
       "original_position": 18,
       "commit_id": "d319c4dae9ed7d59d71b926e677707fce4194d0c",
       "original_commit_id": "210b67beb4f395a3a7a606cba3cd1ec8c31cd0eb",
@@ -1968,7 +2105,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Also forgot to add, `WalletModel *walletModel;` pointer itself now can be `const`.",
       "created_at": "2021-08-10T15:01:25Z",
@@ -1997,7 +2136,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDY4NjEyMjE4Ng==",
       "diff_hunk": "@@ -35,26 +35,26 @@ class WalletView : public QStackedWidget\n     Q_OBJECT\n \n public:\n-    explicit WalletView(const PlatformStyle *platformStyle, QWidget *parent);\n+    explicit WalletView(WalletModel* wallet_model, const PlatformStyle* platformStyle, QWidget* parent);\n     ~WalletView();\n \n     /** Set the client model.\n         The client model represents the part of the core that communicates with the P2P network, and is wallet-agnostic.\n     */\n     void setClientModel(ClientModel *clientModel);\n-    WalletModel *getWalletModel() { return walletModel; }\n-    /** Set the wallet model.\n-        The wallet model represents a bitcoin wallet, and offers access to the list of transactions, address book and sending\n-        functionality.\n-    */\n-    void setWalletModel(WalletModel *walletModel);\n+    WalletModel* getWalletModel() const { return walletModel; }",
       "path": "src/qt/walletview.h",
-      "position": null,
+      "position": 1,
       "original_position": 18,
       "commit_id": "d319c4dae9ed7d59d71b926e677707fce4194d0c",
       "original_commit_id": "210b67beb4f395a3a7a606cba3cd1ec8c31cd0eb",
@@ -2020,7 +2159,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "> Also forgot to add, `WalletModel *walletModel;` pointer itself now can be `const`.\r\n\r\n```\r\nIn file included from qt/moc_walletview.cpp:9:\r\n./qt/walletview.h:45:50: error: cannot initialize return object of type 'WalletModel *' with an lvalue of type 'const WalletModel *const'\r\n    WalletModel* getWalletModel() const { return walletModel; }\r\n                                                 ^~~~~~~~~~~\r\n1 error generated\r\n```",
       "created_at": "2021-08-10T15:21:08Z",
@@ -2049,7 +2190,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDY4NjE3NjUyNA==",
       "diff_hunk": "@@ -35,26 +35,26 @@ class WalletView : public QStackedWidget\n     Q_OBJECT\n \n public:\n-    explicit WalletView(const PlatformStyle *platformStyle, QWidget *parent);\n+    explicit WalletView(WalletModel* wallet_model, const PlatformStyle* platformStyle, QWidget* parent);\n     ~WalletView();\n \n     /** Set the client model.\n         The client model represents the part of the core that communicates with the P2P network, and is wallet-agnostic.\n     */\n     void setClientModel(ClientModel *clientModel);\n-    WalletModel *getWalletModel() { return walletModel; }\n-    /** Set the wallet model.\n-        The wallet model represents a bitcoin wallet, and offers access to the list of transactions, address book and sending\n-        functionality.\n-    */\n-    void setWalletModel(WalletModel *walletModel);\n+    WalletModel* getWalletModel() const { return walletModel; }",
       "path": "src/qt/walletview.h",
-      "position": null,
+      "position": 1,
       "original_position": 18,
       "commit_id": "d319c4dae9ed7d59d71b926e677707fce4194d0c",
       "original_commit_id": "210b67beb4f395a3a7a606cba3cd1ec8c31cd0eb",
@@ -2072,7 +2213,9 @@
         "events_url": "https://api.github.com/users/Talkless/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/Talkless/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Not `const WalletModel *` but `WalletModel *const walletModel`. Pointer itself `const`, not the object pointed to.",
       "created_at": "2021-08-10T17:24:55Z",
@@ -2101,7 +2244,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDY5NjY0MTAzOA==",
       "diff_hunk": "@@ -100,49 +127,15 @@ void WalletView::setClientModel(ClientModel *_clientModel)\n \n     overviewPage->setClientModel(_clientModel);\n     sendCoinsPage->setClientModel(_clientModel);\n-    if (walletModel) walletModel->setClientModel(_clientModel);\n-}\n-\n-void WalletView::setWalletModel(WalletModel *_walletModel)\n-{\n-    this->walletModel = _walletModel;\n-\n-    // Put transaction list in tabs\n-    transactionView->setModel(_walletModel);\n-    overviewPage->setWalletModel(_walletModel);\n-    receiveCoinsPage->setModel(_walletModel);\n-    sendCoinsPage->setModel(_walletModel);\n-    usedReceivingAddressesPage->setModel(_walletModel ? _walletModel->getAddressTableModel() : nullptr);\n-    usedSendingAddressesPage->setModel(_walletModel ? _walletModel->getAddressTableModel() : nullptr);\n-\n-    if (_walletModel)\n-    {\n-        // Receive and pass through messages from wallet model\n-        connect(_walletModel, &WalletModel::message, this, &WalletView::message);\n-\n-        // Handle changes in encryption status\n-        connect(_walletModel, &WalletModel::encryptionStatusChanged, this, &WalletView::encryptionStatusChanged);\n-        updateEncryptionStatus();\n-\n-        // update HD status\n-        Q_EMIT hdEnabledStatusChanged();",
       "path": "src/qt/walletview.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 99,
       "commit_id": "d319c4dae9ed7d59d71b926e677707fce4194d0c",
       "original_commit_id": "210b67beb4f395a3a7a606cba3cd1ec8c31cd0eb",
@@ -2124,7 +2267,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Thanks! [Rebased](https://github.com/bitcoin-core/gui/pull/398#issuecomment-906423295) on top of #403.",
       "created_at": "2021-08-26T13:40:32Z",
@@ -2153,7 +2298,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDY5NjY0MTM0OQ==",
       "diff_hunk": "@@ -35,26 +35,26 @@ class WalletView : public QStackedWidget\n     Q_OBJECT\n \n public:\n-    explicit WalletView(const PlatformStyle *platformStyle, QWidget *parent);\n+    explicit WalletView(WalletModel* wallet_model, const PlatformStyle* platformStyle, QWidget* parent);\n     ~WalletView();\n \n     /** Set the client model.\n         The client model represents the part of the core that communicates with the P2P network, and is wallet-agnostic.\n     */\n     void setClientModel(ClientModel *clientModel);\n-    WalletModel *getWalletModel() { return walletModel; }\n-    /** Set the wallet model.\n-        The wallet model represents a bitcoin wallet, and offers access to the list of transactions, address book and sending\n-        functionality.\n-    */\n-    void setWalletModel(WalletModel *walletModel);\n+    WalletModel* getWalletModel() const { return walletModel; }",
       "path": "src/qt/walletview.h",
-      "position": null,
+      "position": 1,
       "original_position": 18,
       "commit_id": "d319c4dae9ed7d59d71b926e677707fce4194d0c",
       "original_commit_id": "210b67beb4f395a3a7a606cba3cd1ec8c31cd0eb",
@@ -2176,7 +2321,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Thanks! [Updated](https://github.com/bitcoin-core/gui/pull/398#issuecomment-906423295).",
       "created_at": "2021-08-26T13:40:52Z",
@@ -2205,7 +2352,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDcwMTQyMTc1Ng==",
       "diff_hunk": "@@ -676,7 +676,7 @@ void BitcoinGUI::addWallet(WalletModel* walletModel)\n {\n     if (!walletFrame) return;\n \n-    WalletView* wallet_view = new WalletView(platformStyle, walletFrame);\n+    WalletView* wallet_view = new WalletView(walletModel, platformStyle, walletFrame);\n     if (!walletFrame->addWallet(walletModel, wallet_view)) return;",
       "path": "src/qt/bitcoingui.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 6,
       "commit_id": "d319c4dae9ed7d59d71b926e677707fce4194d0c",
       "original_commit_id": "92ddc02a16a74e10f24190929f05e2dcf2b55871",
@@ -2228,7 +2375,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Could a commit to simplify like\r\n```diff\r\n-bool WalletFrame::addWallet(WalletModel* walletModel, WalletView* walletView)\r\n+bool WalletFrame::addView(WalletView* walletView)\r\n```\r\n",
       "created_at": "2021-09-02T21:04:52Z",
@@ -2257,7 +2406,7 @@
       "node_id": "MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDcwMTQzNTY4Nw==",
       "diff_hunk": "@@ -676,7 +676,7 @@ void BitcoinGUI::addWallet(WalletModel* walletModel)\n {\n     if (!walletFrame) return;\n \n-    WalletView* wallet_view = new WalletView(platformStyle, walletFrame);\n+    WalletView* wallet_view = new WalletView(walletModel, platformStyle, walletFrame);\n     if (!walletFrame->addWallet(walletModel, wallet_view)) return;",
       "path": "src/qt/bitcoingui.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 6,
       "commit_id": "d319c4dae9ed7d59d71b926e677707fce4194d0c",
       "original_commit_id": "92ddc02a16a74e10f24190929f05e2dcf2b55871",
@@ -2280,7 +2429,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Thanks! [Updated](https://github.com/bitcoin-core/gui/pull/398#issuecomment-912071917).",
       "created_at": "2021-09-02T21:30:29Z",

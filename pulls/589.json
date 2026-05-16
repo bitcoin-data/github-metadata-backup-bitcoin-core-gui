@@ -36,7 +36,9 @@
       "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
       "received_events_url": "https://api.github.com/users/hebasto/received_events",
       "type": "User",
-      "site_admin": false
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
     },
     "body": "On master (094d9fda5ccee7d78a2e3d8b1eec17b8b6a33466), the following queued connection https://github.com/bitcoin-core/gui/blob/094d9fda5ccee7d78a2e3d8b1eec17b8b6a33466/src/qt/rpcconsole.cpp#L1107 uses a `const WalletModel*` parameter regardless whether the `ENABLE_WALLET` macro is defined.\r\n\r\nAlthough this code works in Qt 5, it is flawed. On Qt 6, the code gets broken because the fully defined `WalletModel` type is required which is not the case if `ENABLE_WALLET` is undefined.\r\n\r\nThis PR fixes the issue described above.",
     "labels": [
@@ -54,7 +56,30 @@
     "updated_at": "2023-04-27T09:57:21Z",
     "closed_at": "2022-04-27T12:50:53Z",
     "mergeable_state": "unknown",
+    "merged": true,
     "merged_at": "2022-04-27T12:50:53Z",
+    "merged_by": {
+      "login": "hebasto",
+      "id": 32963518,
+      "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hebasto",
+      "html_url": "https://github.com/hebasto",
+      "followers_url": "https://api.github.com/users/hebasto/followers",
+      "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+      "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+      "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+      "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+      "organizations_url": "https://api.github.com/users/hebasto/orgs",
+      "repos_url": "https://api.github.com/users/hebasto/repos",
+      "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+      "received_events_url": "https://api.github.com/users/hebasto/received_events",
+      "type": "User",
+      "site_admin": false,
+      "name": null,
+      "patch_url": null
+    },
     "merge_commit_sha": "0b8e2868f5cb7efb4679da948660f22645a9248e",
     "assignees": [],
     "requested_reviewers": [],
@@ -81,7 +106,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 273230449,
@@ -106,7 +133,9 @@
           "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/hebasto/received_events",
           "type": "User",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/hebasto/gui",
@@ -156,9 +185,9 @@
         "homepage": "",
         "language": "C++",
         "forks_count": 2,
-        "stargazers_count": 4,
-        "watchers_count": 4,
-        "size": 150547,
+        "stargazers_count": 8,
+        "watchers_count": 8,
+        "size": 190189,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -171,9 +200,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-08-01T18:13:22Z",
+        "pushed_at": "2026-04-09T10:37:41Z",
         "created_at": "2020-06-18T12:20:51Z",
-        "updated_at": "2023-07-25T14:36:43Z",
+        "updated_at": "2026-04-09T10:38:02Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -213,7 +243,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "repo": {
         "id": 272700405,
@@ -238,7 +270,9 @@
           "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
           "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
           "type": "Organization",
-          "site_admin": false
+          "site_admin": false,
+          "name": null,
+          "patch_url": null
         },
         "private": false,
         "html_url": "https://github.com/bitcoin-core/gui",
@@ -287,12 +321,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 271,
-        "stargazers_count": 491,
-        "watchers_count": 491,
-        "size": 149681,
+        "forks_count": 354,
+        "stargazers_count": 725,
+        "watchers_count": 725,
+        "size": 190146,
         "default_branch": "master",
-        "open_issues_count": 155,
+        "open_issues_count": 148,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -303,9 +337,10 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2023-08-01T15:59:41Z",
+        "pushed_at": "2026-05-16T00:00:05Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2023-08-02T07:56:25Z",
+        "updated_at": "2026-05-16T00:00:11Z",
+        "allow_forking": true,
         "license": {
           "key": "mit",
           "name": "MIT License",
@@ -401,10 +436,12 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "7a129cbc2476a7a5fafff60cb4a01ee638891fae",
+      "commit_url": "https://api.github.com/repos/hebasto/gui/commits/7a129cbc2476a7a5fafff60cb4a01ee638891fae",
       "created_at": "2022-04-20T14:58:20Z"
     },
     {
@@ -430,10 +467,12 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "b7257271c533a97ea5e8b675ece6eee61aef23de",
+      "commit_url": "https://api.github.com/repos/hebasto/gui/commits/b7257271c533a97ea5e8b675ece6eee61aef23de",
       "created_at": "2022-04-20T23:11:16Z"
     },
     {
@@ -459,7 +498,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -492,7 +533,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -518,7 +561,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/589#issuecomment-1104834658",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/589"
@@ -546,7 +591,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -575,7 +622,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -590,6 +639,7 @@
       "commit_id": "b7257271c533a97ea5e8b675ece6eee61aef23de",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2022-04-21T11:16:18Z",
       "author_association": "CONTRIBUTOR",
       "body": "Concept ACK.\r\n\r\nAn alternative is to ditch the 2nd argument, like (untested):\r\n```cpp\r\nQ_SIGNALS:\r\n    // For RPC command executor\r\n    void cmdRequest(const QString &command\r\n#ifdef ENABLE_WALLET\r\n        , const WalletModel* wallet_model\r\n#endif\r\n    );\r\n```\r\n\r\n```cpp\r\n    Q_EMIT cmdRequest(cmd\r\n#ifdef ENABLE_WALLET\r\n        , m_last_wallet_model\r\n#endif\r\n    );\r\n```",
       "user": {
@@ -610,7 +660,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/589#pullrequestreview-948441376",
       "submitted_at": "2022-04-21T11:16:18Z",
@@ -640,7 +692,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -666,7 +720,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/589#issuecomment-1105080322",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/589"
@@ -694,7 +750,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -723,7 +781,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -792,10 +852,12 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "16d136ac51f56d0d5fa799d000d264c685052c4e",
+      "commit_url": "https://api.github.com/repos/hebasto/gui/commits/16d136ac51f56d0d5fa799d000d264c685052c4e",
       "created_at": "2022-04-21T11:47:49Z"
     },
     {
@@ -821,7 +883,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -847,7 +911,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/589#issuecomment-1105104759",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/589"
@@ -875,7 +941,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -904,7 +972,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -919,6 +989,7 @@
       "commit_id": "16d136ac51f56d0d5fa799d000d264c685052c4e",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2022-04-21T12:01:21Z",
       "author_association": "CONTRIBUTOR",
       "body": "Code review ACK 16d136ac51f56d0d5fa799d000d264c685052c4e.",
       "user": {
@@ -939,7 +1010,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/589#pullrequestreview-948511440",
       "submitted_at": "2022-04-21T12:01:21Z",
@@ -1009,10 +1082,12 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
-      "commit_id": null,
-      "commit_url": null,
+      "commit_id": "ab73d5985de5d9c4d1e3fd0f4d9d88a0908ea319",
+      "commit_url": "https://api.github.com/repos/hebasto/gui/commits/ab73d5985de5d9c4d1e3fd0f4d9d88a0908ea319",
       "created_at": "2022-04-21T12:06:50Z"
     },
     {
@@ -1024,6 +1099,7 @@
       "commit_id": "ab73d5985de5d9c4d1e3fd0f4d9d88a0908ea319",
       "commit_url": null,
       "created_at": null,
+      "updated_at": "2022-04-21T12:11:23Z",
       "author_association": "CONTRIBUTOR",
       "body": "ACK ab73d5985de5d9c4d1e3fd0f4d9d88a0908ea319",
       "user": {
@@ -1044,7 +1120,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/589#pullrequestreview-948527492",
       "submitted_at": "2022-04-21T12:11:23Z",
@@ -1074,7 +1152,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1093,7 +1173,8 @@
       "commit_id": "ab73d5985de5d9c4d1e3fd0f4d9d88a0908ea319",
       "commit_url": null,
       "created_at": null,
-      "author_association": "MEMBER",
+      "updated_at": "2022-04-27T07:39:27Z",
+      "author_association": "CONTRIBUTOR",
       "body": "code review ACK https://github.com/bitcoin-core/gui/commit/ab73d5985de5d9c4d1e3fd0f4d9d88a0908ea319",
       "user": {
         "login": "jarolrod",
@@ -1113,7 +1194,9 @@
         "events_url": "https://api.github.com/users/jarolrod/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/jarolrod/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/589#pullrequestreview-954452673",
       "submitted_at": "2022-04-27T07:39:27Z",
@@ -1143,7 +1226,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "0b8e2868f5cb7efb4679da948660f22645a9248e",
       "commit_url": "https://api.github.com/repos/bitcoin-core/gui/commits/0b8e2868f5cb7efb4679da948660f22645a9248e",
@@ -1172,7 +1257,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1201,7 +1288,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1230,7 +1319,9 @@
         "events_url": "https://api.github.com/users/sidhujag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/sidhujag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": "67306b74b79ff39cb09fc30ae28245ae304ba22c",
       "commit_url": "https://api.github.com/repos/syscoin/syscoin/commits/67306b74b79ff39cb09fc30ae28245ae304ba22c",
@@ -1259,7 +1350,9 @@
         "events_url": "https://api.github.com/users/bitcoin-core/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/bitcoin-core/received_events",
         "type": "Organization",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "commit_id": null,
       "commit_url": null,
@@ -1297,7 +1390,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "61457c179aec23227dcf3952c575052204103b50\r\n\r\nreview note, implementation is already guarded in https://github.com/bitcoin-core/gui/blob/61457c179aec23227dcf3952c575052204103b50/src/qt/rpcconsole.cpp#L786",
       "created_at": "2022-04-21T10:59:26Z",
@@ -1326,7 +1421,7 @@
       "node_id": "PRRC_kwDOEEET9c4y9zC7",
       "diff_hunk": "@@ -88,24 +88,6 @@ const QStringList historyFilter = QStringList()\n \n }\n \n-/* Object for executing console RPC commands in a separate thread.",
       "path": "src/qt/rpcconsole.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 4,
       "commit_id": "ab73d5985de5d9c4d1e3fd0f4d9d88a0908ea319",
       "original_commit_id": "5aa5ed9897cfe3d5832daa9b25835b73da37f5a9",
@@ -1349,7 +1444,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "5aa5ed9897cfe3d5832daa9b25835b73da37f5a9\r\n\r\nA forward declaration would be fine for the `m_executor` member (so this commit could be dropped)?",
       "created_at": "2022-04-21T11:01:07Z",
@@ -1378,7 +1475,7 @@
       "node_id": "PRRC_kwDOEEET9c4y9zXD",
       "diff_hunk": "@@ -1073,11 +1073,11 @@ void RPCConsole::browseHistory(int offset)\n \n void RPCConsole::startExecutor()\n {\n-    RPCExecutor *executor = new RPCExecutor(m_node);\n-    executor->moveToThread(&thread);\n+    m_executor= new RPCExecutor(m_node);",
       "path": "src/qt/rpcconsole.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 6,
       "commit_id": "ab73d5985de5d9c4d1e3fd0f4d9d88a0908ea319",
       "original_commit_id": "d36fa9707d9dc00317199633daac03ff0bae9050",
@@ -1401,7 +1498,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "d36fa9707d9dc00317199633daac03ff0bae9050\r\n\r\nnit, space before `=`.",
       "created_at": "2022-04-21T11:02:12Z",
@@ -1430,7 +1529,7 @@
       "node_id": "PRRC_kwDOEEET9c4y91LZ",
       "diff_hunk": "@@ -1031,7 +1031,10 @@ void RPCConsole::on_lineEdit_returnPressed()\n     //: A console message indicating an entered command is currently being executed.\n     message(CMD_REPLY, tr(\"Executing…\"));\n     m_is_executing = true;\n-    Q_EMIT cmdRequest(cmd, m_last_wallet_model);\n+\n+    QMetaObject::invokeMethod(m_executor, [this, cmd]() {\n+        m_executor->request(cmd, m_last_wallet_model);",
       "path": "src/qt/rpcconsole.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 7,
       "commit_id": "ab73d5985de5d9c4d1e3fd0f4d9d88a0908ea319",
       "original_commit_id": "b7257271c533a97ea5e8b675ece6eee61aef23de",
@@ -1453,7 +1552,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "b7257271c533a97ea5e8b675ece6eee61aef23de\r\n\r\nI think we should avoid `m_last_wallet_model` since this is executed asynchronously, and in theory `m_last_wallet_model` could change meanwhile. I suggest above:\r\n```cpp\r\n    WalletModel* wallet_model{nullptr};\r\n#ifdef ENABLE_WALLET\r\n    wallet_model = ui->WalletSelector->currentData().value<WalletModel*>();\r\n```\r\nand here:\r\n```cpp\r\n    QMetaObject::invokeMethod(m_executor, [=] {\r\n        m_executor->request(cmd, wallet_model);\r\n    });\r\n```",
       "created_at": "2022-04-21T11:10:20Z",
@@ -1482,7 +1583,7 @@
       "node_id": "PRRC_kwDOEEET9c4y99Bh",
       "diff_hunk": "@@ -88,24 +88,6 @@ const QStringList historyFilter = QStringList()\n \n }\n \n-/* Object for executing console RPC commands in a separate thread.",
       "path": "src/qt/rpcconsole.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 4,
       "commit_id": "ab73d5985de5d9c4d1e3fd0f4d9d88a0908ea319",
       "original_commit_id": "5aa5ed9897cfe3d5832daa9b25835b73da37f5a9",
@@ -1505,7 +1606,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Thanks! [Updated](https://github.com/bitcoin-core/gui/pull/589#issuecomment-1105104759).",
       "created_at": "2022-04-21T11:50:03Z",
@@ -1534,7 +1637,7 @@
       "node_id": "PRRC_kwDOEEET9c4y99D3",
       "diff_hunk": "@@ -1073,11 +1073,11 @@ void RPCConsole::browseHistory(int offset)\n \n void RPCConsole::startExecutor()\n {\n-    RPCExecutor *executor = new RPCExecutor(m_node);\n-    executor->moveToThread(&thread);\n+    m_executor= new RPCExecutor(m_node);",
       "path": "src/qt/rpcconsole.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 6,
       "commit_id": "ab73d5985de5d9c4d1e3fd0f4d9d88a0908ea319",
       "original_commit_id": "d36fa9707d9dc00317199633daac03ff0bae9050",
@@ -1557,7 +1660,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Thanks! [Updated](https://github.com/bitcoin-core/gui/pull/589#issuecomment-1105104759).",
       "created_at": "2022-04-21T11:50:14Z",
@@ -1586,7 +1691,7 @@
       "node_id": "PRRC_kwDOEEET9c4y99Gr",
       "diff_hunk": "@@ -1031,7 +1031,10 @@ void RPCConsole::on_lineEdit_returnPressed()\n     //: A console message indicating an entered command is currently being executed.\n     message(CMD_REPLY, tr(\"Executing…\"));\n     m_is_executing = true;\n-    Q_EMIT cmdRequest(cmd, m_last_wallet_model);\n+\n+    QMetaObject::invokeMethod(m_executor, [this, cmd]() {\n+        m_executor->request(cmd, m_last_wallet_model);",
       "path": "src/qt/rpcconsole.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 7,
       "commit_id": "ab73d5985de5d9c4d1e3fd0f4d9d88a0908ea319",
       "original_commit_id": "b7257271c533a97ea5e8b675ece6eee61aef23de",
@@ -1609,7 +1714,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Thanks! [Updated](https://github.com/bitcoin-core/gui/pull/589#issuecomment-1105104759).",
       "created_at": "2022-04-21T11:50:30Z",
@@ -1638,7 +1745,7 @@
       "node_id": "PRRC_kwDOEEET9c4y9-oM",
       "diff_hunk": "@@ -1049,7 +1050,10 @@ void RPCConsole::on_lineEdit_returnPressed()\n     //: A console message indicating an entered command is currently being executed.\n     message(CMD_REPLY, tr(\"Executing…\"));\n     m_is_executing = true;\n-    Q_EMIT cmdRequest(cmd, m_last_wallet_model);\n+\n+    QMetaObject::invokeMethod(m_executor, [this, cmd, wallet_model]() {",
       "path": "src/qt/rpcconsole.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 17,
       "commit_id": "ab73d5985de5d9c4d1e3fd0f4d9d88a0908ea319",
       "original_commit_id": "16d136ac51f56d0d5fa799d000d264c685052c4e",
@@ -1661,7 +1768,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "16d136ac51f56d0d5fa799d000d264c685052c4e\r\n\r\nnit, drop `()`.",
       "created_at": "2022-04-21T11:58:36Z",
@@ -1713,7 +1822,9 @@
         "events_url": "https://api.github.com/users/promag/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/promag/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "61457c179aec23227dcf3952c575052204103b50\r\n\r\nNow I wonder what's the point of this guard 🤔 ",
       "created_at": "2022-04-21T12:00:36Z",
@@ -1765,7 +1876,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "To make `RPCConsole` interface explicit?",
       "created_at": "2022-04-21T12:08:25Z",
@@ -1794,7 +1907,7 @@
       "node_id": "PRRC_kwDOEEET9c4y-AkO",
       "diff_hunk": "@@ -1049,7 +1050,10 @@ void RPCConsole::on_lineEdit_returnPressed()\n     //: A console message indicating an entered command is currently being executed.\n     message(CMD_REPLY, tr(\"Executing…\"));\n     m_is_executing = true;\n-    Q_EMIT cmdRequest(cmd, m_last_wallet_model);\n+\n+    QMetaObject::invokeMethod(m_executor, [this, cmd, wallet_model]() {",
       "path": "src/qt/rpcconsole.cpp",
-      "position": null,
+      "position": 1,
       "original_position": 17,
       "commit_id": "ab73d5985de5d9c4d1e3fd0f4d9d88a0908ea319",
       "original_commit_id": "16d136ac51f56d0d5fa799d000d264c685052c4e",
@@ -1817,7 +1930,9 @@
         "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
         "received_events_url": "https://api.github.com/users/hebasto/received_events",
         "type": "User",
-        "site_admin": false
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
       },
       "body": "Updated.",
       "created_at": "2022-04-21T12:08:59Z",
