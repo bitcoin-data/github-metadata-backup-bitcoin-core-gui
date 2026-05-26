@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/866/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/866/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/bc13d019838fa19dd0b4bd6846419e382a6b6505",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/cf8f824f34aa502b6bb2262996cbcd87b511d5f9",
     "number": 866,
     "state": "open",
     "locked": false,
@@ -62,10 +62,11 @@
       }
     ],
     "created_at": "2025-04-09T23:00:18Z",
-    "updated_at": "2026-05-26T01:29:01Z",
-    "mergeable": false,
-    "mergeable_state": "dirty",
+    "updated_at": "2026-05-26T12:50:15Z",
+    "mergeable": true,
+    "mergeable_state": "unstable",
     "merged": false,
+    "merge_commit_sha": "48977d60264254e1f730e99b0ac0fd697fb4dace",
     "assignees": [],
     "requested_reviewers": [
       {
@@ -92,11 +93,11 @@
       }
     ],
     "requested_teams": [],
-    "rebaseable": false,
+    "rebaseable": true,
     "head": {
       "label": "rebroad:trafficgraphwidget-rebased",
       "ref": "trafficgraphwidget-rebased",
-      "sha": "bc13d019838fa19dd0b4bd6846419e382a6b6505",
+      "sha": "cf8f824f34aa502b6bb2262996cbcd87b511d5f9",
       "user": {
         "login": "rebroad",
         "id": 1530283,
@@ -209,7 +210,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2025-05-08T21:54:00Z",
+        "pushed_at": "2026-05-26T12:49:52Z",
         "created_at": "2021-04-29T17:49:03Z",
         "updated_at": "2025-04-09T21:51:38Z",
         "allow_forking": true,
@@ -233,7 +234,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "ad5cd129f3cc72f2d2b140e182781bf3bb5dbacc",
+      "sha": "a4157fc24a29118b1c9d1ac5b7977104217bcee9",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -333,7 +334,7 @@
         "forks_count": 356,
         "stargazers_count": 727,
         "watchers_count": 727,
-        "size": 191255,
+        "size": 191301,
         "default_branch": "master",
         "open_issues_count": 147,
         "is_template": false,
@@ -346,9 +347,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2026-05-26T00:48:03Z",
+        "pushed_at": "2026-05-26T12:39:13Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2026-05-26T00:48:07Z",
+        "updated_at": "2026-05-26T12:39:20Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -373,7 +374,7 @@
       }
     },
     "author_association": "CONTRIBUTOR",
-    "draft": true,
+    "draft": false,
     "additions": 717,
     "deletions": 134,
     "changed_files": 9,
@@ -412,9 +413,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2025-04-09T23:00:22Z",
-      "updated_at": "2025-11-29T11:18:45Z",
+      "updated_at": "2026-05-26T12:50:15Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [RandyMcMillan](https://github.com/bitcoin-core/gui/pull/866#issuecomment-3329161743) |\n\nIf your review is incorrectly listed, please copy-paste <code>&lt;!--meta-tag:bot-skip--&gt;</code> into the comment that the bot should ignore.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#bitcoin/bitcoin/32862](https://github.com/bitcoin/bitcoin/pull/32862) (rpc: use CScheduler for relocking wallet and remove RPCTimer by pinheadmz)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n<!--5faf32d7da4f0f540f40219e4f7537a3-->\n### LLM Linter (✨ experimental)\n\nPossible typos and grammar issues:\n\n- `if (m_tt_point && m_tt_point <= DESIRED_SAMPLES)` -> `if (m_tt_point > 0 && m_tt_point <= m_time_stamp[m_value].size())` [Index check should use the actual queue size, not a constant]\n- `if (m_tt_point > DESIRED_SAMPLES) m_tt_point = 0;` -> `if (m_tt_point > m_time_stamp[m_value].size()) m_tt_point = 0;` [Index check should use the actual queue size, not a constant]\n- `while (m_time_stamp[i].size() > DESIRED_SAMPLES)` -> `while (m_time_stamp[i].size() > static_cast<int>(DESIRED_SAMPLES * static_cast<double>(m_values[i]) / m_values[0]))` [The maximum number of samples stored per range should scale with the range duration, not a fixed constant, making the queue management logic unclear.]\n- `static uint64_t last_time_ms;` -> `uint64_t last_time_ms;` [Static variable within a loop across ranges leads to incorrect state persistence, corrupting data loading.]\n- `if (!dst_point || (!is_peak && !is_dip)) return dst_point;` -> `if (dst_point == 0 || (!is_peak && !is_dip)) return 0;` [Inconsistent indexing (0-based vs 1-based) and potential out-of-bounds access (accessing at `dst_point - 1` when `dst_point` could be 0) makes the function logic unclear and potentially buggy.]\n\n",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [RandyMcMillan](https://github.com/bitcoin-core/gui/pull/866#issuecomment-3329161743) |\n\nIf your review is incorrectly listed, please copy-paste <code>&lt;!--meta-tag:bot-skip--&gt;</code> into the comment that the bot should ignore.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nReviewers, this pull request conflicts with the following ones:\n\n* [#bitcoin/bitcoin/32862](https://github.com/bitcoin/bitcoin/pull/32862) (rpc: use CScheduler for relocking wallet and remove RPCTimer by pinheadmz)\n\nIf you consider this pull request important, please also help to review the conflicting pull requests. Ideally, start with the one that should be merged first.\n<!--5faf32d7da4f0f540f40219e4f7537a3-->\n### LLM Linter (✨ experimental)\n\n\n\nPossible places where named args for integral literals may be used (e.g. `func(x, /*named_arg=*/0)` in C++, and `func(x, named_arg=0)` in Python):\n\n- `UpdateNum(m_new_fmax, m_fmax, y_increment, 300)` in `src/qt/trafficgraphwidget.cpp`\n- `UpdateNum(m_values[m_new_value], m_range, x_increment, 500)` in `src/qt/trafficgraphwidget.cpp`\n\n\n\n<sup>2026-05-26 12:50:15</sup>\n",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -2299,86 +2300,6 @@
       "created_at": "2025-05-06T20:29:11Z"
     },
     {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDM0Nzk0ZjgwYTJmYTY0ZmU1ZDE3Njg1YTkzYTQxMjJlZWNiMjUzOTU",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/34794f80a2fa64fe5d17685a93a4122eecb25395",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/34794f80a2fa64fe5d17685a93a4122eecb25395",
-      "tree": {
-        "sha": "9977f681589005e3f95708036cbefa5a444c7883",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/9977f681589005e3f95708036cbefa5a444c7883"
-      },
-      "verification": {
-        "verified": true,
-        "reason": "valid",
-        "payload": "tree 9977f681589005e3f95708036cbefa5a444c7883\nparent 874da961d015620ffcdac91af76b90aaee823926\nauthor R E Broadley <rebroad@users.noreply.github.com> 1743601439 +0100\ncommitter R E Broadley <rebroad@users.noreply.github.com> 1746718572 +0100\n\nqt: Add formatBytesps function for bytes per second display\n\nAdd a new GUI utility function to format bytes per second values with appropriate\nunits (B/s, kB/s, MB/s, GB/s) and precision, ensuring consistent and readable\ndisplay of network traffic rates in the traffic graph widget.\n",
-        "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAAhcAAAAHc3NoLXJzYQAAAAMBAAEAAAIBALGzuFIa4Gt9ezAsAwlYuz\nZ8PNnm1O+IVjT2zImuutAXIp/TUKNCcX7lQLXITxU6Pr5buUYW+gq6W7v7/5A9dM7GRLYY\nRRB/Fm5eVX+ql9nQiZHEj5mJaTK/1cuVP9ZVYA8xIkhy/fRdBwEgsdiR+17hC1nOgzf5Dx\nsHsLX5I49U+DiOWsZwndpEH1lg5VqfGJkHhOOX93/+j+pDgOkXE25moUmDT1KujP47cRCR\nmK9Gt2eQhalmIh4sB7+YgHzOgMybneLZz793NumsAEd7wP2YXiXfqFisJGCFawsal0lISM\ncMvBPetyquJZhznQZsTnsgKAKFdyAhuLeAmVf383dLjpXPHgeDpeYEYrITnALDJa3W+5Dz\nZhbLaLNoLlIP4KUs1IF/QznJSzKboxniPMN9djWTCsyZSOGoCJ76N9Iz5ovd1WbA6cloMe\nGmZV3W4ljPY4QuBnkhjF7la+9IwOPfsGWGY7BaB7jcOfeb7tJ6dwrdZKWH4K4ZD1yhHcfq\nOfCmauZUnxtsiQ+BuRAaxOJ4fXVa4d0ADp0VwL35HXVxR3SLOcgLduN2ZW4tGXwmp16Nyi\n1lky/ZvWgnKpwYMGkL/FzBob4uKKIfeze+juialkylmgBjrf3YASPt7fJRcEG1FOzVLf5z\nWwC0+7eFr02gSkp4FORIFSDKdsBS8W/hAAAAA2dpdAAAAAAAAAAGc2hhNTEyAAACFAAAAA\nxyc2Etc2hhMi01MTIAAAIAkiOM79Tn5jc+ynFRfE8nMWBshMfzsWCbMCV9wGMERP4nDHuX\nbd1ZYe9e6wgX+rLTrB0ulVIOhw36Zz2IlljhD47+6ApI4mV21px9tp6dDVX5b95ZbeSRIw\n0Q9JL7toVX/pCDmlSNP6EqVAuMYZu7GGATBelOgRBahg+YEXE9FhwzH2MVDdchV0n4cQ+M\nDWFY3GHUt3KW3mvBLoBdv9pPMv0WmCPO6Vhe6pldSMKtOSaqdQvjupKGFZDNpzBilH/bzo\n8zKK6VOm/7HTpAA018yZJk/AqG2Xl9cSB127TP8mXoxBwiXY57n63wjuTVLFfseDeLSmtl\nWVrGGWXwfZRrw4Dxwe9JrjVxJnfTu/Dq33ODvEYay8Ivj8uXqGcmFQfTlS2xryGsSEyyaU\nfYkRaSwJJbOUerZRszoDGKiFv70gg7Q3SR4te4/RYaDtWMogY5ouG8x5S9b/ItxigV/7vx\nySetwiTaymSCx4QduHDIN0U5dP1fbF/zekVsAkqszOJ/4TB4yEX5SILl6SlPkCCRt0JkQ1\noXDkArqAxBtgALz9XapkqoWqE98XZ8OE/50PIx1Gw/VOTIgIKUatlVxILbknKxP7WsHisR\nbrDj0WAi5sdBP6GCGFcc61ZlAoamvi/uxn1PJ9LChu/guUNwnlFWddcnijFj+US1Gromvj\nW92ts=\n-----END SSH SIGNATURE-----"
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/874da961d015620ffcdac91af76b90aaee823926",
-          "sha": "874da961d015620ffcdac91af76b90aaee823926",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/874da961d015620ffcdac91af76b90aaee823926"
-        }
-      ],
-      "message": "qt: Add formatBytesps function for bytes per second display\n\nAdd a new GUI utility function to format bytes per second values with appropriate\nunits (B/s, kB/s, MB/s, GB/s) and precision, ensuring consistent and readable\ndisplay of network traffic rates in the traffic graph widget.",
-      "committer": {
-        "name": "R E Broadley",
-        "email": "rebroad@users.noreply.github.com",
-        "date": "2025-05-08T15:36:12Z"
-      },
-      "author": {
-        "name": "R E Broadley",
-        "email": "rebroad@users.noreply.github.com",
-        "date": "2025-04-02T13:43:59Z"
-      },
-      "sha": "34794f80a2fa64fe5d17685a93a4122eecb25395"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDIxNThhYjdkYzkwMjU4NTFiMWQ0NDcyNzFmZTAxNzUyOTFhMDBmYmU",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/2158ab7dc9025851b1d447271fe0175291a00fbe",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/2158ab7dc9025851b1d447271fe0175291a00fbe",
-      "tree": {
-        "sha": "48ff9cf7088031547f22bbbde6eeb6ad6d0aa74f",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/48ff9cf7088031547f22bbbde6eeb6ad6d0aa74f"
-      },
-      "verification": {
-        "verified": true,
-        "reason": "valid",
-        "payload": "tree 48ff9cf7088031547f22bbbde6eeb6ad6d0aa74f\nparent 34794f80a2fa64fe5d17685a93a4122eecb25395\nauthor R E Broadley <rebroad@users.noreply.github.com> 1743609026 +0100\ncommitter R E Broadley <rebroad@users.noreply.github.com> 1746718572 +0100\n\nutil: Add FormatISO8601Time function for time-only ISO format\n\nAdd a new time formatting function that matches the existing date and datetime\nISO8601 formatting functions, providing consistent time display for the\ntraffic graph widget tooltips and other UI elements that need time-only display.\n",
-        "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAAhcAAAAHc3NoLXJzYQAAAAMBAAEAAAIBALGzuFIa4Gt9ezAsAwlYuz\nZ8PNnm1O+IVjT2zImuutAXIp/TUKNCcX7lQLXITxU6Pr5buUYW+gq6W7v7/5A9dM7GRLYY\nRRB/Fm5eVX+ql9nQiZHEj5mJaTK/1cuVP9ZVYA8xIkhy/fRdBwEgsdiR+17hC1nOgzf5Dx\nsHsLX5I49U+DiOWsZwndpEH1lg5VqfGJkHhOOX93/+j+pDgOkXE25moUmDT1KujP47cRCR\nmK9Gt2eQhalmIh4sB7+YgHzOgMybneLZz793NumsAEd7wP2YXiXfqFisJGCFawsal0lISM\ncMvBPetyquJZhznQZsTnsgKAKFdyAhuLeAmVf383dLjpXPHgeDpeYEYrITnALDJa3W+5Dz\nZhbLaLNoLlIP4KUs1IF/QznJSzKboxniPMN9djWTCsyZSOGoCJ76N9Iz5ovd1WbA6cloMe\nGmZV3W4ljPY4QuBnkhjF7la+9IwOPfsGWGY7BaB7jcOfeb7tJ6dwrdZKWH4K4ZD1yhHcfq\nOfCmauZUnxtsiQ+BuRAaxOJ4fXVa4d0ADp0VwL35HXVxR3SLOcgLduN2ZW4tGXwmp16Nyi\n1lky/ZvWgnKpwYMGkL/FzBob4uKKIfeze+juialkylmgBjrf3YASPt7fJRcEG1FOzVLf5z\nWwC0+7eFr02gSkp4FORIFSDKdsBS8W/hAAAAA2dpdAAAAAAAAAAGc2hhNTEyAAACFAAAAA\nxyc2Etc2hhMi01MTIAAAIASVMZ4JhEQx7ecYcPab6LiApBLVOXD1fu+iScMI8mXCq0D8CP\n7UU/FDZEvSXnTscxAtO/3hUj4sg/TztLUvxi35Zwe/26MlbtqqLMqND9X5VnMYndGzloaj\njBImDNpqdTEz4sCbHkFTLLKfmBeVbUrlN8KAhhaX3bER8kQ5bzY4kWsytyLWkFHH38HK9Z\nCrmXmteUpMExotHDvTRUhiUXxbgjgYy7xongawZno5awI6zJfVHaVMvObWBQVTl81JldNz\nGrXrT3YVtdovtAwKF2ijcAeBiv7enqyePLPiWGvvOJteySBTZqKrtNQnS8CzJFbaTAPWB5\nZ1YyG2ZsvptvTqrfVhjNm/dAiLmwAUMTHqYZMuTKMZzAkqe1Q0PpZ2bVDej+75asxt0mPi\nS6AGEOVrmlIZFURUx7gJOCldQo2Y6m5RJaPh7YHXYweKI9WBGG9FkrI8gRiR+dyGrnTCoK\nBhZKu9RR0WJqeKKTD3TzeY/7wwsjR4pCkTopUdEHeeVmOKgnBnhC7CKS2KGwLloaS4che3\nnLm1Of4gUf9tA6LMJu4TWddS7vACL04XERoXJcrZQyBsbvupiokIzX3WkFUb2GCawuVGBb\nmjCLp5AeRN8Lx2hbvjpB7WvSYRwVzqrO6CAqlN28Wlws90rCwZ72Um42vVh/ux/D8w6Bz7\nIv+L4=\n-----END SSH SIGNATURE-----"
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/34794f80a2fa64fe5d17685a93a4122eecb25395",
-          "sha": "34794f80a2fa64fe5d17685a93a4122eecb25395",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/34794f80a2fa64fe5d17685a93a4122eecb25395"
-        }
-      ],
-      "message": "util: Add FormatISO8601Time function for time-only ISO format\n\nAdd a new time formatting function that matches the existing date and datetime\nISO8601 formatting functions, providing consistent time display for the\ntraffic graph widget tooltips and other UI elements that need time-only display.",
-      "committer": {
-        "name": "R E Broadley",
-        "email": "rebroad@users.noreply.github.com",
-        "date": "2025-05-08T15:36:12Z"
-      },
-      "author": {
-        "name": "R E Broadley",
-        "email": "rebroad@users.noreply.github.com",
-        "date": "2025-04-02T15:50:26Z"
-      },
-      "sha": "2158ab7dc9025851b1d447271fe0175291a00fbe"
-    },
-    {
       "event": "head_ref_force_pushed",
       "id": 17576300429,
       "node_id": "HRFPE_lADOEEET9c6x3UOBzwAAAAQXoQ-N",
@@ -2408,46 +2329,6 @@
       "commit_id": "15fd680c93b1727716d185a3ab42bb0106e9d7d3",
       "commit_url": "https://api.github.com/repos/rebroad/gui/commits/15fd680c93b1727716d185a3ab42bb0106e9d7d3",
       "created_at": "2025-05-08T15:37:34Z"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGJjMTNkMDE5ODM4ZmExOWRkMGI0YmQ2ODQ2NDE5ZTM4MmE2YjY1MDU",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/bc13d019838fa19dd0b4bd6846419e382a6b6505",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/bc13d019838fa19dd0b4bd6846419e382a6b6505",
-      "tree": {
-        "sha": "e1344ea00d4fb45539afeed351a76d3e120420a8",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/e1344ea00d4fb45539afeed351a76d3e120420a8"
-      },
-      "verification": {
-        "verified": true,
-        "reason": "valid",
-        "payload": "tree e1344ea00d4fb45539afeed351a76d3e120420a8\nparent 2158ab7dc9025851b1d447271fe0175291a00fbe\nauthor R E Broadley <rebroad@users.noreply.github.com> 1743596478 +0100\ncommitter R E Broadley <rebroad@users.noreply.github.com> 1746741230 +0100\n\nqt: Enhance TrafficGraphWidget with multi-timeframe support and data persistence\n\nThis commit significantly improves the network traffic graph widget with:\n\n1. Multiple timeframe support - View traffic data across different time\n   periods (5 minutes to 28 days) using an enhanced slider interface\n\n2. Traffic data persistence - Save and restore traffic information\n   between sessions, preserving historical traffic patterns\n\n3. Interactive visualization features:\n   - Logarithmic scale toggle (mouse click) for better visualization of\n     varying traffic volumes\n   - Interactive tooltips showing detailed traffic information at specific points\n   - Yellow highlight indicators for selected data points\n\n4. Smooth transitions between different time ranges with animated scaling\n\nThese improvements allow users to better monitor and analyze network\ntraffic patterns over time, which is especially useful for debugging\nconnectivity issues or understanding network behavior under different\nconditions.\n\nThe implementation includes proper thread-safety considerations and\nhandles edge cases like time jumps or missing data appropriately.\n",
-        "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAAhcAAAAHc3NoLXJzYQAAAAMBAAEAAAIBALGzuFIa4Gt9ezAsAwlYuz\nZ8PNnm1O+IVjT2zImuutAXIp/TUKNCcX7lQLXITxU6Pr5buUYW+gq6W7v7/5A9dM7GRLYY\nRRB/Fm5eVX+ql9nQiZHEj5mJaTK/1cuVP9ZVYA8xIkhy/fRdBwEgsdiR+17hC1nOgzf5Dx\nsHsLX5I49U+DiOWsZwndpEH1lg5VqfGJkHhOOX93/+j+pDgOkXE25moUmDT1KujP47cRCR\nmK9Gt2eQhalmIh4sB7+YgHzOgMybneLZz793NumsAEd7wP2YXiXfqFisJGCFawsal0lISM\ncMvBPetyquJZhznQZsTnsgKAKFdyAhuLeAmVf383dLjpXPHgeDpeYEYrITnALDJa3W+5Dz\nZhbLaLNoLlIP4KUs1IF/QznJSzKboxniPMN9djWTCsyZSOGoCJ76N9Iz5ovd1WbA6cloMe\nGmZV3W4ljPY4QuBnkhjF7la+9IwOPfsGWGY7BaB7jcOfeb7tJ6dwrdZKWH4K4ZD1yhHcfq\nOfCmauZUnxtsiQ+BuRAaxOJ4fXVa4d0ADp0VwL35HXVxR3SLOcgLduN2ZW4tGXwmp16Nyi\n1lky/ZvWgnKpwYMGkL/FzBob4uKKIfeze+juialkylmgBjrf3YASPt7fJRcEG1FOzVLf5z\nWwC0+7eFr02gSkp4FORIFSDKdsBS8W/hAAAAA2dpdAAAAAAAAAAGc2hhNTEyAAACFAAAAA\nxyc2Etc2hhMi01MTIAAAIAGSLbaQ0ZFMaT5bDfgQRv8YOZJAFPAC2igKe/7iqTZjhTZagO\nBWX4aseaMcN/laMX4vY7TN3rcfO/y4UoJZowouI//85fhvxAIBHtKqD6O8dz4nsqKktnu1\n/6NE+BbM+4eNGsyEziXXAg24naxSCP92Mm51TcEej0NEgHdUYdySCc8J//PwbvrHnMTRz+\nKIJB6j934bfMtLgv6pY+GUvP7W4SOdT7i+VqY7VU9lfzqEh98jg26vAv8WOSXg21XKmtA6\nGIkt+GIqdMEmQ+8qv+y3XBK+/fJkGl4WqNcTbLWcOadKqQTH0yr6tN90i+6k/i9d40SGZi\nt3z6pVMfcipDf2EjScMv/H1RGwqYxYD78cUTv5fpj2fUcneXaWtws2+1jvdiGwCq38pKQD\nOWKrAoZoNxLYB711FjuP4sU669MXjtLATbbaFicECwy3s6FjC7CxJUZ+QvCe3PtzFKPx12\n98xhlLbe9mfWYysCKbdWFd4NqKWkEb+YjjWnu5xkzzpXrB5IqjfnHqqyUZfkZG4HrgH21v\nWGUyQvi31a4j81XTjeif5kWwLC7ctQY5HH7qehbi0O5FOkhyFFcSttLPcn6zv/NBqox37v\naiftftE1/i0he3ZyIlRqW9p64miSoE/IJeD/d/8R0u/RNp6CyT3P1VLOr+t5hAhT1IdRus\nWj+cw=\n-----END SSH SIGNATURE-----"
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/2158ab7dc9025851b1d447271fe0175291a00fbe",
-          "sha": "2158ab7dc9025851b1d447271fe0175291a00fbe",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/2158ab7dc9025851b1d447271fe0175291a00fbe"
-        }
-      ],
-      "message": "qt: Enhance TrafficGraphWidget with multi-timeframe support and data persistence\n\nThis commit significantly improves the network traffic graph widget with:\n\n1. Multiple timeframe support - View traffic data across different time\n   periods (5 minutes to 28 days) using an enhanced slider interface\n\n2. Traffic data persistence - Save and restore traffic information\n   between sessions, preserving historical traffic patterns\n\n3. Interactive visualization features:\n   - Logarithmic scale toggle (mouse click) for better visualization of\n     varying traffic volumes\n   - Interactive tooltips showing detailed traffic information at specific points\n   - Yellow highlight indicators for selected data points\n\n4. Smooth transitions between different time ranges with animated scaling\n\nThese improvements allow users to better monitor and analyze network\ntraffic patterns over time, which is especially useful for debugging\nconnectivity issues or understanding network behavior under different\nconditions.\n\nThe implementation includes proper thread-safety considerations and\nhandles edge cases like time jumps or missing data appropriately.",
-      "committer": {
-        "name": "R E Broadley",
-        "email": "rebroad@users.noreply.github.com",
-        "date": "2025-05-08T21:53:50Z"
-      },
-      "author": {
-        "name": "R E Broadley",
-        "email": "rebroad@users.noreply.github.com",
-        "date": "2025-04-02T12:21:18Z"
-      },
-      "sha": "bc13d019838fa19dd0b4bd6846419e382a6b6505"
     },
     {
       "event": "head_ref_force_pushed",
@@ -2950,6 +2831,188 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/866#issuecomment-4538837732",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/866"
+    },
+    {
+      "event": "ready_for_review",
+      "id": 25966574520,
+      "node_id": "RFRE_lADOEEET9c6x3UOBzwAAAAYLunu4",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/25966574520",
+      "actor": {
+        "login": "rebroad",
+        "id": 1530283,
+        "node_id": "MDQ6VXNlcjE1MzAyODM=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1530283?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rebroad",
+        "html_url": "https://github.com/rebroad",
+        "followers_url": "https://api.github.com/users/rebroad/followers",
+        "following_url": "https://api.github.com/users/rebroad/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/rebroad/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/rebroad/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/rebroad/subscriptions",
+        "organizations_url": "https://api.github.com/users/rebroad/orgs",
+        "repos_url": "https://api.github.com/users/rebroad/repos",
+        "events_url": "https://api.github.com/users/rebroad/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/rebroad/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2026-05-26T12:31:37Z"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGU1MDI3YTNhY2RlYzY5M2QwNTgwZDk2ZTY0ZjAwMzI5NTA2NjgzNzQ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/e5027a3acdec693d0580d96e64f0032950668374",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/e5027a3acdec693d0580d96e64f0032950668374",
+      "tree": {
+        "sha": "2eadd83f63f98045ee944720606f31a4679e052e",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/2eadd83f63f98045ee944720606f31a4679e052e"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree 2eadd83f63f98045ee944720606f31a4679e052e\nparent ac9424fdc6339abb72e5f9db5a46f84703802429\nauthor R E Broadley <rebroad@users.noreply.github.com> 1743601439 +0100\ncommitter R E Broadley <rebroad@users.noreply.github.com> 1779799417 +0200\n\nqt: Add formatBytesps function for bytes per second display\n\nAdd a new GUI utility function to format bytes per second values with appropriate\nunits (B/s, kB/s, MB/s, GB/s) and precision, ensuring consistent and readable\ndisplay of network traffic rates in the traffic graph widget.\n",
+        "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAAhcAAAAHc3NoLXJzYQAAAAMBAAEAAAIBALGzuFIa4Gt9ezAsAwlYuz\nZ8PNnm1O+IVjT2zImuutAXIp/TUKNCcX7lQLXITxU6Pr5buUYW+gq6W7v7/5A9dM7GRLYY\nRRB/Fm5eVX+ql9nQiZHEj5mJaTK/1cuVP9ZVYA8xIkhy/fRdBwEgsdiR+17hC1nOgzf5Dx\nsHsLX5I49U+DiOWsZwndpEH1lg5VqfGJkHhOOX93/+j+pDgOkXE25moUmDT1KujP47cRCR\nmK9Gt2eQhalmIh4sB7+YgHzOgMybneLZz793NumsAEd7wP2YXiXfqFisJGCFawsal0lISM\ncMvBPetyquJZhznQZsTnsgKAKFdyAhuLeAmVf383dLjpXPHgeDpeYEYrITnALDJa3W+5Dz\nZhbLaLNoLlIP4KUs1IF/QznJSzKboxniPMN9djWTCsyZSOGoCJ76N9Iz5ovd1WbA6cloMe\nGmZV3W4ljPY4QuBnkhjF7la+9IwOPfsGWGY7BaB7jcOfeb7tJ6dwrdZKWH4K4ZD1yhHcfq\nOfCmauZUnxtsiQ+BuRAaxOJ4fXVa4d0ADp0VwL35HXVxR3SLOcgLduN2ZW4tGXwmp16Nyi\n1lky/ZvWgnKpwYMGkL/FzBob4uKKIfeze+juialkylmgBjrf3YASPt7fJRcEG1FOzVLf5z\nWwC0+7eFr02gSkp4FORIFSDKdsBS8W/hAAAAA2dpdAAAAAAAAAAGc2hhNTEyAAACFAAAAA\nxyc2Etc2hhMi01MTIAAAIArmFUyUxP+0PDB18+jI6DNE+1FfVg3CnjtE4qfv5kkynBDYjU\n080J18g/m7i7R/4YWr5oTMITGeL9N/G30/IevOR2VDL2nW/Gir+VZgM2xSHw2MVUfeLSxV\n4p6OeAk1zjE7tGemW/TUM/PQUfDi2Y7BRVWUIltbaghG8m7flkolbK+d1C4HEVr5XaXlep\nMz2/bKDpP2SIqIGQAel6G2REiqcrgs0rbTt59k3cP5Filr1OkkzGwzDJ6JgTM3BB0xQth4\nCvr9/Fak4++LQCVLX1tYhVDZ+XFjVxCSRngnCjCMTEElpOnYBHMSvTIfpFL6TpIEkufsea\nVebXN6/lR084/PKbg+AVkJMr1ckjJvl2nt/AC2QUgiU+0Q3QBZ4+4VvnhXAnmxMJ2UA2y9\nZeNboTm5hBiESmZAMOGJvIvDi4io6XHUFJvqqGO7MUsQEbKukNjEHWwelYO1ADzNE0Sbd0\nC9ZvYuPtjZQ9oCzLKvZC+tVOCY8YDiiLMYS3CdBrik2gLZ+Yme+MuYFHjTunqmNQ3j00/D\nHYKqd0aNB1MSUgk1hBwFxGZJ5UgVII7EDtbt5do4+mJH3NsXVGwXLJjVlKVUL+c0eERrBc\nouajZ1R9BaayduNb9pofyO4kD+vIwPu/wKhBCvh3GeGsO+riPWb2ui3EdlPKP02FNDxcxs\nnh/9I=\n-----END SSH SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/ac9424fdc6339abb72e5f9db5a46f84703802429",
+          "sha": "ac9424fdc6339abb72e5f9db5a46f84703802429",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/ac9424fdc6339abb72e5f9db5a46f84703802429"
+        }
+      ],
+      "message": "qt: Add formatBytesps function for bytes per second display\n\nAdd a new GUI utility function to format bytes per second values with appropriate\nunits (B/s, kB/s, MB/s, GB/s) and precision, ensuring consistent and readable\ndisplay of network traffic rates in the traffic graph widget.",
+      "committer": {
+        "name": "R E Broadley",
+        "email": "rebroad@users.noreply.github.com",
+        "date": "2026-05-26T12:43:37Z"
+      },
+      "author": {
+        "name": "R E Broadley",
+        "email": "rebroad@users.noreply.github.com",
+        "date": "2025-04-02T13:43:59Z"
+      },
+      "sha": "e5027a3acdec693d0580d96e64f0032950668374"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDg4MTliODIwZTRhZjhlYmU0ZTA3MDYxZDhkOTNhNzVmNzcxYjM3YTk",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/8819b820e4af8ebe4e07061d8d93a75f771b37a9",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/8819b820e4af8ebe4e07061d8d93a75f771b37a9",
+      "tree": {
+        "sha": "44f0bca916779eaa3a58ef1d981f1e381b10e1d8",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/44f0bca916779eaa3a58ef1d981f1e381b10e1d8"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree 44f0bca916779eaa3a58ef1d981f1e381b10e1d8\nparent e5027a3acdec693d0580d96e64f0032950668374\nauthor R E Broadley <rebroad@users.noreply.github.com> 1743609026 +0100\ncommitter R E Broadley <rebroad@users.noreply.github.com> 1779799417 +0200\n\nutil: Add FormatISO8601Time function for time-only ISO format\n\nAdd a new time formatting function that matches the existing date and datetime\nISO8601 formatting functions, providing consistent time display for the\ntraffic graph widget tooltips and other UI elements that need time-only display.\n",
+        "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAAhcAAAAHc3NoLXJzYQAAAAMBAAEAAAIBALGzuFIa4Gt9ezAsAwlYuz\nZ8PNnm1O+IVjT2zImuutAXIp/TUKNCcX7lQLXITxU6Pr5buUYW+gq6W7v7/5A9dM7GRLYY\nRRB/Fm5eVX+ql9nQiZHEj5mJaTK/1cuVP9ZVYA8xIkhy/fRdBwEgsdiR+17hC1nOgzf5Dx\nsHsLX5I49U+DiOWsZwndpEH1lg5VqfGJkHhOOX93/+j+pDgOkXE25moUmDT1KujP47cRCR\nmK9Gt2eQhalmIh4sB7+YgHzOgMybneLZz793NumsAEd7wP2YXiXfqFisJGCFawsal0lISM\ncMvBPetyquJZhznQZsTnsgKAKFdyAhuLeAmVf383dLjpXPHgeDpeYEYrITnALDJa3W+5Dz\nZhbLaLNoLlIP4KUs1IF/QznJSzKboxniPMN9djWTCsyZSOGoCJ76N9Iz5ovd1WbA6cloMe\nGmZV3W4ljPY4QuBnkhjF7la+9IwOPfsGWGY7BaB7jcOfeb7tJ6dwrdZKWH4K4ZD1yhHcfq\nOfCmauZUnxtsiQ+BuRAaxOJ4fXVa4d0ADp0VwL35HXVxR3SLOcgLduN2ZW4tGXwmp16Nyi\n1lky/ZvWgnKpwYMGkL/FzBob4uKKIfeze+juialkylmgBjrf3YASPt7fJRcEG1FOzVLf5z\nWwC0+7eFr02gSkp4FORIFSDKdsBS8W/hAAAAA2dpdAAAAAAAAAAGc2hhNTEyAAACFAAAAA\nxyc2Etc2hhMi01MTIAAAIAWY2afHq6iHSRRiK9adwFJVj0JKHRqp9M3obqRpIuNCRkQn2m\nO7X2GRkKlKpsTjwANCRTTdQjBe34ac8GBbRdw3IS4HKNyliOmB8gxG0GpSCynRPrFVKvJt\n1DShPRS13vVW22fxOGzKeUmmqvlmgcUSP9azv4AYnz2WNzo6NjM72JkotfWb7mBe9nc1TX\nGe99BSrTnTgLA6SPs/TIgz2nv79dV3iKWG3G/Deh2rPbWX79QNsCOWy5MeVsq6h0G4j83V\nXnR4iVJGkAhTxSuyhLvr6z9L8B98IrFJOEiordzIfs8PirhXsc3AROB9rKYDfnhA60xxIh\nLpZfXkogiYl62ilwbzg2O1vce06bgWuls0pR8R53Qmf/LeOWRZiiKCjVzcOcZZAyjez3Fs\n5VMsB6Xf2/0H6kVrJ83NucQEcXZ124Qhae9L4Ffd93zdXYMnUXsrSBFyr9e8cs+TVCgt8Z\nIfqyMmfvVyx6+XYRuTKcGkxI3n+k/D8ygxZCPGgqFVYRWxB/D5xYFuK+mIOfXuqDgNpv9S\ndVfOntLShvpgctPw8Mj2XMqqvgIyEKhXPwU0UkWmdTHPEJQZvNWM3S/6FSsdRmYNYV3BEh\ns/QYRLpoDXkg9kykFCbIUP1R4ImPv/EMS9XPQ+dPABDVeUAvGfHvew2fqCTBaRSvROnIBB\nMmT0o=\n-----END SSH SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/e5027a3acdec693d0580d96e64f0032950668374",
+          "sha": "e5027a3acdec693d0580d96e64f0032950668374",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/e5027a3acdec693d0580d96e64f0032950668374"
+        }
+      ],
+      "message": "util: Add FormatISO8601Time function for time-only ISO format\n\nAdd a new time formatting function that matches the existing date and datetime\nISO8601 formatting functions, providing consistent time display for the\ntraffic graph widget tooltips and other UI elements that need time-only display.",
+      "committer": {
+        "name": "R E Broadley",
+        "email": "rebroad@users.noreply.github.com",
+        "date": "2026-05-26T12:43:37Z"
+      },
+      "author": {
+        "name": "R E Broadley",
+        "email": "rebroad@users.noreply.github.com",
+        "date": "2025-04-02T15:50:26Z"
+      },
+      "sha": "8819b820e4af8ebe4e07061d8d93a75f771b37a9"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGNmOGY4MjRmMzRhYTUwMmI2YmIyMjYyOTk2Y2JjZDg3YjUxMWQ1Zjk",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/cf8f824f34aa502b6bb2262996cbcd87b511d5f9",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/cf8f824f34aa502b6bb2262996cbcd87b511d5f9",
+      "tree": {
+        "sha": "bb4d1d414b5cace610a10d3a47fb09a2c2cb8024",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/bb4d1d414b5cace610a10d3a47fb09a2c2cb8024"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree bb4d1d414b5cace610a10d3a47fb09a2c2cb8024\nparent 8819b820e4af8ebe4e07061d8d93a75f771b37a9\nauthor R E Broadley <rebroad@users.noreply.github.com> 1743596478 +0100\ncommitter R E Broadley <rebroad@users.noreply.github.com> 1779799432 +0200\n\nqt: Enhance TrafficGraphWidget with multi-timeframe support and data persistence\n\nThis commit significantly improves the network traffic graph widget with:\n\n1. Multiple timeframe support - View traffic data across different time\n   periods (5 minutes to 28 days) using an enhanced slider interface\n\n2. Traffic data persistence - Save and restore traffic information\n   between sessions, preserving historical traffic patterns\n\n3. Interactive visualization features:\n   - Logarithmic scale toggle (mouse click) for better visualization of\n     varying traffic volumes\n   - Interactive tooltips showing detailed traffic information at specific points\n   - Yellow highlight indicators for selected data points\n\n4. Smooth transitions between different time ranges with animated scaling\n\nThese improvements allow users to better monitor and analyze network\ntraffic patterns over time, which is especially useful for debugging\nconnectivity issues or understanding network behavior under different\nconditions.\n\nThe implementation includes proper thread-safety considerations and\nhandles edge cases like time jumps or missing data appropriately.\n",
+        "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAAhcAAAAHc3NoLXJzYQAAAAMBAAEAAAIBALGzuFIa4Gt9ezAsAwlYuz\nZ8PNnm1O+IVjT2zImuutAXIp/TUKNCcX7lQLXITxU6Pr5buUYW+gq6W7v7/5A9dM7GRLYY\nRRB/Fm5eVX+ql9nQiZHEj5mJaTK/1cuVP9ZVYA8xIkhy/fRdBwEgsdiR+17hC1nOgzf5Dx\nsHsLX5I49U+DiOWsZwndpEH1lg5VqfGJkHhOOX93/+j+pDgOkXE25moUmDT1KujP47cRCR\nmK9Gt2eQhalmIh4sB7+YgHzOgMybneLZz793NumsAEd7wP2YXiXfqFisJGCFawsal0lISM\ncMvBPetyquJZhznQZsTnsgKAKFdyAhuLeAmVf383dLjpXPHgeDpeYEYrITnALDJa3W+5Dz\nZhbLaLNoLlIP4KUs1IF/QznJSzKboxniPMN9djWTCsyZSOGoCJ76N9Iz5ovd1WbA6cloMe\nGmZV3W4ljPY4QuBnkhjF7la+9IwOPfsGWGY7BaB7jcOfeb7tJ6dwrdZKWH4K4ZD1yhHcfq\nOfCmauZUnxtsiQ+BuRAaxOJ4fXVa4d0ADp0VwL35HXVxR3SLOcgLduN2ZW4tGXwmp16Nyi\n1lky/ZvWgnKpwYMGkL/FzBob4uKKIfeze+juialkylmgBjrf3YASPt7fJRcEG1FOzVLf5z\nWwC0+7eFr02gSkp4FORIFSDKdsBS8W/hAAAAA2dpdAAAAAAAAAAGc2hhNTEyAAACFAAAAA\nxyc2Etc2hhMi01MTIAAAIACXH9GoVMK1J9dcg4849Hirvs2d+hd4Kns94y/cAGDUZ9b7Da\nFMfpq9RKpiEY107rU3Ic+AfLft39GZGXCADK8XkQjKQINLjb9ET+TVKGeVsf25ZbfHvZAs\nFBA4jcmev45aw7SpfIDtE/nP0JF6Hv4ZShuSaMJuvz7oXRJT1P8n1LgemZXtpSU9iIYHXR\n+kzbw/cMCBeI/UIfEPo7iqwvJ5AqWJVMh1e2kBqLkhaAVyyc96MFwHXHb6Xz7AxBIvfPyx\n3iQOKCUygIsINbCb0GM27DTU6xQoK2//O1HRJ0XxeZrcJYC23TiWT8ZTVfLXhbbhqaGiz3\n/JSJW269roRi9KRJS1PcQOfbtkAU6WvI7OfskZy34cAfeKxj7XEUUPM6MDkYH0U1cHZPl/\nOCLuEnEcptgLkIOVTDdk9lQTKDTn4i2kqklcugabRyvJ/9/+E+eCX7XOIQpWIaKR5mYfns\ny9zh+dpFf67xl4ZDexGg71O2B1R7VNunJ89aovHQoRj00Snbuf1POYMP5F9yw3WJxRtseZ\nGXq6LfPFG6d0AT2twsyod45BvhujFODqsM6lX1aXRg43aU13PdTUbB5G52e6p6eXJsjSPb\n9aPqW5wPhMlGV+MFK4/L9rHkOJ2pnClqyoUbOG9hAZpVABbeSXBovP8DUaRz6w+2YMK3Iy\ntWeLU=\n-----END SSH SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/8819b820e4af8ebe4e07061d8d93a75f771b37a9",
+          "sha": "8819b820e4af8ebe4e07061d8d93a75f771b37a9",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/8819b820e4af8ebe4e07061d8d93a75f771b37a9"
+        }
+      ],
+      "message": "qt: Enhance TrafficGraphWidget with multi-timeframe support and data persistence\n\nThis commit significantly improves the network traffic graph widget with:\n\n1. Multiple timeframe support - View traffic data across different time\n   periods (5 minutes to 28 days) using an enhanced slider interface\n\n2. Traffic data persistence - Save and restore traffic information\n   between sessions, preserving historical traffic patterns\n\n3. Interactive visualization features:\n   - Logarithmic scale toggle (mouse click) for better visualization of\n     varying traffic volumes\n   - Interactive tooltips showing detailed traffic information at specific points\n   - Yellow highlight indicators for selected data points\n\n4. Smooth transitions between different time ranges with animated scaling\n\nThese improvements allow users to better monitor and analyze network\ntraffic patterns over time, which is especially useful for debugging\nconnectivity issues or understanding network behavior under different\nconditions.\n\nThe implementation includes proper thread-safety considerations and\nhandles edge cases like time jumps or missing data appropriately.",
+      "committer": {
+        "name": "R E Broadley",
+        "email": "rebroad@users.noreply.github.com",
+        "date": "2026-05-26T12:43:52Z"
+      },
+      "author": {
+        "name": "R E Broadley",
+        "email": "rebroad@users.noreply.github.com",
+        "date": "2025-04-02T12:21:18Z"
+      },
+      "sha": "cf8f824f34aa502b6bb2262996cbcd87b511d5f9"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 25967112795,
+      "node_id": "HRFPE_lADOEEET9c6x3UOBzwAAAAYLwrJb",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/25967112795",
+      "actor": {
+        "login": "rebroad",
+        "id": 1530283,
+        "node_id": "MDQ6VXNlcjE1MzAyODM=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1530283?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rebroad",
+        "html_url": "https://github.com/rebroad",
+        "followers_url": "https://api.github.com/users/rebroad/followers",
+        "following_url": "https://api.github.com/users/rebroad/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/rebroad/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/rebroad/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/rebroad/subscriptions",
+        "organizations_url": "https://api.github.com/users/rebroad/orgs",
+        "repos_url": "https://api.github.com/users/rebroad/repos",
+        "events_url": "https://api.github.com/users/rebroad/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/rebroad/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": "cf8f824f34aa502b6bb2262996cbcd87b511d5f9",
+      "commit_url": "https://api.github.com/repos/rebroad/gui/commits/cf8f824f34aa502b6bb2262996cbcd87b511d5f9",
+      "created_at": "2026-05-26T12:49:54Z"
     }
   ],
   "comments": [
@@ -3004,7 +3067,7 @@
       "original_start_line": 42,
       "start_side": "RIGHT",
       "line": null,
-      "original_line": 42,
+      "original_line": 46,
       "side": "RIGHT"
     },
     {
@@ -3016,7 +3079,7 @@
       "path": "src/qt/forms/debugwindow.ui",
       "position": 39,
       "original_position": 39,
-      "commit_id": "bc13d019838fa19dd0b4bd6846419e382a6b6505",
+      "commit_id": "cf8f824f34aa502b6bb2262996cbcd87b511d5f9",
       "original_commit_id": "31b1ffc0ffbf5dfdb9f165a1af3e934384a596c2",
       "in_reply_to_id": null,
       "user": {
@@ -3068,9 +3131,9 @@
       "node_id": "PRRC_kwDOEEET9c55xgrt",
       "diff_hunk": "@@ -578,7 +576,7 @@ RPCConsole::RPCConsole(interfaces::Node& node, const PlatformStyle *_platformSty\n     // based timer interface\n     m_node.rpcSetTimerInterfaceIfUnset(rpcTimerInterface);\n \n-    setTrafficGraphRange(INITIAL_TRAFFIC_GRAPH_MINS);",
       "path": "src/qt/rpcconsole.cpp",
-      "position": 20,
+      "position": 18,
       "original_position": 20,
-      "commit_id": "bc13d019838fa19dd0b4bd6846419e382a6b6505",
+      "commit_id": "cf8f824f34aa502b6bb2262996cbcd87b511d5f9",
       "original_commit_id": "31b1ffc0ffbf5dfdb9f165a1af3e934384a596c2",
       "in_reply_to_id": null,
       "user": {
@@ -3111,7 +3174,7 @@
       "start_line": null,
       "original_start_line": null,
       "start_side": null,
-      "line": 581,
+      "line": 546,
       "original_line": 581,
       "side": "LEFT"
     },
@@ -3230,9 +3293,9 @@
       "node_id": "PRRC_kwDOEEET9c557nhB",
       "diff_hunk": "@@ -578,7 +576,7 @@ RPCConsole::RPCConsole(interfaces::Node& node, const PlatformStyle *_platformSty\n     // based timer interface\n     m_node.rpcSetTimerInterfaceIfUnset(rpcTimerInterface);\n \n-    setTrafficGraphRange(INITIAL_TRAFFIC_GRAPH_MINS);",
       "path": "src/qt/rpcconsole.cpp",
-      "position": 20,
+      "position": 18,
       "original_position": 20,
-      "commit_id": "bc13d019838fa19dd0b4bd6846419e382a6b6505",
+      "commit_id": "cf8f824f34aa502b6bb2262996cbcd87b511d5f9",
       "original_commit_id": "31b1ffc0ffbf5dfdb9f165a1af3e934384a596c2",
       "in_reply_to_id": 2043022061,
       "user": {
@@ -3273,7 +3336,7 @@
       "start_line": null,
       "original_start_line": null,
       "start_side": null,
-      "line": 581,
+      "line": 546,
       "original_line": 581,
       "side": "LEFT"
     },
@@ -3286,7 +3349,7 @@
       "path": "src/qt/forms/debugwindow.ui",
       "position": 39,
       "original_position": 39,
-      "commit_id": "bc13d019838fa19dd0b4bd6846419e382a6b6505",
+      "commit_id": "cf8f824f34aa502b6bb2262996cbcd87b511d5f9",
       "original_commit_id": "31b1ffc0ffbf5dfdb9f165a1af3e934384a596c2",
       "in_reply_to_id": 2043021214,
       "user": {
@@ -3382,7 +3445,7 @@
       "original_start_line": 42,
       "start_side": "RIGHT",
       "line": null,
-      "original_line": 42,
+      "original_line": 46,
       "side": "RIGHT"
     },
     {
@@ -3436,7 +3499,7 @@
       "original_start_line": 42,
       "start_side": "RIGHT",
       "line": null,
-      "original_line": 42,
+      "original_line": 46,
       "side": "RIGHT"
     }
   ]
