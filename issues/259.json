@@ -59,9 +59,9 @@
     "assignees": [],
     "author_association": "NONE",
     "locked": false,
-    "comments": 9,
+    "comments": 10,
     "created_at": "2021-03-26T12:53:25Z",
-    "updated_at": "2025-02-05T13:47:15Z"
+    "updated_at": "2026-06-15T21:27:56Z"
   },
   "events": [
     {
@@ -879,6 +879,64 @@
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/issues/259#issuecomment-2636900532",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/259"
+    },
+    {
+      "event": "commented",
+      "id": 4712595397,
+      "node_id": "IC_kwDOEEET9c8AAAABGOR_xQ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/4712595397",
+      "actor": {
+        "login": "ShauryaaSharma",
+        "id": 196896785,
+        "node_id": "U_kgDOC7xoEQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/196896785?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ShauryaaSharma",
+        "html_url": "https://github.com/ShauryaaSharma",
+        "followers_url": "https://api.github.com/users/ShauryaaSharma/followers",
+        "following_url": "https://api.github.com/users/ShauryaaSharma/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/ShauryaaSharma/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/ShauryaaSharma/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/ShauryaaSharma/subscriptions",
+        "organizations_url": "https://api.github.com/users/ShauryaaSharma/orgs",
+        "repos_url": "https://api.github.com/users/ShauryaaSharma/repos",
+        "events_url": "https://api.github.com/users/ShauryaaSharma/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/ShauryaaSharma/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2026-06-15T21:27:56Z",
+      "updated_at": "2026-06-15T21:27:56Z",
+      "author_association": "NONE",
+      "body": "I've opened a PR that addresses this: #939 \n\nThe fix adds the wallet display name to the three initMessage calls in wallet.cpp so the splash screen consistently shows [wallet_name] Rescanning… (matching the format already used by ShowProgress inside ScanForWalletTransactions). For the unnamed default wallet, DisplayName() falls back to \"default wallet\".\n\nLoadWalletsActivity::load() intentionally omits a wallet name since it loads multiple wallets simultaneously, a comment is added there explaining this.\n",
+      "user": {
+        "login": "ShauryaaSharma",
+        "id": 196896785,
+        "node_id": "U_kgDOC7xoEQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/196896785?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ShauryaaSharma",
+        "html_url": "https://github.com/ShauryaaSharma",
+        "followers_url": "https://api.github.com/users/ShauryaaSharma/followers",
+        "following_url": "https://api.github.com/users/ShauryaaSharma/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/ShauryaaSharma/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/ShauryaaSharma/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/ShauryaaSharma/subscriptions",
+        "organizations_url": "https://api.github.com/users/ShauryaaSharma/orgs",
+        "repos_url": "https://api.github.com/users/ShauryaaSharma/repos",
+        "events_url": "https://api.github.com/users/ShauryaaSharma/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/ShauryaaSharma/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/issues/259#issuecomment-4712595397",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/259"
     }
   ]
