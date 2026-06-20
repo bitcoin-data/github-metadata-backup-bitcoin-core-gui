@@ -40,9 +40,9 @@
     "assignees": [],
     "author_association": "MEMBER",
     "locked": false,
-    "comments": 3,
+    "comments": 4,
     "created_at": "2026-03-02T11:53:10Z",
-    "updated_at": "2026-03-30T23:08:37Z"
+    "updated_at": "2026-06-20T19:44:26Z"
   },
   "events": [
     {
@@ -342,6 +342,64 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2026-03-30T23:08:36Z"
+    },
+    {
+      "event": "commented",
+      "id": 4759798210,
+      "node_id": "IC_kwDOEEET9c8AAAABG7TBwg",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/4759798210",
+      "actor": {
+        "login": "ShauryaaSharma",
+        "id": 196896785,
+        "node_id": "U_kgDOC7xoEQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/196896785?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ShauryaaSharma",
+        "html_url": "https://github.com/ShauryaaSharma",
+        "followers_url": "https://api.github.com/users/ShauryaaSharma/followers",
+        "following_url": "https://api.github.com/users/ShauryaaSharma/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/ShauryaaSharma/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/ShauryaaSharma/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/ShauryaaSharma/subscriptions",
+        "organizations_url": "https://api.github.com/users/ShauryaaSharma/orgs",
+        "repos_url": "https://api.github.com/users/ShauryaaSharma/repos",
+        "events_url": "https://api.github.com/users/ShauryaaSharma/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/ShauryaaSharma/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2026-06-20T19:44:26Z",
+      "updated_at": "2026-06-20T19:44:26Z",
+      "author_association": "NONE",
+      "body": "Looking into this. The hang appears to be in the GUI's RPC console when it attempts to render the ~8 MB hex output (3.98 MB transaction = ~7.96 MB hex string) inside a Qt text widget, Qt's internal document model is not designed for single-line payloads of that size, which causes the UI thread to stall.\n\nWill raise a PR to add a size threshold in the console's response rendering path, truncating or paginating output beyond a reasonable limit (e.g. 100 KB) and showing a notice like \"Output too large to display, use -rpcwallet or pipe to a file.\"",
+      "user": {
+        "login": "ShauryaaSharma",
+        "id": 196896785,
+        "node_id": "U_kgDOC7xoEQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/196896785?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ShauryaaSharma",
+        "html_url": "https://github.com/ShauryaaSharma",
+        "followers_url": "https://api.github.com/users/ShauryaaSharma/followers",
+        "following_url": "https://api.github.com/users/ShauryaaSharma/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/ShauryaaSharma/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/ShauryaaSharma/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/ShauryaaSharma/subscriptions",
+        "organizations_url": "https://api.github.com/users/ShauryaaSharma/orgs",
+        "repos_url": "https://api.github.com/users/ShauryaaSharma/repos",
+        "events_url": "https://api.github.com/users/ShauryaaSharma/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/ShauryaaSharma/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/issues/932#issuecomment-4759798210",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/932"
     }
   ]
 }
