@@ -43,11 +43,11 @@
     "body": "The wallet can contain transactions that are not accepted into the node's mempool (eg due to containing a too large OP_RETURN output, due to too low a feerate, or due to too many unconfirmed ancestors). In the event you end up in this situation, it can appear as if funds have gone missing from your wallet due to the non-mempool balance not being reported. Correct this by reporting the non-mempool balance.\r\n\r\nSee bitcoin/bitcoin#33671 for further context.",
     "labels": [],
     "created_at": "2025-11-19T01:26:12Z",
-    "updated_at": "2026-06-25T06:30:08Z",
+    "updated_at": "2026-06-25T12:57:35Z",
     "mergeable": true,
     "mergeable_state": "clean",
     "merged": false,
-    "merge_commit_sha": "c09244c07887e82c8fd2c7267577be4c640b194c",
+    "merge_commit_sha": "d61c3e72c9fa907be567ee8e4479ef978f81ceb7",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -291,7 +291,7 @@
         "forks_count": 356,
         "stargazers_count": 731,
         "watchers_count": 731,
-        "size": 194413,
+        "size": 194427,
         "default_branch": "master",
         "open_issues_count": 150,
         "is_template": false,
@@ -304,9 +304,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2026-06-24T19:29:40Z",
+        "pushed_at": "2026-06-25T10:44:25Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2026-06-24T19:29:44Z",
+        "updated_at": "2026-06-25T10:44:29Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -336,7 +336,7 @@
     "deletions": 7,
     "changed_files": 5,
     "commits": 1,
-    "review_comments": 8,
+    "review_comments": 9,
     "comments": 8
   },
   "events": [
@@ -1638,6 +1638,60 @@
       "_links": {
         "self": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/3472337596"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/911"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 208,
+      "original_line": 208,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/3474534539",
+      "pull_request_review_id": 4571101393,
+      "id": 3474534539,
+      "node_id": "PRRC_kwDOEEET9c7PGTCL",
+      "diff_hunk": "@@ -183,7 +183,33 @@\n               </property>\n              </widget>\n             </item>\n-            <item row=\"4\" column=\"1\">\n+            <item row=\"3\" column=\"1\">\n+             <widget class=\"QLabel\" name=\"labelNonMempool\">\n+              <property name=\"cursor\">\n+               <cursorShape>IBeamCursor</cursorShape>\n+              </property>\n+              <property name=\"toolTip\">\n+               <string>Balance for wallet transactions not in the mempool</string>\n+              </property>\n+              <property name=\"text\">\n+               <string notr=\"true\">0.00000000 BTC</string>\n+              </property>\n+              <property name=\"alignment\">\n+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>\n+              </property>\n+              <property name=\"textInteractionFlags\">\n+               <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>\n+              </property>\n+             </widget>\n+            </item>\n+            <item row=\"3\" column=\"0\">\n+             <widget class=\"QLabel\" name=\"labelNonMempoolText\">\n+              <property name=\"text\">\n+               <string>Non-mempool:</string>",
+      "path": "src/qt/forms/overviewpage.ui",
+      "position": 44,
+      "original_position": 44,
+      "commit_id": "026088b76728d61c6d979d8b712174aa6292323f",
+      "original_commit_id": "026088b76728d61c6d979d8b712174aa6292323f",
+      "in_reply_to_id": 3453023733,
+      "user": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "body": "The label has a tooltip already, I left a suggestion [there](https://github.com/bitcoin-core/gui/pull/911#discussion_r3471624578).",
+      "created_at": "2026-06-25T12:57:35Z",
+      "updated_at": "2026-06-25T12:57:36Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/911#discussion_r3474534539",
+      "author_association": "CONTRIBUTOR",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/3474534539"
         },
         "pull_request": {
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/911"
