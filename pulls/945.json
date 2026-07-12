@@ -41,20 +41,11 @@
       "patch_url": null
     },
     "body": "Two bugs here found when signing some pretty ancient addresses! Fixed in one PR as they share the same root cause and code path.\r\n\r\nThis PR fixes sign message address selection so it only shows signable legacy addresses and no longer mutates the wallet’s shared address book model.\r\n\r\nThe problem was that the sign message picker used `WalletModel::refresh(bool pk_hash_only)` as a filter, it was was too loose a filter and it replaced the wallet's shared address book model leaving other views stale.\r\n\r\nThe fix is one change, stop mutating the shared wallet model and give the signing picker its own local filter.\r\n\r\nThis is related it seems and could be closed: https://github.com/bitcoin-core/gui/issues/62\r\n\r\n#### Reproduce address picker showing invalid addresses\r\n\r\n<img width=\"1456\" height=\"890\" alt=\"image\" src=\"https://github.com/user-attachments/assets/91fbffa1-e0cd-47f8-baf7-b00f330357cf\" />\r\n\r\n1. In console: `createwallet \"watchonly\" true true`\r\n2. Select watchonly wallet in console\r\n3. In console: `importdescriptors '[{\"desc\":\"addr(mipcBbFg9gMiCh81Kj8tqqdgoZub1ZJRfn)#eccnnjdy\",\"timestamp\":\"now\",\"label\":\"keyless legacy\"}]'`\r\n4. In main window select the watchonly wallet\r\n5. Open File > Sign message....\r\n6. Click the address book button next to the signing address field.\r\n7. Actual current behavior: keyless legacy appears as a selectable signing address.\r\n8. Choose it, enter a message, click Sign Message.\r\n\r\n#### Reproduce Receiving Addresses window stops updating\r\n\r\n1. In console: `createwallet \"non-updating\"`\r\n2. In the main window select \"non-updating\" wallet\r\n3. Open File > Sign message..., click the signing address-book button, then close the picker.\r\n4. In console: `getnewaddress \"after picker\" bech32`\r\n5. Open Window > Receiving addresses, the new address is not shown",
-    "labels": [
-      {
-        "id": 5353934559,
-        "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
-        "name": "CI failed",
-        "color": "ededed",
-        "default": false
-      }
-    ],
+    "labels": [],
     "created_at": "2026-07-09T14:16:58Z",
-    "updated_at": "2026-07-12T11:50:47Z",
+    "updated_at": "2026-07-12T14:21:58Z",
     "mergeable": true,
-    "mergeable_state": "unstable",
+    "mergeable_state": "clean",
     "merged": false,
     "merge_commit_sha": "9dfee5383c33f15dd17c835bc2c63bfb4f7997e1",
     "assignees": [],
@@ -164,7 +155,7 @@
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 195742,
+        "size": 195763,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -854,6 +845,41 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2026-07-12T11:46:42Z"
+    },
+    {
+      "event": "unlabeled",
+      "id": 27874912232,
+      "node_id": "UNLE_lADOEEET9c8AAAABIOeans8AAAAGfXln6A",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/27874912232",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2026-07-12T14:21:58Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
+      }
     }
   ],
   "comments": [
