@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/945/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/945/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/1238afb8e5190d6a9929e10b1a64aa1f28d6bcc9",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/891068acf31db586b274f7dbf0be463098e7c788",
     "number": 945,
     "state": "open",
     "locked": false,
@@ -41,13 +41,22 @@
       "patch_url": null
     },
     "body": "Two bugs here found when signing some pretty ancient addresses! Fixed in one PR as they share the same root cause and code path.\r\n\r\nThis PR fixes sign message address selection so it only shows signable legacy addresses and no longer mutates the wallet’s shared address book model.\r\n\r\nThe problem was that the sign message picker used `WalletModel::refresh(bool pk_hash_only)` as a filter, it was was too loose a filter and it replaced the wallet's shared address book model leaving other views stale.\r\n\r\nThe fix is one change, stop mutating the shared wallet model and give the signing picker its own local filter.\r\n\r\nThis is related it seems and could be closed: https://github.com/bitcoin-core/gui/issues/62\r\n\r\n#### Reproduce address picker showing invalid addresses\r\n\r\n<img width=\"1456\" height=\"890\" alt=\"image\" src=\"https://github.com/user-attachments/assets/91fbffa1-e0cd-47f8-baf7-b00f330357cf\" />\r\n\r\n1. In console: `createwallet \"watchonly\" true true`\r\n2. Select watchonly wallet in console\r\n3. In console: `importdescriptors '[{\"desc\":\"addr(mipcBbFg9gMiCh81Kj8tqqdgoZub1ZJRfn)#eccnnjdy\",\"timestamp\":\"now\",\"label\":\"keyless legacy\"}]'`\r\n4. In main window select the watchonly wallet\r\n5. Open File > Sign message....\r\n6. Click the address book button next to the signing address field.\r\n7. Actual current behavior: keyless legacy appears as a selectable signing address.\r\n8. Choose it, enter a message, click Sign Message.\r\n\r\n#### Reproduce Receiving Addresses window stops updating\r\n\r\n1. In console: `createwallet \"non-updating\"`\r\n2. In the main window select \"non-updating\" wallet\r\n3. Open File > Sign message..., click the signing address-book button, then close the picker.\r\n4. In console: `getnewaddress \"after picker\" bech32`\r\n5. Open Window > Receiving addresses, the new address is not shown",
-    "labels": [],
+    "labels": [
+      {
+        "id": 5353934559,
+        "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
+        "name": "CI failed",
+        "color": "ededed",
+        "default": false
+      }
+    ],
     "created_at": "2026-07-09T14:16:58Z",
-    "updated_at": "2026-07-11T15:29:49Z",
+    "updated_at": "2026-07-12T11:50:47Z",
     "mergeable": true,
-    "mergeable_state": "clean",
+    "mergeable_state": "unstable",
     "merged": false,
-    "merge_commit_sha": "f69e89c796582d1eb4364e0299d8c492d3b2a0a2",
+    "merge_commit_sha": "9dfee5383c33f15dd17c835bc2c63bfb4f7997e1",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -55,7 +64,7 @@
     "head": {
       "label": "Bushstar:bush/sign-message-address-book-test",
       "ref": "bush/sign-message-address-book-test",
-      "sha": "1238afb8e5190d6a9929e10b1a64aa1f28d6bcc9",
+      "sha": "891068acf31db586b274f7dbf0be463098e7c788",
       "user": {
         "login": "Bushstar",
         "id": 5293433,
@@ -168,7 +177,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2026-07-09T13:27:00Z",
+        "pushed_at": "2026-07-12T11:41:04Z",
         "created_at": "2020-06-29T15:05:00Z",
         "updated_at": "2026-07-09T11:20:00Z",
         "allow_forking": true,
@@ -192,7 +201,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "81405fc7abbd1889f3978b8924e7acbe12b3403b",
+      "sha": "c8459b6bdcdf077f1e7aba0ec2cb806cd0907457",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -290,9 +299,9 @@
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
         "forks_count": 362,
-        "stargazers_count": 736,
-        "watchers_count": 736,
-        "size": 195812,
+        "stargazers_count": 735,
+        "watchers_count": 735,
+        "size": 195825,
         "default_branch": "master",
         "open_issues_count": 152,
         "is_template": false,
@@ -305,9 +314,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2026-07-10T19:53:41Z",
+        "pushed_at": "2026-07-12T10:40:44Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2026-07-10T23:38:29Z",
+        "updated_at": "2026-07-12T10:40:53Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -333,54 +342,14 @@
     },
     "author_association": "CONTRIBUTOR",
     "draft": false,
-    "additions": 38,
-    "deletions": 24,
-    "changed_files": 7,
-    "commits": 1,
+    "additions": 181,
+    "deletions": 17,
+    "changed_files": 8,
+    "commits": 4,
     "review_comments": 4,
-    "comments": 1
+    "comments": 2
   },
   "events": [
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDEyMzhhZmI4ZTUxOTBkNmE5OTI5ZTEwYjFhNjRhYTFmMjhkNmJjYzk",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/1238afb8e5190d6a9929e10b1a64aa1f28d6bcc9",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/1238afb8e5190d6a9929e10b1a64aa1f28d6bcc9",
-      "tree": {
-        "sha": "9dddbb548db016d2142913f3910947fdf035712f",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/9dddbb548db016d2142913f3910947fdf035712f"
-      },
-      "verification": {
-        "verified": true,
-        "reason": "valid",
-        "payload": "tree 9dddbb548db016d2142913f3910947fdf035712f\nparent 6f1c56f03a00a3b5f521ec824b965f910ef9151b\nauthor Bushstar <bushsolo@gmail.com> 1783603523 +0100\ncommitter Bushstar <bushsolo@gmail.com> 1783603615 +0100\n\nqt: Fix sign message address book filtering\n",
-        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEErYffssvqlS9A3KY3IeCaVKNhX5kFAmpPoZ8ACgkQIeCaVKNh\nX5n5Zg/9F4R59XSLH8/5RF0M99mykz75meKpXCeoxfR/MgfkftvvHO77fF015CS9\nZTN3zATBktKZD7otjkEaCF1EhyQsL6cd4Q5750sm6itw7ylbAHOXgZkI3OYgctw1\nA+Ja6J3J/rCpw/nxUkRvtvmPSwl3o6bPnJcq93Utfz/MVNT3yxhrEbklZomahLk6\n9akszsWJ5zCHaLLYOgqPL9ULnT4/uP+lC66zQ623ocTEogicpQiB+mLtCGQCqVjz\nSeO9TT9WxkESQJS4ffYe7BGkPMireM1xc/t/Ga2qWpikPWIqaJtVRKyvVXz7/3qS\nvRXFxU8u2ceSjraE8wmX06qrO+9AU3doBRVOs0uFohyXddf+N9TwhTlZBrYsFI97\nu8KgoZC8UKkP9IB9YmdofXK0W5vIRzmPrM0uAb5uvR2v0Aej61+fb5JngYrKVK1D\n8NSl9f5KfhvUgGtZmu51EUnDZ9FHtf0mt7O0IHV2tv1z2fFtaYz3bPD2MaZ7Fe08\nqOxHB8DZHqiqOXNOEmfXRCNnCDALSxrjaNqwe3PHYlThCAkd0RF/Vp75kXp47pUI\nqiS4IUGAWKlulKoVRZv9xngC0mbAOroobi5b4JAAcNpOBd8YoEu5f3TSTS7ryzW9\nWiaQ/jE/YrWdCCtVZ3hMcQmX5lTYWmSqD9Q8CfQSQ7eD1TR7/7o=\n=NsFZ\n-----END PGP SIGNATURE-----"
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/6f1c56f03a00a3b5f521ec824b965f910ef9151b",
-          "sha": "6f1c56f03a00a3b5f521ec824b965f910ef9151b",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/6f1c56f03a00a3b5f521ec824b965f910ef9151b"
-        }
-      ],
-      "message": "qt: Fix sign message address book filtering",
-      "committer": {
-        "name": "Bushstar",
-        "email": "bushsolo@gmail.com",
-        "date": "2026-07-09T13:26:55Z"
-      },
-      "author": {
-        "name": "Bushstar",
-        "email": "bushsolo@gmail.com",
-        "date": "2026-07-09T13:25:23Z"
-      },
-      "sha": "1238afb8e5190d6a9929e10b1a64aa1f28d6bcc9"
-    },
     {
       "event": "commented",
       "id": 4925986820,
@@ -411,9 +380,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2026-07-09T14:17:18Z",
-      "updated_at": "2026-07-11T15:29:49Z",
+      "updated_at": "2026-07-12T11:41:16Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) and [AI policy](https://github.com/bitcoin/bitcoin/blob/master/doc/AI_POLICY.md) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| ACK | [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/945#pullrequestreview-4678017739) |\n\nIf your review is incorrectly listed, please copy-paste <code>&lt;!--meta-tag:bot-skip--&gt;</code> into the comment that the bot should ignore.\n<!--5faf32d7da4f0f540f40219e4f7537a3-->",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) and [AI policy](https://github.com/bitcoin/bitcoin/blob/master/doc/AI_POLICY.md) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Stale ACK | [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/945#pullrequestreview-4678017739) |\n\nIf your review is incorrectly listed, please copy-paste <code>&lt;!--meta-tag:bot-skip--&gt;</code> into the comment that the bot should ignore.\n<!--5faf32d7da4f0f540f40219e4f7537a3-->",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -477,6 +446,414 @@
       "submitted_at": "2026-07-11T15:29:46Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/945"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDIzNzAyODgyMTllYjRjMDdmMzc1ZmZjNjJiYTI5MTcyZDBmYzQ0OTk",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/2370288219eb4c07f375ffc62ba29172d0fc4499",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/2370288219eb4c07f375ffc62ba29172d0fc4499",
+      "tree": {
+        "sha": "73f90ecc8cc2aa95cbfaa9a971afa642006df714",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/73f90ecc8cc2aa95cbfaa9a971afa642006df714"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree 73f90ecc8cc2aa95cbfaa9a971afa642006df714\nparent 6f1c56f03a00a3b5f521ec824b965f910ef9151b\nauthor Bushstar <bushsolo@gmail.com> 1783855395 +0100\ncommitter Bushstar <bushsolo@gmail.com> 1783855395 +0100\n\nqt: Filter sign message address book locally\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEErYffssvqlS9A3KY3IeCaVKNhX5kFAmpTeSMACgkQIeCaVKNh\nX5kmVw//a9YcioP+f/igJ77ZrSl5iqnksCCP29FXfkHsBtcrix1ki4vqJuWedSxc\nDm+SSKBe1XMwcykB8OjqNrIY9QwNfzzflZnJHVEaqAOLR9RB/jkgqjGVDP2Q61bp\nqNB4zVbiREah3e8N5uNCumP4J56G4+Lf1OxUv4azKcnBPncSP3J6/PmDnKLg5wsM\nmPHRUb1fOFeHutyQfZ5ieEuMQ5oxKDanG0N5186512ZunJsXTBPN8Oo0r0VARSTY\nwqIIp5sx7holopmLz/uEsET82YV4/MoopKX5aNR5zIbg6dYj3G4EZ2QBisEf3K1o\nbjTJOkqVt9ntxAeZ/5U/vbuHx6pfU0E6yT9x5biiTIssOuPkviifmsxBPc4W7t/4\nw3v9axhvId5d7FQvI7kdj62wIxzy7ur/oQRyaYdYWEkHKjEBYbY/1HS9QXghOA4z\nFwhVzIJO3vIoAO9KRA+PTLz5m0aM6h7RwDK0QW3tk7u5+3oZSUm6ys0qD6pDp1DJ\n2q06q78OLh1c3BhpOIt82vpS0V5022Xedvk8nDJBm9+vFYmu8nCPk6H3wnAWJ/eq\nrKTHrXrIM9OOP4XI0W557QRLwhCophB3ONH9xhsuGdqo1bQBgy0RZEperS93IjG0\npe4Kig1VrZMOGsnTq5GW0TRGxGvoHvBBh5y96S9zobmrVb/HYtk=\n=QWCg\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/6f1c56f03a00a3b5f521ec824b965f910ef9151b",
+          "sha": "6f1c56f03a00a3b5f521ec824b965f910ef9151b",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/6f1c56f03a00a3b5f521ec824b965f910ef9151b"
+        }
+      ],
+      "message": "qt: Filter sign message address book locally",
+      "committer": {
+        "name": "Bushstar",
+        "email": "bushsolo@gmail.com",
+        "date": "2026-07-12T11:23:15Z"
+      },
+      "author": {
+        "name": "Bushstar",
+        "email": "bushsolo@gmail.com",
+        "date": "2026-07-12T11:23:15Z"
+      },
+      "sha": "2370288219eb4c07f375ffc62ba29172d0fc4499"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDNlZjY1OTNlYWI2MzJlMDMyNzdkMDAwOGZkMGE1YWQ1Y2QyNTZiNTg",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/3ef6593eab632e03277d0008fd0a5ad5cd256b58",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/3ef6593eab632e03277d0008fd0a5ad5cd256b58",
+      "tree": {
+        "sha": "93e7a77885424919afabfa9c64f2c7d7a6da1aa7",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/93e7a77885424919afabfa9c64f2c7d7a6da1aa7"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree 93e7a77885424919afabfa9c64f2c7d7a6da1aa7\nparent 2370288219eb4c07f375ffc62ba29172d0fc4499\nauthor Bushstar <bushsolo@gmail.com> 1783855408 +0100\ncommitter Bushstar <bushsolo@gmail.com> 1783855408 +0100\n\nqt: Remove unused wallet model refresh\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEErYffssvqlS9A3KY3IeCaVKNhX5kFAmpTeTAACgkQIeCaVKNh\nX5kyMg//SFi65La9v2XLVbV5Nl9bb+MNkXIEVH0SWZ4xMqUeVRKCSl79ixRsOfvi\n6fz4Iqe41wT+nnYU3v1R6+3HA3xJKDhiIeD+lzTJYJ9P70k5gtptLWzbIC+3f0DC\nmwFO28ymZtBHKxPCke4fzFn6YTokjOZ7ZGfcfYlbDzAAubatv2dT+iasRvyQbbcU\njI3WBAwPCA3CPUJy++g3Izzjb9PAeKqefJNO0WLvYv5hdcSBnSi+tpVrc/cpSUvR\nDEvYwtaBC3oXXFp34yLxuXa2N609kHA3bWvhX4IZG+MdLQHoIAISOxd5CxfUF5yN\nrwnTVF/N8q3rVYN1K5dqvd9FWl2O26oaulA9K7rsgCmmreD8YblPByEdex9wJfJO\nCYeFo8u0OuSOFjthWifmiYkB3duC12htOsRJX/A01fMuRH+SHUAYKs78LTUAfZRd\nGm7FENXZVwZhKs2wD/NTh0JFk2sEzI3QJe1uVaEagr8c55+7UsHmCkTiZMfmORvg\nnqROf1oOdBPG8I9EqXLyPPSao6m9jntn9VEAua5HB6Z6P46nmFaK3F9+tGYbmVQO\nEnDAWd727WMvlIVIm4AUKYpJq6rSHZGASziYNcAm9LlEsLB2DE/gstYA3y/FultB\nEpeGf/A4/eeVz/lXaWnzS8GxJDVHFLaM/ND5NVcqAzdpWdA47xo=\n=2mDw\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/2370288219eb4c07f375ffc62ba29172d0fc4499",
+          "sha": "2370288219eb4c07f375ffc62ba29172d0fc4499",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/2370288219eb4c07f375ffc62ba29172d0fc4499"
+        }
+      ],
+      "message": "qt: Remove unused wallet model refresh",
+      "committer": {
+        "name": "Bushstar",
+        "email": "bushsolo@gmail.com",
+        "date": "2026-07-12T11:23:28Z"
+      },
+      "author": {
+        "name": "Bushstar",
+        "email": "bushsolo@gmail.com",
+        "date": "2026-07-12T11:23:28Z"
+      },
+      "sha": "3ef6593eab632e03277d0008fd0a5ad5cd256b58"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDIxODdmMmIxZGFlNTVhNjJlMmRkYzExOGQ1NjVmNTJiNjhjZjFjMzA",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/2187f2b1dae55a62e2ddc118d565f52b68cf1c30",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/2187f2b1dae55a62e2ddc118d565f52b68cf1c30",
+      "tree": {
+        "sha": "9873ec8a263d5cf2dfda4bacf54d15e5c31f8b4e",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/9873ec8a263d5cf2dfda4bacf54d15e5c31f8b4e"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree 9873ec8a263d5cf2dfda4bacf54d15e5c31f8b4e\nparent 3ef6593eab632e03277d0008fd0a5ad5cd256b58\nauthor Pablo Martin <pablomartin4btc@gmail.com> 1783727655 -0300\ncommitter Bushstar <bushsolo@gmail.com> 1783855673 +0100\n\nqt: Add regression test for stale AddressTableModel pointer\n\nTest that WalletModel::getAddressTableModel() returns the same pointer\nafter SignVerifyMessageDialog's address book button is clicked. Previously\nWalletModel::refresh(pk_hash_only=true) was called at that point,\nreplacing the shared pointer and leaving other views (e.g. Receiving\nAddresses) with stale data.\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEErYffssvqlS9A3KY3IeCaVKNhX5kFAmpTejkACgkQIeCaVKNh\nX5kvGw//aqB2ePeMDa0sG9OLtsMCGOO7aDAOcgCx0Ua53qlSCLL+EpjO5LIQoTr7\ndmAAhR3JPOkjnG8fxf9FeZN9x5GjuiWfTh78Dr9ywHQyC1GbzdsFK+A7FK4/gvsx\nid3NttaH7PycKhUB/DohX8e4MnK82g0W34s45W4oCOrVI85Iuj1AJw76hbMeHb5z\n8tbLZMCjiwmHFAaJGapsFAabajENkBNPrBS18oH8GamWfxHusUclDJojTnCPvpp+\nkYnZhQB1P2CPY+W3EE8cMsoDzDOQOEHdWDZG5LO+nPsvAhk8QR5BxeLhR2nRoELX\nT/cXMCtP7XddClNCA43hNqWknwmleHHP5kq6bX4+FI8LoExDHko2TvPDYABiYzxR\nKxiQ7JQWhV2Hq8WGS+/M1xQkKu0C19vTBV8888TcxP65P2ZKCRHy0GZLHz81oO+Q\npaqq/JiexX/8NoY+wP3U01u10gOx10m6SPGaSz0vA921SSw0V6CKYvnKT0HlIaqA\nVXodzvD5BiHAZvDVxbv1g9r1JL5YprNlmok4M9LlUkRVQnog38AqPJH6VxmxhDOF\nOD6jmz8wQPjkMsr/5bz2Nj0aHj5w1ONTkfQ9Xi5ox3QWAT4lXPnjSW61koue2ufC\nUDHvG+CsIn21NypwZKGR0qZiaLr6JYSye4LfLtHLbXmtI1KuOyA=\n=SMNY\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/3ef6593eab632e03277d0008fd0a5ad5cd256b58",
+          "sha": "3ef6593eab632e03277d0008fd0a5ad5cd256b58",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/3ef6593eab632e03277d0008fd0a5ad5cd256b58"
+        }
+      ],
+      "message": "qt: Add regression test for stale AddressTableModel pointer\n\nTest that WalletModel::getAddressTableModel() returns the same pointer\nafter SignVerifyMessageDialog's address book button is clicked. Previously\nWalletModel::refresh(pk_hash_only=true) was called at that point,\nreplacing the shared pointer and leaving other views (e.g. Receiving\nAddresses) with stale data.",
+      "committer": {
+        "name": "Bushstar",
+        "email": "bushsolo@gmail.com",
+        "date": "2026-07-12T11:27:53Z"
+      },
+      "author": {
+        "name": "Pablo Martin",
+        "email": "pablomartin4btc@gmail.com",
+        "date": "2026-07-10T23:54:15Z"
+      },
+      "sha": "2187f2b1dae55a62e2ddc118d565f52b68cf1c30"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 27872386565,
+      "node_id": "HRFPE_lADOEEET9c8AAAABIOeans8AAAAGfVLeBQ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/27872386565",
+      "actor": {
+        "login": "Bushstar",
+        "id": 5293433,
+        "node_id": "MDQ6VXNlcjUyOTM0MzM=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5293433?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Bushstar",
+        "html_url": "https://github.com/Bushstar",
+        "followers_url": "https://api.github.com/users/Bushstar/followers",
+        "following_url": "https://api.github.com/users/Bushstar/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/Bushstar/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/Bushstar/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/Bushstar/subscriptions",
+        "organizations_url": "https://api.github.com/users/Bushstar/orgs",
+        "repos_url": "https://api.github.com/users/Bushstar/repos",
+        "events_url": "https://api.github.com/users/Bushstar/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/Bushstar/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": "d4790be3927770504a5b20d3d1d0542914fab6b1",
+      "commit_url": "https://api.github.com/repos/Bushstar/gui/commits/d4790be3927770504a5b20d3d1d0542914fab6b1",
+      "created_at": "2026-07-12T11:32:05Z"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 27872463769,
+      "node_id": "HRFPE_lADOEEET9c8AAAABIOeans8AAAAGfVQLmQ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/27872463769",
+      "actor": {
+        "login": "Bushstar",
+        "id": 5293433,
+        "node_id": "MDQ6VXNlcjUyOTM0MzM=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5293433?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Bushstar",
+        "html_url": "https://github.com/Bushstar",
+        "followers_url": "https://api.github.com/users/Bushstar/followers",
+        "following_url": "https://api.github.com/users/Bushstar/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/Bushstar/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/Bushstar/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/Bushstar/subscriptions",
+        "organizations_url": "https://api.github.com/users/Bushstar/orgs",
+        "repos_url": "https://api.github.com/users/Bushstar/repos",
+        "events_url": "https://api.github.com/users/Bushstar/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/Bushstar/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": "42e54c4ccef6bd561b6ab9b7044fbcba5c8c4aa3",
+      "commit_url": "https://api.github.com/repos/Bushstar/gui/commits/42e54c4ccef6bd561b6ab9b7044fbcba5c8c4aa3",
+      "created_at": "2026-07-12T11:37:40Z"
+    },
+    {
+      "event": "labeled",
+      "id": 27872471704,
+      "node_id": "LE_lADOEEET9c8AAAABIOeans8AAAAGfVQqmA",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/27872471704",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2026-07-12T11:38:17Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
+      }
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDg5MTA2OGFjZjMxZGI1ODZiMjc0ZjdkYmYwYmU0NjMwOThlN2M3ODg",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/891068acf31db586b274f7dbf0be463098e7c788",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/891068acf31db586b274f7dbf0be463098e7c788",
+      "tree": {
+        "sha": "da6a76f2e3f70e78ab36ed85fb85568711f557f3",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/da6a76f2e3f70e78ab36ed85fb85568711f557f3"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree da6a76f2e3f70e78ab36ed85fb85568711f557f3\nparent 2187f2b1dae55a62e2ddc118d565f52b68cf1c30\nauthor Pablo Martin <pablomartin4btc@gmail.com> 1783727700 -0300\ncommitter Bushstar <bushsolo@gmail.com> 1783856432 +0100\n\nqt: Add regression test for signable address filter\n\nTest that CanSignMessageRole correctly identifies only spendable PKHash addresses as signable — excluding watch-only PKHash addresses (no private key) and bech32 addresses (not PKHash). Also verifies that AddressBookPage::AddressFilter::Signable shows exactly those addresses.\n\nPreviously the filter used pk_hash_only which only checked address type, allowing watch-only addresses through.\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEErYffssvqlS9A3KY3IeCaVKNhX5kFAmpTfTAACgkQIeCaVKNh\nX5lssw/+IiAjDM984E353c0qte9+RY26AlfVrcufMogC7ewQv2+yq5+i+q02W8g9\nEY+IyPylUR3Uo8Si4UwIS728GfDsfk+P2RUgRVgSQuSXODzFQyrux6L9HfY0QRBl\nIMJwE8cK9u6OPqxs35eoFZUsK+SUeo3/DiwKdLGEFVA6Ag0Qhe5teaVBfcDBTw9O\noJ80V3lWOKpLlEepCCmAyNNtQlA7WWBbvj2aKIyO0hw492rxJt3IfBHUYxU++yby\nxl4ykN590nwiIhb0r1weP/ujecnQO1uuVwc9F6YBEQU3azbmkBe0tgCVa7fc3f5B\n0CPTulSObKvtunmv+/fSd6lJvWYU+csjwT80dP6nMzuTSUIB8n270aAHNE2kOLQX\nUvijNvwRDHOQ1XNDBVJeMEu56tuqiqLkJ+995OFfwWLDT/4JhPTYNsoXgTnJc8eB\npP19YiyTmkxIAWandn0aTPG23sfmb/26N97ekUlP/219jw6amXyt4VCQj5ZhGUch\nko8bte7URzUIcDL/8HH0Y7DVNKErMSTFplvZLflkCz8XXf4nxCuElkNqbTnRaXoS\n1Q3QVyhy/3wzYEDcrW3wCjvvNG72r5yXaISJSZ71rv/AtzaBzwZGrAzXiETlyuhw\nJdbq+h7czh1NZbbSyGI1BqLIZF0d7XRotcmJHE5VTZLKF3A/9po=\n=9u5p\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/2187f2b1dae55a62e2ddc118d565f52b68cf1c30",
+          "sha": "2187f2b1dae55a62e2ddc118d565f52b68cf1c30",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/2187f2b1dae55a62e2ddc118d565f52b68cf1c30"
+        }
+      ],
+      "message": "qt: Add regression test for signable address filter\n\nTest that CanSignMessageRole correctly identifies only spendable PKHash addresses as signable — excluding watch-only PKHash addresses (no private key) and bech32 addresses (not PKHash). Also verifies that AddressBookPage::AddressFilter::Signable shows exactly those addresses.\n\nPreviously the filter used pk_hash_only which only checked address type, allowing watch-only addresses through.",
+      "committer": {
+        "name": "Bushstar",
+        "email": "bushsolo@gmail.com",
+        "date": "2026-07-12T11:40:32Z"
+      },
+      "author": {
+        "name": "Pablo Martin",
+        "email": "pablomartin4btc@gmail.com",
+        "date": "2026-07-10T23:55:00Z"
+      },
+      "sha": "891068acf31db586b274f7dbf0be463098e7c788"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 27872514606,
+      "node_id": "HRFPE_lADOEEET9c8AAAABIOeans8AAAAGfVTSLg",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/27872514606",
+      "actor": {
+        "login": "Bushstar",
+        "id": 5293433,
+        "node_id": "MDQ6VXNlcjUyOTM0MzM=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5293433?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Bushstar",
+        "html_url": "https://github.com/Bushstar",
+        "followers_url": "https://api.github.com/users/Bushstar/followers",
+        "following_url": "https://api.github.com/users/Bushstar/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/Bushstar/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/Bushstar/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/Bushstar/subscriptions",
+        "organizations_url": "https://api.github.com/users/Bushstar/orgs",
+        "repos_url": "https://api.github.com/users/Bushstar/repos",
+        "events_url": "https://api.github.com/users/Bushstar/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/Bushstar/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": "891068acf31db586b274f7dbf0be463098e7c788",
+      "commit_url": "https://api.github.com/repos/Bushstar/gui/commits/891068acf31db586b274f7dbf0be463098e7c788",
+      "created_at": "2026-07-12T11:41:06Z"
+    },
+    {
+      "event": "commented",
+      "id": 4951056123,
+      "node_id": "IC_kwDOEEET9c8AAAABJxse-w",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/4951056123",
+      "actor": {
+        "login": "Bushstar",
+        "id": 5293433,
+        "node_id": "MDQ6VXNlcjUyOTM0MzM=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5293433?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Bushstar",
+        "html_url": "https://github.com/Bushstar",
+        "followers_url": "https://api.github.com/users/Bushstar/followers",
+        "following_url": "https://api.github.com/users/Bushstar/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/Bushstar/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/Bushstar/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/Bushstar/subscriptions",
+        "organizations_url": "https://api.github.com/users/Bushstar/orgs",
+        "repos_url": "https://api.github.com/users/Bushstar/repos",
+        "events_url": "https://api.github.com/users/Bushstar/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/Bushstar/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2026-07-12T11:46:41Z",
+      "updated_at": "2026-07-12T11:50:47Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "@pablomartin4btc thanks for your review and tests. I've updated the PR as per your suggestions and updated the filter var as well to be consistent with the renamed AddressFilter enum for better clarity. Few minor updates to the tests for the rename changes and to satisfy the LLM linter.",
+      "user": {
+        "login": "Bushstar",
+        "id": 5293433,
+        "node_id": "MDQ6VXNlcjUyOTM0MzM=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5293433?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Bushstar",
+        "html_url": "https://github.com/Bushstar",
+        "followers_url": "https://api.github.com/users/Bushstar/followers",
+        "following_url": "https://api.github.com/users/Bushstar/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/Bushstar/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/Bushstar/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/Bushstar/subscriptions",
+        "organizations_url": "https://api.github.com/users/Bushstar/orgs",
+        "repos_url": "https://api.github.com/users/Bushstar/repos",
+        "events_url": "https://api.github.com/users/Bushstar/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/Bushstar/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/945#issuecomment-4951056123",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/945"
+    },
+    {
+      "event": "mentioned",
+      "id": 27872598392,
+      "node_id": "MEE_lADOEEET9c8AAAABIOeans8AAAAGfVYZeA",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/27872598392",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2026-07-12T11:46:42Z"
+    },
+    {
+      "event": "subscribed",
+      "id": 27872598414,
+      "node_id": "SE_lADOEEET9c8AAAABIOeans8AAAAGfVYZjg",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/27872598414",
+      "actor": {
+        "login": "pablomartin4btc",
+        "id": 110166421,
+        "node_id": "U_kgDOBpEBlQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/110166421?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pablomartin4btc",
+        "html_url": "https://github.com/pablomartin4btc",
+        "followers_url": "https://api.github.com/users/pablomartin4btc/followers",
+        "following_url": "https://api.github.com/users/pablomartin4btc/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/pablomartin4btc/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/pablomartin4btc/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/pablomartin4btc/subscriptions",
+        "organizations_url": "https://api.github.com/users/pablomartin4btc/orgs",
+        "repos_url": "https://api.github.com/users/pablomartin4btc/repos",
+        "events_url": "https://api.github.com/users/pablomartin4btc/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/pablomartin4btc/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2026-07-12T11:46:42Z"
     }
   ],
   "comments": [
@@ -489,7 +866,7 @@
       "path": "src/qt/walletmodel.cpp",
       "position": 4,
       "original_position": 4,
-      "commit_id": "1238afb8e5190d6a9929e10b1a64aa1f28d6bcc9",
+      "commit_id": "891068acf31db586b274f7dbf0be463098e7c788",
       "original_commit_id": "1238afb8e5190d6a9929e10b1a64aa1f28d6bcc9",
       "in_reply_to_id": null,
       "user": {
@@ -541,7 +918,7 @@
       "node_id": "PRRC_kwDOEEET9c7UdM2d",
       "diff_hunk": "@@ -38,7 +38,12 @@ class AddressBookPage : public QDialog\n         ForEditing  /**< Open address book for editing */\n     };\n \n-    explicit AddressBookPage(const PlatformStyle *platformStyle, Mode mode, Tabs tab, QWidget *parent = nullptr);\n+    enum class Filter {",
       "path": "src/qt/addressbookpage.h",
-      "position": 5,
+      "position": 1,
       "original_position": 5,
       "commit_id": "1238afb8e5190d6a9929e10b1a64aa1f28d6bcc9",
       "original_commit_id": "1238afb8e5190d6a9929e10b1a64aa1f28d6bcc9",
@@ -584,7 +961,7 @@
       "start_line": null,
       "original_start_line": null,
       "start_side": null,
-      "line": 41,
+      "line": null,
       "original_line": 41,
       "side": "RIGHT"
     },
@@ -595,7 +972,7 @@
       "node_id": "PRRC_kwDOEEET9c7UdN4E",
       "diff_hunk": "@@ -38,7 +38,12 @@ class AddressBookPage : public QDialog\n         ForEditing  /**< Open address book for editing */\n     };\n \n-    explicit AddressBookPage(const PlatformStyle *platformStyle, Mode mode, Tabs tab, QWidget *parent = nullptr);\n+    enum class Filter {\n+        None,\n+        Signable,",
       "path": "src/qt/addressbookpage.h",
-      "position": 7,
+      "position": 1,
       "original_position": 7,
       "commit_id": "1238afb8e5190d6a9929e10b1a64aa1f28d6bcc9",
       "original_commit_id": "1238afb8e5190d6a9929e10b1a64aa1f28d6bcc9",
@@ -638,7 +1015,7 @@
       "start_line": null,
       "original_start_line": null,
       "start_side": null,
-      "line": 43,
+      "line": null,
       "original_line": 43,
       "side": "RIGHT"
     },
@@ -649,7 +1026,7 @@
       "node_id": "PRRC_kwDOEEET9c7UdSrf",
       "diff_hunk": "@@ -38,7 +38,12 @@ class AddressBookPage : public QDialog\n         ForEditing  /**< Open address book for editing */\n     };\n \n-    explicit AddressBookPage(const PlatformStyle *platformStyle, Mode mode, Tabs tab, QWidget *parent = nullptr);\n+    enum class Filter {\n+        None,",
       "path": "src/qt/addressbookpage.h",
-      "position": 6,
+      "position": 1,
       "original_position": 6,
       "commit_id": "1238afb8e5190d6a9929e10b1a64aa1f28d6bcc9",
       "original_commit_id": "1238afb8e5190d6a9929e10b1a64aa1f28d6bcc9",
@@ -692,7 +1069,7 @@
       "start_line": null,
       "original_start_line": null,
       "start_side": null,
-      "line": 42,
+      "line": null,
       "original_line": 42,
       "side": "RIGHT"
     }
