@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/944/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/944/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/fb98a780355419aa5942b09f3cc4bc5342d714bd",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/fef99e6563ae284811904b980069166621c4fa22",
     "number": 944,
     "state": "open",
     "locked": false,
@@ -40,14 +40,14 @@
       "name": null,
       "patch_url": null
     },
-    "body": "When a console line begins with `)` or is just an empty pair of brackets, RPCParseCommandLine reaches the command-execution branch while the current argument frame is still empty, so `stack.back()[0]` reads out of bounds and the argument list built from `stack.back().begin() + 1` to `end()` is an invalid iterator range (throws std::length_error in practice, and UBSan flags the null-pointer reference otherwise). The `(` branch already guards this with `stack.back().size() > 0`, so I apply the same check to the `)` and newline branch. Added two regression cases to rpcNestedTests that abort without the guard and pass with it.",
+    "body": "When a console line has no command name (it starts with `)`, or is `()`, `(`, or `,`), RPCParseCommandLine reaches the command-execution branch while the current argument frame is still empty, so `stack.back()[0]` reads out of bounds and the argument list built from `stack.back().begin() + 1` to `end()` is an invalid iterator range (throws std::length_error in practice, UBSan flags the null-pointer reference otherwise).\n\nThe `(` branch already guards the frame with `stack.back().size() > 0`, so I add the same check to the `)`/newline branch and the empty frame is skipped. To be clear, `(` alone isn't safe on master either: it fails via the `\\n` branch, not via the `(` branch itself (the state there isn't `STATE_ARGUMENT`), and `,` alone fails the same way.\n\nSince there's no command to run in any of these cases, the parser now returns `false` so the console reports an invalid command line, consistent with other fully-invalid input like a bare `'` or `\"`, rather than silently ignoring it.\n\nRegression cases added to rpcNestedTests for `)`, `()`, `(` and `,` (all abort on master without the guard), plus `getblockchaininfo)` which stays tolerated.\n",
     "labels": [],
     "created_at": "2026-07-03T09:34:33Z",
-    "updated_at": "2026-07-13T01:53:03Z",
+    "updated_at": "2026-07-13T07:23:50Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
-    "merge_commit_sha": "a005ac0b72edbad37b5d2f422bdda548c4fbda45",
+    "merge_commit_sha": "6750d2af77a75b728012dab1f922bd667fb300db",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -55,7 +55,7 @@
     "head": {
       "label": "nabhan06:rpcconsole-empty-stack-oob",
       "ref": "rpcconsole-empty-stack-oob",
-      "sha": "fb98a780355419aa5942b09f3cc4bc5342d714bd",
+      "sha": "fef99e6563ae284811904b980069166621c4fa22",
       "user": {
         "login": "nabhan06",
         "id": 297057737,
@@ -167,7 +167,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2026-07-03T09:34:14Z",
+        "pushed_at": "2026-07-13T07:23:12Z",
         "created_at": "2026-07-03T09:33:57Z",
         "updated_at": "2026-07-03T09:33:57Z",
         "allow_forking": true,
@@ -191,7 +191,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "4a007126fbe3254d4025da5c623f378db44a1125",
+      "sha": "907e284e303ae57c9f983f0709586df0377b33d6",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -332,54 +332,14 @@
     },
     "author_association": "NONE",
     "draft": false,
-    "additions": 3,
-    "deletions": 1,
+    "additions": 12,
+    "deletions": 2,
     "changed_files": 2,
     "commits": 1,
-    "review_comments": 2,
-    "comments": 2
+    "review_comments": 3,
+    "comments": 3
   },
   "events": [
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGZiOThhNzgwMzU1NDE5YWE1OTQyYjA5ZjNjYzRiYzUzNDJkNzE0YmQ",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/fb98a780355419aa5942b09f3cc4bc5342d714bd",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/fb98a780355419aa5942b09f3cc4bc5342d714bd",
-      "tree": {
-        "sha": "26e7173ef7bfb97907d0d5b2724677fb67fa1b19",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/26e7173ef7bfb97907d0d5b2724677fb67fa1b19"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/4a007126fbe3254d4025da5c623f378db44a1125",
-          "sha": "4a007126fbe3254d4025da5c623f378db44a1125",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/4a007126fbe3254d4025da5c623f378db44a1125"
-        }
-      ],
-      "message": "qt: fix out-of-bounds read in RPCParseCommandLine on empty command",
-      "committer": {
-        "name": "sayed nabhan",
-        "email": "nabhan@bugqore.com",
-        "date": "2026-07-03T09:34:07Z"
-      },
-      "author": {
-        "name": "sayed nabhan",
-        "email": "nabhan@bugqore.com",
-        "date": "2026-07-03T09:34:07Z"
-      },
-      "sha": "fb98a780355419aa5942b09f3cc4bc5342d714bd"
-    },
     {
       "event": "commented",
       "id": 4874835480,
@@ -534,6 +494,135 @@
       "submitted_at": "2026-07-13T01:53:01Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/944"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGZlZjk5ZTY1NjNhZTI4NDgxMTkwNGI5ODAwNjkxNjY2MjFjNGZhMjI",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/fef99e6563ae284811904b980069166621c4fa22",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/fef99e6563ae284811904b980069166621c4fa22",
+      "tree": {
+        "sha": "5347f9ac1307a5c0a00f7c5f8eaabcd827f86c1e",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/5347f9ac1307a5c0a00f7c5f8eaabcd827f86c1e"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/4a007126fbe3254d4025da5c623f378db44a1125",
+          "sha": "4a007126fbe3254d4025da5c623f378db44a1125",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/4a007126fbe3254d4025da5c623f378db44a1125"
+        }
+      ],
+      "message": "qt: fix out-of-bounds read in RPCParseCommandLine on empty command\n\nWhen a console line has no command name (e.g. \")\", \"()\", \"(\", \",\") the\nparser reaches the command-execution branch with an empty argument frame,\nso stack.back()[0] reads out of bounds and the argument list built from\nstack.back().begin() + 1 is an invalid iterator range. Guard the ')' and\nnewline branch with stack.back().size() > 0, matching the existing '('\nbranch, so the empty frame is skipped.\n\nSince there is no command to run in these cases, return false so the UI\nreports an invalid command line, consistent with other fully-invalid input\nlike a bare quote, instead of silently ignoring it.\n\nAdd regression cases to rpcNestedTests for the inputs that abort without\nthe guard.",
+      "committer": {
+        "name": "sayed nabhan",
+        "email": "nabhan@bugqore.com",
+        "date": "2026-07-13T07:22:28Z"
+      },
+      "author": {
+        "name": "sayed nabhan",
+        "email": "nabhan@bugqore.com",
+        "date": "2026-07-03T09:34:07Z"
+      },
+      "sha": "fef99e6563ae284811904b980069166621c4fa22"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 27895072259,
+      "node_id": "HRFPE_lADOEEET9c8AAAABHj1Z3c8AAAAGfq0GAw",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/27895072259",
+      "actor": {
+        "login": "nabhan06",
+        "id": 297057737,
+        "node_id": "U_kgDOEbS9yQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/297057737?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/nabhan06",
+        "html_url": "https://github.com/nabhan06",
+        "followers_url": "https://api.github.com/users/nabhan06/followers",
+        "following_url": "https://api.github.com/users/nabhan06/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/nabhan06/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/nabhan06/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/nabhan06/subscriptions",
+        "organizations_url": "https://api.github.com/users/nabhan06/orgs",
+        "repos_url": "https://api.github.com/users/nabhan06/repos",
+        "events_url": "https://api.github.com/users/nabhan06/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/nabhan06/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": "fef99e6563ae284811904b980069166621c4fa22",
+      "commit_url": "https://api.github.com/repos/nabhan06/gui/commits/fef99e6563ae284811904b980069166621c4fa22",
+      "created_at": "2026-07-13T07:23:13Z"
+    },
+    {
+      "event": "commented",
+      "id": 4955461550,
+      "node_id": "IC_kwDOEEET9c8AAAABJ15Xrg",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/4955461550",
+      "actor": {
+        "login": "nabhan06",
+        "id": 297057737,
+        "node_id": "U_kgDOEbS9yQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/297057737?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/nabhan06",
+        "html_url": "https://github.com/nabhan06",
+        "followers_url": "https://api.github.com/users/nabhan06/followers",
+        "following_url": "https://api.github.com/users/nabhan06/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/nabhan06/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/nabhan06/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/nabhan06/subscriptions",
+        "organizations_url": "https://api.github.com/users/nabhan06/orgs",
+        "repos_url": "https://api.github.com/users/nabhan06/repos",
+        "events_url": "https://api.github.com/users/nabhan06/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/nabhan06/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2026-07-13T07:23:50Z",
+      "updated_at": "2026-07-13T07:23:50Z",
+      "author_association": "NONE",
+      "body": "Good points, both addressed.\n\nSwitched the no-command inputs (`)`, `()`, `(`, `,`) to return false instead of silently ignoring them, so the console shows an invalid command line like it does for a bare `'` or `\"`. A `command_parsed` flag tracks whether the execution branch ever ran, and the final `STATE_EATING_SPACES` returns it. The size guard stays since it's what keeps the OOB read from happening in the first place.\n\nAlso fixed the description: `(` alone does fail on master, via the `\\n` branch rather than the `(` branch itself. Rewrote that paragraph and added the extra regression cases. rpcNestedTests is green.",
+      "user": {
+        "login": "nabhan06",
+        "id": 297057737,
+        "node_id": "U_kgDOEbS9yQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/297057737?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/nabhan06",
+        "html_url": "https://github.com/nabhan06",
+        "followers_url": "https://api.github.com/users/nabhan06/followers",
+        "following_url": "https://api.github.com/users/nabhan06/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/nabhan06/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/nabhan06/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/nabhan06/subscriptions",
+        "organizations_url": "https://api.github.com/users/nabhan06/orgs",
+        "repos_url": "https://api.github.com/users/nabhan06/repos",
+        "events_url": "https://api.github.com/users/nabhan06/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/nabhan06/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/944#issuecomment-4955461550",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/944"
     }
   ],
   "comments": [
@@ -544,9 +633,9 @@
       "node_id": "PRRC_kwDOEEET9c7UpLg4",
       "diff_hunk": "@@ -290,7 +290,7 @@ bool RPCConsole::RPCParseCommandLine(interfaces::Node* node, std::string &strRes\n                         curarg.clear();\n                         state = STATE_EATING_SPACES_IN_BRACKETS;\n                     }\n-                    if ((ch == ')' || ch == '\\n') && stack.size() > 0)\n+                    if ((ch == ')' || ch == '\\n') && stack.size() > 0 && stack.back().size() > 0)",
       "path": "src/qt/rpcconsole.cpp",
-      "position": 5,
+      "position": 13,
       "original_position": 5,
-      "commit_id": "fb98a780355419aa5942b09f3cc4bc5342d714bd",
+      "commit_id": "fef99e6563ae284811904b980069166621c4fa22",
       "original_commit_id": "fb98a780355419aa5942b09f3cc4bc5342d714bd",
       "in_reply_to_id": null,
       "user": {
@@ -587,7 +676,7 @@
       "start_line": null,
       "original_start_line": null,
       "start_side": null,
-      "line": 293,
+      "line": 294,
       "original_line": 293,
       "side": "RIGHT"
     },
@@ -598,7 +687,7 @@
       "node_id": "PRRC_kwDOEEET9c7UpL4U",
       "diff_hunk": "@@ -134,6 +134,8 @@ void RPCNestedTests::rpcNestedTests()\n     QVERIFY_EXCEPTION_THROWN(RPCConsole::RPCExecuteCommandLine(m_node, result, \"getblockchaininfo() getblockchaininfo()\"), std::runtime_error); //invalid syntax\n     RPCConsole::RPCExecuteCommandLine(m_node, result, \"getblockchaininfo(\"); //tolerate non closing brackets if we have no arguments\n     RPCConsole::RPCExecuteCommandLine(m_node, result, \"getblockchaininfo()()()\"); //tolerate non command brackets\n+    RPCConsole::RPCExecuteCommandLine(m_node, result, \")\"); //tolerate a closing bracket with no command (empty argument stack)\n+    RPCConsole::RPCExecuteCommandLine(m_node, result, \"()\"); //tolerate empty brackets with no command",
       "path": "src/qt/test/rpcnestedtests.cpp",
-      "position": 5,
+      "position": 1,
       "original_position": 5,
       "commit_id": "fb98a780355419aa5942b09f3cc4bc5342d714bd",
       "original_commit_id": "fb98a780355419aa5942b09f3cc4bc5342d714bd",
@@ -638,10 +727,64 @@
           "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/944"
         }
       },
-      "start_line": 137,
+      "start_line": null,
       "original_start_line": 137,
       "start_side": "RIGHT",
-      "line": 138,
+      "line": null,
+      "original_line": 138,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/3568746393",
+      "pull_request_review_id": 4682563316,
+      "id": 3568746393,
+      "node_id": "PRRC_kwDOEEET9c7Utr-Z",
+      "diff_hunk": "@@ -134,6 +134,8 @@ void RPCNestedTests::rpcNestedTests()\n     QVERIFY_EXCEPTION_THROWN(RPCConsole::RPCExecuteCommandLine(m_node, result, \"getblockchaininfo() getblockchaininfo()\"), std::runtime_error); //invalid syntax\n     RPCConsole::RPCExecuteCommandLine(m_node, result, \"getblockchaininfo(\"); //tolerate non closing brackets if we have no arguments\n     RPCConsole::RPCExecuteCommandLine(m_node, result, \"getblockchaininfo()()()\"); //tolerate non command brackets\n+    RPCConsole::RPCExecuteCommandLine(m_node, result, \")\"); //tolerate a closing bracket with no command (empty argument stack)\n+    RPCConsole::RPCExecuteCommandLine(m_node, result, \"()\"); //tolerate empty brackets with no command",
+      "path": "src/qt/test/rpcnestedtests.cpp",
+      "position": 1,
+      "original_position": 5,
+      "commit_id": "fb98a780355419aa5942b09f3cc4bc5342d714bd",
+      "original_commit_id": "fb98a780355419aa5942b09f3cc4bc5342d714bd",
+      "in_reply_to_id": 3567566356,
+      "user": {
+        "login": "nabhan06",
+        "id": 297057737,
+        "node_id": "U_kgDOEbS9yQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/297057737?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/nabhan06",
+        "html_url": "https://github.com/nabhan06",
+        "followers_url": "https://api.github.com/users/nabhan06/followers",
+        "following_url": "https://api.github.com/users/nabhan06/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/nabhan06/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/nabhan06/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/nabhan06/subscriptions",
+        "organizations_url": "https://api.github.com/users/nabhan06/orgs",
+        "repos_url": "https://api.github.com/users/nabhan06/repos",
+        "events_url": "https://api.github.com/users/nabhan06/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/nabhan06/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "body": "Added all three: `(` and `,` now have their own cases (both abort on master via the `\\n` branch), and `getblockchaininfo)` as a tolerated case. Since these no-command inputs now return false, the `)`/`()`/`(`/`,` cases assert that with QVERIFY.",
+      "created_at": "2026-07-13T07:23:41Z",
+      "updated_at": "2026-07-13T07:23:41Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/944#discussion_r3568746393",
+      "author_association": "NONE",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/3568746393"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/944"
+        }
+      },
+      "start_line": null,
+      "original_start_line": 137,
+      "start_side": "RIGHT",
+      "line": null,
       "original_line": 138,
       "side": "RIGHT"
     }
