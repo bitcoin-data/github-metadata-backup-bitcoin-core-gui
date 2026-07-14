@@ -13,7 +13,7 @@
     "state": "open",
     "state_reason": null,
     "title": "Consider blocksdir when estimating available disk space to determine default pruning",
-    "body": "When running bitcoin-qt for the first time, there's the intro window that prompts the user for where they want to store the datadir, the default is `~/.bitcoin`.\n\nIf there's not a lot of space in `$HOME` or `~/.bitcoin`, the prune option is enabled by default. However, a common use case is to point `-blocksdir` to a larger partition/drive.\n\nThe current behavior as of Bitcoin Core v31.1 is to check for the available space of the datadir and prune gets enabled by default even when `-blocksdir` is being pointed to a larger drive.\n\nIt would be nice to have bitcoin-qt consider blocksdir being on a separate path/partition/drive before enabling the prune option. I found [this](https://github.com/bitcoin-core/gui/blob/master/src/qt/freespacechecker.cpp) is where this is being calculated and it sounds similar to #709 although I'm not entirely sure it's the same issue.",
+    "body": "When running bitcoin-qt for the first time, the intro window is shown where the user is prompted for where they want to store the datadir, the default is `~/.bitcoin`.\n\nIf there's not a lot of space in `~/.bitcoin`, the prune option is enabled by default. However, a common use case is to point `-blocksdir` to a larger partition/drive.\n\nThe current behavior as of Bitcoin Core v31.1 is to [check for the available space of the datadir](https://github.com/bitcoin-core/gui/blob/master/src/qt/freespacechecker.cpp) and prune gets enabled by default even when `-blocksdir` is being pointed to a larger drive.\n\nIt would be nice to have bitcoin-qt consider blocksdir being on a separate path/partition/drive before enabling the prune option. Additionally, this sounds similar to #709 although I'm not entirely sure it's the same issue.",
     "user": {
       "login": "diegoviola",
       "id": 4371,
@@ -42,7 +42,7 @@
     "locked": false,
     "comments": 0,
     "created_at": "2026-07-14T14:35:39Z",
-    "updated_at": "2026-07-14T14:46:05Z"
+    "updated_at": "2026-07-14T15:51:30Z"
   },
   "events": []
 }
