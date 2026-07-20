@@ -41,20 +41,11 @@
       "patch_url": null
     },
     "body": "According to the CMake documentation for [`AUTOMOC`](https://cmake.org/cmake/help/latest/prop_tgt/AUTOMOC.html), all `moc` output files that are not included in a source file are aggregated into the CMake-generated `<AUTOGEN_BUILD_DIR>/mocs_compilation.cpp`, which is added to the target's sources.\r\n\r\nWithin that single translation unit, `moc`-generated code checks the completeness of a signal or slot parameter type while it is still only forward-declared, and the type is completed later, when a subsequently included `moc_*.cpp` file pulls in the header that defines it. GCC 16.x diagnoses this pattern with the `-Wsfinae-incomplete` warning, which is enabled by default.\r\n\r\nIncluding the `moc` output files at the end of the corresponding source files excludes them from `mocs_compilation.cpp`, so each one is compiled in a translation unit where the relevant types are complete.\r\n\r\nFWIW, Qt itself uses the same approach throughout its own codebase. Also see https://www.youtube.com/watch?v=Cx_m-qVnEjo.\r\n\r\n---\r\n\r\nSteps to reproduce on the master branch @ 18c05d93016b28a9afd4c716dfe00b6e0accb30b  on Fedora 44 (GCC 16.1.1):\r\n```console\r\n$ cmake --preset dev-mode\r\n$ cmake --build build_dev_mode -t bitcoind\r\n$ cmake --build build_dev_mode -t bitcoin-qt\r\n[166/172] Building CXX object src/qt/CMakeFiles/bitcoinqt.dir/bitcoinqt_autogen/mocs_compilation.cpp.o\r\nIn file included from /home/hebasto/dev/bitcoin-gui/build_dev_mode/src/qt/bitcoinqt_autogen/EWIEGA46WW/moc_bitcoingui.cpp:9,\r\n                 from /home/hebasto/dev/bitcoin-gui/build_dev_mode/src/qt/bitcoinqt_autogen/mocs_compilation.cpp:9:\r\n/home/hebasto/dev/bitcoin-gui/src/qt/bitcoingui.h:67:7: warning: defining ‘BitcoinGUI’, which previously failed to be complete in a SFINAE context [-Wsfinae-incomplete=]\r\n   67 | class BitcoinGUI : public QMainWindow\r\n      |       ^~~~~~~~~~\r\nIn file included from /usr/include/qt6/QtCore/qobject.h:19,\r\n                 from /usr/include/qt6/QtWidgets/qwidget.h:10,\r\n                 from /usr/include/qt6/QtWidgets/qdialog.h:9,\r\n                 from /usr/include/qt6/QtWidgets/QDialog:1,\r\n                 from /home/hebasto/dev/bitcoin-gui/src/qt/addressbookpage.h:8,\r\n                 from /home/hebasto/dev/bitcoin-gui/build_dev_mode/src/qt/bitcoinqt_autogen/EWIEGA46WW/moc_addressbookpage.cpp:9,\r\n                 from /home/hebasto/dev/bitcoin-gui/build_dev_mode/src/qt/bitcoinqt_autogen/mocs_compilation.cpp:2:\r\n/usr/include/qt6/QtCore/qmetatype.h:344:64: note: here.  Use ‘-Wsfinae-incomplete=2’ for a diagnostic at that point\r\n  344 |         static auto check(U *) -> std::integral_constant<bool, sizeof(U) != 0>;\r\n      |                                                                ^~~~~~~~~\r\nIn file included from /home/hebasto/dev/bitcoin-gui/src/qt/paymentserver.h:35,\r\n                 from /home/hebasto/dev/bitcoin-gui/build_dev_mode/src/qt/bitcoinqt_autogen/EWIEGA46WW/moc_paymentserver.cpp:9,\r\n                 from /home/hebasto/dev/bitcoin-gui/build_dev_mode/src/qt/bitcoinqt_autogen/mocs_compilation.cpp:27:\r\n/home/hebasto/dev/bitcoin-gui/src/qt/sendcoinsrecipient.h:15:7: warning: defining ‘SendCoinsRecipient’, which previously failed to be complete in a SFINAE context [-Wsfinae-incomplete=]\r\n   15 | class SendCoinsRecipient\r\n      |       ^~~~~~~~~~~~~~~~~~\r\n/usr/include/qt6/QtCore/qmetatype.h:344:64: note: here.  Use ‘-Wsfinae-incomplete=2’ for a diagnostic at that point\r\n  344 |         static auto check(U *) -> std::integral_constant<bool, sizeof(U) != 0>;\r\n      |                                                                ^~~~~~~~~\r\nIn file included from /home/hebasto/dev/bitcoin-gui/src/qt/psbtoperationsdialog.h:13,\r\n                 from /home/hebasto/dev/bitcoin-gui/build_dev_mode/src/qt/bitcoinqt_autogen/EWIEGA46WW/moc_psbtoperationsdialog.cpp:9,\r\n                 from /home/hebasto/dev/bitcoin-gui/build_dev_mode/src/qt/bitcoinqt_autogen/mocs_compilation.cpp:30:\r\n/home/hebasto/dev/bitcoin-gui/src/qt/walletmodel.h:48:7: warning: defining ‘WalletModel’, which previously failed to be complete in a SFINAE context [-Wsfinae-incomplete=]\r\n   48 | class WalletModel : public QObject\r\n      |       ^~~~~~~~~~~\r\n/usr/include/qt6/QtCore/qmetatype.h:344:64: note: here.  Use ‘-Wsfinae-incomplete=2’ for a diagnostic at that point\r\n  344 |         static auto check(U *) -> std::integral_constant<bool, sizeof(U) != 0>;\r\n      |                                                                ^~~~~~~~~\r\nIn file included from /home/hebasto/dev/bitcoin-gui/build_dev_mode/src/qt/bitcoinqt_autogen/EWIEGA46WW/moc_qvalidatedlineedit.cpp:9,\r\n                 from /home/hebasto/dev/bitcoin-gui/build_dev_mode/src/qt/bitcoinqt_autogen/mocs_compilation.cpp:32:\r\n/home/hebasto/dev/bitcoin-gui/src/qt/qvalidatedlineedit.h:13:7: warning: defining ‘QValidatedLineEdit’, which previously failed to be complete in a SFINAE context [-Wsfinae-incomplete=]\r\n   13 | class QValidatedLineEdit : public QLineEdit\r\n      |       ^~~~~~~~~~~~~~~~~~\r\n/usr/include/qt6/QtCore/qmetatype.h:344:64: note: here.  Use ‘-Wsfinae-incomplete=2’ for a diagnostic at that point\r\n  344 |         static auto check(U *) -> std::integral_constant<bool, sizeof(U) != 0>;\r\n      |                                                                ^~~~~~~~~\r\nIn file included from /home/hebasto/dev/bitcoin-gui/build_dev_mode/src/qt/bitcoinqt_autogen/EWIEGA46WW/moc_rpcconsole.cpp:9,\r\n                 from /home/hebasto/dev/bitcoin-gui/build_dev_mode/src/qt/bitcoinqt_autogen/mocs_compilation.cpp:37:\r\n/home/hebasto/dev/bitcoin-gui/src/qt/rpcconsole.h:43:7: warning: defining ‘RPCConsole’, which previously failed to be complete in a SFINAE context [-Wsfinae-incomplete=]\r\n   43 | class RPCConsole: public QWidget\r\n      |       ^~~~~~~~~~\r\n/usr/include/qt6/QtCore/qmetatype.h:344:64: note: here.  Use ‘-Wsfinae-incomplete=2’ for a diagnostic at that point\r\n  344 |         static auto check(U *) -> std::integral_constant<bool, sizeof(U) != 0>;\r\n      |                                                                ^~~~~~~~~\r\nIn file included from /home/hebasto/dev/bitcoin-gui/build_dev_mode/src/qt/bitcoinqt_autogen/EWIEGA46WW/moc_sendcoinsentry.cpp:9,\r\n                 from /home/hebasto/dev/bitcoin-gui/build_dev_mode/src/qt/bitcoinqt_autogen/mocs_compilation.cpp:39:\r\n/home/hebasto/dev/bitcoin-gui/src/qt/sendcoinsentry.h:26:7: warning: defining ‘SendCoinsEntry’, which previously failed to be complete in a SFINAE context [-Wsfinae-incomplete=]\r\n   26 | class SendCoinsEntry : public QWidget\r\n      |       ^~~~~~~~~~~~~~\r\n/usr/include/qt6/QtCore/qmetatype.h:344:64: note: here.  Use ‘-Wsfinae-incomplete=2’ for a diagnostic at that point\r\n  344 |         static auto check(U *) -> std::integral_constant<bool, sizeof(U) != 0>;\r\n      |                                                                ^~~~~~~~~\r\n[172/172] Linking CXX executable bin/bitcoin-qt\r\n```",
-    "labels": [
-      {
-        "id": 5353934559,
-        "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
-        "name": "CI failed",
-        "color": "ededed",
-        "default": false
-      }
-    ],
+    "labels": [],
     "created_at": "2026-07-19T16:40:06Z",
-    "updated_at": "2026-07-20T14:33:52Z",
+    "updated_at": "2026-07-20T15:01:44Z",
     "mergeable": true,
-    "mergeable_state": "unstable",
+    "mergeable_state": "clean",
     "merged": false,
     "merge_commit_sha": "ce55494a991befa361e412d1014c9158124ef94b",
     "assignees": [],
@@ -164,7 +155,7 @@
         "forks_count": 2,
         "stargazers_count": 8,
         "watchers_count": 8,
-        "size": 197367,
+        "size": 197390,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -179,7 +170,7 @@
         "visibility": "public",
         "pushed_at": "2026-07-20T15:00:12Z",
         "created_at": "2020-06-18T12:20:51Z",
-        "updated_at": "2026-07-19T16:41:25Z",
+        "updated_at": "2026-07-20T15:02:57Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -784,6 +775,41 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2026-07-20T14:33:54Z"
+    },
+    {
+      "event": "unlabeled",
+      "id": 28218947847,
+      "node_id": "UNLE_lADOEEET9c8AAAABJXbdY88AAAAGkfr5Bw",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/28218947847",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2026-07-20T15:01:44Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
+      }
     }
   ],
   "comments": []
