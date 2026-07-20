@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/949/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/949/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/4ab98d3adb35d0e6e451fbc38955bf08a9625d2a",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/51d36dfd076a98cd761ab312ab10792725ed7a29",
     "number": 949,
     "state": "open",
     "locked": false,
@@ -52,11 +52,11 @@
       }
     ],
     "created_at": "2026-07-19T16:40:06Z",
-    "updated_at": "2026-07-19T19:19:44Z",
+    "updated_at": "2026-07-20T11:25:09Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
-    "merge_commit_sha": "e943d2108e89dfa2cc5d0274d66548cf536b66ae",
+    "merge_commit_sha": "ce55494a991befa361e412d1014c9158124ef94b",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -64,7 +64,7 @@
     "head": {
       "label": "hebasto:260719-sfinae",
       "ref": "260719-sfinae",
-      "sha": "4ab98d3adb35d0e6e451fbc38955bf08a9625d2a",
+      "sha": "51d36dfd076a98cd761ab312ab10792725ed7a29",
       "user": {
         "login": "hebasto",
         "id": 32963518,
@@ -177,7 +177,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2026-07-19T16:40:34Z",
+        "pushed_at": "2026-07-20T11:25:15Z",
         "created_at": "2020-06-18T12:20:51Z",
         "updated_at": "2026-07-19T16:41:25Z",
         "allow_forking": true,
@@ -342,54 +342,14 @@
     },
     "author_association": "MEMBER",
     "draft": false,
-    "additions": 6,
-    "deletions": 0,
-    "changed_files": 3,
+    "additions": 17,
+    "deletions": 3,
+    "changed_files": 5,
     "commits": 1,
     "review_comments": 0,
     "comments": 2
   },
   "events": [
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDRhYjk4ZDNhZGIzNWQwZTZlNDUxZmJjMzg5NTViZjA4YTk2MjVkMmE",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/4ab98d3adb35d0e6e451fbc38955bf08a9625d2a",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/4ab98d3adb35d0e6e451fbc38955bf08a9625d2a",
-      "tree": {
-        "sha": "d68adfe24ab9b05d4672f24d896d1f0e2218d7ee",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/d68adfe24ab9b05d4672f24d896d1f0e2218d7ee"
-      },
-      "verification": {
-        "verified": true,
-        "reason": "valid",
-        "payload": "tree d68adfe24ab9b05d4672f24d896d1f0e2218d7ee\nparent 18c05d93016b28a9afd4c716dfe00b6e0accb30b\nauthor Hennadii Stepanov <32963518+hebasto@users.noreply.github.com> 1784478182 +0100\ncommitter Hennadii Stepanov <32963518+hebasto@users.noreply.github.com> 1784478182 +0100\n\nqt: Fix `-Wsfinae-incomplete` warnings when building with GCC 16.x\n\nAccording to the CMake documentation for `AUTOMOC`, all `moc` output\nfiles that are not included in a source file are aggregated into the\nCMake-generated `<AUTOGEN_BUILD_DIR>/mocs_compilation.cpp`, which is\nadded to the target's sources.\n\nWithin that single translation unit, `moc`-generated code checks the\ncompleteness of a signal or slot parameter type while it is still only\nforward-declared, and the type is completed later, when a subsequently\nincluded `moc_*.cpp` file pulls in the header that defines it. GCC 16.x\ndiagnoses this pattern with the `-Wsfinae-incomplete` warning, which is\nenabled by default.\n\nIncluding the `moc` output files at the end of the corresponding source\nfiles excludes them from `mocs_compilation.cpp`, so each one is\ncompiled in a translation unit where the relevant types are complete.\n",
-        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEE0dvyxLlvLev0wWZUQQEIES5+qB8FAmpc+eYACgkQQQEIES5+\nqB9tEg/+OAsBDPh9AbFB0O5CDP2gU+644pFoIdQNaKTv9DBFNjtO+E5kfWRJ7jci\nnb/z/kHdP3kl3vwle5KfXqCWMtgU0Ig5xMSV5adxe4C8c4gLvVWsS/Yjlz+lHUGv\nzB1QP/KLe8uVS4upflqRtHLgAq+50jN+npckZvzJTLLWyyfpaW/7OSTG9PwlAtR+\n5DFSYTdo74U2M6sLdFSKqlBlogs1jbZLacm6eQF9rMCxbU4zs3OAaMpMVI/lsZZU\n7cPbkxXPFQvUMr5Hh+de4SwT6/oLeQQhWaG7rdOMXhgRCxVIh6oGnpKSQRrwPnnZ\nsj2lYDu0lD1q5PZGpDrRHkfpeiHkgtyg7AR3xEYI6BXXfO44Tf4jfukOH5l3DsJz\nA67obcNB9Of81pp1K0wQy1RZlrjYwXfa7aRQ3hQYULJ7E9mZmQGjZba1bFNKavV1\nEbZ++wyGF4UgQjJB6En5rc7oOSHHyUfVVYgOwMVcmsLHZ+6O7/iiHLuisKbeb46v\nsvl8oJG+ph3scHfT7NIv6P8QJ5H2c3z5LffL2Rud1u4ZzbtWhCpBXJ5zKAvu91R2\n6J9ljbuU/1dUHNWkLn1yb9mWT5Q2ca31tF42IjrPN7ga8725lCriJIZqp+bmyonq\ndwjMV+RzVTDKDtSgsfw1MJxYGf3MNVDQPmo599DZYylcuyhDKoU=\n=rU71\n-----END PGP SIGNATURE-----"
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/18c05d93016b28a9afd4c716dfe00b6e0accb30b",
-          "sha": "18c05d93016b28a9afd4c716dfe00b6e0accb30b",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/18c05d93016b28a9afd4c716dfe00b6e0accb30b"
-        }
-      ],
-      "message": "qt: Fix `-Wsfinae-incomplete` warnings when building with GCC 16.x\n\nAccording to the CMake documentation for `AUTOMOC`, all `moc` output\nfiles that are not included in a source file are aggregated into the\nCMake-generated `<AUTOGEN_BUILD_DIR>/mocs_compilation.cpp`, which is\nadded to the target's sources.\n\nWithin that single translation unit, `moc`-generated code checks the\ncompleteness of a signal or slot parameter type while it is still only\nforward-declared, and the type is completed later, when a subsequently\nincluded `moc_*.cpp` file pulls in the header that defines it. GCC 16.x\ndiagnoses this pattern with the `-Wsfinae-incomplete` warning, which is\nenabled by default.\n\nIncluding the `moc` output files at the end of the corresponding source\nfiles excludes them from `mocs_compilation.cpp`, so each one is\ncompiled in a translation unit where the relevant types are complete.",
-      "committer": {
-        "name": "Hennadii Stepanov",
-        "email": "32963518+hebasto@users.noreply.github.com",
-        "date": "2026-07-19T16:23:02Z"
-      },
-      "author": {
-        "name": "Hennadii Stepanov",
-        "email": "32963518+hebasto@users.noreply.github.com",
-        "date": "2026-07-19T16:23:02Z"
-      },
-      "sha": "4ab98d3adb35d0e6e451fbc38955bf08a9625d2a"
-    },
     {
       "event": "commented",
       "id": 5016524850,
@@ -540,6 +500,108 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/949#issuecomment-5017050325",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/949"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 28208151396,
+      "node_id": "HRFPE_lADOEEET9c8AAAABJXbdY88AAAAGkVY7ZA",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/28208151396",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": "ca88497880f4df1a363e08102949fef1e1281dba",
+      "commit_url": "https://api.github.com/repos/hebasto/gui/commits/ca88497880f4df1a363e08102949fef1e1281dba",
+      "created_at": "2026-07-20T11:06:21Z"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDUxZDM2ZGZkMDc2YTk4Y2Q3NjFhYjMxMmFiMTA3OTI3MjVlZDdhMjk",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/51d36dfd076a98cd761ab312ab10792725ed7a29",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/51d36dfd076a98cd761ab312ab10792725ed7a29",
+      "tree": {
+        "sha": "f8dac409de3124e03f3137f71f5c5de929821187",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/f8dac409de3124e03f3137f71f5c5de929821187"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree f8dac409de3124e03f3137f71f5c5de929821187\nparent 18c05d93016b28a9afd4c716dfe00b6e0accb30b\nauthor Hennadii Stepanov <32963518+hebasto@users.noreply.github.com> 1784546631 +0100\ncommitter Hennadii Stepanov <32963518+hebasto@users.noreply.github.com> 1784546631 +0100\n\nqt: Fix `-Wsfinae-incomplete` warnings when building with GCC 16.x\n\nAccording to the CMake documentation for `AUTOMOC`, all `moc` output\nfiles that are not included in a source file are aggregated into the\nCMake-generated `<AUTOGEN_BUILD_DIR>/mocs_compilation.cpp`, which is\nadded to the target's sources.\n\nWithin that single translation unit, `moc`-generated code checks the\ncompleteness of a signal or slot parameter type while it is still only\nforward-declared, and the type is completed later, when a subsequently\nincluded `moc_*.cpp` file pulls in the header that defines it. GCC 16.x\ndiagnoses this pattern with the `-Wsfinae-incomplete` warning, which is\nenabled by default.\n\nIncluding the `moc` output files at the end of the corresponding source\nfiles excludes them from `mocs_compilation.cpp`, so each one is\ncompiled in a translation unit where the relevant types are complete.\n\nAdditionally:\n1. Some of the `BitcoinGUI` class's private members are gated with\n   `#ifdef ENABLE_WALLET` to prevent `-Wunused-private-field` warnings\n   when building with `-DENABLE_WALLET=OFF`.\n2. `test/lint/lint-includes.py` is adjusted to allow new `#include`\n   statements.\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEE0dvyxLlvLev0wWZUQQEIES5+qB8FAmpeBUcACgkQQQEIES5+\nqB/7Og//aOxqYylgzBZUaiko9lzHRx0DgOeQoO8vdjm9Hoipb++tyO6nEuR6rdHy\nI7CIilvYhTHE8NhpCFGtw6WAp9JpnmyHV/yv9GyWww8Wekc09etfgEvZ/LcMBN3A\nt1KAJ7/t6uB4W3zMzmMPJnel+IW39U0kmHRLcPgKSeJ+WNmSwrX+d598U/ytwqG8\nD6FFRpAPtk7U+yq+1a400PcmGYZKCA1p5Obe8WQKecZMvWukJphWncDN563xUw/q\nxxN1ec+7bu8XVipxupRtOxO4qhskiAamX04WE78yG9lhZ2I7IpMGYuVdhzlg3i3+\nK34BPUulFGa9RqjJtxA6sYtD5ksBmotGtAUoyx2Sv15x82LdC24MEy2zHis5kHAw\nNQDX/YGVUWpY6PTqNryk8Zk6WJE5b9Bq33TANXnMVyA8tW3jgIZ8wvt+n+FhjfjO\np81XFf258A+vAmW8N+fSBgV5AheM8SXNknC6lnk/9SYbQ1V5iX1S0XJ6p3dql6pW\nOgGcq267wS0rwHlAVl8ogoOMHtuw1tXIgAR+yfovF5Pz/8OcDcAsxwCC/YuXV2s2\nG6qX5K4waiez1niM+E3zTrCV9WqGcIsfAjbdH9LF2c9j537v2yZu20AwLmKgPj7L\nWyIAK7qG7WCqRi7SaKWN7+gjZ6TP8W10eRDDuSXeYH3LxWW42iY=\n=Tgni\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/18c05d93016b28a9afd4c716dfe00b6e0accb30b",
+          "sha": "18c05d93016b28a9afd4c716dfe00b6e0accb30b",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/18c05d93016b28a9afd4c716dfe00b6e0accb30b"
+        }
+      ],
+      "message": "qt: Fix `-Wsfinae-incomplete` warnings when building with GCC 16.x\n\nAccording to the CMake documentation for `AUTOMOC`, all `moc` output\nfiles that are not included in a source file are aggregated into the\nCMake-generated `<AUTOGEN_BUILD_DIR>/mocs_compilation.cpp`, which is\nadded to the target's sources.\n\nWithin that single translation unit, `moc`-generated code checks the\ncompleteness of a signal or slot parameter type while it is still only\nforward-declared, and the type is completed later, when a subsequently\nincluded `moc_*.cpp` file pulls in the header that defines it. GCC 16.x\ndiagnoses this pattern with the `-Wsfinae-incomplete` warning, which is\nenabled by default.\n\nIncluding the `moc` output files at the end of the corresponding source\nfiles excludes them from `mocs_compilation.cpp`, so each one is\ncompiled in a translation unit where the relevant types are complete.\n\nAdditionally:\n1. Some of the `BitcoinGUI` class's private members are gated with\n   `#ifdef ENABLE_WALLET` to prevent `-Wunused-private-field` warnings\n   when building with `-DENABLE_WALLET=OFF`.\n2. `test/lint/lint-includes.py` is adjusted to allow new `#include`\n   statements.",
+      "committer": {
+        "name": "Hennadii Stepanov",
+        "email": "32963518+hebasto@users.noreply.github.com",
+        "date": "2026-07-20T11:23:51Z"
+      },
+      "author": {
+        "name": "Hennadii Stepanov",
+        "email": "32963518+hebasto@users.noreply.github.com",
+        "date": "2026-07-20T11:23:51Z"
+      },
+      "sha": "51d36dfd076a98cd761ab312ab10792725ed7a29"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 28208903347,
+      "node_id": "HRFPE_lADOEEET9c8AAAABJXbdY88AAAAGkWG0sw",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/28208903347",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": "51d36dfd076a98cd761ab312ab10792725ed7a29",
+      "commit_url": "https://api.github.com/repos/hebasto/gui/commits/51d36dfd076a98cd761ab312ab10792725ed7a29",
+      "created_at": "2026-07-20T11:25:09Z"
     }
   ],
   "comments": []
