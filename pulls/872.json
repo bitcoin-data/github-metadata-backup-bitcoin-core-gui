@@ -52,7 +52,7 @@
       }
     ],
     "created_at": "2025-05-13T23:31:01Z",
-    "updated_at": "2026-07-28T08:33:03Z",
+    "updated_at": "2026-07-28T09:39:34Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
@@ -346,7 +346,7 @@
     "changed_files": 7,
     "commits": 3,
     "review_comments": 0,
-    "comments": 4
+    "comments": 5
   },
   "events": [
     {
@@ -379,9 +379,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2025-05-13T23:31:31Z",
-      "updated_at": "2026-07-28T08:33:03Z",
+      "updated_at": "2026-07-28T09:39:34Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) and [AI policy](https://github.com/bitcoin/bitcoin/blob/master/doc/AI_POLICY.md) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [Sjors](https://github.com/bitcoin-core/gui/pull/872#issuecomment-5101817232) |\n\nIf your review is incorrectly listed, please copy-paste <code>&lt;!--meta-tag:bot-skip--&gt;</code> into the comment that the bot should ignore.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nNo conflicts as of last run.\n<!--5faf32d7da4f0f540f40219e4f7537a3-->",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) and [AI policy](https://github.com/bitcoin/bitcoin/blob/master/doc/AI_POLICY.md) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Concept ACK | [Sjors](https://github.com/bitcoin-core/gui/pull/872#issuecomment-5101817232), [polespinasa](https://github.com/bitcoin-core/gui/pull/872#issuecomment-5102447277) |\n\nIf your review is incorrectly listed, please copy-paste <code>&lt;!--meta-tag:bot-skip--&gt;</code> into the comment that the bot should ignore.\n<!--174a7506f384e20aa4161008e828411d-->\n### Conflicts\nNo conflicts as of last run.\n<!--5faf32d7da4f0f540f40219e4f7537a3-->",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -1942,6 +1942,64 @@
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/872#issuecomment-5101817232",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/872"
+    },
+    {
+      "event": "commented",
+      "id": 5102447277,
+      "node_id": "IC_kwDOEEET9c8AAAABMCEqrQ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/5102447277",
+      "actor": {
+        "login": "polespinasa",
+        "id": 57642229,
+        "node_id": "MDQ6VXNlcjU3NjQyMjI5",
+        "avatar_url": "https://avatars.githubusercontent.com/u/57642229?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/polespinasa",
+        "html_url": "https://github.com/polespinasa",
+        "followers_url": "https://api.github.com/users/polespinasa/followers",
+        "following_url": "https://api.github.com/users/polespinasa/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/polespinasa/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/polespinasa/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/polespinasa/subscriptions",
+        "organizations_url": "https://api.github.com/users/polespinasa/orgs",
+        "repos_url": "https://api.github.com/users/polespinasa/repos",
+        "events_url": "https://api.github.com/users/polespinasa/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/polespinasa/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2026-07-28T09:37:46Z",
+      "updated_at": "2026-07-28T09:39:32Z",
+      "author_association": "MEMBER",
+      "body": "Concept ACK\r\n\r\n\r\n> CI is unhappy.\r\n\r\nI think that is because of the declaration outside the `#ifdef ENABLE_WALLET` block.\r\n\r\nIn the header (`bitcoingui.h`) is declared inside the `#ifdef ENABLE_WALLET`:\r\n```c++\r\n    QAction* m_migrate_wallet_action{nullptr};\r\n    QMenu* m_migrate_wallet_menu{nullptr};\r\n#ifdef ENABLE_WALLET\r\n    QLabel *m_wallet_selector_label = nullptr;\r\n    QComboBox* m_wallet_selector = nullptr;\r\n    QAction* m_export_watchonly_action{nullptr};\r\n#endif // ENABLE_WALLET\r\n    QSystemTrayIcon* trayIcon = nullptr;\r\n    const std::unique_ptr<QMenu> trayIconMenu;\r\n```\r\n\r\n\r\nBut the new QAction declaration is outside, I think this should fix it:\r\n\r\n```diff\r\n$ git diff\r\ndiff --git a/src/qt/bitcoingui.cpp b/src/qt/bitcoingui.cpp\r\nindex 690ad86390..da8989a564 100644\r\n--- a/src/qt/bitcoingui.cpp\r\n+++ b/src/qt/bitcoingui.cpp\r\n@@ -377,10 +377,6 @@ void BitcoinGUI::createActions()\r\n     m_mask_values_action->setStatusTip(tr(\"Mask the values in the Overview tab\"));\r\n     m_mask_values_action->setCheckable(true);\r\n \r\n-    m_export_watchonly_action = new QAction(tr(\"Export watch-only wallet\"), this);\r\n-    m_export_watchonly_action->setEnabled(false);\r\n-    m_export_watchonly_action->setStatusTip(tr(\"Export a watch-only version of the current wallet that can be restored onto another node.\"));\r\n-\r\n     connect(quitAction, &QAction::triggered, this, &BitcoinGUI::quitRequested);\r\n     connect(aboutAction, &QAction::triggered, this, &BitcoinGUI::aboutClicked);\r\n     connect(aboutQtAction, &QAction::triggered, qApp, QApplication::aboutQt);\r\n@@ -393,6 +389,10 @@ void BitcoinGUI::createActions()\r\n #ifdef ENABLE_WALLET\r\n     if(walletFrame)\r\n     {\r\n+        m_export_watchonly_action = new QAction(tr(\"Export watch-only wallet\"), this);\r\n+        m_export_watchonly_action->setEnabled(false);\r\n+        m_export_watchonly_action->setStatusTip(tr(\"Export a watch-only version of the current wallet that can be restored onto another node.\"));\r\n+\r\n         connect(encryptWalletAction, &QAction::triggered, walletFrame, &WalletFrame::encryptWallet);\r\n         connect(backupWalletAction, &QAction::triggered, walletFrame, &WalletFrame::backupWallet);\r\n         connect(changePassphraseAction, &QAction::triggered, walletFrame, &WalletFrame::changePassphrase);\r\n\r\n```\r\n\r\nOr you can maybe move the declaration under `m_migrate_wallet_action` declaration.",
+      "user": {
+        "login": "polespinasa",
+        "id": 57642229,
+        "node_id": "MDQ6VXNlcjU3NjQyMjI5",
+        "avatar_url": "https://avatars.githubusercontent.com/u/57642229?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/polespinasa",
+        "html_url": "https://github.com/polespinasa",
+        "followers_url": "https://api.github.com/users/polespinasa/followers",
+        "following_url": "https://api.github.com/users/polespinasa/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/polespinasa/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/polespinasa/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/polespinasa/subscriptions",
+        "organizations_url": "https://api.github.com/users/polespinasa/orgs",
+        "repos_url": "https://api.github.com/users/polespinasa/repos",
+        "events_url": "https://api.github.com/users/polespinasa/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/polespinasa/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/872#issuecomment-5102447277",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/872"
     }
   ],

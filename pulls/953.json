@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/953/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/953/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/e40c1e36c17b4a04e77a4ac195677a07f4eb2f55",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/2b4f57cad66ad2e58c51ec0f351a5c112d59b534",
     "number": 953,
     "state": "open",
     "locked": false,
@@ -40,7 +40,7 @@
       "name": null,
       "patch_url": null
     },
-    "body": "Following https://github.com/bitcoin/bitcoin/pull/35266 this PR adds the option to not load the wallet after migrating to the GUI.\r\n\r\nIt is only added for the `migrate` option, not for the `restore_and_migrate`. I guess if we are restoring the wallet we always want to load it.\r\nIn any case, it's pretty straightforward to implement it there too.\r\n\r\n\r\nAfter accepting the original migration pop-up box:\r\n\r\n<img width=\"480\" height=\"348\" alt=\"imagen\" src=\"https://github.com/user-attachments/assets/947aad1f-97fc-4a68-aebd-71957080388b\" />\r\n\r\nIt shows another box asking if wallet loading is desired:\r\n\r\n<img width=\"446\" height=\"215\" alt=\"imagen\" src=\"https://github.com/user-attachments/assets/2d04c2c1-2cdf-4810-9489-98d18e784c16\" />\r\n\r\nIf yes, the wallet is loaded and shown, if not the wallet gets migrated and the GUI returns to it's state.",
+    "body": "Following https://github.com/bitcoin/bitcoin/pull/35266 this PR adds the option to not load the wallet after migrating to the GUI.\r\n\r\nIt is only added for the `migrate` option, not for the `restore_and_migrate`. I guess if we are restoring the wallet we always want to load it.\r\nIn any case, it's pretty straightforward to implement it there too.\r\n\r\n\r\nInside the original migration pop-up box it appears a checkbox that allows the user to choose if want to load the wallet or not, it is checked by default:\r\n\r\n<img width=\"497\" height=\"388\" alt=\"imagen\" src=\"https://github.com/user-attachments/assets/79c76f9b-9b06-4fcb-88fe-3b5db3eaf14f\" />\r\n\r\nIf yes, the wallet is loaded and shown, if not the wallet gets migrated and the GUI returns to it's state.\r\n\r\nThe checkbox has a tooltip that informs when not loading a migrated wallet can be useful:\r\n<img width=\"503\" height=\"494\" alt=\"imagen\" src=\"https://github.com/user-attachments/assets/3a3404ff-1fd3-44ef-8f9d-db526c9f032f\" />\r\n",
     "labels": [
       {
         "id": 5353934559,
@@ -52,11 +52,11 @@
       }
     ],
     "created_at": "2026-07-27T16:51:55Z",
-    "updated_at": "2026-07-28T02:04:02Z",
+    "updated_at": "2026-07-28T09:14:36Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
-    "merge_commit_sha": "88f8e16afffcc69afb844590fb6ee452eb87030b",
+    "merge_commit_sha": "5ec42597cdb88bacf50b990630e00a602da9289f",
     "assignees": [],
     "requested_reviewers": [
       {
@@ -87,7 +87,7 @@
     "head": {
       "label": "polespinasa:2026-07-27-noloadwalletaftermigration",
       "ref": "2026-07-27-noloadwalletaftermigration",
-      "sha": "e40c1e36c17b4a04e77a4ac195677a07f4eb2f55",
+      "sha": "2b4f57cad66ad2e58c51ec0f351a5c112d59b534",
       "user": {
         "login": "polespinasa",
         "id": 57642229,
@@ -200,7 +200,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2026-07-27T17:57:43Z",
+        "pushed_at": "2026-07-28T09:11:28Z",
         "created_at": "2026-03-12T08:14:42Z",
         "updated_at": "2026-07-27T14:41:38Z",
         "allow_forking": true,
@@ -224,7 +224,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "a2aab6df97d9f3e1186e8c3fc57ad909cc8aef9b",
+      "sha": "7dea464d6b51a69bd99a0451be8aaf3a26313eb6",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -365,12 +365,12 @@
     },
     "author_association": "MEMBER",
     "draft": false,
-    "additions": 29,
+    "additions": 25,
     "deletions": 10,
     "changed_files": 5,
     "commits": 2,
     "review_comments": 4,
-    "comments": 3
+    "comments": 4
   },
   "events": [
     {
@@ -544,86 +544,6 @@
       "submitted_at": "2026-07-27T17:40:45Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/953"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDM4MzE1YWZhZDM1NTYyNmZkZGRjOWJjY2ViZGE4NzNkMjAwZWY4MWQ",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/38315afad355626fdddc9bccebda873d200ef81d",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/38315afad355626fdddc9bccebda873d200ef81d",
-      "tree": {
-        "sha": "24705906afad6a9933c05d8076a8ebae41016a3f",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/24705906afad6a9933c05d8076a8ebae41016a3f"
-      },
-      "verification": {
-        "verified": true,
-        "reason": "valid",
-        "payload": "tree 24705906afad6a9933c05d8076a8ebae41016a3f\nparent a2aab6df97d9f3e1186e8c3fc57ad909cc8aef9b\nauthor Pol Espinasa <pol.espinasa@uab.cat> 1785170630 +0200\ncommitter Pol Espinasa <pol.espinasa@uab.cat> 1785174417 +0200\n\ngui: Adds option to not load the wallet after migration\n",
-        "signature": "-----BEGIN PGP SIGNATURE-----\n\niIsEABYKADMWIQRd8IHT46QaaYw3spsoRwkHtAvybQUCameZkRUccG9sLmVzcGlu\nYXNhQHVhYi5jYXQACgkQKEcJB7QL8m2IFQEA2M9Yb4qlNE7PS3/F3EtyFX/xKLuA\nHdsPybe70puuenAA/RDeq5Dd9xIH3smc3XZx1Fl4HWyci0/D04zAJ2swy2AC\n=gVp6\n-----END PGP SIGNATURE-----"
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/a2aab6df97d9f3e1186e8c3fc57ad909cc8aef9b",
-          "sha": "a2aab6df97d9f3e1186e8c3fc57ad909cc8aef9b",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/a2aab6df97d9f3e1186e8c3fc57ad909cc8aef9b"
-        }
-      ],
-      "message": "gui: Adds option to not load the wallet after migration",
-      "committer": {
-        "name": "Pol Espinasa",
-        "email": "pol.espinasa@uab.cat",
-        "date": "2026-07-27T17:46:57Z"
-      },
-      "author": {
-        "name": "Pol Espinasa",
-        "email": "pol.espinasa@uab.cat",
-        "date": "2026-07-27T16:43:50Z"
-      },
-      "sha": "38315afad355626fdddc9bccebda873d200ef81d"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGU0MGMxZTM2YzE3YjRhMDRlNzdhNGFjMTk1Njc3YTA3ZjRlYjJmNTU",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/e40c1e36c17b4a04e77a4ac195677a07f4eb2f55",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/e40c1e36c17b4a04e77a4ac195677a07f4eb2f55",
-      "tree": {
-        "sha": "9a3ab19220583748f53118337c18feb7c0634bc0",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/9a3ab19220583748f53118337c18feb7c0634bc0"
-      },
-      "verification": {
-        "verified": true,
-        "reason": "valid",
-        "payload": "tree 9a3ab19220583748f53118337c18feb7c0634bc0\nparent 38315afad355626fdddc9bccebda873d200ef81d\nauthor Pol Espinasa <pol.espinasa@uab.cat> 1785174632 +0200\ncommitter Pol Espinasa <pol.espinasa@uab.cat> 1785174632 +0200\n\nadd release notes\n",
-        "signature": "-----BEGIN PGP SIGNATURE-----\n\niIsEABYKADMWIQRd8IHT46QaaYw3spsoRwkHtAvybQUCameaaBUccG9sLmVzcGlu\nYXNhQHVhYi5jYXQACgkQKEcJB7QL8m14ggD/RSZXcBbAMGvYXoAYH0l7ovrE5kz6\ncrZTu94PuP8pA6YBAIpZHrBoBQkLnMi6BeJT/KPniw5nIL5jChiI9zRr17QG\n=70PV\n-----END PGP SIGNATURE-----"
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/38315afad355626fdddc9bccebda873d200ef81d",
-          "sha": "38315afad355626fdddc9bccebda873d200ef81d",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/38315afad355626fdddc9bccebda873d200ef81d"
-        }
-      ],
-      "message": "add release notes",
-      "committer": {
-        "name": "Pol Espinasa",
-        "email": "pol.espinasa@uab.cat",
-        "date": "2026-07-27T17:50:32Z"
-      },
-      "author": {
-        "name": "Pol Espinasa",
-        "email": "pol.espinasa@uab.cat",
-        "date": "2026-07-27T17:50:32Z"
-      },
-      "sha": "e40c1e36c17b4a04e77a4ac195677a07f4eb2f55"
     },
     {
       "event": "head_ref_force_pushed",
@@ -805,6 +725,175 @@
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/953#issuecomment-5097640109",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/953"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDNhNjQ4OTM3ZGE3MWNmZjJlMmUwMjRmMTFhNjdlNDk1NjA5NmQ3ZDk",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/3a648937da71cff2e2e024f11a67e4956096d7d9",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/3a648937da71cff2e2e024f11a67e4956096d7d9",
+      "tree": {
+        "sha": "916f86d475f36bcc4e2a5b9f1b3866c8b0842599",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/916f86d475f36bcc4e2a5b9f1b3866c8b0842599"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree 916f86d475f36bcc4e2a5b9f1b3866c8b0842599\nparent a2aab6df97d9f3e1186e8c3fc57ad909cc8aef9b\nauthor Pol Espinasa <pol.espinasa@uab.cat> 1785170630 +0200\ncommitter Pol Espinasa <pol.espinasa@uab.cat> 1785229864 +0200\n\ngui: Adds option to not load the wallet after migration\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niIsEABYKADMWIQRd8IHT46QaaYw3spsoRwkHtAvybQUCamhyKxUccG9sLmVzcGlu\nYXNhQHVhYi5jYXQACgkQKEcJB7QL8m1wxgEApXQVb1D5XzvIjSWdjFAJQAmoklUK\n6T2hir4pzIYOUY4A/0f0EY+lEGLM2AbioLqTwN3Fj1hFjXyj3tKK36SbCioM\n=GTqu\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/a2aab6df97d9f3e1186e8c3fc57ad909cc8aef9b",
+          "sha": "a2aab6df97d9f3e1186e8c3fc57ad909cc8aef9b",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/a2aab6df97d9f3e1186e8c3fc57ad909cc8aef9b"
+        }
+      ],
+      "message": "gui: Adds option to not load the wallet after migration",
+      "committer": {
+        "name": "Pol Espinasa",
+        "email": "pol.espinasa@uab.cat",
+        "date": "2026-07-28T09:11:04Z"
+      },
+      "author": {
+        "name": "Pol Espinasa",
+        "email": "pol.espinasa@uab.cat",
+        "date": "2026-07-27T16:43:50Z"
+      },
+      "sha": "3a648937da71cff2e2e024f11a67e4956096d7d9"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDJiNGY1N2NhZDY2YWQyZTU4YzUxZWMwZjM1MWE1YzExMmQ1OWI1MzQ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/2b4f57cad66ad2e58c51ec0f351a5c112d59b534",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/2b4f57cad66ad2e58c51ec0f351a5c112d59b534",
+      "tree": {
+        "sha": "a697823b8c91076e1c35886f267e6b44a75ee971",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/a697823b8c91076e1c35886f267e6b44a75ee971"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree a697823b8c91076e1c35886f267e6b44a75ee971\nparent 3a648937da71cff2e2e024f11a67e4956096d7d9\nauthor Pol Espinasa <pol.espinasa@uab.cat> 1785174632 +0200\ncommitter Pol Espinasa <pol.espinasa@uab.cat> 1785229867 +0200\n\nadd release notes\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niIsEABYKADMWIQRd8IHT46QaaYw3spsoRwkHtAvybQUCamhyKxUccG9sLmVzcGlu\nYXNhQHVhYi5jYXQACgkQKEcJB7QL8m2jmgEApyDn1wDdGFHqPAq4JvPW+lrJLSGx\neUcMlwywRIJvWrMBAPVjOrYbVzp+8bNbVCsq2AKCcAB57OkR5JZpVlGETGEL\n=Aprn\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/3a648937da71cff2e2e024f11a67e4956096d7d9",
+          "sha": "3a648937da71cff2e2e024f11a67e4956096d7d9",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/3a648937da71cff2e2e024f11a67e4956096d7d9"
+        }
+      ],
+      "message": "add release notes",
+      "committer": {
+        "name": "Pol Espinasa",
+        "email": "pol.espinasa@uab.cat",
+        "date": "2026-07-28T09:11:07Z"
+      },
+      "author": {
+        "name": "Pol Espinasa",
+        "email": "pol.espinasa@uab.cat",
+        "date": "2026-07-27T17:50:32Z"
+      },
+      "sha": "2b4f57cad66ad2e58c51ec0f351a5c112d59b534"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 28588285675,
+      "node_id": "HRFPE_lADOEEET9c8AAAABKXHG5M8AAAAGp_6e6w",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/28588285675",
+      "actor": {
+        "login": "polespinasa",
+        "id": 57642229,
+        "node_id": "MDQ6VXNlcjU3NjQyMjI5",
+        "avatar_url": "https://avatars.githubusercontent.com/u/57642229?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/polespinasa",
+        "html_url": "https://github.com/polespinasa",
+        "followers_url": "https://api.github.com/users/polespinasa/followers",
+        "following_url": "https://api.github.com/users/polespinasa/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/polespinasa/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/polespinasa/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/polespinasa/subscriptions",
+        "organizations_url": "https://api.github.com/users/polespinasa/orgs",
+        "repos_url": "https://api.github.com/users/polespinasa/repos",
+        "events_url": "https://api.github.com/users/polespinasa/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/polespinasa/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": "2b4f57cad66ad2e58c51ec0f351a5c112d59b534",
+      "commit_url": "https://api.github.com/repos/polespinasa/gui/commits/2b4f57cad66ad2e58c51ec0f351a5c112d59b534",
+      "created_at": "2026-07-28T09:11:29Z"
+    },
+    {
+      "event": "commented",
+      "id": 5102205352,
+      "node_id": "IC_kwDOEEET9c8AAAABMB15qA",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/5102205352",
+      "actor": {
+        "login": "polespinasa",
+        "id": 57642229,
+        "node_id": "MDQ6VXNlcjU3NjQyMjI5",
+        "avatar_url": "https://avatars.githubusercontent.com/u/57642229?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/polespinasa",
+        "html_url": "https://github.com/polespinasa",
+        "followers_url": "https://api.github.com/users/polespinasa/followers",
+        "following_url": "https://api.github.com/users/polespinasa/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/polespinasa/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/polespinasa/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/polespinasa/subscriptions",
+        "organizations_url": "https://api.github.com/users/polespinasa/orgs",
+        "repos_url": "https://api.github.com/users/polespinasa/repos",
+        "events_url": "https://api.github.com/users/polespinasa/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/polespinasa/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2026-07-28T09:13:34Z",
+      "updated_at": "2026-07-28T09:13:34Z",
+      "author_association": "MEMBER",
+      "body": "> In terms of UX, I think it would be better to have this be a checkbox option in the initial dialog rather than a second dialog that the user has to click through.\r\n\r\nDone, modified the description to show the current UI.",
+      "user": {
+        "login": "polespinasa",
+        "id": 57642229,
+        "node_id": "MDQ6VXNlcjU3NjQyMjI5",
+        "avatar_url": "https://avatars.githubusercontent.com/u/57642229?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/polespinasa",
+        "html_url": "https://github.com/polespinasa",
+        "followers_url": "https://api.github.com/users/polespinasa/followers",
+        "following_url": "https://api.github.com/users/polespinasa/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/polespinasa/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/polespinasa/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/polespinasa/subscriptions",
+        "organizations_url": "https://api.github.com/users/polespinasa/orgs",
+        "repos_url": "https://api.github.com/users/polespinasa/repos",
+        "events_url": "https://api.github.com/users/polespinasa/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/polespinasa/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/953#issuecomment-5102205352",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/953"
     }
   ],
