@@ -52,7 +52,7 @@
       }
     ],
     "created_at": "2025-05-13T23:31:01Z",
-    "updated_at": "2026-07-28T09:39:34Z",
+    "updated_at": "2026-07-28T10:18:04Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
@@ -345,7 +345,7 @@
     "deletions": 1,
     "changed_files": 7,
     "commits": 3,
-    "review_comments": 0,
+    "review_comments": 3,
     "comments": 5
   },
   "events": [
@@ -2001,7 +2001,208 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/872#issuecomment-5102447277",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/872"
+    },
+    {
+      "event": "reviewed",
+      "id": 4796117253,
+      "node_id": "PRR_kwDOEEET9c8AAAABHd7xBQ",
+      "url": null,
+      "actor": null,
+      "commit_id": "8ff9d70c79b36e4430d051b94558115a2bf8f0c0",
+      "commit_url": null,
+      "created_at": null,
+      "updated_at": "2026-07-28T10:18:03Z",
+      "author_association": "MEMBER",
+      "user": {
+        "login": "polespinasa",
+        "id": 57642229,
+        "node_id": "MDQ6VXNlcjU3NjQyMjI5",
+        "avatar_url": "https://avatars.githubusercontent.com/u/57642229?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/polespinasa",
+        "html_url": "https://github.com/polespinasa",
+        "followers_url": "https://api.github.com/users/polespinasa/followers",
+        "following_url": "https://api.github.com/users/polespinasa/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/polespinasa/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/polespinasa/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/polespinasa/subscriptions",
+        "organizations_url": "https://api.github.com/users/polespinasa/orgs",
+        "repos_url": "https://api.github.com/users/polespinasa/repos",
+        "events_url": "https://api.github.com/users/polespinasa/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/polespinasa/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/872#pullrequestreview-4796117253",
+      "submitted_at": "2026-07-28T10:18:03Z",
+      "state": "COMMENTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/872"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/3664616220",
+      "pull_request_review_id": 4796117253,
+      "id": 3664616220,
+      "node_id": "PRRC_kwDOEEET9c7abZsc",
+      "diff_hunk": "",
+      "path": "src/qt/bitcoingui.cpp",
+      "position": 1,
+      "original_position": 1,
+      "commit_id": "a4f67c85c6835724009cb6b6336c93288c324336",
+      "original_commit_id": "a4f67c85c6835724009cb6b6336c93288c324336",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "polespinasa",
+        "id": 57642229,
+        "node_id": "MDQ6VXNlcjU3NjQyMjI5",
+        "avatar_url": "https://avatars.githubusercontent.com/u/57642229?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/polespinasa",
+        "html_url": "https://github.com/polespinasa",
+        "followers_url": "https://api.github.com/users/polespinasa/followers",
+        "following_url": "https://api.github.com/users/polespinasa/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/polespinasa/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/polespinasa/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/polespinasa/subscriptions",
+        "organizations_url": "https://api.github.com/users/polespinasa/orgs",
+        "repos_url": "https://api.github.com/users/polespinasa/repos",
+        "events_url": "https://api.github.com/users/polespinasa/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/polespinasa/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "body": "in a4f67c85c6835724009cb6b6336c93288c324336 gui: Menu action for exporting a watchonly wallet\n\nIf you close all wallets, the option to export a watch-only-wallet remains usable, but it should be grey and unusable.\nFix:\n\n```diff\n$ git diff\ndiff --git a/src/qt/bitcoingui.cpp b/src/qt/bitcoingui.cpp\nindex 690ad86390..ad1ecf572d 100644\n--- a/src/qt/bitcoingui.cpp\n+++ b/src/qt/bitcoingui.cpp\n@@ -882,6 +882,7 @@ void BitcoinGUI::setWalletActionsEnabled(bool enabled)\n     openAction->setEnabled(enabled);\n     m_close_wallet_action->setEnabled(enabled);\n     m_close_all_wallets_action->setEnabled(enabled);\n+    m_export_watchonly_action->setEnabled(enabled);\n }\n \n void BitcoinGUI::createTrayIcon()\n\n```\n",
+      "created_at": "2026-07-28T10:07:32Z",
+      "updated_at": "2026-07-28T10:18:03Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/872#discussion_r3664616220",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/3664616220"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/872"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 884,
+      "original_line": 884,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/3664635144",
+      "pull_request_review_id": 4796117253,
+      "id": 3664635144,
+      "node_id": "PRRC_kwDOEEET9c7abeUI",
+      "diff_hunk": "@@ -522,6 +523,11 @@ class WalletImpl : public Wallet\n     }\n     CWallet* wallet() override { return m_wallet.get(); }\n \n+    util::Result<std::string> exportWatchOnlyWallet(const fs::path& destination) override {\n+        LOCK(m_wallet->cs_wallet);",
+      "path": "src/wallet/interfaces.cpp",
+      "position": 13,
+      "original_position": 13,
+      "commit_id": "a4f67c85c6835724009cb6b6336c93288c324336",
+      "original_commit_id": "a4f67c85c6835724009cb6b6336c93288c324336",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "polespinasa",
+        "id": 57642229,
+        "node_id": "MDQ6VXNlcjU3NjQyMjI5",
+        "avatar_url": "https://avatars.githubusercontent.com/u/57642229?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/polespinasa",
+        "html_url": "https://github.com/polespinasa",
+        "followers_url": "https://api.github.com/users/polespinasa/followers",
+        "following_url": "https://api.github.com/users/polespinasa/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/polespinasa/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/polespinasa/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/polespinasa/subscriptions",
+        "organizations_url": "https://api.github.com/users/polespinasa/orgs",
+        "repos_url": "https://api.github.com/users/polespinasa/repos",
+        "events_url": "https://api.github.com/users/polespinasa/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/polespinasa/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "body": "in a4f67c8 gui: Menu action for exporting a watchonly wallet\n\nShouldn't here call `TopUpKeyPool()` like we do in the RPC?¿",
+      "created_at": "2026-07-28T10:10:41Z",
+      "updated_at": "2026-07-28T10:18:03Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/872#discussion_r3664635144",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/3664635144"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/872"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 527,
+      "original_line": 527,
+      "side": "RIGHT"
+    },
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/3664680609",
+      "pull_request_review_id": 4796117253,
+      "id": 3664680609,
+      "node_id": "PRRC_kwDOEEET9c7abpah",
+      "diff_hunk": "@@ -524,6 +528,16 @@ void BitcoinGUI::createActions()\n         });\n         connect(m_mask_values_action, &QAction::toggled, this, &BitcoinGUI::setPrivacy);\n         connect(m_mask_values_action, &QAction::toggled, this, &BitcoinGUI::enableHistoryAction);\n+        GUIUtil::ExceptionSafeConnect(m_export_watchonly_action, &QAction::triggered, [this](bool) {\n+            QString destination = GUIUtil::getSaveFileName(this, tr(\"Save Watch-only Wallet Export\"), QString(), QString(), nullptr);\n+            if (destination.isEmpty()) return;\n+            util::Result<std::string> export_res = walletFrame->currentWalletModel()->wallet().exportWatchOnlyWallet(GUIUtil::QStringToPath(destination));",
+      "path": "src/qt/bitcoingui.cpp",
+      "position": 18,
+      "original_position": 18,
+      "commit_id": "a4f67c85c6835724009cb6b6336c93288c324336",
+      "original_commit_id": "a4f67c85c6835724009cb6b6336c93288c324336",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "polespinasa",
+        "id": 57642229,
+        "node_id": "MDQ6VXNlcjU3NjQyMjI5",
+        "avatar_url": "https://avatars.githubusercontent.com/u/57642229?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/polespinasa",
+        "html_url": "https://github.com/polespinasa",
+        "followers_url": "https://api.github.com/users/polespinasa/followers",
+        "following_url": "https://api.github.com/users/polespinasa/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/polespinasa/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/polespinasa/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/polespinasa/subscriptions",
+        "organizations_url": "https://api.github.com/users/polespinasa/orgs",
+        "repos_url": "https://api.github.com/users/polespinasa/repos",
+        "events_url": "https://api.github.com/users/polespinasa/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/polespinasa/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "body": "in a4f67c8 gui: Menu action for exporting a watchonly wallet\n\nWhat if `walletFrame->currentWalletModel()` is `nullptr`?\nThat causes a segmentation fault:\n\n<img width=\"766\" height=\"48\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/46e05391-c5f8-4fcf-bb04-cfdeaee0ca8c\" />\n\nThis can be triggered when no wallet is loaded and you try to export a watchonly wallet.\nWhich should not happen but can happen because of https://github.com/bitcoin-core/gui/pull/872/changes/a4f67c85c6835724009cb6b6336c93288c324336#r3664616220\n\nWe could probably also protect this here with:\n\n```diff\n$ git diff\ndiff --git a/src/qt/bitcoingui.cpp b/src/qt/bitcoingui.cpp\nindex 690ad86390..eee44330dd 100644\n--- a/src/qt/bitcoingui.cpp\n+++ b/src/qt/bitcoingui.cpp\n@@ -531,7 +531,9 @@ void BitcoinGUI::createActions()\n         GUIUtil::ExceptionSafeConnect(m_export_watchonly_action, &QAction::triggered, [this](bool) {\n             QString destination = GUIUtil::getSaveFileName(this, tr(\"Save Watch-only Wallet Export\"), QString(), QString(), nullptr);\n             if (destination.isEmpty()) return;\n-            util::Result<std::string> export_res = walletFrame->currentWalletModel()->wallet().exportWatchOnlyWallet(GUIUtil::QStringToPath(destination));\n+            WalletModel* model = walletFrame->currentWalletModel();\n+            if (!model) return;\n+            util::Result<std::string> export_res = model->wallet().exportWatchOnlyWallet(GUIUtil::QStringToPath(destination));\n             if (export_res) {\n                 QMessageBox::information(nullptr, tr(\"Export Successful\"), tr(\"The wallet has been exported to \") + QString::fromStdString(*export_res));\n             } else {\n\n```\n",
+      "created_at": "2026-07-28T10:17:34Z",
+      "updated_at": "2026-07-28T10:18:03Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/872#discussion_r3664680609",
+      "author_association": "MEMBER",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/3664680609"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/872"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 534,
+      "original_line": 534,
+      "side": "RIGHT"
+    }
+  ]
 }
