@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/952/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/952/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/1907923c129509ee96a7d894ebc93f7517486eb0",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/4894a79e29e094c1b0aab0b7b06e42e311705c3f",
     "number": 952,
     "state": "open",
     "locked": false,
@@ -40,7 +40,7 @@
       "name": null,
       "patch_url": null
     },
-    "body": "Just grabbing #911\r\n\r\nCopying the motivation from AJ's description:\r\n\r\nThe wallet can contain transactions that are not accepted into the node's mempool (eg due to containing a too large OP_RETURN output, due to too low a feerate, or due to too many unconfirmed ancestors). In the event you end up in this situation, it can appear as if funds have gone missing from your wallet due to the non-mempool balance not being reported. Correct this by reporting the non-mempool balance.\r\n\r\nSee https://github.com/bitcoin/bitcoin/pull/33671 for further context.\r\n\r\n\r\nThe changes look like:\r\n\r\n<img width=\"314\" height=\"172\" alt=\"imagen\" src=\"https://github.com/user-attachments/assets/4ba50b77-d135-46c6-b64c-5bfa366da2cb\" />\r\n\r\n\r\n### How to test\r\n\r\nTo test, start with `-datacarriersize=10`, and run\r\n\r\n```\r\nsend '{\"data\": \"4368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73\"}' null \"unset\" 1\r\n```\r\n\r\nfrom the console. \"Non-mempool: <change amount>\" should appear in the Balances pane on the Overview window with the change from the transaction. Restarting with `-datacarriersize=100000` should allow the tx to enter the mempool, and move the amount into the Available balance. (Presumably, do this on -regtest after generating 100 blocks; or perhaps signet after grabbing some funds from a faucet)",
+    "body": "Just grabbing #911\r\n\r\nCopying the motivation from AJ's description:\r\n\r\nThe wallet can contain transactions that are not accepted into the node's mempool (eg due to containing a too large OP_RETURN output, due to too low a feerate, or due to too many unconfirmed ancestors). In the event you end up in this situation, it can appear as if funds have gone missing from your wallet due to the non-mempool balance not being reported. Correct this by reporting the non-mempool balance.\r\n\r\nSee https://github.com/bitcoin/bitcoin/pull/33671 for further context.\r\n\r\n\r\nThe changes look like:\r\n\r\n<img width=\"372\" height=\"239\" alt=\"imagen\" src=\"https://github.com/user-attachments/assets/2adab476-0db1-4354-9e51-ddddca26c61a\" />\r\n\r\n\r\n\r\n### How to test\r\n\r\nTo test, start with `-datacarriersize=10`, and run\r\n\r\n```\r\nsend '{\"data\": \"4368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73\"}' null \"unset\" 1\r\n```\r\n\r\nfrom the console. \"Non-mempool: <change amount>\" should appear in the Balances pane on the Overview window with the change from the transaction. Restarting with `-datacarriersize=100000` should allow the tx to enter the mempool, and move the amount into the Available balance. (Presumably, do this on -regtest after generating 100 blocks; or perhaps signet after grabbing some funds from a faucet)",
     "labels": [
       {
         "id": 5353934559,
@@ -52,11 +52,11 @@
       }
     ],
     "created_at": "2026-07-27T15:21:25Z",
-    "updated_at": "2026-07-30T13:55:08Z",
+    "updated_at": "2026-07-30T14:53:49Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
-    "merge_commit_sha": "13be45f281966cddaf6759836960962ec1543686",
+    "merge_commit_sha": "c9894e5a08bdf9f8442d9640817f31319fc95503",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -64,7 +64,7 @@
     "head": {
       "label": "polespinasa:2026-07-27-wallet_nonmempool_balance",
       "ref": "2026-07-27-wallet_nonmempool_balance",
-      "sha": "1907923c129509ee96a7d894ebc93f7517486eb0",
+      "sha": "4894a79e29e094c1b0aab0b7b06e42e311705c3f",
       "user": {
         "login": "polespinasa",
         "id": 57642229,
@@ -177,7 +177,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2026-07-30T09:15:42Z",
+        "pushed_at": "2026-07-30T14:39:07Z",
         "created_at": "2026-03-12T08:14:42Z",
         "updated_at": "2026-07-27T14:41:38Z",
         "allow_forking": true,
@@ -201,7 +201,7 @@
     "base": {
       "label": "bitcoin-core:master",
       "ref": "master",
-      "sha": "a2aab6df97d9f3e1186e8c3fc57ad909cc8aef9b",
+      "sha": "67efced1fc83a0b7215cc1513e7c4754fee0f12f",
       "user": {
         "login": "bitcoin-core",
         "id": 13464320,
@@ -347,7 +347,7 @@
     "changed_files": 6,
     "commits": 6,
     "review_comments": 0,
-    "comments": 6
+    "comments": 7
   },
   "events": [
     {
@@ -380,9 +380,9 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2026-07-27T15:21:39Z",
-      "updated_at": "2026-07-28T12:44:36Z",
+      "updated_at": "2026-07-30T14:39:20Z",
       "author_association": "CONTRIBUTOR",
-      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) and [AI policy](https://github.com/bitcoin/bitcoin/blob/master/doc/AI_POLICY.md) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| ACK | [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/952#pullrequestreview-4797335952) |\n\nIf your review is incorrectly listed, please copy-paste <code>&lt;!--meta-tag:bot-skip--&gt;</code> into the comment that the bot should ignore.\n<!--5faf32d7da4f0f540f40219e4f7537a3-->",
+      "body": "<!--e57a25ab6845829454e8d69fc972939a-->\n\nThe following sections might be updated with supplementary metadata relevant to reviewers and maintainers.\n\n<!--021abf342d371248e50ceaed478a90ca-->\n### Reviews\nSee [the guideline](https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#code-review) and [AI policy](https://github.com/bitcoin/bitcoin/blob/master/doc/AI_POLICY.md) for information on the review process.\n| Type | Reviewers |\n| ---- | --------- |\n| Stale ACK | [pablomartin4btc](https://github.com/bitcoin-core/gui/pull/952#pullrequestreview-4797335952) |\n\nIf your review is incorrectly listed, please copy-paste <code>&lt;!--meta-tag:bot-skip--&gt;</code> into the comment that the bot should ignore.\n<!--5faf32d7da4f0f540f40219e4f7537a3-->",
       "user": {
         "login": "DrahtBot",
         "id": 39886733,
@@ -527,46 +527,6 @@
         "date": "2026-07-27T15:16:10Z"
       },
       "sha": "e7585d0c6308e234e49d18934c7d24cd339d8211"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGRiMzJhMWIzNDQyNmNkZDZkYTljYjZkZjA4YjZkNThkZDgyNzJhMzc",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/db32a1b34426cdd6da9cb6df08b6d58dd8272a37",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/db32a1b34426cdd6da9cb6df08b6d58dd8272a37",
-      "tree": {
-        "sha": "0c66154e367522c71af249a009c047a2d93d9ccc",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/0c66154e367522c71af249a009c047a2d93d9ccc"
-      },
-      "verification": {
-        "verified": true,
-        "reason": "valid",
-        "payload": "tree 0c66154e367522c71af249a009c047a2d93d9ccc\nparent e7585d0c6308e234e49d18934c7d24cd339d8211\nauthor Pol Espinasa <pol.espinasa@uab.cat> 1763464070 +1000\ncommitter Pol Espinasa <pol.espinasa@uab.cat> 1785166630 +0200\n\ngui: Add non-mempool balance to wallet overview\n\nThe assert in formatWithPrivacy is removed because m_mine_nonmempool is always negative, making this assert\nno longer true.\n\nCo-authored-by: Anthony Towns <aj@erisian.com.au>\n",
-        "signature": "-----BEGIN PGP SIGNATURE-----\n\niIsEABYKADMWIQRd8IHT46QaaYw3spsoRwkHtAvybQUCamd7JhUccG9sLmVzcGlu\nYXNhQHVhYi5jYXQACgkQKEcJB7QL8m268AEAiVYzX++mmPYJKFMjDFSfVJ5wqo02\nNp4m/+dwqb/y5xYBAPciJl+zUyTJNMfYKslQQd+HBP5J454GTqEsfhLQS3IK\n=0+Ur\n-----END PGP SIGNATURE-----"
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/e7585d0c6308e234e49d18934c7d24cd339d8211",
-          "sha": "e7585d0c6308e234e49d18934c7d24cd339d8211",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/e7585d0c6308e234e49d18934c7d24cd339d8211"
-        }
-      ],
-      "message": "gui: Add non-mempool balance to wallet overview\n\nThe assert in formatWithPrivacy is removed because m_mine_nonmempool is always negative, making this assert\nno longer true.\n\nCo-authored-by: Anthony Towns <aj@erisian.com.au>",
-      "committer": {
-        "name": "Pol Espinasa",
-        "email": "pol.espinasa@uab.cat",
-        "date": "2026-07-27T15:37:10Z"
-      },
-      "author": {
-        "name": "Pol Espinasa",
-        "email": "pol.espinasa@uab.cat",
-        "date": "2025-11-18T11:07:50Z"
-      },
-      "sha": "db32a1b34426cdd6da9cb6df08b6d58dd8272a37"
     },
     {
       "event": "head_ref_force_pushed",
@@ -790,46 +750,6 @@
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/952"
     },
     {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDA5YjMzMTM1MGM4ZTQxODRmMWMyNzViNzcyYTVjNDc4ZDY0OGJhNmY",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/09b331350c8e4184f1c275b772a5c478d648ba6f",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/09b331350c8e4184f1c275b772a5c478d648ba6f",
-      "tree": {
-        "sha": "dc1c73e8f0b7bcf39ad9041991f4eb7161ef737b",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/dc1c73e8f0b7bcf39ad9041991f4eb7161ef737b"
-      },
-      "verification": {
-        "verified": true,
-        "reason": "valid",
-        "payload": "tree dc1c73e8f0b7bcf39ad9041991f4eb7161ef737b\nparent db32a1b34426cdd6da9cb6df08b6d58dd8272a37\nauthor Pol Espinasa <pol.espinasa@uab.cat> 1785172848 +0200\ncommitter Pol Espinasa <pol.espinasa@uab.cat> 1785172890 +0200\n\ntest: Add test for non-mempool balance visibility\n\nCo-authored-by: Pablo Martin <pablomartin4btc@gmail.com>\n",
-        "signature": "-----BEGIN PGP SIGNATURE-----\n\niIsEABYKADMWIQRd8IHT46QaaYw3spsoRwkHtAvybQUCameTnhUccG9sLmVzcGlu\nYXNhQHVhYi5jYXQACgkQKEcJB7QL8m1cpgEAw3FF8DhWdW7JE2+n4WI3q1HTTlT1\nYrc7M3wUZVTVA5cA/isXXXBHKQ+W5aTJ4dmyqBmg2Q7+SeLZxo6TLvPj4+wD\n=US2R\n-----END PGP SIGNATURE-----"
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/db32a1b34426cdd6da9cb6df08b6d58dd8272a37",
-          "sha": "db32a1b34426cdd6da9cb6df08b6d58dd8272a37",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/db32a1b34426cdd6da9cb6df08b6d58dd8272a37"
-        }
-      ],
-      "message": "test: Add test for non-mempool balance visibility\n\nCo-authored-by: Pablo Martin <pablomartin4btc@gmail.com>",
-      "committer": {
-        "name": "Pol Espinasa",
-        "email": "pol.espinasa@uab.cat",
-        "date": "2026-07-27T17:21:30Z"
-      },
-      "author": {
-        "name": "Pol Espinasa",
-        "email": "pol.espinasa@uab.cat",
-        "date": "2026-07-27T17:20:48Z"
-      },
-      "sha": "09b331350c8e4184f1c275b772a5c478d648ba6f"
-    },
-    {
       "event": "commented",
       "id": 5094527615,
       "node_id": "IC_kwDOEEET9c8AAAABL6hSfw",
@@ -886,46 +806,6 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/952#issuecomment-5094527615",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/952"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDE5MDc5MjNjMTI5NTA5ZWU5NmE3ZDg5NGViYzkzZjc1MTc0ODZlYjA",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/1907923c129509ee96a7d894ebc93f7517486eb0",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/1907923c129509ee96a7d894ebc93f7517486eb0",
-      "tree": {
-        "sha": "a6a00b7874979a4f1f95a87857ed1da0a6741cdb",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/a6a00b7874979a4f1f95a87857ed1da0a6741cdb"
-      },
-      "verification": {
-        "verified": true,
-        "reason": "valid",
-        "payload": "tree a6a00b7874979a4f1f95a87857ed1da0a6741cdb\nparent 09b331350c8e4184f1c275b772a5c478d648ba6f\nauthor Pol Espinasa <pol.espinasa@uab.cat> 1785171702 +0200\ncommitter Pol Espinasa <pol.espinasa@uab.cat> 1785175044 +0200\n\nadd release note\n",
-        "signature": "-----BEGIN PGP SIGNATURE-----\n\niIsEABYKADMWIQRd8IHT46QaaYw3spsoRwkHtAvybQUCamecBRUccG9sLmVzcGlu\nYXNhQHVhYi5jYXQACgkQKEcJB7QL8m2GqgEA41p978Wt+0mDmQ0Mi9FMzMn41pbw\nJ4AehL7Xr/YA8/0BAM15zISowkPlPuxUQT41oXnmdCVfdERkFjXdwGTFYX8A\n=8oTd\n-----END PGP SIGNATURE-----"
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/09b331350c8e4184f1c275b772a5c478d648ba6f",
-          "sha": "09b331350c8e4184f1c275b772a5c478d648ba6f",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/09b331350c8e4184f1c275b772a5c478d648ba6f"
-        }
-      ],
-      "message": "add release note",
-      "committer": {
-        "name": "Pol Espinasa",
-        "email": "pol.espinasa@uab.cat",
-        "date": "2026-07-27T17:57:24Z"
-      },
-      "author": {
-        "name": "Pol Espinasa",
-        "email": "pol.espinasa@uab.cat",
-        "date": "2026-07-27T17:01:42Z"
-      },
-      "sha": "1907923c129509ee96a7d894ebc93f7517486eb0"
     },
     {
       "event": "head_ref_force_pushed",
@@ -1174,6 +1054,215 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/952#issuecomment-5131729652",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/952"
+    },
+    {
+      "event": "commented",
+      "id": 5132099949,
+      "node_id": "IC_kwDOEEET9c8AAAABMeWhbQ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/5132099949",
+      "actor": {
+        "login": "polespinasa",
+        "id": 57642229,
+        "node_id": "MDQ6VXNlcjU3NjQyMjI5",
+        "avatar_url": "https://avatars.githubusercontent.com/u/57642229?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/polespinasa",
+        "html_url": "https://github.com/polespinasa",
+        "followers_url": "https://api.github.com/users/polespinasa/followers",
+        "following_url": "https://api.github.com/users/polespinasa/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/polespinasa/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/polespinasa/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/polespinasa/subscriptions",
+        "organizations_url": "https://api.github.com/users/polespinasa/orgs",
+        "repos_url": "https://api.github.com/users/polespinasa/repos",
+        "events_url": "https://api.github.com/users/polespinasa/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/polespinasa/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2026-07-30T14:27:15Z",
+      "updated_at": "2026-07-30T14:53:49Z",
+      "author_association": "MEMBER",
+      "body": "Thanks for the feedback Christoph!\r\n\r\n> Overall, I think a label like \"On hold\" or \"Needs attention\" would be a more clear than \"Not in mempool\" and go better with \"Available\" and \"Pending\". Users have mental models for those.\r\n\r\nI will go with \"On hold\", \"needs attention\" is a bit misleading as it doesn't really means that the user need to pay attention to it or do something specific other than wait.\r\n\r\n> Not sure if this is done already, and maybe not part of this PR, but carrying this state through the rest of the UI is likely also a good idea. So a transaction in the payment history should also indicate this state. And the transaction details view can ideally let the user know why the transaction is \"on hold\", and provide information or options on how to either cancel it or fix the respective problem.\r\n\r\nI think this is a bit out of the scope of this PR, but I like the idea. I will keep this PR as is and I will try to think, as a follow-up, on how to add it to the payment history and tx details, it will mainly depend on the wallet interface giving that specific information.\r\n\r\nEdit: Just did some checking on this last point, the transaction does appear in the transaction history, and the tx details says that is not in the mempool, probably the phrasing could be better:\r\n\r\n<img width=\"1025\" height=\"213\" alt=\"imagen\" src=\"https://github.com/user-attachments/assets/fe0bf249-bda9-4b95-b6b8-df96945fb9e9\" />\r\n\r\n\r\n<img width=\"634\" height=\"285\" alt=\"imagen\" src=\"https://github.com/user-attachments/assets/6a711fdd-d824-4f88-aecc-a49ec02560d4\" />\r\n\r\nAny suggestion on how could it be more explicit in the \"recent transactions\", an \"transaction list\"?\r\nThis is \"transaction list\"\r\n<img width=\"1007\" height=\"111\" alt=\"imagen\" src=\"https://github.com/user-attachments/assets/d230df1d-f963-4df6-a105-1107288bd4c2\" />\r\n\r\n",
+      "user": {
+        "login": "polespinasa",
+        "id": 57642229,
+        "node_id": "MDQ6VXNlcjU3NjQyMjI5",
+        "avatar_url": "https://avatars.githubusercontent.com/u/57642229?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/polespinasa",
+        "html_url": "https://github.com/polespinasa",
+        "followers_url": "https://api.github.com/users/polespinasa/followers",
+        "following_url": "https://api.github.com/users/polespinasa/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/polespinasa/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/polespinasa/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/polespinasa/subscriptions",
+        "organizations_url": "https://api.github.com/users/polespinasa/orgs",
+        "repos_url": "https://api.github.com/users/polespinasa/repos",
+        "events_url": "https://api.github.com/users/polespinasa/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/polespinasa/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/952#issuecomment-5132099949",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/952"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGM2NzQ3NjgwODhmMmVmOWY4MWExNGY3MzE3ZDE5NjIxNjVkYzU0NjU",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/c674768088f2ef9f81a14f7317d1962165dc5465",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/c674768088f2ef9f81a14f7317d1962165dc5465",
+      "tree": {
+        "sha": "53593177ed601eef873b5ee6ee5731ae568a73f7",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/53593177ed601eef873b5ee6ee5731ae568a73f7"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree 53593177ed601eef873b5ee6ee5731ae568a73f7\nparent e7585d0c6308e234e49d18934c7d24cd339d8211\nauthor Pol Espinasa <pol.espinasa@uab.cat> 1763464070 +1000\ncommitter Pol Espinasa <pol.espinasa@uab.cat> 1785422215 +0200\n\ngui: Add non-mempool balance to wallet overview called OnHold\n\nThe assert in formatWithPrivacy is removed because m_mine_nonmempool is always negative, making this assert\nno longer true.\n\nCo-authored-by: Anthony Towns <aj@erisian.com.au>\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niIsEABYKADMWIQRd8IHT46QaaYw3spsoRwkHtAvybQUCamthlhUccG9sLmVzcGlu\nYXNhQHVhYi5jYXQACgkQKEcJB7QL8m0uZwD/Sk0UDubKrCmXPiNgfdN3lSe+/yMm\nE9fV283Q/oKXKm8A/jYAFY/knRprNt1FBm4t1RPzkz0I6JoXhfuaDjMZVVsL\n=a1Dm\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/e7585d0c6308e234e49d18934c7d24cd339d8211",
+          "sha": "e7585d0c6308e234e49d18934c7d24cd339d8211",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/e7585d0c6308e234e49d18934c7d24cd339d8211"
+        }
+      ],
+      "message": "gui: Add non-mempool balance to wallet overview called OnHold\n\nThe assert in formatWithPrivacy is removed because m_mine_nonmempool is always negative, making this assert\nno longer true.\n\nCo-authored-by: Anthony Towns <aj@erisian.com.au>",
+      "committer": {
+        "name": "Pol Espinasa",
+        "email": "pol.espinasa@uab.cat",
+        "date": "2026-07-30T14:36:55Z"
+      },
+      "author": {
+        "name": "Pol Espinasa",
+        "email": "pol.espinasa@uab.cat",
+        "date": "2025-11-18T11:07:50Z"
+      },
+      "sha": "c674768088f2ef9f81a14f7317d1962165dc5465"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKGU0MmMxOTU0MjgwOTczMGRkZDVkNTQ2NGUwYzc1M2YxY2Q5ZTMxNjM",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/e42c19542809730ddd5d5464e0c753f1cd9e3163",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/e42c19542809730ddd5d5464e0c753f1cd9e3163",
+      "tree": {
+        "sha": "26d4f0f35f8c8298a0858a84f0bfc57f77b2fb70",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/26d4f0f35f8c8298a0858a84f0bfc57f77b2fb70"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree 26d4f0f35f8c8298a0858a84f0bfc57f77b2fb70\nparent c674768088f2ef9f81a14f7317d1962165dc5465\nauthor Pol Espinasa <pol.espinasa@uab.cat> 1785172848 +0200\ncommitter Pol Espinasa <pol.espinasa@uab.cat> 1785422234 +0200\n\ntest: Add test for non-mempool balance visibility\n\nCo-authored-by: Pablo Martin <pablomartin4btc@gmail.com>\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niIsEABYKADMWIQRd8IHT46QaaYw3spsoRwkHtAvybQUCamthmhUccG9sLmVzcGlu\nYXNhQHVhYi5jYXQACgkQKEcJB7QL8m0GdAD8C+ec9e1QQNb2BvFxFeF16AuZZYyb\nzAMPglXfkFN9050BAMsjQCpLnH73Ne+Gm3sL5RUlD/SJm9w82jodwn5iTZIH\n=vQnX\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/c674768088f2ef9f81a14f7317d1962165dc5465",
+          "sha": "c674768088f2ef9f81a14f7317d1962165dc5465",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/c674768088f2ef9f81a14f7317d1962165dc5465"
+        }
+      ],
+      "message": "test: Add test for non-mempool balance visibility\n\nCo-authored-by: Pablo Martin <pablomartin4btc@gmail.com>",
+      "committer": {
+        "name": "Pol Espinasa",
+        "email": "pol.espinasa@uab.cat",
+        "date": "2026-07-30T14:37:14Z"
+      },
+      "author": {
+        "name": "Pol Espinasa",
+        "email": "pol.espinasa@uab.cat",
+        "date": "2026-07-27T17:20:48Z"
+      },
+      "sha": "e42c19542809730ddd5d5464e0c753f1cd9e3163"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDQ4OTRhNzllMjllMDk0YzFiMGFhYjBiN2IwNmU0MmUzMTE3MDVjM2Y",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/4894a79e29e094c1b0aab0b7b06e42e311705c3f",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/4894a79e29e094c1b0aab0b7b06e42e311705c3f",
+      "tree": {
+        "sha": "f2983eb9ce8b6b635696c1b97195ed52ecd7982c",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/f2983eb9ce8b6b635696c1b97195ed52ecd7982c"
+      },
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "payload": "tree f2983eb9ce8b6b635696c1b97195ed52ecd7982c\nparent e42c19542809730ddd5d5464e0c753f1cd9e3163\nauthor Pol Espinasa <pol.espinasa@uab.cat> 1785171702 +0200\ncommitter Pol Espinasa <pol.espinasa@uab.cat> 1785422336 +0200\n\nadd release note\n",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niIsEABYKADMWIQRd8IHT46QaaYw3spsoRwkHtAvybQUCamtiARUccG9sLmVzcGlu\nYXNhQHVhYi5jYXQACgkQKEcJB7QL8m0C4AD9HQCg0J22hGgpV2FcAVY219O7gp/3\n00XWttO4r6gZDRsA/3Sb5bxZvGC8aapguvQaVix0g8kokIfZzKJxuks4ZSgK\n=QsCT\n-----END PGP SIGNATURE-----"
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/e42c19542809730ddd5d5464e0c753f1cd9e3163",
+          "sha": "e42c19542809730ddd5d5464e0c753f1cd9e3163",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/e42c19542809730ddd5d5464e0c753f1cd9e3163"
+        }
+      ],
+      "message": "add release note",
+      "committer": {
+        "name": "Pol Espinasa",
+        "email": "pol.espinasa@uab.cat",
+        "date": "2026-07-30T14:38:56Z"
+      },
+      "author": {
+        "name": "Pol Espinasa",
+        "email": "pol.espinasa@uab.cat",
+        "date": "2026-07-27T17:01:42Z"
+      },
+      "sha": "4894a79e29e094c1b0aab0b7b06e42e311705c3f"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 28726785600,
+      "node_id": "HRFPE_lADOEEET9c8AAAABKWWMvM8AAAAGsD_2QA",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/28726785600",
+      "actor": {
+        "login": "polespinasa",
+        "id": 57642229,
+        "node_id": "MDQ6VXNlcjU3NjQyMjI5",
+        "avatar_url": "https://avatars.githubusercontent.com/u/57642229?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/polespinasa",
+        "html_url": "https://github.com/polespinasa",
+        "followers_url": "https://api.github.com/users/polespinasa/followers",
+        "following_url": "https://api.github.com/users/polespinasa/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/polespinasa/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/polespinasa/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/polespinasa/subscriptions",
+        "organizations_url": "https://api.github.com/users/polespinasa/orgs",
+        "repos_url": "https://api.github.com/users/polespinasa/repos",
+        "events_url": "https://api.github.com/users/polespinasa/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/polespinasa/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": "4894a79e29e094c1b0aab0b7b06e42e311705c3f",
+      "commit_url": "https://api.github.com/repos/polespinasa/gui/commits/4894a79e29e094c1b0aab0b7b06e42e311705c3f",
+      "created_at": "2026-07-30T14:39:08Z"
     }
   ],
   "comments": []
