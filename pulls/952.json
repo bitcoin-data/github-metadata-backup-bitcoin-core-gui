@@ -52,7 +52,7 @@
       }
     ],
     "created_at": "2026-07-27T15:21:25Z",
-    "updated_at": "2026-08-03T09:18:52Z",
+    "updated_at": "2026-08-03T10:08:19Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
@@ -347,7 +347,7 @@
     "changed_files": 6,
     "commits": 6,
     "review_comments": 0,
-    "comments": 8
+    "comments": 9
   },
   "events": [
     {
@@ -1453,6 +1453,64 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2026-08-03T09:18:53Z"
+    },
+    {
+      "event": "commented",
+      "id": 5165006037,
+      "node_id": "IC_kwDOEEET9c8AAAABM9u81Q",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/5165006037",
+      "actor": {
+        "login": "GBKS",
+        "id": 695901,
+        "node_id": "MDQ6VXNlcjY5NTkwMQ==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/695901?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/GBKS",
+        "html_url": "https://github.com/GBKS",
+        "followers_url": "https://api.github.com/users/GBKS/followers",
+        "following_url": "https://api.github.com/users/GBKS/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/GBKS/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/GBKS/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/GBKS/subscriptions",
+        "organizations_url": "https://api.github.com/users/GBKS/orgs",
+        "repos_url": "https://api.github.com/users/GBKS/repos",
+        "events_url": "https://api.github.com/users/GBKS/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/GBKS/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2026-08-03T10:08:19Z",
+      "updated_at": "2026-08-03T10:08:19Z",
+      "author_association": "NONE",
+      "body": "Sure thing.\r\n\r\n**RPC mirroring:** The existing `Available` and `Pending` labels don't match the RPC either (AFAICT), so I don't think there is a precedent for consistency.\r\n\r\n**Label precision:** I'd propose that it is more important that labels are understood than precise. 1-2 word combos can only carry so much meaning. `Pending` also has a lot of underlying complexity that we have come to accept. Personally, when I see `On hold`, I directionally understand what is happening and can dig into the details (I want my transaction to go through, but this one is not, let me take a look and see what is happening). When I see `Not in mempool`, I don't have a starting point. I have to think about mempool mechanics, what it means that a transaction is not in it, etc, and derive what this means for me and my transaction.\r\n\r\n**Target audience:** People like me will 1000x prefer a GUI and do everything to avoid the command line. It feels like an outdated and unnecessarily complicated way to do things that super hackers use (exaggerating slightly to make a point). I think if this application was built for coders, it would look very different, much more like a dashboard with a prominent console, transaction inspection, etc. But I think it is meant for a broader non/less technical audience that just wants to store/send/receive bitcoin, and those are not CLI/RPC first (unless I am mistaken) where the GUI should match that existing knowledge.\r\n\r\n---\r\n\r\nFor another approach, here's how I resolved it in Arké. There's a `Pending` balance that I can tap to expand that gives me the full breakdown of everything that is in-flight (note that there is no visual indicator for the expansion because I added that more for my own use/insight). A simple default, with the option to see more complexity for those interested.\r\n\r\n<img width=\"1908\" height=\"1182\" alt=\"arke-expand-pending\" src=\"https://github.com/user-attachments/assets/25faeb34-e7d2-4fb2-938a-e13d1d8ecb92\" />\r\n\r\n---\r\n\r\nYMMV",
+      "user": {
+        "login": "GBKS",
+        "id": 695901,
+        "node_id": "MDQ6VXNlcjY5NTkwMQ==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/695901?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/GBKS",
+        "html_url": "https://github.com/GBKS",
+        "followers_url": "https://api.github.com/users/GBKS/followers",
+        "following_url": "https://api.github.com/users/GBKS/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/GBKS/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/GBKS/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/GBKS/subscriptions",
+        "organizations_url": "https://api.github.com/users/GBKS/orgs",
+        "repos_url": "https://api.github.com/users/GBKS/repos",
+        "events_url": "https://api.github.com/users/GBKS/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/GBKS/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/952#issuecomment-5165006037",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/952"
     }
   ],
   "comments": []
