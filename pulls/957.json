@@ -43,7 +43,7 @@
     "body": "fixes https://github.com/bitcoin-core/gui/issues/956\r\n\r\nUnlike `backup wallet`, `export watch-only wallet` was not automatically adding the file extension to the exported file, making restoring difficult if the user doesn't manually add the file extension after exporting.\r\n\r\nAllows also to restore a wallet from a non specified `.dat` file extension. This is achieved by removing the filter in the select file screen, matching the RPC behavior.",
     "labels": [],
     "created_at": "2026-08-05T08:05:49Z",
-    "updated_at": "2026-08-11T19:40:10Z",
+    "updated_at": "2026-08-11T21:58:47Z",
     "mergeable": true,
     "mergeable_state": "clean",
     "merged": false,
@@ -290,9 +290,9 @@
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
         "forks_count": 367,
-        "stargazers_count": 740,
-        "watchers_count": 740,
-        "size": 197740,
+        "stargazers_count": 741,
+        "watchers_count": 741,
+        "size": 197759,
         "default_branch": "master",
         "open_issues_count": 157,
         "is_template": false,
@@ -305,9 +305,9 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2026-08-11T19:39:03Z",
+        "pushed_at": "2026-08-11T20:18:28Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2026-08-11T19:39:09Z",
+        "updated_at": "2026-08-11T20:58:03Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -337,7 +337,7 @@
     "deletions": 2,
     "changed_files": 1,
     "commits": 2,
-    "review_comments": 0,
+    "review_comments": 1,
     "comments": 5
   },
   "events": [
@@ -846,7 +846,100 @@
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/957#issuecomment-5257967221",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/957"
+    },
+    {
+      "event": "reviewed",
+      "id": 4911099447,
+      "node_id": "PRR_kwDOEEET9c8AAAABJLluNw",
+      "url": null,
+      "actor": null,
+      "commit_id": "10ea03ee5164b584a9155ca260d6ecb85058b6fe",
+      "commit_url": null,
+      "created_at": null,
+      "updated_at": "2026-08-11T21:58:47Z",
+      "author_association": "NONE",
+      "user": {
+        "login": "jmechanical13-cloud",
+        "id": 283762417,
+        "node_id": "U_kgDOEOne8Q",
+        "avatar_url": "https://avatars.githubusercontent.com/u/283762417?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/jmechanical13-cloud",
+        "html_url": "https://github.com/jmechanical13-cloud",
+        "followers_url": "https://api.github.com/users/jmechanical13-cloud/followers",
+        "following_url": "https://api.github.com/users/jmechanical13-cloud/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/jmechanical13-cloud/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/jmechanical13-cloud/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/jmechanical13-cloud/subscriptions",
+        "organizations_url": "https://api.github.com/users/jmechanical13-cloud/orgs",
+        "repos_url": "https://api.github.com/users/jmechanical13-cloud/repos",
+        "events_url": "https://api.github.com/users/jmechanical13-cloud/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/jmechanical13-cloud/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/957#pullrequestreview-4911099447",
+      "submitted_at": "2026-08-11T21:58:47Z",
+      "state": "CHANGES_REQUESTED",
+      "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/957"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/3762017373",
+      "pull_request_review_id": 4911099447,
+      "id": 3762017373,
+      "node_id": "PRRC_kwDOEEET9c7gO9Rd",
+      "diff_hunk": "",
+      "path": "src/qt/bitcoingui.cpp",
+      "position": 1,
+      "original_position": 1,
+      "commit_id": "10ea03ee5164b584a9155ca260d6ecb85058b6fe",
+      "original_commit_id": "10ea03ee5164b584a9155ca260d6ecb85058b6fe",
+      "in_reply_to_id": null,
+      "user": {
+        "login": "jmechanical13-cloud",
+        "id": 283762417,
+        "node_id": "U_kgDOEOne8Q",
+        "avatar_url": "https://avatars.githubusercontent.com/u/283762417?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/jmechanical13-cloud",
+        "html_url": "https://github.com/jmechanical13-cloud",
+        "followers_url": "https://api.github.com/users/jmechanical13-cloud/followers",
+        "following_url": "https://api.github.com/users/jmechanical13-cloud/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/jmechanical13-cloud/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/jmechanical13-cloud/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/jmechanical13-cloud/subscriptions",
+        "organizations_url": "https://api.github.com/users/jmechanical13-cloud/orgs",
+        "repos_url": "https://api.github.com/users/jmechanical13-cloud/repos",
+        "events_url": "https://api.github.com/users/jmechanical13-cloud/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/jmechanical13-cloud/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "body": "File=Qmenu ",
+      "created_at": "2026-08-11T21:58:34Z",
+      "updated_at": "2026-08-11T21:58:47Z",
+      "html_url": "https://github.com/bitcoin-core/gui/pull/957#discussion_r3762017373",
+      "author_association": "NONE",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments/3762017373"
+        },
+        "pull_request": {
+          "href": "https://api.github.com/repos/bitcoin-core/gui/pulls/957"
+        }
+      },
+      "start_line": null,
+      "original_start_line": null,
+      "start_side": null,
+      "line": 559,
+      "original_line": 559,
+      "side": "RIGHT"
+    }
+  ]
 }
