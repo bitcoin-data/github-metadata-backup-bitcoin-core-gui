@@ -12,12 +12,12 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/948/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/948/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/cf2856bd34444e4e9039505c7de565511efae650",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/1ce7bdca775302549932f4e3844724f8c56610dd",
     "number": 948,
     "state": "open",
     "locked": false,
     "maintainer_can_modify": true,
-    "title": "GUI/Intro: Skip intro dialog when -blocksdir is manually passed",
+    "title": "GUI/Intro: pass -blocksdir to getPathToCheck if present",
     "user": {
       "login": "diegoviola",
       "id": 4371,
@@ -41,13 +41,22 @@
       "patch_url": null
     },
     "body": "Fixes: #946",
-    "labels": [],
+    "labels": [
+      {
+        "id": 5353934559,
+        "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
+        "name": "CI failed",
+        "color": "ededed",
+        "default": false
+      }
+    ],
     "created_at": "2026-07-16T14:10:05Z",
-    "updated_at": "2026-08-19T03:55:55Z",
+    "updated_at": "2026-08-19T04:32:41Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
-    "merge_commit_sha": "3f9c727536c20d7497cae47e42cd8897d02ca32c",
+    "merge_commit_sha": "490364899217be75742173df7ec3b4d105b01034",
     "assignees": [],
     "requested_reviewers": [
       {
@@ -100,7 +109,7 @@
     "head": {
       "label": "diegoviola:intro-blocksdir-fix",
       "ref": "intro-blocksdir-fix",
-      "sha": "cf2856bd34444e4e9039505c7de565511efae650",
+      "sha": "1ce7bdca775302549932f4e3844724f8c56610dd",
       "user": {
         "login": "diegoviola",
         "id": 4371,
@@ -200,7 +209,7 @@
         "forks_count": 0,
         "stargazers_count": 0,
         "watchers_count": 0,
-        "size": 196283,
+        "size": 198908,
         "default_branch": "master",
         "open_issues_count": 0,
         "is_template": false,
@@ -213,7 +222,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2026-08-19T03:54:36Z",
+        "pushed_at": "2026-08-19T04:00:55Z",
         "created_at": "2026-07-16T13:52:41Z",
         "updated_at": "2026-08-19T03:54:30Z",
         "allow_forking": true,
@@ -383,7 +392,7 @@
     "changed_files": 1,
     "commits": 1,
     "review_comments": 0,
-    "comments": 1
+    "comments": 2
   },
   "events": [
     {
@@ -521,46 +530,6 @@
       "submitted_at": "2026-08-16T11:42:43Z",
       "state": "COMMENTED",
       "pull_request_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/948"
-    },
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKGNmMjg1NmJkMzQ0NDRlNGU5MDM5NTA1YzdkZTU2NTUxMWVmYWU2NTA",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/cf2856bd34444e4e9039505c7de565511efae650",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/cf2856bd34444e4e9039505c7de565511efae650",
-      "tree": {
-        "sha": "fe76c49e40c14e6745424007b86b14264874a4f0",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/fe76c49e40c14e6745424007b86b14264874a4f0"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/59224b66aa1db43adc61c15ee41b413951f22f80",
-          "sha": "59224b66aa1db43adc61c15ee41b413951f22f80",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/59224b66aa1db43adc61c15ee41b413951f22f80"
-        }
-      ],
-      "message": "GUI/Intro: Skip intro dialog when -blocksdir is manually passed\n\nFixes: #946",
-      "committer": {
-        "name": "Diego Viola",
-        "email": "diego.viola@gmail.com",
-        "date": "2026-08-19T03:54:01Z"
-      },
-      "author": {
-        "name": "Diego Viola",
-        "email": "diego.viola@gmail.com",
-        "date": "2026-08-19T03:52:04Z"
-      },
-      "sha": "cf2856bd34444e4e9039505c7de565511efae650"
     },
     {
       "event": "head_ref_force_pushed",
@@ -742,6 +711,205 @@
         "name": null,
         "patch_url": null
       }
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDFjZTdiZGNhNzc1MzAyNTQ5OTMyZjRlMzg0NDcyNGY4YzU2NjEwZGQ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/1ce7bdca775302549932f4e3844724f8c56610dd",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/1ce7bdca775302549932f4e3844724f8c56610dd",
+      "tree": {
+        "sha": "fe76c49e40c14e6745424007b86b14264874a4f0",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/fe76c49e40c14e6745424007b86b14264874a4f0"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/59224b66aa1db43adc61c15ee41b413951f22f80",
+          "sha": "59224b66aa1db43adc61c15ee41b413951f22f80",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/59224b66aa1db43adc61c15ee41b413951f22f80"
+        }
+      ],
+      "message": "GUI/Intro: pass -blocksdir to getPathToCheck if present\n\nFixes: #946",
+      "committer": {
+        "name": "Diego Viola",
+        "email": "diego.viola@gmail.com",
+        "date": "2026-08-19T04:00:43Z"
+      },
+      "author": {
+        "name": "Diego Viola",
+        "email": "diego.viola@gmail.com",
+        "date": "2026-08-19T04:00:34Z"
+      },
+      "sha": "1ce7bdca775302549932f4e3844724f8c56610dd"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 29659535254,
+      "node_id": "HRFPE_lADOEEET9c8AAAABJDvhi88AAAAG59iXlg",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/29659535254",
+      "actor": {
+        "login": "diegoviola",
+        "id": 4371,
+        "node_id": "MDQ6VXNlcjQzNzE=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/4371?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/diegoviola",
+        "html_url": "https://github.com/diegoviola",
+        "followers_url": "https://api.github.com/users/diegoviola/followers",
+        "following_url": "https://api.github.com/users/diegoviola/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/diegoviola/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/diegoviola/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/diegoviola/subscriptions",
+        "organizations_url": "https://api.github.com/users/diegoviola/orgs",
+        "repos_url": "https://api.github.com/users/diegoviola/repos",
+        "events_url": "https://api.github.com/users/diegoviola/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/diegoviola/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": "1ce7bdca775302549932f4e3844724f8c56610dd",
+      "commit_url": "https://api.github.com/repos/diegoviola/gui/commits/1ce7bdca775302549932f4e3844724f8c56610dd",
+      "created_at": "2026-08-19T04:00:56Z"
+    },
+    {
+      "event": "renamed",
+      "id": 29659548235,
+      "node_id": "RTE_lADOEEET9c8AAAABJDvhi88AAAAG59jKSw",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/29659548235",
+      "actor": {
+        "login": "diegoviola",
+        "id": 4371,
+        "node_id": "MDQ6VXNlcjQzNzE=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/4371?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/diegoviola",
+        "html_url": "https://github.com/diegoviola",
+        "followers_url": "https://api.github.com/users/diegoviola/followers",
+        "following_url": "https://api.github.com/users/diegoviola/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/diegoviola/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/diegoviola/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/diegoviola/subscriptions",
+        "organizations_url": "https://api.github.com/users/diegoviola/orgs",
+        "repos_url": "https://api.github.com/users/diegoviola/repos",
+        "events_url": "https://api.github.com/users/diegoviola/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/diegoviola/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2026-08-19T04:01:25Z",
+      "rename": {
+        "from": "GUI/Intro: Skip intro dialog when -blocksdir is manually passed",
+        "to": "GUI/Intro: pass -blocksdir to getPathToCheck if present"
+      }
+    },
+    {
+      "event": "labeled",
+      "id": 29659554968,
+      "node_id": "LE_lADOEEET9c8AAAABJDvhi88AAAAG59jkmA",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/29659554968",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2026-08-19T04:01:40Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
+      }
+    },
+    {
+      "event": "commented",
+      "id": 5337430176,
+      "node_id": "IC_kwDOEEET9c8AAAABPiK4oA",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/5337430176",
+      "actor": {
+        "login": "diegoviola",
+        "id": 4371,
+        "node_id": "MDQ6VXNlcjQzNzE=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/4371?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/diegoviola",
+        "html_url": "https://github.com/diegoviola",
+        "followers_url": "https://api.github.com/users/diegoviola/followers",
+        "following_url": "https://api.github.com/users/diegoviola/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/diegoviola/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/diegoviola/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/diegoviola/subscriptions",
+        "organizations_url": "https://api.github.com/users/diegoviola/orgs",
+        "repos_url": "https://api.github.com/users/diegoviola/repos",
+        "events_url": "https://api.github.com/users/diegoviola/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/diegoviola/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2026-08-19T04:12:08Z",
+      "updated_at": "2026-08-19T04:32:41Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "> I'm not sure this is the correct approach.\r\n> \r\n> For example, it breaks the `-choosedatadir` option, which is now ignored when combined with `-blocksdir`:\r\n> \r\n> ```\r\n> $ ./build_dev_mode/bin/bitcoin-qt -choosedatadir -blocksdir=/tmp/test_blocksdir\r\n> # no intro dialog is shown\r\n> ```\r\n\r\nCan you please try this new approach? The dialog is now being shown for me and prune is disabled when running `./bin/bitcoin-qt -choosedatadir -blocksdir=/home/diego/test/bitcoin-blocks/` which _I think_ is the correct behavior.",
+      "user": {
+        "login": "diegoviola",
+        "id": 4371,
+        "node_id": "MDQ6VXNlcjQzNzE=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/4371?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/diegoviola",
+        "html_url": "https://github.com/diegoviola",
+        "followers_url": "https://api.github.com/users/diegoviola/followers",
+        "following_url": "https://api.github.com/users/diegoviola/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/diegoviola/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/diegoviola/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/diegoviola/subscriptions",
+        "organizations_url": "https://api.github.com/users/diegoviola/orgs",
+        "repos_url": "https://api.github.com/users/diegoviola/repos",
+        "events_url": "https://api.github.com/users/diegoviola/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/diegoviola/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/948#issuecomment-5337430176",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/948"
     }
   ],
   "comments": []
