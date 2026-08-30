@@ -12,7 +12,7 @@
     "review_comments_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/962/comments",
     "review_comment_url": "https://api.github.com/repos/bitcoin-core/gui/pulls/comments%7B/number%7D",
     "comments_url": "https://api.github.com/repos/bitcoin-core/gui/issues/962/comments",
-    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/51593bea18a295ecca89160b43f5880b77a5a694",
+    "statuses_url": "https://api.github.com/repos/bitcoin-core/gui/statuses/9292f1e015d47d9592e0c99ea4313d2451ea8064",
     "number": 962,
     "state": "open",
     "locked": false,
@@ -41,13 +41,22 @@
       "patch_url": null
     },
     "body": "On macOS 26, Bitcoin Core’s existing Qt widgets retain the appearance used on earlier macOS releases.\r\nThis makes text fields, spin boxes, the main toolbar, and the Node window tabs look liquid glass design with the updated system interface.\r\nThis change applies macOS 26-specific liquid glass styling to these controls. It rounds text and spin boxes, unifies the main title bar and toolbar, and styles the Node window tabs using qt palette colors.\r\nThe liquid glass styling is enabled only at runtime on macOS 26 or later and is not activated on earlier releases.\r\nSpin-box arrows are provided as 1x and 2x png resources to avoid introducing a QtSvg runtime dependency.\r\n\r\nCool note: Not manually tested on macOS versions earlier than 26.",
-    "labels": [],
+    "labels": [
+      {
+        "id": 5353934559,
+        "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
+        "name": "CI failed",
+        "color": "ededed",
+        "default": false
+      }
+    ],
     "created_at": "2026-08-30T15:48:20Z",
-    "updated_at": "2026-08-30T15:48:36Z",
+    "updated_at": "2026-08-30T20:06:57Z",
     "mergeable": true,
     "mergeable_state": "unstable",
     "merged": false,
-    "merge_commit_sha": "37fa461484bffefdd2445637c6312ada181627ef",
+    "merge_commit_sha": "f541ae6e9d709d6a795139afeb18136780928b45",
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
@@ -55,7 +64,7 @@
     "head": {
       "label": "Portles:30-08-2026-macos-liquid-glass",
       "ref": "30-08-2026-macos-liquid-glass",
-      "sha": "51593bea18a295ecca89160b43f5880b77a5a694",
+      "sha": "9292f1e015d47d9592e0c99ea4313d2451ea8064",
       "user": {
         "login": "Portles",
         "id": 53916133,
@@ -167,7 +176,7 @@
         "archived": false,
         "disabled": false,
         "visibility": "public",
-        "pushed_at": "2026-08-30T12:49:25Z",
+        "pushed_at": "2026-08-30T20:05:01Z",
         "created_at": "2026-08-30T09:47:45Z",
         "updated_at": "2026-08-30T09:47:45Z",
         "allow_forking": true,
@@ -332,54 +341,14 @@
     },
     "author_association": "NONE",
     "draft": false,
-    "additions": 226,
+    "additions": 228,
     "deletions": 1,
     "changed_files": 11,
     "commits": 1,
     "review_comments": 0,
-    "comments": 1
+    "comments": 2
   },
   "events": [
-    {
-      "event": "committed",
-      "id": null,
-      "node_id": "C_kwDOEEET9doAKDUxNTkzYmVhMThhMjk1ZWNjYTg5MTYwYjQzZjU4ODBiNzdhNWE2OTQ",
-      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/51593bea18a295ecca89160b43f5880b77a5a694",
-      "actor": null,
-      "commit_id": null,
-      "commit_url": null,
-      "created_at": null,
-      "html_url": "https://github.com/bitcoin-core/gui/commit/51593bea18a295ecca89160b43f5880b77a5a694",
-      "tree": {
-        "sha": "4dd57e9569590c1ce00b9760b07aee060ba4c167",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/4dd57e9569590c1ce00b9760b07aee060ba4c167"
-      },
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "payload": null,
-        "signature": null
-      },
-      "parents": [
-        {
-          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/ca7162cde58e69214a3309c17fac6d666b5f055a",
-          "sha": "ca7162cde58e69214a3309c17fac6d666b5f055a",
-          "html_url": "https://github.com/bitcoin-core/gui/commit/ca7162cde58e69214a3309c17fac6d666b5f055a"
-        }
-      ],
-      "message": "qt: Improve GUI appearance on macOS 26",
-      "committer": {
-        "name": "Nizamet Özkan",
-        "email": "nizamet005@gmail.com",
-        "date": "2026-08-30T12:49:21Z"
-      },
-      "author": {
-        "name": "Nizamet Özkan",
-        "email": "nizamet005@gmail.com",
-        "date": "2026-08-30T12:49:21Z"
-      },
-      "sha": "51593bea18a295ecca89160b43f5880b77a5a694"
-    },
     {
       "event": "commented",
       "id": 5469677402,
@@ -436,6 +405,170 @@
         "patch_url": null
       },
       "html_url": "https://github.com/bitcoin-core/gui/pull/962#issuecomment-5469677402",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/962"
+    },
+    {
+      "event": "committed",
+      "id": null,
+      "node_id": "C_kwDOEEET9doAKDkyOTJmMWUwMTVkNDdkOTU5MmUwYzk5ZWE0MzEzZDI0NTFlYTgwNjQ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/9292f1e015d47d9592e0c99ea4313d2451ea8064",
+      "actor": null,
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": null,
+      "html_url": "https://github.com/bitcoin-core/gui/commit/9292f1e015d47d9592e0c99ea4313d2451ea8064",
+      "tree": {
+        "sha": "9c2e769b012ab49f6ba0d5700ebdb96b4022c20d",
+        "url": "https://api.github.com/repos/bitcoin-core/gui/git/trees/9c2e769b012ab49f6ba0d5700ebdb96b4022c20d"
+      },
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "payload": null,
+        "signature": null
+      },
+      "parents": [
+        {
+          "url": "https://api.github.com/repos/bitcoin-core/gui/git/commits/ca7162cde58e69214a3309c17fac6d666b5f055a",
+          "sha": "ca7162cde58e69214a3309c17fac6d666b5f055a",
+          "html_url": "https://github.com/bitcoin-core/gui/commit/ca7162cde58e69214a3309c17fac6d666b5f055a"
+        }
+      ],
+      "message": "qt: Improve GUI appearance on macOS 26",
+      "committer": {
+        "name": "Nizamet Özkan",
+        "email": "nizamet005@gmail.com",
+        "date": "2026-08-30T20:04:56Z"
+      },
+      "author": {
+        "name": "Nizamet Özkan",
+        "email": "nizamet005@gmail.com",
+        "date": "2026-08-30T12:49:21Z"
+      },
+      "sha": "9292f1e015d47d9592e0c99ea4313d2451ea8064"
+    },
+    {
+      "event": "head_ref_force_pushed",
+      "id": 30245451109,
+      "node_id": "HRFPE_lADOEEET9c8AAAABO3wPKs8AAAAHCsT1ZQ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/30245451109",
+      "actor": {
+        "login": "Portles",
+        "id": 53916133,
+        "node_id": "MDQ6VXNlcjUzOTE2MTMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/53916133?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Portles",
+        "html_url": "https://github.com/Portles",
+        "followers_url": "https://api.github.com/users/Portles/followers",
+        "following_url": "https://api.github.com/users/Portles/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/Portles/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/Portles/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/Portles/subscriptions",
+        "organizations_url": "https://api.github.com/users/Portles/orgs",
+        "repos_url": "https://api.github.com/users/Portles/repos",
+        "events_url": "https://api.github.com/users/Portles/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/Portles/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": "9292f1e015d47d9592e0c99ea4313d2451ea8064",
+      "commit_url": "https://api.github.com/repos/Portles/gui/commits/9292f1e015d47d9592e0c99ea4313d2451ea8064",
+      "created_at": "2026-08-30T20:05:02Z"
+    },
+    {
+      "event": "labeled",
+      "id": 30245491079,
+      "node_id": "LE_lADOEEET9c8AAAABO3wPKs8AAAAHCsWRhw",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/30245491079",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2026-08-30T20:06:53Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
+      }
+    },
+    {
+      "event": "commented",
+      "id": 5470968591,
+      "node_id": "IC_kwDOEEET9c8AAAABRhhbDw",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/5470968591",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2026-08-30T20:06:57Z",
+      "updated_at": "2026-08-30T20:06:57Z",
+      "author_association": "CONTRIBUTOR",
+      "body": "<!--85328a0da195eb286784d51f73fa0af9-->\n🚧 At least one of the CI tasks failed.\n<sub>Task `lint`: https://github.com/bitcoin-core/gui/actions/runs/33320671988/job/99287843470</sub>\n<sub>LLM reason (✨ experimental): CI failed because the lint “includes_build_config” check detected usage of symbols from `bitcoin-build-config.h` without directly including the header (in `src/qt/test/apptests.cpp`).</sub>\n\n<details><summary>Hints</summary>\n\nTry to run the tests locally, according to the documentation. However, a CI failure may still\nhappen due to a number of reasons, for example:\n\n* Possibly due to a silent merge conflict (the changes in this pull request being\nincompatible with the current code in the target branch). If so, make sure to rebase on the latest\ncommit of the target branch.\n\n* A sanitizer issue, which can only be found by compiling with the sanitizer and running the\n  affected test.\n\n* An intermittent issue.\n\nLeave a comment here, if you need help tracking down a confusing failure.\n\n</details>\n\n",
+      "user": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/pull/962#issuecomment-5470968591",
       "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/962"
     }
   ],
