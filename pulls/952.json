@@ -41,20 +41,11 @@
       "patch_url": null
     },
     "body": "Just grabbing #911\r\n\r\nCopying the motivation from AJ's description:\r\n\r\nThe wallet can contain transactions that are not accepted into the node's mempool (eg due to containing a too large OP_RETURN output, due to too low a feerate, or due to too many unconfirmed ancestors). In the event you end up in this situation, it can appear as if funds have gone missing from your wallet due to the non-mempool balance not being reported. Correct this by reporting the non-mempool balance.\r\n\r\nSee https://github.com/bitcoin/bitcoin/pull/33671 for further context.\r\n\r\n\r\nThe changes look like:\r\n\r\n<img width=\"372\" height=\"239\" alt=\"imagen\" src=\"https://github.com/user-attachments/assets/2adab476-0db1-4354-9e51-ddddca26c61a\" />\r\n\r\n\r\n\r\n### How to test\r\n\r\nTo test, start with `-datacarriersize=10`, and run\r\n\r\n```\r\nsend '{\"data\": \"4368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73\"}' null \"unset\" 1\r\n```\r\n\r\nfrom the console. \"Non-mempool: <change amount>\" should appear in the Balances pane on the Overview window with the change from the transaction. Restarting with `-datacarriersize=100000` should allow the tx to enter the mempool, and move the amount into the Available balance. (Presumably, do this on -regtest after generating 100 blocks; or perhaps signet after grabbing some funds from a faucet)",
-    "labels": [
-      {
-        "id": 5353934559,
-        "node_id": "LA_kwDOEEET9c8AAAABPx6O3w",
-        "url": "https://api.github.com/repos/bitcoin-core/gui/labels/CI%20failed",
-        "name": "CI failed",
-        "color": "ededed",
-        "default": false
-      }
-    ],
+    "labels": [],
     "created_at": "2026-07-27T15:21:25Z",
-    "updated_at": "2026-10-06T17:45:31Z",
+    "updated_at": "2026-10-06T20:21:35Z",
     "mergeable": true,
-    "mergeable_state": "unstable",
+    "mergeable_state": "clean",
     "merged": false,
     "merge_commit_sha": "e92ad7dd08f05c1ce0c646e22d840108b4cf37dd",
     "assignees": [],
@@ -298,12 +289,12 @@
         "svn_url": "https://github.com/bitcoin-core/gui",
         "homepage": "https://github.com/bitcoin/bitcoin",
         "language": "C++",
-        "forks_count": 375,
-        "stargazers_count": 744,
-        "watchers_count": 744,
+        "forks_count": 376,
+        "stargazers_count": 745,
+        "watchers_count": 745,
         "size": 202476,
         "default_branch": "master",
-        "open_issues_count": 159,
+        "open_issues_count": 160,
         "is_template": false,
         "topics": [],
         "has_issues": true,
@@ -316,7 +307,7 @@
         "visibility": "public",
         "pushed_at": "2026-10-06T13:39:48Z",
         "created_at": "2020-06-16T12:20:07Z",
-        "updated_at": "2026-10-06T13:39:55Z",
+        "updated_at": "2026-10-06T19:41:45Z",
         "allow_forking": true,
         "license": {
           "key": "mit",
@@ -1720,6 +1711,41 @@
       "commit_id": null,
       "commit_url": null,
       "created_at": "2026-10-06T17:45:31Z"
+    },
+    {
+      "event": "unlabeled",
+      "id": 32634638697,
+      "node_id": "UNLE_lADOEEET9c8AAAABKWWMvM8AAAAHmS0RaQ",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/events/32634638697",
+      "actor": {
+        "login": "DrahtBot",
+        "id": 39886733,
+        "node_id": "MDQ6VXNlcjM5ODg2NzMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39886733?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DrahtBot",
+        "html_url": "https://github.com/DrahtBot",
+        "followers_url": "https://api.github.com/users/DrahtBot/followers",
+        "following_url": "https://api.github.com/users/DrahtBot/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/DrahtBot/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/DrahtBot/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/DrahtBot/subscriptions",
+        "organizations_url": "https://api.github.com/users/DrahtBot/orgs",
+        "repos_url": "https://api.github.com/users/DrahtBot/repos",
+        "events_url": "https://api.github.com/users/DrahtBot/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/DrahtBot/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2026-10-06T20:21:35Z",
+      "label": {
+        "name": "CI failed",
+        "color": "ededed"
+      }
     }
   ],
   "comments": [
