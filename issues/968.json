@@ -40,9 +40,68 @@
     "assignees": [],
     "author_association": "NONE",
     "locked": false,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2026-10-11T17:38:10Z",
-    "updated_at": "2026-10-11T17:38:44Z"
+    "updated_at": "2026-10-12T12:39:17Z"
   },
-  "events": []
+  "events": [
+    {
+      "event": "commented",
+      "id": 6124430363,
+      "node_id": "IC_kwDOEEET9c8AAAABbQtkGw",
+      "url": "https://api.github.com/repos/bitcoin-core/gui/issues/comments/6124430363",
+      "actor": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "commit_id": null,
+      "commit_url": null,
+      "created_at": "2026-10-12T12:39:17Z",
+      "updated_at": "2026-10-12T12:39:17Z",
+      "author_association": "MEMBER",
+      "body": "This is expected with the release binaries. `bitcoin-qt` from https://bitcoincore.org/ is built against a static Qt that includes only the `xcb` (X11) and `minimal` platform plugins, as your error output shows. There is no native Wayland plugin, so forcing `QT_QPA_PLATFORM=wayland` will always abort. Adding Wayland support to the release builds is tracked in bitcoin/bitcoin#19950.\n\nAs a workaround, try forcing the X11 backend (via XWayland):\n```console\n$ QT_QPA_PLATFORM=xcb ~/bitcoin/bitcoin-31.1/bin/bitcoin-qt\n```\n\nIf it still fails with the `xcb` plugin, please re-run with plugin debugging and post the output:\n```console\n$ QT_DEBUG_PLUGINS=1 QT_QPA_PLATFORM=xcb ~/bitcoin/bitcoin-31.1/bin/bitcoin-qt\n```\n\nA common cause of such failures is a missing XCB runtime library. For example, Qt 6's `xcb` plugin needs `libxcb-cursor0`. Installing it may fix this:\n```console\n$ sudo apt install libxcb-cursor0\n```\n\nIf you want native Wayland now, you can build `bitcoin-qt` from source.",
+      "user": {
+        "login": "hebasto",
+        "id": 32963518,
+        "node_id": "MDQ6VXNlcjMyOTYzNTE4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32963518?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hebasto",
+        "html_url": "https://github.com/hebasto",
+        "followers_url": "https://api.github.com/users/hebasto/followers",
+        "following_url": "https://api.github.com/users/hebasto/following%7B/other_user%7D",
+        "gists_url": "https://api.github.com/users/hebasto/gists%7B/gist_id%7D",
+        "starred_url": "https://api.github.com/users/hebasto/starred%7B/owner%7D%7B/repo%7D",
+        "subscriptions_url": "https://api.github.com/users/hebasto/subscriptions",
+        "organizations_url": "https://api.github.com/users/hebasto/orgs",
+        "repos_url": "https://api.github.com/users/hebasto/repos",
+        "events_url": "https://api.github.com/users/hebasto/events%7B/privacy%7D",
+        "received_events_url": "https://api.github.com/users/hebasto/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "patch_url": null
+      },
+      "html_url": "https://github.com/bitcoin-core/gui/issues/968#issuecomment-6124430363",
+      "issue_url": "https://api.github.com/repos/bitcoin-core/gui/issues/968"
+    }
+  ]
 }
